@@ -1,11 +1,29 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { createStore } from 'redux'
+
+import { Provider } from 'react-redux'
+import PropTypes from 'prop-types'
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom'
+
 import todos from './reducers'
 
-import Root from './components/Root'
 import './styles/styles.scss';
-//configuation about store in redux, this code can be change due to extending project
+import RouteApp from './components/RouteApp'
+
 const store = createStore(todos)
-//we will call and route between each component,
+
+const Root = ({store})=>
+  <Provider store={store}>
+    <Router>    
+      <Route path="/:filter?" component={RouteApp} />
+    </Router>
+  </Provider>
+
+Root.propTypes = {
+    store: PropTypes.object.isRequired
+}
 render(<Root store={store} />, document.getElementById('app'))
