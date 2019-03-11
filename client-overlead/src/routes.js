@@ -32,6 +32,8 @@ import DefaultLayout from './containers/DefaultLayout';
 // const Badges = React.lazy(() => import('./views/Notifications/Badges'));
 // const Modals = React.lazy(() => import('./views/Notifications/Modals'));
 const Colors = React.lazy(() => import('./components/Colors'));
+
+const Register = React.lazy(() => import('./views/Pages/Register'));
 // const Typography = React.lazy(() => import('./views/Theme/Typography'));
 // const Widgets = React.lazy(() => import('./views/Widgets/Widgets'));
 // const Users = React.lazy(() => import('./views/Users/Users'));
@@ -42,7 +44,9 @@ const routes = [
   { path: '/', exact: true, name: 'Home', component: DefaultLayout },
   // { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   // { path: '/theme', exact: true, name: 'Theme', component: Colors },
-  { path: '/theme/colors', name: 'Colors', component: Colors },
+  { path: '/theme/colors',exact: true,  name: 'Colors', component: Colors },
+
+  { path: '/theme/colors',exact: true,  name: 'Colors', component: Colors },
   // { path: '/theme/typography', name: 'Typography', component: Typography },
   // { path: '/base', exact: true, name: 'Base', component: Cards },
   // { path: '/base/cards', name: 'Cards', component: Cards },
