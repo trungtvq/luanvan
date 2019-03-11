@@ -37,6 +37,10 @@ const Page500 = Loadable({
   loader: () => import('./views/Pages/Page500'),
   loading
 });
+const PagePay = Loadable({
+  loader: () => import('./views/Pages/PagePay'),
+  loading
+});
 
 class App extends Component {
 
@@ -50,6 +54,7 @@ class App extends Component {
             <Route exact path="/register" name="Register Page" component={Register} />
             <Route exact path="/404" name="Page 404" component={Page404} />
             <Route exact path="/500" name="Page 500" component={Page500} />
+            <Route exact path="/pay" name="Page Pay" component={PagePay} />
             <Route path="/" name="Home" component={DefaultLayout} />
           </Switch>
       </BrowserRouter>
