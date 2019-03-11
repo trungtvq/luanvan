@@ -11,7 +11,7 @@ var apisRouter = require('./routes/apis');
 var app = express();
 //serve static file
 app.use('/t1/assets',express.static('public/assets'));
-
+app.use('/t2/assets',express.static('public/assets'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
