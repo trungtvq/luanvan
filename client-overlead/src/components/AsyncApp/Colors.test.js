@@ -1,7 +1,7 @@
 import React from 'react';
-import Colors from './Colors';
+import AsyncApp from './AsyncApp';
 import { mount } from 'enzyme'
 
 it('renders without crashing', () => {
-  mount(<Colors />);
+  mount(<AsyncApp />);
 });

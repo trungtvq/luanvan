@@ -1,6 +1,6 @@
 {
-  "name": "Colors",
+  "name": "Picker",
   "version": "0.0.0",
   "private": true,
-  "main": "./Colors.js"
+  "main": "./Picker.js"
 }

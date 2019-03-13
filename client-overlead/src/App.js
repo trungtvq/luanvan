@@ -1,23 +1,36 @@
+//style 
+import './App.scss';
+
 import React, { Component } from 'react';
 
 
 
-import PropTypes from 'prop-types'
-import { Provider } from 'react-redux'
 import { HashRouter, BrowserRouter,Route, Switch } from 'react-router-dom';
 
-import Loadable from 'react-loadable';
-import './App.scss';
 
+
+import PropTypes from 'prop-types'
+
+//redux
+import { createStore, applyMiddleware } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import { createLogger } from 'redux-logger'
+import rootReducer from './reducers'
+import { Provider } from 'react-redux'
+
+//loading async with text "Loading"
+import Loadable from 'react-loadable';
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
-// Containers
+
+
+// Containers layout
 const DefaultLayout = Loadable({
   loader: () => import('./containers/DefaultLayout'),
   loading
 });
 
-// Pages
+// Pages no layout
 const Login = Loadable({
   loader: () => import('./views/Pages/Login'),
   loading
@@ -42,25 +55,42 @@ const PagePay = Loadable({
   loading
 });
 
+const AsyncApp= Loadable({
+  loader: ()=> import('./components/AsyncApp'),
+  loading
+})
+
+const loggerMiddleware = createLogger()
+
+function configureStore(preloadedState) {
+  return createStore(
+    rootReducer,
+    preloadedState,
+    applyMiddleware(thunkMiddleware, loggerMiddleware)
+  )
+}
+
+const store = configureStore()
+
+
+
 class App extends Component {
 
   render() {
     return (
-    
-      
-  <BrowserRouter>
-          <Switch>
-            <Route exact path="/login" name="Login Page" component={Login} />
-            <Route exact path="/register" name="Register Page" component={Register} />
-            <Route exact path="/404" name="Page 404" component={Page404} />
-            <Route exact path="/500" name="Page 500" component={Page500} />
-            <Route exact path="/pay" name="Page Pay" component={PagePay} />
-            <Route path="/" name="Home" component={DefaultLayout} />
-          </Switch>
-      </BrowserRouter>
-   
-     
-  //</Provider>
+      <Provider store={store}>
+          <BrowserRouter>
+              <Switch>
+                    <Route exact path="/login" name="Login Page" component={Login} />
+                    <Route exact path="/register" name="Register Page" component={Register} />
+                    <Route exact path="/404" name="Page 404" component={Page404} />
+                    <Route exact path="/500" name="Page 500" component={Page500} />
+                    <Route exact path="/pay" name="Page Pay" component={PagePay} />
+                    <Route exact path="/async" name="page test" component={AsyncApp} />
+                    <Route path="/" name="Home" component={DefaultLayout} />
+              </Switch>
+          </BrowserRouter>
+    </Provider>   
 )}}
 
 App.propTypes = {
