@@ -3,10 +3,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var apisRouter = require('./routes/apis');
+
+// Set up Mongoose
+var mongoDB = 'mongodb+srv://tien:111111111@overlead0-ykr4q.gcp.mongodb.net/login_demo';
+mongoose.connect(mongoDB);
+mongoose.Promise = global.Promise;
 
 var app = express();
 //serve static file
