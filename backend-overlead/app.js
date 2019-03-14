@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var apisRouter = require('./routes/apis');
+var accountRouter = require('./routes/account');
 
 // Set up Mongoose
 var mongoDB = 'mongodb+srv://tien:111111111@overlead0-ykr4q.gcp.mongodb.net/login_demo';
@@ -32,8 +32,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/api',apisRouter);
+app.use('/users/1', usersRouter);
+app.use('/api/account',accountRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
