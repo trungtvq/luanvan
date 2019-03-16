@@ -3,9 +3,8 @@ import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputG
 
 import {
   getFromStorage,
-  setInStorage,
-} from '../../../service/storage';
-
+  } from '../../../service/storage';
+import Logout from './../../../components/Logout'
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -20,15 +19,10 @@ class Register extends Component {
       signUpEmail: '',
       signUpPassword: '',
     };
-
-    this.onTextboxChangeSignInEmail = this.onTextboxChangeSignInEmail.bind(this);
-    this.onTextboxChangeSignInPassword = this.onTextboxChangeSignInPassword.bind(this);
-    this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
+this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
     this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(this);
     
-    this.onSignIn = this.onSignIn.bind(this);
     this.onSignUp = this.onSignUp.bind(this);
-    this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
@@ -57,17 +51,6 @@ class Register extends Component {
     }
   }
 
-  onTextboxChangeSignInEmail(event) {
-    this.setState({
-      signInEmail: event.target.value,
-    });
-  }
-
-  onTextboxChangeSignInPassword(event) {
-    this.setState({
-      signInPassword: event.target.value,
-    });
-  }
 
   onTextboxChangeSignUpEmail(event) {
     this.setState({
@@ -115,48 +98,6 @@ class Register extends Component {
         } else {
           this.setState({
             signUpError: json.message,
-            isLoading: false,
-          });
-        }
-      });
-  }
-
-  onSignIn() {
-    // Grab state
-    const {
-      signInEmail,
-      signInPassword,
-    } = this.state;
-
-    this.setState({
-      isLoading: true,
-    });
-
-    // Post request to backend
-    fetch('/api/account/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: signInEmail,
-        password: signInPassword,
-      }),
-    }).then(res => res.json())
-      .then(json => {
-        console.log('json', json);
-        if (json.success) {
-          setInStorage('the_main_app', { token: json.token });
-          this.setState({
-            signInError: json.message,
-            isLoading: false,
-            signInPassword: '',
-            signInEmail: '',
-            token: json.token,
-          });
-        } else {
-          this.setState({
-            signInError: json.message,
             isLoading: false,
           });
         }
@@ -278,10 +219,7 @@ class Register extends Component {
   }
 
   return (
-    <div>
-      <p>Account</p>
-      <button onClick={this.logout}>Logout</button>
-    </div>
+    <Logout isLoading={this.state.isLoading}/>
   );
   }}
 

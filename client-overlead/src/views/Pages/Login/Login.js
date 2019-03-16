@@ -203,10 +203,8 @@ class Login extends Component {
       token,
       signInError,
       signInEmail,
-      signInPassword,
-      signUpEmail,
-      signUpPassword,
-      signUpError,
+      signInPassword,    
+      
     } = this.state;
 
     if (isLoading) {
@@ -216,12 +214,15 @@ class Login extends Component {
     if (!token) {
     return (
       <div className="app flex-row align-items-center">
-      {
+     
+        <Container>
+          <Row>
+          {
               (signInError) ? (
                 <p>{signInError}</p>
               ) : (null)
             }
-        <Container>
+          </Row>
           <Row className="justify-content-center">
             <Col md="8">
               <CardGroup>
@@ -236,7 +237,7 @@ class Login extends Component {
                             <i className="icon-user"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="text" placeholder="Username" autoComplete="username" value={signInEmail}
+                        <Input type="text" placeholder="Username/ Email" autoComplete="username" value={signInEmail}
               onChange={this.onTextboxChangeSignInEmail} />
                       </InputGroup>
                       <InputGroup className="mb-4">
