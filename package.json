@@ -46,10 +46,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:production": "npm run start:prod",
-    "start:prod": "NODE_ENV=production PORT=3000 react-scripts start",
-    "start:development": "npm run start:dev",
-    "start:dev": "NODE_ENV=development PORT=3000 react-scripts start",
+    "start:production": "npm run build && npm run start:prod",
+    "start:prod": "NODE_ENV=production serve build -s",
+    "start:development": "PORT=3000 npm run start:dev",
+    "start:dev": "NODE_ENV=development react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

@@ -23,7 +23,7 @@ module.exports = {
       host : 'overlead.co',
       ref  : 'origin/client',
       repo : 'git@github.com:trungtvq/luanvan.git',
-      path : '/apps/ov-client',
+      path : '/home/trung/apps/client',
 	ssh_options: ['ForwardAgent=yes'],
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
     },
@@ -32,7 +32,7 @@ module.exports = {
       host : 'overlead.co',
       ref  : 'origin/client',
       repo : 'git@github.com:trungtvq/luanvan.git',
-      path : '/apps/ov-client',
+      path : '/home/trung/apps/client',
         ssh_options: ['ForwardAgent=yes'],
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env development'
     }
