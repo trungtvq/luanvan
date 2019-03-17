@@ -6,7 +6,7 @@
     "node": "10.15.3",
     "npm": "6.4.1"
   },
- "scripts": {
+  "scripts": {
     "start": "react-scripts start",
     "start:production": "npm run start:prod",
     "start:prod": "NODE_ENV=production PORT=3001 node ./bin/www",
