@@ -19,7 +19,7 @@ sgMail.setApiKey('SG.vdwVgCNQR-aBUs2peE4Prw.qk8r4Nqh4FbcFBu-s44GwGB2FL8W3dfzBPUC
     html: '<strong>and easy to do anywhere, even with Node.js</strong>',
 };
 sgMail.send(msg);
-  res.json('email were send');
+  res.json('email were send... had updated');
 });
 
 module.exports = router;
