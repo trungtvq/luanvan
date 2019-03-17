@@ -54,7 +54,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://overlead.herokuapp.com",
+  "proxy": "http://trungcs.com",
   "eslintConfig": {
     "extends": "react-app"
   },
