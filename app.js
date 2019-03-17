@@ -17,11 +17,11 @@ mongoose.Promise = global.Promise;
 
 var app = express();
 //serve static file
-app.use('/t1/assets',express.static('public/assets'));
-app.use('/t2/assets',express.static('public/assets'));
-app.use('/assets',express.static('public/assets'));
+app.use('/api/t1/assets',express.static('public/assets'));
+app.use('/api/t2/assets',express.static('public/assets'));
+app.use('/api/assets',express.static('public/assets'));
 
-app.use('/public',express.static('public/assets'));
+app.use('/api/public',express.static('public/assets'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -32,10 +32,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users/1', usersRouter);
-app.use('/users1', users1Router);
-app.use('/api/account',accountRouter);
+app.use('/api/', indexRouter);
+app.use('/api/users/1', usersRouter);
+app.use('/api/users1', users1Router);
+app.use('/api/api/account',accountRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
