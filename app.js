@@ -16,7 +16,7 @@ mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 
 var app = express();
-//serve static file
+//serve static file vs api link
 app.use('/api/t1/assets',express.static('public/assets'));
 app.use('/api/t2/assets',express.static('public/assets'));
 app.use('/api/assets',express.static('public/assets'));
