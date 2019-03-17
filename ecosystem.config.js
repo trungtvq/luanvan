@@ -1,11 +1,11 @@
 module.exports = {
   apps : [{
-    name: 'API',
-    script: 'app.js',
+    name: 'ov-client',
+    script: 'npm',
 
     // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
-    args: 'one two',
-    instances: 1,
+    args: 'run start:development',
+    instances: 0,
     autorestart: true,
     watch: false,
     max_memory_restart: '1G',
@@ -19,12 +19,22 @@ module.exports = {
 
   deploy : {
     production : {
-      user : 'node',
-      host : '212.83.163.1',
-      ref  : 'origin/master',
-      repo : 'git@github.com:repo.git',
-      path : '/var/www/production',
+      user : 'trung',
+      host : 'overlead.co',
+      ref  : 'origin/client',
+      repo : 'git@github.com:trungtvq/luanvan.git',
+      path : '/apps/ov-client',
+	ssh_options: ['ForwardAgent=yes'],
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
+    },
+	development: {
+      user : 'trung',
+      host : 'overlead.co',
+      ref  : 'origin/client',
+      repo : 'git@github.com:trungtvq/luanvan.git',
+      path : '/apps/ov-client',
+        ssh_options: ['ForwardAgent=yes'],
+      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env development'
     }
   }
 };
