@@ -54,6 +54,10 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "devServer": {
+    "compress": true,
+    "public": "overlead.co" 
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
