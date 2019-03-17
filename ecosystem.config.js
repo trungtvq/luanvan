@@ -7,7 +7,7 @@ module.exports = {
     args: 'run start:development',
     instances: 0,
     autorestart: true,
-    watch: false,
+    watch:true,
     max_memory_restart: '1G',
     env: {
       NODE_ENV: 'development'
@@ -23,7 +23,7 @@ module.exports = {
       host : 'overlead.co',
       ref  : 'origin/client',
       repo : 'git@github.com:trungtvq/luanvan.git',
-      path : '/apps/ov-client',
+      path : '/home/trung/apps/server',
 	ssh_options: ['ForwardAgent=yes'],
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
     },
@@ -32,7 +32,7 @@ module.exports = {
       host : 'overlead.co',
       ref  : 'origin/server',
       repo : 'git@github.com:trungtvq/luanvan.git',
-      path : '/apps/server',
+      path : '/home/trung/apps/server',
         ssh_options: ['ForwardAgent=yes'],
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env development'
     }
