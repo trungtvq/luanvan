@@ -10,8 +10,8 @@ module.exports = {
     watch: true,
     max_memory_restart: '1G',
     env: {
-      PORT: 5000,
-      NODE_ENV: 'production'
+      PORT: 3000,
+      NODE_ENV: 'development'
     },
     env_production: {
       PORT: 5000,
@@ -26,7 +26,7 @@ module.exports = {
       ref  : 'origin/client',
       repo : 'git@github.com:trungtvq/luanvan.git',
       path : '/home/trung/apps/client',
-	ssh_options: ['ForwardAgent=yes'],
+	    ssh_options: ['ForwardAgent=yes'],
       'post-deploy' : 'npm install && npm run build && pm2 reload ecosystem.config.js --update-env --env production'
     },
 	development: {
