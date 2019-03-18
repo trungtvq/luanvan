@@ -25,7 +25,7 @@ export default {
     },
     {
       name: 'Typography_000',
-      url: '/theme/typography12345',
+      url: '/theme/typography123456',
       icon: 'icon-pencil',
     },
     {
