@@ -2,6 +2,7 @@
 dist/
 build
 # Config file
+.env
 #config/config.js
 
 # Node stuff
@@ -22,4 +23,3 @@ $RECYCLE.BIN/
 .DS_Store
 .Spotlight-V100
 .Trashes
-.env
