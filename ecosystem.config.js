@@ -27,7 +27,7 @@ module.exports = {
       repo : 'git@github.com:trungtvq/luanvan.git',
       path : '/home/trung/apps/client',
 	ssh_options: ['ForwardAgent=yes'],
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --update-env --env production'
+      'post-deploy' : 'npm install && npm run build && pm2 reload ecosystem.config.js --update-env --env production'
     },
 	development: {
       user : 'trung',

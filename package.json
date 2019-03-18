@@ -46,8 +46,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:production": "react-scripts build",
-    "start:prod": "NODE_ENV=production react-scripts build -s",
+    "start:production": "NODE_ENV=production server build -s",
+    "start:prod": "NODE_ENV=production serve build -s",
     "start:development": "PORT=5000 npm run start:dev",
     "start:dev": "NODE_ENV=development react-scripts start",
     "build": "react-scripts build",
