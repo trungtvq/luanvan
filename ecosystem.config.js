@@ -4,7 +4,7 @@ module.exports = {
     script: 'npm',
 
     // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
-    args: 'run start:development',
+    args: 'run start:production',
     instances: 0,
     autorestart: true,
     watch: true,
