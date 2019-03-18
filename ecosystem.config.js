@@ -10,9 +10,11 @@ module.exports = {
     watch: true,
     max_memory_restart: '1G',
     env: {
+      PORT: 5000,
       NODE_ENV: 'development'
     },
     env_production: {
+      PORT: 5000,
       NODE_ENV: 'production'
     }
   }],
@@ -25,7 +27,7 @@ module.exports = {
       repo : 'git@github.com:trungtvq/luanvan.git',
       path : '/home/trung/apps/client',
 	ssh_options: ['ForwardAgent=yes'],
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
+      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --update-env --env production'
     },
 	development: {
       user : 'trung',
@@ -34,7 +36,7 @@ module.exports = {
       repo : 'git@github.com:trungtvq/luanvan.git',
       path : '/home/trung/apps/client',
         ssh_options: ['ForwardAgent=yes'],
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env development'
+      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --update-env --env development'
     }
   }
 };
