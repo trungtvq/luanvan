@@ -24,7 +24,7 @@ export default {
       icon: 'icon-drop',
     },
     {
-      name: 'Typography_',
+      name: 'Typography_000',
       url: '/theme/typography',
       icon: 'icon-pencil',
     },
