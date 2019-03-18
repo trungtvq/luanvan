@@ -11,7 +11,7 @@ var users1Router = require('./routes/users1');
 var accountRouter = require('./routes/account');
 
 // Set up Mongoose
-var mongoDB = 'mongodb+srv://tien:111111111@overlead0-ykr4q.gcp.mongodb.net/login_demo';
+var mongoDB = 'mongodb://overlead:overlead!@overlead.co:27017/overlead';
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 
