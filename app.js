@@ -16,6 +16,14 @@ mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 
 var app = express();
+
+//graphql
+const graphqHTTP=require('express-graphql')
+const schema=require('./schema/schema')
+app.use('/graphql',graphqHTTP({
+  schema,
+  graphiql:true
+}))
 //serve static file vs api link
 app.use('/api/t1/assets',express.static('public/assets'));
 app.use('/api/t2/assets',express.static('public/assets'));
