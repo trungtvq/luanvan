@@ -20,7 +20,7 @@ var app = express();
 //graphql
 const graphqHTTP=require('express-graphql')
 const schema=require('./schema/schema')
-app.use('/graphql',graphqHTTP({
+app.use('/api/graphql',graphqHTTP({
   schema,
   graphiql:true
 }))
