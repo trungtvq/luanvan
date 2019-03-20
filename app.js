@@ -14,6 +14,10 @@ var passport = require('passport')
 var GoogleStrategy = require('passport-google-oauth20').Strategy
 //crossplatfom
 var cors = require('cors')
+
+
+//config
+var keys= require('./config/config')
 // Set up Mongoose
 var mongoDB = 'mongodb://overlead:overlead!@overlead.co:27017/overlead';
 mongoose.connect(mongoDB);
@@ -25,7 +29,15 @@ app.use(cors())
 
 
 
-//passport.use(new  GoogleStrategy())
+passport.use(new  GoogleStrategy({
+  clientID: keys.googleClientID,
+  clientSecret: keys.googleClientSecret,
+  callbackURL: '/api/auth/google/callback'
+}, (accessToken)=>{
+  console.log(accessToken)
+}))
+
+
 //graphql
 const graphqHTTP=require('express-graphql')
 const schema=require('./schema/schema')
@@ -49,6 +61,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.get('/api/auth/login',passport.authenticate('google',{
+  scope:['profile','email']
+}))
 app.use('/api/', indexRouter);
 app.use('/api/users/1', usersRouter);
 app.use('/api/users1', users1Router);
