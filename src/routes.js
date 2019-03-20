@@ -34,6 +34,11 @@ import DefaultLayout from './containers/DefaultLayout';
 const Colors = React.lazy(() => import('./components/Colors'));
 
 const Register = React.lazy(() => import('./views/Pages/Register'));
+
+//PO
+const Add = React.lazy(() => import('./views/Po/ProductBacklog/Add'));
+const Detail = React.lazy(() => import('./views/Po/ProductBacklog/Detail'));
+
 // const Typography = React.lazy(() => import('./views/Theme/Typography'));
 // const Widgets = React.lazy(() => import('./views/Widgets/Widgets'));
 // const Users = React.lazy(() => import('./views/Users/Users'));
@@ -46,7 +51,10 @@ const routes = [
   // { path: '/theme', exact: true, name: 'Theme', component: Colors },
   { path: '/theme/colors',exact: true,  name: 'Colors', component: Colors },
 
-  { path: '/theme/colors',exact: true,  name: 'Colors', component: Colors },
+  //PO
+  { path: '/ProductBacklog/Add',exact: true,  name: 'Add', component: Add },
+  { path: '/ProductBacklog/Detail',exact: true,  name: 'Detail', component: Detail },
+ 
   // { path: '/theme/typography', name: 'Typography', component: Typography },
   // { path: '/base', exact: true, name: 'Base', component: Cards },
   // { path: '/base/cards', name: 'Cards', component: Cards },

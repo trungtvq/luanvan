@@ -24,9 +24,21 @@ export default {
       icon: 'icon-drop',
     },
     {
-      name: 'Typography',
-      url: '/theme/typography',
+      name: 'Product backlog',
+      url: '/ProductBacklog',
       icon: 'icon-pencil',
+	  children: [
+        {
+          name: 'Detail',
+          url: '/ProductBacklog/Detail',
+          icon: 'icon-pencil',
+        },
+        {
+          name: 'Add',
+          url: '/ProductBacklog/Add',
+          icon: 'icon-pencil',
+        },
+	  ]
     },
     {
       title: true,
@@ -260,21 +272,6 @@ export default {
       url: '/dashboard',
       icon: 'icon-ban',
       attributes: { disabled: true },
-    },
-    {
-      name: 'Download CoreUI',
-      url: 'https://coreui.io/react/',
-      icon: 'icon-cloud-download',
-      class: 'mt-auto',
-      variant: 'success',
-      attributes: { target: '_blank', rel: "noopener" },
-    },
-    {
-      name: 'Try CoreUI PRO',
-      url: 'https://coreui.io/pro/react/',
-      icon: 'icon-layers',
-      variant: 'danger',
-      attributes: { target: '_blank', rel: "noopener" },
     },
   ],
 };
