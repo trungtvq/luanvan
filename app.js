@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 
+const { ApolloServer, gql } = require('apollo-server');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var users1Router = require('./routes/users1');
@@ -29,6 +30,10 @@ app.use(cors())
 
 
 
+
+
+
+
 passport.use(new  GoogleStrategy({
   clientID: keys.googleClientID,
   clientSecret: keys.googleClientSecret,
@@ -45,6 +50,29 @@ app.use('/api/graphql',graphqHTTP({
   schema,
   graphiql:true
 }))
+
+//new server
+// A map of functions which return data for the schema.
+const resolvers = {
+  Query: {
+    hello: () => 'world'
+  }
+};
+// The GraphQL schema
+const typeDefs = gql`
+  type Query {
+    "A simple type for getting started!"
+    hello: String
+  }
+`;
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+server.listen().then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`)
+});
+
 //serve static file vs api link
 app.use('/api/t1/assets',express.static('public/assets'));
 app.use('/api/t2/assets',express.static('public/assets'));
@@ -65,6 +93,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/api/auth/login',passport.authenticate('google',{
   scope:['profile','email']
 }))
+
+
 app.use('/api/', indexRouter);
 app.use('/api/users/1', usersRouter);
 app.use('/api/users1', users1Router);
