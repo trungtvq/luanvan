@@ -36,9 +36,13 @@ const Colors = React.lazy(() => import('./components/Colors'));
 const Register = React.lazy(() => import('./views/Pages/Register'));
 
 //PO
-const Add = React.lazy(() => import('./views/Po/ProductBacklog/Add'));
-const Detail = React.lazy(() => import('./views/Po/ProductBacklog/Detail'));
+const Add_Po = React.lazy(() => import('./views/Po/ProductBacklog/Add'));
+const Detail_Po = React.lazy(() => import('./views/Po/ProductBacklog/Detail'));
 const TestApollo = React.lazy(() => import('./views/Pages/TestApollo'));
+
+//Master
+const Add_Master = React.lazy(() => import('./views/Master/Task/Add'));
+const Detail_Master = React.lazy(() => import('./views/Master/Task/Detail'));
 
 // const Typography = React.lazy(() => import('./views/Theme/Typography'));
 // const Widgets = React.lazy(() => import('./views/Widgets/Widgets'));
@@ -53,10 +57,15 @@ const routes = [
   { path: '/theme/colors',exact: true,  name: 'Colors', component: Colors },
 
   //PO
-  { path: '/ProductBacklog/Add',exact: true,  name: 'Add', component: Add },
-  { path: '/ProductBacklog/Detail',exact: true,  name: 'Detail', component: Detail },
+  { path: '/ProductBacklog/Add',exact: true,  name: 'Add', component: Add_Po },
+  { path: '/ProductBacklog/Detail',exact: true,  name: 'Detail', component: Detail_Po },
  
   { path: '/testapollo', name: 'Typography', component: TestApollo },
+
+  //Master
+  { path: '/Task/Add',exact: true,  name: 'Add', component: Add_Master },
+  { path: '/Task/Detail',exact: true,  name: 'Detail', component: Detail_Master },
+ 
   // { path: '/base', exact: true, name: 'Base', component: Cards },
   // { path: '/base/cards', name: 'Cards', component: Cards },
   // { path: '/base/forms', name: 'Forms', component: Forms },

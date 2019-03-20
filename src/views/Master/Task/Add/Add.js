@@ -32,65 +32,68 @@ class Add extends Component {
                 <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
                   <FormGroup row>
                     <Col md="3">
-                      <Label htmlFor="text-input">As a...</Label>
+                      <Label htmlFor="text-input">Title</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="text" id="text-input" name="text-input" placeholder="As a..." />
+                      <Input type="text" id="text-input" name="text-input" placeholder="Title" />
                       
                     </Col>
                   </FormGroup>
                    <FormGroup row>
                     <Col md="3">
-                      <Label htmlFor="text-input">I want to be able to...</Label>
-                    </Col>
-                    <Col xs="12" md="9">
-                      <Input type="text" id="text-input" name="text-input" placeholder="I want to be able to..." />
-                      
-                    </Col>
-                  </FormGroup>   
-                   <FormGroup row>
-                    <Col md="3">
-                      <Label htmlFor="textarea-input">So that...</Label>
+                      <Label htmlFor="textarea-input">Description</Label>
                     </Col>
                     <Col xs="12" md="9">
                       <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
                              placeholder="Content..." />
                     </Col>
+                  </FormGroup>
+                  <FormGroup row>
+                    <Col md="3">
+                      <Label>Priority</Label>
+                    </Col>
+                    <Col md="9">
+                      <FormGroup check inline>
+                        <Input className="form-check-input" type="radio" id="inline-radio1" name="inline-radios" value="option1" />
+                        <Label className="form-check-label" check htmlFor="inline-radio1">High</Label>
+                      </FormGroup>
+                      <FormGroup check inline>
+                        <Input className="form-check-input" type="radio" id="inline-radio2" name="inline-radios" value="option2" />
+                        <Label className="form-check-label" check htmlFor="inline-radio2">Medium</Label>
+                      </FormGroup>
+                      <FormGroup check inline>
+                        <Input className="form-check-input" type="radio" id="inline-radio3" name="inline-radios" value="option3" />
+                        <Label className="form-check-label" check htmlFor="inline-radio3">Low</Label>
+                      </FormGroup>
+                    </Col>
                   </FormGroup>                     
                   <FormGroup row>
                     <Col md="3">
-                      <Label htmlFor="date-input">Date setting </Label>
+                      <Label htmlFor="date-input">Start day </Label>
+                    </Col>
+                    <Col xs="12" md="9">
+                      <Input type="date" id="date-input" name="date-input" placeholder="date" />
+                    </Col>
+                  </FormGroup>
+                  <FormGroup row>
+                    <Col md="3">
+                      <Label htmlFor="date-input">Deadline </Label>
                     </Col>
                     <Col xs="12" md="9">
                       <Input type="date" id="date-input" name="date-input" placeholder="date" />
                     </Col>
                   </FormGroup>
                    <FormGroup row>
-                    <Col md="1">
-                      <Label htmlFor="text-input">Priority</Label>
+                    <Col md="3">
+                      <Label htmlFor="text-input">Assignee</Label>
                     </Col>
-                    <Col xs="12" md="1">
-                      <Input type="text" name="text-input" id="text-input" rows="9"/>
-                    </Col>
-                   
-                    <Col md="2">                    
-                    </Col>
-                   
-                    <Col md="1">
-                      <Label htmlFor="text-input">Estimation</Label>
-                    </Col>
-                    <Col xs="12" md="1">
-                      <Input type="text" name="text-input" id="text-input" rows="9"/>                            
-                    </Col>
-
-                    <Col md="2">                   
-                    </Col>
-
-                    <Col md="1">
-                      <Label htmlFor="text-input">Sprint</Label>
-                    </Col>
-                    <Col xs="12" md="1">
-                      <Input type="text" name="text-input" id="text-input" rows="9"/>                            
+                   <Col xs="12" md="3">
+                      <Input type="select" name="select" id="select">
+                        <option value="0">Please select</option>
+                        <option value="1">Hùng</option>
+                        <option value="2">Nhân</option>
+                        <option value="3">Tâm</option>
+                      </Input>
                     </Col>
                   </FormGroup>                                          
                 </Form>
