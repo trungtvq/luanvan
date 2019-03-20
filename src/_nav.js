@@ -31,14 +31,31 @@ export default {
         {
           name: 'Detail',
           url: '/ProductBacklog/Detail',
-          icon: 'icon-pencil',
+          icon: '',
         },
         {
           name: 'Add',
           url: '/ProductBacklog/Add',
-          icon: 'icon-pencil',
+          icon: '',
         },
 	  ]
+    },
+     {
+      name: 'Task',
+      url: '/Task',
+      icon: 'icon-layers',
+    children: [
+        {
+          name: 'Detail',
+          url: '/Task/Detail',
+          icon: '',
+        },
+        {
+          name: 'Add',
+          url: '/Task/Add',
+          icon: '',
+        },
+    ]
     },
     {
       title: true,
