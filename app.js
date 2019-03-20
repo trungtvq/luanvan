@@ -9,14 +9,23 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var users1Router = require('./routes/users1');
 var accountRouter = require('./routes/account');
+//login external
+var passport = require('passport')
+var GoogleStrategy = require('passport-google-oauth20').Strategy
+//crossplatfom
 var cors = require('cors')
 // Set up Mongoose
 var mongoDB = 'mongodb://overlead:overlead!@overlead.co:27017/overlead';
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 
+//set up app
 var app = express();
 app.use(cors())
+
+
+
+//passport.use(new  GoogleStrategy())
 //graphql
 const graphqHTTP=require('express-graphql')
 const schema=require('./schema/schema')
