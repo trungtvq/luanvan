@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import 'react-dual-listbox/lib/react-dual-listbox.css';
+import DualListBox from 'react-dual-listbox';
 import { 
 Form,
 FormGroup,
@@ -24,7 +26,11 @@ PaginationItem,
 ListGroup,
 ListGroupItem,
 PaginationLink, } from 'reactstrap';
-
+const options = [
+    { value: 'one', label: 'Login bằng Fb' },
+    { value: 'two', label: 'Đổi mật khẩu' },
+    ]
+    
 class MyTask extends Component {
    constructor(props) {
     super(props);
@@ -34,7 +40,7 @@ class MyTask extends Component {
     this.state = {
       collapse: true,
       fadeIn: true,
-      
+      selected: ['one'],
     };
   }
 
@@ -45,88 +51,30 @@ class MyTask extends Component {
   
 
   render() {
-    return (
-      <Row>
+        return (
+           <Row>
           <Col>  
-          <Form>
-                 <FormGroup row>
-                 <Col md="4">
-                      <Card>
-                        <CardHeader>
-                          To do
-                          <div className="card-header-actions">
-                            {/*eslint-disable-next-line*/}
-                     
-                            <a className="card-header-action btn btn-minimize" data-target="#collapseExample" onClick={this.toggle}><i className="icon-arrow-up"></i></a>
-                            {/*eslint-disable-next-line*/}
-                          </div>
-                        </CardHeader>
-                        <Collapse isOpen={this.state.collapse} id="collapseExample">
-                          <CardBody>
-                          <ListGroup>
-                              <ListGroupItem>Người dùng đổi mật khẩu của tài khoản mà mình tạo</ListGroupItem>
-                              <ListGroupItem>Người dùng thay đổi avatar hiển thị ở giao diện chính</ListGroupItem>
-                              <ListGroupItem>Người dùng sử dụng paypal để trả phí</ListGroupItem>                            
-                            </ListGroup>
-                          </CardBody>
-                        </Collapse>
-                      </Card>    
-                  </Col>
-                                   
-                    <Col md="0.5">                    
+          <Form> 
+           <FormGroup row>
+                    <Col md="2">
                     </Col>
-                   
-                    <Col md="4">
-                      <Card>
-                        <CardHeader>
-                          Inprogress
-                          <div className="card-header-actions">
-                            {/*eslint-disable-next-line*/}
-                     
-                            <a className="card-header-action btn btn-minimize" data-target="#collapseExample" onClick={this.toggle}><i className="icon-arrow-up"></i></a>
-                            {/*eslint-disable-next-line*/}
-                          </div>
-                        </CardHeader>
-                        <Collapse isOpen={this.state.collapse} id="collapseExample">
-                          <CardBody>
-                            <ListGroup>
-                              <ListGroupItem>Người dùng không cần tạo tài khoản mà sử dụng tài khoản email để đăng nhập</ListGroupItem>
-                              <ListGroupItem>Người dùng tạo tài khoản và sử dụng tài khoản này để đăng nhập</ListGroupItem>                                                   
-                            </ListGroup>
-                          </CardBody>
-                        </Collapse>
-                      </Card>    
-                  </Col>
-
-                    <Col md="0.5">                   
+                    <Col md="6">
+                      <Button type="submit" size="sm" color="danger"><i className="fa fa-dot-circle-o"></i> Inprogress</Button>
+                    </Col>         
+                    <Col xs="12" md="1">
+                      <Button type="submit" size="sm" color="success"><i className="fa fa-dot-circle-o"></i> Done</Button>
                     </Col>
+            </FormGroup>
+          </Form>
+            <DualListBox
+                options={options}
+                selected={this.state.selected}
+                onChange={(selected) => {
+                    this.setState({ selected });
+                }}
+            />
 
-                    <Col md="4">
-                      <Card>
-                        <CardHeader>
-                          Done
-                          <div className="card-header-actions">
-                            {/*eslint-disable-next-line*/}
-                     
-                            <a className="card-header-action btn btn-minimize" data-target="#collapseExample" onClick={this.toggle}><i className="icon-arrow-up"></i></a>
-                            {/*eslint-disable-next-line*/}
-                          </div>
-                        </CardHeader>
-                        <Collapse isOpen={this.state.collapse} id="collapseExample">
-                          <CardBody>
-                            <ListGroup>
-                              <ListGroupItem>Người dùng không cần tạo tài khoản mà sử dụng tài khoản fb để đăng nhập</ListGroupItem>
-                            </ListGroup>
-                          </CardBody>
-                        </Collapse>
-                      </Card>    
-                  </Col>
-                  
-                 </FormGroup>                                          
-                </Form>
-
-                      
-                <Table hover bordered striped responsive size="sm">
+            <Table hover bordered striped responsive size="sm">
                   <thead>
                   <tr>
                     <th>Title</th>
@@ -134,9 +82,8 @@ class MyTask extends Component {
                     <th>Priority</th>
                     <th>Start day</th>
                     <th>Deadline</th>
-                    <th>Assignee</th>                 
                     <th>Comment</th>
-                    <th>Progress</th>
+                    <th>Progress</th>   
                     <th></th>
                   </tr>
                   </thead>
@@ -147,53 +94,14 @@ class MyTask extends Component {
                     <td><Badge color="danger">High</Badge></td>
                     <td>20/4/2019</td>
                     <td>24/4/2019</td>
-                    <td>Hùng</td>
                     <td></td>
                     <td>
                       <Progress value={100} />
                       <div className="text-center">100%</div>
-                    </td>                                  
-                    <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
-                     <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                     <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>                
                     </td>
-                  </tr>
-                   <tr>
-                    <td>Login bằng email</td>
-                    <td>Người dùng không cần tạo tài khoản mà sử dụng tài khoản email để đăng nhập</td>
-                    <td><Badge color="danger">High</Badge></td>
-                    <td>20/4/2019</td>
-                    <td>23/4/2019</td>
-                    <td>Nhân</td>
-                    <td>Có cần xác thực email không?</td>
-                    <td>
-                      <Progress value={85} />
-                      <div className="text-center">85%</div>
-                    </td>                                  
-                    <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
-                     <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                     <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>                
-                    </td>
-                  </tr>
-                   <tr>
-                    <td>Login bằng tài khoản</td>
-                    <td>Người dùng tạo tài khoản và sử dụng tài khoản này để đăng nhập</td>
-                    <td><Badge color="warning">Medium</Badge></td>
-                    <td>21/4/2019</td>
-                    <td>25/4/2019</td>
-                    <td>Tâm</td>
-                    <td></td>
-                    <td>
-                      <Progress value={10} />
-                      <div className="text-center">10%</div>
-                    </td>                                  
-                    <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
-                     <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                     <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>                
-                    </td>
+                      <td>
+                      <Button disabled type="submit" size="sm" color="success" ><i class="fa fa-arrow-up"></i></Button>
+                    </td>                                                  
                   </tr>
                    <tr>
                     <td>Đổi mật khẩu</td>
@@ -201,17 +109,15 @@ class MyTask extends Component {
                     <td><Badge color="primary">Low</Badge></td>
                     <td>20/4/2019</td>
                     <td>24/4/2019</td>
-                    <td></td>
+                   
                     <td>Có cần gửi mà tới email liên kết để xác nhận không?</td>
                     <td>
-                      <Progress value={0} />
-                      <div className="text-center">0%</div>
-                    </td>                                  
+                      <Progress value={20} />
+                      <div className="text-center">20%</div>
+                    </td>      
                     <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
-                     <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                     <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>                
-                    </td>
+                      <Button disabled type="submit" size="sm" color="success"><i class="fa fa-arrow-up"></i></Button>
+                    </td>                         
                   </tr>
                    <tr>
                     <td>Thay đổi avatar</td>
@@ -219,54 +125,37 @@ class MyTask extends Component {
                     <td><Badge color="primary">Low</Badge></td>
                     <td>20/4/2019</td>
                     <td>24/4/2019</td>
-                    <td></td>
+                    
                     <td></td>
                     <td>
                       <Progress value={0} />
                       <div className="text-center">0%</div>
-                    </td>                                  
+                    </td>  
                     <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
-                     <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                     <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>                
-                    </td>
+                      <Button type="submit" size="sm" color="success"><i class="fa fa-arrow-up"></i></Button>
+                    </td>                                
                   </tr>                  
                    <tr>
                     <td>Thanh toán bằng paypal</td>
                     <td>Người dùng sử dụng paypal để trả phí</td>
                     <td><Badge color="primary">Low</Badge></td>
                     <td>20/4/2019</td>
-                    <td>24/4/2019</td>
-                    <td></td>
-                    <td></td>
+                    <td>24/4/2019</td>                
+                    <td></td>                   
                     <td>
                       <Progress value={0} />
                       <div className="text-center">0%</div>
-                    </td>                                  
+                    </td>
                     <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
-                     <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                     <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>                
+                      <Button type="submit" size="sm" color="success"><i class="fa fa-arrow-up"></i></Button>
                     </td>
                   </tr>
                   </tbody>
                 </Table>
-                <nav>
-                  <Pagination>
-                    <PaginationItem><PaginationLink previous tag="button">Prev</PaginationLink></PaginationItem>
-                    <PaginationItem active>
-                      <PaginationLink tag="button">1</PaginationLink>
-                    </PaginationItem>
-                    <PaginationItem><PaginationLink tag="button">2</PaginationLink></PaginationItem>
-                    <PaginationItem><PaginationLink tag="button">3</PaginationLink></PaginationItem>
-                    <PaginationItem><PaginationLink tag="button">4</PaginationLink></PaginationItem>
-                    <PaginationItem><PaginationLink next tag="button">Next</PaginationLink></PaginationItem>
-                  </Pagination>
-                </nav>           
-          </Col>
-        </Row>
-    );
-  }
+            </Col>
+            </Row>
+        );
+    }
 }
 
 export default MyTask;
