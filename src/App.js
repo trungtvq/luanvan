@@ -4,6 +4,11 @@ import './App.scss';
 import React, { Component } from 'react';
 
 
+//Appolo
+import ApolloClient from 'apollo-boost';
+import {AppoloProvider, ApolloProvider} from 'react-apollo';
+
+
 
 import { HashRouter, BrowserRouter,Route, Switch } from 'react-router-dom';
 
@@ -22,6 +27,10 @@ import { Provider } from 'react-redux'
 import Loadable from 'react-loadable';
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
+//apollo client setup
+const client = new ApolloClient({
+  uri:'https://overlead.co/api/graphql'
+})
 
 
 // Containers layout
@@ -79,6 +88,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
+        <ApolloProvider client={client}>
           <BrowserRouter>
               <Switch>
                     <Route exact path="/login" name="Login Page" component={Login} />
@@ -90,6 +100,7 @@ class App extends Component {
                     <Route path="/" name="Home" component={DefaultLayout} />
               </Switch>
           </BrowserRouter>
+          </ApolloProvider>
     </Provider>   
 )}}
 
