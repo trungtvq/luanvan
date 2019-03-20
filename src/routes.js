@@ -44,6 +44,9 @@ const TestApollo = React.lazy(() => import('./views/Pages/TestApollo'));
 const Add_Master = React.lazy(() => import('./views/Master/Task/Add'));
 const Detail_Master = React.lazy(() => import('./views/Master/Task/Detail'));
 
+//Member
+const MyTask_Member = React.lazy(() => import('./views/Member/Task/MyTask'));
+const Register_Member = React.lazy(() => import('./views/Member/Task/Register'));
 // const Typography = React.lazy(() => import('./views/Theme/Typography'));
 // const Widgets = React.lazy(() => import('./views/Widgets/Widgets'));
 // const Users = React.lazy(() => import('./views/Users/Users'));
@@ -63,9 +66,12 @@ const routes = [
   { path: '/testapollo', name: 'Typography', component: TestApollo },
 
   //Master
-  { path: '/Task/Add',exact: true,  name: 'Add', component: Add_Master },
-  { path: '/Task/Detail',exact: true,  name: 'Detail', component: Detail_Master },
- 
+  { path: '/Master/Task/Add',exact: true,  name: 'Add', component: Add_Master },
+  { path: '/Master/Task/Detail',exact: true,  name: 'Detail', component: Detail_Master },
+
+  //Member
+  { path: '/Member/Task/MyTask',exact: true,  name: 'MyTask', component: MyTask_Member },
+  { path: '/Member/Task/Register',exact: true,  name: 'Register', component: Register_Member },
   // { path: '/base', exact: true, name: 'Base', component: Cards },
   // { path: '/base/cards', name: 'Cards', component: Cards },
   // { path: '/base/forms', name: 'Forms', component: Forms },

@@ -47,12 +47,29 @@ export default {
     children: [
         {
           name: 'Detail',
-          url: '/Task/Detail',
+          url: '/Master/Task/Detail',
           icon: '',
         },
         {
           name: 'Add',
-          url: '/Task/Add',
+          url: '/Master/Task/Add',
+          icon: '',
+        },
+    ]
+    },
+     {
+      name: 'Task Member',
+      url: '/Task',
+      icon: 'icon-layers',
+    children: [
+        {
+          name: 'MyTask',
+          url: '/Member/Task/MyTask',
+          icon: '',
+        },
+        {
+          name: 'Register',
+          url: '/Member/Task/Register',
           icon: '',
         },
     ]
