@@ -35,6 +35,8 @@ const Colors = React.lazy(() => import('./components/Colors'));
 
 const Register = React.lazy(() => import('./views/Pages/Register'));
 
+const DailySchedule = React.lazy(() => import('./views/DailySchedule'));
+
 //PO
 const Add_Po = React.lazy(() => import('./views/Po/ProductBacklog/Add'));
 const Detail_Po = React.lazy(() => import('./views/Po/ProductBacklog/Detail'));
@@ -43,6 +45,7 @@ const TestApollo = React.lazy(() => import('./views/Pages/TestApollo'));
 //Master
 const Add_Master = React.lazy(() => import('./views/Master/Task/Add'));
 const Detail_Master = React.lazy(() => import('./views/Master/Task/Detail'));
+const SprintBacklog_Master = React.lazy(() => import('./views/Master/SprintBacklog'));
 
 //Member
 const MyTask_Member = React.lazy(() => import('./views/Member/Task/MyTask'));
@@ -58,6 +61,7 @@ const routes = [
   // { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   // { path: '/theme', exact: true, name: 'Theme', component: Colors },
   { path: '/theme/colors',exact: true,  name: 'Colors', component: Colors },
+  { path: '/DailySchedule', exact: true, name: 'DailySchedule', component: DailySchedule },
 
   //PO
   { path: '/ProductBacklog/Add',exact: true,  name: 'Add', component: Add_Po },
@@ -68,6 +72,7 @@ const routes = [
   //Master
   { path: '/Master/Task/Add',exact: true,  name: 'Add', component: Add_Master },
   { path: '/Master/Task/Detail',exact: true,  name: 'Detail', component: Detail_Master },
+  { path: '/Master/SprintBacklog',exact: true,  name: 'SprintBacklog', component: SprintBacklog_Master },
 
   //Member
   { path: '/Member/Task/MyTask',exact: true,  name: 'MyTask', component: MyTask_Member },
