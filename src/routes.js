@@ -8,6 +8,8 @@ const Register = React.lazy(() => import('./views/Pages/Register'));
 
 const DailySchedule = React.lazy(() => import('./views/DailySchedule'));
 
+const AllProject = React.lazy(() => import('./views/Project/AllProject'));
+
 const DashBoard = React.lazy(() => import('./views/DashBoard'));
 //PO
 const Add_Po = React.lazy(() => import('./views/Po/ProductBacklog/Add'));
@@ -30,7 +32,8 @@ const routes = [
  
   { path: '/theme/colors',exact: true,  name: 'Colors', component: Colors },
   { path: '/DailySchedule', exact: true, name: 'DailySchedule', component: DailySchedule },
-   { path: '/DashBoard', exact: true, name: 'DashBoard', component: DashBoard },
+  { path: '/DashBoard', exact: true, name: 'DashBoard', component: DashBoard },
+  { path: '/AllProject', exact: true, name: 'AllProject', component: AllProject },
 
   //PO
   { path: '/ProductBacklog/Add',exact: true,  name: 'Add', component: Add_Po },

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Badge, Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Table, Pagination, PaginationItem, PaginationLink, } from 'reactstrap';
-
+import { Link } from 'react-router-dom';
 class Detail extends Component {
   render() {
     return (
       <Row>
-          <Col>             
+          <Col>         
+                <Link to="/ProductBacklog/Add">
+                  <Button color="primary" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
+                </Link>    
                 <Table hover bordered striped responsive size="sm">
                   <thead>
                   <tr>

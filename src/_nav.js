@@ -9,6 +9,11 @@ export default {
         text: 'NEW',
       },
     },
+     {
+      name: 'AllProject',
+      url: '/AllProject',
+      icon: 'icon-calendar',
+    },
     {
       title: true,
       name: 'Product Owner',
@@ -20,20 +25,8 @@ export default {
     },
     {
       name: 'Product backlog',
-      url: '/ProductBacklog',
+      url: '/ProductBacklog/Detail',
       icon: 'icon-pencil',
-	  children: [
-        {
-          name: 'Detail',
-          url: '/ProductBacklog/Detail',
-          icon: '',
-        },
-        {
-          name: 'Add',
-          url: '/ProductBacklog/Add',
-          icon: '',
-        },
-	  ]
     },
      {
       title: true,
@@ -46,20 +39,8 @@ export default {
     },
      {
       name: 'Task',
-      url: '/Task',
+      url: '/Master/Task/Detail',
       icon: 'icon-layers',
-    children: [
-        {
-          name: 'Detail',
-          url: '/Master/Task/Detail',
-          icon: '',
-        },
-        {
-          name: 'Add',
-          url: '/Master/Task/Add',
-          icon: '',
-        },
-    ]
     },
      {
       name: 'SprintBacklog',

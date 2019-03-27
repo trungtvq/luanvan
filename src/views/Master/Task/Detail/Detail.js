@@ -24,6 +24,7 @@ PaginationItem,
 ListGroup,
 ListGroupItem,
 PaginationLink, } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class Detail extends Component {
    constructor(props) {
@@ -48,6 +49,9 @@ class Detail extends Component {
     return (
       <Row>
           <Col>  
+          <Link to="/Master/Task/Add">
+                  <Button color="primary" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
+          </Link>  
           <Form>
                  <FormGroup row>
                  <Col md="4">

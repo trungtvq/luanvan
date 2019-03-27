@@ -165,9 +165,10 @@ class DashBoard extends Component {
                   <TCol />
                   </CardBody>
                 </Card>  
+                
                 <Card>
                   <CardHeader>
-                    <i className="fa fa-align-justify"></i> Task <small>to do</small>
+                    <i className="fa fa-align-justify"></i> Task
                     <div className="card-header-actions">
                       <Badge>NEW</Badge>
                     </div>
