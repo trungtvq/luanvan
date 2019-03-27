@@ -20,56 +20,64 @@ CardHeader,
 Collapse,
 Progress
 } from 'reactstrap';
-import { Bar, Doughnut, Line, Pie, Polar, Radar } from 'react-chartjs-2';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import  { PureComponent } from 'react';
+import {
+  ComposedChart, Line, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
+  Legend,ResponsiveContainer
+} from 'recharts';
 
-const line = {
-  labels: ['1', '2', '3', '4', '5'],
-  datasets: [
-    {
-      label: 'Real',
-      fill: false,
-      lineTension: 0.1,
-      backgroundColor: 'rgba(75,192,192,0.4)',
-      borderColor: 'rgba(75,192,192,1)',
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: 'rgba(75,192,192,1)',
-      pointBackgroundColor: '#fff',
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-      pointHoverBorderColor: 'rgba(220,220,220,1)',
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-      data: [90, 80, 70, 60, 50],
-    },
-     {
-      label: 'Planed',
-      fill: false,
-      lineTension: 0.1,
-      backgroundColor: 'rgba(75,192,192,0.4)',
-      borderColor: 'rgba(75,192,0,4)',
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: 'rgba(75,192,192,1)',
-      pointBackgroundColor: '#fff',
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-      pointHoverBorderColor: 'rgba(220,220,220,1)',
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-      data: [90, 85, 73, 68, 63],
-    },
-  ],
-};
+const data = [
+ 
+  {
+    name: 'Date 1', expect: 590, real: 800, bug: 210,
+  },
+  {
+    name: 'Date 2', expect: 868, real: 967, bug: 310,
+  },
+  {
+    name: 'Date 3', expect: 1397, real: 1098, bug: 410,  
+  },
+  {
+    name: 'Date 4', expect: 1480, real: 1200, bug: 510,
+  },
+  {
+    name: 'Date 5', expect: 1520, real: 1108, bug: 610,
+  },
+  {
+    name: 'Date 6', expect: 1590, real: 800, bug: 110,
+  },
+];
+
+class TCol extends PureComponent {
+
+  render() {
+    return (
+      <ResponsiveContainer width="100%" height={400}>
+
+      <ComposedChart
+      width={700}
+      height={500}
+        data={data}
+        margin={{
+          top: 20, right: 80, bottom: 20, left: 20,
+        }}
+      >
+        <CartesianGrid stroke="#f5f5f5" />
+        <XAxis dataKey="name" label={{ value: 'Date in spint', position: 'insideBottomRight', offset: 0 }} />
+        <YAxis label={{ value: 'Task', angle: -90, position: 'insideLeft' }} />
+        <Tooltip />
+        <Legend />
+        <Area type="monotone" dataKey="expect" fill="#fbf313" stroke="#fbf313" />
+        <Bar dataKey="real" barSize={20} fill="#413ea0" />
+        <Line type="monotone" dataKey="bug" stroke="#ff7300" />
+      </ComposedChart>
+      </ResponsiveContainer>
+    );
+  }
+}
+
+
 const options = {
   tooltips: {
     enabled: false,
@@ -154,12 +162,9 @@ class DashBoard extends Component {
                   Sprint burndown             
                   </CardHeader>
                   <CardBody>
-                    <div className="chart-wrapper">
-                      <Line data={line} options={options} />
-                    </div>
+                  <TCol />
                   </CardBody>
                 </Card>  
-
                 <Card>
                   <CardHeader>
                     <i className="fa fa-align-justify"></i> Task <small>to do</small>
