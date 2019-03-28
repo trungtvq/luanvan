@@ -29,7 +29,8 @@ var cors = require('cors')
 //config
 var keys= require('./config/config')
 // Set up Mongoose
-var mongoDB = 'mongodb+srv://trung:trung123@overlead0-ykr4q.gcp.mongodb.net/test?retryWrites=true';
+var mongoDB = 'mongodb+srv://trung:trung123@overlead0-ykr4q.gcp.mongodb.net/overlead?retryWrites=true';
+
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 
