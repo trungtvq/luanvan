@@ -167,258 +167,32 @@ class DashBoard extends Component {
                 </Card>  
                 
                 <Card>
-                  <CardHeader>
-                    <i className="fa fa-align-justify"></i> Task
-                    <div className="card-header-actions">
-                      <Badge>NEW</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardBody>
-                    <div id="accordion">
-                      <Card className="mb-0">
-                        <CardHeader id="headingOne">
-                          <Button block color="link" className="text-left m-0 p-0" onClick={() => this.toggleAccordion(0)} aria-expanded={this.state.accordion[0]} aria-controls="collapseOne">
-                            <h5 className="m-0 p-0">Thanh toán bằng paypal</h5>
-                          </Button>
-                        </CardHeader>
-                        <Collapse isOpen={this.state.accordion[0]} data-parent="#accordion" id="collapseOne" aria-labelledby="headingOne">
-                          <CardBody>
-                           <Table hover bordered striped responsive size="sm">
-                                  <thead>
-                                  <tr>   
-                                    <th>Description</th>
-                                    <th>Priority</th>
-                                    <th>Start day</th>
-                                    <th>Deadline</th>
-                                    <th>Assignee</th>                 
-                                    <th>Comment</th>
-                                    <th>Progress</th>             
-                                  </tr>
-                                  </thead>
-                                  <tbody>
-                                       <tr>                     
-                                        <td>Người dùng sử dụng paypal để trả phí</td>
-                                        <td><Badge color="primary">Low</Badge></td>
-                                        <td>20/4/2019</td>
-                                        <td>24/4/2019</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                          <Progress value={0} />
-                                          <div className="text-center">0%</div>
-                                        </td>                                                      
-                                      </tr>
-                                  </tbody>
-                                </Table>
-                          </CardBody>
-                        </Collapse>
-                      </Card>
-                      <Card className="mb-0">
-                        <CardHeader id="headingTwo">
-                          <Button block color="link" className="text-left m-0 p-0" onClick={() => this.toggleAccordion(1)} aria-expanded={this.state.accordion[1]} aria-controls="collapseTwo">
-                            <h5 className="m-0 p-0">Thay đổi avatar</h5>
-                          </Button>
-                        </CardHeader>
-                        <Collapse isOpen={this.state.accordion[1]} data-parent="#accordion" id="collapseTwo">
-                          <CardBody>
-                           <Table hover bordered striped responsive size="sm">
-                                  <thead>
-                                  <tr>   
-                                    <th>Description</th>
-                                    <th>Priority</th>
-                                    <th>Start day</th>
-                                    <th>Deadline</th>
-                                    <th>Assignee</th>                 
-                                    <th>Comment</th>
-                                    <th>Progress</th>             
-                                  </tr>
-                                  </thead>
-                                  <tbody>
-                                       <tr>                     
-                                        <td>Người dùng thay đổi avatar hiển thị ở giao diện chính</td>
-                    <td><Badge color="primary">Low</Badge></td>
-                    <td>20/4/2019</td>
-                    <td>24/4/2019</td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                      <Progress value={0} />
-                      <div className="text-center">0%</div>
-                    </td>                                                           
-                                      </tr>
-                                  </tbody>
-                                </Table>
-                          </CardBody>
-                        </Collapse>
-                      </Card>
-                      <Card className="mb-0">
-                        <CardHeader id="headingThree">
-                          <Button block color="link" className="text-left m-0 p-0" onClick={() => this.toggleAccordion(2)} aria-expanded={this.state.accordion[2]} aria-controls="collapseThree">
-                            <h5 className="m-0 p-0">Đổi mật khẩu</h5>
-                          </Button>
-                        </CardHeader>
-                        <Collapse isOpen={this.state.accordion[2]} data-parent="#accordion" id="collapseThree">
-                          <CardBody>
-                           <Table hover bordered striped responsive size="sm">
-                                  <thead>
-                                  <tr>   
-                                    <th>Description</th>
-                                    <th>Priority</th>
-                                    <th>Start day</th>
-                                    <th>Deadline</th>
-                                    <th>Assignee</th>                 
-                                    <th>Comment</th>
-                                    <th>Progress</th>             
-                                  </tr>
-                                  </thead>
-                                  <tbody>
-                                       <tr>                     
-                                       
-                    <td>Người dùng đổi mật khẩu của tài khoản mà mình tạo</td>
-                    <td><Badge color="primary">Low</Badge></td>
-                    <td>20/4/2019</td>
-                    <td>24/4/2019</td>
-                    <td></td>
-                    <td>Có cần gửi mà tới email liên kết để xác nhận không?</td>
-                    <td>
-                      <Progress value={0} />
-                      <div className="text-center">0%</div>
-                    </td>                                                             
-                                      </tr>
-                                  </tbody>
-                                </Table>
-                          </CardBody>
-                        </Collapse>
-                      </Card>
-                    </div>
-                  </CardBody>
-                </Card>         
-
-                <Card>
-                  <CardHeader>
-                    <i className="fa fa-align-justify"></i> Task <small>inprogress</small>
-                    <div className="card-header-actions">
-                      <Badge>NEW</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardBody>
-                    <div id="accordion">
-                      <Card className="mb-0">
-                        <CardHeader id="headingOne">
-                          <Button block color="link" className="text-left m-0 p-0" onClick={() => this.toggleAccordion(0)} aria-expanded={this.state.accordion[0]} aria-controls="collapseOne">
-                            <h5 className="m-0 p-0">Login bằng tài khoản</h5>
-                          </Button>
-                        </CardHeader>
-                        <Collapse isOpen={this.state.accordion[0]} data-parent="#accordion" id="collapseOne" aria-labelledby="headingOne">
-                          <CardBody>
-                           <Table hover bordered striped responsive size="sm">
-                                  <thead>
-                                  <tr>   
-                                    <th>Description</th>
-                                    <th>Priority</th>
-                                    <th>Start day</th>
-                                    <th>Deadline</th>
-                                    <th>Assignee</th>                 
-                                    <th>Comment</th>
-                                    <th>Progress</th>             
-                                  </tr>
-                                  </thead>
-                                  <tbody>
-                                       <tr>                     
-                                             
-                    <td>Người dùng tạo tài khoản và sử dụng tài khoản này để đăng nhập</td>
-                    <td><Badge color="warning">Medium</Badge></td>
-                    <td>21/4/2019</td>
-                    <td>25/4/2019</td>
-                    <td>Tâm</td>
-                    <td></td>
-                    <td>
-                      <Progress value={10} />
-                      <div className="text-center">10%</div>
-                    </td>                                               
-                                      </tr>
-                                  </tbody>
-                                </Table>
-                          </CardBody>
-                        </Collapse>
-                      </Card>
-                      <Card className="mb-0">
-                        <CardHeader id="headingTwo">
-                          <Button block color="link" className="text-left m-0 p-0" onClick={() => this.toggleAccordion(1)} aria-expanded={this.state.accordion[1]} aria-controls="collapseTwo">
-                            <h5 className="m-0 p-0">Login bằng email</h5>
-                          </Button>
-                        </CardHeader>
-                        <Collapse isOpen={this.state.accordion[1]} data-parent="#accordion" id="collapseTwo">
-                          <CardBody>
-                           <Table hover bordered striped responsive size="sm">
-                                  <thead>
-                                  <tr>   
-                                    <th>Description</th>
-                                    <th>Priority</th>
-                                    <th>Start day</th>
-                                    <th>Deadline</th>
-                                    <th>Assignee</th>                 
-                                    <th>Comment</th>
-                                    <th>Progress</th>             
-                                  </tr>
-                                  </thead>
-                                  <tbody>
-                                       <tr>                     
-                                        
-                    <td>Người dùng không cần tạo tài khoản mà sử dụng tài khoản email để đăng nhập</td>
-                    <td><Badge color="danger">High</Badge></td>
-                    <td>20/4/2019</td>
-                    <td>23/4/2019</td>
-                    <td>Nhân</td>
-                    <td>Có cần xác thực email không?</td>
-                    <td>
-                      <Progress value={85} />
-                      <div className="text-center">85%</div>
-                    </td>                                                 
-                                      </tr>
-                                  </tbody>
-                                </Table>
-                          </CardBody>
-                        </Collapse>
-                      </Card>
-                     
-                    </div>
-                  </CardBody>
-                </Card>  
-
-                <Card>
-                  <CardHeader>
-                    <i className="fa fa-align-justify"></i> Task <small>done</small>
-                    <div className="card-header-actions">
-                      <Badge>NEW</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardBody>
-                    <div id="accordion">
-                      <Card className="mb-0">
-                        <CardHeader id="headingOne">
-                          <Button block color="link" className="text-left m-0 p-0" onClick={() => this.toggleAccordion(0)} aria-expanded={this.state.accordion[0]} aria-controls="collapseOne">
-                            <h5 className="m-0 p-0">Login bằng tài fb</h5>
-                          </Button>
-                        </CardHeader>
-                        <Collapse isOpen={this.state.accordion[0]} data-parent="#accordion" id="collapseOne" aria-labelledby="headingOne">
-                          <CardBody>
-                           <Table hover bordered striped responsive size="sm">
-                                  <thead>
-                                  <tr>   
-                                    <th>Description</th>
-                                    <th>Priority</th>
-                                    <th>Start day</th>
-                                    <th>Deadline</th>
-                                    <th>Assignee</th>                 
-                                    <th>Comment</th>
-                                    <th>Progress</th>             
-                                  </tr>
-                                  </thead>
-                                  <tbody>
-                                       <tr>                     
-                                             
+              <CardHeader>
+                <i className="fa fa-align-justify"></i><strong>Task</strong>
+                <small> done</small>
+              </CardHeader>
+              <CardBody>
+                <Table hover bordered striped responsive size="sm">
+                  <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Sprint</th>
+                    <th>IdBacklog</th>
+                    <th>Description</th>
+                    <th>Priority</th>
+                    <th>Start day</th>
+                    <th>Deadline</th>
+                    <th>Assignee</th>                 
+                    <th>Comment</th>
+                    <th>Progress</th>
                    
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Login bằng Fb</td>
+                    <td>2</td>
+                    <td>6</td>
                     <td>Người dùng không cần tạo tài khoản mà sử dụng tài khoản fb để đăng nhập</td>
                     <td><Badge color="danger">High</Badge></td>
                     <td>20/4/2019</td>
@@ -428,19 +202,152 @@ class DashBoard extends Component {
                     <td>
                       <Progress value={100} />
                       <div className="text-center">100%</div>
-                    </td>                                       
-                                      </tr>
-                                  </tbody>
-                                </Table>
-                          </CardBody>
-                        </Collapse>
-                      </Card>
-                      
-                        
-                     
-                    </div>
-                  </CardBody>
-                </Card>              
+                    </td>                                  
+                   
+                  </tr>
+                   
+                  </tbody>
+                </Table>      
+      
+              </CardBody>
+        </Card>    
+
+        <Card>
+              <CardHeader>
+                <i className="fa fa-align-justify"></i><strong>Task</strong>
+                <small> inprogress</small>
+              </CardHeader>
+              <CardBody>
+               <Table hover bordered striped responsive size="sm">
+                  <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Sprint</th>
+                    <th>IdBacklog</th>
+                    <th>Description</th>
+                    <th>Priority</th>
+                    <th>Start day</th>
+                    <th>Deadline</th>
+                    <th>Assignee</th>                 
+                    <th>Comment</th>
+                    <th>Progress</th>
+                    
+                  </tr>
+                  </thead>
+                  <tbody>
+                  
+                   <tr>
+                    <td>Login bằng email</td>
+                     <td>2</td>
+                      <td>7</td>
+                    <td>Người dùng không cần tạo tài khoản mà sử dụng tài khoản email để đăng nhập</td>
+                    <td><Badge color="danger">High</Badge></td>
+                    <td>20/4/2019</td>
+                    <td>23/4/2019</td>
+                    <td>Nhân</td>
+                    <td>Có cần xác thực email không?</td>
+                    <td>
+                      <Progress value={85} />
+                      <div className="text-center">85%</div>
+                    </td>                                  
+                   
+                  </tr>
+                   <tr>
+                    <td>Login bằng tài khoản</td>
+                     <td>2</td>
+                      <td>7</td>
+                    <td>Người dùng tạo tài khoản và sử dụng tài khoản này để đăng nhập</td>
+                    <td><Badge color="warning">Medium</Badge></td>
+                    <td>21/4/2019</td>
+                    <td>25/4/2019</td>
+                    <td>Tâm</td>
+                    <td></td>
+                    <td>
+                      <Progress value={10} />
+                      <div className="text-center">10%</div>
+                    </td>                                  
+                  
+                  </tr>
+                  
+                  </tbody>
+                </Table>
+              </CardBody>
+        </Card>    
+
+        <Card>
+              <CardHeader>
+                <i className="fa fa-align-justify"></i><strong>Project</strong>
+                <small> to do</small>
+              </CardHeader>
+               <Table hover bordered striped responsive size="sm">
+                  <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Sprint</th>
+                    <th>IdBacklog</th>
+                    <th>Description</th>
+                    <th>Priority</th>
+                    <th>Start day</th>
+                    <th>Deadline</th>
+                    <th>Assignee</th>                 
+                    <th>Comment</th>
+                    <th>Progress</th>
+                  
+                  </tr>
+                  </thead>
+                  <tbody>
+                            <tr>
+                    <td>Đổi mật khẩu</td>
+                     <td>2</td>
+                      <td>7</td>
+                    <td>Người dùng đổi mật khẩu của tài khoản mà mình tạo</td>
+                    <td><Badge color="primary">Low</Badge></td>
+                    <td>20/4/2019</td>
+                    <td>24/4/2019</td>
+                    <td></td>
+                    <td>Có cần gửi mà tới email liên kết để xác nhận không?</td>
+                    <td>
+                      <Progress value={0} />
+                      <div className="text-center">0%</div>
+                    </td>                                  
+                  
+                  </tr>
+                   <tr>
+                    <td>Thay đổi avatar</td>
+                     <td>2</td>
+                      <td>8</td>
+                    <td>Người dùng thay đổi avatar hiển thị ở giao diện chính</td>
+                    <td><Badge color="primary">Low</Badge></td>
+                    <td>20/4/2019</td>
+                    <td>24/4/2019</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <Progress value={0} />
+                      <div className="text-center">0%</div>
+                    </td>                                  
+                   
+                  </tr>                  
+                   <tr>
+                    <td>Thanh toán bằng paypal</td>
+                     <td>2</td>
+                      <td>8</td>
+                    <td>Người dùng sử dụng paypal để trả phí</td>
+                    <td><Badge color="primary">Low</Badge></td>
+                    <td>20/4/2019</td>
+                    <td>24/4/2019</td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <Progress value={0} />
+                      <div className="text-center">0%</div>
+                    </td>                                  
+                    
+                  </tr>
+           
+                  </tbody>
+                </Table>
+        </Card>              
           </Col>
         </Row>
     );

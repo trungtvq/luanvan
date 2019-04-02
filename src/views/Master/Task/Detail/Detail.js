@@ -49,9 +49,7 @@ class Detail extends Component {
     return (
       <Row>
           <Col>  
-          <Link to="/Master/Task/Add">
-                  <Button color="primary" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
-          </Link>  
+          
           <Form>
                  <FormGroup row>
                  <Col md="4">
@@ -128,12 +126,16 @@ class Detail extends Component {
                   
                  </FormGroup>                                          
                 </Form>
-
+<Link to="/Master/Task/Add">
+                  <Button color="primary" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
+          </Link>  
                       
                 <Table hover bordered striped responsive size="sm">
                   <thead>
                   <tr>
                     <th>Title</th>
+                    <th>Sprint</th>
+                    <th>IdBacklog</th>
                     <th>Description</th>
                     <th>Priority</th>
                     <th>Start day</th>
@@ -147,6 +149,8 @@ class Detail extends Component {
                   <tbody>
                   <tr>
                     <td>Login bằng Fb</td>
+                    <td>2</td>
+                    <td>6</td>
                     <td>Người dùng không cần tạo tài khoản mà sử dụng tài khoản fb để đăng nhập</td>
                     <td><Badge color="danger">High</Badge></td>
                     <td>20/4/2019</td>
@@ -165,6 +169,8 @@ class Detail extends Component {
                   </tr>
                    <tr>
                     <td>Login bằng email</td>
+                     <td>2</td>
+                      <td>7</td>
                     <td>Người dùng không cần tạo tài khoản mà sử dụng tài khoản email để đăng nhập</td>
                     <td><Badge color="danger">High</Badge></td>
                     <td>20/4/2019</td>
@@ -183,6 +189,8 @@ class Detail extends Component {
                   </tr>
                    <tr>
                     <td>Login bằng tài khoản</td>
+                     <td>2</td>
+                      <td>7</td>
                     <td>Người dùng tạo tài khoản và sử dụng tài khoản này để đăng nhập</td>
                     <td><Badge color="warning">Medium</Badge></td>
                     <td>21/4/2019</td>
@@ -201,6 +209,8 @@ class Detail extends Component {
                   </tr>
                    <tr>
                     <td>Đổi mật khẩu</td>
+                     <td>2</td>
+                      <td>7</td>
                     <td>Người dùng đổi mật khẩu của tài khoản mà mình tạo</td>
                     <td><Badge color="primary">Low</Badge></td>
                     <td>20/4/2019</td>
@@ -219,6 +229,8 @@ class Detail extends Component {
                   </tr>
                    <tr>
                     <td>Thay đổi avatar</td>
+                     <td>2</td>
+                      <td>8</td>
                     <td>Người dùng thay đổi avatar hiển thị ở giao diện chính</td>
                     <td><Badge color="primary">Low</Badge></td>
                     <td>20/4/2019</td>
@@ -237,6 +249,8 @@ class Detail extends Component {
                   </tr>                  
                    <tr>
                     <td>Thanh toán bằng paypal</td>
+                     <td>2</td>
+                      <td>8</td>
                     <td>Người dùng sử dụng paypal để trả phí</td>
                     <td><Badge color="primary">Low</Badge></td>
                     <td>20/4/2019</td>
