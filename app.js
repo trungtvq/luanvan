@@ -76,10 +76,10 @@ passport.use(new  GoogleStrategy({
 }))
 
 
-app.use('/api/graphql',graphqHTTP({
-  schema,
-  graphiql:true
-}))
+// app.use('/api/graphql',graphqHTTP({
+//   schema,
+//   graphiql:true
+// }))
 
 
 app.get('/api/auth/google/callback',passport.authenticate('google'))
