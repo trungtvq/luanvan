@@ -9,15 +9,16 @@ var mongoose = require('mongoose');
 //const { ApolloServer, gql } = require('apollo-server-express');
 
 //old
-const { ApolloServer, gql } = require('apollo-server');
+//const { ApolloServer, gql } = require('apollo-server');
+
+
 
 //graphql
 const graphqHTTP=require('express-graphql')
 const schema=require('./schema/schema')
+const { typeDefs, resolvers } =require('./schema')
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var users1Router = require('./routes/users1');
 var accountRouter = require('./routes/account');
 //login external
 var passport = require('passport')
@@ -30,6 +31,27 @@ var cors = require('cors')
 var keys= require('./config/config')
 // Set up Mongoose
 var mongoDB = 'mongodb+srv://trung:trung123@overlead0-ykr4q.gcp.mongodb.net/overlead?retryWrites=true';
+const { ApolloServer, gql } = require('apollo-server-express');
+
+// // The GraphQL schema
+// const typeDefs = gql`
+//   type Query {
+//     "A simple type for getting started!"
+//     hello: String
+//   }
+// `;
+
+// // A map of functions which return data for the schema.
+// const resolvers = {
+//   Query: {
+//     hello: () => 'world'
+//   }
+// };
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
 
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
@@ -37,7 +59,11 @@ mongoose.Promise = global.Promise;
 //set up app
 var app = express();
 app.use(cors())
+server.applyMiddleware({ app, path: '/api/graphql', }); // app is from an existing express app
 
+// app.listen({ port: 4000 }, () =>
+//   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+// )
 passport.use(new  GoogleStrategy({
   clientID: keys.googleClientID,
   clientSecret: keys.googleClientSecret,
@@ -54,28 +80,30 @@ app.use('/api/graphql',graphqHTTP({
   schema,
   graphiql:true
 }))
+
+
 app.get('/api/auth/google/callback',passport.authenticate('google'))
 //new server
 // A map of functions which return data for the schema.
-const resolvers = {
-  Query: {
-    hello: () => 'world'
-  }
-};
-// The GraphQL schema
-const typeDefs = gql`
-  type Query {
-    "A simple type for getting started!"
-    hello: String
-  }
-`;
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-});
-server.listen().then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`)
-});
+// const resolvers = {
+//   Query: {
+//     hello: () => 'world'
+//   }
+// };
+// // The GraphQL schema
+// const typeDefs = gql`
+//   type Query {
+//     "A simple type for getting started!"
+//     hello: String
+//   }
+// `;
+// const server = new ApolloServer({
+//   typeDefs,
+//   resolvers,
+// });
+// server.listen().then(({ url }) => {
+//   console.log(`🚀 Server ready at ${url}`)
+// });
 
 
 
@@ -105,8 +133,6 @@ app.get('/api/auth/login',passport.authenticate('google',{
 
 
 app.use('/api/', indexRouter);
-app.use('/api/users/1', usersRouter);
-app.use('/api/users1', users1Router);
 app.use('/api/account',accountRouter);
 
 // catch 404 and forward to error handler
