@@ -133,7 +133,7 @@ class DashBoard extends Component {
                     <td>20/3/2019</td>                
                     <td>9h ago, i can't connect server</td>
                     <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-heart"></i></Button>
+                     <Button type="submit" size="sm" color="success"><i class="fa fa-check"></i></Button>
                     </td>
                   </tr>
                   <tr>
@@ -142,7 +142,7 @@ class DashBoard extends Component {
                     <td>19/3/2019</td>                
                     <td></td>
                     <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-heart"></i></Button>
+                     <Button type="submit" size="sm" color="success"><i class="fa fa-check"></i></Button>
                     </td>
                   </tr>
                    <tr>
@@ -151,7 +151,7 @@ class DashBoard extends Component {
                     <td>21/3/2019</td>                
                     <td>Suggest password atleast 8 characters</td>
                     <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-heart"></i></Button>
+                     <Button type="submit" size="sm" color="success"><i class="fa fa-check"></i></Button>
                     </td>
                   </tr>
                   </tbody>
