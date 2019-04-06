@@ -10,7 +10,7 @@ export default {
       },
     },
      {
-      name: 'All Project',
+      name: 'My Project',
       url: '/AllProject',
       icon: 'icon-calendar',
     },
