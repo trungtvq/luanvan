@@ -47,6 +47,11 @@ export default {
       url: '/Master/SprintBacklog',
       icon: 'icon-pencil',
     },
+     {
+      name: 'Evaluate',
+      url: '/Master/Evaluate',
+      icon: 'icon-layers',
+    },
     {
       title: true,
       name: 'Member',

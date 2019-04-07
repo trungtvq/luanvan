@@ -23,10 +23,13 @@ class DefaultHeader extends Component {
     return (
       <React.Fragment>
         <AppSidebarToggler className="d-lg-none" display="md" mobile />
+        <Link to="/Home/Main" className="nav-link" >
         <AppNavbarBrand
           full={{ src: logo, width: 89, height: 25, alt: 'Overlead Logo' }}
           minimized={{ src: sygnet, width: 30, height: 30, alt: 'Overlead Logo' }}
         />
+        </Link>
+
         <AppSidebarToggler className="d-md-down-none" display="lg" />
 
         <Nav className="d-md-down-none" navbar>
