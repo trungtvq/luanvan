@@ -9,7 +9,7 @@ var router = express.Router();
 router.get('/login', function(req, res, next) {
     //console.log(req);
     console.log("aaa")
-    var dice = 3;
+    var email = "trungtvq@gmail.com";
     var sides = 6;
     var query = `{User(email:$email){name
     _id}}`;
