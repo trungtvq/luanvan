@@ -8,9 +8,13 @@ var router = express.Router();
 /* GET users listing. */
 router.get('/login', function(req, res, next) {
     //console.log(req);
-    console.log("aaa")
-    var email = "trungtvq@gmail.com";
-    var sides = 6;
+
+    const { body } = req;
+    const {
+      password,
+      email
+    } = body;
+
     var query = `{User(email:$email){name
     _id}}`;
     var query= `query User($email: String!) {
@@ -32,17 +36,10 @@ router.get('/login', function(req, res, next) {
       })
     })
       .then(r => r.json())
-      .then(data => {console.log(data)
+      .then(data => {console.log(data.User)
 
       });
 
-    const { body } = req;
-    const {
-      password
-    } = body;
-    // let {
-    //   email
-    // } = body;
     console.log(body)
 
     if (!email) {
