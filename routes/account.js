@@ -1,14 +1,31 @@
 const User = require('../models/User');
 const UserSession = require('../models/UserSession');
-
+const fetch = require('node-fetch')
 
 var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.post('/login', function(req, res, next) {
-    console.log(req);
+router.get('/login', function(req, res, next) {
+    //console.log(req);
+    console.log("aaa")
+    var dice = 3;
+    var sides = 6;
+    var query = `{Users{name}}`;
     
+    fetch('https://overlead.co/api/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        query
+      })
+    })
+      .then(r => r.json())
+      .then(data => console.log('data returned:', data));
+
     const { body } = req;
     const {
       password
@@ -32,6 +49,7 @@ router.post('/login', function(req, res, next) {
         message: 'Error: Password cannot be blank.'
       });
     }
+
     console.log("lowerCase")
     email = email.toString().toLowerCase();
     console.log("trim")
@@ -82,6 +100,8 @@ router.post('/login', function(req, res, next) {
         });
       });
     });
+
+ 
   },
 
 //////
