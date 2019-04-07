@@ -102,11 +102,13 @@ router.post('/login', function(req, res, next) {
 //////
 router.post('/register', (req, res, next) => {
   console.log("vao dang ki ne")
+    
     const { body } = req;
-    const {
-      name,
+    console.log(body)
+    var {
       email,
-      password
+      password,
+      name
     } = body;
 
     if (!email) {
@@ -178,8 +180,8 @@ router.post('/register', (req, res, next) => {
       })
         .then(r => r.json())
         .then(data => {
-          result=data.data.User;
-          
+          result=data.data.createUser;
+          console.log(result)
               return res.json({
                   success:true,
                   statusCode: result.name+" is signup" //not exist email
