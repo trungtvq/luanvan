@@ -16,12 +16,14 @@ class Register extends Component {
       signInError: '',
       signInEmail: '',
       signInPassword: '',
+      signUpName:'',
       signUpEmail: '',
       signUpPassword: '',
     };
 this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
     this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(this);
     
+    this.onTextboxChangeSignUpName = this.onTextboxChangeSignUpName.bind(this);
     this.onSignUp = this.onSignUp.bind(this);
   }
 
@@ -63,12 +65,18 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
       signUpPassword: event.target.value,
     });
   }
+  onTextboxChangeSignUpName(event) {
+    this.setState({
+      signUpName: event.target.value,
+    });
+  }
 
   onSignUp() {
     // Grab state
     const {
       signUpEmail,
       signUpPassword,
+      signUpName,
     } = this.state;
 
     this.setState({
@@ -84,6 +92,7 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
       body: JSON.stringify({
         email: signUpEmail,
         password: signUpPassword,
+        name:signUpName,
       }),
     }).then(res => res.json())
       .then(json => {
@@ -94,6 +103,7 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
             isLoading: false,
             signUpEmail: '',
             signUpPassword: '',
+            signUpName:'',
           });
         } else {
           this.setState({
@@ -142,6 +152,7 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
       signInPassword,
       signUpEmail,
       signUpPassword,
+      signUpName,
       signUpError,
     } = this.state;
 
@@ -171,14 +182,15 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
                           <i className="icon-user"></i>
                         </InputGroupText>
                       </InputGroupAddon>
-                      <Input type="text" placeholder="Username" autoComplete="username" value={signUpEmail}
-              onChange={this.onTextboxChangeSignUpEmail} />
+                      <Input type="text" placeholder="Username" autoComplete="username"  value={signUpName}
+              onChange={this.onTextboxChangeSignUpName}/>
                     </InputGroup>
                     <InputGroup className="mb-3">
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>@</InputGroupText>
                       </InputGroupAddon>
-                      <Input type="text" placeholder="Email" autoComplete="email" />
+                      <Input type="text" placeholder="Email" autoComplete="email" value={signUpEmail}
+              onChange={this.onTextboxChangeSignUpEmail}/>
                     </InputGroup>
                     <InputGroup className="mb-3">
                       <InputGroupAddon addonType="prepend">
