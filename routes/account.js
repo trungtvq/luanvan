@@ -14,54 +14,71 @@ router.get('/login', function(req, res, next) {
       password,
       email
     } = body;
-    email="trungtvdq@gmail.com";
-    var query = `{User(email:$email){name
-    _id}}`;
-    var query= `query User($email: String!) {
-      User(email: $email){
-        _id
-        name
-      }}`
-    //query,
-   // variables: { dice, sides },
-    fetch('https://overlead.co/api/graphql', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify({
-        query,
-        variables:{email}
-      })
-    })
-      .then(r => r.json())
-      .then(data => {console.log(data.data.User)
-
-      });
-
-    console.log(body)
-
+    
     if (!email) {
       console.log("err email format")
       return res.json({        
         success: false,
         message: 'Error: Email cannot be blank.'
       });
-    }
+    } else
     if (!password) {
       console.log("err pass format")
       return res.json({
         success: false,
         message: 'Error: Password cannot be blank.'
       });
+    }else{
+
+      email = email.toString().toLowerCase();
+      email = email.toString().trim();
+      var query = `{User(email:$email){name
+        _id}}`;
+        var query= `query User($email: String!) {
+          User(email: $email){
+            _id
+            name
+          }}`
+        //query,
+      // variables: { dice, sides },
+        fetch('https://overlead.co/api/graphql', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({
+            query,
+            variables:{email}
+          })
+        })
+          .then(r => r.json())
+          .then(data => {
+            console.log(data.data.User)
+            let userLog=data.data.User;
+            if (userLog==null) 
+                return res.json({
+                    success:false,
+                    statusCode: "NOT_EXIST_EMAIL" //not exist email
+                }); 
+            else{ //exist email
+                if (!userLog.validPassword(password))
+                    return res.json({
+                      success:false,
+                      statusCode:"WRONG_PASSWORD"
+                    })
+                  return res.json({
+                    success:true,
+                    statusCode:"Hi "+userLog.name
+                  })
+            }
+          });
+  
     }
 
-    console.log("lowerCase")
-    email = email.toString().toLowerCase();
-    console.log("trim")
-    email = email.toString().trim();
-    console.log("go find")
+
+
+
     User.find({
       email: email
     }, (err, users) => {
