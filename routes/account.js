@@ -34,9 +34,9 @@ router.get('/login', function(req, res, next) {
     const {
       password
     } = body;
-    let {
-      email
-    } = body;
+    // let {
+    //   email
+    // } = body;
     console.log(body)
 
     if (!email) {
