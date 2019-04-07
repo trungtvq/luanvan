@@ -6,10 +6,11 @@ const resolvers = {
       return models.todo.find({ _id })
     },
     Todos: (root, args, { models }) => models.todo.find({}),
+
     User: (root,args,{models})=>{
-      const { _id }=args
-      console.log(models)
-      return models.User.find({_id})
+      const { email }=args
+      console.log(models.User)
+      return models.User.find({email})
     },
     Users: (root,args,{models})=>models.User.find({})
   },
