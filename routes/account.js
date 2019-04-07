@@ -12,7 +12,8 @@ router.get('/login', function(req, res, next) {
     var dice = 3;
     var sides = 6;
     var query = `{Users{name}}`;
-    
+    //query,
+   // variables: { dice, sides },
     fetch('https://overlead.co/api/graphql', {
       method: 'POST',
       headers: {
@@ -24,7 +25,9 @@ router.get('/login', function(req, res, next) {
       })
     })
       .then(r => r.json())
-      .then(data => console.log('data returned:', data));
+      .then(data => {
+
+      });
 
     const { body } = req;
     const {
