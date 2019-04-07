@@ -7,9 +7,9 @@ const resolvers = {
     },
     Todos: (root, args, { models }) => models.todo.find({}),
     User: (root,args,{models})=>{
-      const { email }=args
+      const { _id }=args
       console.log(models)
-      return models.User.find({email})
+      return models.User.find({_id})
     },
     Users: (root,args,{models})=>models.User.find({})
   },
