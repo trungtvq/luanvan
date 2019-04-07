@@ -9,8 +9,7 @@ const resolvers = {
 
     User: (root,args,{models})=>{
       const { email }=args
-      console.log(models.User)
-      return models.User.find({email})
+      return models.User.findOne({email})
     },
     Users: (root,args,{models})=>models.User.find({})
   },
@@ -38,7 +37,6 @@ const resolvers = {
       newUser.password=newUser.generateHash(args.password)
       newUser._id=uuid()
       //newUser.password=bcrypt.hashSync(password,bcrypt.genSaltSync(8),null);
-      
       
       return await newUser.save()
     }
