@@ -36,7 +36,7 @@ router.get('/login', function(req, res, next) {
       })
     })
       .then(r => r.json())
-      .then(data => {console.log(data.User)
+      .then(data => {console.log(data.data)
 
       });
 
