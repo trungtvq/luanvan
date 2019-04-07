@@ -7,8 +7,8 @@
     "npm": "6.4.1"
   },
   "scripts": {
-    "start": " PORT=3002 node ./bin/www",
-    "nodemon": "PORT=3002 nodemon ./bin/www ",
+    "start": " PORT=3001 node ./bin/www",
+    "nodemon": "PORT=3001 nodemon ./bin/www ",
     "start:production": "npm run start:prod",
     "start:prod": "NODE_ENV=production PORT=3001 node ./bin/www",
     "start:development": "npm run start:dev",

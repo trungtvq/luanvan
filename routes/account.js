@@ -6,11 +6,12 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/login', function(req, res, next) {
+router.post('/login', function(req, res, next) {
     //console.log(req);
 
     const { body } = req;
     var {
+      name,
       password,
       email
     } = body;
@@ -32,12 +33,12 @@ router.get('/login', function(req, res, next) {
 
       email = email.toString().toLowerCase();
       email = email.toString().trim();
-      var query = `{User(email:$email){name
-        _id}}`;
+    
         var query= `query User($email: String!) {
           User(email: $email){
             _id
             name
+            password
           }}`
         //query,
       // variables: { dice, sides },
@@ -54,14 +55,14 @@ router.get('/login', function(req, res, next) {
         })
           .then(r => r.json())
           .then(data => {
-            console.log(data.data.User)
-            let userLog=data.data.User;
-            if (userLog==null) 
+            
+            if (data.data.User==null) 
                 return res.json({
                     success:false,
                     statusCode: "NOT_EXIST_EMAIL" //not exist email
                 }); 
             else{ //exist email
+              let userLog=new User(data.data.User);
                 if (!userLog.validPassword(password))
                     return res.json({
                       success:false,
@@ -76,68 +77,36 @@ router.get('/login', function(req, res, next) {
   
     }
 
-
-
-
-    User.find({
-      email: email
-    }, (err, users) => {
-      console.log("find",err,users);
-      if (err) {
-        console.log('err 2:', err);
-        return res.json({
-          success: false,
-          message: 'Error: server error'
-        });
-      }
-      if (users.length != 1) {
-        return res.json({
-          success: false,
-          message: 'Error: Invalid'
-        });
-      }
-
-      const user = users[0];
-      if (!user.validPassword(password)) {
-        return res.json({
-          success: false,
-          message: 'Error: Invalid'
-        });
-      }
-
       // Otherwise correct user
-      const userSession = new UserSession();
-      userSession.userId = user._id;
-      userSession.save((err, doc) => {
-        if (err) {
-          console.log(err);
-          return res.json({
-            success: false,
-            message: 'Error: server error'
-          });
-        }
+      // const userSession = new UserSession();
+      // userSession.userId = user._id;
+      // userSession.save((err, doc) => {
+      //   if (err) {
+      //     console.log(err);
+      //     return res.json({
+      //       success: false,
+      //       message: 'Error: server error'
+      //     });
+      //   }
 
-        return res.json({
-          success: true,
-          message: 'Valid sign in',
-          token: doc._id
-        });
-      });
-    });
+      //   return res.json({
+      //     success: true,
+      //     message: 'Valid sign in',
+      //     token: doc._id
+      //   });
+      // });
 
  
-  },
+  })
 
 //////
 router.post('/register', (req, res, next) => {
+  console.log("vao dang ki ne")
     const { body } = req;
     const {
-      firstName,
-      lastName,
+      name,
+      email,
       password
-    } = body;
-    let {
-      email
     } = body;
 
     if (!email) {
@@ -156,43 +125,104 @@ router.post('/register', (req, res, next) => {
     email = email.toLowerCase();
     email = email.trim();
 
+    console.log(email, password,name)
+    var query= `query User($email: String!) {
+      User(email: $email){
+        _id
+        name
+      }}`
+    //query,
+  // variables: { dice, sides },
+    fetch('https://overlead.co/api/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        query,
+        variables:{email}
+      })
+    })
+      .then(r => r.json())
+      .then(data => {
+        userLog=data.data.User;
+        if (userLog!=null) 
+            return res.json({
+                success:false,
+                statusCode: "EXIST_EMAIL" //not exist email
+            }); 
+        else{ //not exist email
+          console.log("adding...")
+        }
+      });
+
+      console.log("tai khoan co the duoc dang ki")
+      query= `mutation createUser($name:String!, $email: String!,$password: String!) {
+        createUser(name:$name,email: $email,password:$password){
+          _id
+          name
+        }}`
+      //query,
+    // variables: { dice, sides },
+      fetch('https://overlead.co/api/graphql', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          query,
+          variables:{email,name,password}
+        })
+      })
+        .then(r => r.json())
+        .then(data => {
+          result=data.data.User;
+          
+              return res.json({
+                  success:true,
+                  statusCode: result.name+" is signup" //not exist email
+              }); 
+         
+        });
     // Steps:
     // 1. Verify email doesn't exist
     // 2. Save
-    User.find({
-      email: email
-    }, (err, previousUsers) => {
-      if (err) {
-        return res.json({
-          success: false,
-          message: 'Error: Server error'
-        });
-      } else if (previousUsers.length > 0) {
-        return res.json({
-          success: false,
-          message: 'Error: Account already exist.'
-        });
-      }
+    // User.find({
+    //   email: email
+    // }, (err, previousUsers) => {
+    //   if (err) {
+    //     return res.json({
+    //       success: false,
+    //       message: 'Error: Server error'
+    //     });
+    //   } else if (previousUsers.length > 0) {
+    //     return res.json({
+    //       success: false,
+    //       message: 'Error: Account already exist.'
+    //     });
+    //   }
 
-      // Save the new user
-      const newUser = new User();
-      newUser.firstName = firstName;
-      newUser.lastName = lastName;
-      newUser.email = email;
-      newUser.password = newUser.generateHash(password);
-      newUser.save((err, user) => {
-        if (err) {
-          return res.json({
-            success: false,
-            message: 'Error: Server error'
-          });
-        }
-        return res.json({
-          success: true,
-          message: 'Signed up'
-        });
-      });
-    });
+    //   // Save the new user
+    //   const newUser = new User();
+    //   newUser.firstName = firstName;
+    //   newUser.lastName = lastName;
+    //   newUser.email = email;
+    //   newUser.password = newUser.generateHash(password);
+    //   newUser.save((err, user) => {
+    //     if (err) {
+    //       return res.json({
+    //         success: false,
+    //         message: 'Error: Server error'
+    //       });
+    //     }
+    //     return res.json({
+    //       success: true,
+    //       message: 'Signed up'
+    //     });
+    //   });
+    // });
   }),
 //////
 
@@ -262,6 +292,6 @@ router.get('/verify', (req, res, next) => {
   })
 
 
-);
+
 
 module.exports = router;
