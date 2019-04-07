@@ -14,7 +14,7 @@ router.get('/login', function(req, res, next) {
       password,
       email
     } = body;
-    email="trungtvq@gmail.com";
+    email="trungtvdq@gmail.com";
     var query = `{User(email:$email){name
     _id}}`;
     var query= `query User($email: String!) {
@@ -36,7 +36,7 @@ router.get('/login', function(req, res, next) {
       })
     })
       .then(r => r.json())
-      .then(data => {console.log(data.data)
+      .then(data => {console.log(data.data.User)
 
       });
 
