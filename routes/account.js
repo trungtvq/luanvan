@@ -14,7 +14,10 @@ router.get('/login', function(req, res, next) {
     var query = `{User(email:$email){name
     _id}}`;
     var query= `query User($email: String!) {
-      User(email: $dice)}`
+      User(email: $dice){
+        _id
+        name
+      }}`
     //query,
    // variables: { dice, sides },
     fetch('https://overlead.co/api/graphql', {
