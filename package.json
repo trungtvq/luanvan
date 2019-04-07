@@ -59,7 +59,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://45.76.186.222:3001",
+  "proxy": "http://trungtvq.ddns.net:3001",
   "eslintConfig": {
     "extends": "react-app"
   },
