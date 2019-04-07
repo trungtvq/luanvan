@@ -22,7 +22,8 @@ router.get('/login', function(req, res, next) {
         'Accept': 'application/json',
       },
       body: JSON.stringify({
-        query
+        query,
+        variables:{email}
       })
     })
       .then(r => r.json())
