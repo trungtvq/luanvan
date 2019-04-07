@@ -10,11 +10,11 @@ router.get('/login', function(req, res, next) {
     //console.log(req);
 
     const { body } = req;
-    const {
+    var {
       password,
       email
     } = body;
-
+    email="trungtvq@gmail.com";
     var query = `{User(email:$email){name
     _id}}`;
     var query= `query User($email: String!) {
