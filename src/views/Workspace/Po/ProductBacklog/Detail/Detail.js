@@ -8,7 +8,22 @@ class Detail extends Component {
           <Col>         
                 <Link to="/ProductBacklog/Add">
                   <Button color="primary" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
-                </Link>    
+                </Link> 
+                  <Row>       
+                    <Col xs="2" md="2">
+                      <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
+                    </Col> 
+                    <Col xs="2" md="2">
+                      <Input type="select" name="select" id="select">
+                        <option value="0">Sort by ID</option>
+                        <option value="1">Sort by Sprint</option>
+                        <option value="2">Sort by Status</option>    
+                      </Input>
+                    </Col>   
+                    <Col xs="0" md="0">
+                      <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
+                    </Col> 
+                </Row>     
                 <Table hover bordered striped responsive size="sm">
                   <thead>
                   <tr>
