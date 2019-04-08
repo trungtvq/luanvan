@@ -71,7 +71,7 @@ const AsyncApp= Loadable({
 
 
 
-//
+//Home
 const HomeMain = Loadable({
   loader: () => import('./views/General/Home/Main'),
   loading
@@ -90,7 +90,20 @@ const HomeSolve = Loadable({
 });
 //
 
-
+//PJ
+const AllProject = Loadable({
+  loader: () => import('./views/Personal/Project/AllProject'),
+  loading
+});
+const ProjectDone = Loadable({
+  loader: () => import('./views/Personal/Project/ProjectDone'),
+  loading
+});
+const ProjectTodo = Loadable({
+  loader: () => import('./views/Personal/Project/ProjectTodo'),
+  loading
+});
+//
 
 const loggerMiddleware = createLogger()
 
@@ -121,6 +134,13 @@ class App extends Component {
                     <Route exact path="/Home/Contact" name="HomeContact" component={HomeContact} />
                     <Route exact path="/Home/Service" name="HomeService" component={HomeService} />
                     <Route exact path="/Home/Solve" name="HomeSolve" component={HomeSolve} />
+
+
+                  <Route exact path="/AllProject" name="AllProject" component={AllProject} />
+                  <Route exact path="/ProjectDone" name="ProjectDone" component={ProjectDone} />
+                  <Route exact path="/ProjectTodo" name="ProjectTodo" component={ProjectTodo} />
+
+
 
 
                     <Route exact path="/login" name="Login Page" component={Login} />
