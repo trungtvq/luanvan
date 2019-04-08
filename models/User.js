@@ -19,4 +19,4 @@ User.methods.generateHash=function(password){
 User.methods.validPassword=function(password){
   return bcrypt.compareSync(password,this.password);
 }
-module.exports= model('user', User)
+module.exports= model('User', User)

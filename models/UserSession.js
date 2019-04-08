@@ -2,6 +2,9 @@
 var { Schema, model } =require('mongoose');
 
 const UserSession = new Schema({
+  _id:{
+    type:String
+  },
   userId: {
     type: String,
     default: ''
@@ -11,9 +14,9 @@ const UserSession = new Schema({
     default: Date.now()
   },
   isDeleted: {
-    type: Boolean,
+    type: String,
     default: false
   }
 });
 
-module.exports = model('userSession', UserSession);
+module.exports = model('UserSession', UserSession);

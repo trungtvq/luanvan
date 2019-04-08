@@ -11,7 +11,12 @@ const resolvers = {
       const { email }=args
       return models.User.findOne({email})
     },
-    Users: (root,args,{models})=>models.User.find({})
+    Users: (root,args,{models})=>models.User.find({}),
+    UserSession: (root,args,{models})=>{
+      const {_id}=args
+      return models.UserSession.findOne({_id})
+    },
+    UsersSessions: (root,args,{models})=>models.UserSession.find({}),
   },
   Mutation: {
     createTodo: async (root, args, { models }) => {
@@ -31,15 +36,21 @@ const resolvers = {
       return _id
     },
     createUser: async (root,args,{models})=>{
-      //args.password=bcrypt.hashSync(p,bcrypt.genSaltSync(8),null);
-      // args.password=bcrypt.compareSync(args.password,p);
       const newUser=new models.User(args)
       newUser.password=newUser.generateHash(args.password)
-      newUser._id=uuid()
-      //newUser.password=bcrypt.hashSync(password,bcrypt.genSaltSync(8),null);
-      
+      newUser._id=uuid()      
       return await newUser.save()
-    }
+    },
+    createUserSession: async (root,args,{models})=>{
+      const newUserSession=new models.UserSession(args)
+      newUserSession._id=uuid()      
+      return await newUserSession.save()
+    },
+    deleteUserSession: async (root, args, { models }) => {
+      const { _id } = args
+      await models.UserSession.findOneAndRemove({ _id })
+      return _id
+    },
   }
 }
 
