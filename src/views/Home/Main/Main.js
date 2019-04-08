@@ -38,7 +38,7 @@ class Main extends Component {
       <Row>
           <Col>         
             <Navbar color="light" light expand="md">
-              <NavbarBrand href="/Home/Main">Overlead</NavbarBrand>
+              <NavbarBrand href="/Home/Main"><img source="logo"/></NavbarBrand>
               <NavItem>
                 <NavLink href="/Home/Main" active>Về chúng tôi</NavLink>
               </NavItem>
