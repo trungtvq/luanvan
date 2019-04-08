@@ -88,6 +88,10 @@ const HomeSolve = Loadable({
   loader: () => import('./views/General/Home/Solve'),
   loading
 });
+const HomePayment = Loadable({
+  loader: () => import('./views/General/Home/Payment'),
+  loading
+});
 //
 const Demo = Loadable({
   loader: () => import('./homeNav'),
@@ -150,6 +154,7 @@ class App extends Component {
                     <Route exact path="/Home/Contact" name="HomeContact" component={HomeContact} />
                     <Route exact path="/Home/Service" name="HomeService" component={HomeService} />
                     <Route exact path="/Home/Solve" name="HomeSolve" component={HomeSolve} />
+                    <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
 
 
                     <Route exact path="/AllProject" name="AllProject" component={AllProject} />
