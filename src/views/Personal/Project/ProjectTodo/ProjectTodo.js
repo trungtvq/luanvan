@@ -26,10 +26,13 @@ import {
   Row,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import Demo from '../../../../homeNav'
+
 class ProjectTodo extends Component {
   render() {
     return (
       <Container>
+      <Demo/>
       <Card>             
               <CardBody>
                 <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               

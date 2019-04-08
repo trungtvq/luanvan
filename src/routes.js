@@ -8,8 +8,8 @@ const Register = React.lazy(() => import('./views/Pages/Register'));
 
 const DailySchedule = React.lazy(() => import('./views/Workspace/DailySchedule'));
 
-const ProfileDetail = React.lazy(() => import('./views/Personal/Profile/detail'));
-const ProfileEdit = React.lazy(() => import('./views/Personal/Profile/edit'));
+// const ProfileDetail = React.lazy(() => import('./views/Personal/Profile/detail'));
+// const ProfileEdit = React.lazy(() => import('./views/Personal/Profile/edit'));
 
 //Home
 // const HomeMain = React.lazy(() => import('./views/Home/Main'));
@@ -48,8 +48,8 @@ const routes = [
   { path: '/theme/colors',exact: true,  name: 'Colors', component: Colors },
   { path: '/DailySchedule', exact: true, name: 'DailySchedule', component: DailySchedule },
   { path: '/DashBoard', exact: true, name: 'DashBoard', component: DashBoard },
-  { path: '/Profile/Detail', exact: true, name: 'ProfileDetail', component: ProfileDetail },
-  { path: '/Profile/Edit', exact: true, name: 'ProfileEdit', component: ProfileEdit },
+  // { path: '/Profile/Detail', exact: true, name: 'ProfileDetail', component: ProfileDetail },
+  // { path: '/Profile/Edit', exact: true, name: 'ProfileEdit', component: ProfileEdit },
 
   //home HomeMain
   // { path: '/Home/Main', exact: true, name: 'HomeMain', component: HomeMain },

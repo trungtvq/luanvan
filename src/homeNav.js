@@ -16,6 +16,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -124,8 +125,17 @@ class PrimarySearchAppBar extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>
+         <Link to="/Profile/Detail">
+            Profile
+          </Link>
+       
+        </MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>
+          <Link to="/login">
+            Log out
+          </Link>
+        </MenuItem>
       </Menu>
     );
 
@@ -170,7 +180,9 @@ class PrimarySearchAppBar extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-              Material-UI
+                 <Link to="/Home/Main">
+                 Overlead
+                 </Link>
             </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>

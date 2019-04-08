@@ -30,12 +30,18 @@ PaginationItem,
 PaginationLink
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import Demo from '../../../../homeNav'
+
 class detail extends Component {
   render() {
     return (
-      <Row>
-          <Col>         
-                  <Card>             
+      <div>
+      <div>
+       <Demo />
+      </div>
+        <Row>
+          <Col>      
+            <Card>             
               <CardBody>
                 <img src={'../../assets/img/avatar/myavatar.png'} className="img-avatar" />
                 <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
@@ -192,6 +198,7 @@ class detail extends Component {
             </Card>
           </Col>
         </Row>
+        </div>
     );
   }
 }

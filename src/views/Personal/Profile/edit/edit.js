@@ -30,9 +30,14 @@ PaginationItem,
 PaginationLink
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import Demo from '../../../../homeNav'
 class edit extends Component {
   render() {
     return (
+           <div>
+       <div>
+       <Demo />
+      </div>
       <Row>
           <Col>         
                   <Card>             
@@ -192,6 +197,7 @@ class edit extends Component {
             </Card>
           </Col>
         </Row>
+             </div>
     );
   }
 }

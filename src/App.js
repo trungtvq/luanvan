@@ -109,6 +109,17 @@ const ProjectTodo = Loadable({
 });
 //
 
+
+//profile
+const ProfileDetail = Loadable({
+  loader: () => import('./views/Personal/Profile/detail'),
+  loading
+});
+const ProfileEdit = Loadable({
+  loader: () => import('./views/Personal/Profile/edit'),
+  loading
+});
+//
 const loggerMiddleware = createLogger()
 
 function configureStore(preloadedState) {
@@ -141,11 +152,13 @@ class App extends Component {
                     <Route exact path="/Home/Solve" name="HomeSolve" component={HomeSolve} />
 
 
-                  <Route exact path="/AllProject" name="AllProject" component={AllProject} />
-                  <Route exact path="/ProjectDone" name="ProjectDone" component={ProjectDone} />
-                  <Route exact path="/ProjectTodo" name="ProjectTodo" component={ProjectTodo} />
+                    <Route exact path="/AllProject" name="AllProject" component={AllProject} />
+                    <Route exact path="/ProjectDone" name="ProjectDone" component={ProjectDone} />
+                    <Route exact path="/ProjectTodo" name="ProjectTodo" component={ProjectTodo} />
 
-
+                    <Route exact path="/Profile/Detail" name="ProfileDetail" component={ProfileDetail} />
+                    <Route exact path="/Profile/Edit" name="ProjectTodo" component={ProfileEdit} />
+  
 
 
                     <Route exact path="/login" name="Login Page" component={Login} />

@@ -37,7 +37,7 @@ class Main extends Component {
       <Container>
       <Row>
           <Col>         
-            <Navbar color="light" light expand="md">
+          <Nav tabs>
               <NavbarBrand href="/Home/Main"><img source="logo"/></NavbarBrand>
               <NavItem>
                 <NavLink href="/Home/Main" active>Về chúng tôi</NavLink>
@@ -57,7 +57,7 @@ class Main extends Component {
               <NavItem>
                 <NavLink href="/register" active>Sign up</NavLink>
               </NavItem>
-           </Navbar>
+            </Nav>
 
 
             <Card> 
