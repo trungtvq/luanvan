@@ -122,7 +122,16 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
     if (obj && obj.token) {
       const { token } = obj;
       // Verify token
-      fetch('/api/account/logout?token=' + token)
+      fetch('/api/account/logout',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          token
+        }),
+      })
         .then(res => res.json())
         .then(json => {
           if (json.success) {

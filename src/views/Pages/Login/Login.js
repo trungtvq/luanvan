@@ -184,7 +184,7 @@ class Login extends Component {
     if (obj && obj.token) {
       const { token } = obj;
       // Verify token
-      fetch('/api/account/logout?token=' + token,
+      fetch('/api/account/logout',
       {
         method: 'POST',
         headers: {
