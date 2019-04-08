@@ -1,6 +1,5 @@
 import { AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
 import logo from '../../../assets/img/brand/logo.png';
-import sygnet from '../../../assets/img/brand/sygnet.svg';
 import React, { Component } from 'react';
 import { Badge, 
   Button, 
@@ -30,7 +29,7 @@ import { Badge,
 
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import logo from '../../../assets/img/brand/logo.png'
+
 
 class Main extends Component {
   render() {
@@ -39,7 +38,7 @@ class Main extends Component {
       <Row>
           <Col>         
             <Navbar color="light" light expand="md">
-              <NavbarBrand href="/"><img src="logo"/></NavbarBrand>
+              <NavbarBrand href="/Home/Main">Overlead</NavbarBrand>
               <NavItem>
                 <NavLink href="/Home/Main" active>Về chúng tôi</NavLink>
               </NavItem>
