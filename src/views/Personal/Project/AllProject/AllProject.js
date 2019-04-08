@@ -65,6 +65,7 @@ class AllProject extends Component {
     <Container>
 
       <div>
+
         <Navbar color="success" light expand="md">
           <NavbarBrand href="/">Overlead</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
@@ -99,7 +100,9 @@ class AllProject extends Component {
       </div>
 
       <p></p>
-     
+     //dong gi k hieu
+     //ý là cách cái nav top ra
+     //
 
       <Row>
           <Col>  
