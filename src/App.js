@@ -89,6 +89,10 @@ const HomeSolve = Loadable({
   loading
 });
 //
+const Demo = Loadable({
+  loader: () => import('./homeNav'),
+  loading
+});
 
 //PJ
 const AllProject = Loadable({
@@ -130,6 +134,7 @@ class App extends Component {
         <ApolloProvider client={client}>
           <BrowserRouter>
               <Switch>
+              <Route exact path="/homeNav" name="HomeNav" component={Demo} />
                     <Route exact path="/Home/Main" name="HomeMain" component={HomeMain} />
                     <Route exact path="/Home/Contact" name="HomeContact" component={HomeContact} />
                     <Route exact path="/Home/Service" name="HomeService" component={HomeService} />
