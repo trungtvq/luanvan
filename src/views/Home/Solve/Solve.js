@@ -35,6 +35,7 @@ import { Link } from 'react-router-dom';
 class Solve extends Component {
   render() {
     return (
+      <Container>
       <Row>
           <Col>         
                  <Nav tabs>
@@ -160,6 +161,7 @@ class Solve extends Component {
             </Card>    
           </Col>
         </Row>
+        </Container>
     );
   }
 }

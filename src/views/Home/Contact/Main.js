@@ -36,6 +36,7 @@ import { Link } from 'react-router-dom';
 class Main extends Component {
   render() {
     return (
+      <Container>
       <Row>
           <Col>         
                  <Nav tabs>
@@ -113,6 +114,7 @@ class Main extends Component {
             
           </Col>
         </Row>
+        </Container>
     );
   }
 }

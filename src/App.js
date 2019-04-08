@@ -69,6 +69,29 @@ const AsyncApp= Loadable({
   loading
 })
 
+
+
+//
+const HomeMain = Loadable({
+  loader: () => import('./views/Home/Main'),
+  loading
+});
+const HomeContact = Loadable({
+  loader: () => import('./views/Home/Contact'),
+  loading
+});
+const HomeService = Loadable({
+  loader: () => import('./views/Home/Service'),
+  loading
+});
+const HomeSolve = Loadable({
+  loader: () => import('./views/Home/Solve'),
+  loading
+});
+//
+
+
+
 const loggerMiddleware = createLogger()
 
 function configureStore(preloadedState) {
@@ -81,7 +104,10 @@ function configureStore(preloadedState) {
 
 const store = configureStore()
 
-
+//{ path: '/Home/Main', exact: true, name: 'HomeMain', component: HomeMain },
+  // { path: '/Home/Contact', exact: true, name: 'HomeContact', component: HomeContact },
+  // { path: '/Home/Service', exact: true, name: 'HomeService', component: HomeService },
+  // { path: '/Home/Solve', exact: true, name: 'HomeSolve', component: HomeSolve},
 
 class App extends Component {
 
@@ -91,6 +117,12 @@ class App extends Component {
         <ApolloProvider client={client}>
           <BrowserRouter>
               <Switch>
+                    <Route exact path="/Home/Main" name="HomeMain" component={HomeMain} />
+                    <Route exact path="/Home/Contact" name="HomeContact" component={HomeContact} />
+                    <Route exact path="/Home/Service" name="HomeService" component={HomeService} />
+                    <Route exact path="/Home/Solve" name="HomeSolve" component={HomeSolve} />
+
+
                     <Route exact path="/login" name="Login Page" component={Login} />
                     <Route exact path="/register" name="Register Page" component={Register} />
                     <Route exact path="/404" name="Page 404" component={Page404} />

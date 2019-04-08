@@ -21,20 +21,25 @@ import { Badge,
   Nav, 
   NavItem,
   NavLink,
+  Navbar,
+  NavbarBrand,
   Card,
   CardHeader,
   CardBody,
-  Progress
+  Progress,
+
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-
+import logo from '../../../assets/img/brand/logo.png'
 
 class Main extends Component {
   render() {
     return (
+      <Container>
       <Row>
           <Col>         
-                 <Nav tabs>
+            <Navbar color="light" light expand="md">
+              <NavbarBrand href="/"><img src="logo"/></NavbarBrand>
               <NavItem>
                 <NavLink href="/Home/Main" active>Về chúng tôi</NavLink>
               </NavItem>
@@ -53,7 +58,7 @@ class Main extends Component {
               <NavItem>
                 <NavLink href="/register" active>Sign up</NavLink>
               </NavItem>
-            </Nav>
+           </Navbar>
 
 
             <Card> 
@@ -139,6 +144,7 @@ class Main extends Component {
 
           </Col>
         </Row>
+        </Container>
     );
   }
 }

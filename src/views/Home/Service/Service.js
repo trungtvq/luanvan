@@ -35,6 +35,7 @@ import { Link } from 'react-router-dom';
 class Service extends Component {
   render() {
     return (
+      <Container>
       <Row>
           <Col>         
                  <Nav tabs>
@@ -101,6 +102,7 @@ class Service extends Component {
             
           </Col>
         </Row>
+        </Container>
     );
   }
 }

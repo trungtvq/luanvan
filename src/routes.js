@@ -12,10 +12,10 @@ const ProfileDetail = React.lazy(() => import('./views/Profile/detail'));
 const ProfileEdit = React.lazy(() => import('./views/Profile/edit'));
 
 //Home
-const HomeMain = React.lazy(() => import('./views/Home/Main'));
-const HomeContact = React.lazy(() => import('./views/Home/Contact'));
-const HomeService = React.lazy(() => import('./views/Home/Service'));
-const HomeSolve = React.lazy(() => import('./views/Home/Solve'));
+// const HomeMain = React.lazy(() => import('./views/Home/Main'));
+// const HomeContact = React.lazy(() => import('./views/Home/Contact'));
+// const HomeService = React.lazy(() => import('./views/Home/Service'));
+// const HomeSolve = React.lazy(() => import('./views/Home/Solve'));
 
 
 
@@ -52,10 +52,10 @@ const routes = [
   { path: '/Profile/Edit', exact: true, name: 'ProfileEdit', component: ProfileEdit },
 
   //home HomeMain
-  { path: '/Home/Main', exact: true, name: 'HomeMain', component: HomeMain },
-  { path: '/Home/Contact', exact: true, name: 'HomeContact', component: HomeContact },
-  { path: '/Home/Service', exact: true, name: 'HomeService', component: HomeService },
-  { path: '/Home/Solve', exact: true, name: 'HomeSolve', component: HomeSolve},
+  // { path: '/Home/Main', exact: true, name: 'HomeMain', component: HomeMain },
+  // { path: '/Home/Contact', exact: true, name: 'HomeContact', component: HomeContact },
+  // { path: '/Home/Service', exact: true, name: 'HomeService', component: HomeService },
+  // { path: '/Home/Solve', exact: true, name: 'HomeSolve', component: HomeSolve},
 
   //project
   { path: '/AllProject', exact: true, name: 'AllProject', component: AllProject },
