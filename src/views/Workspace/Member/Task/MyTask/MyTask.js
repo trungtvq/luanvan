@@ -73,7 +73,21 @@ class MyTask extends Component {
                     this.setState({ selected });
                 }}
             />
-
+           
+            <Row>       
+                    <Col xs="2" md="2">
+                      <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
+                    </Col> 
+                    <Col xs="2" md="2">
+                      <Input type="select" name="select" id="select">
+                        <option value="0">Sort by Title</option>
+                        <option value="1">Sort by Priority</option>   
+                      </Input>
+                    </Col>   
+                    <Col xs="0" md="0">
+                      <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
+                    </Col> 
+            </Row>     
             <Table hover bordered striped responsive size="sm">
                   <thead>
                   <tr>
@@ -152,6 +166,7 @@ class MyTask extends Component {
                   </tr>
                   </tbody>
                 </Table>
+           
             </Col>
             </Row>
         );
