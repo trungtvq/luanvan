@@ -6,7 +6,7 @@ import {
   getFromStorage,
   setInStorage,
 } from '../../../service/storage';
-
+import Demo from '../../../homeNav'
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
@@ -230,8 +230,11 @@ class Login extends Component {
 
     if (!token) {
     return (
-      <div className="app flex-row align-items-center">
+      <div>
+        <Demo />
      
+      <div className="app flex-row align-items-center">
+        
         <Container>
           <Row>
           {
@@ -293,6 +296,7 @@ class Login extends Component {
             </Col>
           </Row>
         </Container>
+      </div>
       </div>
     );
   } 
