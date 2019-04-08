@@ -6,10 +6,10 @@ const Colors = React.lazy(() => import('./components/Colors'));
 
 const Register = React.lazy(() => import('./views/Pages/Register'));
 
-const DailySchedule = React.lazy(() => import('./views/DailySchedule'));
+const DailySchedule = React.lazy(() => import('./views/Workspace/DailySchedule'));
 
-const ProfileDetail = React.lazy(() => import('./views/Profile/detail'));
-const ProfileEdit = React.lazy(() => import('./views/Profile/edit'));
+const ProfileDetail = React.lazy(() => import('./views/Personal/Profile/detail'));
+const ProfileEdit = React.lazy(() => import('./views/Personal/Profile/edit'));
 
 //Home
 // const HomeMain = React.lazy(() => import('./views/Home/Main'));
@@ -20,25 +20,25 @@ const ProfileEdit = React.lazy(() => import('./views/Profile/edit'));
 
 
 //Project
-const AllProject = React.lazy(() => import('./views/Project/AllProject'));
-const ProjectDone = React.lazy(() => import('./views/Project/ProjectDone'));
-const ProjectTodo = React.lazy(() => import('./views/Project/ProjectTodo'));
+const AllProject = React.lazy(() => import('./views/Personal/Project/AllProject'));
+const ProjectDone = React.lazy(() => import('./views/Personal/Project/ProjectDone'));
+const ProjectTodo = React.lazy(() => import('./views/Personal/Project/ProjectTodo'));
 
-const DashBoard = React.lazy(() => import('./views/DashBoard'));
+const DashBoard = React.lazy(() => import('./views/Workspace/DashBoard'));
 //PO
-const Add_Po = React.lazy(() => import('./views/Po/ProductBacklog/Add'));
-const Detail_Po = React.lazy(() => import('./views/Po/ProductBacklog/Detail'));
+const Add_Po = React.lazy(() => import('./views/Workspace/Po/ProductBacklog/Add'));
+const Detail_Po = React.lazy(() => import('./views/Workspace/Po/ProductBacklog/Detail'));
 const TestApollo = React.lazy(() => import('./views/Pages/TestApollo'));
 
 //Master
-const Add_Master = React.lazy(() => import('./views/Master/Task/Add'));
-const Detail_Master = React.lazy(() => import('./views/Master/Task/Detail'));
-const SprintBacklog_Master = React.lazy(() => import('./views/Master/SprintBacklog'));
-const Evaluate_Master = React.lazy(() => import('./views/Master/Evaluate'));
+const Add_Master = React.lazy(() => import('./views/Workspace/Master/Task/Add'));
+const Detail_Master = React.lazy(() => import('./views/Workspace/Master/Task/Detail'));
+const SprintBacklog_Master = React.lazy(() => import('./views/Workspace/Master/SprintBacklog'));
+const Evaluate_Master = React.lazy(() => import('./views/Workspace/Master/Evaluate'));
 
 //Member
-const MyTask_Member = React.lazy(() => import('./views/Member/Task/MyTask'));
-const Register_Member = React.lazy(() => import('./views/Member/Task/Register'));
+const MyTask_Member = React.lazy(() => import('./views/Workspace/Member/Task/MyTask'));
+const Register_Member = React.lazy(() => import('./views/Workspace/Member/Task/Register'));
 
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config

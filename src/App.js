@@ -73,19 +73,19 @@ const AsyncApp= Loadable({
 
 //
 const HomeMain = Loadable({
-  loader: () => import('./views/Home/Main'),
+  loader: () => import('./views/General/Home/Main'),
   loading
 });
 const HomeContact = Loadable({
-  loader: () => import('./views/Home/Contact'),
+  loader: () => import('./views/General/Home/Contact'),
   loading
 });
 const HomeService = Loadable({
-  loader: () => import('./views/Home/Service'),
+  loader: () => import('./views/General/Home/Service'),
   loading
 });
 const HomeSolve = Loadable({
-  loader: () => import('./views/Home/Solve'),
+  loader: () => import('./views/General/Home/Solve'),
   loading
 });
 //
