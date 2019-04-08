@@ -23,6 +23,7 @@ import { Link } from 'react-router-dom';
 class ProjectDone extends Component {
   render() {
     return (
+      <Container>
       <Row>
           <Col>  
 
@@ -335,6 +336,7 @@ class ProjectDone extends Component {
 
           </Col>
         </Row>
+        </Container>
     );
   }
 }

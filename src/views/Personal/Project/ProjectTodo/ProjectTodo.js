@@ -4,6 +4,7 @@ import {
   Button,
   ButtonDropdown,
   Card,
+  Container,
   CardBody,
   CardFooter,
   CardHeader,
@@ -28,6 +29,7 @@ import { Link } from 'react-router-dom';
 class ProjectTodo extends Component {
   render() {
     return (
+      <Container>
       <Card>             
               <CardBody>
                 <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
@@ -63,6 +65,7 @@ class ProjectTodo extends Component {
                 </Link>
               </CardFooter>
             </Card>
+            </Container>
     );
   }
 }
