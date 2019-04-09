@@ -8,6 +8,7 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
+  Container,
   Col,
   Collapse,
   DropdownItem,
@@ -39,6 +40,7 @@ class detail extends Component {
       <div>
        <Demo />
       </div>
+      <Container>
         <Row>
           <Col>      
             <Card>             
@@ -198,6 +200,7 @@ class detail extends Component {
             </Card>
           </Col>
         </Row>
+       </Container>
         </div>
     );
   }

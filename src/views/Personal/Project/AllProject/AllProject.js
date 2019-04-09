@@ -46,192 +46,242 @@ import Demo from '../../../../homeNav'
 class AllProject extends Component {
   render() {
     return (
-    <Container>
-
+   
+   <div>   
       <div>
 
        <Demo />
       </div>
 
-      <p></p>
-  
+
+   <Container>
       <Row>
           <Col>  
                 <Card>
                       <CardHeader>
-                        <i className="fa fa-align-justify"></i><strong>Project</strong>
-                        <small> done</small>
+                        <i className="fa fa-align-justify"></i><strong>Web</strong>
+
                       </CardHeader>
                       <CardBody>
-                       <Table hover bordered striped responsive size="sm">
-                          <thead>
-                          <tr>
-                           
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Start</th>
-                            <th>End</th>
-                            <th>Status</th>
-                                          
-                          </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <Link to="/ProjectDone">
-                                  App android game caro
-                                </Link>
-                              </td>
-                              <td>Tạo ra app anroid đánh cờ caro trực tuyến</td>
-                              <td>8:00 23/03/2019</td>
-                              <td>8:00 23/05/2019</td>
-                              <td>
-                              <Progress value={100} />
-                              <div className="text-center">100%</div>
-                            </td>    
-                            </tr>
-                            <tr>
-                              <td>App android chat</td>
-                              <td>Tạo ra app anroid chat realtime</td>
-                              <td>9:00 23/03/2019</td>
-                              <td>9:00 20/05/2019</td>
-                              <td>
-                              <Progress value={100} />
-                              <div className="text-center">100%</div>
-                            </td>    
-                            </tr>
-                             <tr>
-                              <td>Web bán giày</td>
-                              <td>Tạo ra web bán giày thể thao, hỗ trợ mua bán online</td>
-                              <td>8:00 23/01/2019</td>
-                              <td>8:00 23/05/2019</td>
-                              <td>
-                              <Progress value={100} />
-                              <div className="text-center">100%</div>
-                            </td>    
-                            </tr>
-                          </tbody>
-                        </Table>           
-              
+                         <Row>
+                            <Col>  
+                            <Link to="/DashBoard">
+                                <Card>
+                                      <CardHeader>
+                                        <i className=""></i><strong>Web bán giày</strong>
+                                      </CardHeader>
+                                      <CardBody>        
+                                        <h6>Start:   9:00 (3/01/2019)</h6>
+                                        <h6>  End:   9:00 (23/05/2019)</h6>
+                                        <Progress value={50} />
+                                        <div className="text-center">50%</div>
+                                      </CardBody>
+                                </Card> 
+                              </Link>
+                            </Col>  
+
+                            <Col>  
+                            <Link to="/ProjectTodo">
+                                <Card>
+                                      <CardHeader>
+                                        <i className=""></i><strong>Web bán quần áo</strong>
+                                      </CardHeader>
+                                      <CardBody>        
+                                        <h6>Start:   8:30 (23/01/2019)</h6>
+                                        <h6>  End:   8:30 (23/05/2019)</h6>
+                                        <Progress value={0} />
+                                        <div className="text-center">0%</div>
+                                      </CardBody>
+                                </Card> 
+                            </Link>
+                            </Col>  
+
+                            <Col>  
+                             <Link to="/DashBoard">
+                                <Card>
+                                      <CardHeader>
+                                        <i className=""></i><strong>Web bán đồ cổ</strong>
+                                      </CardHeader>
+                                      <CardBody>        
+                                        <h6>Start:   11:00 (23/01/2019)</h6>
+                                        <h6>  End:   11:00 (23/05/2019)</h6>
+                                        <Progress value={30} />
+                                        <div className="text-center">30%</div>
+                                      </CardBody>
+                                </Card> 
+                            </Link>
+                            </Col>  
+
+                            <Col>  
+                             <Link to="/ProjectDone">
+                                <Card>
+                                      <CardHeader>
+                                        <i className=""></i><strong>Web coffee house</strong>
+                                      </CardHeader>
+                                      <CardBody>        
+                                        <h6>Start:   8:00 (23/01/2019)</h6>
+                                        <h6>  End:   8:00 (23/05/2019)</h6>
+                                        <Progress value={100} />
+                                        <div className="text-center">100%</div>
+                                      </CardBody>
+                                </Card> 
+                              </Link>
+                            </Col>  
+                         </Row>
                       </CardBody>
                 </Card>    
 
                 <Card>
                       <CardHeader>
-                        <i className="fa fa-align-justify"></i><strong>Project</strong>
-                        <small> ongoing</small>
+                        <i className="fa fa-align-justify"></i><strong>Game</strong>
+                       
                       </CardHeader>
                       <CardBody>
-                       <Table hover bordered striped responsive size="sm">
-                          <thead>
-                          <tr>
-                           
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Start</th>
-                            <th>End</th>
-                            <th>Status</th>
-                                          
-                          </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <Link to="/Dashboard">
-                                  App android game caro
-                                </Link>
-                              </td>
-                              <td>Tạo ra app anroid đánh cờ caro trực tuyến</td>
-                              <td>8:00 23/03/2019</td>
-                              <td>8:00 23/05/2019</td>
-                              <td>
-                              <Progress value={50} />
-                              <div className="text-center">50%</div>
-                            </td>    
-                            </tr>
-                            <tr>
-                              <td>App android chat</td>
-                              <td>Tạo ra app anroid chat realtime</td>
-                              <td>9:00 23/03/2019</td>
-                              <td>9:00 20/05/2019</td>
-                              <td>
-                              <Progress value={30} />
-                              <div className="text-center">30%</div>
-                            </td>    
-                            </tr>
-                             <tr>
-                              <td>Web bán giày</td>
-                              <td>Tạo ra web bán giày thể thao, hỗ trợ mua bán online</td>
-                              <td>8:00 23/01/2019</td>
-                              <td>8:00 23/05/2019</td>
-                              <td>
-                              <Progress value={80} />
-                              <div className="text-center">80%</div>
-                            </td>    
-                            </tr>
-                          </tbody>
-                        </Table>  
+                         <Row>
+                            <Col>  
+                            <Link to="/DashBoard">
+                                <Card>
+                                      <CardHeader>
+                                        <i className=""></i><strong>Web bán giày</strong>
+                                      </CardHeader>
+                                      <CardBody>        
+                                        <h6>Start:   9:00 (3/01/2019)</h6>
+                                        <h6>  End:   9:00 (23/05/2019)</h6>
+                                        <Progress value={50} />
+                                        <div className="text-center">50%</div>
+                                      </CardBody>
+                                </Card> 
+                              </Link>
+                            </Col>  
+
+                            <Col>  
+                            <Link to="/ProjectTodo">
+                                <Card>
+                                      <CardHeader>
+                                        <i className=""></i><strong>Web bán quần áo</strong>
+                                      </CardHeader>
+                                      <CardBody>        
+                                        <h6>Start:   8:30 (23/01/2019)</h6>
+                                        <h6>  End:   8:30 (23/05/2019)</h6>
+                                        <Progress value={0} />
+                                        <div className="text-center">0%</div>
+                                      </CardBody>
+                                </Card> 
+                            </Link>
+                            </Col>  
+
+                            <Col>  
+                             <Link to="/DashBoard">
+                                <Card>
+                                      <CardHeader>
+                                        <i className=""></i><strong>Web bán đồ cổ</strong>
+                                      </CardHeader>
+                                      <CardBody>        
+                                        <h6>Start:   11:00 (23/01/2019)</h6>
+                                        <h6>  End:   11:00 (23/05/2019)</h6>
+                                        <Progress value={30} />
+                                        <div className="text-center">30%</div>
+                                      </CardBody>
+                                </Card> 
+                            </Link>
+                            </Col>  
+
+                            <Col>  
+                             <Link to="/ProjectDone">
+                                <Card>
+                                      <CardHeader>
+                                        <i className=""></i><strong>Web coffee house</strong>
+                                      </CardHeader>
+                                      <CardBody>        
+                                        <h6>Start:   8:00 (23/01/2019)</h6>
+                                        <h6>  End:   8:00 (23/05/2019)</h6>
+                                        <Progress value={100} />
+                                        <div className="text-center">100%</div>
+                                      </CardBody>
+                                </Card> 
+                              </Link>
+                            </Col>  
+                         </Row>
                       </CardBody>
                 </Card>    
 
                 <Card>
                       <CardHeader>
-                        <i className="fa fa-align-justify"></i><strong>Project</strong>
-                        <small> to do</small>
+                        <i className="fa fa-align-justify"></i><strong>Application</strong>
+                  
                       </CardHeader>
-                      <Table hover bordered striped responsive size="sm">
-                          <thead>
-                          <tr>
-                           
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Start</th>
-                            <th>End</th>
-                            <th>Status</th>
-                                          
-                          </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                 <Link to="/ProjectTodo">
-                                  App android game caro
-                                </Link>
-                              </td>
-                              <td>Tạo ra app anroid đánh cờ caro trực tuyến</td>
-                              <td>8:00 23/03/2019</td>
-                              <td>8:00 23/05/2019</td>
-                              <td>
-                              <Progress value={0} />
-                              <div className="text-center">0%</div>
-                            </td>    
-                            </tr>
-                            <tr>
-                              <td>App android chat</td>
-                              <td>Tạo ra app anroid chat realtime</td>
-                              <td>9:00 23/03/2019</td>
-                              <td>9:00 20/05/2019</td>
-                              <td>
-                              <Progress value={0} />
-                              <div className="text-center">0%</div>
-                            </td>    
-                            </tr>
-                             <tr>
-                              <td>Web bán giày</td>
-                              <td>Tạo ra web bán giày thể thao, hỗ trợ mua bán online</td>
-                              <td>8:00 23/01/2019</td>
-                              <td>8:00 23/05/2019</td>
-                              <td>
-                              <Progress value={0} />
-                              <div className="text-center">0%</div>
-                            </td>    
-                            </tr>
-                          </tbody>
-                        </Table>  
+                       <CardBody>
+                         <Row>
+                            <Col>  
+                            <Link to="/DashBoard">
+                                <Card>
+                                      <CardHeader>
+                                        <i className=""></i><strong>Web bán giày</strong>
+                                      </CardHeader>
+                                      <CardBody>        
+                                        <h6>Start:   9:00 (3/01/2019)</h6>
+                                        <h6>  End:   9:00 (23/05/2019)</h6>
+                                        <Progress value={50} />
+                                        <div className="text-center">50%</div>
+                                      </CardBody>
+                                </Card> 
+                              </Link>
+                            </Col>  
+
+                            <Col>  
+                            <Link to="/ProjectTodo">
+                                <Card>
+                                      <CardHeader>
+                                        <i className=""></i><strong>Web bán quần áo</strong>
+                                      </CardHeader>
+                                      <CardBody>        
+                                        <h6>Start:   8:30 (23/01/2019)</h6>
+                                        <h6>  End:   8:30 (23/05/2019)</h6>
+                                        <Progress value={0} />
+                                        <div className="text-center">0%</div>
+                                      </CardBody>
+                                </Card> 
+                            </Link>
+                            </Col>  
+
+                            <Col>  
+                             <Link to="/DashBoard">
+                                <Card>
+                                      <CardHeader>
+                                        <i className=""></i><strong>Web bán đồ cổ</strong>
+                                      </CardHeader>
+                                      <CardBody>        
+                                        <h6>Start:   11:00 (23/01/2019)</h6>
+                                        <h6>  End:   11:00 (23/05/2019)</h6>
+                                        <Progress value={30} />
+                                        <div className="text-center">30%</div>
+                                      </CardBody>
+                                </Card> 
+                            </Link>
+                            </Col>  
+
+                            <Col>  
+                             <Link to="/ProjectDone">
+                                <Card>
+                                      <CardHeader>
+                                        <i className=""></i><strong>Web coffee house</strong>
+                                      </CardHeader>
+                                      <CardBody>        
+                                        <h6>Start:   8:00 (23/01/2019)</h6>
+                                        <h6>  End:   8:00 (23/05/2019)</h6>
+                                        <Progress value={100} />
+                                        <div className="text-center">100%</div>
+                                      </CardBody>
+                                </Card> 
+                              </Link>
+                            </Col>  
+                         </Row>
+                      </CardBody>
                 </Card>    
           </Col>
         </Row>
       </Container>
+    </div>   
     );
   }
 }

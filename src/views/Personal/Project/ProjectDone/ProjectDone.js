@@ -24,8 +24,12 @@ import Demo from '../../../../homeNav'
 class ProjectDone extends Component {
   render() {
     return (
-      <Container>
+      <div>
+         <div>
       <Demo/>
+      </div>
+
+      <Container>
       <Row>
           <Col>  
 
@@ -369,6 +373,7 @@ class ProjectDone extends Component {
           </Col>
         </Row>
         </Container>
+        </div>
     );
   }
 }

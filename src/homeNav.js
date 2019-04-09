@@ -131,6 +131,11 @@ class PrimarySearchAppBar extends React.Component {
           </Link>
        
         </MenuItem>
+         <MenuItem onClick={this.handleMenuClose}>
+          <Link to="/AllProject">
+            Project
+          </Link>
+        </MenuItem>
         <MenuItem onClick={this.handleMenuClose}>
           <Link to="/login">
             Log out

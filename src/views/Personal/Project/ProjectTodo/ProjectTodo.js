@@ -31,8 +31,11 @@ import Demo from '../../../../homeNav'
 class ProjectTodo extends Component {
   render() {
     return (
-      <Container>
-      <Demo/>
+     <div>
+      <div>
+        <Demo/>
+      </div>
+       <Container>
       <Card>             
               <CardBody>
                 <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
@@ -69,6 +72,7 @@ class ProjectTodo extends Component {
               </CardFooter>
             </Card>
             </Container>
+            </div>
     );
   }
 }
