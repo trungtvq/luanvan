@@ -24,6 +24,15 @@ export default {
       class: ''             // optional class names space delimited list for title item ex: "text-center"
     },
     {
+      name: 'User Story',
+      icon: 'icon-pencil',
+    },
+    {
+      name: 'Covert',
+      url: '/Cover',
+      icon: 'icon-pencil',
+    },
+    {
       name: 'Product backlog',
       url: '/ProductBacklog/Detail',
       icon: 'icon-pencil',

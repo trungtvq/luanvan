@@ -28,6 +28,12 @@ const DashBoard = React.lazy(() => import('./views/Workspace/DashBoard'));
 //PO
 const Add_Po = React.lazy(() => import('./views/Workspace/Po/ProductBacklog/Add'));
 const Detail_Po = React.lazy(() => import('./views/Workspace/Po/ProductBacklog/Detail'));
+const UserStory_Detail = React.lazy(() => import('./views/Workspace/Po/UserStory/Detail'));
+const UserStory_Add = React.lazy(() => import('./views/Workspace/Po/UserStory/Add'));
+const Cover = React.lazy(() => import('./views/Workspace/Po/Cover'));
+
+
+
 const TestApollo = React.lazy(() => import('./views/Pages/TestApollo'));
 
 //Master
@@ -66,6 +72,12 @@ const routes = [
   //PO
   { path: '/ProductBacklog/Add',exact: true,  name: 'Add', component: Add_Po },
   { path: '/ProductBacklog/Detail',exact: true,  name: 'Detail', component: Detail_Po },
+  { path: '/UserStory/Detail',exact: true,  name: 'UserStory_Detail', component: UserStory_Detail },
+  { path: '/UserStory/Add',exact: true,  name: 'Add', component: UserStory_Add},
+  { path: '/Cover',exact: true,  name: 'Cover', component: Cover},
+
+
+
   { path: '/testapollo', name: 'Typography', component: TestApollo },
 
   //Master
