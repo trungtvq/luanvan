@@ -25,6 +25,7 @@ export default {
     },
     {
       name: 'User Story',
+       url: '/UserStory/Detail',
       icon: 'icon-pencil',
     },
     {
