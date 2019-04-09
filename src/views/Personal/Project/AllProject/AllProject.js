@@ -61,6 +61,21 @@ class AllProject extends Component {
                       <CardHeader>
                         <i className="fa fa-align-justify"></i><strong>Web</strong>
 
+                            <Row>       
+                              <Col xs="2" md="2">
+                                <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
+                              </Col> 
+                              <Col xs="2" md="2">
+                                <Input type="select" name="select" id="select">
+                                  <option value="0">Sort by Name</option>
+                                  <option value="1">Sort by Time start</option>
+                                  <option value="2">Sort by Progress</option>    
+                                </Input>
+                              </Col>   
+                              <Col xs="0" md="0">
+                                <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
+                              </Col> 
+                            </Row>  
                       </CardHeader>
                       <CardBody>
                          <Row>
@@ -134,7 +149,22 @@ class AllProject extends Component {
                 <Card>
                       <CardHeader>
                         <i className="fa fa-align-justify"></i><strong>Game</strong>
-                       
+                          
+                            <Row>       
+                              <Col xs="2" md="2">
+                                <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
+                              </Col> 
+                              <Col xs="2" md="2">
+                                <Input type="select" name="select" id="select">
+                                  <option value="0">Sort by Name</option>
+                                  <option value="1">Sort by Time start</option>
+                                  <option value="2">Sort by Progress</option>    
+                                </Input>
+                              </Col>   
+                              <Col xs="0" md="0">
+                                <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
+                              </Col> 
+                            </Row>
                       </CardHeader>
                       <CardBody>
                          <Row>
@@ -208,7 +238,22 @@ class AllProject extends Component {
                 <Card>
                       <CardHeader>
                         <i className="fa fa-align-justify"></i><strong>Application</strong>
-                  
+                                
+                    <Row>       
+                      <Col xs="2" md="2">
+                        <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
+                      </Col> 
+                      <Col xs="2" md="2">
+                        <Input type="select" name="select" id="select">
+                          <option value="0">Sort by Name</option>
+                          <option value="1">Sort by Time start</option>
+                          <option value="2">Sort by Progress</option>    
+                        </Input>
+                      </Col>   
+                      <Col xs="0" md="0">
+                        <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
+                      </Col> 
+                    </Row>
                       </CardHeader>
                        <CardBody>
                          <Row>
