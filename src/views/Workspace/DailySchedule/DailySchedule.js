@@ -34,10 +34,8 @@ class DailySchedule extends Component {
                   <thead>
                   <tr>
                     <th>Date</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Start</th>
-                    <th>End</th>
+                    <th>IdBacklog</th>
+                    <th>Task</th>
                     <th>Status</th>
                     <th>Review </th>                   
                   </tr>
@@ -45,10 +43,8 @@ class DailySchedule extends Component {
                   <tbody>
                     <tr>
                       <td>20/3/2019</td>
-                      <td>Đăng kí bằng mail</td>
+                      <td>1</td>
                       <td>Thiết kế giao diện nhập email</td>
-                      <td>8:00</td>
-                      <td>9:00</td>
                       <td>
                        <Input type="select" name="status" id="status">
                         <option value="0">To do</option>
@@ -58,28 +54,12 @@ class DailySchedule extends Component {
                     </td>
                       <td></td>
                     </tr>
+                    
                     <tr>
-                      <td>20/3/2019</td>
-                      <td>Đăng kí bằng mail</td>
-                      <td>Kết nối database</td>
-                      <td>9:00</td>
-                      <td>10:00</td>
-                     <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>20/3/2019</td>
-                      <td>Đăng kí bằng mail</td>
+                      <td>21/3/2019</td>
+                      <td>1</td>
                       <td>Viết api lấy dữ liệu từ input form</td>
-                      <td>10:00</td>
-                      <td>11:00</td>
-                       <td>
+                      <td>
                        <Input type="select" name="status" id="status">
                         <option value="0">To do</option>
                         <option value="1">Inprogress</option>
@@ -89,12 +69,10 @@ class DailySchedule extends Component {
                       <td></td>
                     </tr>
                     <tr>
-                      <td>20/3/2019</td>
-                      <td>Đăng kí bằng mail</td>
+                      <td>22/3/2019</td>
+                      <td>1</td>
                       <td>Code api check mail có hợp lệ không</td>
-                      <td>13:00</td>
-                      <td>14:00</td>
-                       <td>
+                      <td>
                        <Input type="select" name="status" id="status">
                         <option value="0">To do</option>
                         <option value="1">Inprogress</option>
@@ -104,11 +82,9 @@ class DailySchedule extends Component {
                       <td></td>
                     </tr>
                     <tr>
-                      <td>20/3/2019</td>
-                      <td>Đăng kí bằng mail</td>
+                      <td>23/3/2019</td>
+                      <td>2</td>
                       <td>Code api check mail có hợp lệ không</td>
-                      <td>13:00</td>
-                      <td>14:00</td>
                       <td>
                        <Input type="select" name="status" id="status">
                         <option value="0">To do</option>
@@ -118,51 +94,7 @@ class DailySchedule extends Component {
                     </td>
                       <td></td>
                     </tr>
-                    <tr>
-                      <td>20/3/2019</td>
-                      <td>Đăng kí bằng mail</td>
-                      <td>Code kiểm tra email đã đăng kí chưa</td>
-                      <td>14:00</td>
-                      <td>15:00</td>
-                      <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>20/3/2019</td>
-                      <td>Đăng kí bằng mail</td>
-                      <td>Code api lưu email vào database</td>
-                      <td>14:00</td>
-                      <td>15:00</td>
-                      <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>20/3/2019</td>
-                      <td>Đăng kí bằng mail</td>
-                      <td>Test code và fix bug</td>
-                      <td>15:00</td>
-                      <td>17:00</td>
-                      <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                      <td></td>
-                    </tr>
+                    
                   </tbody>
                 </Table>           
       
