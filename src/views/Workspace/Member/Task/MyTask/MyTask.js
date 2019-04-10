@@ -80,7 +80,7 @@ class MyTask extends Component {
                     <th>Start day</th>
                     <th>Deadline</th>
                     <th>Comment</th>
-                    <th>Progress</th>   
+                    <th>Status</th>   
                   
                   </tr>
                   </thead>
@@ -93,8 +93,11 @@ class MyTask extends Component {
                     <td>24/4/2019</td>
                     <td></td>
                     <td>
-                      <Progress value={100} />
-                      <div className="text-center">100%</div>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
                     </td>
                                                                    
                   </tr>
@@ -106,10 +109,13 @@ class MyTask extends Component {
                     <td>24/4/2019</td>
                    
                     <td>Có cần gửi mà tới email liên kết để xác nhận không?</td>
-                    <td>
-                      <Progress value={20} />
-                      <div className="text-center">20%</div>
-                    </td>      
+                     <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
+                    </td>
                                          
                   </tr>
                    <tr>
@@ -121,9 +127,12 @@ class MyTask extends Component {
                     
                     <td></td>
                     <td>
-                      <Progress value={0} />
-                      <div className="text-center">0%</div>
-                    </td>  
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
+                    </td>
                                                
                   </tr>                  
                    <tr>
@@ -134,8 +143,11 @@ class MyTask extends Component {
                     <td>24/4/2019</td>                
                     <td></td>                   
                     <td>
-                      <Progress value={0} />
-                      <div className="text-center">0%</div>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
                     </td>
                     
                   </tr>
