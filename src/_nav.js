@@ -39,6 +39,11 @@ export default {
       icon: 'icon-pencil',
     },
      {
+      name: 'Evaluate',
+      url: '/Evaluate',
+      icon: 'icon-layers',
+    },
+     {
       title: true,
       name: 'Master',
       wrapper: {            // optional wrapper object
