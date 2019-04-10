@@ -103,20 +103,20 @@ class DailySchedule extends Component {
                 <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
                   <FormGroup row>
                     <Col md="3">
-                      <Label htmlFor="text-input">Title</Label>
+                      <Label htmlFor="text-input">IdBacklog</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="text" id="text-input" name="text-input" placeholder="Title" />
+                      <Input type="text" id="IdBacklog" name="IdBacklog" placeholder="IdBacklog" />
                       
                     </Col>
                   </FormGroup>
                    <FormGroup row>
                     <Col md="3">
-                      <Label htmlFor="textarea-input">Description</Label>
+                      <Label htmlFor="textarea-input">Task</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
-                             placeholder="Content..." />
+                      <Input type="textarea" name="Task" id="Task" rows="9"
+                             placeholder="Task..." />
                     </Col>
                   </FormGroup>
                                   
@@ -128,22 +128,7 @@ class DailySchedule extends Component {
                       <Input type="date" id="date-input" name="date-input" placeholder="date" />
                     </Col>
                   </FormGroup>
-                  <FormGroup row>
-                    <Col md="3">
-                      <Label htmlFor="date-input">Start </Label>
-                    </Col>
-                    <Col xs="12" md="9">
-                      <Input type="time" id="time-input" name="time-input" placeholder="time" />
-                    </Col>
-                  </FormGroup>
-                   <FormGroup row>
-                    <Col md="3">
-                      <Label htmlFor="date-input">End </Label>
-                    </Col>
-                    <Col xs="12" md="9">
-                      <Input type="time" id="time-input" name="time-input" placeholder="time" />
-                    </Col>
-                  </FormGroup>
+                  
                    <FormGroup row>
                     <Col md="3">
                       <Label>Status</Label>
