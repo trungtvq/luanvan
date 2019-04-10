@@ -54,25 +54,8 @@ class MyTask extends Component {
         return (
            <Row>
           <Col>  
-          <Form> 
-           <FormGroup row>
-                    <Col md="2">
-                    </Col>
-                    <Col md="6">
-                      <Button type="submit" size="sm" color="danger"><i className="fa fa-dot-circle-o"></i> Inprogress</Button>
-                    </Col>         
-                    <Col xs="12" md="1">
-                      <Button type="submit" size="sm" color="success"><i className="fa fa-dot-circle-o"></i> Done</Button>
-                    </Col>
-            </FormGroup>
-          </Form>
-            <DualListBox
-                options={options}
-                selected={this.state.selected}
-                onChange={(selected) => {
-                    this.setState({ selected });
-                }}
-            />
+         
+         
            
             <Row>       
                     <Col xs="2" md="2">
@@ -98,7 +81,7 @@ class MyTask extends Component {
                     <th>Deadline</th>
                     <th>Comment</th>
                     <th>Progress</th>   
-                    <th></th>
+                  
                   </tr>
                   </thead>
                   <tbody>
@@ -113,9 +96,7 @@ class MyTask extends Component {
                       <Progress value={100} />
                       <div className="text-center">100%</div>
                     </td>
-                      <td>
-                      <Button disabled type="submit" size="sm" color="success" ><i class="fa fa-arrow-up"></i></Button>
-                    </td>                                                  
+                                                                   
                   </tr>
                    <tr>
                     <td>Đổi mật khẩu</td>
@@ -129,9 +110,7 @@ class MyTask extends Component {
                       <Progress value={20} />
                       <div className="text-center">20%</div>
                     </td>      
-                    <td>
-                      <Button disabled type="submit" size="sm" color="success"><i class="fa fa-arrow-up"></i></Button>
-                    </td>                         
+                                         
                   </tr>
                    <tr>
                     <td>Thay đổi avatar</td>
@@ -145,9 +124,7 @@ class MyTask extends Component {
                       <Progress value={0} />
                       <div className="text-center">0%</div>
                     </td>  
-                    <td>
-                      <Button type="submit" size="sm" color="success"><i class="fa fa-arrow-up"></i></Button>
-                    </td>                                
+                                               
                   </tr>                  
                    <tr>
                     <td>Thanh toán bằng paypal</td>
@@ -160,9 +137,7 @@ class MyTask extends Component {
                       <Progress value={0} />
                       <div className="text-center">0%</div>
                     </td>
-                    <td>
-                      <Button type="submit" size="sm" color="success"><i class="fa fa-arrow-up"></i></Button>
-                    </td>
+                    
                   </tr>
                   </tbody>
                 </Table>

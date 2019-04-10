@@ -39,13 +39,13 @@ const TestApollo = React.lazy(() => import('./views/Pages/TestApollo'));
 //Master
 const Add_Master = React.lazy(() => import('./views/Workspace/Master/Task/Add'));
 const Detail_Master = React.lazy(() => import('./views/Workspace/Master/Task/Detail'));
-const SprintBacklog_Master = React.lazy(() => import('./views/Workspace/Master/SprintBacklog'));
-const Evaluate_Master = React.lazy(() => import('./views/Workspace/Master/Evaluate'));
+
 
 //Member
 const MyTask_Member = React.lazy(() => import('./views/Workspace/Member/Task/MyTask'));
 const Register_Member = React.lazy(() => import('./views/Workspace/Member/Task/Register'));
-
+const SprintBacklog_Member = React.lazy(() => import('./views/Workspace/Member/SprintBacklog'));
+const Evaluate_Member = React.lazy(() => import('./views/Workspace/Member/Evaluate'));
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -83,11 +83,12 @@ const routes = [
   //Master
   { path: '/Master/Task/Add',exact: true,  name: 'Add', component: Add_Master },
   { path: '/Master/Task/Detail',exact: true,  name: 'Detail', component: Detail_Master },
-  { path: '/Master/SprintBacklog',exact: true,  name: 'SprintBacklog', component: SprintBacklog_Master },
-  { path: '/Master/Evaluate',exact: true,  name: 'Evaluate', component: Evaluate_Master },
+  
   //Member
   { path: '/Member/Task/MyTask',exact: true,  name: 'MyTask', component: MyTask_Member },
   { path: '/Member/Task/Register',exact: true,  name: 'Register', component: Register_Member },
+  { path: '/Member/SprintBacklog',exact: true,  name: 'SprintBacklog', component: SprintBacklog_Member },
+  { path: '/Member/Evaluate',exact: true,  name: 'Evaluate', component: Evaluate_Member },
   
 ];
 

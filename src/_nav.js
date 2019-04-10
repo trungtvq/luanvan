@@ -54,28 +54,24 @@ export default {
     },
      {
       name: 'SprintBacklog',
-      url: '/Master/SprintBacklog',
+      url: '/Member/SprintBacklog',
       icon: 'icon-pencil',
     },
      {
       name: 'Evaluate',
-      url: '/Master/Evaluate',
+      url: '/Member/Evaluate',
       icon: 'icon-layers',
     },
     {
       title: true,
-      name: 'Member',
+      name: 'Team Member',
       wrapper: {            // optional wrapper object
         element: '',        // required valid HTML5 element tag
         attributes: {}        // optional valid JS object with JS API naming ex: { className: "my-class", style: { fontFamily: "Verdana" }, id: "my-id"}
       },
       class: ''             // optional class names space delimited list for title item ex: "text-center"
     },
-     {
-      name: 'Task',
-      url: '/Task',
-      icon: 'icon-layers',
-    children: [
+    
         {
           name: 'MyTask',
           url: '/Member/Task/MyTask',
@@ -86,8 +82,7 @@ export default {
           url: '/Member/Task/Register',
           icon: '',
         },
-    ]
-    },
+
    
    
     {
