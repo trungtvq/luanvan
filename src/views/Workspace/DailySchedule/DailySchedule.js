@@ -39,7 +39,7 @@ class DailySchedule extends Component {
                     <th>Start</th>
                     <th>End</th>
                     <th>Status</th>
-                    <th>Issue </th>                   
+                    <th>Review </th>                   
                   </tr>
                   </thead>
                   <tbody>
@@ -49,7 +49,13 @@ class DailySchedule extends Component {
                       <td>Thiết kế giao diện nhập email</td>
                       <td>8:00</td>
                       <td>9:00</td>
-                      <td>done</td>
+                      <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
+                    </td>
                       <td></td>
                     </tr>
                     <tr>
@@ -58,7 +64,13 @@ class DailySchedule extends Component {
                       <td>Kết nối database</td>
                       <td>9:00</td>
                       <td>10:00</td>
-                      <td>done</td>
+                     <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
+                    </td>
                       <td></td>
                     </tr>
                     <tr>
@@ -67,7 +79,13 @@ class DailySchedule extends Component {
                       <td>Viết api lấy dữ liệu từ input form</td>
                       <td>10:00</td>
                       <td>11:00</td>
-                      <td>inprogress</td>
+                       <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
+                    </td>
                       <td></td>
                     </tr>
                     <tr>
@@ -76,7 +94,13 @@ class DailySchedule extends Component {
                       <td>Code api check mail có hợp lệ không</td>
                       <td>13:00</td>
                       <td>14:00</td>
-                      <td>to do</td>
+                       <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
+                    </td>
                       <td></td>
                     </tr>
                     <tr>
@@ -85,7 +109,13 @@ class DailySchedule extends Component {
                       <td>Code api check mail có hợp lệ không</td>
                       <td>13:00</td>
                       <td>14:00</td>
-                      <td>to do</td>
+                      <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
+                    </td>
                       <td></td>
                     </tr>
                     <tr>
@@ -94,7 +124,13 @@ class DailySchedule extends Component {
                       <td>Code kiểm tra email đã đăng kí chưa</td>
                       <td>14:00</td>
                       <td>15:00</td>
-                      <td>to do</td>
+                      <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
+                    </td>
                       <td></td>
                     </tr>
                     <tr>
@@ -103,7 +139,13 @@ class DailySchedule extends Component {
                       <td>Code api lưu email vào database</td>
                       <td>14:00</td>
                       <td>15:00</td>
-                      <td>to do</td>
+                      <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
+                    </td>
                       <td></td>
                     </tr>
                     <tr>
@@ -112,7 +154,13 @@ class DailySchedule extends Component {
                       <td>Test code và fix bug</td>
                       <td>15:00</td>
                       <td>17:00</td>
-                      <td>to do</td>
+                      <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
+                    </td>
                       <td></td>
                     </tr>
                   </tbody>
