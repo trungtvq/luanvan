@@ -76,9 +76,14 @@ export default {
       },
       class: ''             // optional class names space delimited list for title item ex: "text-center"
     },
+        {
+          name: 'Team Task',
+          url: '/Member/TeamTask',
+          icon: '',
+        },
     
         {
-          name: 'MyTask',
+          name: 'My Task',
           url: '/Member/Task/MyTask',
           icon: '',
         },

@@ -48,6 +48,8 @@ const MyTask_Member = React.lazy(() => import('./views/Workspace/Member/Task/MyT
 const Register_Member = React.lazy(() => import('./views/Workspace/Member/Task/Register'));
 const SprintBacklog_Member = React.lazy(() => import('./views/Workspace/Member/SprintBacklog'));
 const Evaluate_Member = React.lazy(() => import('./views/Workspace/Member/Evaluate'));
+const TeamTask_Member = React.lazy(() => import('./views/Workspace/Member/TeamTask'));
+
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -92,6 +94,8 @@ const routes = [
   { path: '/Member/Task/Register',exact: true,  name: 'Register', component: Register_Member },
   { path: '/Member/SprintBacklog',exact: true,  name: 'SprintBacklog', component: SprintBacklog_Member },
   { path: '/Member/Evaluate',exact: true,  name: 'Evaluate', component: Evaluate_Member },
+  { path: '/Member/TeamTask',exact: true,  name: 'TeamTask', component: TeamTask_Member },
+
   
 ];
 
