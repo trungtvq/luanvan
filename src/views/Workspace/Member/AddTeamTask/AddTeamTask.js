@@ -24,7 +24,7 @@ import {
   Label,
   Row,
 } from 'reactstrap';
-class Add extends Component {
+class AddTeamTask extends Component {
   render() {
     return (
       <Card>             
@@ -107,4 +107,4 @@ class Add extends Component {
   }
 }
 
-export default Add;
+export default AddTeamTask;

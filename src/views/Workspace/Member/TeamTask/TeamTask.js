@@ -24,6 +24,8 @@ PaginationItem,
 ListGroup,
 ListGroupItem,
 PaginationLink, } from 'reactstrap';
+import { Link } from 'react-router-dom';
+
 
 class TeamTask extends Component {
    constructor(props) {
@@ -49,6 +51,9 @@ class TeamTask extends Component {
       <Row>
           <Col>        
 
+                <Link to="/Member/AddTeamTask">
+                  <Button color="primary" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
+                </Link>  
                 <Row>       
                     <Col xs="2" md="2">
                       <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
