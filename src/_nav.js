@@ -45,7 +45,7 @@ export default {
     },
      {
       title: true,
-      name: 'Master',
+      name: 'Team member',
       wrapper: {            // optional wrapper object
         element: '',        // required valid HTML5 element tag
         attributes: {}        // optional valid JS object with JS API naming ex: { className: "my-class", style: { fontFamily: "Verdana" }, id: "my-id"}
@@ -53,8 +53,8 @@ export default {
       class: ''             // optional class names space delimited list for title item ex: "text-center"
     },
      {
-      name: 'Task',
-      url: '/Master/Task/Detail',
+      name: 'Velocity',
+      url: '/Member/Velocity',
       icon: 'icon-layers',
     },
      {
@@ -67,15 +67,7 @@ export default {
       url: '/Member/Evaluate',
       icon: 'icon-layers',
     },
-    {
-      title: true,
-      name: 'Team Member',
-      wrapper: {            // optional wrapper object
-        element: '',        // required valid HTML5 element tag
-        attributes: {}        // optional valid JS object with JS API naming ex: { className: "my-class", style: { fontFamily: "Verdana" }, id: "my-id"}
-      },
-      class: ''             // optional class names space delimited list for title item ex: "text-center"
-    },
+   
         {
           name: 'Team Task',
           url: '/Member/TeamTask',

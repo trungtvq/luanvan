@@ -38,10 +38,6 @@ const Evaluate_Po = React.lazy(() => import('./views/Workspace/Po/Evaluate'));
 
 const TestApollo = React.lazy(() => import('./views/Pages/TestApollo'));
 
-//Master
-
-const Detail_Master = React.lazy(() => import('./views/Workspace/Master/Task/Detail'));
-
 
 //Member
 const MyTask_Member = React.lazy(() => import('./views/Workspace/Member/Task/MyTask'));
@@ -50,6 +46,8 @@ const SprintBacklog_Member = React.lazy(() => import('./views/Workspace/Member/S
 const Evaluate_Member = React.lazy(() => import('./views/Workspace/Member/Evaluate'));
 const TeamTask_Member = React.lazy(() => import('./views/Workspace/Member/TeamTask'));
 const AddTeamTask_Member = React.lazy(() => import('./views/Workspace/Member/AddTeamTask'));
+const Velocity_Member = React.lazy(() => import('./views/Workspace/Member/Velocity'));
+
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -85,9 +83,6 @@ const routes = [
 
   { path: '/testapollo', name: 'Typography', component: TestApollo },
 
-  //Master
- 
-  { path: '/Master/Task/Detail',exact: true,  name: 'Detail', component: Detail_Master },
   
   //Member
   { path: '/Member/Task/MyTask',exact: true,  name: 'MyTask', component: MyTask_Member },
@@ -96,6 +91,7 @@ const routes = [
   { path: '/Member/Evaluate',exact: true,  name: 'Evaluate', component: Evaluate_Member },
   { path: '/Member/TeamTask',exact: true,  name: 'TeamTask', component: TeamTask_Member },
   { path: '/Member/AddTeamTask',exact: true,  name: 'AddTeamTask_Member', component: AddTeamTask_Member },
+  { path: '/Member/Velocity',exact: true,  name: 'Velocity_Member', component: Velocity_Member },
 
 
   
