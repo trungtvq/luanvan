@@ -26,7 +26,7 @@ ListGroupItem,
 PaginationLink, } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-class Detail extends Component {
+class Velocity extends Component {
    constructor(props) {
     super(props);
 
@@ -302,4 +302,4 @@ class Detail extends Component {
   }
 }
 
-export default Detail;
+export default Velocity;
