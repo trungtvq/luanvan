@@ -74,7 +74,8 @@ class TeamTask extends Component {
                     <th>Deadline</th>
                     <th>Assignee</th>                 
                     <th>Comment</th>
-                    <th>Progress</th>                  
+                    <th>Status</th>         
+                    <th>Review</th>                  
                   </tr>
                   </thead>
                   <tbody>
@@ -86,10 +87,15 @@ class TeamTask extends Component {
                     <td>24/4/2019</td>
                     <td>Hùng</td>
                     <td></td>
+
                     <td>
-                      <Progress value={100} />
-                      <div className="text-center">100%</div>
-                    </td>                                                    
+                       <Input type="select" name="status" id="status">
+                        <option value="0">Inprogress</option>
+                        <option value="1">to do</option>
+                        <option value="2">Done</option>
+                      </Input>
+                    </td> 
+                     <td></td>                                             
                   </tr>
                    <tr>
                     <td>Login bằng email</td>
@@ -99,10 +105,14 @@ class TeamTask extends Component {
                     <td>23/4/2019</td>
                     <td>Nhân</td>
                     <td>Có cần xác thực email không?</td>
-                    <td>
-                      <Progress value={85} />
-                      <div className="text-center">85%</div>
-                    </td>                                  
+                     <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">Inprogress</option>
+                        <option value="1">To do</option>
+                        <option value="2">Done</option>
+                      </Input>
+                    </td>  
+                     <td></td>                             
                   </tr>
                    <tr>
                     <td>Login bằng tài khoản</td>
@@ -112,10 +122,14 @@ class TeamTask extends Component {
                     <td>25/4/2019</td>
                     <td>Tâm</td>
                     <td></td>
-                    <td>
-                      <Progress value={10} />
-                      <div className="text-center">10%</div>
-                    </td>                                  
+                     <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">Inprogress</option>
+                        <option value="1">To do</option>
+                        <option value="2">Done</option>
+                      </Input>
+                    </td>   
+                     <td></td>                            
                   </tr>
                    <tr>
                     <td>Đổi mật khẩu</td>
@@ -128,9 +142,13 @@ class TeamTask extends Component {
                     </td>
                     <td>Có cần gửi mà tới email liên kết để xác nhận không?</td>
                     <td>
-                      <Progress value={0} />
-                      <div className="text-center">0%</div>
-                    </td>                                  
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
+                    </td>   
+                     <td></td>                       
                   </tr>
                    <tr>
                     <td>Thay đổi avatar</td>
@@ -142,10 +160,14 @@ class TeamTask extends Component {
                       <Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Register</Button>
                     </td>
                     <td></td>
-                    <td>
-                      <Progress value={0} />
-                      <div className="text-center">0%</div>
-                    </td>                                  
+                     <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
+                    </td>      
+                     <td></td>                         
                   </tr>                  
                    <tr>
                     <td>Thanh toán bằng paypal</td>
@@ -157,10 +179,14 @@ class TeamTask extends Component {
                       <Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Register</Button>
                     </td>
                     <td></td>
-                    <td>
-                      <Progress value={0} />
-                      <div className="text-center">0%</div>
+                     <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
                     </td>
+                     <td></td>
                   </tr>
                   </tbody>
                 </Table>
