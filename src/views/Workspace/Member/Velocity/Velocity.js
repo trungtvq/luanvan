@@ -43,7 +43,9 @@ class Velocity extends Component {
     this.setState({ collapse: !this.state.collapse });
   }
 
-  
+        
+                     
+                     
 
   render() {
     return (
@@ -66,9 +68,15 @@ class Velocity extends Component {
                         <Collapse isOpen={this.state.collapse} id="collapseExample">
                           <CardBody>
                           <ListGroup>
-                              <ListGroupItem>Người dùng đổi mật khẩu của tài khoản mà mình tạo</ListGroupItem>
-                              <ListGroupItem>Người dùng thay đổi avatar hiển thị ở giao diện chính</ListGroupItem>
-                              <ListGroupItem>Người dùng sử dụng paypal để trả phí</ListGroupItem>                            
+                              <ListGroupItem>
+                                <Progress value={0}>Người dùng đổi mật khẩu của tài khoản mà mình tạo</Progress>
+                              </ListGroupItem>
+                              <ListGroupItem>
+                                 <Progress value={0}>Người dùng thay đổi avatar hiển thị ở giao diện chính</Progress>
+                              </ListGroupItem>
+                              <ListGroupItem>
+                                 <Progress value={0}>Người dùng sử dụng paypal để trả phí</Progress>
+                              </ListGroupItem>                            
                             </ListGroup>
                           </CardBody>
                         </Collapse>
@@ -92,8 +100,12 @@ class Velocity extends Component {
                         <Collapse isOpen={this.state.collapse} id="collapseExample">
                           <CardBody>
                             <ListGroup>
-                              <ListGroupItem>Người dùng không cần tạo tài khoản mà sử dụng tài khoản email để đăng nhập</ListGroupItem>
-                              <ListGroupItem>Người dùng tạo tài khoản và sử dụng tài khoản này để đăng nhập</ListGroupItem>                                                   
+                              <ListGroupItem>
+                                 <Progress value={50}>Người dùng không cần tạo tài khoản mà sử dụng tài khoản email để đăng nhập</Progress>
+                              </ListGroupItem>
+                              <ListGroupItem>
+                                 <Progress value={70}>Người dùng tạo tài khoản và sử dụng tài khoản này để đăng nhập</Progress>
+                              </ListGroupItem>                                                   
                             </ListGroup>
                           </CardBody>
                         </Collapse>
@@ -117,7 +129,9 @@ class Velocity extends Component {
                         <Collapse isOpen={this.state.collapse} id="collapseExample">
                           <CardBody>
                             <ListGroup>
-                              <ListGroupItem>Người dùng không cần tạo tài khoản mà sử dụng tài khoản fb để đăng nhập</ListGroupItem>
+                              <ListGroupItem>
+                                <Progress value={100}>Người dùng không cần tạo tài khoản mà sử dụng tài khoản fb để đăng nhập</Progress>
+                              </ListGroupItem>
                             </ListGroup>
                           </CardBody>
                         </Collapse>
@@ -126,8 +140,6 @@ class Velocity extends Component {
                   
                  </FormGroup>                                          
                 </Form>
-
-                
           </Col>
         </Row>
     );
