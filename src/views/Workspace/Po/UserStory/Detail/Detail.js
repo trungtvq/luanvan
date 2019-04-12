@@ -25,10 +25,10 @@ class Detail extends Component {
                 <Table hover bordered striped responsive size="sm">
                   <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>As a...</th>
-                    <th>I want to be able to...</th>
-                    <th>So that...</th>
+                    <th>ID <i class="fa fa-sort"></i></th>
+                    <th>As a...<i class="fa fa-sort"></i></th>
+                    <th>I want to be able to... <i class="fa fa-sort"></i></th>
+                    <th>So that... <i class="fa fa-sort"></i></th>
                     <th>
                       <Link to="/UserStory/Add">
                       <Button color="primary" size="sm" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>

@@ -6,9 +6,7 @@ class Detail extends Component {
     return (
       <Row>
           <Col>         
-                <Link to="/ProductBacklog/Add">
-                  <Button color="primary" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
-                </Link> 
+                
                   <Row>       
                     <Col xs="2" md="2">
                       <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
@@ -27,15 +25,19 @@ class Detail extends Component {
                 <Table hover bordered striped responsive size="sm">
                   <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>As a...</th>
-                    <th>I want to be able to...</th>
-                    <th>So that...</th>
-                    <th>Priority</th>
-                    <th>Estimation</th>
-                    <th>Sprint </th>
-                    <th>Status</th>
-                    <th></th>
+                    <th>ID <i class="fa fa-sort"></i></th>
+                    <th>As a... <i class="fa fa-sort"></i></th>
+                    <th>I want to be able to... <i class="fa fa-sort"></i></th>
+                    <th>So that... <i class="fa fa-sort"></i></th>
+                    <th>Priority <i class="fa fa-sort"></i></th>
+                    <th>Estimation <i class="fa fa-sort"></i></th>
+                    <th>Sprint <i class="fa fa-sort"></i> </th>
+                    <th>Status < i class="fa fa-sort"></i></th>
+                    <th>
+                      <Link to="/ProductBacklog/Add">
+                      <Button color="primary" size="sm" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
+                      </Link> 
+                    </th>
                   </tr>
                   </thead>
                   <tbody>
