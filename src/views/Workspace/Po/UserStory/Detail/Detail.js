@@ -6,9 +6,7 @@ class Detail extends Component {
     return (
       <Row>
           <Col>         
-                <Link to="/UserStory/Add">
-                  <Button color="primary" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
-                </Link> 
+                
                   <Row>       
                     <Col xs="2" md="2">
                       <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
@@ -31,7 +29,11 @@ class Detail extends Component {
                     <th>As a...</th>
                     <th>I want to be able to...</th>
                     <th>So that...</th>
-                    <th></th>
+                    <th>
+                      <Link to="/UserStory/Add">
+                      <Button color="primary" size="sm" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
+                      </Link> 
+                    </th>
                   </tr>
                   </thead>
                   <tbody>
