@@ -74,11 +74,11 @@ class MyTask extends Component {
             <Table hover bordered striped responsive size="sm">
                   <thead>
                   <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Priority</th>
-                    <th>Start day</th>
-                    <th>Deadline</th>
+                    <th>Title <i class="fa fa-sort"></i></th>
+                    <th>Description <i class="fa fa-sort"></i></th>
+                    <th>Priority <i class="fa fa-sort"></i></th>
+                    <th>Start day <i class="fa fa-sort"></i></th>
+                    <th>Deadline <i class="fa fa-sort"></i></th>
                     <th>Comment</th>
                     <th>Status</th>   
                   

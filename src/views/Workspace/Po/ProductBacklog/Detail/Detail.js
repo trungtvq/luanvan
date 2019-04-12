@@ -28,7 +28,7 @@ class Detail extends Component {
                     <th>ID <i class="fa fa-sort"></i></th>
                     <th>As a... <i class="fa fa-sort"></i></th>
                     <th>I want to be able to... <i class="fa fa-sort"></i></th>
-                    <th>So that... <i class="fa fa-sort"></i></th>
+                    <th>So that...  <i class="fa fa-sort"></i></th>
                     <th>Priority <i class="fa fa-sort"></i></th>
                     <th>Estimation <i class="fa fa-sort"></i></th>
                     <th>Sprint <i class="fa fa-sort"></i> </th>

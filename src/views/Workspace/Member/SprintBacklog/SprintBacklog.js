@@ -9,13 +9,13 @@ class SprintBacklog extends Component {
                 <Table hover bordered striped responsive size="sm">
                   <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>As a...</th>
-                    <th>I want to be able to...</th>
-                    <th>So that...</th>
-                    <th>Priority</th>
-                    <th>Estimation</th>
-                    <th>Sprint </th>
+                    <th>ID <i class="fa fa-sort"></i></th>
+                    <th>As a... <i class="fa fa-sort"></i></th>
+                    <th>I want to be able to... <i class="fa fa-sort"></i></th>
+                    <th>So that... <i class="fa fa-sort"></i></th>
+                    <th>Priority <i class="fa fa-sort"></i></th>
+                    <th>Estimation <i class="fa fa-sort"></i></th>
+                    <th>Sprint <i class="fa fa-sort"></i></th>
                    
                   </tr>
                   </thead>
