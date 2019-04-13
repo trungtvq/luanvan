@@ -27,7 +27,9 @@ import { Badge,
   CardBody,
   Progress,
 
+
 } from 'reactstrap';
+
 import { Link } from 'react-router-dom';
 
 
@@ -58,6 +60,11 @@ class Main extends Component {
                 <NavLink href="/register" active>Sign up</NavLink>
               </NavItem>
             </Nav>
+
+
+               
+            
+
 
 
             <Card> 

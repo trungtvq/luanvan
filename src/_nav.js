@@ -31,7 +31,7 @@ export default {
     {
       name: 'Covert',
       url: '/Cover',
-      icon: 'icon-pencil',
+      icon: 'icon-directions',
     },
     {
       name: 'Product backlog',
@@ -55,12 +55,12 @@ export default {
      {
       name: 'Velocity',
       url: '/Member/Velocity',
-      icon: 'icon-layers',
+      icon: 'icon-rocket',
     },
      {
       name: 'SprintBacklog',
       url: '/Member/SprintBacklog',
-      icon: 'icon-pencil',
+      icon: 'icon-book-open',
     },
      {
       name: 'Evaluate',
@@ -71,18 +71,18 @@ export default {
         {
           name: 'Team Task',
           url: '/Member/TeamTask',
-          icon: '',
+          icon: 'icon-docs',
         },
     
         {
           name: 'My Task',
           url: '/Member/Task/MyTask',
-          icon: '',
+          icon: 'icon-doc',
         },
         {
           name: 'Register',
           url: '/Member/Task/Register',
-          icon: '',
+          icon: 'icon-plus',
         },
 
    
