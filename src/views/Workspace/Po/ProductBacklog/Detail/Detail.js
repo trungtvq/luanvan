@@ -2,6 +2,74 @@ import React, { Component } from 'react';
 import { Badge, Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Table, Pagination, PaginationItem, PaginationLink, } from 'reactstrap';
 import { Link } from 'react-router-dom';
 class Detail extends Component {
+   constructor(props) {
+    super(props);
+    this.state = {
+      data: [ 
+              {
+                "id":1,
+                "as":"admin",
+                "want":"See a list of all members and visitors",
+                "so":"I can monitor site visits",
+                "priority":1,
+                "estimation":3,
+                "sprint":1,
+                "status":"done",
+              },
+              {
+                "id":2,
+                "as":"admin",
+                "want":"Add new categories",
+                "so":"I can allow members to create engaging content",
+                 "priority":2,
+                "estimation":1,
+                "sprint":1,
+                "status":"done",
+              },
+              {
+                "id":3,
+                "as":"admin",
+                "want":"Add new security groups",
+                "so":"Security levels are approriate",
+                 "priority":3,
+                "estimation":4,
+                "sprint":1,
+                "status":"done",
+              },
+              {
+                "id":4,
+                "as":"admin",
+                "want":"Delete comment",
+                "so":"Offensive content is removed",
+                 "priority":4,
+                "estimation":6,
+                "sprint":1,
+                "status":"done",
+              },
+              {
+                "id":5,
+                "as":"admin",
+                "want":"Add new key words",
+                "so":"Content is easy to groups and search for",
+                "priority":5,
+                "estimation":1,
+                "sprint":1,
+                "status":"done",
+              },
+              {
+                "id":6,
+                "as":"member",
+                "want":"Update my account detail",
+                "so":"I can be contacted by admin",
+                "priority":5,
+                "estimation":3,
+                "sprint":2,
+                "status":"done",
+              }
+            ],
+      }
+    };
+
   render() {
     return (
       <Row>
@@ -34,217 +102,32 @@ class Detail extends Component {
                     </th>
                   </tr>
                   </thead>
-                  <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Admin</td>
-                    <td>See a list of all members and visitors</td>
-                    <td>I can monitor site visits</td>
-                    <td>1</td>
-                    <td>3</td>
-                    <td>1</td>
-                   <td>
+                  <tbody>{this.state.data.map(function(item, key) {
+             
+               return (
+                  <tr key = {key}>
+                      <td>{item.id}</td>
+                      <td>{item.as}</td>
+                      <td>{item.want}</td>
+                      <td>{item.so}</td>
+                      <td>{item.priority}</td>
+                      <td>{item.estimation}</td>
+                      <td>{item.sprint}</td>
+                      <td>
                        <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
+                        <option value="0">{item.status}</option>
+                        <option value="1">to do</option>
+                        <option value="2">inprogress</option>
+                         <option value="2">done</option>
                       </Input>
-                    </td>
-                    <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
+                      </td> 
+                        <td>
+                        <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
+                      </td>
                   </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Admin</td>
-                    <td>Add new categories</td>
-                    <td>I can allow members to create engaging content</td>
-                    <td>2</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                     <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Admin</td>
-                    <td>Add new security groups</td>
-                    <td>Security levels are approriate</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>1</td>
-                    <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                   <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Admin</td>
-                    <td>Add new key words</td>
-                    <td>Content is easy to groups and search for</td>
-                    <td>4</td>
-                    <td>6</td>
-                    <td>1</td>
-                   <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                     <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>Admin</td>
-                    <td>Delete comment</td>
-                    <td>Offensive content is removed</td>
-                    <td>5</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                     <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>6</td>
-                    <td>Member</td>
-                    <td>Update my account detail</td>
-                    <td>I can be contacted by admin</td>
-                    <td>5</td>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                     <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>7</td>
-                    <td>Member</td>
-                    <td>Change my password </td>
-                    <td>I can keep secure</td>
-                    <td>5</td>
-                    <td>1</td>
-                    <td>2</td>
-                   <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                    <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                   <tr>
-                    <td>8</td>
-                    <td>Member</td>
-                    <td>Update my email preferences </td>
-                    <td>I am not bombarded junk mail</td>
-                    <td>6</td>
-                    <td>2</td>
-                    <td>2</td>
-                   <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                    <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                   <tr>
-                    <td>9</td>
-                    <td>Visitor</td>
-                    <td>Create an account </td>
-                    <td>I can benifit from member discounts</td>
-                    <td>7</td>
-                    <td>1</td>
-                    <td></td>
-                    <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                    <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>10</td>
-                    <td>Visitor</td>
-                    <td>Suggest improvements</td>
-                    <td>I can contribute to the site usability </td>
-                    <td>8</td>
-                    <td>2</td>
-                    <td></td>
-                    <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                     <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>11</td>
-                    <td>Visitor</td>
-                    <td>View member profile </td>
-                    <td>I can know more about member </td>
-                    <td>9</td>
-                    <td>3</td>
-                    <td></td>
-                   <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                     <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                  </tbody>
+                )
+             
+             })}</tbody>
                 </Table>
                 
           </Col>
