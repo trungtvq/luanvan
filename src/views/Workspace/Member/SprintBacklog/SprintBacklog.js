@@ -2,6 +2,73 @@ import React, { Component } from 'react';
 import { Badge, Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Table, Pagination, PaginationItem, PaginationLink, } from 'reactstrap';
 
 class SprintBacklog extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [ 
+              {
+                "id":1,
+                "as":"admin",
+                "want":"See a list of all members and visitors",
+                "so":"I can monitor site visits",
+                "priority":1,
+                "estimation":3,
+                "sprint":1,
+                
+              },
+              {
+                "id":2,
+                "as":"admin",
+                "want":"Add new categories",
+                "so":"I can allow members to create engaging content",
+                 "priority":2,
+                "estimation":1,
+                "sprint":1,
+               
+              },
+              {
+                "id":3,
+                "as":"admin",
+                "want":"Add new security groups",
+                "so":"Security levels are approriate",
+                 "priority":3,
+                "estimation":4,
+                "sprint":1,
+                
+              },
+              {
+                "id":4,
+                "as":"admin",
+                "want":"Delete comment",
+                "so":"Offensive content is removed",
+                 "priority":4,
+                "estimation":6,
+                "sprint":1,
+               
+              },
+              {
+                "id":5,
+                "as":"admin",
+                "want":"Add new key words",
+                "so":"Content is easy to groups and search for",
+                "priority":5,
+                "estimation":1,
+                "sprint":1,
+              
+              },
+              {
+                "id":6,
+                "as":"member",
+                "want":"Update my account detail",
+                "so":"I can be contacted by admin",
+                "priority":5,
+                "estimation":3,
+                "sprint":2,
+              }
+            ],
+      }
+    };
+
   render() {
     return (
       <Row>
@@ -19,39 +86,21 @@ class SprintBacklog extends Component {
                    
                   </tr>
                   </thead>
-                  <tbody>               
-                  <tr>
-                    <td>6</td>
-                    <td>Member</td>
-                    <td>Update my account detail</td>
-                    <td>I can be contacted by admin</td>
-                    <td>5</td>
-                    <td>3</td>
-                    <td>2</td>
-                    
+                    <tbody>{this.state.data.map(function(item, key) {
+             
+               return (
+                  <tr key = {key}>
+                      <td>{item.id}</td>
+                      <td>{item.as}</td>
+                      <td>{item.want}</td>
+                      <td>{item.so}</td>
+                      <td>{item.priority}</td>
+                      <td>{item.estimation}</td>
+                      <td>{item.sprint}</td>
                   </tr>
-                  <tr>
-                    <td>7</td>
-                    <td>Member</td>
-                    <td>Change my password </td>
-                    <td>I can keep secure</td>
-                    <td>5</td>
-                    <td>1</td>
-                    <td>2</td>
-                   
-                  </tr>
-                   <tr>
-                    <td>8</td>
-                    <td>Member</td>
-                    <td>Update my email preferences </td>
-                    <td>I am not bombarded junk mail</td>
-                    <td>6</td>
-                    <td>2</td>
-                    <td>2</td>
-                   
-                  </tr>
-                  
-                  </tbody>
+                )
+             
+             })}</tbody>
                 </Table>
                
           </Col>
