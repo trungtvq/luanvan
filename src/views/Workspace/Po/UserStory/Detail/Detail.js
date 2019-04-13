@@ -2,7 +2,55 @@ import React, { Component } from 'react';
 import { Badge, Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Table, Pagination, PaginationItem, PaginationLink, } from 'reactstrap';
 import { Link } from 'react-router-dom';
 class Detail extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [ 
+              {
+                "id":1,
+                "as":"admin",
+                "want":"See a list of all members and visitors",
+                "so":"I can monitor site visits",
+              },
+              {
+                "id":2,
+                "as":"admin",
+                "want":"Add new categories",
+                "so":"I can allow members to create engaging content",
+              },
+              {
+                "id":3,
+                "as":"admin",
+                "want":"Add new security groups",
+                "so":"Security levels are approriate",
+              },
+              {
+                "id":4,
+                "as":"admin",
+                "want":"Delete comment",
+                "so":"Offensive content is removed",
+              },
+              {
+                "id":5,
+                "as":"admin",
+                "want":"Add new key words",
+                "so":"Content is easy to groups and search for",
+              },
+              {
+                "id":6,
+                "as":"member",
+                "want":"Update my account detail",
+                "so":"I can be contacted by admin",
+              }
+            ],
+      }
+    };
+
+
   render() {
+     const {
+      data
+    } = this.state;
     return (
       <Row>
           <Col>         
@@ -30,116 +78,21 @@ class Detail extends Component {
                     </th>
                   </tr>
                   </thead>
-                  <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Admin</td>
-                    <td>See a list of all members and visitors</td>
-                    <td>I can monitor site visits</td>
-                    
-                    <td>
+                 <tbody>{this.state.data.map(function(item, key) {
+             
+               return (
+                  <tr key = {key}>
+                      <td>{item.id}</td>
+                      <td>{item.as}</td>
+                      <td>{item.want}</td>
+                      <td>{item.so}</td>
+                      <td>
                       <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
                     </td>
                   </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Admin</td>
-                    <td>Add new categories</td>
-                    <td>I can allow members to create engaging content</td>
-                    <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Admin</td>
-                    <td>Add new security groups</td>
-                    <td>Security levels are approriate</td>
-                    <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Admin</td>
-                    <td>Add new key words</td>
-                    <td>Content is easy to groups and search for</td>
-                    <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>Admin</td>
-                    <td>Delete comment</td>
-                    <td>Offensive content is removed</td>
-                  
-                    <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>6</td>
-                    <td>Member</td>
-                    <td>Update my account detail</td>
-                    <td>I can be contacted by admin</td>
-                   
-                    <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>7</td>
-                    <td>Member</td>
-                    <td>Change my password </td>
-                    <td>I can keep secure</td>
-                   
-                    <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                   <tr>
-                    <td>8</td>
-                    <td>Member</td>
-                    <td>Update my email preferences </td>
-                    <td>I am not bombarded junk mail</td>
-                    
-                  
-                    <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                   <tr>
-                    <td>9</td>
-                    <td>Visitor</td>
-                    <td>Create an account </td>
-                    <td>I can benifit from member discounts</td>
-                  
-                    <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>10</td>
-                    <td>Visitor</td>
-                    <td>Suggest improvements</td>
-                    <td>I can contribute to the site usability </td>
-                  
-                    <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>11</td>
-                    <td>Visitor</td>
-                    <td>View member profile </td>
-                    <td>I can know more about member </td>
-                   
-                    <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                    </td>
-                  </tr>
-                  </tbody>
+                )
+             
+             })}</tbody>
                 </Table>
                
           </Col>
