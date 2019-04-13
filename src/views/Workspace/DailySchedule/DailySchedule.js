@@ -26,6 +26,44 @@ import {
   Row,
 } from 'reactstrap';
 class DailySchedule extends Component {
+   constructor(props) {
+    super(props);
+    this.state = {
+      data: [ 
+              {
+                "date":"20/3/2019",
+                "idBacklog":1,
+                "task":"Thiết kế giao diện nhập email",
+                "status":"done",
+                "review":"",
+              },
+              {
+                "date":"21/3/2019",
+                "idBacklog":1,
+                "task":"Viết api lấy dữ liệu từ input form",
+                "status":"done",
+                "review":"",
+              },
+              {
+                "date":"22/3/2019",
+                "idBacklog":1,
+                "task":"Code api check mail có hợp lệ không",
+                "status":"done",
+                "review":"",
+              },
+              {
+                "date":"23/3/2019",
+                "idBacklog":2,
+                "task":"Code api check mail có hợp lệ không",
+                "status":"to do",
+                "review":"",
+              },
+            
+            
+            ],
+      }
+    };
+
   render() {
     return (
       <Row>
@@ -37,65 +75,34 @@ class DailySchedule extends Component {
                     <th>IdBacklog</th>
                     <th>Task</th>
                     <th>Status</th>
-                    <th>Review </th>                   
+                    <th>Review </th>  
+                    <th> </th>                 
                   </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>20/3/2019</td>
-                      <td>1</td>
-                      <td>Thiết kế giao diện nhập email</td>
-                      <td>
+                   <tbody>{this.state.data.map(function(item, key) {
+             
+               return (
+                  <tr key = {key}>
+                      <td>{item.date}</td>
+                      <td>{item.idBacklog}</td>
+                      <td>{item.task}</td>
+                       <td>
                        <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
+                        <option value="0">{item.status}</option>
+                        <option value="1">to do</option>
+                        <option value="2">inprogress</option>
+                         <option value="2">done</option>
                       </Input>
-                    </td>
-                      <td></td>
-                    </tr>
-                    
-                    <tr>
-                      <td>21/3/2019</td>
-                      <td>1</td>
-                      <td>Viết api lấy dữ liệu từ input form</td>
+                      </td> 
+                      <td>{item.review}</td>
                       <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>22/3/2019</td>
-                      <td>1</td>
-                      <td>Code api check mail có hợp lệ không</td>
-                      <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>23/3/2019</td>
-                      <td>2</td>
-                      <td>Code api check mail có hợp lệ không</td>
-                      <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                      <td></td>
-                    </tr>
-                    
-                  </tbody>
+                        <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
+                      </td>
+                     
+                  </tr>
+                )
+             
+             })}</tbody>
                 </Table>           
       
             <Card>             
