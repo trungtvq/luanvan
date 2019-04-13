@@ -125,7 +125,7 @@ class MyTask extends Component {
                   <tr key = {key}>
                       <td>{item.Title}</td>
                       <td>{item.Description}</td>
-                      <td><Badge color="danger">{item.Priority}</Badge></td>
+                      <td>{item.Priority}</td>
                       <td>{item.Start}</td>
                       <td>{item.Deadline}</td>
                       <td>{item.Comment}</td>

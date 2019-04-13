@@ -36,6 +36,53 @@ class TeamTask extends Component {
     this.state = {
       collapse: true,
       fadeIn: true,
+       data: [ 
+              {
+                "Title":"Login bằng Fb",
+                "Description":"Người dùng không cần tạo tài khoản mà sử dụng tài khoản fb để đăng nhập",
+                "Priority":"High",
+                "Start ":"20/4/2019",
+                "Deadline":"24/4/2019",
+                "Assignee":"Hùng",
+                "Comment":"",
+                "status":"done",
+                "review":"",
+              },
+              {
+                "Title":"Đổi mật khẩu",
+                "Description":"Người dùng đổi mật khẩu của tài khoản mà mình tạo",
+                "Priority":"Low",
+                "Start ":"20/4/2019",
+                "Deadline":"24/4/2019",
+                 "Assignee":"Tâm",
+                "Comment":"Có cần gửi mà tới email liên kết để xác nhận không?",
+                "status":"done",
+                "review":"",
+              },
+              {
+                "Title":"Thay đổi avatar",
+                "Description":"Người dùng thay đổi avatar hiển thị ở giao diện chính",
+                "Priority":"Low",
+                "Start ":"20/4/2019",
+                "Deadline":"24/4/2019",
+                 "Assignee":"Trung",
+                "Comment":"",
+                "status":"done",
+                "review":"",
+              },
+              {
+                "Title":"Thanh toán bằng paypal",
+                "Description":"Người dùng sử dụng paypal để trả phí",
+                "Priority":"Low",
+                "Start ":"20/4/2019",
+                "Deadline":"24/4/2019",
+                "Assignee":"",
+                "Comment":"",
+                "status":"done",
+                "review":"",
+              },
+              
+            ],
       
     };
   }
@@ -51,9 +98,7 @@ class TeamTask extends Component {
       <Row>
           <Col>        
 
-                <Link to="/Member/AddTeamTask">
-                  <Button color="primary" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
-                </Link>  
+                
                 <Row>       
                     <Col xs="2" md="2">
                       <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
@@ -74,120 +119,42 @@ class TeamTask extends Component {
                     <th>Assignee</th>                 
                     <th>Comment</th>
                     <th>Status</th>         
-                    <th>Review</th>                  
+                    <th>Review</th>   
+                    <th>
+                      <Link to="/Member/AddTeamTask">
+                      <Button color="primary" className="sm" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
+                      </Link>  
+                    </th>               
                   </tr>
                   </thead>
-                  <tbody>
-                  <tr>
-                    <td>Login bằng Fb</td>
-                    <td>Người dùng không cần tạo tài khoản mà sử dụng tài khoản fb để đăng nhập</td>
-                    <td><Badge color="danger">High</Badge></td>
-                    <td>20/4/2019</td>
-                    <td>24/4/2019</td>
-                    <td>Hùng</td>
-                    <td></td>
-
-                    <td>
+                   <tbody>{this.state.data.map(function(item, key) {
+             
+               return (
+                  <tr key = {key}>
+                      <td>{item.Title}</td>
+                      <td>{item.Description}</td>
+                      <td>{item.Priority}</td>
+                      <td>{item.Start}</td>
+                      <td>{item.Deadline}</td>
+                      <td>{item.Assignee}</td>
+                      <td>{item.Comment}</td>
+                     
+                      <td>
                        <Input type="select" name="status" id="status">
-                        <option value="0">Inprogress</option>
+                        <option value="0">{item.status}</option>
                         <option value="1">to do</option>
-                        <option value="2">Done</option>
+                        <option value="2">inprogress</option>
+                         <option value="2">done</option>
                       </Input>
-                    </td> 
-                     <td></td>                                             
+                      </td> 
+                      <td>{item.review}</td>
+                      <td>
+                        <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
+                      </td>
                   </tr>
-                   <tr>
-                    <td>Login bằng email</td>
-                    <td>Người dùng không cần tạo tài khoản mà sử dụng tài khoản email để đăng nhập</td>
-                    <td><Badge color="danger">High</Badge></td>
-                    <td>20/4/2019</td>
-                    <td>23/4/2019</td>
-                    <td>Nhân</td>
-                    <td>Có cần xác thực email không?</td>
-                     <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">Inprogress</option>
-                        <option value="1">To do</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>  
-                     <td></td>                             
-                  </tr>
-                   <tr>
-                    <td>Login bằng tài khoản</td>
-                    <td>Người dùng tạo tài khoản và sử dụng tài khoản này để đăng nhập</td>
-                    <td><Badge color="warning">Medium</Badge></td>
-                    <td>21/4/2019</td>
-                    <td>25/4/2019</td>
-                    <td>Tâm</td>
-                    <td></td>
-                     <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">Inprogress</option>
-                        <option value="1">To do</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>   
-                     <td></td>                            
-                  </tr>
-                   <tr>
-                    <td>Đổi mật khẩu</td>
-                    <td>Người dùng đổi mật khẩu của tài khoản mà mình tạo</td>
-                    <td><Badge color="primary">Low</Badge></td>
-                    <td>20/4/2019</td>
-                    <td>24/4/2019</td>
-                    <td>
-                      <Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Register</Button>
-                    </td>
-                    <td>Có cần gửi mà tới email liên kết để xác nhận không?</td>
-                    <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>   
-                     <td></td>                       
-                  </tr>
-                   <tr>
-                    <td>Thay đổi avatar</td>
-                    <td>Người dùng thay đổi avatar hiển thị ở giao diện chính</td>
-                    <td><Badge color="primary">Low</Badge></td>
-                    <td>20/4/2019</td>
-                    <td>24/4/2019</td>
-                    <td>
-                      <Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Register</Button>
-                    </td>
-                    <td></td>
-                     <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>      
-                     <td></td>                         
-                  </tr>                  
-                   <tr>
-                    <td>Thanh toán bằng paypal</td>
-                    <td>Người dùng sử dụng paypal để trả phí</td>
-                    <td><Badge color="primary">Low</Badge></td>
-                    <td>20/4/2019</td>
-                    <td>24/4/2019</td>
-                    <td>
-                      <Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Register</Button>
-                    </td>
-                    <td></td>
-                     <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                     <td></td>
-                  </tr>
-                  </tbody>
+                )
+             
+             })}</tbody>
                 </Table>
                 
           </Col>
