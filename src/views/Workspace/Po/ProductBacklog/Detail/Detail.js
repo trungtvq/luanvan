@@ -49,13 +49,15 @@ class Detail extends Component {
                     <td>1</td>
                     <td>3</td>
                     <td>1</td>
-                    <td>
-                      <Badge color="success">Done</Badge>
+                   <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
                     </td>
                     <td>
-                      <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
                       <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                      <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                     </td>
                   </tr>
                   <tr>
@@ -67,12 +69,14 @@ class Detail extends Component {
                     <td>1</td>
                     <td>1</td>
                     <td>
-                      <Badge color="success">Done</Badge>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
                     </td>
-                    <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
+                     <td>
                       <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                      <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                     </td>
                   </tr>
                   <tr>
@@ -84,12 +88,14 @@ class Detail extends Component {
                     <td>4</td>
                     <td>1</td>
                     <td>
-                      <Badge color="success">Done</Badge>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
                     </td>
-                    <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
+                   <td>
                       <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                      <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                     </td>
                   </tr>
                   <tr>
@@ -100,13 +106,15 @@ class Detail extends Component {
                     <td>4</td>
                     <td>6</td>
                     <td>1</td>
-                    <td>
-                      <Badge color="success">Done</Badge>
+                   <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
                     </td>
-                    <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
+                     <td>
                       <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                      <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                     </td>
                   </tr>
                   <tr>
@@ -118,12 +126,14 @@ class Detail extends Component {
                     <td>1</td>
                     <td>1</td>
                     <td>
-                      <Badge color="success">Done</Badge>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
                     </td>
-                    <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
+                     <td>
                       <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                      <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                     </td>
                   </tr>
                   <tr>
@@ -135,12 +145,14 @@ class Detail extends Component {
                     <td>3</td>
                     <td>2</td>
                     <td>
-                      <Badge color="warning">Work in progress</Badge>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
                     </td>
-                    <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
+                     <td>
                       <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                      <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                     </td>
                   </tr>
                   <tr>
@@ -151,13 +163,15 @@ class Detail extends Component {
                     <td>5</td>
                     <td>1</td>
                     <td>2</td>
-                    <td>
-                      <Badge color="warning">Work in progress</Badge>
+                   <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
                     </td>
                     <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
                       <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                      <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                     </td>
                   </tr>
                    <tr>
@@ -168,13 +182,15 @@ class Detail extends Component {
                     <td>6</td>
                     <td>2</td>
                     <td>2</td>
-                    <td>
-                      <Badge color="warning">Work in progress</Badge>
+                   <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
                     </td>
                     <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
                       <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                      <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                     </td>
                   </tr>
                    <tr>
@@ -186,12 +202,14 @@ class Detail extends Component {
                     <td>1</td>
                     <td></td>
                     <td>
-                      <Badge color="primary">To be started</Badge>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
                     </td>
                     <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
                       <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                      <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                     </td>
                   </tr>
                   <tr>
@@ -203,12 +221,14 @@ class Detail extends Component {
                     <td>2</td>
                     <td></td>
                     <td>
-                      <Badge color="primary">To be started</Badge>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
                     </td>
-                    <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
+                     <td>
                       <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                      <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                     </td>
                   </tr>
                   <tr>
@@ -219,13 +239,15 @@ class Detail extends Component {
                     <td>9</td>
                     <td>3</td>
                     <td></td>
-                    <td>
-                      <Badge color="primary">To be started</Badge>
+                   <td>
+                       <Input type="select" name="status" id="status">
+                        <option value="0">To do</option>
+                        <option value="1">Inprogress</option>
+                        <option value="2">Done</option>
+                      </Input>
                     </td>
-                    <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
+                     <td>
                       <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                      <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                     </td>
                   </tr>
                   </tbody>
