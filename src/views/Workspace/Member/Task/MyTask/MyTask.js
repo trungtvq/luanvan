@@ -41,6 +41,45 @@ class MyTask extends Component {
       collapse: true,
       fadeIn: true,
       selected: ['one'],
+       data: [ 
+              {
+                "Title":"Login bằng Fb",
+                "Description":"Người dùng không cần tạo tài khoản mà sử dụng tài khoản fb để đăng nhập",
+                "Priority":"High",
+                "Start ":"20/4/2019",
+                "Deadline":"24/4/2019",
+                "Comment":"",
+                "status":"done",
+              },
+              {
+                "Title":"Đổi mật khẩu",
+                "Description":"Người dùng đổi mật khẩu của tài khoản mà mình tạo",
+                "Priority":"Low",
+                "Start ":"20/4/2019",
+                "Deadline":"24/4/2019",
+                "Comment":"Có cần gửi mà tới email liên kết để xác nhận không?",
+                "status":"done",
+              },
+              {
+                "Title":"Thay đổi avatar",
+                "Description":"Người dùng thay đổi avatar hiển thị ở giao diện chính",
+                "Priority":"Low",
+                "Start ":"20/4/2019",
+                "Deadline":"24/4/2019",
+                "Comment":"",
+                "status":"done",
+              },
+              {
+                "Title":"Thanh toán bằng paypal",
+                "Description":"Người dùng sử dụng paypal để trả phí",
+                "Priority":"Low",
+                "Start ":"20/4/2019",
+                "Deadline":"24/4/2019",
+                "Comment":"",
+                "status":"done",
+              },
+              
+            ],
     };
   }
 
@@ -51,6 +90,7 @@ class MyTask extends Component {
   
 
   render() {
+
         return (
            <Row>
           <Col>  
@@ -73,80 +113,37 @@ class MyTask extends Component {
                     <th>Description <i class="fa fa-sort"></i></th>
                     <th>Priority <i class="fa fa-sort"></i></th>
                     <th>Start day <i class="fa fa-sort"></i></th>
-                    <th>Deadline <i class="fa fa-sort"></i></th>
+                    <th>Deadline <i class="fa fa-sort"></i></th>   
                     <th>Comment</th>
                     <th>Status</th>   
-                  
+                    <th></th>
                   </tr>
                   </thead>
-                  <tbody>
-                  <tr>
-                    <td>Login bằng Fb</td>
-                    <td>Người dùng không cần tạo tài khoản mà sử dụng tài khoản fb để đăng nhập</td>
-                    <td><Badge color="danger">High</Badge></td>
-                    <td>20/4/2019</td>
-                    <td>24/4/2019</td>
-                    <td></td>
-                    <td>
+                   <tbody>{this.state.data.map(function(item, key) {
+             
+               return (
+                  <tr key = {key}>
+                      <td>{item.Title}</td>
+                      <td>{item.Description}</td>
+                      <td><Badge color="danger">{item.Priority}</Badge></td>
+                      <td>{item.Start}</td>
+                      <td>{item.Deadline}</td>
+                      <td>{item.Comment}</td>
+                      <td>
                        <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
+                        <option value="0">{item.status}</option>
+                        <option value="1">to do</option>
+                        <option value="2">inprogress</option>
+                         <option value="2">done</option>
                       </Input>
-                    </td>
-                                                                   
+                      </td> 
+                        <td>
+                        <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
+                      </td>
                   </tr>
-                   <tr>
-                    <td>Đổi mật khẩu</td>
-                    <td>Người dùng đổi mật khẩu của tài khoản mà mình tạo</td>
-                    <td><Badge color="primary">Low</Badge></td>
-                    <td>20/4/2019</td>
-                    <td>24/4/2019</td>
-                   
-                    <td>Có cần gửi mà tới email liên kết để xác nhận không?</td>
-                     <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                                         
-                  </tr>
-                   <tr>
-                    <td>Thay đổi avatar</td>
-                    <td>Người dùng thay đổi avatar hiển thị ở giao diện chính</td>
-                    <td><Badge color="primary">Low</Badge></td>
-                    <td>20/4/2019</td>
-                    <td>24/4/2019</td>
-                    
-                    <td></td>
-                    <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                                               
-                  </tr>                  
-                   <tr>
-                    <td>Thanh toán bằng paypal</td>
-                    <td>Người dùng sử dụng paypal để trả phí</td>
-                    <td><Badge color="primary">Low</Badge></td>
-                    <td>20/4/2019</td>
-                    <td>24/4/2019</td>                
-                    <td></td>                   
-                    <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">To do</option>
-                        <option value="1">Inprogress</option>
-                        <option value="2">Done</option>
-                      </Input>
-                    </td>
-                    
-                  </tr>
-                  </tbody>
+                )
+             
+             })}</tbody>
                 </Table>
            
             </Col>
