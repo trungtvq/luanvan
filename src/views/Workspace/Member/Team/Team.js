@@ -96,7 +96,7 @@ class Team extends Component {
 
             <Card>  
              <CardHeader>
-                    <i className="fa fa-align-justify"></i><strong>Find ang add member</strong>
+                    <i className="fa fa-align-justify"></i><strong>Find and add member</strong>
                       <Row>       
                         <Col xs="2" md="2">
                           <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
