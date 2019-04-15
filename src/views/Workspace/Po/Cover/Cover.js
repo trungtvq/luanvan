@@ -19,6 +19,65 @@ Label,
  PaginationLink, } from 'reactstrap';
 import { Link } from 'react-router-dom';
 class Cover extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dataUserStory: [ 
+              {
+               
+                "as":"admin",
+                "want":"See a list of all members and visitors",
+                "so":"I can monitor site visits",
+              },
+              {
+                
+                "as":"admin",
+                "want":"Add new categories",
+                "so":"I can allow members to create engaging content",
+              },
+              {
+                
+                "as":"admin",
+                "want":"Add new security groups",
+                "so":"Security levels are approriate",
+              },
+              
+            ],
+        dataProductBacklog: [ 
+              {
+                "as":"admin",
+                "want":"See a list of all members and visitors",
+                "so":"I can monitor site visits",
+                "priority":1,
+                "estimation":3,
+                "sprint":1,
+              },
+              {
+                
+                "as":"admin",
+                "want":"Add new categories",
+                "so":"I can allow members to create engaging content",
+                 "priority":2,
+                "estimation":1,
+                "sprint":1,
+               
+              },
+              {
+               
+                "as":"admin",
+                "want":"Add new security groups",
+                "so":"Security levels are approriate",
+                 "priority":3,
+                "estimation":4,
+                "sprint":1,
+               
+              },
+            
+            ],
+      }
+    };
+
+
   render() {
     return (
       <Row>
@@ -30,121 +89,48 @@ class Cover extends Component {
                         <i className="fa fa-align-justify"></i><strong>User Story</strong>
                       </CardHeader>
                       <CardBody>
-                        
-                           
-                                <Card>
-                                      <CardHeader>
-                                        <i className=""></i><strong>As admin</strong>
-                                      </CardHeader>
-                                      <CardBody>        
-                                        <h6>I want to be able to:  See a list of all members and visitors</h6>
-                                        <h6> So that:   I can monitor site visits</h6>
-                                        <Row>
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Priority</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>
-                                          </Col>
-                                         
-                                          <Col md="2">                    
-                                          </Col>
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Estimation</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>                            
-                                          </Col>
-
-                                          <Col md="2">                   
-                                          </Col>
-
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Sprint</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>                            
-                                          </Col>
-                                        </Row>
-                                        <Button type="submit" size="sm" color="success" align="center"><i class="fa fa-arrow-right"></i></Button>
-                                      </CardBody>
-                                </Card> 
                                 
-                                <Card>
-                                      <CardHeader>
-                                        <i className=""></i><strong>As admin</strong>
-                                      </CardHeader>
-                                      <CardBody>        
-                                        <h6>I want to be able to:  See a list of all members and visitors</h6>
-                                        <h6> So that:   I can monitor site visits</h6>
-                                        <Row>
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Priority</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>
-                                          </Col>
-                                         
-                                          <Col md="2">                    
-                                          </Col>
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Estimation</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>                            
-                                          </Col>
+                                {this.state.dataUserStory.map(function(item, key) {
+                               return (
+                                    <Card>
+                                          <CardHeader>
+                                            <i className=""></i><strong>As: {item.as}</strong>
+                                          </CardHeader>
+                                          <CardBody>        
+                                            <h6>I want: {item.want}</h6>
+                                            <h6>So that:  {item.so}</h6>
+                                            <Row>
+                                              <Col md="1">
+                                                <Label htmlFor="text-input">Priority</Label>
+                                              </Col>
+                                              <Col xs="12" md="1">
+                                                <Input type="text" name="text-input" id="text-input" rows="9"/>
+                                              </Col>
+                                             
+                                              <Col md="2">                    
+                                              </Col>
+                                              <Col md="1">
+                                                <Label htmlFor="text-input">Estimation</Label>
+                                              </Col>
+                                              <Col xs="12" md="1">
+                                                <Input type="text" name="text-input" id="text-input" rows="9"/>                            
+                                              </Col>
 
-                                          <Col md="2">                   
-                                          </Col>
+                                              <Col md="2">                   
+                                              </Col>
 
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Sprint</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>                            
-                                          </Col>
-                                        </Row>
-                                        <Button type="submit" size="sm" color="success" align="center"><i class="fa fa-arrow-right"></i></Button>
-                                      </CardBody>
-                                </Card> 
-
-                                <Card>
-                                      <CardHeader>
-                                        <i className=""></i><strong>As admin</strong>
-                                      </CardHeader>
-                                      <CardBody>        
-                                        <h6>I want to be able to:  See a list of all members and visitors</h6>
-                                        <h6> So that:   I can monitor site visits</h6>
-                                        <Row>
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Priority</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>
-                                          </Col>
-                                         
-                                          <Col md="2">                    
-                                          </Col>
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Estimation</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>                            
-                                          </Col>
-
-                                          <Col md="2">                   
-                                          </Col>
-
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Sprint</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>                            
-                                          </Col>
-                                        </Row>
-                                        <Button type="submit" size="sm" color="success" align="center"><i class="fa fa-arrow-right"></i></Button>
-                                      </CardBody>
-                                </Card> 
+                                              <Col md="1">
+                                                <Label htmlFor="text-input">Sprint</Label>
+                                              </Col>
+                                              <Col xs="12" md="1">
+                                                <Input type="text" name="text-input" id="text-input" rows="9"/>                            
+                                              </Col>
+                                            </Row>
+                                            <Button type="submit" size="sm" color="success" align="center"><i class="fa fa-arrow-right"></i></Button>
+                                          </CardBody>
+                                    </Card> 
+                                 )
+                              })}
 
                       </CardBody>
                 </Card> 
@@ -156,121 +142,42 @@ class Cover extends Component {
                         <i className="fa fa-align-justify"></i><strong>Product backlog</strong>
                       </CardHeader>
                        <CardBody>
-                        
-                           
-                                <Card>
-                                      <CardHeader>
-                                        <i className=""></i><strong>As admin</strong>
-                                      </CardHeader>
-                                      <CardBody>        
-                                        <h6>I want to be able to:  See a list of all members and visitors</h6>
-                                        <h6> So that:   I can monitor site visits</h6>
-                                        <Row>
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Priority</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>
-                                          </Col>
-                                         
-                                          <Col md="2">                    
-                                          </Col>
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Estimation</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>                            
-                                          </Col>
+                        {this.state.dataProductBacklog.map(function(item, key) {
+                          return (
+                                    <Card>
+                                          <CardHeader>
+                                            <i className=""></i><strong>As {item.as}</strong>
+                                          </CardHeader>
+                                          <CardBody>        
+                                            <h6>I want :  {item.want}</h6>
+                                            <h6> So that:   {item.so}</h6>
+                                            <Row>
+                                              <Col md="3">
+                                                <h6>Priority:  {item.priority}</h6>
+                                              </Col>
+                                              
+                                             
+                                              <Col md="1">                    
+                                              </Col>
+                                              <Col md="3">
+                                                 <h6>Estimation:  {item.estimation}</h6>
+                                              </Col>
+                                             
 
-                                          <Col md="2">                   
-                                          </Col>
+                                              <Col md="1">                   
+                                              </Col>
 
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Sprint</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>                            
-                                          </Col>
-                                        </Row>
-                                        <Button type="submit" size="sm" color="success" align="center"><i class="fa fa-arrow-left"></i></Button>
-                                      </CardBody>
-                                </Card> 
-                                
-                                <Card>
-                                      <CardHeader>
-                                        <i className=""></i><strong>As admin</strong>
-                                      </CardHeader>
-                                      <CardBody>        
-                                        <h6>I want to be able to:  See a list of all members and visitors</h6>
-                                        <h6> So that:   I can monitor site visits</h6>
-                                        <Row>
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Priority</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>
-                                          </Col>
-                                         
-                                          <Col md="2">                    
-                                          </Col>
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Estimation</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>                            
-                                          </Col>
-
-                                          <Col md="2">                   
-                                          </Col>
-
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Sprint</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>                            
-                                          </Col>
-                                        </Row>
-                                        <Button type="submit" size="sm" color="success" align="center"><i class="fa fa-arrow-left"></i></Button>
-                                      </CardBody>
-                                </Card> 
-
-                                <Card>
-                                      <CardHeader>
-                                        <i className=""></i><strong>As admin</strong>
-                                      </CardHeader>
-                                      <CardBody>        
-                                        <h6>I want to be able to:  See a list of all members and visitors</h6>
-                                        <h6> So that:   I can monitor site visits</h6>
-                                        <Row>
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Priority</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>
-                                          </Col>
-                                         
-                                          <Col md="2">                    
-                                          </Col>
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Estimation</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>                            
-                                          </Col>
-
-                                          <Col md="2">                   
-                                          </Col>
-
-                                          <Col md="1">
-                                            <Label htmlFor="text-input">Sprint</Label>
-                                          </Col>
-                                          <Col xs="12" md="1">
-                                            <Input type="text" name="text-input" id="text-input" rows="9"/>                            
-                                          </Col>
-                                        </Row>
-                                        <Button type="submit" size="sm" color="success" align="center"><i class="fa fa-arrow-left"></i></Button>
-                                      </CardBody>
-                                </Card> 
+                                              <Col md="3">
+                                                <h6>Sprint:  {item.sprint}</h6>
+                                              </Col>
+                                             
+                                            </Row>
+                                            <Button type="submit" size="sm" color="success" align="center"><i class="fa fa-arrow-left"></i></Button>
+                                          </CardBody>
+                                    </Card> 
+                                  )
+                        })} 
+                              
 
                       </CardBody>
                 </Card> 

@@ -171,7 +171,7 @@ class Login extends Component {
             token: json.token,
           });
 
-          this.contextType.login(json.token,this.getState(signInEmail))
+          this.contextType.login(json.token,this.getState(signInEmail));
 
         } else {
           this.setState({
