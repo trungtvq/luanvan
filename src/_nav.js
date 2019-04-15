@@ -53,6 +53,11 @@ export default {
       class: ''             // optional class names space delimited list for title item ex: "text-center"
     },
      {
+      name: 'Team',
+      url: '/Member/Team',
+      icon: 'icon-people',
+    },
+     {
       name: 'Velocity',
       url: '/Member/Velocity',
       icon: 'icon-rocket',
