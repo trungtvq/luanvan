@@ -10,8 +10,11 @@ import Demo from '../../../homeNav'
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import authContext from "../../../contexts/authContext";
 
 class Login extends Component {
+  static contextType =  authContext;
+
     constructor(props) {
     super(props);
 
@@ -167,6 +170,9 @@ class Login extends Component {
             signInEmail: '',
             token: json.token,
           });
+
+          this.contextType.login(json.token,this.getState(signInEmail))
+
         } else {
           this.setState({
             signInError: json.message,

@@ -20,6 +20,7 @@ import { Link } from 'react-router-dom';
 import {Tabs} from '@material-ui/core/Tabs';
 import {Tab} from '@material-ui/core/Tab';
 
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -187,6 +188,9 @@ class PrimarySearchAppBar extends React.Component {
                  <Link to="/Home/Main">
                  Overlead
                  </Link>
+            </Typography>
+             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
+             
             </Typography>
            
 

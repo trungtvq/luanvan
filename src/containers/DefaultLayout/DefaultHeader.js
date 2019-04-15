@@ -7,6 +7,8 @@ import { AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler }
 import logo from '../../assets/img/brand/logo.png'
 import sygnet from '../../assets/img/brand/sygnet.svg'
 
+import authContext from "../../contexts/authContext";
+
 
 const propTypes = {
   children: PropTypes.node,
@@ -58,7 +60,19 @@ class DefaultHeader extends Component {
               <img src={'api/assets/img/avatars/6.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
             </DropdownToggle>
             <DropdownMenu right style={{ right: 'auto' }}>
-              <DropdownItem header tag="div" className="text-center"><strong>Account</strong></DropdownItem>
+              <authContext.Consumer> 
+                {(context) => {
+                    return(
+                      <DropdownItem header tag="div" className="text-center"><strong>
+                          {context.signInEmail}
+                      </strong></DropdownItem>
+                    )
+                }}
+              </authContext.Consumer> 
+
+
+
+
               <DropdownItem><i className="fa fa-bell-o"></i> Updates<Badge color="info">42</Badge></DropdownItem>
               <DropdownItem><i className="fa fa-envelope-o"></i> Messages<Badge color="success">42</Badge></DropdownItem>
               <DropdownItem><i className="fa fa-tasks"></i> Tasks<Badge color="danger">42</Badge></DropdownItem>

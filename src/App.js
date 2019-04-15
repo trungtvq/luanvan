@@ -3,6 +3,9 @@ import './App.scss';
 
 import React, { Component } from 'react';
 
+//context
+import authContext from "./contexts/authContext";///////
+
 
 //Appolo
 import ApolloClient from 'apollo-boost';
@@ -142,39 +145,58 @@ const store = configureStore()
   // { path: '/Home/Solve', exact: true, name: 'HomeSolve', component: HomeSolve},
 
 class App extends Component {
+  state={
+    token:null,
+    signInEmail:null
+  }
+
+  login = (token,signInEmail)=>{
+    this.setState({ token : token , signInEmail : signInEmail });
+  }
+  logout = ()=>{
+    this.setState({ token : null , signInEmail : null });
+  }
 
   render() {
     return (
       <Provider store={store}>
         <ApolloProvider client={client}>
-          <BrowserRouter>
-              <Switch>
-              <Route exact path="/homeNav" name="HomeNav" component={Demo} />
-                    <Route exact path="/Home/Main" name="HomeMain" component={HomeMain} />
-                    <Route exact path="/Home/Contact" name="HomeContact" component={HomeContact} />
-                    <Route exact path="/Home/Service" name="HomeService" component={HomeService} />
-                    <Route exact path="/Home/Solve" name="HomeSolve" component={HomeSolve} />
-                    <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
+          <authContext.Provider 
+            value={{
+                      token:this.state.token,
+                      signInEmail:this.state.signInEmail,
+                      login:this.login,
+                      logout:this.logout
+                  }}>  
+            <BrowserRouter>
+                <Switch>
+                <Route exact path="/homeNav" name="HomeNav" component={Demo} />
+                      <Route exact path="/Home/Main" name="HomeMain" component={HomeMain} />
+                      <Route exact path="/Home/Contact" name="HomeContact" component={HomeContact} />
+                      <Route exact path="/Home/Service" name="HomeService" component={HomeService} />
+                      <Route exact path="/Home/Solve" name="HomeSolve" component={HomeSolve} />
+                      <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
 
 
-                    <Route exact path="/AllProject" name="AllProject" component={AllProject} />
-                    <Route exact path="/ProjectDone" name="ProjectDone" component={ProjectDone} />
-                    <Route exact path="/ProjectTodo" name="ProjectTodo" component={ProjectTodo} />
+                      <Route exact path="/AllProject" name="AllProject" component={AllProject} />
+                      <Route exact path="/ProjectDone" name="ProjectDone" component={ProjectDone} />
+                      <Route exact path="/ProjectTodo" name="ProjectTodo" component={ProjectTodo} />
 
-                    <Route exact path="/Profile/Detail" name="ProfileDetail" component={ProfileDetail} />
-                    <Route exact path="/Profile/Edit" name="ProjectTodo" component={ProfileEdit} />
-  
+                      <Route exact path="/Profile/Detail" name="ProfileDetail" component={ProfileDetail} />
+                      <Route exact path="/Profile/Edit" name="ProjectTodo" component={ProfileEdit} />
+    
 
 
-                    <Route exact path="/login" name="Login Page" component={Login} />
-                    <Route exact path="/register" name="Register Page" component={Register} />
-                    <Route exact path="/404" name="Page 404" component={Page404} />
-                    <Route exact path="/500" name="Page 500" component={Page500} />
-                    <Route exact path="/pay" name="Page Pay" component={PagePay} />
-                    <Route exact path="/async" name="page test" component={AsyncApp} />
-                    <Route path="/" name="Home" component={DefaultLayout} />
-              </Switch>
-          </BrowserRouter>
+                      <Route exact path="/login" name="Login Page" component={Login} />
+                      <Route exact path="/register" name="Register Page" component={Register} />
+                      <Route exact path="/404" name="Page 404" component={Page404} />
+                      <Route exact path="/500" name="Page 500" component={Page500} />
+                      <Route exact path="/pay" name="Page Pay" component={PagePay} />
+                      <Route exact path="/async" name="page test" component={AsyncApp} />
+                      <Route path="/" name="Home" component={DefaultLayout} />
+                </Switch>
+            </BrowserRouter>
+          </authContext.Provider>  
           </ApolloProvider>
     </Provider>   
 )}}
