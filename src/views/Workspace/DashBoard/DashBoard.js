@@ -117,61 +117,61 @@ class DashBoard extends Component {
       <Row>
           <Col>    
               <div>    
-                <h2 >Problem </h2>  
-                <Row>       
-                    <Col xs="2" md="2">
-                      <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
-                    </Col> 
-                    <Col xs="2" md="2">
-                      <Input type="select" name="select" id="select">
-                        <option value="0">Sort by Title</option>
-                        <option value="2">Sort by Date</option>    
-                      </Input>
-                    </Col>   
-                    <Col xs="0" md="0">
-                      <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
-                    </Col> 
-                </Row>  
-                <Table hover bordered striped responsive size="sm">
-                  <thead>
-                  <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Date</th>
-                    <th>Comment</th>
-                    <th></th>                  
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                   <td>Login</td>
-                    <td>Server connect fail</td>  
-                    <td>20/3/2019</td>                
-                    <td>9h ago, i can't connect server</td>
-                    <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-check"></i></Button>
-                    </td>
-                  </tr>
-                  <tr>
-                   <td>Login</td>
-                    <td>Do i need to send code in order to verify email</td>  
-                    <td>19/3/2019</td>                
-                    <td></td>
-                    <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-check"></i></Button>
-                    </td>
-                  </tr>
-                   <tr>
-                   <td>Sign up</td>
-                    <td>Password have suggest</td>  
-                    <td>21/3/2019</td>                
-                    <td>Suggest password atleast 8 characters</td>
-                    <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-check"></i></Button>
-                    </td>
-                  </tr>
-                  </tbody>
-                </Table>
+                <Card>
+                    <CardHeader>
+                      <i className="fa fa-align-justify"></i><strong>Problem</strong>
+                    </CardHeader>
+                    <CardBody> 
+                      <Row>       
+                          <Col xs="2" md="2">
+                            <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
+                          </Col> 
+                          <Col xs="0" md="0">
+                            <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
+                          </Col> 
+                      </Row>  
+                    <Table hover bordered striped responsive size="sm">
+                      <thead>
+                      <tr>
+                        <th>Title <i class="fa fa-sort"></i></th>
+                        <th>Description <i class="fa fa-sort"></i></th>
+                        <th>Date</th>
+                        <th>Comment</th>
+                        <th></th>                  
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                       <td>Login</td>
+                        <td>Server connect fail</td>  
+                        <td>20/3/2019</td>                
+                        <td>9h ago, i can't connect server</td>
+                        <td>
+                         <Button type="submit" size="sm" color="success"><i class="fa fa-check"></i></Button>
+                        </td>
+                      </tr>
+                      <tr>
+                       <td>Login</td>
+                        <td>Do i need to send code in order to verify email</td>  
+                        <td>19/3/2019</td>                
+                        <td></td>
+                        <td>
+                         <Button type="submit" size="sm" color="success"><i class="fa fa-check"></i></Button>
+                        </td>
+                      </tr>
+                       <tr>
+                       <td>Sign up</td>
+                        <td>Password have suggest</td>  
+                        <td>21/3/2019</td>                
+                        <td>Suggest password atleast 8 characters</td>
+                        <td>
+                         <Button type="submit" size="sm" color="success"><i class="fa fa-check"></i></Button>
+                        </td>
+                      </tr>
+                      </tbody>
+                    </Table>
+                    </CardBody>
+              </Card>    
               </div>    
  
                 <Card>
@@ -193,13 +193,6 @@ class DashBoard extends Component {
                     <Col xs="2" md="2">
                       <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
                     </Col> 
-                    <Col xs="2" md="2">
-                      <Input type="select" name="select" id="select">
-                        <option value="0">Sort by Title</option>
-                        <option value="1">Sort by Sprint</option>
-                        <option value="2">Sort by IdBacklog</option>    
-                      </Input>
-                    </Col>   
                     <Col xs="0" md="0">
                       <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                     </Col> 
@@ -207,15 +200,15 @@ class DashBoard extends Component {
                 <Table hover bordered striped responsive size="sm">
                   <thead>
                   <tr>
-                    <th>Title</th>
-                    <th>Sprint</th>
-                    <th>IdBacklog</th>
-                    <th>Description</th>
-                    <th>Priority</th>
-                    <th>Start day</th>
-                    <th>Deadline</th>
-                    <th>Assignee</th>                 
-                    <th>Comment</th>
+                    <th>Title <i class="fa fa-sort"></i></th>
+                    <th>Sprint <i class="fa fa-sort"></i></th>
+                    <th>IdBacklog <i class="fa fa-sort"></i></th>
+                    <th>Description <i class="fa fa-sort"></i></th>
+                    <th>Priority <i class="fa fa-sort"></i></th>
+                    <th>Start day <i class="fa fa-sort"></i></th>
+                    <th>Deadline <i class="fa fa-sort"></i></th>
+                    <th>Assignee </th>                 
+                    <th>Comment </th>
                     <th>Progress</th>
                    
                   </tr>
@@ -254,13 +247,6 @@ class DashBoard extends Component {
                     <Col xs="2" md="2">
                       <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
                     </Col> 
-                    <Col xs="2" md="2">
-                      <Input type="select" name="select" id="select">
-                        <option value="0">Sort by Title</option>
-                        <option value="1">Sort by Sprint</option>
-                        <option value="2">Sort by IdBacklog</option>    
-                      </Input>
-                    </Col>   
                     <Col xs="0" md="0">
                       <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                     </Col> 
@@ -268,13 +254,13 @@ class DashBoard extends Component {
                <Table hover bordered striped responsive size="sm">
                   <thead>
                   <tr>
-                    <th>Title</th>
-                    <th>Sprint</th>
-                    <th>IdBacklog</th>
-                    <th>Description</th>
-                    <th>Priority</th>
-                    <th>Start day</th>
-                    <th>Deadline</th>
+                    <th>Title <i class="fa fa-sort"></i></th>
+                    <th>Sprint <i class="fa fa-sort"></i></th>
+                    <th>IdBacklog <i class="fa fa-sort"></i></th>
+                    <th>Description <i class="fa fa-sort"></i></th>
+                    <th>Priority <i class="fa fa-sort"></i></th>
+                    <th>Start day <i class="fa fa-sort"></i></th>
+                    <th>Deadline <i class="fa fa-sort"></i></th>
                     <th>Assignee</th>                 
                     <th>Comment</th>
                     <th>Progress</th>
@@ -331,13 +317,6 @@ class DashBoard extends Component {
                     <Col xs="2" md="2">
                       <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
                     </Col> 
-                    <Col xs="2" md="2">
-                      <Input type="select" name="select" id="select">
-                        <option value="0">Sort by Title</option>
-                        <option value="1">Sort by Sprint</option>
-                        <option value="2">Sort by IdBacklog</option>    
-                      </Input>
-                    </Col>   
                     <Col xs="0" md="0">
                       <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                     </Col> 
@@ -345,13 +324,13 @@ class DashBoard extends Component {
                <Table hover bordered striped responsive size="sm">
                   <thead>
                   <tr>
-                    <th>Title</th>
-                    <th>Sprint</th>
-                    <th>IdBacklog</th>
-                    <th>Description</th>
-                    <th>Priority</th>
-                    <th>Start day</th>
-                    <th>Deadline</th>
+                    <th>Title <i class="fa fa-sort"></i></th>
+                    <th>Sprint <i class="fa fa-sort"></i></th>
+                    <th>IdBacklog <i class="fa fa-sort"></i></th>
+                    <th>Description <i class="fa fa-sort"></i></th>
+                    <th>Priority <i class="fa fa-sort"></i></th>
+                    <th>Start day <i class="fa fa-sort"></i></th>
+                    <th>Deadline <i class="fa fa-sort"></i></th>
                     <th>Assignee</th>                 
                     <th>Comment</th>
                     <th>Progress</th>
@@ -359,7 +338,7 @@ class DashBoard extends Component {
                   </tr>
                   </thead>
                   <tbody>
-                            <tr>
+                  <tr>
                     <td>Đổi mật khẩu</td>
                      <td>2</td>
                       <td>7</td>
