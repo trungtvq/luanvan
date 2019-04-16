@@ -41,7 +41,7 @@ class TeamTask extends Component {
                 "Title":"Login bằng Fb",
                 "Description":"Người dùng không cần tạo tài khoản mà sử dụng tài khoản fb để đăng nhập",
                 "Priority":"High",
-                "Start ":"20/4/2019",
+                "Start":"20/4/2019",
                 "Deadline":"24/4/2019",
                 "Assignee":"Hùng",
                 "Comment":"",
@@ -52,7 +52,7 @@ class TeamTask extends Component {
                 "Title":"Đổi mật khẩu",
                 "Description":"Người dùng đổi mật khẩu của tài khoản mà mình tạo",
                 "Priority":"Low",
-                "Start ":"20/4/2019",
+                "Start":"20/4/2019",
                 "Deadline":"24/4/2019",
                  "Assignee":"Tâm",
                 "Comment":"Có cần gửi mà tới email liên kết để xác nhận không?",
@@ -63,7 +63,7 @@ class TeamTask extends Component {
                 "Title":"Thay đổi avatar",
                 "Description":"Người dùng thay đổi avatar hiển thị ở giao diện chính",
                 "Priority":"Low",
-                "Start ":"20/4/2019",
+                "Start":"20/4/2019",
                 "Deadline":"24/4/2019",
                  "Assignee":"Trung",
                 "Comment":"",
@@ -74,7 +74,7 @@ class TeamTask extends Component {
                 "Title":"Thanh toán bằng paypal",
                 "Description":"Người dùng sử dụng paypal để trả phí",
                 "Priority":"Low",
-                "Start ":"20/4/2019",
+                "Start":"20/4/2019",
                 "Deadline":"24/4/2019",
                 "Assignee":"",
                 "Comment":"",
@@ -98,7 +98,7 @@ class TeamTask extends Component {
       <Row>
           <Col>        
 
-                
+                <Card>
                 <Row>       
                     <Col xs="2" md="2">
                       <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
@@ -108,7 +108,7 @@ class TeamTask extends Component {
                       <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                     </Col> 
                 </Row>               
-                <Table hover bordered striped responsive size="sm">
+                <Table responsive size="sm">
                   <thead>
                   <tr>
                     <th>Title <i class="fa fa-sort"></i></th>
@@ -122,7 +122,7 @@ class TeamTask extends Component {
                     <th>Review</th>   
                     <th>
                       <Link to="/Member/AddTeamTask">
-                      <Button color="primary" className="sm" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
+                      <Button color="primary" size="sm" className="sm" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
                       </Link>  
                     </th>               
                   </tr>
@@ -140,7 +140,7 @@ class TeamTask extends Component {
                       <td>{item.Comment}</td>
                      
                       <td>
-                       <Input type="select" name="status" id="status">
+                       <Input type="select" size="sm" name="status" id="status">
                         <option value="0">{item.status}</option>
                         <option value="1">to do</option>
                         <option value="2">inprogress</option>
@@ -156,7 +156,7 @@ class TeamTask extends Component {
              
              })}</tbody>
                 </Table>
-                
+            </Card>
           </Col>
         </Row>
     );

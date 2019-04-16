@@ -105,8 +105,9 @@ class MyTask extends Component {
                     <Col xs="0" md="0">
                       <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                     </Col> 
-            </Row>     
-            <Table hover bordered striped responsive size="sm">
+            </Row>  
+            <Card>   
+            <Table  responsive size="sm">
                   <thead>
                   <tr>
                     <th>Title <i class="fa fa-sort"></i></th>
@@ -145,7 +146,7 @@ class MyTask extends Component {
              
              })}</tbody>
                 </Table>
-           
+           </Card>
             </Col>
             </Row>
         );
