@@ -84,11 +84,6 @@ class Detail extends Component {
                     <Col xs="0" md="0">
                       <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                     </Col> 
-                       <Col xs="8" md="8">
-                       <Link to="/ProductBacklog/Add">
-                        <Button color="primary" size="sm" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
-                       </Link> 
-                     </Col>
                 </Row>     
                 <Table responsive size="sm">
                   <thead>
@@ -102,7 +97,9 @@ class Detail extends Component {
                     <th>Sprint <i class="fa fa-sort"></i> </th>
                     <th>Status < i class="fa fa-sort"></i></th>
                     <th>
-                     
+                      <Link to="/ProductBacklog/Add">
+                      <Button color="primary" size="sm" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
+                      </Link> 
                     </th>
                   </tr>
                   </thead>
@@ -114,11 +111,11 @@ class Detail extends Component {
                       <td>{item.as}</td>
                       <td>{item.want}</td>
                       <td>{item.so}</td>
-                      <td>{item.priority}</td>
-                      <td>{item.estimation}</td>
-                      <td>{item.sprint}</td>
+                      <td><center>{item.priority}</center></td>
+                      <td><center>{item.estimation}</center></td>
+                      <td><center>{item.sprint}</center></td>
                       <td>
-                       <Input type="select" name="status" id="status">
+                       <Input type="select" name="status" id="status" size="sm">
                         <option value="0">{item.status}</option>
                         <option value="1">to do</option>
                         <option value="2">inprogress</option>

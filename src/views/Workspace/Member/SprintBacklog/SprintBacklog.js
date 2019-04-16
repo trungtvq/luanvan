@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Badge, Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Table, Pagination, PaginationItem, PaginationLink, } from 'reactstrap';
+import { Card,CardHeader,Badge, Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Table, Pagination, PaginationItem, PaginationLink, } from 'reactstrap';
 
 class SprintBacklog extends Component {
   constructor(props) {
@@ -72,8 +72,9 @@ class SprintBacklog extends Component {
   render() {
     return (
       <Row>
-          <Col>             
-                <Table hover bordered striped responsive size="sm">
+          <Col>    
+              <Card>
+                <Table responsive size="sm">
                   <thead>
                   <tr>
                     <th>ID <i class="fa fa-sort"></i></th>
@@ -86,23 +87,22 @@ class SprintBacklog extends Component {
                    
                   </tr>
                   </thead>
-                    <tbody>{this.state.data.map(function(item, key) {
-             
+                    <tbody>{this.state.data.map(function(item, key) {    
                return (
                   <tr key = {key}>
                       <td>{item.id}</td>
                       <td>{item.as}</td>
                       <td>{item.want}</td>
                       <td>{item.so}</td>
-                      <td>{item.priority}</td>
-                      <td>{item.estimation}</td>
-                      <td>{item.sprint}</td>
+                      <td><center>{item.priority}</center></td>
+                      <td><center>{item.estimation}</center></td>
+                      <td><center>{item.sprint}</center></td>
                   </tr>
                 )
              
              })}</tbody>
                 </Table>
-               
+               </Card>
           </Col>
         </Row>
     );

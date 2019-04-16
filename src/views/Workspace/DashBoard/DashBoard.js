@@ -111,7 +111,7 @@ class DashBoard extends Component {
     this.setState({
       accordion: state,
     });
-  }
+  }r
   render() {
     return (
       <Row>
