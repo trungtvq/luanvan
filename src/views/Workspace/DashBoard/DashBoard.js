@@ -118,7 +118,7 @@ class DashBoard extends Component {
           <Col>    
               <div>    
                 <Card>
-                    <CardHeader>
+                    <CardHeader >
                       <i className="fa fa-align-justify"></i><strong>Problem</strong>
                     </CardHeader>
                     <CardBody> 
@@ -130,7 +130,7 @@ class DashBoard extends Component {
                             <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                           </Col> 
                       </Row>  
-                    <Table hover bordered striped responsive size="sm">
+                    <Table responsive size="sm">
                       <thead>
                       <tr>
                         <th>Title <i class="fa fa-sort"></i></th>
@@ -197,7 +197,7 @@ class DashBoard extends Component {
                       <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                     </Col> 
                 </Row>  
-                <Table hover bordered striped responsive size="sm">
+                <Table responsive size="sm">
                   <thead>
                   <tr>
                     <th>Title <i class="fa fa-sort"></i></th>
@@ -251,7 +251,7 @@ class DashBoard extends Component {
                       <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                     </Col> 
                 </Row>  
-               <Table hover bordered striped responsive size="sm">
+               <Table responsive size="sm">
                   <thead>
                   <tr>
                     <th>Title <i class="fa fa-sort"></i></th>
@@ -321,7 +321,7 @@ class DashBoard extends Component {
                       <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                     </Col> 
                 </Row>  
-               <Table hover bordered striped responsive size="sm">
+               <Table responsive size="sm">
                   <thead>
                   <tr>
                     <th>Title <i class="fa fa-sort"></i></th>

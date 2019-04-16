@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Badge, Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Table, Pagination, PaginationItem, PaginationLink, } from 'reactstrap';
+import { Card,CardHeader,Badge, Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Table, Pagination, PaginationItem, PaginationLink, } from 'reactstrap';
 import { Link } from 'react-router-dom';
 class Detail extends Component {
    constructor(props) {
@@ -74,6 +74,7 @@ class Detail extends Component {
     return (
       <Row>
           <Col>         
+                 <Card>
                 
                   <Row>       
                     <Col xs="2" md="2">
@@ -83,8 +84,13 @@ class Detail extends Component {
                     <Col xs="0" md="0">
                       <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                     </Col> 
+                       <Col xs="8" md="8">
+                       <Link to="/ProductBacklog/Add">
+                        <Button color="primary" size="sm" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
+                       </Link> 
+                     </Col>
                 </Row>     
-                <Table hover bordered striped responsive size="sm">
+                <Table responsive size="sm">
                   <thead>
                   <tr>
                     <th>ID <i class="fa fa-sort"></i></th>
@@ -96,9 +102,7 @@ class Detail extends Component {
                     <th>Sprint <i class="fa fa-sort"></i> </th>
                     <th>Status < i class="fa fa-sort"></i></th>
                     <th>
-                      <Link to="/ProductBacklog/Add">
-                      <Button color="primary" size="sm" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
-                      </Link> 
+                     
                     </th>
                   </tr>
                   </thead>
@@ -130,6 +134,8 @@ class Detail extends Component {
              })}</tbody>
                 </Table>
                 
+              </Card>
+              
           </Col>
         </Row>
     );
