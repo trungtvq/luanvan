@@ -99,33 +99,34 @@ class Cover extends Component {
                                           <CardBody>        
                                             <h6>I want: {item.want}</h6>
                                             <h6>So that:  {item.so}</h6>
-                                            <Row>
-                                              <Col md="1">
-                                                <Label htmlFor="text-input">Priority</Label>
-                                              </Col>
-                                              <Col xs="12" md="1">
-                                                <Input type="text" name="text-input" id="text-input" rows="9"/>
-                                              </Col>
-                                             
-                                              <Col md="2">                    
-                                              </Col>
-                                              <Col md="1">
-                                                <Label htmlFor="text-input">Estimation</Label>
-                                              </Col>
-                                              <Col xs="12" md="1">
-                                                <Input type="text" name="text-input" id="text-input" rows="9"/>                            
-                                              </Col>
+                                            <div class="row">
+                                                <div class="col col-lg-2 col-md-2 col-sm-2">
+                                                  <Label htmlFor="text-input">Priority</Label>
+                                                </div>
+                                                <div class="col col-lg-1 col-md-1 col-sm-1">
+                                                  <Input type="text" name="text-input" id="text-input" rows="9"/>
+                                                </div>
+                                               
+                                                <div class="col col-lg-1 col-md-1 col-sm-1">                
+                                                </div>
 
-                                              <Col md="2">                   
-                                              </Col>
+                                                 <div class="col col-lg-2 col-md-2 col-sm-2">
+                                                  <Label htmlFor="text-input">Estimation</Label>
+                                                </div>
+                                                <div class="col col-lg-1 col-md-1 col-sm-1">
+                                                  <Input type="text" name="text-input" id="text-input" rows="9"/>                            
+                                                </div>
 
-                                              <Col md="1">
-                                                <Label htmlFor="text-input">Sprint</Label>
-                                              </Col>
-                                              <Col xs="12" md="1">
-                                                <Input type="text" name="text-input" id="text-input" rows="9"/>                            
-                                              </Col>
-                                            </Row>
+                                                 <div class="col col-lg-1 col-md-1 col-sm-1">                
+                                                </div>
+
+                                                <div class="col col-lg-1 col-md-1 col-sm-1">
+                                                  <Label htmlFor="text-input">Sprint</Label>
+                                                </div>
+                                                <div class="col col-lg-1 col-md-1 col-sm-1">
+                                                  <Input type="text" name="text-input" id="text-input" rows="9"/>                            
+                                                </div>
+                                            </div>
                                             <Button type="submit" size="sm" color="success" align="center"><i class="fa fa-arrow-right"></i></Button>
                                           </CardBody>
                                     </Card> 

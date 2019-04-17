@@ -53,7 +53,7 @@ class Detail extends Component {
     } = this.state;
     return (
       <Row>
-          <Col>      
+          <Col>       
               <Row>       
                           <Col xs="2" md="2">
                             <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
