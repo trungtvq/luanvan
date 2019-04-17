@@ -46,7 +46,7 @@ class MyTask extends Component {
                 "Title":"Login bằng Fb",
                 "Description":"Người dùng không cần tạo tài khoản mà sử dụng tài khoản fb để đăng nhập",
                 "Priority":"High",
-                "Start ":"20/4/2019",
+                "Start":"20/4/2019",
                 "Deadline":"24/4/2019",
                 "Comment":"",
                 "status":"done",
@@ -55,7 +55,7 @@ class MyTask extends Component {
                 "Title":"Đổi mật khẩu",
                 "Description":"Người dùng đổi mật khẩu của tài khoản mà mình tạo",
                 "Priority":"Low",
-                "Start ":"20/4/2019",
+                "Start":"20/4/2019",
                 "Deadline":"24/4/2019",
                 "Comment":"Có cần gửi mà tới email liên kết để xác nhận không?",
                 "status":"done",
@@ -64,7 +64,7 @@ class MyTask extends Component {
                 "Title":"Thay đổi avatar",
                 "Description":"Người dùng thay đổi avatar hiển thị ở giao diện chính",
                 "Priority":"Low",
-                "Start ":"20/4/2019",
+                "Start":"20/4/2019",
                 "Deadline":"24/4/2019",
                 "Comment":"",
                 "status":"done",
@@ -73,7 +73,7 @@ class MyTask extends Component {
                 "Title":"Thanh toán bằng paypal",
                 "Description":"Người dùng sử dụng paypal để trả phí",
                 "Priority":"Low",
-                "Start ":"20/4/2019",
+                "Start":"20/4/2019",
                 "Deadline":"24/4/2019",
                 "Comment":"",
                 "status":"done",
@@ -118,7 +118,7 @@ class MyTask extends Component {
                     <th>Deadline <i class="fa fa-sort"></i></th>   
                     <th>Comment</th>
                     <th>Status</th>   
-                    <th></th>
+                    
                   </tr>
                   </thead>
                    <tbody>{this.state.data.map(function(item, key) {
@@ -132,9 +132,7 @@ class MyTask extends Component {
                       <td>{item.Deadline}</td>
                       <td>{item.Comment}</td>
                       <td>{item.status}</td> 
-                      <td>
-                        <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                      </td>
+                     
                   </tr>
                 )
              
