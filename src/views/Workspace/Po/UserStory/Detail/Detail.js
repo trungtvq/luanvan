@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Badge, Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Table, Pagination, PaginationItem, PaginationLink, } from 'reactstrap';
+import { Card, Badge, Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Table, Pagination, PaginationItem, PaginationLink, } from 'reactstrap';
 import { Link } from 'react-router-dom';
 class Detail extends Component {
   constructor(props) {
@@ -53,10 +53,11 @@ class Detail extends Component {
     } = this.state;
     return (
       <Row>
-          <Col>         
+          <Col>      
+              <Card>   
                 <div class="container">
                   <div class="row">
-                    <div class="col-11">
+                    <div class="col-sm-11 col-md-11 col-lg-11">
                       <Row>       
                           <Col xs="2" md="2">
                             <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
@@ -68,22 +69,23 @@ class Detail extends Component {
                       </Row>     
                     </div>
                   
-                    <div class="col-1">
+                    <div class="col-sm-1 col-md-1 col-lg-1">
                       <div class="row">
-                        <div class="col-6">
+                        <div class="col-lg-11 col-md-11 col-sm-11 ">
                         </div>
-                        <div class="col-6">
+                        <div class="col-sm-1 col-md-1 col-lg-1">
                           <Link to="/UserStory/Add">
                           <Button color="primary" size="sm" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
                           </Link> 
                         </div>
                       </div>
                     </div>
+
                   </div>
                 </div>
                 
                  
-                <Table hover bordered striped responsive size="sm">
+                <Table  responsive size="lg">
                   <thead>
                   <tr>
                     <th>ID <i class="fa fa-sort"></i></th>
@@ -105,13 +107,14 @@ class Detail extends Component {
                       <td>{item.so}</td>
                       <td>
                       <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
+                      <Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                     </td>
                   </tr>
                 )
              
              })}</tbody>
                 </Table>
-               
+            </  Card>  
           </Col>
         </Row>
     );

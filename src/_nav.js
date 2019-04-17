@@ -4,10 +4,6 @@ export default {
       name: 'Dashboard',
       url: '/DashBoard',
       icon: 'icon-speedometer',
-      badge: {
-        variant: 'info',
-        text: 'NEW',
-      },
     },
      {
       name: 'AllProject',
