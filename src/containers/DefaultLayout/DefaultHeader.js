@@ -44,6 +44,9 @@ class DefaultHeader extends Component {
           <NavItem className="px-3">
             <NavLink href="#">Settings</NavLink>
           </NavItem>
+           <NavItem className="px-3">
+            <NavLink href="/AllProject">Projects</NavLink>
+          </NavItem>
         </Nav>
         <Nav className="ml-auto" navbar>
           <NavItem className="d-md-down-none">
