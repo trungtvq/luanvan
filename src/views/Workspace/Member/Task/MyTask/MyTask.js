@@ -107,6 +107,7 @@ class MyTask extends Component {
                     </Col> 
             </Row>  
            <Card> 
+           <div class="table-responsive"> 
             <table class="table table-lg">
                   <thead class="thead">
                   <tr class="bg-primary">
@@ -130,15 +131,8 @@ class MyTask extends Component {
                       <td>{item.Start}</td>
                       <td>{item.Deadline}</td>
                       <td>{item.Comment}</td>
+                      <td>{item.status}</td> 
                       <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">{item.status}</option>
-                        <option value="1">to do</option>
-                        <option value="2">inprogress</option>
-                         <option value="2">done</option>
-                      </Input>
-                      </td> 
-                        <td>
                         <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
                       </td>
                   </tr>
@@ -146,6 +140,7 @@ class MyTask extends Component {
              
              })}</tbody>
                 </table>
+            </div>
            </Card>
             </Col>
             </Row>

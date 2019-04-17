@@ -63,38 +63,40 @@ class Detail extends Component {
                             <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                           </Col> 
               </Row>
-              <Card>   
-                <table class="table table-lg">
-                  <thead class="thead">
-                  <tr class="bg-primary">
-                    <th>ID <i class="fa fa-sort"></i></th>
-                    <th>As a...<i class="fa fa-sort"></i></th>
-                    <th>I want to be able to... <i class="fa fa-sort"></i></th>
-                    <th>So that... <i class="fa fa-sort"></i></th>
-                    <th>
-                      <Link to="/UserStory/Add">
-                          <Button color="primary" size="sm" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
-                      </Link> 
-                    </th>
-                  </tr>
-                  </thead>
-                 <tbody>{this.state.data.map(function(item, key) {
-             
-               return (
-                  <tr key = {key}>
-                      <td>{item.id}</td>
-                      <td>{item.as}</td>
-                      <td>{item.want}</td>
-                      <td>{item.so}</td>
-                      <td>
-                      <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                      <Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
-                    </td>
-                  </tr>
-                )
-             
-             })}</tbody>
-                </table>
+              <Card>
+              <div class="table-responsive">   
+                  <table class="table table-lg">
+                    <thead class="thead">
+                    <tr class="bg-primary">
+                      <th>ID <i class="fa fa-sort"></i></th>
+                      <th>As a...<i class="fa fa-sort"></i></th>
+                      <th>I want to be able to... <i class="fa fa-sort"></i></th>
+                      <th>So that... <i class="fa fa-sort"></i></th>
+                      <th>
+                        <Link to="/UserStory/Add">
+                            <Button color="primary" size="sm" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
+                        </Link> 
+                      </th>
+                    </tr>
+                    </thead>
+                   <tbody>{this.state.data.map(function(item, key) {
+               
+                 return (
+                    <tr key = {key}>
+                        <td>{item.id}</td>
+                        <td>{item.as}</td>
+                        <td>{item.want}</td>
+                        <td>{item.so}</td>
+                        <td>
+                        <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
+                        <Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
+                      </td>
+                    </tr>
+                  )
+               
+               })}</tbody>
+                  </table>
+              </div>
             </  Card>  
           </Col>
         </Row>

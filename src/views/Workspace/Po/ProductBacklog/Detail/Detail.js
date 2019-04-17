@@ -85,7 +85,7 @@ class Detail extends Component {
                     </Col> 
                 </Row>   
                  <Card>
-                  
+                <div class="table-responsive"> 
                  <table class="table table-lg">
                   <thead class="thead">
                   <tr class="bg-primary">
@@ -133,7 +133,7 @@ class Detail extends Component {
              
              })}</tbody>
                 </table>
-                
+                </div>
               </Card>
               
           </Col>

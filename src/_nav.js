@@ -75,11 +75,7 @@ export default {
           url: '/Member/Task/MyTask',
           icon: 'icon-doc',
         },
-        {
-          name: 'Register',
-          url: '/Member/Task/Register',
-          icon: 'icon-plus',
-        },
+       
 
    
    

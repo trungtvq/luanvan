@@ -74,6 +74,7 @@ class SprintBacklog extends Component {
       <Row>
           <Col>    
               <Card>
+              <div class="table-responsive"> 
                 <table class="table table-lg">
                   <thead class="thead">
                   <tr class="bg-primary">
@@ -105,6 +106,7 @@ class SprintBacklog extends Component {
              
              })}</tbody>
                 </table>
+            </div>
                </Card>
           </Col>
         </Row>

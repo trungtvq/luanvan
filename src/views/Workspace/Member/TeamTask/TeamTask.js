@@ -108,7 +108,8 @@ class TeamTask extends Component {
                       <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                     </Col> 
                 </Row>  
-                <Card>             
+                <Card>     
+                <div class="table-responsive">         
                 <table class="table table-lg">
                   <thead class="thead">
                   <tr class="bg-primary">
@@ -139,24 +140,18 @@ class TeamTask extends Component {
                       <td>{item.Deadline}</td>
                       <td>{item.Assignee}</td>
                       <td>{item.Comment}</td>
-                     
-                      <td>
-                       <Input type="select" size="sm" name="status" id="status">
-                        <option value="0">{item.status}</option>
-                        <option value="1">to do</option>
-                        <option value="2">inprogress</option>
-                         <option value="2">done</option>
-                      </Input>
-                      </td> 
+                      <td>{item.status}</td> 
                       <td>{item.review}</td>
                       <td>
                         <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
+                        <Button type="submit" size="sm" color="success"><i class="fa fa-plus"></i></Button>
                       </td>
                   </tr>
                 )
              
              })}</tbody>
                 </table>
+                </div>
             </Card>
           </Col>
         </Row>
