@@ -54,11 +54,7 @@ class Detail extends Component {
     return (
       <Row>
           <Col>      
-              <Card>   
-                <div class="container">
-                  <div class="row">
-                    <div class="col-sm-11 col-md-11 col-lg-11">
-                      <Row>       
+              <Row>       
                           <Col xs="2" md="2">
                             <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
                           </Col> 
@@ -66,25 +62,8 @@ class Detail extends Component {
                           <Col xs="0" md="0">
                             <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                           </Col> 
-                      </Row>     
-                    </div>
-                  
-                    <div class="col-sm-1 col-md-1 col-lg-1">
-                      <div class="row">
-                        <div class="col-lg-11 col-md-11 col-sm-11 ">
-                        </div>
-                        <div class="col-sm-1 col-md-1 col-lg-1">
-                          <Link to="/UserStory/Add">
-                          <Button color="primary" size="sm" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
-                          </Link> 
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-                
-                 
+              </Row>
+              <Card>   
                 <Table  responsive size="lg">
                   <thead>
                   <tr>
@@ -93,7 +72,9 @@ class Detail extends Component {
                     <th>I want to be able to... <i class="fa fa-sort"></i></th>
                     <th>So that... <i class="fa fa-sort"></i></th>
                     <th>
-                     
+                      <Link to="/UserStory/Add">
+                          <Button color="primary" size="sm" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
+                      </Link> 
                     </th>
                   </tr>
                   </thead>

@@ -96,7 +96,7 @@ class MyTask extends Component {
           <Col>  
          
          
-           
+            
             <Row>       
                     <Col xs="2" md="2">
                       <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
@@ -106,8 +106,8 @@ class MyTask extends Component {
                       <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                     </Col> 
             </Row>  
-            <Card>   
-            <Table  responsive size="sm">
+           <Card> 
+            <Table  responsive size="lg">
                   <thead>
                   <tr>
                     <th>Title <i class="fa fa-sort"></i></th>

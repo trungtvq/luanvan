@@ -73,10 +73,9 @@ class Detail extends Component {
   render() {
     return (
       <Row>
-          <Col>         
-                 <Card>
-                
-                  <Row>       
+          <Col>        
+
+                <Row>       
                     <Col xs="2" md="2">
                       <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
                     </Col> 
@@ -84,8 +83,10 @@ class Detail extends Component {
                     <Col xs="0" md="0">
                       <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                     </Col> 
-                </Row>     
-                <Table responsive size="sm">
+                </Row>   
+                 <Card>
+                  
+                <Table responsive size="lg">
                   <thead>
                   <tr>
                     <th>ID <i class="fa fa-sort"></i></th>
@@ -124,6 +125,7 @@ class Detail extends Component {
                       </td> 
                         <td>
                         <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
+                        <Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                       </td>
                   </tr>
                 )

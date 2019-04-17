@@ -67,8 +67,9 @@ class DailySchedule extends Component {
   render() {
     return (
       <Row>
-          <Col>             
-                <Table hover bordered striped responsive size="sm">
+          <Col>  
+            <Card>           
+                <Table responsive size="lg">
                   <thead>
                   <tr>
                     <th>Date</th>
@@ -104,7 +105,7 @@ class DailySchedule extends Component {
              
              })}</tbody>
                 </Table>           
-      
+            </Card>  
             <Card>             
               <CardBody>
                 <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               

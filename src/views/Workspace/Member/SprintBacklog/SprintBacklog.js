@@ -74,7 +74,7 @@ class SprintBacklog extends Component {
       <Row>
           <Col>    
               <Card>
-                <Table responsive size="sm">
+                <Table responsive size="lg">
                   <thead>
                   <tr>
                     <th>ID <i class="fa fa-sort"></i></th>

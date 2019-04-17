@@ -108,7 +108,7 @@ class TeamTask extends Component {
                       <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                     </Col> 
                 </Row>               
-                <Table responsive size="sm">
+                <Table responsive size="lg">
                   <thead>
                   <tr>
                     <th>Title <i class="fa fa-sort"></i></th>
