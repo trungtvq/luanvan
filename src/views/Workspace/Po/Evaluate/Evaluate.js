@@ -49,12 +49,12 @@ class Evaluate extends Component {
     return (
       <Row>
           <Col>  
-          
 
-                      
-                <Table hover bordered striped responsive size="sm">
-                  <thead>
-                  <tr>
+                 <Card>     
+                <div class="table-responsive">         
+                <table class="table table-lg">
+                  <thead class="thead">
+                  <tr class="bg-primary">
                     <th>Title</th>
                     <th>Sprint</th>
                     <th>IdBacklog</th>
@@ -62,10 +62,11 @@ class Evaluate extends Component {
                     <th>Priority</th>
                     <th>Start day</th>
                     <th>Deadline</th>
+                    <th>Deadline real</th>
                     <th>Assignee</th>
                     <th>Point</th>                 
-                    <th>Comment</th>
-                    <th>Progress</th>
+                    <th>Review</th>
+                   
                    
                   </tr>
                   </thead>
@@ -81,13 +82,10 @@ class Evaluate extends Component {
                     <td>Hùng</td>
                     <td></td>
                     <td>
-                      <Progress value={100} />
-                      <div className="text-center">100%</div>
+                      
                     </td>                                  
                     <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
-                     <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                     <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>                
+                     
                     </td>
                   </tr>
                    <tr>
@@ -101,13 +99,10 @@ class Evaluate extends Component {
                     <td>Nhân</td>
                     <td>Có cần xác thực email không?</td>
                     <td>
-                      <Progress value={85} />
-                      <div className="text-center">85%</div>
+                      
                     </td>                                  
                     <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
-                     <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                     <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>                
+                     
                     </td>
                   </tr>
                    <tr>
@@ -121,13 +116,10 @@ class Evaluate extends Component {
                     <td>Tâm</td>
                     <td></td>
                     <td>
-                      <Progress value={10} />
-                      <div className="text-center">10%</div>
+                      
                     </td>                                  
                     <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
-                     <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                     <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>                
+                                 
                     </td>
                   </tr>
                    <tr>
@@ -141,14 +133,10 @@ class Evaluate extends Component {
                     <td></td>
                     <td>Có cần gửi mà tới email liên kết để xác nhận không?</td>
                     <td>
-                      <Progress value={0} />
-                      <div className="text-center">0%</div>
+                      
                     </td>                                  
-                    <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
-                     <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                     <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>                
-                    </td>
+                    <td></td>
+                    
                   </tr>
                    <tr>
                     <td>Thay đổi avatar</td>
@@ -161,13 +149,10 @@ class Evaluate extends Component {
                     <td></td>
                     <td></td>
                     <td>
-                      <Progress value={0} />
-                      <div className="text-center">0%</div>
+                      
                     </td>                                  
                     <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
-                     <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                     <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>                
+                     
                     </td>
                   </tr>                  
                    <tr>
@@ -181,17 +166,15 @@ class Evaluate extends Component {
                     <td></td>
                     <td></td>
                     <td>
-                      <Progress value={0} />
-                      <div className="text-center">0%</div>
+                      
                     </td>                                  
                     <td>
-                     <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
-                     <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
-                     <Button type="reset" size="sm" color="danger"><i class="fa fa-trash"></i></Button>                
                     </td>
                   </tr>
                   </tbody>
-                </Table>
+                </table>
+                </div>
+            </Card>
                 
           </Col>
         </Row>
