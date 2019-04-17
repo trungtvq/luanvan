@@ -69,9 +69,9 @@ class DailySchedule extends Component {
       <Row>
           <Col>  
             <Card>           
-                <Table responsive size="lg">
-                  <thead>
-                  <tr>
+                <table class="table table-lg">
+                  <thead class="thead">
+                  <tr class="bg-primary">
                     <th>Date</th>
                     <th>IdBacklog</th>
                     <th>Task</th>
@@ -104,7 +104,7 @@ class DailySchedule extends Component {
                 )
              
              })}</tbody>
-                </Table>           
+                </table>           
             </Card>  
             <Card>             
               <CardBody>
