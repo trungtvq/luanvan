@@ -74,9 +74,9 @@ class SprintBacklog extends Component {
       <Row>
           <Col>    
               <Card>
-                <Table responsive size="lg">
-                  <thead>
-                  <tr>
+                <table class="table table-lg">
+                  <thead class="thead">
+                  <tr class="bg-primary">
                     <th>ID <i class="fa fa-sort"></i></th>
                     <th>As a... <i class="fa fa-sort"></i></th>
                     <th>I want to be able to... <i class="fa fa-sort"></i></th>
@@ -84,7 +84,7 @@ class SprintBacklog extends Component {
                     <th>Priority <i class="fa fa-sort"></i></th>
                     <th>Estimation <i class="fa fa-sort"></i></th>
                     <th>Sprint <i class="fa fa-sort"></i></th>
-                   
+                    <th></th>
                   </tr>
                   </thead>
                     <tbody>{this.state.data.map(function(item, key) {    
@@ -97,11 +97,14 @@ class SprintBacklog extends Component {
                       <td><center>{item.priority}</center></td>
                       <td><center>{item.estimation}</center></td>
                       <td><center>{item.sprint}</center></td>
+                      <td>                        
+                        <Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
+                      </td>
                   </tr>
                 )
              
              })}</tbody>
-                </Table>
+                </table>
                </Card>
           </Col>
         </Row>

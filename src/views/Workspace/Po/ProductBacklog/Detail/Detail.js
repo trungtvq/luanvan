@@ -86,9 +86,9 @@ class Detail extends Component {
                 </Row>   
                  <Card>
                   
-                <Table responsive size="lg">
-                  <thead>
-                  <tr>
+                 <table class="table table-lg">
+                  <thead class="thead">
+                  <tr class="bg-primary">
                     <th>ID <i class="fa fa-sort"></i></th>
                     <th>As a... <i class="fa fa-sort"></i></th>
                     <th>I want to be able to... <i class="fa fa-sort"></i></th>
@@ -124,6 +124,7 @@ class Detail extends Component {
                       </Input>
                       </td> 
                         <td>
+                        <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
                         <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
                         <Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                       </td>
@@ -131,7 +132,7 @@ class Detail extends Component {
                 )
              
              })}</tbody>
-                </Table>
+                </table>
                 
               </Card>
               

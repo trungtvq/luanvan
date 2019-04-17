@@ -5,11 +5,6 @@ export default {
       url: '/DashBoard',
       icon: 'icon-speedometer',
     },
-     {
-      name: 'AllProject',
-      url: '/AllProject',
-      icon: 'icon-calendar',
-    },
     {
       title: true,
       name: 'Product Owner',

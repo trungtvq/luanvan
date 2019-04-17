@@ -101,20 +101,20 @@ const Demo = Loadable({
   loading
 });
 
-//PJ
-const AllProject = Loadable({
-  loader: () => import('./views/Personal/Project/AllProject'),
-  loading
-});
-const ProjectDone = Loadable({
-  loader: () => import('./views/Personal/Project/ProjectDone'),
-  loading
-});
-const ProjectTodo = Loadable({
-  loader: () => import('./views/Personal/Project/ProjectTodo'),
-  loading
-});
-//
+// //PJ
+// const AllProject = Loadable({
+//   loader: () => import('./views/Personal/Project/AllProject'),
+//   loading
+// });
+// const ProjectDone = Loadable({
+//   loader: () => import('./views/Personal/Project/ProjectDone'),
+//   loading
+// });
+// const ProjectTodo = Loadable({
+//   loader: () => import('./views/Personal/Project/ProjectTodo'),
+//   loading
+// });
+// //
 
 
 //profile
@@ -138,6 +138,9 @@ function configureStore(preloadedState) {
 }
 
 const store = configureStore()
+ // <Route exact path="/AllProject" name="AllProject" component={AllProject} />
+                      // <Route exact path="/ProjectDone" name="ProjectDone" component={ProjectDone} />
+                      // <Route exact path="/ProjectTodo" name="ProjectTodo" component={ProjectTodo} />
 
 //{ path: '/Home/Main', exact: true, name: 'HomeMain', component: HomeMain },
   // { path: '/Home/Contact', exact: true, name: 'HomeContact', component: HomeContact },
@@ -178,10 +181,7 @@ class App extends Component {
                       <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
 
 
-                      <Route exact path="/AllProject" name="AllProject" component={AllProject} />
-                      <Route exact path="/ProjectDone" name="ProjectDone" component={ProjectDone} />
-                      <Route exact path="/ProjectTodo" name="ProjectTodo" component={ProjectTodo} />
-
+                     
                       <Route exact path="/Profile/Detail" name="ProfileDetail" component={ProfileDetail} />
                       <Route exact path="/Profile/Edit" name="ProjectTodo" component={ProfileEdit} />
     

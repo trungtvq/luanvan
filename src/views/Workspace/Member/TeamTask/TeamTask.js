@@ -109,9 +109,9 @@ class TeamTask extends Component {
                     </Col> 
                 </Row>  
                 <Card>             
-                <Table responsive size="lg">
-                  <thead>
-                  <tr>
+                <table class="table table-lg">
+                  <thead class="thead">
+                  <tr class="bg-primary">
                     <th>Title <i class="fa fa-sort"></i></th>
                     <th>Description <i class="fa fa-sort"></i></th>
                     <th>Priority <i class="fa fa-sort"></i></th>
@@ -156,7 +156,7 @@ class TeamTask extends Component {
                 )
              
              })}</tbody>
-                </Table>
+                </table>
             </Card>
           </Col>
         </Row>

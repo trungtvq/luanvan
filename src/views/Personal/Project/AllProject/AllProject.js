@@ -40,21 +40,15 @@ DropdownMenu,
 DropdownItem,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import Demo from '../../../../homeNav'
+
  
 
 class AllProject extends Component {
   render() {
     return (
-   
+   <Row>
+    <Col>  
    <div>   
-      <div>
-
-       <Demo />
-      </div>
-
-
-   <Container>
       <Row>
           <Col>  
                 <Card>
@@ -385,8 +379,11 @@ class AllProject extends Component {
                 </Card>    
           </Col>
         </Row>
-      </Container>
-    </div>   
+
+    </div>  
+    
+          </Col>   
+          </Row>
     );
   }
 }
