@@ -54,16 +54,35 @@ class Detail extends Component {
     return (
       <Row>
           <Col>         
+                <div class="container">
+                  <div class="row">
+                    <div class="col-11">
+                      <Row>       
+                          <Col xs="2" md="2">
+                            <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
+                          </Col> 
+                          
+                          <Col xs="0" md="0">
+                            <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
+                          </Col> 
+                      </Row>     
+                    </div>
+                  
+                    <div class="col-1">
+                      <div class="row">
+                        <div class="col-6">
+                        </div>
+                        <div class="col-6">
+                          <Link to="/UserStory/Add">
+                          <Button color="primary" size="sm" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
+                          </Link> 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 
-                  <Row>       
-                    <Col xs="2" md="2">
-                      <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
-                    </Col> 
-                    
-                    <Col xs="0" md="0">
-                      <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
-                    </Col> 
-                </Row>     
+                 
                 <Table hover bordered striped responsive size="sm">
                   <thead>
                   <tr>
@@ -72,9 +91,7 @@ class Detail extends Component {
                     <th>I want to be able to... <i class="fa fa-sort"></i></th>
                     <th>So that... <i class="fa fa-sort"></i></th>
                     <th>
-                      <Link to="/UserStory/Add">
-                      <Button color="primary" size="sm" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
-                      </Link> 
+                     
                     </th>
                   </tr>
                   </thead>
