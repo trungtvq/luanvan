@@ -103,27 +103,25 @@ class Cover extends Component {
                                                 <div class="col col-lg-2 col-md-2 col-sm-2">
                                                   <Label htmlFor="text-input">Priority</Label>
                                                 </div>
-                                                <div class="col col-lg-1 col-md-1 col-sm-1">
+                                                <div class="col col-lg-2 col-md-2 col-sm-2">
                                                   <Input type="text" name="text-input" id="text-input" rows="9"/>
                                                 </div>
                                                
-                                                <div class="col col-lg-1 col-md-1 col-sm-1">                
-                                                </div>
+                                              
 
                                                  <div class="col col-lg-2 col-md-2 col-sm-2">
                                                   <Label htmlFor="text-input">Estimation</Label>
                                                 </div>
-                                                <div class="col col-lg-1 col-md-1 col-sm-1">
+                                                <div class="col col-lg-2 col-md-2 col-sm-2">
                                                   <Input type="text" name="text-input" id="text-input" rows="9"/>                            
                                                 </div>
 
-                                                 <div class="col col-lg-1 col-md-1 col-sm-1">                
-                                                </div>
+                                                 
 
                                                 <div class="col col-lg-1 col-md-1 col-sm-1">
                                                   <Label htmlFor="text-input">Sprint</Label>
                                                 </div>
-                                                <div class="col col-lg-1 col-md-1 col-sm-1">
+                                                <div class="col col-lg-2 col-md-2 col-sm-2">
                                                   <Input type="text" name="text-input" id="text-input" rows="9"/>                            
                                                 </div>
                                             </div>

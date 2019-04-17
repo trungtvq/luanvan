@@ -98,7 +98,7 @@ class TeamTask extends Component {
       <Row>
           <Col>        
 
-                <Card>
+                
                 <Row>       
                     <Col xs="2" md="2">
                       <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
@@ -107,7 +107,8 @@ class TeamTask extends Component {
                     <Col xs="0" md="0">
                       <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                     </Col> 
-                </Row>               
+                </Row>  
+                <Card>             
                 <Table responsive size="lg">
                   <thead>
                   <tr>
