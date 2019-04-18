@@ -19,7 +19,10 @@ CardColumns,
 CardHeader,
 Collapse,
 Progress,
-Label
+Label,
+Modal, ModalHeader, ModalBody, ModalFooter,
+Form,
+FormGroup
 } from 'reactstrap';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import  { PureComponent } from 'react';
@@ -51,7 +54,6 @@ const data = [
 ];
 
 class TCol extends PureComponent {
-
   render() {
     return (
       <ResponsiveContainer width="100%" height={400}>
@@ -92,6 +94,7 @@ class DashBoard extends Component {
     super(props);
 
     this.toggleAccordion = this.toggleAccordion.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
    
     this.state = {
       collapse: false,
@@ -100,6 +103,7 @@ class DashBoard extends Component {
       status: 'Closed',
       fadeIn: true,
       timeout: 300,
+      modal: false,
     };
   }
 
@@ -111,12 +115,19 @@ class DashBoard extends Component {
     this.setState({
       accordion: state,
     });
-  }r
+  }
+
+   toggleModal() {
+    this.setState(prevState => ({
+      modal: !prevState.modal
+    }));
+  }
   render() {
     return (
       <Row>
           <Col>    
-              <div>    
+              <div>
+
                 <div class="card border-danger mb-3" >
                   <div class="card-header text-white bg-danger  mb-3">
                      <strong>Problem</strong>
@@ -137,7 +148,49 @@ class DashBoard extends Component {
                         <th>Description <i class="fa fa-sort"></i></th>
                         <th>Date</th>
                         <th>Comment</th>
-                        <th></th>                  
+                        <th>
+                          <div>
+                            <Button color="primary" size="sm" onClick={this.toggleModal}><i class="fa fa-plus-circle"></i>{this.props.buttonLabel}</Button>
+                            <Modal isOpen={this.state.modal} toggle={this.toggleModal} className={this.props.className}>
+                              <ModalHeader toggle={this.toggleModal}>Modal title</ModalHeader>
+                              <ModalBody>
+                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">Title</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="text" id="text-input" name="text-input" placeholder="Title" />
+                                        
+                                      </Col>
+                                    </FormGroup>
+                                     <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">Description</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="textarea" id="text-input" name="text-input" placeholder="Description" />
+                                        
+                                      </Col>
+                                    </FormGroup>   
+                                     <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="textarea-input">Comment</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="text" name="textarea-input" id="textarea-input" rows="9"
+                                               placeholder="Comment" />
+                                      </Col>
+                                    </FormGroup>                     
+                                  </Form>                              
+                              </ModalBody>
+                              <ModalFooter>
+                                <Button color="primary" onClick={this.toggleModal}>Submit</Button>{' '}
+                                <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
+                              </ModalFooter>
+                            </Modal>
+                          </div>
+                        </th>                  
                       </tr>
                       </thead>
                       <tbody>
@@ -308,7 +361,7 @@ class DashBoard extends Component {
 
         <div class="card border-primary  mb-3" >
               <div class="card-header text-white bg-primary  mb-3">
-                <i className="fa fa-align-justify"></i><strong>Project</strong>
+                <strong>Project</strong>
                 <small> to do</small>
               </div>
                <div class="card-body"> 

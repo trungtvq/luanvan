@@ -57,8 +57,6 @@ class Add extends Component {
                              placeholder="Content..." />
                     </Col>
                   </FormGroup>                     
-                 
-                                                  
                 </Form>
               </CardBody>
               <CardFooter>
