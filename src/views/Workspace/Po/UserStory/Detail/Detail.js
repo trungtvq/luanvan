@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
-import { Card, Badge, Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Table, Pagination, PaginationItem, PaginationLink, } from 'reactstrap';
+import { Card, Badge, Button, Col, Container, Input, InputGroup, 
+  InputGroupAddon, InputGroupText, Row, Table, Pagination, PaginationItem, PaginationLink, 
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Form,
+  FormGroup,
+  Label,
+  ModalFooter,
+
+} from 'reactstrap';
 import { Link } from 'react-router-dom';
 class Detail extends Component {
   constructor(props) {
     super(props);
+    this.toggleAdd = this.toggleAdd.bind(this);
+    this.toggleEdit = this.toggleEdit.bind(this);
+
     this.state = {
       data: [ 
               {
@@ -43,14 +56,28 @@ class Detail extends Component {
                 "so":"I can be contacted by admin",
               }
             ],
+      modalAdd: false,
+      modalEdit: false,
       }
     };
 
+  toggleAdd() {
+    this.setState(prevState => ({
+      modalAdd: !prevState.modalAdd
+    }));
+  }
+
+  toggleEdit() {
+    this.setState(prevState => ({
+      modalEdit: !prevState.modalEdit
+    }));
+  }
 
   render() {
      const {
       data
     } = this.state;
+    var that=this;
     return (
       <Row>
           <Col>       
@@ -63,6 +90,7 @@ class Detail extends Component {
                             <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                           </Col> 
               </Row>
+              
               <Card>
               <div class="table-responsive">   
                   <table class="table table-lg">
@@ -73,14 +101,51 @@ class Detail extends Component {
                       <th>I want to be able to... <i class="fa fa-sort"></i></th>
                       <th>So that... <i class="fa fa-sort"></i></th>
                       <th>
-                        <Link to="/UserStory/Add">
-                            <Button color="primary" size="sm" className="mt-3" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
-                        </Link> 
+                        <div>
+                            <Button color="primary" size="sm" className="mt-3" onClick={this.toggleAdd}><i class="fa fa-plus-square"></i>{this.props.buttonLabel}</Button>
+                            <Modal size="lg" isOpen={this.state.modalAdd} toggle={this.toggleAdd} className={this.props.className}>
+                              <ModalHeader toggle={this.toggleAdd}>UserStory</ModalHeader>
+                              <ModalBody>
+                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                      <FormGroup row>
+                                        <Col md="3">
+                                          <Label htmlFor="text-input">As a...</Label>
+                                        </Col>
+                                        <Col xs="12" md="9">
+                                          <Input type="text" id="text-input" name="text-input" placeholder="As a..." />
+                                          
+                                        </Col>
+                                      </FormGroup>
+                                       <FormGroup row>
+                                        <Col md="3">
+                                          <Label htmlFor="text-input">I want to be able to...</Label>
+                                        </Col>
+                                        <Col xs="12" md="9">
+                                          <Input type="text" id="text-input" name="text-input" placeholder="I want to be able to..." />
+                                          
+                                        </Col>
+                                      </FormGroup>   
+                                       <FormGroup row>
+                                        <Col md="3">
+                                          <Label htmlFor="textarea-input">So that...</Label>
+                                        </Col>
+                                        <Col xs="12" md="9">
+                                          <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
+                                                 placeholder="Content..." />
+                                        </Col>
+                                      </FormGroup>                     
+                                  </Form>                           
+                              </ModalBody>
+                              <ModalFooter>
+                                <Button color="primary" onClick={this.toggleAdd}>Submit</Button>{' '}
+                                <Button color="secondary" onClick={this.toggleAdd}>Cancel</Button>
+                              </ModalFooter>
+                            </Modal>
+                        </div>
                       </th>
                     </tr>
                     </thead>
                    <tbody>{this.state.data.map(function(item, key) {
-               
                  return (
                     <tr key = {key}>
                         <td>{item.id}</td>
@@ -88,7 +153,47 @@ class Detail extends Component {
                         <td>{item.want}</td>
                         <td>{item.so}</td>
                         <td>
-                        <Button type="submit" size="sm" color="primary" href="/UserStory/Edit"><i class="fa fa-edit"></i></Button>
+                         
+                            <Button color="warning" size="sm" onClick={that.toggleEdit}><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
+                            <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
+                              <ModalHeader toggle={that.toggleEdit}>UserStory</ModalHeader>
+                              <ModalBody>
+                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">As a...</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="text" id="text-input" name="text-input" placeholder="As a..." value="admin"/>
+                                        
+                                      </Col>
+                                    </FormGroup>
+                                     <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">I want to be able to...</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="text" id="text-input" name="text-input" placeholder="I want to be able to..." value="See a list of all members and visitors" />
+                                        
+                                      </Col>
+                                    </FormGroup>   
+                                     <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="textarea-input">So that...</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
+                                               placeholder="Content..." value="I can monitor site visits"/>
+                                      </Col>
+                                    </FormGroup>                     
+                                  </Form>                        
+                              </ModalBody>
+                              <ModalFooter>
+                                <Button color="primary" onClick={that.toggleEdit}>Submit</Button>{' '}
+                                <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
+                              </ModalFooter>
+                            </Modal>
+                     
                         <Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                       </td>
                     </tr>

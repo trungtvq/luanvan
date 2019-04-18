@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Badge, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink } from 'reactstrap';
+import { Button,Badge, UncontrolledDropdown, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 import { AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
@@ -36,16 +36,21 @@ class DefaultHeader extends Component {
 
         <Nav className="d-md-down-none" navbar>
           <NavItem className="px-3">
-            <Link to="/" className="nav-link" >Dashboard</Link>
-          </NavItem>
-          <NavItem className="px-3">
             <Link to="/users">Users</Link>
           </NavItem>
           <NavItem className="px-3">
             <NavLink href="#">Settings</NavLink>
           </NavItem>
            <NavItem className="px-3">
-            <NavLink href="/AllProject">Projects</NavLink>
+              <UncontrolledDropdown color="light">
+                <DropdownToggle caret>
+                    Project
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem>Create project</DropdownItem>
+                  <DropdownItem href="/AllProject">Your projects</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
           </NavItem>
         </Nav>
         <Nav className="ml-auto" navbar>
