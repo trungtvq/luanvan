@@ -23,14 +23,19 @@ Pagination,
 PaginationItem,
 ListGroup,
 ListGroupItem,
-PaginationLink, } from 'reactstrap';
+PaginationLink,
+Modal,
+ModalHeader,
+ModalBody,
+ModalFooter, } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 
 class TeamTask extends Component {
    constructor(props) {
     super(props);
-
+    this.toggleAdd = this.toggleAdd.bind(this);
+    this.toggleEdit = this.toggleEdit.bind(this);
     this.toggle = this.toggle.bind(this);
    
     this.state = {
@@ -91,9 +96,24 @@ class TeamTask extends Component {
     this.setState({ collapse: !this.state.collapse });
   }
 
+  toggleAdd() {
+    this.setState(prevState => ({
+      modalAdd: !prevState.modalAdd
+    }));
+  }
+
+  toggleEdit() {
+    this.setState(prevState => ({
+      modalEdit: !prevState.modalEdit
+    }));
+  }
   
 
   render() {
+    const {
+      data
+    } = this.state;
+    let that=this;
     return (
       <Row>
           <Col>        
@@ -123,9 +143,86 @@ class TeamTask extends Component {
                     <th>Status</th>         
                     <th>Review</th>   
                     <th>
-                      <Link to="/Member/AddTeamTask">
-                      <Button color="primary" size="sm" className="sm" active tabIndex={-1}><i class="fa fa-plus-circle"></i></Button>
-                      </Link>  
+                      <div>
+                            <Button color="primary" size="sm" className="mt-3" onClick={that.toggleAdd}><i class="fa fa-plus-square"></i>{this.props.buttonLabel}</Button>
+                            <Modal size="lg" isOpen={that.state.modalAdd} toggle={that.toggleAdd} className={that.props.className}>
+                              <ModalHeader toggle={that.toggleAdd}>Team Task</ModalHeader>
+                              <ModalBody>
+                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">Title</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="text" id="text-input" name="text-input" placeholder="Title" />
+                                        
+                                      </Col>
+                                    </FormGroup>
+                                     <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="textarea-input">Description</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
+                                               placeholder="Content..." />
+                                      </Col>
+                                    </FormGroup>
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label>Priority</Label>
+                                      </Col>
+                                      <Col md="9">
+                                        <FormGroup check inline>
+                                          <Input className="form-check-input" type="radio" id="inline-radio1" name="inline-radios" value="option1" />
+                                          <Label className="form-check-label" check htmlFor="inline-radio1">High</Label>
+                                        </FormGroup>
+                                        <FormGroup check inline>
+                                          <Input className="form-check-input" type="radio" id="inline-radio2" name="inline-radios" value="option2" />
+                                          <Label className="form-check-label" check htmlFor="inline-radio2">Medium</Label>
+                                        </FormGroup>
+                                        <FormGroup check inline>
+                                          <Input className="form-check-input" type="radio" id="inline-radio3" name="inline-radios" value="option3" />
+                                          <Label className="form-check-label" check htmlFor="inline-radio3">Low</Label>
+                                        </FormGroup>
+                                      </Col>
+                                    </FormGroup>                     
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="date-input">Start day </Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="date" id="date-input" name="date-input" placeholder="date" />
+                                      </Col>
+                                    </FormGroup>
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="date-input">Deadline </Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="date" id="date-input" name="date-input" placeholder="date" />
+                                      </Col>
+                                    </FormGroup>
+                                     <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">Assignee</Label>
+                                      </Col>
+                                     <Col xs="12" md="3">
+                                        <Input type="select" name="select" id="select">
+                                          <option value="0">Please select</option>
+                                          <option value="1">Hùng</option>
+                                          <option value="2">Nhân</option>
+                                          <option value="3">Tâm</option>
+                                        </Input>
+                                      </Col>
+                                    </FormGroup>                                          
+                                  </Form>                      
+                              </ModalBody>
+                              <ModalFooter>
+                                <Button color="primary" onClick={that.toggleAdd}>Submit</Button>{' '}
+                                <Button color="secondary" onClick={that.toggleAdd}>Cancel</Button>
+                              </ModalFooter>
+                            </Modal>
+                      </div> 
                     </th>               
                   </tr>
                   </thead>
@@ -143,8 +240,98 @@ class TeamTask extends Component {
                       <td>{item.status}</td> 
                       <td>{item.review}</td>
                       <td>
-                        <Button type="submit" size="sm" color="primary" href="/Member/EditTeamTask"><i class="fa fa-edit"></i></Button>
-                        <Button type="submit" size="sm" color="success"><i class="fa fa-plus"></i></Button>
+                          <Button color="warning" size="sm" onClick={that.toggleEdit}><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
+                            <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
+                              <ModalHeader toggle={that.toggleEdit}>Team task</ModalHeader>
+                              <ModalBody>
+                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">Title</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="text" id="text-input" name="text-input" placeholder="Title" value="Login bằng Fb"/>
+                                        
+                                      </Col>
+                                    </FormGroup>
+                                     <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="textarea-input">Description</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
+                                               placeholder="Content..." value="Người dùng không cần tạo tài khoản mà sử dụng tài khoản fb để đăng nhập"/>
+                                      </Col>
+                                    </FormGroup>
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label>Priority</Label>
+                                      </Col>
+                                      <Col md="9">
+                                        <FormGroup check inline>
+                                          <Input className="form-check-input" type="radio" id="inline-radio1" name="inline-radios" value="option1" />
+                                          <Label className="form-check-label" check htmlFor="inline-radio1">High</Label>
+                                        </FormGroup>
+                                        <FormGroup check inline>
+                                          <Input className="form-check-input" type="radio" id="inline-radio2" name="inline-radios" value="option2" />
+                                          <Label className="form-check-label" check htmlFor="inline-radio2">Medium</Label>
+                                        </FormGroup>
+                                        <FormGroup check inline>
+                                          <Input className="form-check-input" type="radio" id="inline-radio3" name="inline-radios" value="option3" />
+                                          <Label className="form-check-label" check htmlFor="inline-radio3">Low</Label>
+                                        </FormGroup>
+                                      </Col>
+                                    </FormGroup>                     
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="date-input">Start day </Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="date" id="date-input" name="date-input" placeholder="date" value="20/4/2019"/>
+                                      </Col>
+                                    </FormGroup>
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="date-input">Deadline </Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="date" id="date-input" name="date-input" placeholder="date" value="24/4/2019"/>
+                                      </Col>
+                                    </FormGroup>
+                                     <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">Assignee</Label>
+                                      </Col>
+                                     <Col xs="12" md="2">
+                                        <Input type="select" name="select" id="select">
+                                          <option value="0">Please select</option>
+                                          <option value="1">Hùng</option>
+                                          <option value="2">Nhân</option>
+                                          <option value="3">Tâm</option>
+                                        </Input>
+                                      </Col>
+                                    </FormGroup>   
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">Status</Label>
+                                      </Col>
+                                      <Col xs="12" md="2">
+                                        <Input type="select" name="select" id="select">
+                                          <option value="0">Please select</option>
+                                          <option value="1">done</option>
+                                          <option value="2">inprogress</option>
+                                          <option value="3">to do</option>
+                                        </Input>
+                                      </Col>
+                                    </FormGroup>                                       
+                                  </Form>               
+                              </ModalBody>
+                              <ModalFooter>
+                                <Button color="primary" onClick={that.toggleEdit}>Submit</Button>{' '}
+                                <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
+                              </ModalFooter>
+                            </Modal>                        
+                          <Button type="submit" size="sm" color="success"><i class="fa fa-plus"></i></Button>
                       </td>
                   </tr>
                 )
