@@ -115,15 +115,8 @@ class Detail extends Component {
                       <td><center>{item.priority}</center></td>
                       <td><center>{item.estimation}</center></td>
                       <td><center>{item.sprint}</center></td>
+                      <td><center>{item.status}</center></td>
                       <td>
-                       <Input type="select" name="status" id="status" size="sm">
-                        <option value="0">{item.status}</option>
-                        <option value="1">to do</option>
-                        <option value="2">inprogress</option>
-                         <option value="2">done</option>
-                      </Input>
-                      </td> 
-                        <td>
                         <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
                         <Button type="submit" size="sm" color="primary" href="/ProductBacklog/Edit"><i class="fa fa-edit"></i></Button>
                         <Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
