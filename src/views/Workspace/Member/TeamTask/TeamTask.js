@@ -242,7 +242,7 @@ class TeamTask extends Component {
                       <td>{item.status}</td> 
                       <td>{item.review}</td>
                       <td>
-                          <Button color="warning" size="sm" onClick={that.toggleEdit}><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
+                          <Button color="warning" size="sm" className="mt-3" onClick={that.toggleEdit}><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
                             <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
                               <ModalHeader toggle={that.toggleEdit}>Team task</ModalHeader>
                               <ModalBody>
