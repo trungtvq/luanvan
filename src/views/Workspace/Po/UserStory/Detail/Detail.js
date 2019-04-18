@@ -12,6 +12,7 @@ import { Card, Badge, Button, Col, Container, Input, InputGroup,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 class Detail extends Component {
+
   constructor(props) {
     super(props);
     this.toggleAdd = this.toggleAdd.bind(this);
@@ -77,7 +78,7 @@ class Detail extends Component {
      const {
       data
     } = this.state;
-    var that=this;
+    let that=this;
     return (
       <Row>
           <Col>       
@@ -102,9 +103,9 @@ class Detail extends Component {
                       <th>So that... <i class="fa fa-sort"></i></th>
                       <th>
                         <div>
-                            <Button color="primary" size="sm" className="mt-3" onClick={this.toggleAdd}><i class="fa fa-plus-square"></i>{this.props.buttonLabel}</Button>
-                            <Modal size="lg" isOpen={this.state.modalAdd} toggle={this.toggleAdd} className={this.props.className}>
-                              <ModalHeader toggle={this.toggleAdd}>UserStory</ModalHeader>
+                            <Button color="primary" size="sm" className="mt-3" onClick={that.toggleAdd}><i class="fa fa-plus-square"></i>{this.props.buttonLabel}</Button>
+                            <Modal size="lg" isOpen={that.state.modalAdd} toggle={that.toggleAdd} className={that.props.className}>
+                              <ModalHeader toggle={that.toggleAdd}>UserStory</ModalHeader>
                               <ModalBody>
                                   <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
                                       <FormGroup row>
@@ -137,8 +138,8 @@ class Detail extends Component {
                                   </Form>                           
                               </ModalBody>
                               <ModalFooter>
-                                <Button color="primary" onClick={this.toggleAdd}>Submit</Button>{' '}
-                                <Button color="secondary" onClick={this.toggleAdd}>Cancel</Button>
+                                <Button color="primary" onClick={that.toggleAdd}>Submit</Button>{' '}
+                                <Button color="secondary" onClick={that.toggleAdd}>Cancel</Button>
                               </ModalFooter>
                             </Modal>
                         </div>
