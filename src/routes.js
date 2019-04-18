@@ -26,14 +26,11 @@ const ProjectTodo = React.lazy(() => import('./views/Personal/Project/ProjectTod
 
 const DashBoard = React.lazy(() => import('./views/Workspace/DashBoard'));
 //PO
-const Add_Po = React.lazy(() => import('./views/Workspace/Po/ProductBacklog/Add'));
 const Detail_Po = React.lazy(() => import('./views/Workspace/Po/ProductBacklog/Detail'));
-const Edit_Po = React.lazy(() => import('./views/Workspace/Po/ProductBacklog/Edit'));
 
 
 const UserStory_Detail = React.lazy(() => import('./views/Workspace/Po/UserStory/Detail'));
-const UserStory_Add = React.lazy(() => import('./views/Workspace/Po/UserStory/Add'));
-const UserStory_Edit = React.lazy(() => import('./views/Workspace/Po/UserStory/Edit'));
+
 
 
 const Cover = React.lazy(() => import('./views/Workspace/Po/Cover'));
@@ -52,10 +49,8 @@ const SprintBacklog_Member = React.lazy(() => import('./views/Workspace/Member/S
 const Evaluate_Member = React.lazy(() => import('./views/Workspace/Member/Evaluate'));
 
 const TeamTask_Member = React.lazy(() => import('./views/Workspace/Member/TeamTask'));
-const EditTeamTask_Member = React.lazy(() => import('./views/Workspace/Member/EditTeamTask'));
 
 
-const AddTeamTask_Member = React.lazy(() => import('./views/Workspace/Member/AddTeamTask'));
 const Velocity_Member = React.lazy(() => import('./views/Workspace/Member/Velocity'));
 const Team_Member = React.lazy(() => import('./views/Workspace/Member/Team'));
 
@@ -83,13 +78,11 @@ const routes = [
 
   
   //PO
-  { path: '/ProductBacklog/Add',exact: true,  name: 'Add', component: Add_Po },
   { path: '/ProductBacklog/Detail',exact: true,  name: 'Detail', component: Detail_Po },
-  { path: '/ProductBacklog/Edit',exact: true,  name: 'Edit', component: Edit_Po },
+  
 
   { path: '/UserStory/Detail',exact: true,  name: 'UserStory_Detail', component: UserStory_Detail },
-  { path: '/UserStory/Add',exact: true,  name: 'Add', component: UserStory_Add},
-  { path: '/UserStory/Edit',exact: true,  name: 'Edit', component: UserStory_Edit},
+  
 
   { path: '/Cover',exact: true,  name: 'Cover', component: Cover},
 
@@ -106,10 +99,10 @@ const routes = [
   { path: '/Member/Evaluate',exact: true,  name: 'Evaluate', component: Evaluate_Member },
 
   { path: '/Member/TeamTask',exact: true,  name: 'TeamTask', component: TeamTask_Member },
-  { path: '/Member/EditTeamTask',exact: true,  name: 'EditTeamTask', component: EditTeamTask_Member },
+ 
 
 
-  { path: '/Member/AddTeamTask',exact: true,  name: 'AddTeamTask_Member', component: AddTeamTask_Member },
+ 
   { path: '/Member/Velocity',exact: true,  name: 'Velocity_Member', component: Velocity_Member },
   { path: '/Member/Team',exact: true,  name: 'Team_Member', component: Team_Member },
 

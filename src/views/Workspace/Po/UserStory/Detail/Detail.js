@@ -155,8 +155,8 @@ class Detail extends Component {
                         <td>{item.so}</td>
                         <td>
                          
-                            <Button color="warning" size="sm" onClick={that.toggleEdit}><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
-                            <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
+                          <Button color="warning" size="sm" onClick={that.toggleEdit}><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
+                          <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
                               <ModalHeader toggle={that.toggleEdit}>UserStory</ModalHeader>
                               <ModalBody>
                                   <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
@@ -193,9 +193,9 @@ class Detail extends Component {
                                 <Button color="primary" onClick={that.toggleEdit}>Submit</Button>{' '}
                                 <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
                               </ModalFooter>
-                            </Modal>
+                          </Modal>
                      
-                        <Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
+                          <Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                       </td>
                     </tr>
                   )

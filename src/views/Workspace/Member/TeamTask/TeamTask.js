@@ -41,7 +41,7 @@ class TeamTask extends Component {
     this.state = {
       collapse: true,
       fadeIn: true,
-       data: [ 
+      data: [ 
               {
                 "Title":"Login bằng Fb",
                 "Description":"Người dùng không cần tạo tài khoản mà sử dụng tài khoản fb để đăng nhập",
@@ -88,6 +88,8 @@ class TeamTask extends Component {
               },
               
             ],
+      modalAdd: false,
+      modalEdit: false,
       
     };
   }

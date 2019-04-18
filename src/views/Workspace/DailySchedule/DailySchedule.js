@@ -24,10 +24,15 @@ import {
   Label,
   Table,
   Row,
+  Modal,
+ModalHeader,
+ModalBody,
+ModalFooter,
 } from 'reactstrap';
 class DailySchedule extends Component {
    constructor(props) {
     super(props);
+    this.toggleEdit = this.toggleEdit.bind(this);
     this.state = {
       data: [ 
               {
@@ -61,10 +66,20 @@ class DailySchedule extends Component {
             
             
             ],
+      modalEdit: false,
       }
     };
 
+  toggleEdit() {
+    this.setState(prevState => ({
+      modalEdit: !prevState.modalEdit
+    }));
+  }
   render() {
+    const {
+      data
+    } = this.state;
+    let that=this;
     return (
       <Row>
           <Col>  
@@ -97,9 +112,55 @@ class DailySchedule extends Component {
                       </td> 
                       <td>{item.review}</td>
                       <td>
-                        <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
+                      <Button color="warning" size="sm" onClick={that.toggleEdit}><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
+                        <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
+                              <ModalHeader toggle={that.toggleEdit}>Daily schedule</ModalHeader>
+                              <ModalBody>
+                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">IdBacklog</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="text" id="IdBacklog" name="IdBacklog" placeholder="IdBacklog" />
+                                        
+                                      </Col>
+                                    </FormGroup>
+                                     <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="textarea-input">Task</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="textarea" name="Task" id="Task" rows="9"
+                                               placeholder="Task..." />
+                                      </Col>
+                                    </FormGroup>
+                                                    
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="date-input">Date </Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="date" id="date-input" name="date-input" placeholder="date" />
+                                      </Col>
+                                    </FormGroup>
+                                    
+                                     <FormGroup row>
+                                      <Col md="3">
+                                        <Label>Status</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <p className="form-control-static">To do</p>
+                                      </Col>
+                                    </FormGroup>                                       
+                                  </Form>                       
+                              </ModalBody>
+                              <ModalFooter>
+                                <Button color="primary" onClick={that.toggleEdit}>Submit</Button>{' '}
+                                <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
+                              </ModalFooter>
+                        </Modal>
                       </td>
-                     
                   </tr>
                 )
              

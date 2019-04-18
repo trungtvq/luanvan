@@ -78,6 +78,8 @@ class Detail extends Component {
                 "status":"done",
               }
             ],
+      modalAdd: false,
+      modalEdit: false,
       }
     };
 
