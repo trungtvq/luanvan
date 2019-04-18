@@ -28,9 +28,14 @@ const DashBoard = React.lazy(() => import('./views/Workspace/DashBoard'));
 //PO
 const Add_Po = React.lazy(() => import('./views/Workspace/Po/ProductBacklog/Add'));
 const Detail_Po = React.lazy(() => import('./views/Workspace/Po/ProductBacklog/Detail'));
+
 const UserStory_Detail = React.lazy(() => import('./views/Workspace/Po/UserStory/Detail'));
 const UserStory_Add = React.lazy(() => import('./views/Workspace/Po/UserStory/Add'));
+const UserStory_Edit = React.lazy(() => import('./views/Workspace/Po/UserStory/Edit'));
+
+
 const Cover = React.lazy(() => import('./views/Workspace/Po/Cover'));
+
 const Evaluate_Po = React.lazy(() => import('./views/Workspace/Po/Evaluate'));
 
 
@@ -74,9 +79,13 @@ const routes = [
   //PO
   { path: '/ProductBacklog/Add',exact: true,  name: 'Add', component: Add_Po },
   { path: '/ProductBacklog/Detail',exact: true,  name: 'Detail', component: Detail_Po },
+
   { path: '/UserStory/Detail',exact: true,  name: 'UserStory_Detail', component: UserStory_Detail },
   { path: '/UserStory/Add',exact: true,  name: 'Add', component: UserStory_Add},
+  { path: '/UserStory/Edit',exact: true,  name: 'Edit', component: UserStory_Edit},
+
   { path: '/Cover',exact: true,  name: 'Cover', component: Cover},
+
   { path: '/Evaluate',exact: true,  name: 'Evaluate', component: Evaluate_Po },
 
 

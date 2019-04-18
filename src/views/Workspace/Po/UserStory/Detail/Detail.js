@@ -88,7 +88,7 @@ class Detail extends Component {
                         <td>{item.want}</td>
                         <td>{item.so}</td>
                         <td>
-                        <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
+                        <Button type="submit" size="sm" color="primary" href="/UserStory/Edit"><i class="fa fa-edit"></i></Button>
                         <Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                       </td>
                     </tr>
