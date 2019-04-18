@@ -27,8 +27,8 @@ import {
 class Edit extends Component {
   render() {
     return (
-      <Card>             
-              <CardBody>
+      <div class="card  bg-primary  mb-3" >      
+             <div class="card-body text-white">
                 <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
                   <FormGroup row>
                     <Col md="3">
@@ -99,12 +99,12 @@ class Edit extends Component {
                     </Col>
                   </FormGroup>                                          
                 </Form>
-              </CardBody>
-              <CardFooter>
-                <Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Submit</Button>
+              </div>
+               <div class="card-footer bg-transparent ">
+                <Button type="submit" size="sm" color="success"><i className="fa fa-dot-circle-o"></i> Submit</Button>
                 <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
-              </CardFooter>
-            </Card>
+              </div>
+            </div>
     );
   }
 }

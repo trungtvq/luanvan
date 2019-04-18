@@ -60,7 +60,7 @@ class Edit extends Component {
                 </Form>
               </div>
               <div class="card-footer bg-transparent ">
-                <Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Submit</Button>
+                <Button type="submit" size="sm" color="success"><i className="fa fa-dot-circle-o"></i> Submit</Button>
                 <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
               </div>
             </div>
