@@ -59,10 +59,10 @@ class Add extends Component {
                   </FormGroup>                     
                   <FormGroup row>
                     <Col md="3">
-                      <Label htmlFor="date-input">Date setting </Label>
+                      <Label htmlFor="date-input">Status </Label>
                     </Col>
-                    <Col xs="12" md="9">
-                      <Input type="date" id="date-input" name="date-input" placeholder="date" />
+                    <Col xs="12" md="2">
+                      <Input type="text" id="text-input" name="texttext-input" placeholder="text" value="to do"/>
                     </Col>
                   </FormGroup>
                    <FormGroup row>

@@ -125,7 +125,7 @@ class Detail extends Component {
                       </td> 
                         <td>
                         <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
-                        <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
+                        <Button type="submit" size="sm" color="primary" href="/ProductBacklog/Edit"><i class="fa fa-edit"></i></Button>
                         <Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                       </td>
                   </tr>

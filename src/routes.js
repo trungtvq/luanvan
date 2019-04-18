@@ -28,6 +28,8 @@ const DashBoard = React.lazy(() => import('./views/Workspace/DashBoard'));
 //PO
 const Add_Po = React.lazy(() => import('./views/Workspace/Po/ProductBacklog/Add'));
 const Detail_Po = React.lazy(() => import('./views/Workspace/Po/ProductBacklog/Detail'));
+const Edit_Po = React.lazy(() => import('./views/Workspace/Po/ProductBacklog/Edit'));
+
 
 const UserStory_Detail = React.lazy(() => import('./views/Workspace/Po/UserStory/Detail'));
 const UserStory_Add = React.lazy(() => import('./views/Workspace/Po/UserStory/Add'));
@@ -79,6 +81,7 @@ const routes = [
   //PO
   { path: '/ProductBacklog/Add',exact: true,  name: 'Add', component: Add_Po },
   { path: '/ProductBacklog/Detail',exact: true,  name: 'Detail', component: Detail_Po },
+  { path: '/ProductBacklog/Edit',exact: true,  name: 'Edit', component: Edit_Po },
 
   { path: '/UserStory/Detail',exact: true,  name: 'UserStory_Detail', component: UserStory_Detail },
   { path: '/UserStory/Add',exact: true,  name: 'Add', component: UserStory_Add},
