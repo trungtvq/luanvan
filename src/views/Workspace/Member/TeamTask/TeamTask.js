@@ -143,7 +143,7 @@ class TeamTask extends Component {
                       <td>{item.status}</td> 
                       <td>{item.review}</td>
                       <td>
-                        <Button type="submit" size="sm" color="primary"><i class="fa fa-edit"></i></Button>
+                        <Button type="submit" size="sm" color="primary" href="/Member/EditTeamTask"><i class="fa fa-edit"></i></Button>
                         <Button type="submit" size="sm" color="success"><i class="fa fa-plus"></i></Button>
                       </td>
                   </tr>

@@ -50,7 +50,11 @@ const TestApollo = React.lazy(() => import('./views/Pages/TestApollo'));
 const MyTask_Member = React.lazy(() => import('./views/Workspace/Member/Task/MyTask'));
 const SprintBacklog_Member = React.lazy(() => import('./views/Workspace/Member/SprintBacklog'));
 const Evaluate_Member = React.lazy(() => import('./views/Workspace/Member/Evaluate'));
+
 const TeamTask_Member = React.lazy(() => import('./views/Workspace/Member/TeamTask'));
+const EditTeamTask_Member = React.lazy(() => import('./views/Workspace/Member/EditTeamTask'));
+
+
 const AddTeamTask_Member = React.lazy(() => import('./views/Workspace/Member/AddTeamTask'));
 const Velocity_Member = React.lazy(() => import('./views/Workspace/Member/Velocity'));
 const Team_Member = React.lazy(() => import('./views/Workspace/Member/Team'));
@@ -100,7 +104,11 @@ const routes = [
   { path: '/Member/Task/MyTask',exact: true,  name: 'MyTask', component: MyTask_Member },
   { path: '/Member/SprintBacklog',exact: true,  name: 'SprintBacklog', component: SprintBacklog_Member },
   { path: '/Member/Evaluate',exact: true,  name: 'Evaluate', component: Evaluate_Member },
+
   { path: '/Member/TeamTask',exact: true,  name: 'TeamTask', component: TeamTask_Member },
+  { path: '/Member/EditTeamTask',exact: true,  name: 'EditTeamTask', component: EditTeamTask_Member },
+
+
   { path: '/Member/AddTeamTask',exact: true,  name: 'AddTeamTask_Member', component: AddTeamTask_Member },
   { path: '/Member/Velocity',exact: true,  name: 'Velocity_Member', component: Velocity_Member },
   { path: '/Member/Team',exact: true,  name: 'Team_Member', component: Team_Member },

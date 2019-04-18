@@ -24,7 +24,7 @@ import {
   Label,
   Row,
 } from 'reactstrap';
-class AddTeamTask extends Component {
+class EditTeamTask extends Component {
   render() {
     return (
      <div class="card  bg-primary  mb-3" >      
@@ -35,7 +35,7 @@ class AddTeamTask extends Component {
                       <Label htmlFor="text-input">Title</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="text" id="text-input" name="text-input" placeholder="Title" />
+                      <Input type="text" id="text-input" name="text-input" placeholder="Title" value="Login bằng Fb"/>
                       
                     </Col>
                   </FormGroup>
@@ -45,7 +45,7 @@ class AddTeamTask extends Component {
                     </Col>
                     <Col xs="12" md="9">
                       <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
-                             placeholder="Content..." />
+                             placeholder="Content..." value="Người dùng không cần tạo tài khoản mà sử dụng tài khoản fb để đăng nhập"/>
                     </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -72,7 +72,7 @@ class AddTeamTask extends Component {
                       <Label htmlFor="date-input">Start day </Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="date" id="date-input" name="date-input" placeholder="date" />
+                      <Input type="date" id="date-input" name="date-input" placeholder="date" value="20/4/2019"/>
                     </Col>
                   </FormGroup>
                   <FormGroup row>
@@ -80,14 +80,14 @@ class AddTeamTask extends Component {
                       <Label htmlFor="date-input">Deadline </Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="date" id="date-input" name="date-input" placeholder="date" />
+                      <Input type="date" id="date-input" name="date-input" placeholder="date" value="24/4/2019"/>
                     </Col>
                   </FormGroup>
                    <FormGroup row>
                     <Col md="3">
                       <Label htmlFor="text-input">Assignee</Label>
                     </Col>
-                   <Col xs="12" md="3">
+                   <Col xs="12" md="2">
                       <Input type="select" name="select" id="select">
                         <option value="0">Please select</option>
                         <option value="1">Hùng</option>
@@ -95,7 +95,20 @@ class AddTeamTask extends Component {
                         <option value="3">Tâm</option>
                       </Input>
                     </Col>
-                  </FormGroup>                                          
+                  </FormGroup>   
+                  <FormGroup row>
+                    <Col md="3">
+                      <Label htmlFor="text-input">Status</Label>
+                    </Col>
+                    <Col xs="12" md="2">
+                      <Input type="select" name="select" id="select">
+                        <option value="0">Please select</option>
+                        <option value="1">done</option>
+                        <option value="2">inprogress</option>
+                        <option value="3">to do</option>
+                      </Input>
+                    </Col>
+                  </FormGroup>                                       
                 </Form>
               </div>
               <div class="card-footer bg-transparent ">
@@ -107,4 +120,4 @@ class AddTeamTask extends Component {
   }
 }
 
-export default AddTeamTask;
+export default EditTeamTask;
