@@ -94,7 +94,8 @@ class DashBoard extends Component {
     super(props);
 
     this.toggleAccordion = this.toggleAccordion.bind(this);
-    this.toggleModal = this.toggleModal.bind(this);
+    this.toggleAddProblem = this.toggleAddProblem.bind(this);
+    this.toggleComment = this.toggleComment.bind(this);
    
     this.state = {
       collapse: false,
@@ -103,7 +104,8 @@ class DashBoard extends Component {
       status: 'Closed',
       fadeIn: true,
       timeout: 300,
-      modal: false,
+      modalAddProblem: false,
+      modalComment: false,
     };
   }
 
@@ -117,9 +119,15 @@ class DashBoard extends Component {
     });
   }
 
-   toggleModal() {
+  toggleAddProblem() {
     this.setState(prevState => ({
-      modal: !prevState.modal
+      modalAddProblem: !prevState.modalAddProblem
+    }));
+  }
+
+  toggleComment() {
+    this.setState(prevState => ({
+      modalComment: !prevState.modalComment
     }));
   }
   render() {
@@ -150,9 +158,9 @@ class DashBoard extends Component {
                         <th>Comment</th>
                         <th>
                           <div>
-                            <Button color="primary" size="sm" onClick={this.toggleModal}><i class="fa fa-plus-circle"></i>{this.props.buttonLabel}</Button>
-                            <Modal isOpen={this.state.modal} toggle={this.toggleModal} className={this.props.className}>
-                              <ModalHeader toggle={this.toggleModal}>Modal title</ModalHeader>
+                            <Button color="primary" size="sm" onClick={this.toggleAddProblem}><i class="fa fa-plus-circle"></i>{this.props.buttonLabel}</Button>
+                            <Modal isOpen={this.state.modalAddProblem} toggle={this.toggleAddProblem} className={this.props.className}>
+                              <ModalHeader toggle={this.toggleAddProblem}>Problem</ModalHeader>
                               <ModalBody>
                                   <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
                                     <FormGroup row>
@@ -185,8 +193,8 @@ class DashBoard extends Component {
                                   </Form>                              
                               </ModalBody>
                               <ModalFooter>
-                                <Button color="primary" onClick={this.toggleModal}>Submit</Button>{' '}
-                                <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
+                                <Button color="primary" onClick={this.toggleAddProblem}>Submit</Button>{' '}
+                                <Button color="secondary" onClick={this.toggleAddProblem}>Cancel</Button>
                               </ModalFooter>
                             </Modal>
                           </div>
@@ -200,6 +208,47 @@ class DashBoard extends Component {
                         <td>20/3/2019</td>                
                         <td>9h ago, i can't connect server</td>
                         <td>
+                        
+                          <Button color="warning" size="sm" onClick={this.toggleComment}><i class="fa fa-edit"></i>{this.props.buttonLabel}</Button>
+                          <Modal isOpen={this.state.modalComment} toggle={this.toggleComment} className={this.props.className}>
+                              <ModalHeader toggle={this.toggleComment}>Problem</ModalHeader>
+                              <ModalBody>
+                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">Title</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="text" id="text-input" name="text-input" placeholder="Title" value="Login" />
+                                        
+                                      </Col>
+                                    </FormGroup>
+                                     <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">Description</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="textarea" id="text-input" name="text-input" placeholder="Description" value="Server connect fail"/>
+                                        
+                                      </Col>
+                                    </FormGroup>   
+                                     <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="textarea-input">Comment</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="text" name="textarea-input" id="textarea-input" rows="9"
+                                               placeholder="Comment"/>
+                                      </Col>
+                                    </FormGroup>                     
+                                  </Form>                              
+                              </ModalBody>
+                              <ModalFooter>
+                                <Button color="primary" onClick={this.toggleComment}>Submit</Button>{' '}
+                                <Button color="secondary" onClick={this.toggleComment}>Cancel</Button>
+                              </ModalFooter>
+                          </Modal>
+                          
                          <Button type="submit" size="sm" color="success"><i class="fa fa-check"></i></Button>
                         </td>
                       </tr>
@@ -209,7 +258,46 @@ class DashBoard extends Component {
                         <td>19/3/2019</td>                
                         <td></td>
                         <td>
-                         <Button type="submit" size="sm" color="success"><i class="fa fa-check"></i></Button>
+                          <Button color="warning" size="sm" onClick={this.toggleComment}><i class="fa fa-edit"></i>{this.props.buttonLabel}</Button>
+                          <Modal isOpen={this.state.modalComment} toggle={this.toggleComment} className={this.props.className}>
+                              <ModalHeader toggle={this.toggleComment}>Problem</ModalHeader>
+                              <ModalBody>
+                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">Title</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="text" id="text-input" name="text-input" placeholder="Title" value="Login" />
+                                        
+                                      </Col>
+                                    </FormGroup>
+                                     <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">Description</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="textarea" id="text-input" name="text-input" placeholder="Description" value="Server connect fail"/>
+                                        
+                                      </Col>
+                                    </FormGroup>   
+                                     <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="textarea-input">Comment</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="text" name="textarea-input" id="textarea-input" rows="9"
+                                               placeholder="Comment"/>
+                                      </Col>
+                                    </FormGroup>                     
+                                  </Form>                              
+                              </ModalBody>
+                              <ModalFooter>
+                                <Button color="primary" onClick={this.toggleComment}>Submit</Button>{' '}
+                                <Button color="secondary" onClick={this.toggleComment}>Cancel</Button>
+                              </ModalFooter>
+                          </Modal>
+                          <Button type="submit" size="sm" color="success"><i class="fa fa-check"></i></Button>
                         </td>
                       </tr>
                        <tr>
@@ -218,6 +306,45 @@ class DashBoard extends Component {
                         <td>21/3/2019</td>                
                         <td>Suggest password atleast 8 characters</td>
                         <td>
+                        <Button color="warning" size="sm" onClick={this.toggleComment}><i class="fa fa-edit"></i>{this.props.buttonLabel}</Button>
+                          <Modal isOpen={this.state.modalComment} toggle={this.toggleComment} className={this.props.className}>
+                              <ModalHeader toggle={this.toggleComment}>Problem</ModalHeader>
+                              <ModalBody>
+                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">Title</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="text" id="text-input" name="text-input" placeholder="Title" value="Login" />
+                                        
+                                      </Col>
+                                    </FormGroup>
+                                     <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">Description</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="textarea" id="text-input" name="text-input" placeholder="Description" value="Server connect fail"/>
+                                        
+                                      </Col>
+                                    </FormGroup>   
+                                     <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="textarea-input">Comment</Label>
+                                      </Col>
+                                      <Col xs="12" md="9">
+                                        <Input type="text" name="textarea-input" id="textarea-input" rows="9"
+                                               placeholder="Comment"/>
+                                      </Col>
+                                    </FormGroup>                     
+                                  </Form>                              
+                              </ModalBody>
+                              <ModalFooter>
+                                <Button color="primary" onClick={this.toggleComment}>Submit</Button>{' '}
+                                <Button color="secondary" onClick={this.toggleComment}>Cancel</Button>
+                              </ModalFooter>
+                          </Modal>
                          <Button type="submit" size="sm" color="success"><i class="fa fa-check"></i></Button>
                         </td>
                       </tr>
