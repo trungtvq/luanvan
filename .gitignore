@@ -1,8 +1,8 @@
 # Compiled files
-dist/
-build
+#dist/
+#build
 # Config file
-.env
+#.env
 #config/config.js
 
 # Node stuff
