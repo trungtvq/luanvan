@@ -137,49 +137,47 @@ class CreateProject extends Component {
                  
 
                   
-                     <div class="card  mb-3">
-                        <div class="card-header ">
-                                  <i className="fa fa-align-justify"></i><strong>Find and add member</strong>
-                                    <Row>       
+                     <div class="card  mb-3">      
+                        <div class="card-body text-dark">
+                              <strong>Find and add member</strong>
+                              <Row>       
                                       <Col xs="2" md="2">
                                         <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
                                       </Col> 
                                       <Col xs="0" md="0">
                                         <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
                                       </Col> 
-                                    </Row>     
+                              </Row>     
 
-                                <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
-                                <FormGroup row>
-                                  <Col md="3">
-                                    <Label htmlFor="text-input">Skill</Label>
-                                  </Col>
-                                  <Col xs="5" md="5">
-                                    <Input type="text" id="text-input" name="text-input" placeholder="skill" />
-                                  </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                  <Col md="3">
-                                    <Label htmlFor="text-input">Point</Label>
-                                  </Col>
-                                  <Col xs="2" md="2">
-                                    <Input type="text" id="text-input" name="text-input" placeholder="Point min" />
-                                    <Input type="text" id="text-input" name="text-input" placeholder="Point max" />  
-                                  </Col>
-                                </FormGroup>   
-                                <FormGroup row>
-                                  <Col md="3">
-                                    <Label htmlFor="text-input">Freelancer</Label>
-                                  </Col>
-                                  <Col xs="2" md="2">
-                                    <Input type="checkbox" id="text-input" name="text-input"  />  
-                                  </Col>
-                                </FormGroup>   
-                                                                   
+                              <Form  action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">Skill</Label>
+                                      </Col>
+                                      <Col xs="5" md="5">
+                                        <Input type="text" id="text-input" name="text-input" placeholder="skill" />
+                                      </Col>
+                                    </FormGroup>
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">Point</Label>
+                                      </Col>
+                                      <Col xs="2" md="2">
+                                        <Input type="text" id="text-input" name="text-input" placeholder="Point min" />
+                                        <Input type="text" id="text-input" name="text-input" placeholder="Point max" />  
+                                      </Col>
+                                    </FormGroup>   
+                                    <FormGroup row>
+                                      <Col md="3">
+                                        <Label htmlFor="text-input">Freelancer</Label>
+                                      </Col>
+                                      <Col xs="2" md="2">
+                                        <Input type="checkbox" id="text-input" name="text-input"  />  
+                                      </Col>
+                                    </FormGroup>                                        
                               </Form>
-                           </div>           
-                             <div class="card-body">
-                                 <Table  responsive size="sm">
+
+                              <Table  responsive size="sm">
                                 <thead>
                                 <tr>
                                   <th>Name</th>
@@ -241,8 +239,8 @@ class CreateProject extends Component {
                                 
                                 </tbody>
                               </Table>
-                            </div>
-                    </div> 
+                        </div>
+                     </div> 
                                 
                  
                   
