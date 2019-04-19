@@ -1,0 +1,6 @@
+{
+  "name": "CreateProject",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./CreateProject.js"
+}
