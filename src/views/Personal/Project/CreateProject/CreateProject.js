@@ -45,9 +45,16 @@ class CreateProject extends Component {
                     <Col md="3">
                       <Label htmlFor="text-input">Topic project</Label>
                     </Col>
-                    <Col xs="5" md="5">
-                      <Input type="text" id="IdBacklog" name="IdBacklog" placeholder="IdBacklog" />
-                      
+                    <Col xs="4" md="4">
+                      <Input type="text" id="TopicProject" name="TopicP roject" placeholder="New Topic" />
+                    </Col>
+                    <Col xs="2" md="2">
+                    <Input type="select" name="status" id="status">
+                        <option value="0"></option>
+                        <option value="1">web</option>
+                        <option value="2">game</option>
+                         <option value="2">application</option>
+                      </Input>
                     </Col>
                   </FormGroup>
 
