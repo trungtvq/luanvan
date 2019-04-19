@@ -89,8 +89,7 @@ class CreateProject extends Component {
                                   <th>Role</th>
                                   <th>Skill</th>
                                   <th>Point</th>
-                                  <th>Current task</th>
-                                  <th>Task completed</th>
+                                 
                     
                                  
                                 </tr>
@@ -101,8 +100,7 @@ class CreateProject extends Component {
                                   <td></td>
                                   <td></td>
                                   <td></td>
-                                  <td></td>
-                                  <td></td>
+                                
                                 </tr>
                                
                                
@@ -111,8 +109,7 @@ class CreateProject extends Component {
                                   <td></td>
                                   <td></td>
                                   <td></td>
-                                  <td></td>
-                                  <td></td>
+                                  
                                 </tr>
                                
                                
@@ -121,8 +118,7 @@ class CreateProject extends Component {
                                   <td></td>
                                   <td></td>
                                   <td></td>
-                                  <td></td>
-                                  <td></td>
+                                  
                                 </tr>
 
                                 <tr>
@@ -130,8 +126,7 @@ class CreateProject extends Component {
                                   <td></td>
                                   <td></td>
                                   <td></td>
-                                  <td></td>
-                                  <td></td>
+                                  
                                 </tr>
                                 
                                 </tbody>
