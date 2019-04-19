@@ -79,7 +79,7 @@ class CreateProject extends Component {
                     </Col>
                   </FormGroup>
                   
-                  <FormGroup row>
+                  
                     <Card>             
                             <CardBody>
                                  <Table hover bordered striped responsive size="sm">
@@ -138,9 +138,9 @@ class CreateProject extends Component {
                               </Table>
                             </CardBody>
                     </Card>
-                  </FormGroup>
+                 
 
-                  <FormGroup row>
+                  
                      <Card>  
                            <CardHeader>
                                   <i className="fa fa-align-justify"></i><strong>Find and add member</strong>
@@ -248,8 +248,7 @@ class CreateProject extends Component {
                               </Table>
                             </CardBody>
                     </Card> 
-                  </FormGroup>
-                                  
+                                
                  
                   
                                                 
