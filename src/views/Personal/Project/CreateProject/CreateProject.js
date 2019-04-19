@@ -38,8 +38,8 @@ class CreateProject extends Component {
       <Row>
           <Col>  
            
-            <Card>             
-              <CardBody>
+            <div class="card  bg-primary mb-3">
+              <div class="card-body">
                 <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
                   <FormGroup row>
                     <Col md="3">
@@ -80,9 +80,10 @@ class CreateProject extends Component {
                   </FormGroup>
                   
                   
-                    <Card>             
-                            <CardBody>
-                                 <Table hover bordered striped responsive size="sm">
+                    <div class="card  mb-3">
+                      <div class="card-body text-primary">
+                              <h6><b>Member</b></h6>
+                              <Table  responsive size="lg">
                                 <thead>
                                 <tr>
                                   <th>Name</th>
@@ -131,13 +132,13 @@ class CreateProject extends Component {
                                 
                                 </tbody>
                               </Table>
-                            </CardBody>
-                    </Card>
+                            </div>
+                    </div>
                  
 
                   
-                     <Card>  
-                           <CardHeader>
+                     <div class="card  mb-3">
+                        <div class="card-header ">
                                   <i className="fa fa-align-justify"></i><strong>Find and add member</strong>
                                     <Row>       
                                       <Col xs="2" md="2">
@@ -153,7 +154,7 @@ class CreateProject extends Component {
                                   <Col md="3">
                                     <Label htmlFor="text-input">Skill</Label>
                                   </Col>
-                                  <Col xs="12" md="9">
+                                  <Col xs="5" md="5">
                                     <Input type="text" id="text-input" name="text-input" placeholder="skill" />
                                   </Col>
                                 </FormGroup>
@@ -176,10 +177,9 @@ class CreateProject extends Component {
                                 </FormGroup>   
                                                                    
                               </Form>
-                           </CardHeader>           
-                            <CardBody>
-                           
-                                 <Table hover bordered striped responsive size="sm">
+                           </div>           
+                             <div class="card-body">
+                                 <Table  responsive size="sm">
                                 <thead>
                                 <tr>
                                   <th>Name</th>
@@ -241,19 +241,19 @@ class CreateProject extends Component {
                                 
                                 </tbody>
                               </Table>
-                            </CardBody>
-                    </Card> 
+                            </div>
+                    </div> 
                                 
                  
                   
                                                 
                 </Form>
-              </CardBody>
-              <CardFooter>
-                <Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Add</Button>
+              </div>
+              <div class="card-footer  bg-primary">
+                <Button type="submit" size="sm" color="success"><i className="fa fa-dot-circle-o"></i> Add</Button>
                 <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
-              </CardFooter>
-            </Card>
+              </div>
+            </div>
          </Col>
       </Row>
          
