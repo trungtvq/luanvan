@@ -84,12 +84,9 @@ class Cover extends Component {
           <Col>         
             <Row>
               <Col>    
-                <Card>
-                      <CardHeader>
-                        <i className="fa fa-align-justify"></i><strong>User Story</strong>
-                      </CardHeader>
-                      <CardBody>
-                                
+                <div class="card border-primary mb-3">
+                  <div class="card-header bg-primary">USER STORY</div>
+                    <div class="card-body">
                                 {this.state.dataUserStory.map(function(item, key) {
                                return (
                                     <Card>
@@ -131,16 +128,14 @@ class Cover extends Component {
                                  )
                               })}
 
-                      </CardBody>
-                </Card> 
+                      </div>
+                </div> 
               </Col>
                
                <Col>    
-                <Card>
-                      <CardHeader>
-                        <i className="fa fa-align-justify"></i><strong>Product backlog</strong>
-                      </CardHeader>
-                       <CardBody>
+                 <div class="card border-primary mb-3">
+                  <div class="card-header bg-primary">PRODUCT BACKLOG</div>
+                    <div class="card-body">
                         {this.state.dataProductBacklog.map(function(item, key) {
                           return (
                                     <Card>
@@ -178,8 +173,8 @@ class Cover extends Component {
                         })} 
                               
 
-                      </CardBody>
-                </Card> 
+                      </div>
+                </div> 
               </Col>
             
             </Row> 
