@@ -101,20 +101,20 @@ const Demo = Loadable({
   loading
 });
 
-// //PJ
-// const AllProject = Loadable({
-//   loader: () => import('./views/Personal/Project/AllProject'),
-//   loading
-// });
-// const ProjectDone = Loadable({
-//   loader: () => import('./views/Personal/Project/ProjectDone'),
-//   loading
-// });
-// const ProjectTodo = Loadable({
-//   loader: () => import('./views/Personal/Project/ProjectTodo'),
-//   loading
-// });
-// //
+//PJ
+const AllProject = Loadable({
+  loader: () => import('./views/Personal/Project/AllProject'),
+  loading
+});
+const ProjectDone = Loadable({
+  loader: () => import('./views/Personal/Project/ProjectDone'),
+  loading
+});
+const ProjectTodo = Loadable({
+  loader: () => import('./views/Personal/Project/ProjectTodo'),
+  loading
+});
+//
 
 
 //profile
@@ -180,7 +180,9 @@ class App extends Component {
                       <Route exact path="/Home/Solve" name="HomeSolve" component={HomeSolve} />
                       <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
 
-
+                       <Route exact path="/AllProject" name="AllProject" component={AllProject} />
+                       <Route exact path="/ProjectDone" name="ProjectDone" component={ProjectDone} />
+                       <Route exact path="/ProjectTodo" name="ProjectTodo" component={ProjectTodo} />
                      
                       <Route exact path="/Profile/Detail" name="ProfileDetail" component={ProfileDetail} />
                       <Route exact path="/Profile/Edit" name="ProjectTodo" component={ProfileEdit} />

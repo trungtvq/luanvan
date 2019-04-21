@@ -20,10 +20,10 @@ const DailySchedule = React.lazy(() => import('./views/Workspace/DailySchedule')
 
 
 //Project
-const AllProject = React.lazy(() => import('./views/Personal/Project/AllProject'));
-const ProjectDone = React.lazy(() => import('./views/Personal/Project/ProjectDone'));
-const ProjectTodo = React.lazy(() => import('./views/Personal/Project/ProjectTodo'));
-const CreateProject = React.lazy(() => import('./views/Personal/Project/CreateProject'));
+// const AllProject = React.lazy(() => import('./views/Personal/Project/AllProject'));
+// const ProjectDone = React.lazy(() => import('./views/Personal/Project/ProjectDone'));
+// const ProjectTodo = React.lazy(() => import('./views/Personal/Project/ProjectTodo'));
+// const CreateProject = React.lazy(() => import('./views/Personal/Project/CreateProject'));
 
 
 const DashBoard = React.lazy(() => import('./views/Workspace/DashBoard'));
@@ -74,10 +74,10 @@ const routes = [
   // { path: '/Home/Solve', exact: true, name: 'HomeSolve', component: HomeSolve},
 
   //project
-  { path: '/AllProject', exact: true, name: 'AllProject', component: AllProject },
-  { path: '/ProjectDone', exact: true, name: 'ProjectDone', component: ProjectDone },
-  { path: '/ProjectTodo', exact: true, name: 'ProjectTodo', component: ProjectTodo },
-  { path: '/CreateProject', exact: true, name: 'CreateProject', component: CreateProject },
+  // { path: '/AllProject', exact: true, name: 'AllProject', component: AllProject },
+  // { path: '/ProjectDone', exact: true, name: 'ProjectDone', component: ProjectDone },
+  // { path: '/ProjectTodo', exact: true, name: 'ProjectTodo', component: ProjectTodo },
+  // { path: '/CreateProject', exact: true, name: 'CreateProject', component: CreateProject },
 
 
   
