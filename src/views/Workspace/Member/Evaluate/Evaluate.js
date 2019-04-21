@@ -64,7 +64,7 @@ class Evaluate extends Component {
                     <th>Priority</th>
                     <th>Start day</th>
                     <th>Deadline</th>
-                    <th>Deadline real</th>
+                    <th>Completed</th>
                     <th>Assignee</th>
                     <th>Point</th>                 
                     <th>Review</th>
