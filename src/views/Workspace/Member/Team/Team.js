@@ -58,7 +58,7 @@ class Team extends Component {
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button></td>
+                        <td><center><Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button></center></td>
                       </tr>
                      
                      
@@ -69,7 +69,7 @@ class Team extends Component {
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button></td>
+                        <td><center><Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button></center></td>
                       </tr>
                      
                      
@@ -81,7 +81,7 @@ class Team extends Component {
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button></td>
+                        <td><center><Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button></center></td>
                       </tr>
                      
 
@@ -92,7 +92,7 @@ class Team extends Component {
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button></td>
+                        <td><center><Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button></center></td>
                       </tr>
                      
                       
