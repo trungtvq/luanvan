@@ -93,7 +93,7 @@ class Team extends Component {
                         <td></td>
                         <td></td>
                         <td><center><Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button></center></td>
-                      </tr>
+                        </tr>
                      
                       
                       </tbody>

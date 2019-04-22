@@ -49,7 +49,7 @@ class detail extends Component {
                 <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
                   <FormGroup row>
                     <Col md="3">
-                      <Label htmlFor="text-input">Điểm năng lực</Label>
+                      <Label htmlFor="text-input">Point</Label>
                     </Col>
                     <Col xs="12" md="9">
                       <Input type="text" id="text-input" name="text-input" placeholder="" value="8/10"/>    
@@ -58,7 +58,7 @@ class detail extends Component {
 
                   <FormGroup row>
                       <Col md="3">
-                        <Label htmlFor="text-input">Họ và tên</Label>
+                        <Label htmlFor="text-input">Full name</Label>
                       </Col>
                       <Col xs="12" md="9">
                         <Input type="text" id="text-input" name="text-input" placeholder="" value="Nguyễn Văn A"/>    
@@ -67,7 +67,7 @@ class detail extends Component {
 
                   <FormGroup row>
                     <Col md="3">
-                      <Label htmlFor="text-input">Địa chỉ</Label>
+                      <Label htmlFor="text-input">Address</Label>
                     </Col>
                     <Col xs="12" md="9">
                       <Input type="text" id="text-input" name="text-input" placeholder="" value="13 Lí Thường Kiệt, p9, Q10"/>    
@@ -76,7 +76,7 @@ class detail extends Component {
 
                   <FormGroup row>
                     <Col md="3">
-                      <Label htmlFor="text-input">Ngày sinh</Label>
+                      <Label htmlFor="text-input">Date of Birth </Label>
                     </Col>
                     <Col xs="12" md="9">
                       <Input type="text" id="text-input" name="text-input" placeholder="" value="26/5/1993"/>    
@@ -103,7 +103,7 @@ class detail extends Component {
 
                   <FormGroup row>
                     <Col md="3">
-                      <Label htmlFor="text-input">Nơi làm việc</Label>
+                      <Label htmlFor="text-input">Workplace</Label>
                     </Col>
                     <Col xs="12" md="9">
                       <Input type="text" id="text-input" name="text-input" placeholder="" value="freelancer"/>    
@@ -112,17 +112,17 @@ class detail extends Component {
 
                   <FormGroup row>
                     <Col md="3">
-                      <Label htmlFor="text-input">Project đã tham gia</Label>
+                      <Label htmlFor="text-input">Project</Label>
                     </Col>
                     <Col xs="12" md="9">
                         <Table hover bordered striped responsive size="sm">
                           <thead>
                           <tr>
-                            <th>Tên project</th>
-                            <th>Mô tả </th>
-                            <th>Vai trò</th>
-                            <th>Điểm</th>
-                            <th>Nhận xét của master</th>
+                            <th> Name of project</th>
+                            <th>Description</th>
+                            <th>Responsibilities</th>
+                            <th>Point</th>
+                            <th>Comments of master</th>
                           </tr>
                           </thead>
                           <tbody>
@@ -175,7 +175,7 @@ class detail extends Component {
                    
                    <FormGroup row>
                     <Col md="3">
-                      <Label htmlFor="text-input">Thế mạnh</Label>
+                      <Label htmlFor="text-input">Skill</Label>
                     </Col>
                     <Col xs="12" md="9">
                       <Input type="textarea" id="text-input" name="text-input" placeholder="" value="•  Databases etc: Oracle 8 to 10g, PL/SQL, MS SQL Server, My SQL

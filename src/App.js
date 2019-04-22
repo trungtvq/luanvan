@@ -95,6 +95,10 @@ const HomePayment = Loadable({
   loader: () => import('./views/General/Home/Payment'),
   loading
 });
+const HomeFinal = Loadable({
+  loader: () => import('./views/General/Home/Final'),
+  loading
+});
 //
 const Demo = Loadable({
   loader: () => import('./homeNav'),
@@ -183,11 +187,12 @@ class App extends Component {
                       <Route exact path="/Home/Service" name="HomeService" component={HomeService} />
                       <Route exact path="/Home/Solve" name="HomeSolve" component={HomeSolve} />
                       <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
+                      <Route exact path="/Home/Final" name="HomeFinal" component={HomeFinal} />
 
-                       <Route exact path="/AllProject" name="AllProject" component={AllProject} />
-                       <Route exact path="/ProjectDone" name="ProjectDone" component={ProjectDone} />
-                       <Route exact path="/ProjectTodo" name="ProjectTodo" component={ProjectTodo} />
-                        <Route exact path="/CreateProject" name="CreateProject" component={CreateProject} />
+                      <Route exact path="/AllProject" name="AllProject" component={AllProject} />
+                      <Route exact path="/ProjectDone" name="ProjectDone" component={ProjectDone} />
+                      <Route exact path="/ProjectTodo" name="ProjectTodo" component={ProjectTodo} />
+                      <Route exact path="/CreateProject" name="CreateProject" component={CreateProject} />
                      
                       <Route exact path="/Profile/Detail" name="ProfileDetail" component={ProfileDetail} />
                       <Route exact path="/Profile/Edit" name="ProjectTodo" component={ProfileEdit} />
