@@ -31,10 +31,10 @@ const styles = theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.palette.warning.main,
+    backgroundColor: "#f7f7f7",//zzz
     marginRight: theme.spacing.unit,
     '&:hover': {
-      backgroundColor: theme.palette.warning.dark,
+      backgroundColor: "#d8d4d6",
     },
   },
   list: {
