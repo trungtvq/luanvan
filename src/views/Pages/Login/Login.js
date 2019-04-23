@@ -12,6 +12,23 @@ import { Link } from 'react-router-dom';
 import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 import authContext from "../../../contexts/authContext";
 
+import AppFooter from './modules/views/AppFooter';
+import AppAppBar from './modules/views/AppAppBar';
+
+
+const styles = theme => ({
+  form: {
+    marginTop: theme.spacing.unit * 6,
+  },
+  button: {
+    marginTop: theme.spacing.unit * 3,
+    marginBottom: theme.spacing.unit * 2,
+  },
+  feedback: {
+    marginTop: theme.spacing.unit * 2,
+  },
+});
+
 class Login extends Component {
   static contextType =  authContext;
 
@@ -237,7 +254,7 @@ class Login extends Component {
     if (!token) {
     return (
       <div>
-        <Demo />
+         <AppAppBar />
      
       <div className="app flex-row align-items-center">
         
@@ -303,6 +320,7 @@ class Login extends Component {
           </Row>
         </Container>
       </div>
+        <AppFooter />
       </div>
     );
   } 

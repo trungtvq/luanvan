@@ -5,6 +5,10 @@ import {
   getFromStorage,
   } from '../../../service/storage';
 import Logout from './../../../components/Logout'
+
+import AppFooter from './modules/views/AppFooter';
+import AppAppBar from './modules/views/AppAppBar';
+
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -171,6 +175,8 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
 
     if (!token) {
     return (
+      <div>
+        <AppAppBar />
       <div className="app flex-row align-items-center">
       {
               (signUpError) ? (
@@ -235,6 +241,8 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
             </Col>
           </Row>
         </Container>
+      </div>
+      <AppFooter />
       </div>
     );
   }
