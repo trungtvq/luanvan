@@ -31,7 +31,7 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit * 3,
   },
   linkSecondary: {
-    color: theme.palette.secondary.main,
+    color: "theme.palette.secondary.main",
   },
 });
 
