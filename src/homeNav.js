@@ -16,10 +16,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import { Link } from 'react-router-dom';
-import {Tabs} from '@material-ui/core/Tabs';
-import {Tab} from '@material-ui/core/Tab';
-
 
 const styles = theme => ({
   root: {
@@ -128,22 +124,8 @@ class PrimarySearchAppBar extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
       >
-        <MenuItem onClick={this.handleMenuClose}>
-         <Link to="/Profile/Detail">
-            Profile
-          </Link>
-       
-        </MenuItem>
-         <MenuItem onClick={this.handleMenuClose}>
-          <Link to="/AllProject">
-            Project
-          </Link>
-        </MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>
-          <Link to="/login">
-            Log out
-          </Link>
-        </MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
+        <MenuItem onClick={this.handleMenuClose}>My project</MenuItem>
       </Menu>
     );
 
@@ -184,18 +166,24 @@ class PrimarySearchAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
+            <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
+              <MenuIcon />
+            </IconButton>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                 <Link to="/Home/Main">
-                 Overlead
-                 </Link>
+              Overlead
             </Typography>
-             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-             
-            </Typography>
-           
-
-
-
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+              />
+            </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton color="inherit">
@@ -203,13 +191,11 @@ class PrimarySearchAppBar extends React.Component {
                   <MailIcon />
                 </Badge>
               </IconButton>
-              
               <IconButton color="inherit">
                 <Badge badgeContent={17} color="secondary">
                   <NotificationsIcon />
                 </Badge>
               </IconButton>
-             
               <IconButton
                 aria-owns={isMenuOpen ? 'material-appbar' : undefined}
                 aria-haspopup="true"
@@ -218,8 +204,6 @@ class PrimarySearchAppBar extends React.Component {
               >
                 <AccountCircle />
               </IconButton>
-
-
             </div>
             <div className={classes.sectionMobile}>
               <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
@@ -234,6 +218,7 @@ class PrimarySearchAppBar extends React.Component {
     );
   }
 }
+
 
 PrimarySearchAppBar.propTypes = {
   classes: PropTypes.object.isRequired,

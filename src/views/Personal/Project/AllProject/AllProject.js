@@ -54,8 +54,10 @@ Label,
 ModalFooter
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import AppFooter from './modules/views/AppFooter';
+import AppAppBar from './modules/views/AppAppBar';
+import Demo from '../../../../homeNav'
 
- 
 
 class AllProject extends Component {
   constructor(props) {
@@ -93,6 +95,7 @@ class AllProject extends Component {
     return (
   
     <div>
+      <Demo/>
       <Container>
 
 
@@ -1533,7 +1536,8 @@ class AllProject extends Component {
           </Col>
         </Row>
 
-      </Container>   
+      </Container>  
+      <AppFooter /> 
     </div>  
     
      
