@@ -100,15 +100,7 @@ class AllProject extends Component {
       <Row>
           <Col>  
 
-              
-                                              
-
-                            
-
-                           
-                
-                    
-                         <Row>
+              <Row>
                             <Col>  
                            
                                 <Card>
@@ -125,16 +117,7 @@ class AllProject extends Component {
                                             <div class="card  bg-primary mb-3">
                                               <div class="card-body">
                                                 <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
-                                                  <FormGroup row>
-                                                    <Col md="3">
-                                                      <Label htmlFor="text-input">Topic project</Label>
-                                                    </Col>
-                                                    <Col xs="4" md="4">
-                                                      <Input type="text" id="TopicProject" name="TopicP roject" placeholder="New Topic" value="web"/>
-                                                    </Col>
-                                                    
-                                                  </FormGroup>
-
+                                                  
                                                   <FormGroup row>
                                                     <Col md="3">
                                                       <Label htmlFor="text-input">Project Name</Label>
@@ -162,169 +145,7 @@ class AllProject extends Component {
                                                       <Input type="date" id="End" name="date-input" placeholder="End" />
                                                     </Col>
                                                   </FormGroup>
-                                                  
-                                                  
-                                                    <div class="card  mb-3">
-                                                      <div class="card-body text-primary">
-                                                              <h6><b>Member</b></h6>
-                                                              <Table  responsive size="lg">
-                                                                <thead>
-                                                                <tr>
-                                                                  <th>Name</th>
-                                                                  <th>Role</th>
-                                                                  <th>Skill</th>
-                                                                  <th>Point</th>
-                                                                 
-                                                    
-                                                                 
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                <tr>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                
-                                                                </tr>
-                                                               
-                                                               
-                                                                <tr>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  
-                                                                </tr>
-                                                               
-                                                               
-                                                                <tr>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  
-                                                                </tr>
-
-                                                                <tr>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  
-                                                                </tr>
-                                                                
-                                                                </tbody>
-                                                              </Table>
-                                                            </div>
-                                                    </div>
-                                                 
-
-                                                  
-                                                     <div class="card  mb-3">      
-                                                        <div class="card-body text-dark">
-                                                              <strong>Find and add member</strong>
-                                                              <Row>       
-                                                                      <Col xs="2" md="2">
-                                                                        <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
-                                                                      </Col> 
-                                                                      <Col xs="0" md="0">
-                                                                        <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
-                                                                      </Col> 
-                                                              </Row>     
-
-                                                              <Form  action="" method="post" encType="multipart/form-data" className="form-horizontal">               
-                                                                    <FormGroup row>
-                                                                      <Col md="3">
-                                                                        <Label htmlFor="text-input">Skill</Label>
-                                                                      </Col>
-                                                                      <Col xs="5" md="5">
-                                                                        <Input type="text" id="text-input" name="text-input" placeholder="skill" />
-                                                                      </Col>
-                                                                    </FormGroup>
-                                                                    <FormGroup row>
-                                                                      <Col md="3">
-                                                                        <Label htmlFor="text-input">Point</Label>
-                                                                      </Col>
-                                                                      <Col xs="2" md="2">
-                                                                        <Input type="text" id="text-input" name="text-input" placeholder="Point min" />
-                                                                        <Input type="text" id="text-input" name="text-input" placeholder="Point max" />  
-                                                                      </Col>
-                                                                    </FormGroup>   
-                                                                    <FormGroup row>
-                                                                      <Col md="3">
-                                                                        <Label htmlFor="text-input">Freelancer</Label>
-                                                                      </Col>
-                                                                      <Col xs="2" md="2">
-                                                                        <Input type="checkbox" id="text-input" name="text-input"  />  
-                                                                      </Col>
-                                                                    </FormGroup>                                        
-                                                              </Form>
-
-                                                              <Table  responsive size="sm">
-                                                                <thead>
-                                                                <tr>
-                                                                  <th>Name</th>
-                                                                  <th>Role</th>
-                                                                  <th>Skill</th>
-                                                                  <th>Point</th>
-                                                                  <th>Number Project</th>
-                                                                  <th></th>
-                                                    
-                                                                 
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                <tr>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td>
-                                                                    <Button type="submit" size="sm" color="primary"><i class="fa fa-user-plus"></i></Button>
-                                                                  </td>
-                                                                </tr>
-                                                               
-                                                               
-                                                                <tr>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td>
-                                                                    <Button type="submit" size="sm" color="primary"><i class="fa fa-user-plus"></i></Button>
-                                                                  </td>
-                                                                </tr>
-                                                               
-                                                               
-                                                                <tr>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td>
-                                                                    <Button type="submit" size="sm" color="primary"><i class="fa fa-user-plus"></i></Button>
-                                                                  </td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td></td>
-                                                                  <td>
-                                                                    <Button type="submit" size="sm" color="primary"><i class="fa fa-user-plus"></i></Button>
-                                                                  </td>
-                                                                </tr>
-                                                                
-                                                                </tbody>
-                                                              </Table>
-                                                        </div>
-                                                     </div>                                               
+                               
                                                 </Form>
                                               </div>
                                             </div>                         
@@ -1054,9 +875,7 @@ class AllProject extends Component {
                                 </Card> 
                               
                             </Col>  
-                         </Row>
-                      
-                 
+              </Row>              
      
           </Col>
       </Row>

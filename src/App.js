@@ -122,6 +122,10 @@ const CreateProject = Loadable({
   loader: () => import('./views/Personal/Project/CreateProject'),
   loading
 });
+const NoProject = Loadable({
+  loader: () => import('./views/Personal/Project/NoProject'),
+  loading
+});
 //
 
 
@@ -193,6 +197,7 @@ class App extends Component {
                       <Route exact path="/ProjectDone" name="ProjectDone" component={ProjectDone} />
                       <Route exact path="/ProjectTodo" name="ProjectTodo" component={ProjectTodo} />
                       <Route exact path="/CreateProject" name="CreateProject" component={CreateProject} />
+                      <Route exact path="/NoProject" name="NoProject" component={NoProject} />
                      
                       <Route exact path="/Profile/Detail" name="ProfileDetail" component={ProfileDetail} />
                       <Route exact path="/Profile/Edit" name="ProjectTodo" component={ProfileEdit} />
