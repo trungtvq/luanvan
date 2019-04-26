@@ -16,6 +16,43 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import {  
+Button, 
+Col, 
+Container, 
+Input, 
+InputGroup, 
+InputGroupAddon, 
+InputGroupText, 
+Row, 
+Table, 
+Pagination, 
+PaginationItem, 
+PaginationLink, 
+Card, 
+CardBody, 
+CardHeader, 
+Jumbotron,
+Progress,
+Navbar,
+NavbarBrand,
+NavbarToggler,
+Collapse,
+Nav,
+NavItem,
+NavLink,
+UncontrolledDropdown,
+DropdownToggle,
+DropdownMenu,
+DropdownItem,
+Modal,
+ModalHeader,
+ModalBody,
+Form,
+FormGroup,
+Label,
+ModalFooter
+} from 'reactstrap';
 
 const styles = theme => ({
   root: {
@@ -88,11 +125,24 @@ const styles = theme => ({
 });
 
 class PrimarySearchAppBar extends React.Component {
-  state = {
-    anchorEl: null,
-    mobileMoreAnchorEl: null,
-  };
+  constructor(props) {
+    super(props);
+    this.toggleCreatePj = this.toggleCreatePj.bind(this);
+      
+      this.state = {
+        anchorEl: null,
+        mobileMoreAnchorEl: null,
+        modalCreatePj: false,
+      };
+    };
 
+  toggleCreatePj() {
+    this.handleMobileMenuClose();
+    this.setState(prevState => ({
+      modalCreatePj: !prevState.modalCreatePj
+    }));
+    
+  }
   handleProfileMenuOpen = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
@@ -115,7 +165,7 @@ class PrimarySearchAppBar extends React.Component {
     const { classes } = this.props;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
+    let that=this;
     const renderMenu = (
       <Menu
         anchorEl={anchorEl}
@@ -126,6 +176,223 @@ class PrimarySearchAppBar extends React.Component {
       >
         <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
         <MenuItem onClick={this.handleMenuClose}>My project</MenuItem>
+        <MenuItem onClick={that.toggleCreatePj}>Create project</MenuItem>
+          <Modal size="lg" isOpen={that.state.modalCreatePj} toggle={that.toggleCreatePj} className={that.props.className}>
+                                    <ModalHeader toggle={that.toggleCreatePj}>Project</ModalHeader>
+                                    <ModalBody>
+                                      <div class="card  bg-primary mb-3">
+                                        <div class="card-body">
+                                          <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                            <FormGroup row>
+                                              <Col md="3">
+                                                <Label htmlFor="text-input">Topic project</Label>
+                                              </Col>
+                                              <Col xs="4" md="4">
+                                                <Input type="text" id="TopicProject" name="TopicP roject" placeholder="New Topic" value="web"/>
+                                              </Col>
+                                              
+                                            </FormGroup>
+
+                                            <FormGroup row>
+                                              <Col md="3">
+                                                <Label htmlFor="text-input">Project Name</Label>
+                                              </Col>
+                                              <Col xs="5" md="5">
+                                                <Input type="text" id="ProjectName" name="ProjectName" placeholder="Project Name" />
+                                                
+                                              </Col>
+                                            </FormGroup>
+
+                                            <FormGroup row>
+                                              <Col md="3">
+                                                <Label htmlFor="date-input">Start </Label>
+                                              </Col>
+                                              <Col xs="5" md="5">
+                                                <Input type="date" id="Start" name="date-input" placeholder="Start" />
+                                              </Col>
+                                            </FormGroup>
+
+                                            <FormGroup row>
+                                              <Col md="3">
+                                                <Label htmlFor="date-input">End </Label>
+                                              </Col>
+                                              <Col xs="5" md="5">
+                                                <Input type="date" id="End" name="date-input" placeholder="End" />
+                                              </Col>
+                                            </FormGroup>
+                                            
+                                            
+                                              <div class="card  mb-3">
+                                                <div class="card-body text-primary">
+                                                        <h6><b>Member</b></h6>
+                                                        <Table  responsive size="lg">
+                                                          <thead>
+                                                          <tr>
+                                                            <th>Name</th>
+                                                            <th>Role</th>
+                                                            <th>Skill</th>
+                                                            <th>Point</th>
+                                                           
+                                              
+                                                           
+                                                          </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                          <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                          
+                                                          </tr>
+                                                         
+                                                         
+                                                          <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            
+                                                          </tr>
+                                                         
+                                                         
+                                                          <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            
+                                                          </tr>
+
+                                                          <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            
+                                                          </tr>
+                                                          
+                                                          </tbody>
+                                                        </Table>
+                                                      </div>
+                                              </div>
+                                           
+
+                                            
+                                               <div class="card  mb-3">      
+                                                  <div class="card-body text-dark">
+                                                        <strong>Find and add member</strong>
+                                                        <Row>       
+                                                                <Col xs="2" md="2">
+                                                                  <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
+                                                                </Col> 
+                                                                <Col xs="0" md="0">
+                                                                  <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
+                                                                </Col> 
+                                                        </Row>     
+
+                                                        <Form  action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                                              <FormGroup row>
+                                                                <Col md="3">
+                                                                  <Label htmlFor="text-input">Skill</Label>
+                                                                </Col>
+                                                                <Col xs="5" md="5">
+                                                                  <Input type="text" id="text-input" name="text-input" placeholder="skill" />
+                                                                </Col>
+                                                              </FormGroup>
+                                                              <FormGroup row>
+                                                                <Col md="3">
+                                                                  <Label htmlFor="text-input">Point</Label>
+                                                                </Col>
+                                                                <Col xs="2" md="2">
+                                                                  <Input type="text" id="text-input" name="text-input" placeholder="Point min" />
+                                                                  <Input type="text" id="text-input" name="text-input" placeholder="Point max" />  
+                                                                </Col>
+                                                              </FormGroup>   
+                                                              <FormGroup row>
+                                                                <Col md="3">
+                                                                  <Label htmlFor="text-input">Freelancer</Label>
+                                                                </Col>
+                                                                <Col xs="2" md="2">
+                                                                  <Input type="checkbox" id="text-input" name="text-input"  />  
+                                                                </Col>
+                                                              </FormGroup>                                        
+                                                        </Form>
+
+                                                        <Table  responsive size="sm">
+                                                          <thead>
+                                                          <tr>
+                                                            <th>Name</th>
+                                                            <th>Role</th>
+                                                            <th>Skill</th>
+                                                            <th>Point</th>
+                                                            <th>Number Project</th>
+                                                            <th></th>
+                                              
+                                                           
+                                                          </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                          <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>
+                                                              <Button type="submit" size="sm" color="primary"><i class="fa fa-user-plus"></i></Button>
+                                                            </td>
+                                                          </tr>
+                                                         
+                                                         
+                                                          <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>
+                                                              <Button type="submit" size="sm" color="primary"><i class="fa fa-user-plus"></i></Button>
+                                                            </td>
+                                                          </tr>
+                                                         
+                                                         
+                                                          <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>
+                                                              <Button type="submit" size="sm" color="primary"><i class="fa fa-user-plus"></i></Button>
+                                                            </td>
+                                                          </tr>
+
+                                                          <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>
+                                                              <Button type="submit" size="sm" color="primary"><i class="fa fa-user-plus"></i></Button>
+                                                            </td>
+                                                          </tr>
+                                                          
+                                                          </tbody>
+                                                        </Table>
+                                                  </div>
+                                               </div>                                               
+                                          </Form>
+                                        </div>
+                                      </div>                         
+                                    </ModalBody>
+                                    <ModalFooter>
+                                    <Button color="primary" onClick={that.toggleCreatePj}>Submit</Button>{' '}
+                                    <Button color="secondary" onClick={that.toggleCreatePj}>Cancel</Button>
+                                    </ModalFooter>
+          </Modal>
+        <MenuItem onClick={this.handleMenuClose}>Log out</MenuItem>
       </Menu>
     );
 
