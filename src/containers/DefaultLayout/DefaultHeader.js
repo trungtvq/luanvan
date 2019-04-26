@@ -48,7 +48,7 @@ class DefaultHeader extends Component {
                 </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem href="/CreateProject">Create project</DropdownItem>
-                  <DropdownItem href="/AllProject">Your projects</DropdownItem>
+                  <DropdownItem href="/AllProject">My projects</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
           </NavItem>
@@ -65,7 +65,7 @@ class DefaultHeader extends Component {
           </NavItem>
           <AppHeaderDropdown direction="down">
             <DropdownToggle nav>
-              <img src={'api/assets/img/avatars/6.jpg'} className="img-avatar" alt="admin@bootstrapmaster.com" />
+              <img src={''} className="img-avatar" alt="" />
             </DropdownToggle>
             <DropdownMenu right style={{ right: 'auto' }}>
               <authContext.Consumer> 

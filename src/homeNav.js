@@ -275,7 +275,14 @@ class PrimarySearchAppBar extends React.Component {
                                               </Col>
                                             </FormGroup>
                                             
-                                            
+                                            <FormGroup row>
+                                              <Col md="5">
+                                                <Label htmlFor="date-input">Private </Label>
+                                              </Col>
+                                              <Col xs="5" md="5">
+                                                <Input type="checkbox" id="Private" name="Private" />
+                                              </Col>
+                                            </FormGroup>
                                                                                
                                           </Form>
                                         </div>

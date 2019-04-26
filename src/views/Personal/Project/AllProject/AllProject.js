@@ -145,6 +145,15 @@ class AllProject extends Component {
                                                       <Input type="date" id="End" name="date-input" placeholder="End" />
                                                     </Col>
                                                   </FormGroup>
+
+                                                  <FormGroup row>
+                                                    <Col md="3">
+                                                      <Label htmlFor="date-input">Private </Label>
+                                                    </Col>
+                                                    <Col xs="5" md="5">
+                                                      <Input type="checkbox" id="Private" name="Private"/>
+                                                    </Col>
+                                                  </FormGroup>
                                
                                                 </Form>
                                               </div>
@@ -159,6 +168,7 @@ class AllProject extends Component {
                                         </div>
                                       </CardHeader>
                                       <CardBody>        
+                                        <h6>Public</h6>
                                         <h6>Start:   9:00 (3/01/2019)</h6>
                                         <h6>  End:   9:00 (23/05/2019)</h6>
                                         <Progress value={50} />
