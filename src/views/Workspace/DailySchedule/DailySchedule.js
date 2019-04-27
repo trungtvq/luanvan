@@ -102,14 +102,8 @@ class DailySchedule extends Component {
                       <td>{item.date}</td>
                       <td>{item.idBacklog}</td>
                       <td>{item.task}</td>
-                       <td>
-                       <Input type="select" name="status" id="status">
-                        <option value="0">{item.status}</option>
-                        <option value="1">to do</option>
-                        <option value="2">inprogress</option>
-                         <option value="2">done</option>
-                      </Input>
-                      </td> 
+                      <td>{item.status}</td>
+                       
                       <td>{item.review}</td>
                       <td>
                       <Button color="warning" size="sm" onClick={that.toggleEdit}><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
@@ -160,6 +154,8 @@ class DailySchedule extends Component {
                                 <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
                               </ModalFooter>
                         </Modal>
+
+                      <Button color="danger" size="sm" ><i class="fa fa-trash"></i></Button>
                       </td>
                   </tr>
                 )
