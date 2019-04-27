@@ -134,7 +134,11 @@ class Cover extends Component {
                
                <Col>    
                  <div class="card border-primary mb-3">
-                  <div class="card-header bg-primary">PRODUCT BACKLOG</div>
+                  <div class="card-header bg-primary">
+                    PRODUCT BACKLOG_
+
+                    <Button type="submit" size="sm" color="primary"> save</Button>
+                  </div>
                     <div class="card-body">
                         {this.state.dataProductBacklog.map(function(item, key) {
                           return (
@@ -145,27 +149,33 @@ class Cover extends Component {
                                           <CardBody>        
                                             <h6>I want :  {item.want}</h6>
                                             <h6> So that:   {item.so}</h6>
-                                            <Row>
-                                              <Col md="3">
-                                                <h6>Priority:  {item.priority}</h6>
-                                              </Col>
-                                              
                                              
-                                              <Col md="1">                    
-                                              </Col>
-                                              <Col md="3">
-                                                 <h6>Estimation:  {item.estimation}</h6>
-                                              </Col>
-                                             
+                                            <div class="row">
 
-                                              <Col md="1">                   
-                                              </Col>
+                                              <div class="col col-lg-2 col-md-2 col-sm-2">
+                                                <Label htmlFor="text-input">Priority</Label>
+                                              </div>
+                                              <div class="col col-lg-2 col-md-2 col-sm-2">
+                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.priority}/>
+                                              </div>
+                                                
+                                               
+                                              <div class="col col-lg-2 col-md-2 col-sm-2">
+                                                <Label htmlFor="text-input">Estimation</Label>
+                                              </div>
+                                              <div class="col col-lg-2 col-md-2 col-sm-2">
+                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.estimation}/>                            
+                                              </div>
+                                               
 
-                                              <Col md="3">
-                                                <h6>Sprint:  {item.sprint}</h6>
-                                              </Col>
-                                             
-                                            </Row>
+                                              <div class="col col-lg-1 col-md-1 col-sm-1">
+                                                <Label htmlFor="text-input">Sprint</Label>
+                                              </div>
+                                              <div class="col col-lg-2 col-md-2 col-sm-2">
+                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.sprint}/>                            
+                                              </div>
+                                               
+                                            </div>
                                             <Button type="submit" size="sm" color="success" align="center"><i class="fa fa-arrow-left"></i></Button>
                                           </CardBody>
                                     </Card> 

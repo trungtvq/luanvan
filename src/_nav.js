@@ -20,7 +20,7 @@ export default {
       icon: 'icon-pencil',
     },
     {
-      name: 'Covert',
+      name: 'Convert',
       url: '/Cover',
       icon: 'icon-directions',
     },

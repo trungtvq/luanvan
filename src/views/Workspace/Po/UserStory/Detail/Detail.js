@@ -97,7 +97,6 @@ class Detail extends Component {
                   <table class="table table-lg">
                     <thead class="thead">
                     <tr class="bg-primary">
-                      <th>ID <i class="fa fa-sort"></i></th>
                       <th>As a...<i class="fa fa-sort"></i></th>
                       <th>I want to be able to... <i class="fa fa-sort"></i></th>
                       <th>So that... <i class="fa fa-sort"></i></th>
@@ -149,7 +148,7 @@ class Detail extends Component {
                    <tbody>{this.state.data.map(function(item, key) {
                  return (
                     <tr key = {key}>
-                        <td>{item.id}</td>
+                       
                         <td>{item.as}</td>
                         <td>{item.want}</td>
                         <td>{item.so}</td>
