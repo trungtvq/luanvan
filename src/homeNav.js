@@ -261,8 +261,11 @@ class PrimarySearchAppBar extends React.Component {
                                               <Col md="3">
                                                 <Label htmlFor="date-input">Start </Label>
                                               </Col>
-                                              <Col xs="5" md="5">
-                                                <Input type="date" id="Start" name="date-input" placeholder="Start" />
+                                              <Col xs="3" md="3">
+                                              <Input type="time" id="timeStart" name="timeStart"/>
+                                              </Col>
+                                              <Col xs="3" md="3">
+                                                <Input type="date" id="dateStart" name="dateStart" />
                                               </Col>
                                             </FormGroup>
 
@@ -270,8 +273,11 @@ class PrimarySearchAppBar extends React.Component {
                                               <Col md="3">
                                                 <Label htmlFor="date-input">End </Label>
                                               </Col>
-                                              <Col xs="5" md="5">
-                                                <Input type="date" id="End" name="date-input" placeholder="End" />
+                                              <Col xs="3" md="3">
+                                              <Input type="time" id="timeEnd" name="timeEnd"/>
+                                              </Col>
+                                              <Col xs="3" md="3">
+                                                <Input type="date" id="dateEnd" name="dateEnd" />
                                               </Col>
                                             </FormGroup>
                                             
