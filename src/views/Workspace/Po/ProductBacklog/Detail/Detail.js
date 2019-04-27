@@ -15,6 +15,7 @@ class Detail extends Component {
     super(props);
     this.toggleAdd = this.toggleAdd.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
+    this.toggleSend = this.toggleSend.bind(this);
     this.state = {
       data: [ 
               {
@@ -80,6 +81,7 @@ class Detail extends Component {
             ],
       modalAdd: false,
       modalEdit: false,
+      modalSend: false,
       }
     };
 
@@ -92,6 +94,12 @@ class Detail extends Component {
   toggleEdit() {
     this.setState(prevState => ({
       modalEdit: !prevState.modalEdit
+    }));
+  }
+
+  toggleSend() {
+    this.setState(prevState => ({
+      modalSend: !prevState.modalSend
     }));
   }
 
@@ -220,7 +228,50 @@ class Detail extends Component {
                       <td><center>{item.sprint}</center></td>
                       <td><center>{item.status}</center></td>
                       <td>
-                        <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
+                        <Button type="submit" size="sm" color="success" onClick={that.toggleSend}><i class="fa fa-share-square"></i></Button>
+                        <Modal size="lg" isOpen={that.state.modalSend} toggle={that.toggleSend} className={that.props.className}>
+                                    <ModalHeader toggle={that.toggleSend}>Project</ModalHeader>
+                                    <ModalBody>
+                                      <div class="card  bg-primary mb-3">
+                                        <div class="card-body">
+                                          <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                            
+
+                                            <FormGroup row>
+                                              <Col md="3">
+                                                <Label htmlFor="date-input">Start </Label>
+                                              </Col>
+                                              <Col xs="3" md="3">
+                                              <Input type="time" id="timeStart" name="timeStart"/>
+                                              </Col>
+                                              <Col xs="3" md="3">
+                                                <Input type="date" id="dateStart" name="dateStart" />
+                                              </Col>
+                                            </FormGroup>
+
+                                            <FormGroup row>
+                                              <Col md="3">
+                                                <Label htmlFor="date-input">End </Label>
+                                              </Col>
+                                              <Col xs="3" md="3">
+                                              <Input type="time" id="timeEnd" name="timeEnd"/>
+                                              </Col>
+                                              <Col xs="3" md="3">
+                                                <Input type="date" id="dateEnd" name="dateEnd" />
+                                              </Col>
+                                            </FormGroup>
+                                            
+                                            
+                                                                               
+                                          </Form>
+                                        </div>
+                                      </div>                         
+                                    </ModalBody>
+                                    <ModalFooter>
+                                    <Button color="primary" onClick={that.toggleSend}>Submit</Button>{' '}
+                                    <Button color="secondary" onClick={that.toggleSend}>Cancel</Button>
+                                    </ModalFooter>
+                        </Modal>
                         <Button color="warning" size="sm" onClick={that.toggleEdit}><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
                             <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
                               <ModalHeader toggle={that.toggleEdit}>ProductBacklog</ModalHeader>

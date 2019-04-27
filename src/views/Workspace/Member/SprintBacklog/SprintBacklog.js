@@ -14,6 +14,8 @@ class SprintBacklog extends Component {
                 "priority":1,
                 "estimation":3,
                 "sprint":1,
+                "start":"9:00 20/5/2019",
+                "deadline":"9:00 25/5/2019",
                 
               },
               {
@@ -24,6 +26,8 @@ class SprintBacklog extends Component {
                  "priority":2,
                 "estimation":1,
                 "sprint":1,
+                "start":"9:00 20/5/2019",
+                "deadline":"9:00 25/5/2019",
                
               },
               {
@@ -34,6 +38,8 @@ class SprintBacklog extends Component {
                  "priority":3,
                 "estimation":4,
                 "sprint":1,
+                "start":"9:00 20/5/2019",
+                "deadline":"9:00 25/5/2019",
                 
               },
               {
@@ -44,6 +50,8 @@ class SprintBacklog extends Component {
                  "priority":4,
                 "estimation":6,
                 "sprint":1,
+                "start":"9:00 20/5/2019",
+                "deadline":"9:00 25/5/2019",
                
               },
               {
@@ -54,6 +62,8 @@ class SprintBacklog extends Component {
                 "priority":5,
                 "estimation":1,
                 "sprint":1,
+                "start":"9:00 20/5/2019",
+                "deadline":"9:00 25/5/2019",
               
               },
               {
@@ -64,6 +74,8 @@ class SprintBacklog extends Component {
                 "priority":5,
                 "estimation":3,
                 "sprint":2,
+                "start":"9:00 20/5/2019",
+                "deadline":"9:00 25/5/2019",
               }
             ],
       }
@@ -85,6 +97,8 @@ class SprintBacklog extends Component {
                     <th>Priority <i class="fa fa-sort"></i></th>
                     <th>Estimation <i class="fa fa-sort"></i></th>
                     <th>Sprint <i class="fa fa-sort"></i></th>
+                    <th>Start <i class="fa fa-sort"></i></th>
+                    <th>Deadline <i class="fa fa-sort"></i></th>
                     <th></th>
                   </tr>
                   </thead>
@@ -98,6 +112,8 @@ class SprintBacklog extends Component {
                       <td><center>{item.priority}</center></td>
                       <td><center>{item.estimation}</center></td>
                       <td><center>{item.sprint}</center></td>
+                      <td><center>{item.start}</center></td>
+                      <td><center>{item.deadline}</center></td>
                       <td>                        
                         <Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
                       </td>
