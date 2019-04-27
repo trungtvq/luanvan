@@ -190,18 +190,24 @@ class TeamTask extends Component {
                                     </FormGroup>                     
                                     <FormGroup row>
                                       <Col md="3">
-                                        <Label htmlFor="date-input">Start day </Label>
+                                        <Label htmlFor="date-input">Start  </Label>
                                       </Col>
-                                      <Col xs="12" md="9">
-                                        <Input type="date" id="date-input" name="date-input" placeholder="date" />
+                                      <Col xs="3" md="3">
+                                        <Input type="time" id="timeStart" name="timeStart"/>
+                                      </Col>
+                                      <Col xs="3" md="3">
+                                        <Input type="date" id="date-input" name="date-input" />
                                       </Col>
                                     </FormGroup>
                                     <FormGroup row>
                                       <Col md="3">
                                         <Label htmlFor="date-input">Deadline </Label>
                                       </Col>
-                                      <Col xs="12" md="9">
-                                        <Input type="date" id="date-input" name="date-input" placeholder="date" />
+                                      <Col xs="3" md="3">
+                                        <Input type="time" id="timeEnd" name="timeEnd"/>
+                                      </Col>
+                                      <Col xs="3" md="3">
+                                        <Input type="date" id="date-input" name="date-input" />
                                       </Col>
                                     </FormGroup>
                                      <FormGroup row>
