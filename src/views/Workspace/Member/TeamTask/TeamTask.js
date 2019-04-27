@@ -340,6 +340,7 @@ class TeamTask extends Component {
                               </ModalFooter>
                             </Modal>                        
                           <Button type="submit" size="sm" color="success"><i class="fa fa-plus"></i></Button>
+                          <Button type="submit" size="sm" color="danger"><i class="fa fa-minus"></i></Button>
                       </td>
                   </tr>
                 )
