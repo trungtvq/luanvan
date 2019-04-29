@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "co.overlead.gRPC";
+option java_outer_classname = "auth";
+option objc_class_prefix = "auth";
+package Auth;
+
+service Auth{
+    rpc SignIn(SignInReq) returns (SignInRes){}
+    rpc SignUp(SignUpReq) returns (SignInRes){}
+    rpc ResetPassword(ResetReq) returns (ResetRes){}
+}
+
+message SignInReq{
+    string username = 1;
+    string password = 2;
+}
+
+message SignInRes{
+    string status=1;
+    string response=2;
+    string type=3;
+}
+
+message SignUpReq{
+    string username = 1;
+    string password = 2;
+    string name=3;
+}
+message ResetReq{
+    string type=1;
+    string content=2;
+}
+message ResetRes{
+    string status=1;
+    string token=2;
+}
+
+

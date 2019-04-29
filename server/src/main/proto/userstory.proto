@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "co.overlead.gRPC";
+option java_outer_classname = "userstory";
+option objc_class_prefix = "us";
+package userstory;
+
+service Userstory{
+    rpc addNewUserStory(AddNewUserStoryReq) returns (AddNewUserStoryRes) {}
+    rpc updateUserStory(UpdateUserStoryReq) returns (UpdateUserStoryRes){}
+    rpc deleteUserStory(DeleteUserStoryReq) returns (DeleteUserStoryRes){}
+	rpc getAllUserStory(GetAllUserStoryReq) returns (stream GetAllUserStoryRes){}
+}
+
+message AddNewUserStoryReq{
+    string userName = 1;
+	string projectId = 2;
+	string role = 3;
+	string want = 4;
+	string so = 5;
+	string cookie = 6;
+}
+message AddNewUserStoryRes{
+    string status = 1;
+	string userstoryId = 2;
+	string error = 3;
+}
+
+message UpdateUserStoryReq{
+	string userName = 1;
+	string projectId = 2;
+	string userstoryId = 3;
+	string role = 4;
+	string want = 5;
+	string so = 6;
+	string cookie = 7;
+}
+message UpdateUserStoryRes{
+    string status = 1;
+	string error = 2;
+}
+
+message DeleteUserStoryReq{
+    string userName = 1;
+    string projectId = 2;
+	string userstoryId = 3;
+	string cookie = 7;
+}
+message DeleteUserStoryRes{
+    string status = 1;
+	string error = 2;
+}
+
+message GetAllUserStoryReq{
+    string userName = 1;
+	string projectId = 2;
+	string cookie = 3;
+}
+message GetAllUserStoryRes{
+	string role = 1;
+	string want = 2;
+	string so = 3;
+}

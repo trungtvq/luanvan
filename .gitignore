@@ -1,6 +1,6 @@
 # Compiled files
 dist/
-
+server/target/
 # Config file
 #config/config.js
 
