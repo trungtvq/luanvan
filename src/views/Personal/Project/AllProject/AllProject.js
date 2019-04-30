@@ -55,7 +55,8 @@ ModalFooter
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Demo from '../../../../homeNav'
-
+const proto = {};
+proto.auth = require('./../../../gRPC/myprofile/myprofile_grpc_web_pb');
 
 class AllProject extends Component {
   constructor(props) {

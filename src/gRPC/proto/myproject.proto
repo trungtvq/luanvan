@@ -15,8 +15,8 @@ service Myproject{
 message AddNewProjectReq{
     string username = 1;
 	string projectName = 2;
-	string start = 3;		//return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
-	string end = 4;		   //return in form mm/hh/dd/mm/yyyy 
+	string start = 3;		// form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+	string end = 4;		   // form mm/hh/dd/mm/yyyy 
 	string private = 5;
 }
 
@@ -30,8 +30,8 @@ message UpdateProjectReq{
 	string projectId = 1;
     string username = 2;
 	string projectName = 3;
-	string start = 4;		 //return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
-	string end = 5;			//return in form mm/hh/dd/mm/yyyy 
+	string start = 4;		 // form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+	string end = 5;			// form mm/hh/dd/mm/yyyy 
 	string private = 6;
 }
 message UpdateProjectRes{
