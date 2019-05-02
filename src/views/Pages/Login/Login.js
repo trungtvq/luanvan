@@ -14,6 +14,8 @@ import authContext from "../../../contexts/authContext";
 
 import AppFooter from './modules/views/AppFooter';
 import AppAppBar from './modules/views/AppAppBar';
+import { GoogleLogout } from 'react-google-login';
+import { GoogleLogin } from 'react-google-login';
 
 
 const styles = theme => ({
@@ -55,7 +57,7 @@ class Login extends Component {
     this.onSignUp = this.onSignUp.bind(this);
     this.logout = this.logout.bind(this);
   }
-
+  
   componentDidMount() {
     const obj = getFromStorage('the_main_app');
     if (obj && obj.token) {
@@ -238,6 +240,14 @@ class Login extends Component {
   }
 
   render() {
+    const responseGoogle = (response) => {
+      console.log(response);
+    }
+    const logout = ()=>{
+      console.log("logout")
+    }
+    let renderProps={}
+    renderProps.disabled=false;
         const {
       isLoading,
       token,
@@ -312,6 +322,21 @@ class Login extends Component {
                       <Link to="/register">
                         <Button color="primary" className="mt-3" active tabIndex={-1}>Register Now!</Button>
                       </Link>
+                      <GoogleLogin
+    clientId="1044290572211-9tqo456g2kknsaj3tpi72lmcjnp18rms.apps.googleusercontent.com"
+    render={renderProps => (
+      <button onClick={renderProps.onClick} >This is my custom Google button</button>
+    )}
+    buttonText="Login"
+    onSuccess={responseGoogle}
+    onFailure={responseGoogle}
+    cookiePolicy={'single_host_origin'}
+  />,
+                      <GoogleLogout
+      buttonText="Logout"
+      onLogoutSuccess={logout}
+    >
+    </GoogleLogout>
                     </div>
                   </CardBody>
                 </Card>

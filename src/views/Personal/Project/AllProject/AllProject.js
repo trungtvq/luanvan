@@ -56,7 +56,11 @@ ModalFooter
 import { Link } from 'react-router-dom';
 import Demo from '../../../../homeNav'
 const proto = {};
+<<<<<<< HEAD
 proto.myproject = require('./../../../../gRPC/myproject/myproject_grpc_web_pb');
+=======
+proto.auth = require('../../../../gRPC/myprofile/myprofile_grpc_web_pb');
+>>>>>>> 6d7e3680b4f27c017e602c2a8053a92a28cee743
 
 class AllProject extends Component {
   constructor(props) {
