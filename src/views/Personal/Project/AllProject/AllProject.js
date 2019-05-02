@@ -56,7 +56,7 @@ ModalFooter
 import { Link } from 'react-router-dom';
 import Demo from '../../../../homeNav'
 const proto = {};
-proto.auth = require('./../../../gRPC/myprofile/myprofile_grpc_web_pb');
+proto.myproject = require('./../../../../gRPC/myproject/myproject_grpc_web_pb');
 
 class AllProject extends Component {
   constructor(props) {
@@ -91,9 +91,48 @@ class AllProject extends Component {
   }
   render() {
     let that=this;
+    //create service to request
+    const myprojectService = new proto.myproject.MyProjectClient('http://localhost:8080');
+    //some data of request (get that from frontend)
+    const username = "useridoremail";
+
+    // //create var for react
+    // var ProfileReq = new proto.myproject.ProfileReq();
+
+    // //set data from frontend to this var
+    // ProfileReq.setUsername(username);
+
+    // //metadab will be config later
+    // var metadata = {};
+    // //make a request to server
+    // var getTodo = myprofileService.getProfileSimple(ProfileReq, metadata, (err, response) => {
+    //   if (err) { //if error
+    //      console.log(err);
+    //   } else { //if success
+    //           //get response
+    //           console.log("response")
+    //           console.log(response);
+    //           console.log("get avatar")
+    //           console.log()
+
+    //           this.setState({
+    //             av: response.getAvatar()
+    //           });
+              
+    //           const ProfileRes = response[0];
+    //           if (ProfileRes == null) {// if response null => not found
+      
+    //             console.log(`Something was wrong ${username} wasn't found`);
+    //           } else {
+    //             console.log(`Fetched TODO with ID ${username}: ${ProfileRes}`);
+    //           }
+    //         }
+    //       });
+
     return (
   
     <div>
+      alert("Hello! I am an alert box!!")
       <Demo/>
       <div><br/></div>
       <Container>

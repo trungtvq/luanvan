@@ -41,7 +41,6 @@ class Team extends Component {
                       <thead>
                       <tr>
                         <th>Name</th>
-                        <th>Role</th>
                         <th>Skill</th>
                         <th>Point</th>
                         <th>Current task</th>
@@ -54,7 +53,7 @@ class Team extends Component {
                       <tr>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        
                         <td></td>
                         <td></td>
                         <td></td>
@@ -65,7 +64,7 @@ class Team extends Component {
                       <tr>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        
                         <td></td>
                         <td></td>
                         <td></td>
@@ -77,7 +76,7 @@ class Team extends Component {
                        <tr>
                         <td></td>
                         <td></td>
-                        <td></td>
+                       
                         <td></td>
                         <td></td>
                         <td></td>
@@ -86,7 +85,6 @@ class Team extends Component {
                      
 
                        <tr>
-                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -147,7 +145,6 @@ class Team extends Component {
                       <thead>
                       <tr>
                         <th>Name</th>
-                        <th>Role</th>
                         <th>Skill</th>
                         <th>Point</th>
                         <th>Number Project</th>
@@ -159,19 +156,7 @@ class Team extends Component {
                       <tbody>
                       <tr>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                          <Button type="submit" size="sm" color="primary"><i class="fa fa-user-plus"></i></Button>
-                        </td>
-                      </tr>
-                     
-                     
-                      <tr>
-                        <td></td>
-                        <td></td>
+                       
                         <td></td>
                         <td></td>
                         <td></td>
@@ -183,6 +168,16 @@ class Team extends Component {
                      
                       <tr>
                         <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          <Button type="submit" size="sm" color="primary"><i class="fa fa-user-plus"></i></Button>
+                        </td>
+                      </tr>
+                     
+                     
+                      <tr>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -193,7 +188,6 @@ class Team extends Component {
                       </tr>
 
                       <tr>
-                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
