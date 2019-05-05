@@ -62,7 +62,6 @@ class Evaluate extends Component {
                     <th>Priority</th>
                     <th>Start day</th>
                     <th>Deadline</th>
-                    <th>Deadline real</th>
                     <th>Assignee</th>
                     <th>Point</th>                 
                     <th>Review</th>
@@ -97,7 +96,7 @@ class Evaluate extends Component {
                     <td>20/4/2019</td>
                     <td>23/4/2019</td>
                     <td>Nhân</td>
-                    <td>Có cần xác thực email không?</td>
+                    <td></td>
                     <td>
                       
                     </td>                                  
@@ -131,7 +130,7 @@ class Evaluate extends Component {
                     <td>20/4/2019</td>
                     <td>24/4/2019</td>
                     <td></td>
-                    <td>Có cần gửi mà tới email liên kết để xác nhận không?</td>
+                    <td></td>
                     <td>
                       
                     </td>                                  

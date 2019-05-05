@@ -56,11 +56,11 @@ ModalFooter
 import { Link } from 'react-router-dom';
 import Demo from '../../../../homeNav'
 const proto = {};
-<<<<<<< HEAD
-proto.myproject = require('./../../../../gRPC/myproject/myproject_grpc_web_pb');
-=======
-proto.auth = require('../../../../gRPC/myprofile/myprofile_grpc_web_pb');
->>>>>>> 6d7e3680b4f27c017e602c2a8053a92a28cee743
+// <<<<<<< HEAD
+// proto.myproject = require('./../../../../gRPC/myproject/myproject_grpc_web_pb');
+// =======
+// proto.auth = require('../../../../gRPC/myprofile/myprofile_grpc_web_pb');
+// >>>>>>> 6d7e3680b4f27c017e602c2a8053a92a28cee743
 
 class AllProject extends Component {
   constructor(props) {
@@ -96,9 +96,9 @@ class AllProject extends Component {
   render() {
     let that=this;
     //create service to request
-    const myprojectService = new proto.myproject.MyProjectClient('http://localhost:8080');
+    //const myprojectService = new proto.myproject.MyProjectClient('http://localhost:8080');
     //some data of request (get that from frontend)
-    const username = "useridoremail";
+    //const username = "useridoremail";
 
     // //create var for react
     // var ProfileReq = new proto.myproject.ProfileReq();

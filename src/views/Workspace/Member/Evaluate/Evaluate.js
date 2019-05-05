@@ -48,11 +48,8 @@ class Evaluate extends Component {
   render() {
     return (
       <Row>
-          <Col>  
-          
-
-                      
-                  <Card>     
+          <Col>                        
+            <Card>     
                 <div class="table-responsive">         
                 <table class="table table-lg">
                   <thead class="thead">
@@ -64,12 +61,10 @@ class Evaluate extends Component {
                     <th>Priority</th>
                     <th>Start day</th>
                     <th>Deadline</th>
-                    <th>Completed</th>
                     <th>Assignee</th>
                     <th>Point</th>                 
-                    <th>Review</th>
-                    
-                   
+                    <th>Review</th>   
+                    <th></th>   
                   </tr>
                   </thead>
                   <tbody>
@@ -83,13 +78,9 @@ class Evaluate extends Component {
                     <td>24/4/2019</td>
                     <td>Hùng</td>
                     <td></td>
-                    <td>
-                      <Progress value={100} />
-                      <div className="text-center">100%</div>
-                    </td>                                  
-                    <td>
-                              
-                    </td>
+                    <td></td>
+                    <td></td>              
+                                 
                   </tr>
                    <tr>
                     <td>Login bằng email</td>
@@ -100,10 +91,8 @@ class Evaluate extends Component {
                     <td>20/4/2019</td>
                     <td>23/4/2019</td>
                     <td>Nhân</td>
-                    <td>Có cần xác thực email không?</td>
+                    <td></td>
                     <td>
-                      <Progress value={85} />
-                      <div className="text-center">85%</div>
                     </td>                                  
                     <td>
                                  
@@ -120,8 +109,6 @@ class Evaluate extends Component {
                     <td>Tâm</td>
                     <td></td>
                     <td>
-                      <Progress value={10} />
-                      <div className="text-center">10%</div>
                     </td>                                  
                     <td>
                                     
@@ -136,10 +123,8 @@ class Evaluate extends Component {
                     <td>20/4/2019</td>
                     <td>24/4/2019</td>
                     <td></td>
-                    <td>Có cần gửi mà tới email liên kết để xác nhận không?</td>
+                    <td></td>
                     <td>
-                      <Progress value={0} />
-                      <div className="text-center">0%</div>
                     </td>                                  
                     <td>
                              
@@ -156,8 +141,6 @@ class Evaluate extends Component {
                     <td></td>
                     <td></td>
                     <td>
-                      <Progress value={0} />
-                      <div className="text-center">0%</div>
                     </td>                                  
                     <td>
                                  
@@ -174,11 +157,8 @@ class Evaluate extends Component {
                     <td></td>
                     <td></td>
                     <td>
-                      <Progress value={0} />
-                      <div className="text-center">0%</div>
                     </td>                                  
-                    <td>
-                              
+                    <td>                          
                     </td>
                   </tr>
                   </tbody>
