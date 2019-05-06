@@ -251,5 +251,55 @@ proto.myproject.MyprojectPromiseClient.prototype.deleteProject =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.myproject.GetAllProjectReq,
+ *   !proto.myproject.GetAllProjectRes>}
+ */
+const methodInfo_Myproject_getAllProject = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.myproject.GetAllProjectRes,
+  /** @param {!proto.myproject.GetAllProjectReq} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.myproject.GetAllProjectRes.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.myproject.GetAllProjectReq} request The request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.myproject.GetAllProjectRes>}
+ *     The XHR Node Readable Stream
+ */
+proto.myproject.MyprojectClient.prototype.getAllProject =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/myproject.Myproject/getAllProject',
+      request,
+      metadata || {},
+      methodInfo_Myproject_getAllProject);
+};
+
+
+/**
+ * @param {!proto.myproject.GetAllProjectReq} request The request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!grpc.web.ClientReadableStream<!proto.myproject.GetAllProjectRes>}
+ *     The XHR Node Readable Stream
+ */
+proto.myproject.MyprojectPromiseClient.prototype.getAllProject =
+    function(request, metadata) {
+  return this.client_.serverStreaming(this.hostname_ +
+      '/myproject.Myproject/getAllProject',
+      request,
+      metadata || {},
+      methodInfo_Myproject_getAllProject);
+};
+
+
 module.exports = proto.myproject;
 

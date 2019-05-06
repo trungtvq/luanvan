@@ -12,7 +12,7 @@ class Page500 extends Component {
   componentWillMount(){
 
           //create service to request
-          const myprofileService = new proto.myprofile.MyProfileClient('http://localhost:8080');
+          const myprofileService = new proto.myprofile.MyProfileClient('10.8.0.22:9090');
           //some data of request (get that from frontend)
           const username = "useridoremail";
 

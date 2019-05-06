@@ -29,6 +29,10 @@ ModalHeader,
 ModalBody,
 ModalFooter,
 } from 'reactstrap';
+
+// const proto = {};
+// proto.dailyschedule = require('./../../../../gRPC/dailyschedule/dailyschedule_grpc_web_pb');
+
 class DailySchedule extends Component {
    constructor(props) {
     super(props);
@@ -75,11 +79,76 @@ class DailySchedule extends Component {
       modalEdit: !prevState.modalEdit
     }));
   }
+
+// componentWillMount(){
+//    //create service to request
+//    const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('overlead:8085');
+//    //some data of request (get that from frontend)
+//    const username = "useridoremail";
+//    //console.log(myprojectService)
+//    //create var for react
+  
+//    //rpc addNewDailySchedule(AddNewDailyScheduleReq) returns (AddNewDailyScheduleRes) {}
+//    //set data from frontend to this var
+//    // ProfileReq.setUsername(username);
+//   //  string userName = 1;
+//   //  string projectId = 2;
+//   //  string date	= 3;
+//   //  string idbacklog = 4;	
+//   //  string task	= 5;
+//   //  string status = 6;	
+//   //  string review =7;
+//   //  string cookie = 8;
+//    //metadab will be config later
+//    var metadata = {};
+//    //make a request to server
+
+//    var AddNewDailyScheduleReq= new proto.myproject.AddNewDailyScheduleReq();
+//    AddNewDailyScheduleReq.setUsername("tienbede");
+//    AddNewDailyScheduleReq.setProjectId("tienbede");
+//    AddNewDailyScheduleReq.setDate("tienbede");
+//    AddNewDailyScheduleReq.setEnd("tienbede");
+//    AddNewDailyScheduleReq.setPrivate("tienbede");
+//    AddNewDailyScheduleReq.setCookie("tienbede");
+
+//   //  var toto=myprojectService.addNewProject(AddNewProjectReq, metadata, (err, response) => {
+//   //    console.log("connect")
+//   //    if (err) { //if error
+//   //       console.log(err);
+//   //       console.log("error")
+//   //    } else { //if success
+
+//   //            //get response
+//   //            console.log("response")
+//   //            console.log(response);
+//   //            console.log("get avatar")
+//   //            console.log()
+
+//   //            // this.setState({
+//   //            //   av: response.getAvatar()
+//   //            // });
+             
+//   //            const ProfileRes = response[0];
+//   //            if (ProfileRes == null) {// if response null => not found
+     
+//   //              console.log(`Something was wrong ${username} wasn't found`);
+//   //            } else {
+//   //              console.log(`Fetched TODO with ID ${username}: ${ProfileRes}`);
+//   //            }
+//   //          }
+//   //        });
+//   //        console.log(toto)
+
+// }
+
   render() {
     const {
       data
     } = this.state;
     let that=this;
+
+   
+
     return (
       <Row>
           <Col>  

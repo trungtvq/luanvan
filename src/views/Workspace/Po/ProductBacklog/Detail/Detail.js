@@ -123,7 +123,7 @@ class Detail extends Component {
                 </Row>   
                  <Card>
                 <div class="table-responsive"> 
-                 <table class="table table-lg">
+                <table class="table table-lg">
                   <thead class="thead">
                   <tr class="bg-primary">
                     <th>ID <i class="fa fa-sort"></i></th>

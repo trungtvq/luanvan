@@ -55,12 +55,11 @@ ModalFooter
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Demo from '../../../../homeNav'
+
 const proto = {};
-// <<<<<<< HEAD
-// proto.myproject = require('./../../../../gRPC/myproject/myproject_grpc_web_pb');
-// =======
-// proto.auth = require('../../../../gRPC/myprofile/myprofile_grpc_web_pb');
-// >>>>>>> 6d7e3680b4f27c017e602c2a8053a92a28cee743
+proto.myproject = require('./../../../../gRPC/myproject/myproject_grpc_web_pb');
+
+
 
 class AllProject extends Component {
   constructor(props) {
@@ -93,45 +92,66 @@ class AllProject extends Component {
       modalEditTopic: !prevState.modalEditTopic
     }));
   }
+  componentWillMount(){
+    const myprojectService = new proto.myproject.MyprojectClient('overlead:8085');
+    //some data of request (get that from frontend)
+    const username = "useridoremail";
+    console.log(myprojectService)
+    //create var for react
+   // var AddNewProjectReq = new proto.myproject.AddNewProjectReq();
+    //rpc addNewProject(AddNewProjectReq) returns (AddNewProjectRes) {}
+    // //set data from frontend to this var
+    // ProfileReq.setUsername(username);
+// string userName = 1;
+	// string projectName = 2;
+	// string start = 3;		//return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+	// string end = 4;		   //return in form mm/hh/dd/mm/yyyy 
+	// string private = 5;
+	// string cookie = 6;
+    //metadab will be config later
+    var metadata = {};
+    //make a request to server
+
+    var AddNewProjectReq= new proto.myproject.AddNewProjectReq();
+    AddNewProjectReq.setUsername("tienbede");
+    AddNewProjectReq.setProjectname("tienbede");
+    AddNewProjectReq.setStart("tienbede");
+    AddNewProjectReq.setEnd("tienbede");
+    AddNewProjectReq.setPrivate("tienbede");
+    AddNewProjectReq.setCookie("tienbede");
+
+    var toto=myprojectService.addNewProject(AddNewProjectReq, metadata, (err, response) => {
+      console.log("connect")
+      if (err) { //if error
+         console.log(err);
+         console.log("error")
+      } else { //if success
+
+              //get response
+              console.log("response")
+              console.log(response);
+              console.log("get avatar")
+              console.log()
+
+              // this.setState({
+              //   av: response.getAvatar()
+              // });
+              
+              const ProfileRes = response[0];
+              if (ProfileRes == null) {// if response null => not found
+      
+                console.log(`Something was wrong ${username} wasn't found`);
+              } else {
+                console.log(`Fetched TODO with ID ${username}: ${ProfileRes}`);
+              }
+            }
+          });
+          console.log(toto)
+  }
   render() {
     let that=this;
     //create service to request
-    //const myprojectService = new proto.myproject.MyProjectClient('http://localhost:8080');
-    //some data of request (get that from frontend)
-    //const username = "useridoremail";
-
-    // //create var for react
-    // var ProfileReq = new proto.myproject.ProfileReq();
-
-    // //set data from frontend to this var
-    // ProfileReq.setUsername(username);
-
-    // //metadab will be config later
-    // var metadata = {};
-    // //make a request to server
-    // var getTodo = myprofileService.getProfileSimple(ProfileReq, metadata, (err, response) => {
-    //   if (err) { //if error
-    //      console.log(err);
-    //   } else { //if success
-    //           //get response
-    //           console.log("response")
-    //           console.log(response);
-    //           console.log("get avatar")
-    //           console.log()
-
-    //           this.setState({
-    //             av: response.getAvatar()
-    //           });
-              
-    //           const ProfileRes = response[0];
-    //           if (ProfileRes == null) {// if response null => not found
-      
-    //             console.log(`Something was wrong ${username} wasn't found`);
-    //           } else {
-    //             console.log(`Fetched TODO with ID ${username}: ${ProfileRes}`);
-    //           }
-    //         }
-    //       });
+    
 
     return (
   
