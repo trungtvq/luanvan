@@ -179,14 +179,7 @@ class AllProject extends Component {
                             <div class="card  bg-primary mb-3">
                               <div class="card-body">
                                 <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
-                                  <FormGroup row>
-                                    <Col md="3">
-                                      <Label htmlFor="text-input">Owner Name</Label>
-                                    </Col>
-                                    <Col xs="5" md="5">
-                                      <Input type="text" id="OwnerName" name="ProjectName" placeholder="Name" />
-                                    </Col>
-                                  </FormGroup>
+                  
                                   <FormGroup row>
                                     <Col md="3">
                                       <Label htmlFor="text-input">Project Name</Label>
