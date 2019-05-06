@@ -68,12 +68,28 @@ class AllProject extends Component {
     this.toggleAdd = this.toggleAdd.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
     this.toggleTranferOwner = this.toggleTranferOwner.bind(this);
+    this.onTextboxChangeOwnerName = this.onTextboxChangeOwnerName.bind(this);
+    this.onTextboxChangeProjectName = this.onTextboxChangeProjectName.bind(this);
+    this.onTextboxChangetimeStart = this.onTextboxChangetimeStart.bind(this);
+    this.onTextboxChangedateStart = this.onTextboxChangedateStart.bind(this);
+    this.onTextboxChangetimeEnd = this.onTextboxChangetimeEnd.bind(this);
+    this.onTextboxChangedateEnd = this.onTextboxChangedateEnd.bind(this);
 
     this.state = {
       result:{},
       modalAdd: false,
       modalEdit: false,
       modalTranferOwner: false,
+
+      OwnerName:'',
+      ProjectName:'',
+      timeStart:'',
+      dateStart:'',
+      timeEnd:'',
+      dateEnd:'',
+      status:false,
+
+
       data: [ 
         {
           "projectName":"Web bán giày",
@@ -108,6 +124,51 @@ class AllProject extends Component {
   toggleTranferOwner() {
     this.setState(prevState => ({
     modalTranferOwner: !prevState.modalTranferOwner
+    }));
+  }
+
+  handleDelete = (idOwner,idProject,cookie) => {
+    console.log(idOwner);
+    console.log(idProject);
+    console.log(cookie);
+  };
+  
+  handleUpdate = (idProject,idOwner,userName,projectName,start,end,status,cookie) => {
+   
+  };
+  onTextboxChangeOwnerName(event) {
+    this.setState({
+      OwnerName: event.target.value,
+    });
+  }
+  onTextboxChangeProjectName(event) {
+    this.setState({
+      ProjectName: event.target.value,
+    });
+  }
+  onTextboxChangetimeStart(event) {
+    this.setState({
+      timeStart: event.target.value,
+    });
+  }
+  onTextboxChangedateStart(event) {
+    this.setState({
+      dateStart: event.target.value,
+    });
+  }
+  onTextboxChangetimeEnd(event) {
+    this.setState({
+      timeEnd: event.target.value,
+    });
+  }
+  onTextboxChangedateEnd(event) {
+    this.setState({
+      dateEnd: event.target.value,
+    });
+  }
+  onTextboxChangeStatus(event) {
+    this.setState(prevState => ({
+      status: !prevState.status,
     }));
   }
   componentWillMount(){
@@ -182,59 +243,73 @@ class AllProject extends Component {
                     <i className=""></i><strong>{item.projectName}</strong>
                     </Link>
                     <div className="card-header-actions">
-                    <div className="card-header-action btn btn-setting" ><i className="icon-trash"></i>{that.props.buttonLabel}</div>
+                    <div className="card-header-action btn btn-setting"  onClick={that.handleDelete("idOwner","idProject","cookie")}><i className="icon-trash"></i>{that.props.buttonLabel}</div>
                     <div className="card-header-action btn btn-setting" onClick={that.toggleEdit}><i className="icon-settings"></i>{that.props.buttonLabel}</div>
                     <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
                       <ModalHeader toggle={that.toggleEdit}>Project</ModalHeader>
                       <ModalBody>
                         <div class="card  bg-primary mb-3">
                           <div class="card-body">
-                            <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
-              
-                              <FormGroup row>
-                                <Col md="3">
-                                  <Label htmlFor="text-input">Project Name</Label>
-                                </Col>
-                                <Col xs="5" md="5">
-                                  <Input type="text" id="ProjectName" name="ProjectName" placeholder="Project Name" />
-                                </Col>
-                              </FormGroup>
-                              <FormGroup row>
-                                <Col md="3">
-                                  <Label htmlFor="date-input">Start </Label>
-                                </Col>
-                                <Col xs="3" md="3">
-                                  <Input type="time" id="timeStart" name="timeStart"/>
-                                </Col>
-                                <Col xs="3" md="3">
-                                  <Input type="date" id="date-input" name="date-input" />
-                                </Col>
-                              </FormGroup>
-                              <FormGroup row>
-                                <Col md="3">
-                                  <Label htmlFor="date-input">End </Label>
-                                </Col>
-                                <Col xs="3" md="3">
-                                  <Input type="time" id="timeEnd" name="timeEnd"/>
-                                  </Col>
-                                  <Col xs="3" md="3">
-                                    <Input type="date" id="dateEnd" name="dateEnd" />
-                                  </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                  <Col md="3">
-                                  <Label htmlFor="date-input">Private </Label>
-                                  </Col>
-                                  <Col xs="5" md="5">
-                                  <Input type="checkbox" id="Private" name="Private"/>
-                                  </Col>
-                                </FormGroup>                      
-                            </Form>
+                          <Form  className="form-horizontal">               
+                                            
+                                            <FormGroup row>
+                                                <Col md="3">
+                                                  <Label htmlFor="text-input">Owner Name</Label>
+                                                </Col>
+                                                <Col xs="5" md="5">
+                                                  <Input type="text" id="OwnerName" name="OwnerName" placeholder="Name" value={that.state.OwnerName} onChange={that.onTextboxChangeOwnerName} />
+                                                </Col>
+                                              </FormGroup>
+  
+  
+                                              <FormGroup row>
+                                                <Col md="3">
+                                                  <Label htmlFor="text-input">Project Name</Label>
+                                                </Col>
+                                                <Col xs="5" md="5">
+                                                  <Input type="text" id="ProjectName" name="ProjectName" placeholder="Project Name" value={that.state.ProjectName} onChange={that.onTextboxChangeProjectName} />
+                                                  
+                                                </Col>
+                                              </FormGroup>
+  
+                                              <FormGroup row>
+                                                <Col md="3">
+                                                  <Label htmlFor="date-input">Start </Label>
+                                                </Col>
+                                                <Col xs="3" md="3">
+                                                <Input type="time" id="timeStart" name="timeStart" value={that.state.timeStart} onChange={that.onTextboxChangetimeStart} />
+                                                </Col>
+                                                <Col xs="3" md="3">
+                                                  <Input type="date" id="dateStart" name="dateStart" value={that.state.dateStart} onChange={that.onTextboxChangedateStart}/>
+                                                </Col>
+                                              </FormGroup>
+  
+                                              <FormGroup row>
+                                                <Col md="3">
+                                                  <Label htmlFor="date-input">End </Label>
+                                                </Col>
+                                                <Col xs="3" md="3">
+                                                <Input type="time" id="timeEnd" name="timeEnd" value={that.state.timeEnd} onChange={that.onTextboxChangetimeEnd}/>
+                                                </Col>
+                                                <Col xs="3" md="3">
+                                                  <Input type="date" id="dateEnd" name="dateEnd" />
+                                                </Col>
+                                              </FormGroup>
+                                              
+                                              <FormGroup row>
+                                                <Col md="5">
+                                                  <Label htmlFor="date-input">Private </Label>onTextboxChangeStatus
+                                                </Col>
+                                                <Col xs="5" md="5">
+                                                  <Input type="checkbox" id="Private" name="Private" value={that.state.status} onChange={that.onTextboxChangeStatus}/>
+                                                </Col>
+                                              </FormGroup>
+                                            </Form>
                           </div>
                         </div>                         
                       </ModalBody>
                       <ModalFooter>
-                        <Button color="primary" onClick={that.toggleEdit}>Submit</Button>{' '}
+                        <Button color="primary" onClick={that.handleUpdate('idProject','idOwner','userName','projectName','start','end','status','cookie')}>Submit</Button>{' '}
                         <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
                       </ModalFooter>
                     </Modal>

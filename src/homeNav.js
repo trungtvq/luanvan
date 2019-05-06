@@ -175,7 +175,7 @@ class PrimarySearchAppBar extends React.Component {
     this.setState({ mobileMoreAnchorEl: null });
   };
 
-  handleCreatePj(event) {
+  handleCreatePj=(event)=> {
     console.log("vào");
     console.log("OwnerName: " + this.state.OwnerName);
     console.log("ProjectName: " + this.state.ProjectName);
@@ -222,6 +222,8 @@ class PrimarySearchAppBar extends React.Component {
       status: !prevState.status,
     }));
   }
+
+  
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
