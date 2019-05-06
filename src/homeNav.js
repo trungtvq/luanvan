@@ -225,11 +225,21 @@ class PrimarySearchAppBar extends React.Component {
 
   
   render() {
-    const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
     let that=this;
+    const {
+      OwnerName,
+      ProjectName,
+      timeStart,
+      dateStart,
+      timeEnd,
+      dateEnd,
+      status,   
+      anchorEl,
+      mobileMoreAnchorEl,
+    } = this.state;
     const renderMenu = (
       <Menu
         anchorEl={anchorEl}
@@ -308,61 +318,61 @@ class PrimarySearchAppBar extends React.Component {
                                     <ModalBody>
                                       <div class="card  bg-primary mb-3">
                                         <div class="card-body">
-                                          <Form  className="form-horizontal">               
-                                            
-                                          <FormGroup row>
-                                              <Col md="3">
-                                                <Label htmlFor="text-input">Owner Name</Label>
-                                              </Col>
-                                              <Col xs="5" md="5">
-                                                <Input type="text" id="OwnerName" name="OwnerName" placeholder="Name" value={that.state.OwnerName} onChange={that.onTextboxChangeOwnerName} />
-                                              </Col>
-                                            </FormGroup>
-
-
-                                            <FormGroup row>
-                                              <Col md="3">
-                                                <Label htmlFor="text-input">Project Name</Label>
-                                              </Col>
-                                              <Col xs="5" md="5">
-                                                <Input type="text" id="ProjectName" name="ProjectName" placeholder="Project Name" value={that.state.ProjectName} onChange={that.onTextboxChangeProjectName} />
-                                                
-                                              </Col>
-                                            </FormGroup>
-
-                                            <FormGroup row>
-                                              <Col md="3">
-                                                <Label htmlFor="date-input">Start </Label>
-                                              </Col>
-                                              <Col xs="3" md="3">
-                                              <Input type="time" id="timeStart" name="timeStart" value={that.state.timeStart} onChange={that.onTextboxChangetimeStart} />
-                                              </Col>
-                                              <Col xs="3" md="3">
-                                                <Input type="date" id="dateStart" name="dateStart" value={that.state.dateStart} onChange={that.onTextboxChangedateStart}/>
-                                              </Col>
-                                            </FormGroup>
-
-                                            <FormGroup row>
-                                              <Col md="3">
-                                                <Label htmlFor="date-input">End </Label>
-                                              </Col>
-                                              <Col xs="3" md="3">
-                                              <Input type="time" id="timeEnd" name="timeEnd" value={that.state.timeEnd} onChange={that.onTextboxChangetimeEnd}/>
-                                              </Col>
-                                              <Col xs="3" md="3">
-                                                <Input type="date" id="dateEnd" name="dateEnd" />
-                                              </Col>
-                                            </FormGroup>
+                                        <Form  className="form-horizontal">               
                                             
                                             <FormGroup row>
-                                              <Col md="5">
-                                                <Label htmlFor="date-input">Private </Label>onTextboxChangeStatus
-                                              </Col>
-                                              <Col xs="5" md="5">
-                                                <Input type="checkbox" id="Private" name="Private" value={that.state.status} onChange={that.onTextboxChangeStatus}/>
-                                              </Col>
-                                            </FormGroup>
-                                          </Form>
+                                                <Col md="3">
+                                                  <Label htmlFor="text-input">Owner Name</Label>
+                                                </Col>
+                                                <Col xs="5" md="5">
+                                                  <Input type="text" id="OwnerName" name="OwnerName" placeholder="Name" value={OwnerName} onChange={that.onTextboxChangeOwnerName} />
+                                                </Col>
+                                              </FormGroup>
+  
+  
+                                              <FormGroup row>
+                                                <Col md="3">
+                                                  <Label htmlFor="text-input">Project Name</Label>
+                                                </Col>
+                                                <Col xs="5" md="5">
+                                                  <Input type="text" id="ProjectName" name="ProjectName" placeholder="Project Name" value={ProjectName} onChange={that.onTextboxChangeProjectName} />
+                                                  
+                                                </Col>
+                                              </FormGroup>
+  
+                                              <FormGroup row>
+                                                <Col md="3">
+                                                  <Label htmlFor="date-input">Start </Label>
+                                                </Col>
+                                                <Col xs="3" md="3">
+                                                <Input type="time" id="timeStart" name="timeStart" value={timeStart} onChange={that.onTextboxChangetimeStart} />
+                                                </Col>
+                                                <Col xs="3" md="3">
+                                                  <Input type="date" id="dateStart" name="dateStart" value={dateStart} onChange={that.onTextboxChangedateStart}/>
+                                                </Col>
+                                              </FormGroup>
+  
+                                              <FormGroup row>
+                                                <Col md="3">
+                                                  <Label htmlFor="date-input">End </Label>
+                                                </Col>
+                                                <Col xs="3" md="3">
+                                                <Input type="time" id="timeEnd" name="timeEnd" value={timeEnd} onChange={that.onTextboxChangetimeEnd}/>
+                                                </Col>
+                                                <Col xs="3" md="3">
+                                                  <Input type="date" id="dateEnd" name="dateEnd"  value={dateEnd} onChange={that.onTextboxChangedateEnd}/>
+                                                </Col>
+                                              </FormGroup>
+                                              
+                                              <FormGroup row>
+                                                <Col md="5">
+                                                  <Label htmlFor="date-input">Private </Label>onTextboxChangeStatus
+                                                </Col>
+                                                <Col xs="5" md="5">
+                                                  <Input type="checkbox" id="Private" name="Private" value={status} onChange={that.onTextboxChangeStatus}/>
+                                                </Col>
+                                              </FormGroup>
+                                            </Form>
                                         </div>
                                       </div>                         
                                     </ModalBody>

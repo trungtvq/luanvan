@@ -65,6 +65,11 @@ class Detail extends Component {
             ],
       modalAdd: false,
       modalEdit: false,
+      name:'',
+      as:'',
+      want:'',
+      so:'',
+
       }
     };
 
