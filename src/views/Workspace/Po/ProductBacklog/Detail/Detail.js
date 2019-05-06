@@ -103,6 +103,12 @@ class Detail extends Component {
     }));
   }
 
+  onTextboxChangeOwnerName(event) {
+    this.setState({
+      signInEmail: event.target.value,
+    });
+  }
+
   render() {
     const {
       data

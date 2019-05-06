@@ -127,12 +127,27 @@ const styles = theme => ({
 class PrimarySearchAppBar extends React.Component {
   constructor(props) {
     super(props);
+    this.onTextboxChangeOwnerName = this.onTextboxChangeOwnerName.bind(this);
+    this.onTextboxChangeProjectName = this.onTextboxChangeProjectName.bind(this);
+    this.onTextboxChangetimeStart = this.onTextboxChangetimeStart.bind(this);
+    this.onTextboxChangedateStart = this.onTextboxChangedateStart.bind(this);
+    this.onTextboxChangetimeEnd = this.onTextboxChangetimeEnd.bind(this);
+    this.onTextboxChangedateEnd = this.onTextboxChangedateEnd.bind(this);
     this.toggleCreatePj = this.toggleCreatePj.bind(this);
+
       
       this.state = {
         anchorEl: null,
         mobileMoreAnchorEl: null,
         modalCreatePj: false,
+        
+        OwnerName:'',
+        ProjectName:'',
+        timeStart:'',
+        dateStart:'',
+        timeEnd:'',
+        dateEnd:'',
+        status:false,
       };
     };
 
@@ -160,6 +175,53 @@ class PrimarySearchAppBar extends React.Component {
     this.setState({ mobileMoreAnchorEl: null });
   };
 
+  handleCreatePj(event) {
+    console.log("vào");
+    console.log("OwnerName: " + this.state.OwnerName);
+    console.log("ProjectName: " + this.state.ProjectName);
+    console.log("timeStart: " + this.state.timeStart);
+    console.log("dateStart: " + this.state.dateStart);
+    console.log("timeEnd: " + this.state.timeEnd);
+    console.log("dateEnd: " + this.state.dateEnd);
+    console.log("Private: " + this.state.Private);
+
+  }
+
+  onTextboxChangeOwnerName(event) {
+    this.setState({
+      OwnerName: event.target.value,
+    });
+  }
+  onTextboxChangeProjectName(event) {
+    this.setState({
+      ProjectName: event.target.value,
+    });
+  }
+  onTextboxChangetimeStart(event) {
+    this.setState({
+      timeStart: event.target.value,
+    });
+  }
+  onTextboxChangedateStart(event) {
+    this.setState({
+      dateStart: event.target.value,
+    });
+  }
+  onTextboxChangetimeEnd(event) {
+    this.setState({
+      timeEnd: event.target.value,
+    });
+  }
+  onTextboxChangedateEnd(event) {
+    this.setState({
+      dateEnd: event.target.value,
+    });
+  }
+  onTextboxChangeStatus(event) {
+    this.setState(prevState => ({
+      status: !prevState.status,
+    }));
+  }
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
@@ -244,14 +306,14 @@ class PrimarySearchAppBar extends React.Component {
                                     <ModalBody>
                                       <div class="card  bg-primary mb-3">
                                         <div class="card-body">
-                                          <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                          <Form  className="form-horizontal">               
                                             
                                           <FormGroup row>
                                               <Col md="3">
                                                 <Label htmlFor="text-input">Owner Name</Label>
                                               </Col>
                                               <Col xs="5" md="5">
-                                                <Input type="text" id="OwnerName" name="ProjectName" placeholder="Name" />
+                                                <Input type="text" id="OwnerName" name="OwnerName" placeholder="Name" value={that.state.OwnerName} onChange={that.onTextboxChangeOwnerName} />
                                               </Col>
                                             </FormGroup>
 
@@ -261,7 +323,7 @@ class PrimarySearchAppBar extends React.Component {
                                                 <Label htmlFor="text-input">Project Name</Label>
                                               </Col>
                                               <Col xs="5" md="5">
-                                                <Input type="text" id="ProjectName" name="ProjectName" placeholder="Project Name" />
+                                                <Input type="text" id="ProjectName" name="ProjectName" placeholder="Project Name" value={that.state.ProjectName} onChange={that.onTextboxChangeProjectName} />
                                                 
                                               </Col>
                                             </FormGroup>
@@ -271,10 +333,10 @@ class PrimarySearchAppBar extends React.Component {
                                                 <Label htmlFor="date-input">Start </Label>
                                               </Col>
                                               <Col xs="3" md="3">
-                                              <Input type="time" id="timeStart" name="timeStart"/>
+                                              <Input type="time" id="timeStart" name="timeStart" value={that.state.timeStart} onChange={that.onTextboxChangetimeStart} />
                                               </Col>
                                               <Col xs="3" md="3">
-                                                <Input type="date" id="dateStart" name="dateStart" />
+                                                <Input type="date" id="dateStart" name="dateStart" value={that.state.dateStart} onChange={that.onTextboxChangedateStart}/>
                                               </Col>
                                             </FormGroup>
 
@@ -283,7 +345,7 @@ class PrimarySearchAppBar extends React.Component {
                                                 <Label htmlFor="date-input">End </Label>
                                               </Col>
                                               <Col xs="3" md="3">
-                                              <Input type="time" id="timeEnd" name="timeEnd"/>
+                                              <Input type="time" id="timeEnd" name="timeEnd" value={that.state.timeEnd} onChange={that.onTextboxChangetimeEnd}/>
                                               </Col>
                                               <Col xs="3" md="3">
                                                 <Input type="date" id="dateEnd" name="dateEnd" />
@@ -292,19 +354,18 @@ class PrimarySearchAppBar extends React.Component {
                                             
                                             <FormGroup row>
                                               <Col md="5">
-                                                <Label htmlFor="date-input">Private </Label>
+                                                <Label htmlFor="date-input">Private </Label>onTextboxChangeStatus
                                               </Col>
                                               <Col xs="5" md="5">
-                                                <Input type="checkbox" id="Private" name="Private" />
+                                                <Input type="checkbox" id="Private" name="Private" value={that.state.status} onChange={that.onTextboxChangeStatus}/>
                                               </Col>
                                             </FormGroup>
-                                                                               
                                           </Form>
                                         </div>
                                       </div>                         
                                     </ModalBody>
                                     <ModalFooter>
-                                    <Button color="primary" onClick={that.toggleCreatePj}>Submit</Button>{' '}
+                                    <Button type="submit" color="primary" onClick={that.handleCreatePj}>Submit</Button>
                                     <Button color="secondary" onClick={that.toggleCreatePj}>Cancel</Button>
                                     </ModalFooter>
               </Modal>
