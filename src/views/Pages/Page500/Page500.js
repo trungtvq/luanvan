@@ -10,9 +10,9 @@ class Page500 extends Component {
       av:''
   }}
   componentWillMount(){
-
+//vuc me cai firefox
           //create service to request
-          const myprofileService = new proto.myprofile.MyProfileClient('10.8.0.22:9090');
+          const myprofileService = new proto.myprofile.MyProfileClient('54.255.233.193:8085');
           //some data of request (get that from frontend)
           const username = "useridoremail";
 
