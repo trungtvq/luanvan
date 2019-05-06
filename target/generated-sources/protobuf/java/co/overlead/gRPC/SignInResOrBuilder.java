@@ -46,4 +46,24 @@ public interface SignInResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getTypeBytes();
+
+  /**
+   * <code>string id = 5;</code>
+   */
+  java.lang.String getId();
+  /**
+   * <code>string id = 5;</code>
+   */
+  com.google.protobuf.ByteString
+      getIdBytes();
+
+  /**
+   * <code>string session = 6;</code>
+   */
+  java.lang.String getSession();
+  /**
+   * <code>string session = 6;</code>
+   */
+  com.google.protobuf.ByteString
+      getSessionBytes();
 }

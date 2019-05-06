@@ -22,7 +22,6 @@ co/overlead/gRPC/ProductbacklogGrpc$ProductbacklogImplBase.class
 co/overlead/gRPC/DeleteDailyScheduleReq$Builder.class
 co/overlead/gRPC/UpdateTeamTaskReq$1.class
 co/overlead/gRPC/UpdateDailyScheduleRes$Builder.class
-co/overlead/gRPC/ResetPasswordFinalStepResOrBuilder.class
 co/overlead/gRPC/AddNewProductBacklogReqOrBuilder.class
 co/overlead/gRPC/CancleTeamTaskReq.class
 com/example/grpc/CounterServiceGrpc$CounterServiceFileDescriptorSupplier.class
@@ -195,6 +194,7 @@ co/overlead/gRPC/VelocityGrpc$VelocityFutureStub.class
 co/overlead/gRPC/SprintbacklogGrpc$SprintbacklogFileDescriptorSupplier.class
 co/overlead/gRPC/UserstoryGrpc$UserstoryStub.class
 co/overlead/gRPC/GetAllDailyScheduleRes.class
+gRPC/auth/AuthRequest.class
 co/overlead/gRPC/RegisterTeamTaskRes$1.class
 co/overlead/gRPC/ProductbacklogGrpc.class
 co/overlead/gRPC/SendToSprintBacklogReq.class
@@ -299,12 +299,10 @@ co/overlead/gRPC/DeleteUserStoryReq$Builder.class
 co/overlead/gRPC/GetAllProductBacklogRes$Builder.class
 co/overlead/gRPC/SignInRes$Builder.class
 co/overlead/gRPC/SignInResOrBuilder.class
-co/overlead/gRPC/ResetPasswordFinalStepRes.class
 co/overlead/gRPC/AddNewProjectReqOrBuilder.class
 co/overlead/gRPC/ResetRes.class
 co/overlead/gRPC/AddNewProjectRes.class
 co/overlead/gRPC/DeleteUserStoryReq$1.class
-service/auth/AuthAccount.class
 co/overlead/gRPC/AddNewUserStoryRes$Builder.class
 co/overlead/gRPC/ProfileRes.class
 co/overlead/gRPC/MyprojectGrpc$MyprojectBlockingStub.class
@@ -346,6 +344,7 @@ co/overlead/gRPC/productbacklog$1.class
 co/overlead/gRPC/UpdateDailyScheduleReqOrBuilder.class
 co/overlead/gRPC/DeleteProjectReq.class
 co/overlead/gRPC/MyProfileGrpc$MyProfileStub.class
+gRPC/auth/AuthAccount$AuthImpl.class
 co/overlead/gRPC/GetAllMyTaskReq.class
 examples/gRPC/CounterServiceGrpc$CounterServiceMethodDescriptorSupplier.class
 co/overlead/gRPC/GetAllMyTaskReqOrBuilder.class
@@ -376,11 +375,9 @@ co/overlead/gRPC/TeamtaskGrpc$TeamtaskImplBase.class
 com/example/grpc/CounterServiceGrpc$CounterServiceImplBase.class
 examples/gRPC/SetBalanceReplyOrBuilder.class
 co/overlead/gRPC/AuthGrpc.class
-co/overlead/gRPC/ResetPasswordFinalStepRes$1.class
 co/overlead/gRPC/UpdateDailyScheduleReq$1.class
 co/overlead/gRPC/AuthGrpc$AuthBaseDescriptorSupplier.class
 com/example/grpc/CounterServiceGrpc$1.class
-co/overlead/gRPC/ResetPasswordFinalStepRes$Builder.class
 co/overlead/gRPC/CancleTeamTaskReqOrBuilder.class
 co/overlead/gRPC/ResetReqOrBuilder.class
 co/overlead/gRPC/ProfileRes$1.class
@@ -440,6 +437,7 @@ co/overlead/gRPC/AddNewProjectReq$Builder.class
 co/overlead/gRPC/SignUpReq$1.class
 co/overlead/gRPC/DeleteProductBacklogReq.class
 co/overlead/gRPC/DailyscheduleGrpc$DailyscheduleFileDescriptorSupplier.class
+gRPC/auth/AuthAccount.class
 co/overlead/gRPC/UpdateProductBacklogResOrBuilder.class
 co/overlead/gRPC/velocity$1.class
 co/overlead/gRPC/TeamtaskGrpc$TeamtaskBlockingStub.class

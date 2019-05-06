@@ -124,21 +124,21 @@ public final class AuthGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.ResetPasswordFinalStepReq,
-      co.overlead.gRPC.ResetPasswordFinalStepRes> getResetPasswordFinalStepMethod;
+      co.overlead.gRPC.SignInRes> getResetPasswordFinalStepMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ResetPasswordFinalStep",
       requestType = co.overlead.gRPC.ResetPasswordFinalStepReq.class,
-      responseType = co.overlead.gRPC.ResetPasswordFinalStepRes.class,
+      responseType = co.overlead.gRPC.SignInRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<co.overlead.gRPC.ResetPasswordFinalStepReq,
-      co.overlead.gRPC.ResetPasswordFinalStepRes> getResetPasswordFinalStepMethod() {
-    io.grpc.MethodDescriptor<co.overlead.gRPC.ResetPasswordFinalStepReq, co.overlead.gRPC.ResetPasswordFinalStepRes> getResetPasswordFinalStepMethod;
+      co.overlead.gRPC.SignInRes> getResetPasswordFinalStepMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.ResetPasswordFinalStepReq, co.overlead.gRPC.SignInRes> getResetPasswordFinalStepMethod;
     if ((getResetPasswordFinalStepMethod = AuthGrpc.getResetPasswordFinalStepMethod) == null) {
       synchronized (AuthGrpc.class) {
         if ((getResetPasswordFinalStepMethod = AuthGrpc.getResetPasswordFinalStepMethod) == null) {
           AuthGrpc.getResetPasswordFinalStepMethod = getResetPasswordFinalStepMethod = 
-              io.grpc.MethodDescriptor.<co.overlead.gRPC.ResetPasswordFinalStepReq, co.overlead.gRPC.ResetPasswordFinalStepRes>newBuilder()
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.ResetPasswordFinalStepReq, co.overlead.gRPC.SignInRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "Auth.Auth", "ResetPasswordFinalStep"))
@@ -146,7 +146,7 @@ public final class AuthGrpc {
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.ResetPasswordFinalStepReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.ResetPasswordFinalStepRes.getDefaultInstance()))
+                  co.overlead.gRPC.SignInRes.getDefaultInstance()))
                   .setSchemaDescriptor(new AuthMethodDescriptorSupplier("ResetPasswordFinalStep"))
                   .build();
           }
@@ -206,7 +206,7 @@ public final class AuthGrpc {
     /**
      */
     public void resetPasswordFinalStep(co.overlead.gRPC.ResetPasswordFinalStepReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.ResetPasswordFinalStepRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.SignInRes> responseObserver) {
       asyncUnimplementedUnaryCall(getResetPasswordFinalStepMethod(), responseObserver);
     }
 
@@ -238,7 +238,7 @@ public final class AuthGrpc {
             asyncUnaryCall(
               new MethodHandlers<
                 co.overlead.gRPC.ResetPasswordFinalStepReq,
-                co.overlead.gRPC.ResetPasswordFinalStepRes>(
+                co.overlead.gRPC.SignInRes>(
                   this, METHODID_RESET_PASSWORD_FINAL_STEP)))
           .build();
     }
@@ -289,7 +289,7 @@ public final class AuthGrpc {
     /**
      */
     public void resetPasswordFinalStep(co.overlead.gRPC.ResetPasswordFinalStepReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.ResetPasswordFinalStepRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.SignInRes> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getResetPasswordFinalStepMethod(), getCallOptions()), request, responseObserver);
     }
@@ -336,7 +336,7 @@ public final class AuthGrpc {
 
     /**
      */
-    public co.overlead.gRPC.ResetPasswordFinalStepRes resetPasswordFinalStep(co.overlead.gRPC.ResetPasswordFinalStepReq request) {
+    public co.overlead.gRPC.SignInRes resetPasswordFinalStep(co.overlead.gRPC.ResetPasswordFinalStepReq request) {
       return blockingUnaryCall(
           getChannel(), getResetPasswordFinalStepMethod(), getCallOptions(), request);
     }
@@ -386,7 +386,7 @@ public final class AuthGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.ResetPasswordFinalStepRes> resetPasswordFinalStep(
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.SignInRes> resetPasswordFinalStep(
         co.overlead.gRPC.ResetPasswordFinalStepReq request) {
       return futureUnaryCall(
           getChannel().newCall(getResetPasswordFinalStepMethod(), getCallOptions()), request);
@@ -429,7 +429,7 @@ public final class AuthGrpc {
           break;
         case METHODID_RESET_PASSWORD_FINAL_STEP:
           serviceImpl.resetPasswordFinalStep((co.overlead.gRPC.ResetPasswordFinalStepReq) request,
-              (io.grpc.stub.StreamObserver<co.overlead.gRPC.ResetPasswordFinalStepRes>) responseObserver);
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.SignInRes>) responseObserver);
           break;
         default:
           throw new AssertionError();

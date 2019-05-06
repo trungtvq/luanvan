@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "co.overlead.gRPC";
+option java_outer_classname = "dailyschedule";
+option objc_class_prefix = "ds";
+package dailyschedule;
+
+service Dailyschedule{
+    rpc addNewDailySchedule(AddNewDailyScheduleReq) returns (AddNewDailyScheduleRes) {}
+    rpc updateDailySchedule(UpdateDailyScheduleReq) returns (UpdateDailyScheduleRes){}
+    rpc deleteDailySchedule(DeleteDailyScheduleReq) returns (DeleteDailyScheduleRes){}
+	rpc getAllDailySchedule(GetAllDailyScheduleReq) returns (stream GetAllDailyScheduleRes){}
+}
+
+message AddNewDailyScheduleReq{
+    string userName = 1;
+	string projectId = 2;
+	string date	= 3;
+	string idbacklog = 4;	
+	string task	= 5;
+	string status = 6;	
+	string review =7;
+	string cookie = 8;
+}
+message AddNewDailyScheduleRes{
+    string status = 1;
+	string dailyscheduleId = 2;
+	string error = 3;
+}
+
+message UpdateDailyScheduleReq{
+	string userName = 1;
+	string projectId = 2;
+	string date	= 3;
+	string idbacklog = 4;	
+	string task	= 5;
+	string status = 6;	
+	string review =7;
+	string cookie = 8;
+}
+message UpdateDailyScheduleRes{
+    string status = 1;
+	string error = 2;
+}
+
+message DeleteDailyScheduleReq{
+    string userName = 1;
+    string projectId = 2;
+	string dailyscheduleId = 3;
+	string cookie = 4;
+}
+message DeleteDailyScheduleRes{
+    string status = 1;
+	string error = 2;
+}
+
+message GetAllDailyScheduleReq{
+    string userName = 1;
+	string projectId = 2;
+	string cookie = 3;
+}
+message GetAllDailyScheduleRes{
+	string date	= 1;
+	string idbacklog = 2;	
+	string task	= 3;
+	string status = 4;	
+	string review = 5;
+}

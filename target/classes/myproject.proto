@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "co.overlead.gRPC";
+option java_outer_classname = "myproject";
+option objc_class_prefix = "mp";
+package myproject;
+
+service Myproject{
+	rpc addNewProject(AddNewProjectReq) returns (AddNewProjectRes) {}
+	rpc updateProject(UpdateProjectReq) returns (UpdateProjectRes){}
+	rpc deleteProject(DeleteProjectReq) returns (DeleteProjectRes){}
+	rpc getAllProject(GetAllProjectReq) returns (stream GetAllProjectRes){}
+}
+
+message AddNewProjectReq{
+	string idOwner = 1;
+	string projectName = 2;
+	string start = 3;		//return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+	string end = 4;		   //return in form mm/hh/dd/mm/yyyy
+	string private = 5;
+	string cookie = 6;
+}
+message AddNewProjectRes{
+
+	string error = 1;
+	string status = 2;
+	string idProject = 3;
+}
+
+message UpdateProjectReq{
+	string idProject = 1;
+	string idOwner=2;
+	string userName = 3;
+	string projectName = 4;
+	string start = 5;
+	string end = 6;
+	string private = 7;
+	string cookie = 8;
+}
+message UpdateProjectRes{
+	string error = 1;
+	string status = 2;
+}
+
+message DeleteProjectReq{
+	string idOwner = 1;
+	string idProject = 2;
+	string cookie = 3;
+}
+message DeleteProjectRes{
+	string error = 1;
+	string status = 2;
+}
+
+message GetAllProjectReq{
+	string id = 1;
+	string cookie = 2;
+}
+message GetAllProjectRes{
+	string status = 2;
+	string error = 1;
+	string idProject = 3;
+	string projectName = 4;
+	string start = 5;		 //return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+	string end = 6;			//return in form mm/hh/dd/mm/yyyy
+	string private = 7;
+
+}

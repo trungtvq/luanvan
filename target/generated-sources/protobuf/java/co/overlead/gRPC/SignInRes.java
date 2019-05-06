@@ -20,6 +20,8 @@ private static final long serialVersionUID = 0L;
     error_ = "";
     response_ = "";
     type_ = "";
+    id_ = "";
+    session_ = "";
   }
 
   @java.lang.Override
@@ -68,6 +70,18 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             error_ = s;
+            break;
+          }
+          case 42: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            id_ = s;
+            break;
+          }
+          case 50: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            session_ = s;
             break;
           }
           default: {
@@ -238,6 +252,74 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int ID_FIELD_NUMBER = 5;
+  private volatile java.lang.Object id_;
+  /**
+   * <code>string id = 5;</code>
+   */
+  public java.lang.String getId() {
+    java.lang.Object ref = id_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      id_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string id = 5;</code>
+   */
+  public com.google.protobuf.ByteString
+      getIdBytes() {
+    java.lang.Object ref = id_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      id_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int SESSION_FIELD_NUMBER = 6;
+  private volatile java.lang.Object session_;
+  /**
+   * <code>string session = 6;</code>
+   */
+  public java.lang.String getSession() {
+    java.lang.Object ref = session_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      session_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string session = 6;</code>
+   */
+  public com.google.protobuf.ByteString
+      getSessionBytes() {
+    java.lang.Object ref = session_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      session_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -264,6 +346,12 @@ private static final long serialVersionUID = 0L;
     if (!getErrorBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, error_);
     }
+    if (!getIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, id_);
+    }
+    if (!getSessionBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, session_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -284,6 +372,12 @@ private static final long serialVersionUID = 0L;
     }
     if (!getErrorBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, error_);
+    }
+    if (!getIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, id_);
+    }
+    if (!getSessionBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, session_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -308,6 +402,10 @@ private static final long serialVersionUID = 0L;
         .equals(other.getResponse())) return false;
     if (!getType()
         .equals(other.getType())) return false;
+    if (!getId()
+        .equals(other.getId())) return false;
+    if (!getSession()
+        .equals(other.getSession())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -327,6 +425,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getResponse().hashCode();
     hash = (37 * hash) + TYPE_FIELD_NUMBER;
     hash = (53 * hash) + getType().hashCode();
+    hash = (37 * hash) + ID_FIELD_NUMBER;
+    hash = (53 * hash) + getId().hashCode();
+    hash = (37 * hash) + SESSION_FIELD_NUMBER;
+    hash = (53 * hash) + getSession().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -468,6 +570,10 @@ private static final long serialVersionUID = 0L;
 
       type_ = "";
 
+      id_ = "";
+
+      session_ = "";
+
       return this;
     }
 
@@ -498,6 +604,8 @@ private static final long serialVersionUID = 0L;
       result.error_ = error_;
       result.response_ = response_;
       result.type_ = type_;
+      result.id_ = id_;
+      result.session_ = session_;
       onBuilt();
       return result;
     }
@@ -560,6 +668,14 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getType().isEmpty()) {
         type_ = other.type_;
+        onChanged();
+      }
+      if (!other.getId().isEmpty()) {
+        id_ = other.id_;
+        onChanged();
+      }
+      if (!other.getSession().isEmpty()) {
+        session_ = other.session_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -863,6 +979,144 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       type_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object id_ = "";
+    /**
+     * <code>string id = 5;</code>
+     */
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string id = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string id = 5;</code>
+     */
+    public Builder setId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      id_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string id = 5;</code>
+     */
+    public Builder clearId() {
+      
+      id_ = getDefaultInstance().getId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string id = 5;</code>
+     */
+    public Builder setIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      id_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object session_ = "";
+    /**
+     * <code>string session = 6;</code>
+     */
+    public java.lang.String getSession() {
+      java.lang.Object ref = session_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        session_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string session = 6;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSessionBytes() {
+      java.lang.Object ref = session_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        session_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string session = 6;</code>
+     */
+    public Builder setSession(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      session_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string session = 6;</code>
+     */
+    public Builder clearSession() {
+      
+      session_ = getDefaultInstance().getSession();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string session = 6;</code>
+     */
+    public Builder setSessionBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      session_ = value;
       onChanged();
       return this;
     }

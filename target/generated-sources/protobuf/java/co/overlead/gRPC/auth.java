@@ -44,11 +44,6 @@ public final class auth {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Auth_ResetPasswordFinalStepReq_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Auth_ResetPasswordFinalStepRes_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Auth_ResetPasswordFinalStepRes_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -59,24 +54,22 @@ public final class auth {
   static {
     java.lang.String[] descriptorData = {
       "\n\nauth.proto\022\004Auth\"/\n\tSignInReq\022\020\n\010usern" +
-      "ame\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"J\n\tSignInRes" +
+      "ame\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"g\n\tSignInRes" +
       "\022\016\n\006status\030\001 \001(\t\022\r\n\005error\030\004 \001(\t\022\020\n\010respo" +
-      "nse\030\002 \001(\t\022\014\n\004type\030\003 \001(\t\"=\n\tSignUpReq\022\020\n\010" +
-      "username\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\014\n\004name" +
-      "\030\003 \001(\t\"*\n\010ResetReq\022\014\n\004type\030\001 \001(\t\022\020\n\010user" +
-      "name\030\003 \001(\t\")\n\010ResetRes\022\016\n\006status\030\001 \001(\t\022\r" +
-      "\n\005error\030\002 \001(\t\"N\n\031ResetPasswordFinalStepR" +
-      "eq\022\020\n\010username\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\022\020\n\010p" +
-      "assword\030\003 \001(\t\"V\n\031ResetPasswordFinalStepR" +
-      "es\022\016\n\006status\030\001 \001(\t\022\r\n\005error\030\002 \001(\t\022\016\n\006coo" +
-      "kie\030\003 \001(\t\022\n\n\002id\030\004 \001(\t2\363\001\n\004Auth\022,\n\006SignIn" +
-      "\022\017.Auth.SignInReq\032\017.Auth.SignInRes\"\000\022,\n\006" +
-      "SignUp\022\017.Auth.SignUpReq\032\017.Auth.SignInRes" +
-      "\"\000\0221\n\rResetPassword\022\016.Auth.ResetReq\032\016.Au" +
-      "th.ResetRes\"\000\022\\\n\026ResetPasswordFinalStep\022" +
-      "\037.Auth.ResetPasswordFinalStepReq\032\037.Auth." +
-      "ResetPasswordFinalStepRes\"\000B!\n\020co.overle" +
-      "ad.gRPCB\004authP\001\242\002\004authb\006proto3"
+      "nse\030\002 \001(\t\022\014\n\004type\030\003 \001(\t\022\n\n\002id\030\005 \001(\t\022\017\n\007s" +
+      "ession\030\006 \001(\t\"=\n\tSignUpReq\022\020\n\010username\030\001 " +
+      "\001(\t\022\020\n\010password\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\"*\n\010R" +
+      "esetReq\022\014\n\004type\030\001 \001(\t\022\020\n\010username\030\003 \001(\t\"" +
+      ")\n\010ResetRes\022\016\n\006status\030\001 \001(\t\022\r\n\005error\030\002 \001" +
+      "(\t\"N\n\031ResetPasswordFinalStepReq\022\020\n\010usern" +
+      "ame\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\022\020\n\010password\030\003 \001" +
+      "(\t2\343\001\n\004Auth\022,\n\006SignIn\022\017.Auth.SignInReq\032\017" +
+      ".Auth.SignInRes\"\000\022,\n\006SignUp\022\017.Auth.SignU" +
+      "pReq\032\017.Auth.SignInRes\"\000\0221\n\rResetPassword" +
+      "\022\016.Auth.ResetReq\032\016.Auth.ResetRes\"\000\022L\n\026Re" +
+      "setPasswordFinalStep\022\037.Auth.ResetPasswor" +
+      "dFinalStepReq\032\017.Auth.SignInRes\"\000B!\n\020co.o" +
+      "verlead.gRPCB\004authP\001\242\002\004authb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -101,7 +94,7 @@ public final class auth {
     internal_static_Auth_SignInRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Auth_SignInRes_descriptor,
-        new java.lang.String[] { "Status", "Error", "Response", "Type", });
+        new java.lang.String[] { "Status", "Error", "Response", "Type", "Id", "Session", });
     internal_static_Auth_SignUpReq_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_Auth_SignUpReq_fieldAccessorTable = new
@@ -126,12 +119,6 @@ public final class auth {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Auth_ResetPasswordFinalStepReq_descriptor,
         new java.lang.String[] { "Username", "Token", "Password", });
-    internal_static_Auth_ResetPasswordFinalStepRes_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_Auth_ResetPasswordFinalStepRes_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Auth_ResetPasswordFinalStepRes_descriptor,
-        new java.lang.String[] { "Status", "Error", "Cookie", "Id", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
