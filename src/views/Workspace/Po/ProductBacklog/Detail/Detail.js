@@ -85,7 +85,7 @@ class Detail extends Component {
       }
     };
 
-  toggleAdd() {
+  toggleAdd=()=> {
     this.setState(prevState => ({
       modalAdd: !prevState.modalAdd
     }));
