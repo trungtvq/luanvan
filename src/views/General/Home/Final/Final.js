@@ -15,7 +15,6 @@ class Final extends Component {
     <React.Fragment>
       <AppAppBar />
       <ProductHero />
-      <ProductHowItWorks />
       <ProductCTA />
       <ProductSmokingHero />
       <AppFooter />

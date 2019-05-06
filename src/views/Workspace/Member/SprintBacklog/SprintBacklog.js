@@ -80,7 +80,9 @@ class SprintBacklog extends Component {
             ],
       }
     };
+click=(item)=>{
 
+}
   render() {
     return (
       <Row>
@@ -115,7 +117,7 @@ class SprintBacklog extends Component {
                       <td><center>{item.start}</center></td>
                       <td><center>{item.deadline}</center></td>
                       <td>                        
-                        <Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
+                        <Button type="submit" size="sm" color="danger"onClick="ht/item.id"><i class="fa fa-trash"></i></Button>
                       </td>
                   </tr>
                 )

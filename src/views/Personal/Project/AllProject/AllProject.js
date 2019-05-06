@@ -15,6 +15,7 @@ PaginationLink,
 Card, 
 CardBody, 
 CardHeader, 
+CardFooter,
 Jumbotron,
 Progress,
 Navbar,
@@ -66,14 +67,14 @@ class AllProject extends Component {
     super(props);
     this.toggleAdd = this.toggleAdd.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
-    this.toggleEditTopic = this.toggleEditTopic.bind(this);
+    this.toggleTranferOwner = this.toggleTranferOwner.bind(this);
 
     
 
     this.state = {
       modalAdd: false,
       modalEdit: false,
-      modalEditTopic: false,
+      modalTranferOwner: false,
       }
     };
 
@@ -87,9 +88,9 @@ class AllProject extends Component {
       modalEdit: !prevState.modalEdit
     }));
   }
-  toggleEditTopic() {
+  toggleTranferOwner() {
     this.setState(prevState => ({
-      modalEditTopic: !prevState.modalEditTopic
+    modalTranferOwner: !prevState.modalTranferOwner
     }));
   }
   componentWillMount(){
@@ -102,17 +103,18 @@ class AllProject extends Component {
     //rpc addNewProject(AddNewProjectReq) returns (AddNewProjectRes) {}
     // //set data from frontend to this var
     // ProfileReq.setUsername(username);
-// string userName = 1;
-	// string projectName = 2;
-	// string start = 3;		//return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
-	// string end = 4;		   //return in form mm/hh/dd/mm/yyyy 
-	// string private = 5;
-	// string cookie = 6;
+    // string idOwner = 1;
+    // string projectName = 2;
+    // string start = 3;		//return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+    // string end = 4;		   //return in form mm/hh/dd/mm/yyyy
+    // string private = 5;
+    // string cookie = 6;
     //metadab will be config later
     var metadata = {};
     //make a request to server
 
     var AddNewProjectReq= new proto.myproject.AddNewProjectReq();
+    //AddNewProjectReq.setIdOwner("tienbede");
     AddNewProjectReq.setUsername("tienbede");
     AddNewProjectReq.setProjectname("tienbede");
     AddNewProjectReq.setStart("tienbede");
@@ -156,7 +158,6 @@ class AllProject extends Component {
     return (
   
     <div>
-      alert("Hello! I am an alert box!!")
       <Demo/>
       <div><br/></div>
       <Container>
@@ -178,6 +179,14 @@ class AllProject extends Component {
                             <div class="card  bg-primary mb-3">
                               <div class="card-body">
                                 <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                  <FormGroup row>
+                                    <Col md="3">
+                                      <Label htmlFor="text-input">Owner Name</Label>
+                                    </Col>
+                                    <Col xs="5" md="5">
+                                      <Input type="text" id="OwnerName" name="ProjectName" placeholder="Name" />
+                                    </Col>
+                                  </FormGroup>
                                   <FormGroup row>
                                     <Col md="3">
                                       <Label htmlFor="text-input">Project Name</Label>
@@ -228,13 +237,41 @@ class AllProject extends Component {
                         </div>
                     </CardHeader>
                     <CardBody>       
-                      <h6>OwnerName: tam@gmail.com</h6> 
+                      <h6>OwnerName: tam@gmail.com</h6>                       
                       <h6>Public</h6>
                       <h6>Start:   9:00 (3/01/2019)</h6>
                       <h6>  End:   9:00 (23/05/2019)</h6>
                       <Progress value={50} />
                       <div className="text-center">50%</div>
                     </CardBody>
+                    <CardFooter>    
+                      <center>
+                        <Button className="button-center" type="submit" size="sm" color="success" onClick={that.toggleTranferOwner}><i class="fa fa-share"></i></Button>  
+                        <Modal size="lg" isOpen={that.state.modalTranferOwner} toggle={that.toggleTranferOwner} className={that.props.className}>
+                        <ModalHeader toggle={that.toggleTranferOwner}>Web bán giày</ModalHeader>
+                          <ModalBody>
+                            <div class="card  bg-primary mb-3">
+                              <div class="card-body">
+                                <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                  <FormGroup row>
+                                    <Col md="3">
+                                      <Label htmlFor="text-input">TranferOwner Name</Label>
+                                    </Col>
+                                    <Col xs="5" md="5">
+                                      <Input type="text" id="TranferOwner" name="TranferOwner" placeholder=" Name" />
+                                    </Col>
+                                  </FormGroup>
+                                </Form>
+                              </div>
+                            </div>                         
+                          </ModalBody>
+                          <ModalFooter>
+                            <Button color="primary" onClick={that.toggleTranferOwner}>Submit</Button>{' '}
+                            <Button color="secondary" onClick={that.toggleTranferOwner}>Cancel</Button>
+                          </ModalFooter>
+                        </Modal>
+                      </center>
+                    </CardFooter>      
                   </Card>                     
                 </Col>     
             </Row>              
