@@ -22,36 +22,42 @@ class Detail extends Component {
       data: [ 
               {
                 "id":1,
+                "name":"a",
                 "as":"admin",
                 "want":"See a list of all members and visitors",
                 "so":"I can monitor site visits",
               },
               {
                 "id":2,
+                "name":"a",
                 "as":"admin",
                 "want":"Add new categories",
                 "so":"I can allow members to create engaging content",
               },
               {
                 "id":3,
+                "name":"a",
                 "as":"admin",
                 "want":"Add new security groups",
                 "so":"Security levels are approriate",
               },
               {
                 "id":4,
+                "name":"a",
                 "as":"admin",
                 "want":"Delete comment",
                 "so":"Offensive content is removed",
               },
               {
                 "id":5,
+                "name":"a",
                 "as":"admin",
                 "want":"Add new key words",
                 "so":"Content is easy to groups and search for",
               },
               {
                 "id":6,
+                "name":"a",
                 "as":"member",
                 "want":"Update my account detail",
                 "so":"I can be contacted by admin",
@@ -97,6 +103,7 @@ class Detail extends Component {
                   <table class="table table-lg">
                     <thead class="thead">
                     <tr class="bg-primary">
+                      <th>Name<i class="fa fa-sort"></i></th>
                       <th>As a...<i class="fa fa-sort"></i></th>
                       <th>I want to be able to... <i class="fa fa-sort"></i></th>
                       <th>So that... <i class="fa fa-sort"></i></th>
@@ -106,7 +113,16 @@ class Detail extends Component {
                             <Modal size="lg" isOpen={that.state.modalAdd} toggle={that.toggleAdd} className={that.props.className}>
                               <ModalHeader toggle={that.toggleAdd}>UserStory</ModalHeader>
                               <ModalBody>
-                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">    
+                                      <FormGroup row>
+                                        <Col md="3">
+                                          <Label htmlFor="text-input">Name</Label>
+                                        </Col>
+                                        <Col xs="12" md="9">
+                                          <Input type="text" id="Name" name="text-input" placeholder="name" />
+                                          
+                                        </Col>
+                                      </FormGroup>           
                                       <FormGroup row>
                                         <Col md="3">
                                           <Label htmlFor="text-input">As a...</Label>
@@ -148,7 +164,7 @@ class Detail extends Component {
                    <tbody>{this.state.data.map(function(item, key) {
                  return (
                     <tr key = {key}>
-                       
+                        <td>{item.name}</td>
                         <td>{item.as}</td>
                         <td>{item.want}</td>
                         <td>{item.so}</td>
