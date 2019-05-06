@@ -1,4 +1,4 @@
-package service.auth;
+package gRPC.auth;
 
 public class AuthRequest {
 

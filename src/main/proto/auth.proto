@@ -10,6 +10,7 @@ service Auth{
     rpc SignIn(SignInReq) returns (SignInRes){}
     rpc SignUp(SignUpReq) returns (SignInRes){}
     rpc ResetPassword(ResetReq) returns (ResetRes){}
+    rpc ResetPasswordFinalStep(ResetPasswordFinalStepReq) returns (ResetPasswordFinalStepRes){}
 }
 
 message SignInReq{
@@ -19,22 +20,32 @@ message SignInReq{
 
 message SignInRes{
     string status=1;
+    string error=4;
     string response=2;
     string type=3;
 }
 
 message SignUpReq{
-    string username = 1;
+    string username = 1;//username == email
     string password = 2;
     string name=3;
 }
 message ResetReq{
     string type=1;
-    string content=2;
+    string username=3;
 }
 message ResetRes{
     string status=1;
-    string token=2;
+    string error=2;
 }
-
-
+message ResetPasswordFinalStepReq{
+    string username=1;
+    string token=2;
+    string password=3;
+}
+message ResetPasswordFinalStepRes{
+    string status=1;
+    string error=2;
+    string cookie=3;
+    string id=4;
+}

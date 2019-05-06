@@ -14,7 +14,8 @@ service Userstory{
 }
 
 message AddNewUserStoryReq{
-    string userName = 1;
+	string name=7;
+    string adderId = 1;
 	string projectId = 2;
 	string role = 3;
 	string want = 4;
@@ -23,12 +24,12 @@ message AddNewUserStoryReq{
 }
 message AddNewUserStoryRes{
     string status = 1;
-	string userstoryId = 2;
+	string id = 2;
 	string error = 3;
 }
 
 message UpdateUserStoryReq{
-	string userName = 1;
+	string updaterId = 1;
 	string projectId = 2;
 	string userstoryId = 3;
 	string role = 4;
@@ -42,10 +43,10 @@ message UpdateUserStoryRes{
 }
 
 message DeleteUserStoryReq{
-    string userName = 1;
+    string deleterId = 1;
     string projectId = 2;
 	string userstoryId = 3;
-	string cookie = 7;
+	string cookie = 4;
 }
 message DeleteUserStoryRes{
     string status = 1;
@@ -53,7 +54,7 @@ message DeleteUserStoryRes{
 }
 
 message GetAllUserStoryReq{
-    string userName = 1;
+    string getterId = 1;
 	string projectId = 2;
 	string cookie = 3;
 }
@@ -61,4 +62,6 @@ message GetAllUserStoryRes{
 	string role = 1;
 	string want = 2;
 	string so = 3;
+	string status = 4;
+	string error=5;
 }

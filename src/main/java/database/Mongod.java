@@ -24,14 +24,14 @@ public class Mongod {
         MongoDatabase aa= mongoClient.getDatabase("overlead");
 
         MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("project");
-        Document bson= new Document().append("a", new BsonString("MongoDB"))
-                .append("b", new BsonArray(Arrays.asList(new BsonInt32(1), new BsonInt32(2))))
-                .append("a","2")
-                .append("c","3");
-        coll.insertOne(bson);
+//        Document bson= new Document().append("a", new BsonString("MongoDB"))
+//                .append("b", new BsonArray(Arrays.asList(new BsonInt32(1), new BsonInt32(2))))
+//                .append("a","2")
+//                .append("c","3");
+//        coll.insertOne(bson);
 
         Document listItem=new Document("b",6);
-        Document updateQuery = new Document("$push", listItem);
+        Document updateQuery = new Document("$set", listItem);
 
         coll.findOneAndUpdate(new Document("a","2"),updateQuery);
 

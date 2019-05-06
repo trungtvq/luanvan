@@ -11,7 +11,7 @@ service Mytask{
 }
 
 message GetAllMyTaskReq{
-    string userName = 1;
+    string requesterId = 1;
 	string projectId = 2;
 	string cookie = 3;
 }
@@ -20,7 +20,8 @@ message GetAllMyTaskRes{
 	string description = 2;		   
 	string priority = 3;
 	string start = 4;		 		 // form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
-	string deadliine = 5;			// form mm/hh/dd/mm/yyyy 
+	string deadline = 5;			// form mm/hh/dd/mm/yyyy
 	string comment = 6;
-	string status = 7;	
+	string status = 7;
+	string error=8;
 }
