@@ -8,6 +8,21 @@ import TextField from '../components/TextField';
 import Snackbar from '../components/Snackbar';
 import LayoutBody from '../components/LayoutBody';
 import Button from '../components/Button';
+import { 
+  Input, 
+  InputGroup, 
+  InputGroupAddon, 
+  InputGroupText, 
+  Row, 
+  Table, 
+  Pagination, 
+  PaginationItem, 
+  PaginationLink, 
+  Form,
+  FormGroup,
+  Col,
+  Label,
+} from 'reactstrap';
 
 const styles = theme => ({
   root: {
@@ -83,31 +98,62 @@ class ProductCTA extends React.Component {
       <LayoutBody className={classes.root} component="section" width="large">
         <Grid container spacing={0}>
           <Grid item xs={12} md={6} className={classes.cardWrapper}>
-            <div className={classes.card}>
-              <form onSubmit={this.handleSubmit} className={classes.cardContent}>
-                <Typography variant="h2" component="h2" gutterBottom>
-                  Receive offers
-                </Typography>
-                <Typography variant="h5">
-                  Taste the holidays of the everyday close to home.
-                </Typography>
-                <TextField noBorder className={classes.textField} placeholder="Your email" />
-                <Button
-                  type="submit"
-                  color="primary"
-                  variant="contained"
-                  className={classes.button}
-                >
-                  Keep me updated
-                </Button>
-              </form>
-            </div>
+            
+            <div class="card text-white bg-dark mb-3">
+              <div class="card-header ">
+                  <strong>
+                    Any questions about Overlead, please leave a message in the form below or call directly to  082.580.6606                   
+                  </strong>     
+              </div>
+              <div class="card-body">
+                <div class="card-body">
+                <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                  <FormGroup row>
+                    <Col md="3">
+                      <Label htmlFor="text-input">Message</Label>
+                    </Col>
+                    <Col xs="12" md="9">
+                      <Input type="textarea" id="text-input" name="text-input" placeholder="Write message" />           
+                    </Col>
+                  </FormGroup>
+                  <FormGroup row>
+                    <Col md="3">
+                      <Label htmlFor="text-input">Full name</Label>
+                    </Col>
+                    <Col xs="12" md="9">
+                      <Input type="text" id="text-input" name="text-input" placeholder="Full name" />           
+                    </Col>
+                  </FormGroup>
+                  <FormGroup row>
+                    <Col md="3">
+                      <Label htmlFor="text-input">Email</Label>
+                    </Col>
+                    <Col xs="12" md="9">
+                      <Input type="text" id="text-input" name="text-input" placeholder="Email" />           
+                    </Col>
+                  </FormGroup>
+                  <FormGroup row>
+                    <Col md="3">
+                      <Label htmlFor="text-input">Phone</Label>
+                    </Col>
+                    <Col xs="12" md="9">
+                      <Input type="text" id="text-input" name="text-input" placeholder="Phone" />           
+                    </Col>
+                  </FormGroup>                     
+                </Form>
+              </div>
+              <div class="card-footer bg-dark">
+                <Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Send</Button>
+                
+              </div>
+              </div>
+            </div>    
           </Grid>
           <Grid item xs={12} md={6} className={classes.imagesWrapper}>
             <Hidden smDown>
               <div className={classes.imageDots} />
               <img
-                src="https://images.unsplash.com/photo-1527853787696-f7be74f2e39a?auto=format&fit=crop&w=750&q=80"
+                src="https://static1.squarespace.com/static/52bf3634e4b0da7f332320b5/t/531267cce4b060dc36b38b22/1393715158786/Question-mark.jpg"
                 alt="call to action"
                 className={classes.image}
               />

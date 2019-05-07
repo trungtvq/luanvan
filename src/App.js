@@ -72,6 +72,15 @@ const AsyncApp= Loadable({
   loading
 })
 
+const ResetSecond = Loadable({
+  loader: () => import('./views/Pages/ResetSecond'),
+  loading
+});
+
+const ResetFirst = Loadable({
+  loader: () => import('./views/Pages/ResetFirst'),
+  loading
+});
 
 
 //Home
@@ -206,6 +215,8 @@ class App extends Component {
 
                       <Route exact path="/login" name="Login Page" component={Login} />
                       <Route exact path="/register" name="Register Page" component={Register} />
+                      <Route exact path="/ResetFirst" name="ResetSecond Page" component={ResetFirst} />
+                      <Route exact path="/ResetSecond" name="ResetSecond Page" component={ResetSecond} />
                       <Route exact path="/404" name="Page 404" component={Page404} />
                       <Route exact path="/500" name="Page 500" component={Page500} />
                       <Route exact path="/pay" name="Page Pay" component={PagePay} />

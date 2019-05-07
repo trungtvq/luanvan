@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for counter
+ * @fileoverview gRPC-Web generated client stub for Auth
  * @enhanceable
  * @public
  */
@@ -12,7 +12,7 @@ const grpc = {};
 grpc.web = require('grpc-web');
 
 const proto = {};
-proto.counter = require('./auth_pb.js');
+proto.Auth = require('./auth_pb.js');
 
 /**
  * @param {string} hostname
@@ -22,7 +22,7 @@ proto.counter = require('./auth_pb.js');
  * @struct
  * @final
  */
-proto.counter.AuthClient =
+proto.Auth.AuthClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -58,7 +58,7 @@ proto.counter.AuthClient =
  * @struct
  * @final
  */
-proto.counter.AuthPromiseClient =
+proto.Auth.AuthPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -89,33 +89,33 @@ proto.counter.AuthPromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.counter.SignInReq,
- *   !proto.counter.SignInRes>}
+ *   !proto.Auth.SignInReq,
+ *   !proto.Auth.SignInRes>}
  */
 const methodInfo_Auth_SignIn = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.counter.SignInRes,
-  /** @param {!proto.counter.SignInReq} request */
+  proto.Auth.SignInRes,
+  /** @param {!proto.Auth.SignInReq} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.counter.SignInRes.deserializeBinary
+  proto.Auth.SignInRes.deserializeBinary
 );
 
 
 /**
- * @param {!proto.counter.SignInReq} request The
+ * @param {!proto.Auth.SignInReq} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.counter.SignInRes)}
+ * @param {function(?grpc.web.Error, ?proto.Auth.SignInRes)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.counter.SignInRes>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Auth.SignInRes>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.counter.AuthClient.prototype.signIn =
+proto.Auth.AuthClient.prototype.signIn =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/counter.Auth/SignIn',
+      '/Auth.Auth/SignIn',
       request,
       metadata || {},
       methodInfo_Auth_SignIn,
@@ -124,17 +124,17 @@ proto.counter.AuthClient.prototype.signIn =
 
 
 /**
- * @param {!proto.counter.SignInReq} request The
+ * @param {!proto.Auth.SignInReq} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.counter.SignInRes>}
+ * @return {!Promise<!proto.Auth.SignInRes>}
  *     A native promise that resolves to the response
  */
-proto.counter.AuthPromiseClient.prototype.signIn =
+proto.Auth.AuthPromiseClient.prototype.signIn =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/counter.Auth/SignIn',
+      '/Auth.Auth/SignIn',
       request,
       metadata || {},
       methodInfo_Auth_SignIn);
@@ -144,33 +144,33 @@ proto.counter.AuthPromiseClient.prototype.signIn =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.counter.SignUpReq,
- *   !proto.counter.SignInRes>}
+ *   !proto.Auth.SignUpReq,
+ *   !proto.Auth.SignInRes>}
  */
 const methodInfo_Auth_SignUp = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.counter.SignInRes,
-  /** @param {!proto.counter.SignUpReq} request */
+  proto.Auth.SignInRes,
+  /** @param {!proto.Auth.SignUpReq} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.counter.SignInRes.deserializeBinary
+  proto.Auth.SignInRes.deserializeBinary
 );
 
 
 /**
- * @param {!proto.counter.SignUpReq} request The
+ * @param {!proto.Auth.SignUpReq} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.counter.SignInRes)}
+ * @param {function(?grpc.web.Error, ?proto.Auth.SignInRes)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.counter.SignInRes>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Auth.SignInRes>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.counter.AuthClient.prototype.signUp =
+proto.Auth.AuthClient.prototype.signUp =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/counter.Auth/SignUp',
+      '/Auth.Auth/SignUp',
       request,
       metadata || {},
       methodInfo_Auth_SignUp,
@@ -179,17 +179,17 @@ proto.counter.AuthClient.prototype.signUp =
 
 
 /**
- * @param {!proto.counter.SignUpReq} request The
+ * @param {!proto.Auth.SignUpReq} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.counter.SignInRes>}
+ * @return {!Promise<!proto.Auth.SignInRes>}
  *     A native promise that resolves to the response
  */
-proto.counter.AuthPromiseClient.prototype.signUp =
+proto.Auth.AuthPromiseClient.prototype.signUp =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/counter.Auth/SignUp',
+      '/Auth.Auth/SignUp',
       request,
       metadata || {},
       methodInfo_Auth_SignUp);
@@ -199,33 +199,33 @@ proto.counter.AuthPromiseClient.prototype.signUp =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.counter.ResetReq,
- *   !proto.counter.ResetRes>}
+ *   !proto.Auth.ResetReq,
+ *   !proto.Auth.ResetRes>}
  */
 const methodInfo_Auth_ResetPassword = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.counter.ResetRes,
-  /** @param {!proto.counter.ResetReq} request */
+  proto.Auth.ResetRes,
+  /** @param {!proto.Auth.ResetReq} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.counter.ResetRes.deserializeBinary
+  proto.Auth.ResetRes.deserializeBinary
 );
 
 
 /**
- * @param {!proto.counter.ResetReq} request The
+ * @param {!proto.Auth.ResetReq} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.counter.ResetRes)}
+ * @param {function(?grpc.web.Error, ?proto.Auth.ResetRes)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.counter.ResetRes>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.Auth.ResetRes>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.counter.AuthClient.prototype.resetPassword =
+proto.Auth.AuthClient.prototype.resetPassword =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/counter.Auth/ResetPassword',
+      '/Auth.Auth/ResetPassword',
       request,
       metadata || {},
       methodInfo_Auth_ResetPassword,
@@ -234,22 +234,187 @@ proto.counter.AuthClient.prototype.resetPassword =
 
 
 /**
- * @param {!proto.counter.ResetReq} request The
+ * @param {!proto.Auth.ResetReq} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.counter.ResetRes>}
+ * @return {!Promise<!proto.Auth.ResetRes>}
  *     A native promise that resolves to the response
  */
-proto.counter.AuthPromiseClient.prototype.resetPassword =
+proto.Auth.AuthPromiseClient.prototype.resetPassword =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/counter.Auth/ResetPassword',
+      '/Auth.Auth/ResetPassword',
       request,
       metadata || {},
       methodInfo_Auth_ResetPassword);
 };
 
 
-module.exports = proto.counter;
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.Auth.ResetPasswordFinalStepReq,
+ *   !proto.Auth.SignInRes>}
+ */
+const methodInfo_Auth_ResetPasswordFinalStep = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.Auth.SignInRes,
+  /** @param {!proto.Auth.ResetPasswordFinalStepReq} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.Auth.SignInRes.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.Auth.ResetPasswordFinalStepReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.Auth.SignInRes)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.Auth.SignInRes>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.Auth.AuthClient.prototype.resetPasswordFinalStep =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/Auth.Auth/ResetPasswordFinalStep',
+      request,
+      metadata || {},
+      methodInfo_Auth_ResetPasswordFinalStep,
+      callback);
+};
+
+
+/**
+ * @param {!proto.Auth.ResetPasswordFinalStepReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.Auth.SignInRes>}
+ *     A native promise that resolves to the response
+ */
+proto.Auth.AuthPromiseClient.prototype.resetPasswordFinalStep =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/Auth.Auth/ResetPasswordFinalStep',
+      request,
+      metadata || {},
+      methodInfo_Auth_ResetPasswordFinalStep);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.Auth.SignInGoogleReq,
+ *   !proto.Auth.SignInRes>}
+ */
+const methodInfo_Auth_SignInGoogle = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.Auth.SignInRes,
+  /** @param {!proto.Auth.SignInGoogleReq} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.Auth.SignInRes.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.Auth.SignInGoogleReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.Auth.SignInRes)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.Auth.SignInRes>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.Auth.AuthClient.prototype.signInGoogle =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/Auth.Auth/SignInGoogle',
+      request,
+      metadata || {},
+      methodInfo_Auth_SignInGoogle,
+      callback);
+};
+
+
+/**
+ * @param {!proto.Auth.SignInGoogleReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.Auth.SignInRes>}
+ *     A native promise that resolves to the response
+ */
+proto.Auth.AuthPromiseClient.prototype.signInGoogle =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/Auth.Auth/SignInGoogle',
+      request,
+      metadata || {},
+      methodInfo_Auth_SignInGoogle);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.Auth.AuthSessionReq,
+ *   !proto.Auth.SignInRes>}
+ */
+const methodInfo_Auth_AuthSession = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.Auth.SignInRes,
+  /** @param {!proto.Auth.AuthSessionReq} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.Auth.SignInRes.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.Auth.AuthSessionReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.Auth.SignInRes)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.Auth.SignInRes>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.Auth.AuthClient.prototype.authSession =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/Auth.Auth/AuthSession',
+      request,
+      metadata || {},
+      methodInfo_Auth_AuthSession,
+      callback);
+};
+
+
+/**
+ * @param {!proto.Auth.AuthSessionReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.Auth.SignInRes>}
+ *     A native promise that resolves to the response
+ */
+proto.Auth.AuthPromiseClient.prototype.authSession =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/Auth.Auth/AuthSession',
+      request,
+      metadata || {},
+      methodInfo_Auth_AuthSession);
+};
+
+
+module.exports = proto.Auth;
 

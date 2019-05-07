@@ -158,9 +158,10 @@ class Login extends Component {
   }
 
   onSignInGoogle(profileObj) {
-
+     console.log('vào');
+     console.log(profileObj);
      //create service to request
-     const authService = new proto.auth.AuthClient('http://trungtvq.ddns.net:8080');
+     const authService = new proto.auth.AuthClient('54.255.233.193:8085');
      //metadab will be config later
      var metadata = {};
      
@@ -171,7 +172,7 @@ class Login extends Component {
      SignInGoogleReq.setName(profileObj.givenName+" "+profileObj.givenName);
      SignInGoogleReq.setAvatar(profileObj.imageUrl);
       //make a request to server
-      var getTodo = authService.SignInGoogle(SignInGoogleReq, metadata, (err, response) => {
+      var getTodo = authService.signInGoogle(SignInGoogleReq, metadata, (err, response) => {
         if (err) { //if error
           console.log(err);
         } else { //if success
@@ -292,7 +293,9 @@ class Login extends Component {
                           <Button color="primary" className="px-4" onClick={this.onSignIn}>Login</Button>
                         </Col>
                         <Col xs="6" className="text-right">
-                          <Button color="link" className="px-0">Forgot password?</Button>
+                          <Link to="/ResetFirst">
+                            <Button color="link" className="px-0">Forgot password, reset now?</Button>
+                          </Link>
                         </Col>
                       </Row>
                     </Form>
@@ -309,14 +312,15 @@ class Login extends Component {
                       <GoogleLogin
     clientId="1044290572211-9tqo456g2kknsaj3tpi72lmcjnp18rms.apps.googleusercontent.com"
     render={renderProps => (
-      <button onClick={renderProps.onClick} >This is my custom Google button</button>
+      <button onClick={renderProps.onClick } >This is my custom Google button</button>
     )}
     buttonText="Login"
     onSuccess={responseGoogle}
+  //  {...this.onSignInGoogle(this.onSuccess.gapi.auth2.BasicProfileogle.getBasicProfile())}
     onFailure={responseGoogle}
     cookiePolicy={'single_host_origin'}
   />,
-    
+   
     <GoogleLogout
       buttonText="Logout"
       onLogoutSuccess={logout}
