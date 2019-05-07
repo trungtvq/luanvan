@@ -18,6 +18,11 @@ class Detail extends Component {
     this.toggleAdd = this.toggleAdd.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
 
+    this.onTextboxChangename = this.onTextboxChangename.bind(this);
+    this.onTextboxChangeas = this.onTextboxChangeas.bind(this);
+    this.onTextboxChangewant = this.onTextboxChangewant.bind(this);
+    this.onTextboxChangeso = this.onTextboxChangeso.bind(this);
+
     this.state = {
       data: [ 
               {
@@ -84,10 +89,46 @@ class Detail extends Component {
       modalEdit: !prevState.modalEdit
     }));
   }
+  onTextboxChangename(event) {
+    this.setState({
+      name: event.target.value,
+    });
+  }
+  onTextboxChangeas(event) {
+    this.setState({
+      as: event.target.value,
+    });
+  }
+  onTextboxChangewant(event) {
+    this.setState({
+      want: event.target.value,
+    });
+  }
+  onTextboxChangeso(event) {
+    this.setState({
+      so: event.target.value,
+    });
+  }
+  handleAdd = (adderId,projectId,name,role,want,so,cookie) => {
+   
+  };
+  handleDelete = (idOwner,idProject,cookie) => {
+    console.log(idOwner);
+    console.log(idProject);
+    console.log(cookie);
+  };
+  
+  handleUpdate = (idProject,idOwner,userName,projectName,start,end,status,cookie) => {
+   
+  };
 
   render() {
      const {
-      data
+      data,
+      name,
+      as,
+      want,
+      so,
     } = this.state;
     let that=this;
     return (
@@ -118,13 +159,13 @@ class Detail extends Component {
                             <Modal size="lg" isOpen={that.state.modalAdd} toggle={that.toggleAdd} className={that.props.className}>
                               <ModalHeader toggle={that.toggleAdd}>UserStory</ModalHeader>
                               <ModalBody>
-                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">    
+                                  <Form className="form-horizontal">    
                                       <FormGroup row>
                                         <Col md="3">
                                           <Label htmlFor="text-input">Name</Label>
                                         </Col>
                                         <Col xs="12" md="9">
-                                          <Input type="text" id="Name" name="text-input" placeholder="name" />
+                                          <Input type="text" id="name" name="name" placeholder="name" value={name} onChange={that.onTextboxChangename}/>
                                           
                                         </Col>
                                       </FormGroup>           
@@ -133,7 +174,7 @@ class Detail extends Component {
                                           <Label htmlFor="text-input">As a...</Label>
                                         </Col>
                                         <Col xs="12" md="9">
-                                          <Input type="text" id="text-input" name="text-input" placeholder="As a..." />
+                                          <Input type="text" id="as" name="as" placeholder="As a..." value={as} onChange={that.onTextboxChangeas}/>
                                           
                                         </Col>
                                       </FormGroup>
@@ -142,7 +183,7 @@ class Detail extends Component {
                                           <Label htmlFor="text-input">I want to be able to...</Label>
                                         </Col>
                                         <Col xs="12" md="9">
-                                          <Input type="text" id="text-input" name="text-input" placeholder="I want to be able to..." />
+                                          <Input type="text" id="want" name="want" placeholder="I want to be able to..." value={want} onChange={that.onTextboxChangewant}/>
                                           
                                         </Col>
                                       </FormGroup>   
@@ -151,14 +192,14 @@ class Detail extends Component {
                                           <Label htmlFor="textarea-input">So that...</Label>
                                         </Col>
                                         <Col xs="12" md="9">
-                                          <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
-                                                 placeholder="Content..." />
+                                          <Input type="textarea" name="so" id="so" rows="9"
+                                                 placeholder="Content..."  value={so} onChange={that.onTextboxChangeso}/>
                                         </Col>
                                       </FormGroup>                     
                                   </Form>                           
                               </ModalBody>
                               <ModalFooter>
-                                <Button color="primary" onClick={that.toggleAdd}>Submit</Button>{' '}
+                                <Button color="primary" onClick={that.handleAdd('adderId','projectId','name','role','want','so','cookie')}>Submit</Button>{' '}
                                 <Button color="secondary" onClick={that.toggleAdd}>Cancel</Button>
                               </ModalFooter>
                             </Modal>
@@ -166,7 +207,7 @@ class Detail extends Component {
                       </th>
                     </tr>
                     </thead>
-                   <tbody>{this.state.data.map(function(item, key) {
+                   <tbody>{data.map(function(item, key) {
                  return (
                     <tr key = {key}>
                         <td>{item.name}</td>
@@ -179,43 +220,52 @@ class Detail extends Component {
                           <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
                               <ModalHeader toggle={that.toggleEdit}>UserStory</ModalHeader>
                               <ModalBody>
-                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
-                                    <FormGroup row>
-                                      <Col md="3">
-                                        <Label htmlFor="text-input">As a...</Label>
-                                      </Col>
-                                      <Col xs="12" md="9">
-                                        <Input type="text" id="text-input" name="text-input" placeholder="As a..." value="admin"/>
-                                        
-                                      </Col>
-                                    </FormGroup>
-                                     <FormGroup row>
-                                      <Col md="3">
-                                        <Label htmlFor="text-input">I want to be able to...</Label>
-                                      </Col>
-                                      <Col xs="12" md="9">
-                                        <Input type="text" id="text-input" name="text-input" placeholder="I want to be able to..." value="See a list of all members and visitors" />
-                                        
-                                      </Col>
-                                    </FormGroup>   
-                                     <FormGroup row>
-                                      <Col md="3">
-                                        <Label htmlFor="textarea-input">So that...</Label>
-                                      </Col>
-                                      <Col xs="12" md="9">
-                                        <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
-                                               placeholder="Content..." value="I can monitor site visits"/>
-                                      </Col>
-                                    </FormGroup>                     
-                                  </Form>                        
+                              <Form className="form-horizontal">    
+                                      <FormGroup row>
+                                        <Col md="3">
+                                          <Label htmlFor="text-input">Name</Label>
+                                        </Col>
+                                        <Col xs="12" md="9">
+                                          <Input type="text" id="name" name="name" placeholder="name" value={name} onChange={that.onTextboxChangename}/>
+                                          
+                                        </Col>
+                                      </FormGroup>           
+                                      <FormGroup row>
+                                        <Col md="3">
+                                          <Label htmlFor="text-input">As a...</Label>
+                                        </Col>
+                                        <Col xs="12" md="9">
+                                          <Input type="text" id="as" name="as" placeholder="As a..." value={as} onChange={that.onTextboxChangeas}/>
+                                          
+                                        </Col>
+                                      </FormGroup>
+                                       <FormGroup row>
+                                        <Col md="3">
+                                          <Label htmlFor="text-input">I want to be able to...</Label>
+                                        </Col>
+                                        <Col xs="12" md="9">
+                                          <Input type="text" id="want" name="want" placeholder="I want to be able to..." value={want} onChange={that.onTextboxChangewant}/>
+                                          
+                                        </Col>
+                                      </FormGroup>   
+                                       <FormGroup row>
+                                        <Col md="3">
+                                          <Label htmlFor="textarea-input">So that...</Label>
+                                        </Col>
+                                        <Col xs="12" md="9">
+                                          <Input type="textarea" name="so" id="so" rows="9"
+                                                 placeholder="Content..."  value={so} onChange={that.onTextboxChangeso}/>
+                                        </Col>
+                                      </FormGroup>                     
+                                  </Form>                                       
                               </ModalBody>
                               <ModalFooter>
-                                <Button color="primary" onClick={that.toggleEdit}>Submit</Button>{' '}
+                                <Button color="primary" onClick={that.handleUpdate('idProject','idOwner','userName','projectName','start','end','status','cookie')}>Submit</Button>{' '}
                                 <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
                               </ModalFooter>
                           </Modal>
                      
-                          <Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
+                          <Button type="submit" size="sm" color="danger" onClick={that.handleDelete('idOwner','idProject','cookie')}><i class="fa fa-trash"></i></Button>
                       </td>
                     </tr>
                   )
