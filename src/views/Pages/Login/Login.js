@@ -153,9 +153,20 @@ class Login extends Component {
      //set data from frontend to this var
      SignInReq.setUsername(signInEmail);
      SignInReq.setPassword(signInPassword);
-
-     
-
+      //make a request to server
+      var getTodo = authService.signIn(SignInReq, metadata, (err, response) => {
+        if (err) { //if error
+          console.log(err);
+        } else { //if success
+          //get response
+          const SignInRes = response.getResponse();
+          if (SignInRes == null) {// if response null => not found
+            console.log(`Something was wrong ${signInEmail} wasn't found`);
+          } else {
+            console.log(`Fetched TODO with ID ${signInEmail}: ${SignInRes}`);
+          }
+        }
+      });
   }
 
   logout() {
