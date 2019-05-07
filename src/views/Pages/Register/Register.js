@@ -8,6 +8,8 @@ import Logout from './../../../components/Logout'
 
 import AppFooter from './modules/views/AppFooter';
 import AppAppBar from './modules/views/AppAppBar';
+const proto = {};
+proto.auth = require('./../../../gRPC/auth/auth_grpc_web_pb');
 
 class Register extends Component {
   constructor(props) {
@@ -86,75 +88,35 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
     this.setState({
       isLoading: true,
     });
-
-    // Post request to backend
-    fetch('/api/account/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: signUpEmail,
-        password: signUpPassword,
-        name:signUpName,
-      }),
-    }).then(res => res.json())
-      .then(json => {
-        console.log('json', json);
-        if (json.success) {
-          this.setState({
-            signUpError: json.message,
-            isLoading: false,
-            signUpEmail: '',
-            signUpPassword: '',
-            signUpName:'',
-          });
-        } else {
-          this.setState({
-            signUpError: json.message,
-            isLoading: false,
-          });
+    //create service to request
+    const authService = new proto.auth.AuthClient('http://trungtvq.ddns.net:8080');
+    //metadab will be config later
+    var metadata = {};
+    
+    //create var for react
+    var SignUpReq = new proto.auth.SignUpReq();
+    //set data from frontend to this var
+    SignUpReq.setUsername(signUpEmail);
+    SignUpReq.setPassword(signUpPassword);
+    SignUpReq.setName(signUpName);
+      //make a request to server
+      var getTodo = authService.signUp(SignUpReq, metadata, (err, response) => {
+        if (err) { //if error
+          console.log(err);
+        } else { //if success
+          //get response
+          const SignInRes = response.getResponse();
+          if (SignInRes == null) {// if response null => not found
+            console.log(`Something was wrong ${signUpEmail} wasn't found`);
+          } else {
+            console.log(`Fetched TODO with ID ${signUpEmail}: ${SignInRes}`);
+          }
         }
       });
+      
   }
 
-  logout() {
-    this.setState({
-      isLoading: true,
-    });
-    const obj = getFromStorage('the_main_app');
-    if (obj && obj.token) {
-      const { token } = obj;
-      // Verify token
-      fetch('/api/account/logout',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          token
-        }),
-      })
-        .then(res => res.json())
-        .then(json => {
-          if (json.success) {
-            this.setState({
-              token: '',
-              isLoading: false
-            });
-          } else {
-            this.setState({
-              isLoading: false,
-            });
-          }
-        });
-    } else {
-      this.setState({
-        isLoading: false,
-      });
-    }
-  }
+ 
 
   render() {
         const {

@@ -118,19 +118,6 @@ class Login extends Component {
     });
   }
 
-  onSignUp() {
-    // Grab state
-    const {
-      signUpEmail,
-      signUpPassword,
-    } = this.state;
-
-    this.setState({
-      isLoading: true,
-    });
-
-    
-  }
 
   onSignIn() {
     //some data of request (get that from frontend)
