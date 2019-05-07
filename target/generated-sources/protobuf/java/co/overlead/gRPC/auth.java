@@ -20,10 +20,20 @@ public final class auth {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Auth_SignInReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Auth_AuthSessionReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Auth_AuthSessionReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Auth_SignInRes_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Auth_SignInRes_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Auth_SignInGoogleReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Auth_SignInGoogleReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Auth_SignUpReq_descriptor;
   static final 
@@ -54,22 +64,28 @@ public final class auth {
   static {
     java.lang.String[] descriptorData = {
       "\n\nauth.proto\022\004Auth\"/\n\tSignInReq\022\020\n\010usern" +
-      "ame\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"g\n\tSignInRes" +
-      "\022\016\n\006status\030\001 \001(\t\022\r\n\005error\030\004 \001(\t\022\020\n\010respo" +
-      "nse\030\002 \001(\t\022\014\n\004type\030\003 \001(\t\022\n\n\002id\030\005 \001(\t\022\017\n\007s" +
-      "ession\030\006 \001(\t\"=\n\tSignUpReq\022\020\n\010username\030\001 " +
-      "\001(\t\022\020\n\010password\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\"*\n\010R" +
-      "esetReq\022\014\n\004type\030\001 \001(\t\022\020\n\010username\030\003 \001(\t\"" +
-      ")\n\010ResetRes\022\016\n\006status\030\001 \001(\t\022\r\n\005error\030\002 \001" +
-      "(\t\"N\n\031ResetPasswordFinalStepReq\022\020\n\010usern" +
-      "ame\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\022\020\n\010password\030\003 \001" +
-      "(\t2\343\001\n\004Auth\022,\n\006SignIn\022\017.Auth.SignInReq\032\017" +
-      ".Auth.SignInRes\"\000\022,\n\006SignUp\022\017.Auth.SignU" +
-      "pReq\032\017.Auth.SignInRes\"\000\0221\n\rResetPassword" +
-      "\022\016.Auth.ResetReq\032\016.Auth.ResetRes\"\000\022L\n\026Re" +
-      "setPasswordFinalStep\022\037.Auth.ResetPasswor" +
-      "dFinalStepReq\032\017.Auth.SignInRes\"\000B!\n\020co.o" +
-      "verlead.gRPCB\004authP\001\242\002\004authb\006proto3"
+      "ame\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\";\n\016AuthSessi" +
+      "onReq\022\017\n\007session\030\001 \001(\t\022\n\n\002id\030\002 \001(\t\022\014\n\004ti" +
+      "me\030\003 \001(\t\"g\n\tSignInRes\022\016\n\006status\030\001 \001(\t\022\r\n" +
+      "\005error\030\004 \001(\t\022\020\n\010response\030\002 \001(\t\022\014\n\004type\030\003" +
+      " \001(\t\022\n\n\002id\030\005 \001(\t\022\017\n\007session\030\006 \001(\t\"A\n\017Sig" +
+      "nInGoogleReq\022\020\n\010username\030\001 \001(\t\022\014\n\004name\030\002" +
+      " \001(\t\022\016\n\006avatar\030\003 \001(\t\"=\n\tSignUpReq\022\020\n\010use" +
+      "rname\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\014\n\004name\030\003 " +
+      "\001(\t\"*\n\010ResetReq\022\014\n\004type\030\001 \001(\t\022\020\n\010usernam" +
+      "e\030\003 \001(\t\")\n\010ResetRes\022\016\n\006status\030\001 \001(\t\022\r\n\005e" +
+      "rror\030\002 \001(\t\"N\n\031ResetPasswordFinalStepReq\022" +
+      "\020\n\010username\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\022\020\n\010pass" +
+      "word\030\003 \001(\t2\325\002\n\004Auth\022,\n\006SignIn\022\017.Auth.Sig" +
+      "nInReq\032\017.Auth.SignInRes\"\000\022,\n\006SignUp\022\017.Au" +
+      "th.SignUpReq\032\017.Auth.SignInRes\"\000\0221\n\rReset" +
+      "Password\022\016.Auth.ResetReq\032\016.Auth.ResetRes" +
+      "\"\000\022L\n\026ResetPasswordFinalStep\022\037.Auth.Rese" +
+      "tPasswordFinalStepReq\032\017.Auth.SignInRes\"\000" +
+      "\0228\n\014SignInGoogle\022\025.Auth.SignInGoogleReq\032" +
+      "\017.Auth.SignInRes\"\000\0226\n\013AuthSession\022\024.Auth" +
+      ".AuthSessionReq\032\017.Auth.SignInRes\"\000B!\n\020co" +
+      ".overlead.gRPCB\004authP\001\242\002\004authb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -89,32 +105,44 @@ public final class auth {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Auth_SignInReq_descriptor,
         new java.lang.String[] { "Username", "Password", });
-    internal_static_Auth_SignInRes_descriptor =
+    internal_static_Auth_AuthSessionReq_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_Auth_AuthSessionReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Auth_AuthSessionReq_descriptor,
+        new java.lang.String[] { "Session", "Id", "Time", });
+    internal_static_Auth_SignInRes_descriptor =
+      getDescriptor().getMessageTypes().get(2);
     internal_static_Auth_SignInRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Auth_SignInRes_descriptor,
         new java.lang.String[] { "Status", "Error", "Response", "Type", "Id", "Session", });
+    internal_static_Auth_SignInGoogleReq_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_Auth_SignInGoogleReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Auth_SignInGoogleReq_descriptor,
+        new java.lang.String[] { "Username", "Name", "Avatar", });
     internal_static_Auth_SignUpReq_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_Auth_SignUpReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Auth_SignUpReq_descriptor,
         new java.lang.String[] { "Username", "Password", "Name", });
     internal_static_Auth_ResetReq_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_Auth_ResetReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Auth_ResetReq_descriptor,
         new java.lang.String[] { "Type", "Username", });
     internal_static_Auth_ResetRes_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_Auth_ResetRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Auth_ResetRes_descriptor,
         new java.lang.String[] { "Status", "Error", });
     internal_static_Auth_ResetPasswordFinalStepReq_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_Auth_ResetPasswordFinalStepReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Auth_ResetPasswordFinalStepReq_descriptor,

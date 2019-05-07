@@ -17,6 +17,7 @@ public class MyTask {
             return false;
 
         }
+
         @Override
         public void getAllMyTask(GetAllMyTaskReq request, StreamObserver<GetAllMyTaskRes> responseObserver) {
             if (!isValidAuth()) {

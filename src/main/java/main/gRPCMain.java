@@ -1,5 +1,6 @@
 package main;
 
+import gRPC.auth.AuthAccount;
 import gRPC.project.MyProject;
 import gRPC.userstory.UserStory;
 import io.grpc.Server;
@@ -16,6 +17,7 @@ public class gRPCMain {
         server = ServerBuilder.forPort(port)
                 .addService(new MyProject.MyProjectImpl())
                 .addService(new UserStory.UserStoryImpl())
+                .addService(new AuthAccount.AuthImpl())
                 .build()
                 .start();
 

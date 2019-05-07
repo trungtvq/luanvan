@@ -11,11 +11,18 @@ service Auth{
     rpc SignUp(SignUpReq) returns (SignInRes){}
     rpc ResetPassword(ResetReq) returns (ResetRes){}
     rpc ResetPasswordFinalStep(ResetPasswordFinalStepReq) returns (SignInRes){}
+    rpc SignInGoogle(SignInGoogleReq) returns (SignInRes){}
+    rpc AuthSession(AuthSessionReq) returns (SignInRes){}
 }
 
 message SignInReq{
     string username = 1;
     string password = 2;
+}
+message AuthSessionReq{
+    string session=1;
+    string id=2;
+    string time=3;
 }
 
 message SignInRes{
@@ -26,7 +33,11 @@ message SignInRes{
     string id=5;
     string session=6;
 }
-
+message SignInGoogleReq{
+    string username =1;
+    string name=2;
+    string avatar=3;
+}
 message SignUpReq{
     string username = 1;//username == email
     string password = 2;

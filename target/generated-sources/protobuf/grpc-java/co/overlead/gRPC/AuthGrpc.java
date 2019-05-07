@@ -155,6 +155,70 @@ public final class AuthGrpc {
      return getResetPasswordFinalStepMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.SignInGoogleReq,
+      co.overlead.gRPC.SignInRes> getSignInGoogleMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SignInGoogle",
+      requestType = co.overlead.gRPC.SignInGoogleReq.class,
+      responseType = co.overlead.gRPC.SignInRes.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<co.overlead.gRPC.SignInGoogleReq,
+      co.overlead.gRPC.SignInRes> getSignInGoogleMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.SignInGoogleReq, co.overlead.gRPC.SignInRes> getSignInGoogleMethod;
+    if ((getSignInGoogleMethod = AuthGrpc.getSignInGoogleMethod) == null) {
+      synchronized (AuthGrpc.class) {
+        if ((getSignInGoogleMethod = AuthGrpc.getSignInGoogleMethod) == null) {
+          AuthGrpc.getSignInGoogleMethod = getSignInGoogleMethod = 
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.SignInGoogleReq, co.overlead.gRPC.SignInRes>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "Auth.Auth", "SignInGoogle"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.SignInGoogleReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.SignInRes.getDefaultInstance()))
+                  .setSchemaDescriptor(new AuthMethodDescriptorSupplier("SignInGoogle"))
+                  .build();
+          }
+        }
+     }
+     return getSignInGoogleMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.AuthSessionReq,
+      co.overlead.gRPC.SignInRes> getAuthSessionMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "AuthSession",
+      requestType = co.overlead.gRPC.AuthSessionReq.class,
+      responseType = co.overlead.gRPC.SignInRes.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<co.overlead.gRPC.AuthSessionReq,
+      co.overlead.gRPC.SignInRes> getAuthSessionMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.AuthSessionReq, co.overlead.gRPC.SignInRes> getAuthSessionMethod;
+    if ((getAuthSessionMethod = AuthGrpc.getAuthSessionMethod) == null) {
+      synchronized (AuthGrpc.class) {
+        if ((getAuthSessionMethod = AuthGrpc.getAuthSessionMethod) == null) {
+          AuthGrpc.getAuthSessionMethod = getAuthSessionMethod = 
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.AuthSessionReq, co.overlead.gRPC.SignInRes>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "Auth.Auth", "AuthSession"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.AuthSessionReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.SignInRes.getDefaultInstance()))
+                  .setSchemaDescriptor(new AuthMethodDescriptorSupplier("AuthSession"))
+                  .build();
+          }
+        }
+     }
+     return getAuthSessionMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -210,6 +274,20 @@ public final class AuthGrpc {
       asyncUnimplementedUnaryCall(getResetPasswordFinalStepMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void signInGoogle(co.overlead.gRPC.SignInGoogleReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.SignInRes> responseObserver) {
+      asyncUnimplementedUnaryCall(getSignInGoogleMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void authSession(co.overlead.gRPC.AuthSessionReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.SignInRes> responseObserver) {
+      asyncUnimplementedUnaryCall(getAuthSessionMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -240,6 +318,20 @@ public final class AuthGrpc {
                 co.overlead.gRPC.ResetPasswordFinalStepReq,
                 co.overlead.gRPC.SignInRes>(
                   this, METHODID_RESET_PASSWORD_FINAL_STEP)))
+          .addMethod(
+            getSignInGoogleMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                co.overlead.gRPC.SignInGoogleReq,
+                co.overlead.gRPC.SignInRes>(
+                  this, METHODID_SIGN_IN_GOOGLE)))
+          .addMethod(
+            getAuthSessionMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                co.overlead.gRPC.AuthSessionReq,
+                co.overlead.gRPC.SignInRes>(
+                  this, METHODID_AUTH_SESSION)))
           .build();
     }
   }
@@ -293,6 +385,22 @@ public final class AuthGrpc {
       asyncUnaryCall(
           getChannel().newCall(getResetPasswordFinalStepMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void signInGoogle(co.overlead.gRPC.SignInGoogleReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.SignInRes> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getSignInGoogleMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void authSession(co.overlead.gRPC.AuthSessionReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.SignInRes> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getAuthSessionMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -339,6 +447,20 @@ public final class AuthGrpc {
     public co.overlead.gRPC.SignInRes resetPasswordFinalStep(co.overlead.gRPC.ResetPasswordFinalStepReq request) {
       return blockingUnaryCall(
           getChannel(), getResetPasswordFinalStepMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public co.overlead.gRPC.SignInRes signInGoogle(co.overlead.gRPC.SignInGoogleReq request) {
+      return blockingUnaryCall(
+          getChannel(), getSignInGoogleMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public co.overlead.gRPC.SignInRes authSession(co.overlead.gRPC.AuthSessionReq request) {
+      return blockingUnaryCall(
+          getChannel(), getAuthSessionMethod(), getCallOptions(), request);
     }
   }
 
@@ -391,12 +513,30 @@ public final class AuthGrpc {
       return futureUnaryCall(
           getChannel().newCall(getResetPasswordFinalStepMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.SignInRes> signInGoogle(
+        co.overlead.gRPC.SignInGoogleReq request) {
+      return futureUnaryCall(
+          getChannel().newCall(getSignInGoogleMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.SignInRes> authSession(
+        co.overlead.gRPC.AuthSessionReq request) {
+      return futureUnaryCall(
+          getChannel().newCall(getAuthSessionMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_SIGN_IN = 0;
   private static final int METHODID_SIGN_UP = 1;
   private static final int METHODID_RESET_PASSWORD = 2;
   private static final int METHODID_RESET_PASSWORD_FINAL_STEP = 3;
+  private static final int METHODID_SIGN_IN_GOOGLE = 4;
+  private static final int METHODID_AUTH_SESSION = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -429,6 +569,14 @@ public final class AuthGrpc {
           break;
         case METHODID_RESET_PASSWORD_FINAL_STEP:
           serviceImpl.resetPasswordFinalStep((co.overlead.gRPC.ResetPasswordFinalStepReq) request,
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.SignInRes>) responseObserver);
+          break;
+        case METHODID_SIGN_IN_GOOGLE:
+          serviceImpl.signInGoogle((co.overlead.gRPC.SignInGoogleReq) request,
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.SignInRes>) responseObserver);
+          break;
+        case METHODID_AUTH_SESSION:
+          serviceImpl.authSession((co.overlead.gRPC.AuthSessionReq) request,
               (io.grpc.stub.StreamObserver<co.overlead.gRPC.SignInRes>) responseObserver);
           break;
         default:
@@ -496,6 +644,8 @@ public final class AuthGrpc {
               .addMethod(getSignUpMethod())
               .addMethod(getResetPasswordMethod())
               .addMethod(getResetPasswordFinalStepMethod())
+              .addMethod(getSignInGoogleMethod())
+              .addMethod(getAuthSessionMethod())
               .build();
         }
       }
