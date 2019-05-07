@@ -100,7 +100,7 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
     SignUpReq.setPassword(signUpPassword);
     SignUpReq.setName(signUpName);
       //make a request to server
-      var getTodo = authService.signUp(SignUpReq, metadata, (err, response) => {
+      var getTodo = authService.SignUp(SignUpReq, metadata, (err, response) => {
         if (err) { //if error
           console.log(err);
         } else { //if success

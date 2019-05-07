@@ -56,7 +56,8 @@ class Login extends Component {
     this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(this);
     
     this.onSignIn = this.onSignIn.bind(this);
-    this.onSignUp = this.onSignUp.bind(this);
+    this.onSignInGoogle = this.onSignInGoogle.bind(this);
+
     this.logout = this.logout.bind(this);
   }
   
@@ -141,7 +142,7 @@ class Login extends Component {
      SignInReq.setUsername(signInEmail);
      SignInReq.setPassword(signInPassword);
       //make a request to server
-      var getTodo = authService.signIn(SignInReq, metadata, (err, response) => {
+      var getTodo = authService.SignIn(SignInReq, metadata, (err, response) => {
         if (err) { //if error
           console.log(err);
         } else { //if success
@@ -151,6 +152,35 @@ class Login extends Component {
             console.log(`Something was wrong ${signInEmail} wasn't found`);
           } else {
             console.log(`Fetched TODO with ID ${signInEmail}: ${SignInRes}`);
+          }
+        }
+      });
+  }
+
+  onSignInGoogle(profileObj) {
+
+     //create service to request
+     const authService = new proto.auth.AuthClient('http://trungtvq.ddns.net:8080');
+     //metadab will be config later
+     var metadata = {};
+     
+     //create var for react
+     var SignInGoogleReq = new proto.auth.SignInGoogleReq();
+     //set data from frontend to this var
+     SignInGoogleReq.setUsername(profileObj.email);
+     SignInGoogleReq.setName(profileObj.givenName+" "+profileObj.givenName);
+     SignInGoogleReq.setAvatar(profileObj.imageUrl);
+      //make a request to server
+      var getTodo = authService.SignInGoogle(SignInGoogleReq, metadata, (err, response) => {
+        if (err) { //if error
+          console.log(err);
+        } else { //if success
+          //get response
+          const SignInRes = response.getResponse();
+          if (SignInRes == null) {// if response null => not found
+            console.log(`Something was wrong ${profileObj.email} wasn't found`);
+          } else {
+            console.log(`Fetched TODO with ID ${profileObj.email}: ${SignInRes}`);
           }
         }
       });
@@ -286,7 +316,8 @@ class Login extends Component {
     onFailure={responseGoogle}
     cookiePolicy={'single_host_origin'}
   />,
-                      <GoogleLogout
+    
+    <GoogleLogout
       buttonText="Logout"
       onLogoutSuccess={logout}
     >

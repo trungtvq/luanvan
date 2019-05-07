@@ -77,6 +77,8 @@ class Detail extends Component {
 
       }
     };
+  
+    
 
   toggleAdd() {
     this.setState(prevState => ({
