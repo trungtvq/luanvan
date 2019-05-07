@@ -17,6 +17,8 @@ import AppAppBar from './modules/views/AppAppBar';
 import { GoogleLogout } from 'react-google-login';
 import { GoogleLogin } from 'react-google-login';
 
+const proto = {};
+proto.auth = require('./../../../gRPC/auth/auth_grpc_web_pb');
 
 const styles = theme => ({
   form: {
@@ -127,37 +129,11 @@ class Login extends Component {
       isLoading: true,
     });
 
-    // Post request to backend
-    fetch('/api/account/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: signUpEmail,
-        password: signUpPassword,
-      }),
-    }).then(res => res.json())
-      .then(json => {
-        console.log('json', json);
-        if (json.success) {
-          this.setState({
-            signUpError: json.message,
-            isLoading: false,
-            signUpEmail: '',
-            signUpPassword: '',
-          });
-        } else {
-          this.setState({
-            signUpError: json.message,
-            isLoading: false,
-          });
-        }
-      });
+    
   }
 
   onSignIn() {
-    // Grab state
+    //some data of request (get that from frontend)
     const {
       signInEmail,
       signInPassword,
@@ -167,38 +143,19 @@ class Login extends Component {
       isLoading: true,
     });
 
-    // Post request to backend
-    fetch('/api/account/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: signInEmail,
-        password: signInPassword,
-      }),
-    }).then(res => res.json())
-      .then(json => {
-        console.log('json', json);
-        if (json.success) {
-          setInStorage('the_main_app', { token: json.token });
-          this.setState({
-            signInError: json.message,
-            isLoading: false,
-            signInPassword: '',
-            signInEmail: '',
-            token: json.token,
-          });
+     //create service to request
+     const authService = new proto.auth.AuthClient('http://trungtvq.ddns.net:8080');
+     //metadab will be config later
+     var metadata = {};
+     
+     //create var for react
+     var SignInReq = new proto.auth.SignInReq();
+     //set data from frontend to this var
+     SignInReq.setUsername(signInEmail);
+     SignInReq.setPassword(signInPassword);
 
-          this.contextType.login(json.token,this.getState(signInEmail));
+     
 
-        } else {
-          this.setState({
-            signInError: json.message,
-            isLoading: false,
-          });
-        }
-      });
   }
 
   logout() {
@@ -317,8 +274,7 @@ class Login extends Component {
                   <CardBody className="text-center">
                     <div>
                       <h2>Sign up</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
+                      
                       <Link to="/register">
                         <Button color="primary" className="mt-3" active tabIndex={-1}>Register Now!</Button>
                       </Link>
