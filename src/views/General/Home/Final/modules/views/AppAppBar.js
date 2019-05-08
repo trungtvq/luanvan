@@ -56,7 +56,7 @@ function AppAppBar(props) {
             {'Overlead'}
           </Link>
           <div className={classes.right}>
-            { typeof userId=='undefined'?
+            { typeof userId == 'undefined'?
                 <Link
                 color="inherit"
                 variant="h6"
@@ -73,7 +73,7 @@ function AppAppBar(props) {
                 variant="h6"
                 underline="none"
                 className={classes.rightLink}
-                href="/register"
+                href="/AllProject"
               >
                 {'Sign In'}
               </Link>
