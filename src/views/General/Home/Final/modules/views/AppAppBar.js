@@ -6,6 +6,8 @@ import Link from '@material-ui/core/Link';
 import AppBar from '../components/AppBar';
 import Toolbar, { styles as toolbarStyles } from '../components/Toolbar';
 import cookie from 'react-cookies'
+import { Redirect } from 'react-router'
+
 const proto = {};
 proto.auth = require('./../../../../../../gRPC/auth/auth_grpc_web_pb');
 
@@ -38,37 +40,39 @@ const styles = theme => ({
   },
 });
 
-const onCheck=(session,id,time)=> {
-  //some data of request (get that from frontend)
 
-   //create service to request
-   const authService = new proto.auth.AuthClient('54.255.233.193:8085');
-   //metadab will be config later
-   var metadata = {};
-   
-   //create var for react
-   var AuthSessionReq = new proto.auth.AuthSessionReq();
-   //set data from frontend to this var
-   AuthSessionReq.setSession(session);
-   AuthSessionReq.setId(id);
-   AuthSessionReq.setId(time);
-    //make a request to server
-    var getTodo = authService.AuthSession(AuthSessionReq, metadata, (err, response) => {
-      if (err) { //if error
-        console.log(err);
-      } else { //if success
-        //get response
-        const AuthSessionRes = response.getResponse();
-        if (AuthSessionRes == null) {// if response null => not found
-          console.log(`Something was wrong ${id} wasn't found`);
-        } else {
-          console.log(`Fetched TODO with ID ${id}: ${AuthSessionRes}`);
-        }
-      }
-    });
-}
 
 function AppAppBar(props) {
+  const onCheck=(id,session,time)=> {
+    //some data of request (get that from frontend)
+  
+     //create service to request
+     const authService = new proto.auth.AuthClient('54.255.233.193:8085');
+     //metadab will be config later
+     var metadata = {};
+     
+     //create var for react
+     var AuthSessionReq = new proto.auth.AuthSessionReq();
+     //set data from frontend to this var
+     AuthSessionReq.setSession(session);
+     AuthSessionReq.setId(id);
+     AuthSessionReq.setId(time);
+      //make a request to server
+      var getTodo = authService.AuthSession(AuthSessionReq, metadata, (err, response) => {
+        if (err) { //if error
+          console.log(err);
+        } else { //if success
+          //get response
+          const AuthSessionRes = response.getResponse();
+          if (AuthSessionRes == null) {// if response null => not found
+            console.log(`Something was wrong ${id} wasn't found`);
+          } else {
+            console.log(`Fetched TODO with ID ${id}: ${AuthSessionRes}`);
+          }
+        }
+      });
+  }
+
   var today = new Date(),
   date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
@@ -103,7 +107,8 @@ function AppAppBar(props) {
                 {'Sign In'}
               </Link>
               :
-             
+               
+                // onCheck(userId,userSession,time)
                 <Link
                 color="inherit"
                 variant="h6"
@@ -113,6 +118,8 @@ function AppAppBar(props) {
               >
                 {'Sign In'}
               </Link>
+              
+                
             }
             
             <Link
