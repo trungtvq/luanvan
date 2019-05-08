@@ -222,7 +222,7 @@ class App extends Component {
                       <Route exact path="/pay" name="Page Pay" component={PagePay} />
                       <Route exact path="/async" name="page test" component={AsyncApp} />
                       <Route exact path="/dashboard" name="dashboard" component={DefaultLayout} />
-                      <Route path="/" name="Home" component={HomeFinal} />
+                      <Route path="/" name="Home" component={DefaultLayout} />
                 </Switch>
             </BrowserRouter>
           </authContext.Provider>  
