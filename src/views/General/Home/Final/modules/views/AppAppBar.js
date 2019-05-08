@@ -5,9 +5,10 @@ import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import AppBar from '../components/AppBar';
 import Toolbar, { styles as toolbarStyles } from '../components/Toolbar';
-import cookie from 'react-cookies'
-import { Redirect } from 'react-router'
-
+import cookie from 'react-cookies';
+import { Route, Redirect } from 'react-router';
+import { Button } from '@material-ui/core';
+import { withRouter } from "react-router";
 const proto = {};
 proto.auth = require('./../../../../../../gRPC/auth/auth_grpc_web_pb');
 
@@ -45,7 +46,11 @@ const styles = theme => ({
 function AppAppBar(props) {
   const onCheck=(id,session,time)=> {
     //some data of request (get that from frontend)
-  
+    console.log("vao đây");
+    console.log(id);
+    console.log(props);
+    // if (typeof(id) == "undefined")  {props.history.push('/register')}
+    // else  {history.push('/dashboard')};
      //create service to request
      const authService = new proto.auth.AuthClient('54.255.233.193:8085');
      //metadab will be config later
@@ -58,7 +63,7 @@ function AppAppBar(props) {
      AuthSessionReq.setId(id);
      AuthSessionReq.setId(time);
       //make a request to server
-      var getTodo = authService.AuthSession(AuthSessionReq, metadata, (err, response) => {
+      var getTodo = authService.authSession(AuthSessionReq, metadata, (err, response) => {
         if (err) { //if error
           console.log(err);
         } else { //if success
@@ -96,32 +101,14 @@ function AppAppBar(props) {
             {'Overlead'}
           </Link>
           <div className={classes.right}>
-            { typeof userId == 'undefined'?
-                <Link
-                color="inherit"
-                variant="h6"
-                underline="none"
-                className={classes.rightLink}
-                href="/login"
+            <Button 
+              block color="primary"
+              className={classes.rightLink}
+              onClick={onCheck(userId,userSession,time)}
               >
-                {'Sign In'}
-              </Link>
-              :
-               
-                // onCheck(userId,userSession,time)
-                <Link
-                color="inherit"
-                variant="h6"
-                underline="none"
-                className={classes.rightLink}
-                href="/AllProject"
-              >
-                {'Sign In'}
-              </Link>
-              
-                
-            }
-            
+              {'Sign In'}
+            </Button>
+
             <Link
               variant="h6"
               underline="none"
