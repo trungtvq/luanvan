@@ -36,6 +36,7 @@
     "react-apollo": "^2.5.2",
     "react-app-polyfill": "^0.2.1",
     "react-chartjs-2": "^2.7.4",
+    "react-cookies": "^0.1.0",
     "react-dom": "^16.8.4",
     "react-dual-listbox": "^1.4.2",
     "react-google-login": "^5.0.4",

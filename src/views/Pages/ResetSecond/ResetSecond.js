@@ -86,7 +86,7 @@ class ResetSecond extends Component {
       isLoading: true,
     });
     //create service to request
-    const authService = new proto.auth.AuthClient('http://trungtvq.ddns.net:8080');
+    const authService = new proto.auth.AuthClient('54.255.233.193:8085');
     //metadab will be config later
     var metadata = {};
     

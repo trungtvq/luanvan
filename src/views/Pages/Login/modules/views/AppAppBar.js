@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import AppBar from '../components/AppBar';
 import Toolbar, { styles as toolbarStyles } from '../components/Toolbar';
-
+import cookie from 'react-cookies';
 const styles = theme => ({
   title: {
     fontSize: 24,
@@ -53,15 +53,18 @@ function AppAppBar(props) {
             {'Overlead'}
           </Link>
           <div className={classes.right}>
+         
             <Link
-              color="inherit"
-              variant="h6"
-              underline="none"
-              className={classes.rightLink}
-              href="/login"
-            >
-              {'Sign In'}
-            </Link>
+            color="inherit"
+            variant="h6"
+            underline="none"
+            className={classes.rightLink}
+            href="/login"
+          >
+           {'Sign In'}
+          </Link>
+      
+      
             <Link
               variant="h6"
               underline="none"

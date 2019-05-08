@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import AppBar from '../components/AppBar';
 import Toolbar, { styles as toolbarStyles } from '../components/Toolbar';
+import cookie from 'react-cookies'
 
 const styles = theme => ({
   title: {
@@ -37,7 +38,9 @@ const styles = theme => ({
 
 function AppAppBar(props) {
   const { classes } = props;
-
+  let userId=cookie.load('userId');
+  let userSession=cookie.load('userSession');
+  console.log("kt "+userId);
   return (
     <div>
       <AppBar position="fixed">
@@ -53,15 +56,29 @@ function AppAppBar(props) {
             {'Overlead'}
           </Link>
           <div className={classes.right}>
-            <Link
-              color="inherit"
-              variant="h6"
-              underline="none"
-              className={classes.rightLink}
-              href="/login"
-            >
-              {'Sign In'}
-            </Link>
+            { typeof userId=='undefined'?
+                <Link
+                color="inherit"
+                variant="h6"
+                underline="none"
+                className={classes.rightLink}
+                href="/login"
+              >
+                {'Sign In'}
+              </Link>
+              :
+             
+                <Link
+                color="inherit"
+                variant="h6"
+                underline="none"
+                className={classes.rightLink}
+                href="/register"
+              >
+                {'Sign In'}
+              </Link>
+            }
+            
             <Link
               variant="h6"
               underline="none"

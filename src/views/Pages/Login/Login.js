@@ -16,6 +16,7 @@ import AppFooter from './modules/views/AppFooter';
 import AppAppBar from './modules/views/AppAppBar';
 import { GoogleLogout } from 'react-google-login';
 import { GoogleLogin } from 'react-google-login';
+import cookie from 'react-cookies';
 
 const proto = {};
 proto.auth = require('./../../../gRPC/auth/auth_grpc_web_pb');
@@ -126,13 +127,13 @@ class Login extends Component {
       signInEmail,
       signInPassword,
     } = this.state;
-
+    
     this.setState({
       isLoading: true,
     });
 
      //create service to request
-     const authService = new proto.auth.AuthClient('http://trungtvq.ddns.net:8080');
+     const authService = new proto.auth.AuthClient('54.255.233.193:8085');
      //metadab will be config later
      var metadata = {};
      
@@ -146,6 +147,7 @@ class Login extends Component {
         if (err) { //if error
           console.log(err);
         } else { //if success
+          cookie.save('userId', signInEmail, { path: '/' });
           //get response
           const SignInRes = response.getResponse();
           if (SignInRes == null) {// if response null => not found
@@ -191,38 +193,8 @@ class Login extends Component {
     this.setState({
       isLoading: true,
     });
-    const obj = getFromStorage('the_main_app');
-    if (obj && obj.token) {
-      const { token } = obj;
-      // Verify token
-      fetch('/api/account/logout',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          token
-        }),
-      })
-        .then(res => res.json())
-        .then(json => {
-          if (json.success) {
-            this.setState({
-              token: '',
-              isLoading: false
-            });
-          } else {
-            this.setState({
-              isLoading: false,
-            });
-          }
-        });
-    } else {
-      this.setState({
-        isLoading: false,
-      });
-    }
+    cookie.remove('userId', { path: '/' });
+    cookie.remove('userSession', { path: '/' });
   }
 
   render() {
