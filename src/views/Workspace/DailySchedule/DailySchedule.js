@@ -30,47 +30,62 @@ ModalBody,
 ModalFooter,
 } from 'reactstrap';
 
-// const proto = {};
-// proto.dailyschedule = require('./../../../../gRPC/dailyschedule/dailyschedule_grpc_web_pb');
+const proto = {};
+proto.dailyschedule = require('./../../../gRPC/dailyschedule/dailyschedule_grpc_web_pb');
 
 class DailySchedule extends Component {
    constructor(props) {
     super(props);
     this.toggleEdit = this.toggleEdit.bind(this);
+
+    this.onTextboxChangeTitle = this.onTextboxChangeTitle.bind(this);
+    this.onTextboxChangeTask = this.onTextboxChangeTask.bind(this);
+    this.onTextboxChangeNote = this.onTextboxChangeNote.bind(this);
+    this.onTextboxChangeTime = this.onTextboxChangeTime.bind(this);
+    this.onTextboxChangeStatus = this.onTextboxChangeStatus.bind(this);
+    this.onTextboxChangeTimeStart = this.onTextboxChangeTimeStart.bind(this);
+    this.onTextboxChangeDateStart = this.onTextboxChangeDateStart.bind(this);
+
+    
     this.state = {
       data: [ 
               {
-                "date":"20/3/2019",
-                "idBacklog":1,
-                "task":"Thiết kế giao diện nhập email",
-                "status":"done",
-                "review":"",
+                "title":"Login",
+                "task":"Login bằng fb",
+                "time":"2:20 23/3/1019",
+                "note":"có gửi code về đt",
+                "status":"",
               },
               {
-                "date":"21/3/2019",
-                "idBacklog":1,
-                "task":"Viết api lấy dữ liệu từ input form",
-                "status":"done",
-                "review":"",
+                "title":"Login",
+                "task":"Login bằng fb",
+                "time":"2:20 23/3/1019",
+                "note":"có gửi code về đt",
+                "status":"",
               },
               {
-                "date":"22/3/2019",
-                "idBacklog":1,
-                "task":"Code api check mail có hợp lệ không",
-                "status":"done",
-                "review":"",
+                "title":"Login",
+                "task":"Login bằng fb",
+                "time":"2:20 23/3/1019",
+                "note":"có gửi code về đt",
+                "status":"",
               },
               {
-                "date":"23/3/2019",
-                "idBacklog":2,
-                "task":"Code api check mail có hợp lệ không",
-                "status":"to do",
-                "review":"",
+                "title":"Login",
+                "task":"Login bằng fb",
+                "time":"2:20 23/3/1019",
+                "note":"có gửi code về đt",
+                "status":"",
               },
-            
             
             ],
       modalEdit: false,
+      title:'',
+      task:'',
+      timeStart:'',
+      dateStart:'',
+      note:'',
+      status:'',
       }
     };
 
@@ -80,6 +95,86 @@ class DailySchedule extends Component {
     }));
   }
 
+  onTextboxChangeTitle(event) {
+    this.setState({
+      title: event.target.value,
+    });
+  }
+  onTextboxChangeTask(event) {
+    this.setState({
+      task: event.target.value,
+    });
+  }
+  onTextboxChangeTime(event) {
+    this.setState({
+      time: event.target.value,
+    });
+  }
+  onTextboxChangeNote(event) {
+    this.setState({
+      note: event.target.value,
+    });
+  }
+  onTextboxChangeStatus(event) {
+    this.setState({
+      status: event.target.value,
+    });
+  }
+  onTextboxChangeTimeStart(event) {
+    this.setState({
+      timeStart: event.target.value,
+    });
+  }
+  onTextboxChangeDateStart(event) {
+    this.setState({
+      dateStart: event.target.value,
+    });
+  }
+
+  handleAdd = (requesterId,projectId,title,task,time,scheduleStatus,cookie) => {
+    const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://54.255.233.193:8085');
+    //some data of request (get that from frontend)
+    console.log(dailyscheduleService)
+    
+    var metadata = {};
+    //make a request to server
+
+    var AddNewDailyScheduleReq= new proto.dailyschedule.AddNewDailyScheduleReq();
+    AddNewDailyScheduleReq.setRequesterid("tienbede");
+    AddNewDailyScheduleReq.setProjectid("tienbede");
+    AddNewDailyScheduleReq.setTitle("tienbede");
+    AddNewDailyScheduleReq.setTask("tienbede");
+    AddNewDailyScheduleReq.setTime("tienbede");
+    AddNewDailyScheduleReq.setSchedulestatus("tienbede");
+    AddNewDailyScheduleReq.setCookie("tienbede");
+
+    var toto=dailyscheduleService.addNewDailySchedule(AddNewDailyScheduleReq, metadata, (err, response) => {
+      console.log("connect")
+      if (err) { //if error
+         console.log(err);
+         console.log("error")
+      } else { //if success
+              //get response
+              console.log("response")
+              console.log(response);
+              // console.log("get avatar")
+              // console.log(response.getStatus())
+
+              // this.setState({
+              //   av: response.getAvatar()
+              // });
+              
+              const ProfileRes = response[0];
+            }
+          });
+          console.log(toto)
+  };
+  handleUpdate = (requesterId,projectId,scheduleId,title,task,time,scheduleStatus,cookie) => {
+    
+  };
+  handleDelete = (requesterId,projectId,scheduleId,cookie) => {
+    
+  };
 // componentWillMount(){
 //    //create service to request
 //    const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('overlead:8085');
@@ -143,7 +238,16 @@ class DailySchedule extends Component {
 
   render() {
     const {
-      data
+      data,
+      modalEdit,
+      title,
+      task,
+      time,
+      note,
+      status,
+      timeStart,
+      dateStart,
+      
     } = this.state;
     let that=this;
 
@@ -156,11 +260,11 @@ class DailySchedule extends Component {
                 <table class="table table-lg">
                   <thead class="thead">
                   <tr class="bg-primary">
-                    <th>Date</th>
-                    <th>IdBacklog</th>
+                    <th>Title</th>
                     <th>Task</th>
-                    <th>Status</th>
-                    <th>Review </th>  
+                    <th>Time</th>
+                    <th>Note</th>
+                    <th>Status</th>  
                     <th> </th>                 
                   </tr>
                   </thead>
@@ -168,55 +272,67 @@ class DailySchedule extends Component {
              
                return (
                   <tr key = {key}>
-                      <td>{item.date}</td>
-                      <td>{item.idBacklog}</td>
+                      <td>{item.title}</td>
                       <td>{item.task}</td>
+                      <td>{item.time}</td>
+                      <td>{item.note}</td>
                       <td>{item.status}</td>
-                       
-                      <td>{item.review}</td>
                       <td>
                       <Button color="warning" size="sm" onClick={that.toggleEdit}><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
                         <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
                               <ModalHeader toggle={that.toggleEdit}>Daily schedule</ModalHeader>
                               <ModalBody>
-                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
-                                    <FormGroup row>
-                                      <Col md="3">
-                                        <Label htmlFor="text-input">IdBacklog</Label>
-                                      </Col>
-                                      <Col xs="12" md="9">
-                                        <Input type="text" id="IdBacklog" name="IdBacklog" placeholder="IdBacklog" />
-                                        
-                                      </Col>
-                                    </FormGroup>
-                                     <FormGroup row>
-                                      <Col md="3">
-                                        <Label htmlFor="textarea-input">Task</Label>
-                                      </Col>
-                                      <Col xs="12" md="9">
-                                        <Input type="textarea" name="Task" id="Task" rows="9"
-                                               placeholder="Task..." />
-                                      </Col>
-                                    </FormGroup>
-                                                    
-                                    <FormGroup row>
-                                      <Col md="3">
-                                        <Label htmlFor="date-input">Date </Label>
-                                      </Col>
-                                      <Col xs="12" md="9">
-                                        <Input type="date" id="date-input" name="date-input" placeholder="date" />
-                                      </Col>
-                                    </FormGroup>
+                              <Form  className="form-horizontal">               
+                                <FormGroup row>
+                                  <Col md="3">
+                                    <Label htmlFor="text-input">IdBacklog</Label>
+                                  </Col>
+                                  <Col xs="12" md="9">
+                                    <Input type="text" id="IdBacklog" name="IdBacklog" placeholder="IdBacklog" />
                                     
-                                     <FormGroup row>
-                                      <Col md="3">
-                                        <Label>Status</Label>
-                                      </Col>
-                                      <Col xs="12" md="9">
-                                        <p className="form-control-static">To do</p>
-                                      </Col>
-                                    </FormGroup>                                       
-                                  </Form>                       
+                                  </Col>
+                                </FormGroup>
+
+                                <FormGroup row>
+                                  <Col md="3">
+                                    <Label htmlFor="textarea-input">Task</Label>
+                                  </Col>
+                                  <Col xs="12" md="9">
+                                    <Input type="textarea" name="Task" id="Task" rows="9"
+                                          placeholder="Task..." />
+                                  </Col>
+                                </FormGroup>
+                                                
+                                <FormGroup row>
+                                  <Col md="3">
+                                    <Label htmlFor="date-input">Start </Label>
+                                  </Col>
+                                  <Col xs="3" md="3">
+                                    <Input type="time" id="timeStart" name="timeStart" />
+                                  </Col>
+                                  <Col xs="3" md="3">
+                                    <Input type="date" id="dateStart" name="dateStart" />
+                                  </Col>
+                                </FormGroup>
+                                
+                                <FormGroup row>
+                                  <Col md="3">
+                                    <Label htmlFor="text-input">Note</Label>
+                                  </Col>
+                                  <Col xs="12" md="9">
+                                    <Input type="text" id="note" name="note" placeholder="Note" />
+                                  </Col>
+                                </FormGroup>
+
+                                <FormGroup row>
+                                  <Col md="3">
+                                    <Label>Status</Label>
+                                  </Col>
+                                  <Col xs="12" md="9">
+                                    <p className="form-control-static">To do</p>
+                                  </Col>
+                                </FormGroup>                                       
+                              </Form>                  
                               </ModalBody>
                               <ModalFooter>
                                 <Button color="primary" onClick={that.toggleEdit}>Submit</Button>{' '}
@@ -234,36 +350,49 @@ class DailySchedule extends Component {
             </Card>  
             <Card>             
               <CardBody>
-                <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                <Form  className="form-horizontal">               
                   <FormGroup row>
                     <Col md="3">
-                      <Label htmlFor="text-input">IdBacklog</Label>
+                      <Label htmlFor="text-input">Title</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="text" id="IdBacklog" name="IdBacklog" placeholder="IdBacklog" />
+                      <Input type="text" id="Title" name="Title" placeholder="Title"  value={title} onChange={that.onTextboxChangeTitle}/>
                       
                     </Col>
                   </FormGroup>
+
                    <FormGroup row>
                     <Col md="3">
                       <Label htmlFor="textarea-input">Task</Label>
                     </Col>
                     <Col xs="12" md="9">
                       <Input type="textarea" name="Task" id="Task" rows="9"
-                             placeholder="Task..." />
+                             placeholder="Task..." value={task} onChange={that.onTextboxChangeTask}/>
                     </Col>
                   </FormGroup>
                                   
                   <FormGroup row>
                     <Col md="3">
-                      <Label htmlFor="date-input">Date </Label>
+                      <Label htmlFor="date-input">Time </Label>
                     </Col>
-                    <Col xs="12" md="9">
-                      <Input type="date" id="date-input" name="date-input" placeholder="date" />
+                    <Col xs="3" md="3">
+                      <Input type="time" id="timeStart" name="timeStart" value={timeStart} onChange={that.onTextboxChangeTimeStart}/>
+                    </Col>
+                    <Col xs="3" md="3">
+                      <Input type="date" id="dateStart" name="dateStart" value={dateStart} onChange={that.onTextboxChangeDateStart}/>
                     </Col>
                   </FormGroup>
                   
-                   <FormGroup row>
+                  <FormGroup row>
+                    <Col md="3">
+                      <Label htmlFor="text-input">Note</Label>
+                    </Col>
+                    <Col xs="12" md="9">
+                      <Input type="text" id="note" name="note" placeholder="Note" value={note} onChange={that.onTextboxChangeNote}/>
+                    </Col>
+                  </FormGroup>
+
+                  <FormGroup row>
                     <Col md="3">
                       <Label>Status</Label>
                     </Col>
@@ -274,7 +403,7 @@ class DailySchedule extends Component {
                 </Form>
               </CardBody>
               <CardFooter>
-                <Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Add</Button>
+                <Button type="submit" size="sm" color="primary" onClick={that.handleAdd('requesterId','projectId','title','task','time','scheduleStatus','cookie')}><i className="fa fa-dot-circle-o"></i> Add</Button>
                 <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
               </CardFooter>
             </Card>

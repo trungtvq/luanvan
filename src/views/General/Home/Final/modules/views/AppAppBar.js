@@ -109,14 +109,15 @@ function AppAppBar(props) {
               {'Sign In'}
             </Button>
 
-            <Link
+            <Button 
               variant="h6"
               underline="none"
               className={classNames(classes.rightLink, classes.linkSecondary)}
               href="/register"
             >
               {'Sign Up'}
-            </Link>
+            </Button>
+
           </div>
         </Toolbar>
       </AppBar>

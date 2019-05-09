@@ -126,6 +126,44 @@ class AllProject extends Component {
     modalTranferOwner: !prevState.modalTranferOwner
     }));
   }
+  handleAdd= () => {//chua xong
+    const myprojectService = new proto.myproject.MyprojectClient('http://54.255.233.193:8085');
+    //some data of request (get that from frontend)
+    console.log(myprojectService)
+    
+    var metadata = {};
+    //make a request to server
+
+    var AddNewProjectReq= new proto.myproject.AddNewProjectReq();
+    //AddNewProjectReq.setIdOwner("tienbede");
+    AddNewProjectReq.setUsername("tienbede");
+    AddNewProjectReq.setProjectname("tienbede");
+    AddNewProjectReq.setStart("tienbede");
+    AddNewProjectReq.setEnd("tienbede");
+    AddNewProjectReq.setPrivate("tienbede");
+    AddNewProjectReq.setCookie("tienbede");
+
+    var toto=myprojectService.addNewProject(AddNewProjectReq, metadata, (err, response) => {
+      console.log("connect")
+      if (err) { //if error
+         console.log(err);
+         console.log("error")
+      } else { //if success
+              //get response
+              console.log("response")
+              console.log(response);
+              console.log("get avatar")
+              console.log(response.getStatus())
+
+              // this.setState({
+              //   av: response.getAvatar()
+              // });
+              
+              const ProfileRes = response[0];
+            }
+          });
+          console.log(toto)
+  }
 
   handleDelete = (idOwner,idProject,cookie) => {
     console.log(idOwner);
@@ -222,7 +260,7 @@ class AllProject extends Component {
   }
   render() {
     let that=this;
-    //create service to request
+    
     const {
       OwnerName,
       ProjectName,
