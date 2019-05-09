@@ -189,7 +189,7 @@ class DailySchedule extends Component {
     var UpdateDailyScheduleReq= new proto.dailyschedule.UpdateDailyScheduleReq();
     UpdateDailyScheduleReq.setRequesterid("tienbede");
     UpdateDailyScheduleReq.setProjectid("tienbede");
-    UpdateDailyScheduleReq.setScheduleId("tienbede");
+    UpdateDailyScheduleReq.setScheduleid("tienbede");
     UpdateDailyScheduleReq.setTitle("tienbede");
     UpdateDailyScheduleReq.setTask("tienbede");
     UpdateDailyScheduleReq.setTime("tienbede");
@@ -225,7 +225,7 @@ class DailySchedule extends Component {
     var DeleteDailyScheduleReq= new proto.dailyschedule.DeleteDailyScheduleReq();
     DeleteDailyScheduleReq.setRequesterid("tienbede");
     DeleteDailyScheduleReq.setProjectid("tienbede");
-    DeleteDailyScheduleReq.setScheduleId("tienbede");
+    DeleteDailyScheduleReq.setScheduleid("tienbede");
     DeleteDailyScheduleReq.setCookie("tienbede");
 
     var toto=dailyscheduleService.deleteDailySchedule(DeleteDailyScheduleReq, metadata, (err, response) => {
