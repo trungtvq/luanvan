@@ -80,9 +80,9 @@ class SprintBacklog extends Component {
             ],
       }
     };
-click=(item)=>{
-
-}
+    handleDelete = () => {
+      
+    };
   render() {
     return (
       <Row>
@@ -117,7 +117,7 @@ click=(item)=>{
                       <td><center>{item.start}</center></td>
                       <td><center>{item.deadline}</center></td>
                       <td>                        
-                        <Button type="submit" size="sm" color="danger"onClick="ht/item.id"><i class="fa fa-trash"></i></Button>
+                      <Button type="submit" size="sm" color="danger" onClick={this.handleDelete}><i class="fa fa-trash"></i></Button>
                       </td>
                   </tr>
                 )

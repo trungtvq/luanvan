@@ -34,9 +34,7 @@ import { Link } from 'react-router-dom';
 class TeamTask extends Component {
    constructor(props) {
     super(props);
-    this.toggleAdd = this.toggleAdd.bind(this);
-    this.toggleEdit = this.toggleEdit.bind(this);
-    this.toggle = this.toggle.bind(this);
+    
    
     this.state = {
       collapse: true,
@@ -90,30 +88,104 @@ class TeamTask extends Component {
             ],
       modalAdd: false,
       modalEdit: false,
+      Title: '',
+      Description:'',
+      Priority:"",
+      timeStart:"",
+      dateStart:"",
+      timeDeadline:"",
+      dateDeadline:"",
+      Assignee:"",
+      Comment:'',
+      Status:"",
+      Review:"",
       
     };
   }
 
-  toggle() {
+  toggle = () => {
     this.setState({ collapse: !this.state.collapse });
   }
-
-  toggleAdd() {
+  toggleAdd = () => {
     this.setState(prevState => ({
       modalAdd: !prevState.modalAdd
     }));
   }
-
-  toggleEdit() {
+  toggleEdit = () => {
     this.setState(prevState => ({
       modalEdit: !prevState.modalEdit
     }));
   }
   
-
+  onTextboxChangeTitle=(event)=> {
+    this.setState({
+      Title: event.target.value,
+    });
+  }
+  onTextboxChangeDescription=(event)=> {
+    this.setState({
+      Description: event.target.value,
+    });
+  }
+  onTextboxChangePriority=(event)=> {
+    this.setState({
+      Priority: event.target.value,
+    });
+  }
+  onTextboxChangeStart=(event)=> {
+    this.setState({
+      Start: event.target.value,
+    });
+  }
+  onTextboxChangeDeadline=(event)=> {
+    this.setState({
+      Deadline: event.target.value,
+    });
+  }
+  onTextboxChangeAssignee=(event)=> {
+    this.setState({
+      Assignee: event.target.value,
+    });
+  }
+  onTextboxChangeComment=(event)=> {
+    this.setState({
+      Comment: event.target.value,
+    });
+  }
+  onTextboxChangeReview=(event)=> {
+    this.setState({
+      Review: event.target.value,
+    });
+  }
+  onTextboxChangeStatus=(event)=> {
+    this.setState({
+      Status: event.target.value,
+    });
+  }
+  handleAdd = () => {
+   
+  };
+  handleDelete = () => {
+   
+  };
+  
+  handleUpdate = () => {
+   
+  };
   render() {
     const {
-      data
+      data,
+      Title,
+      Description,
+      Priority,
+      timeStart,
+      dateStart,
+      timeDeadline,
+      dateDeadline,
+      Assignee,
+      Comment,
+      Status,
+      Review,
     } = this.state;
     let that=this;
     return (
@@ -150,13 +222,13 @@ class TeamTask extends Component {
                             <Modal size="lg" isOpen={that.state.modalAdd} toggle={that.toggleAdd} className={that.props.className}>
                               <ModalHeader toggle={that.toggleAdd}>Team Task</ModalHeader>
                               <ModalBody>
-                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                  <Form  className="form-horizontal">               
                                     <FormGroup row>
                                       <Col md="3">
                                         <Label htmlFor="text-input">Title</Label>
                                       </Col>
                                       <Col xs="12" md="9">
-                                        <Input type="text" id="text-input" name="text-input" placeholder="Title" />
+                                        <Input type="text" id="Title" name="Title" placeholder="Title" value={Title} onChange={that.onTextboxChangeTitle}/>
                                         
                                       </Col>
                                     </FormGroup>
@@ -165,8 +237,8 @@ class TeamTask extends Component {
                                         <Label htmlFor="textarea-input">Description</Label>
                                       </Col>
                                       <Col xs="12" md="9">
-                                        <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
-                                               placeholder="Content..." />
+                                        <Input type="textarea" name="Description" id="Description" rows="9"
+                                               placeholder="Content..." value={Description} onChange={that.onTextboxChangeDescription}/>
                                       </Col>
                                     </FormGroup>
                                     <FormGroup row>
@@ -226,7 +298,7 @@ class TeamTask extends Component {
                                   </Form>                      
                               </ModalBody>
                               <ModalFooter>
-                                <Button color="primary" onClick={that.toggleAdd}>Submit</Button>{' '}
+                                <Button color="primary" onClick={that.handleAdd}>Submit</Button>{' '}
                                 <Button color="secondary" onClick={that.toggleAdd}>Cancel</Button>
                               </ModalFooter>
                             </Modal>
@@ -248,7 +320,8 @@ class TeamTask extends Component {
                       <td>{item.status}</td> 
                       <td>{item.review}</td>
                       <td>
-                          <Button color="warning" size="sm" className="mt-3" onClick={that.toggleEdit}><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
+                        <div>
+                          <Button color="warning" size="sm" S onClick={that.toggleEdit}><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
                             <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
                               <ModalHeader toggle={that.toggleEdit}>Team task</ModalHeader>
                               <ModalBody>
@@ -335,12 +408,13 @@ class TeamTask extends Component {
                                   </Form>               
                               </ModalBody>
                               <ModalFooter>
-                                <Button color="primary" onClick={that.toggleEdit}>Submit</Button>{' '}
+                                <Button color="primary" onClick={that.handleUpdate}>Submit</Button>{' '}
                                 <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
                               </ModalFooter>
                             </Modal>                        
-                          <Button type="submit" size="sm" color="success"><i class="fa fa-plus"></i></Button>
-                          <Button type="submit" size="sm" color="danger"><i class="fa fa-minus"></i></Button>
+                          </div>
+                          <Button size="sm" color="success"><i class="fa fa-plus"></i></Button>
+                          <Button size="sm" color="danger"><i class="fa fa-minus"></i></Button>
                       </td>
                   </tr>
                 )
