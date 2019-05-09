@@ -187,8 +187,8 @@ class DailySchedule extends Component {
     //make a request to server
 
     var UpdateDailyScheduleReq= new proto.dailyschedule.UpdateDailyScheduleReq();
-    UpdateDailyScheduleReq.setRequesterid("tienbede");
-    UpdateDailyScheduleReq.setProjectid("tienbede");
+    UpdateDailyScheduleReq.setRequesterid("38e752c7-153b-4c9b-a235-f62ba9f265f2");
+    UpdateDailyScheduleReq.setProjectid("5ccfbefdf43a0b0f499af2f7");
     UpdateDailyScheduleReq.setScheduleid("tienbede");
     UpdateDailyScheduleReq.setTitle("tienbede");
     UpdateDailyScheduleReq.setTask("tienbede");
@@ -246,66 +246,7 @@ class DailySchedule extends Component {
           console.log(toto)
           console.log("ra daily");
   };
-// componentWillMount(){
-//    //create service to request
-//    const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('overlead:8085');
-//    //some data of request (get that from frontend)
-//    const username = "useridoremail";
-//    //console.log(myprojectService)
-//    //create var for react
-  
-//    //rpc addNewDailySchedule(AddNewDailyScheduleReq) returns (AddNewDailyScheduleRes) {}
-//    //set data from frontend to this var
-//    // ProfileReq.setUsername(username);
-//   //  string userName = 1;
-//   //  string projectId = 2;
-//   //  string date	= 3;
-//   //  string idbacklog = 4;	
-//   //  string task	= 5;
-//   //  string status = 6;	
-//   //  string review =7;
-//   //  string cookie = 8;
-//    //metadab will be config later
-//    var metadata = {};
-//    //make a request to server
 
-//    var AddNewDailyScheduleReq= new proto.myproject.AddNewDailyScheduleReq();
-//    AddNewDailyScheduleReq.setUsername("tienbede");
-//    AddNewDailyScheduleReq.setProjectId("tienbede");
-//    AddNewDailyScheduleReq.setDate("tienbede");
-//    AddNewDailyScheduleReq.setEnd("tienbede");
-//    AddNewDailyScheduleReq.setPrivate("tienbede");
-//    AddNewDailyScheduleReq.setCookie("tienbede");
-
-//   //  var toto=myprojectService.addNewProject(AddNewProjectReq, metadata, (err, response) => {
-//   //    console.log("connect")
-//   //    if (err) { //if error
-//   //       console.log(err);
-//   //       console.log("error")
-//   //    } else { //if success
-
-//   //            //get response
-//   //            console.log("response")
-//   //            console.log(response);
-//   //            console.log("get avatar")
-//   //            console.log()
-
-//   //            // this.setState({
-//   //            //   av: response.getAvatar()
-//   //            // });
-             
-//   //            const ProfileRes = response[0];
-//   //            if (ProfileRes == null) {// if response null => not found
-     
-//   //              console.log(`Something was wrong ${username} wasn't found`);
-//   //            } else {
-//   //              console.log(`Fetched TODO with ID ${username}: ${ProfileRes}`);
-//   //            }
-//   //          }
-//   //        });
-//   //        console.log(toto)
-
-// }
  resetform = () =>{
    this.setState(this.baseState);
    console.log('vào reset');

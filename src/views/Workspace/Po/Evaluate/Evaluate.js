@@ -80,9 +80,7 @@ class Evaluate extends Component {
                     <td>24/4/2019</td>
                     <td>Hùng</td>
                     <td></td>
-                    <td>
-                      
-                    </td>                                  
+                                                   
                     <td>
                      
                     </td>
@@ -97,9 +95,7 @@ class Evaluate extends Component {
                     <td>23/4/2019</td>
                     <td>Nhân</td>
                     <td></td>
-                    <td>
-                      
-                    </td>                                  
+                                                   
                     <td>
                      
                     </td>
@@ -114,9 +110,7 @@ class Evaluate extends Component {
                     <td>25/4/2019</td>
                     <td>Tâm</td>
                     <td></td>
-                    <td>
-                      
-                    </td>                                  
+                                                 
                     <td>
                                  
                     </td>
@@ -131,9 +125,7 @@ class Evaluate extends Component {
                     <td>24/4/2019</td>
                     <td></td>
                     <td></td>
-                    <td>
-                      
-                    </td>                                  
+                                              
                     <td></td>
                     
                   </tr>
@@ -147,9 +139,7 @@ class Evaluate extends Component {
                     <td>24/4/2019</td>
                     <td></td>
                     <td></td>
-                    <td>
-                      
-                    </td>                                  
+                                                 
                     <td>
                      
                     </td>
@@ -164,9 +154,7 @@ class Evaluate extends Component {
                     <td>24/4/2019</td>
                     <td></td>
                     <td></td>
-                    <td>
-                      
-                    </td>                                  
+                                                 
                     <td>
                     </td>
                   </tr>

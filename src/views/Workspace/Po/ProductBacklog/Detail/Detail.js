@@ -13,9 +13,6 @@ import { Link } from 'react-router-dom';
 class Detail extends Component {
    constructor(props) {
     super(props);
-    this.toggleAdd = this.toggleAdd.bind(this);
-    this.toggleEdit = this.toggleEdit.bind(this);
-    this.toggleSend = this.toggleSend.bind(this);
     this.state = {
       data: [ 
               {
@@ -82,6 +79,14 @@ class Detail extends Component {
       modalAdd: false,
       modalEdit: false,
       modalSend: false,
+      id:'',
+      as:"",
+      want:"",
+      so:"",
+      priority:'',
+      estimation:'',
+      sprint:'',
+      status:"",
       }
     };
 
@@ -90,28 +95,80 @@ class Detail extends Component {
       modalAdd: !prevState.modalAdd
     }));
   }
-
-  toggleEdit() {
+  toggleEdit=()=>{
     this.setState(prevState => ({
       modalEdit: !prevState.modalEdit
     }));
   }
-
-  toggleSend() {
+  toggleSend=()=> {
     this.setState(prevState => ({
       modalSend: !prevState.modalSend
     }));
   }
 
-  onTextboxChangeOwnerName(event) {
+  onTextboxChangeAs=(event)=> {
     this.setState({
-      signInEmail: event.target.value,
+      as: event.target.value,
+    });
+    
+  }
+  onTextboxChangeWant=(event)=> {
+    this.setState({
+      want: event.target.value,
+    });
+  }
+  onTextboxChangeSo=(event)=> {
+    this.setState({
+      so: event.target.value,
+    });
+  }
+  onTextboxChangePriority=(event)=> {
+    this.setState({
+      priority: event.target.value,
+    });
+  }
+  onTextboxChangeEstimation=(event)=> {
+    this.setState({
+      estimation: event.target.value,
+    });
+  }
+  
+  onTextboxChangeSprint=(event)=> {
+    this.setState({
+      sprint: event.target.value,
     });
   }
 
+  handleAdd = () => {
+   
+  };
+  handleDelete = () => {
+    
+  };
+  
+  handleUpdate = () => {
+   
+  };
+  handleSend = () => {
+   
+  };
+//   componentDidMount() {
+//     this.setState({inputValue: this.props.inputValue});
+//  }
+//  handleChangeUpdateAs = (e) => {
+//   this.setState({as: e.target.value});
+// }
   render() {
     const {
-      data
+      data,
+      id,
+      as,
+      want,
+      so,
+      priority,
+      estimation,
+      sprint,
+      status,
     } = this.state;
     let that=this;
     return (
@@ -146,13 +203,13 @@ class Detail extends Component {
                             <Modal size="lg" isOpen={that.state.modalAdd} toggle={that.toggleAdd} className={that.props.className}>
                               <ModalHeader toggle={that.toggleAdd}>UserStory</ModalHeader>
                               <ModalBody>
-                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                  <Form  className="form-horizontal">               
                                     <FormGroup row>
                                       <Col md="3">
                                         <Label htmlFor="text-input">As a...</Label>
                                       </Col>
                                       <Col xs="12" md="9">
-                                        <Input type="text" id="text-input" name="text-input" placeholder="As a..." />
+                                        <Input type="text" id="as" name="as" placeholder="As a..." value={as} onChange={that.onTextboxChangeAs}/>
                                         
                                       </Col>
                                     </FormGroup>
@@ -161,7 +218,7 @@ class Detail extends Component {
                                         <Label htmlFor="text-input">I want to be able to...</Label>
                                       </Col>
                                       <Col xs="12" md="9">
-                                        <Input type="text" id="text-input" name="text-input" placeholder="I want to be able to..." />
+                                        <Input type="text" id="want" name="want" placeholder="I want to be able to..." value={want} onChange={that.onTextboxChangeWant}/>
                                         
                                       </Col>
                                     </FormGroup>   
@@ -170,8 +227,8 @@ class Detail extends Component {
                                         <Label htmlFor="textarea-input">So that...</Label>
                                       </Col>
                                       <Col xs="12" md="9">
-                                        <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
-                                               placeholder="Content..." />
+                                        <Input type="textarea" name="so" id="so" rows="9"
+                                               placeholder="Content..." value={so} onChange={that.onTextboxChangeSo}/>
                                       </Col>
                                     </FormGroup>                     
                                     <FormGroup row>
@@ -179,7 +236,7 @@ class Detail extends Component {
                                         <Label htmlFor="date-input">Status </Label>
                                       </Col>
                                       <Col xs="12" md="2">
-                                        <Input type="text" id="text-input" name="texttext-input" placeholder="text" value="to do"/>
+                                        <Input type="text" id="status" name="status" placeholder="text" value="to do"/>
                                       </Col>
                                     </FormGroup>
                                      <FormGroup row>
@@ -187,7 +244,7 @@ class Detail extends Component {
                                         <Label htmlFor="text-input">Priority</Label>
                                       </Col>
                                       <Col xs="12" md="1">
-                                        <Input type="text" name="text-input" id="text-input" rows="9"/>
+                                        <Input type="text" name="priority" id="priority" rows="9" value={priority} onChange={that.onTextboxChangePriority}/>
                                       </Col>
                                      
                                       <Col md="2">                    
@@ -197,7 +254,7 @@ class Detail extends Component {
                                         <Label htmlFor="text-input">Estimation</Label>
                                       </Col>
                                       <Col xs="12" md="1">
-                                        <Input type="text" name="text-input" id="text-input" rows="9"/>                            
+                                        <Input type="text" name="estimation" id="estimation" rows="9" value={estimation} onChange={that.onTextboxChangeEstimation}/>                            
                                       </Col>
 
                                       <Col md="2">                   
@@ -207,13 +264,13 @@ class Detail extends Component {
                                         <Label htmlFor="text-input">Sprint</Label>
                                       </Col>
                                       <Col xs="12" md="1">
-                                        <Input type="text" name="text-input" id="text-input" rows="9"/>                            
+                                        <Input type="text" name="sprint" id="sprint" rows="9" value={sprint} onChange={that.onTextboxChangeSprint}/>                            
                                       </Col>
                                     </FormGroup>                                          
                                   </Form>                        
                               </ModalBody>
                               <ModalFooter>
-                                <Button color="primary" onClick={that.toggleAdd}>Submit</Button>{' '}
+                                <Button color="primary" onClick={that.handleAdd}>Submit</Button>{' '}
                                 <Button color="secondary" onClick={that.toggleAdd}>Cancel</Button>
                               </ModalFooter>
                             </Modal>
@@ -236,11 +293,11 @@ class Detail extends Component {
                       <td>
                         <Button type="submit" size="sm" color="success" onClick={that.toggleSend}><i class="fa fa-share-square"></i></Button>
                         <Modal size="lg" isOpen={that.state.modalSend} toggle={that.toggleSend} className={that.props.className}>
-                                    <ModalHeader toggle={that.toggleSend}>Project</ModalHeader>
+                                    <ModalHeader toggle={that.toggleSend}>ProductBacklog</ModalHeader>
                                     <ModalBody>
                                       <div class="card  bg-primary mb-3">
                                         <div class="card-body">
-                                          <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                          <Form action=""  className="form-horizontal">               
                                             
 
                                             <FormGroup row>
@@ -274,7 +331,7 @@ class Detail extends Component {
                                       </div>                         
                                     </ModalBody>
                                     <ModalFooter>
-                                    <Button color="primary" onClick={that.toggleSend}>Submit</Button>{' '}
+                                    <Button color="primary" onClick={that.handleSend}>Submit</Button>{' '}
                                     <Button color="secondary" onClick={that.toggleSend}>Cancel</Button>
                                     </ModalFooter>
                         </Modal>
@@ -282,7 +339,7 @@ class Detail extends Component {
                             <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
                               <ModalHeader toggle={that.toggleEdit}>ProductBacklog</ModalHeader>
                               <ModalBody>
-                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                  <Form  className="form-horizontal">               
                                     <FormGroup row>
                                       <Col md="3">
                                         <Label htmlFor="text-input">As a...</Label>
@@ -354,11 +411,11 @@ class Detail extends Component {
                                   </Form>                      
                               </ModalBody>
                               <ModalFooter>
-                                <Button color="primary" onClick={that.toggleEdit}>Submit</Button>{' '}
+                                <Button color="primary" onClick={that.handleUpdate}>Submit</Button>{' '}
                                 <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
                               </ModalFooter>
                             </Modal>
-                        <Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button>
+                        <Button  size="sm" color="danger" onClick={that.handleDelete}><i class="fa fa-trash"></i></Button>
                       </td>
                   </tr>
                 )

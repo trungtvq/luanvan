@@ -20,7 +20,7 @@ export default {
       icon: 'icon-pencil',
     },
     {
-      name: 'Convert',
+      name: 'Estimation',
       url: '/Cover',
       icon: 'icon-directions',
     },
