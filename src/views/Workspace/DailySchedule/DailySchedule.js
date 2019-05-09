@@ -45,7 +45,7 @@ class DailySchedule extends Component {
     this.onTextboxChangeStatus = this.onTextboxChangeStatus.bind(this);
     this.onTextboxChangeTimeStart = this.onTextboxChangeTimeStart.bind(this);
     this.onTextboxChangeDateStart = this.onTextboxChangeDateStart.bind(this);
-    this.handleReset = this.handleReset.bind(this);
+ 
 
     
     this.state = {
@@ -132,12 +132,13 @@ class DailySchedule extends Component {
     });
   }
 
-  handleReset(event) {
+  handleReset= (event) => {
     console.log('vao reset');
     this.setState({
       title:'',
     });
   }
+  
   handleAdd = (requesterId,projectId,title,task,time,scheduleStatus,cookie) => {
     const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
@@ -243,7 +244,10 @@ class DailySchedule extends Component {
 //   //        console.log(toto)
 
 // }
-
+ resetform = () =>{
+   this.setState(this.baseState);
+   console.log('vào reset');
+ }
   render() {
     const {
       data,
@@ -343,12 +347,12 @@ class DailySchedule extends Component {
                               </Form>                  
                               </ModalBody>
                               <ModalFooter>
-                                <Button color="primary" onClick={that.toggleEdit}>Submit</Button>{' '}
+                                <Button color="primary" onClick={that.handleUpdate('requesterId11','projectId','scheduleId','title','task','time','scheduleStatus','cookie')}>Submit</Button>{' '}
                                 <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
                               </ModalFooter>
                         </Modal>
 
-                      <Button color="danger" size="sm" ><i class="fa fa-trash"></i></Button>
+                      <Button color="danger" size="sm" ><i class="fa fa-trash" onClick={that.handleDelete('requesterId','projectId','scheduleId','cookie') }></i></Button>
                       </td>
                   </tr>
                 )
@@ -412,7 +416,7 @@ class DailySchedule extends Component {
               </CardBody>
               <CardFooter>
                 <Button type="submit" size="sm" color="primary" onClick={that.handleAdd('requesterId','projectId','title','task','time','scheduleStatus','cookie')}><i className="fa fa-dot-circle-o"></i> Add</Button>
-                <Button type="reset" size="sm" color="danger"><i className="fa fa-ban" onClick={that.handleReset()}></i> Reset</Button>
+                <Button  size="sm" color="danger"><i className="fa fa-ban" onClick={that.resetform()}></i> Reset</Button>
               </CardFooter>
             </Card>
          </Col>
