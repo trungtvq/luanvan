@@ -45,6 +45,7 @@ class DailySchedule extends Component {
     this.onTextboxChangeStatus = this.onTextboxChangeStatus.bind(this);
     this.onTextboxChangeTimeStart = this.onTextboxChangeTimeStart.bind(this);
     this.onTextboxChangeDateStart = this.onTextboxChangeDateStart.bind(this);
+    this.handleReset = this.handleReset.bind(this);
 
     
     this.state = {
@@ -131,11 +132,17 @@ class DailySchedule extends Component {
     });
   }
 
+  handleReset(event) {
+    console.log('vao reset');
+    this.setState({
+      title:'',
+    });
+  }
   handleAdd = (requesterId,projectId,title,task,time,scheduleStatus,cookie) => {
     const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
     console.log(dailyscheduleService)
-    
+    console.log("vao daily");
     var metadata = {};
     //make a request to server
 
@@ -168,6 +175,7 @@ class DailySchedule extends Component {
             }
           });
           console.log(toto)
+          console.log("ra daily");
   };
   handleUpdate = (requesterId,projectId,scheduleId,title,task,time,scheduleStatus,cookie) => {
     
@@ -404,7 +412,7 @@ class DailySchedule extends Component {
               </CardBody>
               <CardFooter>
                 <Button type="submit" size="sm" color="primary" onClick={that.handleAdd('requesterId','projectId','title','task','time','scheduleStatus','cookie')}><i className="fa fa-dot-circle-o"></i> Add</Button>
-                <Button type="reset" size="sm" color="danger"><i className="fa fa-ban"></i> Reset</Button>
+                <Button type="reset" size="sm" color="danger"><i className="fa fa-ban" onClick={that.handleReset()}></i> Reset</Button>
               </CardFooter>
             </Card>
          </Col>

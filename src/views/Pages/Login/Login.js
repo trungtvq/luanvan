@@ -133,17 +133,17 @@ class Login extends Component {
     });
 
      //create service to request
-     const authService = new proto.auth.AuthClient('54.255.233.193:8085');
+     const authService = new proto.auth.AuthClient('http://54.255.233.193:8085');
      //metadab will be config later
      var metadata = {};
      
      //create var for react
      var SignInReq = new proto.auth.SignInReq();
      //set data from frontend to this var
-     SignInReq.setUsername(signInEmail);
-     SignInReq.setPassword(signInPassword);
+     SignInReq.setUsername("signInEmail");
+     SignInReq.setPassword("signInPassword");
       //make a request to server
-      var getTodo = authService.SignIn(SignInReq, metadata, (err, response) => {
+      var getTodo = authService.signIn(SignInReq, metadata, (err, response) => {
         if (err) { //if error
           console.log(err);
         } else { //if success
