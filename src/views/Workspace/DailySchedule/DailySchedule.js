@@ -179,10 +179,72 @@ class DailySchedule extends Component {
           console.log("ra daily");
   };
   handleUpdate = (requesterId,projectId,scheduleId,title,task,time,scheduleStatus,cookie) => {
-    
+    const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://54.255.233.193:8085');
+    //some data of request (get that from frontend)
+    console.log(dailyscheduleService)
+    console.log("vao daily");
+    var metadata = {};
+    //make a request to server
+
+    var UpdateDailyScheduleReq= new proto.dailyschedule.UpdateDailyScheduleReq();
+    UpdateDailyScheduleReq.setRequesterid("tienbede");
+    UpdateDailyScheduleReq.setProjectid("tienbede");
+    UpdateDailyScheduleReq.setScheduleId("tienbede");
+    UpdateDailyScheduleReq.setTitle("tienbede");
+    UpdateDailyScheduleReq.setTask("tienbede");
+    UpdateDailyScheduleReq.setTime("tienbede");
+    UpdateDailyScheduleReq.setSchedulestatus("tienbede");
+    UpdateDailyScheduleReq.setCookie("tienbede");
+
+    var toto=dailyscheduleService.updateDailySchedule(UpdateDailyScheduleReq, metadata, (err, response) => {
+      console.log("connect")
+      if (err) { //if error
+         console.log(err);
+         console.log("error")
+      } else { //if success
+              //get response
+              console.log("response")
+              console.log(response);
+              // console.log("get avatar")
+              // console.log(response.getStatus())
+              
+              const ProfileRes = response[0];
+            }
+          });
+          console.log(toto)
+          console.log("ra daily");
   };
   handleDelete = (requesterId,projectId,scheduleId,cookie) => {
-    
+    const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://54.255.233.193:8085');
+    //some data of request (get that from frontend)
+    console.log(dailyscheduleService)
+    console.log("vao daily");
+    var metadata = {};
+    //make a request to server
+
+    var DeleteDailyScheduleReq= new proto.dailyschedule.DeleteDailyScheduleReq();
+    DeleteDailyScheduleReq.setRequesterid("tienbede");
+    DeleteDailyScheduleReq.setProjectid("tienbede");
+    DeleteDailyScheduleReq.setScheduleId("tienbede");
+    DeleteDailyScheduleReq.setCookie("tienbede");
+
+    var toto=dailyscheduleService.deleteDailySchedule(DeleteDailyScheduleReq, metadata, (err, response) => {
+      console.log("connect")
+      if (err) { //if error
+         console.log(err);
+         console.log("error")
+      } else { //if success
+              //get response
+              console.log("response")
+              console.log(response);
+              // console.log("get avatar")
+              // console.log(response.getStatus())
+              
+              const ProfileRes = response[0];
+            }
+          });
+          console.log(toto)
+          console.log("ra daily");
   };
 // componentWillMount(){
 //    //create service to request
