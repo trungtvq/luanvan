@@ -297,7 +297,7 @@ class AllProject extends Component {
                                               
                                               <FormGroup row>
                                                 <Col md="5">
-                                                  <Label htmlFor="date-input">Private </Label>onTextboxChangeStatus
+                                                  <Label htmlFor="date-input">Private </Label>
                                                 </Col>
                                                 <Col xs="5" md="5">
                                                   <Input type="checkbox" id="Private" name="Private" value={status} onChange={that.onTextboxChangeStatus}/>

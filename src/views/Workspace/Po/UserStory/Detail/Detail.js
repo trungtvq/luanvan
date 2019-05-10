@@ -75,22 +75,33 @@ class Detail extends Component {
       want:'',
       so:'',
 
+
+
       }
     };
   
-    
-
+  resetAddForm=()=>{
+      this.setState({
+        ...this.state,
+        name:'',
+        as:'',
+        want:'',
+        so:'',
+      });
+  }
   toggleAdd() {
+    {this.resetAddForm()};
     this.setState(prevState => ({
       modalAdd: !prevState.modalAdd
     }));
   }
-
   toggleEdit() {
+    // {this.resetDataForm()};
     this.setState(prevState => ({
       modalEdit: !prevState.modalEdit
     }));
   }
+
   onTextboxChangename(event) {
     this.setState({
       name: event.target.value,
@@ -111,15 +122,17 @@ class Detail extends Component {
       so: event.target.value,
     });
   }
+
+ 
+
   handleAdd = (adderId,projectId,name,role,want,so,cookie) => {
-   
+    var err='';
+    if(err==''){
+      this.setState(prevState=>[...prevState.data,{name:name,role:role,want,so}]);
+    }
   };
   handleDelete = (idOwner,idProject,cookie) => {
-    console.log(idOwner);
-    console.log(idProject);
-    console.log(cookie);
   };
-  
   handleUpdate = (idProject,idOwner,userName,projectName,start,end,status,cookie) => {
    
   };
@@ -158,7 +171,7 @@ class Detail extends Component {
                       <th>
                         <div>
                             <Button color="primary" size="sm" className="mt-3" onClick={that.toggleAdd}><i class="fa fa-plus-square"></i>{this.props.buttonLabel}</Button>
-                            <Modal size="lg" isOpen={that.state.modalAdd} toggle={that.toggleAdd} className={that.props.className}>
+                            <Modal size="lg" isOpen={that.state.modalAdd} toggle={that.toggleAdd}>
                               <ModalHeader toggle={that.toggleAdd}>UserStory</ModalHeader>
                               <ModalBody>
                                   <Form className="form-horizontal">    
@@ -201,7 +214,7 @@ class Detail extends Component {
                                   </Form>                           
                               </ModalBody>
                               <ModalFooter>
-                                <Button color="primary" onClick={that.handleAdd('adderId','projectId','name','role','want','so','cookie')}>Submit</Button>{' '}
+                                <Button color="primary" onClick={that.handleAdd('adderId','projectId',name,as,want,so,'cookie')}>Submit</Button>{' '}
                                 <Button color="secondary" onClick={that.toggleAdd}>Cancel</Button>
                               </ModalFooter>
                             </Modal>
@@ -218,8 +231,8 @@ class Detail extends Component {
                         <td>{item.so}</td>
                         <td>
                          
-                          <Button color="warning" size="sm" onClick={that.toggleEdit}><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
-                          <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
+                          <Button color="warning" size="sm" onClick={that.toggleEdit}><i class="fa fa-edit"></i></Button>
+                          <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} >
                               <ModalHeader toggle={that.toggleEdit}>UserStory</ModalHeader>
                               <ModalBody>
                               <Form className="form-horizontal">    
@@ -228,7 +241,7 @@ class Detail extends Component {
                                           <Label htmlFor="text-input">Name</Label>
                                         </Col>
                                         <Col xs="12" md="9">
-                                          <Input type="text" id="name" name="name" placeholder="name" value={name} onChange={that.onTextboxChangename}/>
+                                          <Input type="text" id="name" name="name" placeholder="name" value={item.name} onChange={that.onTextboxChangename}/>
                                           
                                         </Col>
                                       </FormGroup>           
@@ -237,7 +250,7 @@ class Detail extends Component {
                                           <Label htmlFor="text-input">As a...</Label>
                                         </Col>
                                         <Col xs="12" md="9">
-                                          <Input type="text" id="as" name="as" placeholder="As a..." value={as} onChange={that.onTextboxChangeas}/>
+                                          <Input type="text" id="as" name="as" placeholder="As a..." value={item.role} onChange={that.onTextboxChangeas}/>
                                           
                                         </Col>
                                       </FormGroup>
@@ -246,7 +259,7 @@ class Detail extends Component {
                                           <Label htmlFor="text-input">I want to be able to...</Label>
                                         </Col>
                                         <Col xs="12" md="9">
-                                          <Input type="text" id="want" name="want" placeholder="I want to be able to..." value={want} onChange={that.onTextboxChangewant}/>
+                                          <Input type="text" id="want" name="want" placeholder="I want to be able to..." value={item.want} onChange={that.onTextboxChangewant}/>
                                           
                                         </Col>
                                       </FormGroup>   
@@ -256,7 +269,7 @@ class Detail extends Component {
                                         </Col>
                                         <Col xs="12" md="9">
                                           <Input type="textarea" name="so" id="so" rows="9"
-                                                 placeholder="Content..."  value={so} onChange={that.onTextboxChangeso}/>
+                                                 placeholder="Content..."  value={item.so} onChange={that.onTextboxChangeso}/>
                                         </Col>
                                       </FormGroup>                     
                                   </Form>                                       
@@ -266,7 +279,7 @@ class Detail extends Component {
                                 <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
                               </ModalFooter>
                           </Modal>
-                     
+                          
                           <Button type="submit" size="sm" color="danger" onClick={that.handleDelete('idOwner','idProject','cookie')}><i class="fa fa-trash"></i></Button>
                       </td>
                     </tr>
