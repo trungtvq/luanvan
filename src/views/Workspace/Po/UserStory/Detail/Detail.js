@@ -26,28 +26,28 @@ class Detail extends Component {
     this.state = {
       data: [ 
               {
-                "id":1,
+                "id":'1',
                 "name":"a",
                 "as":"admin",
                 "want":"See a list of all members and visitors",
                 "so":"I can monitor site visits",
               },
               {
-                "id":2,
+                "id":'2',
                 "name":"a",
                 "as":"admin",
                 "want":"Add new categories",
                 "so":"I can allow members to create engaging content",
               },
               {
-                "id":3,
+                "id":'3',
                 "name":"a",
                 "as":"admin",
                 "want":"Add new security groups",
                 "so":"Security levels are approriate",
               },
               {
-                "id":4,
+                "id":'4',
                 "name":"a",
                 "as":"admin",
                 "want":"Delete comment",
@@ -61,7 +61,7 @@ class Detail extends Component {
                 "so":"Content is easy to groups and search for",
               },
               {
-                "id":6,
+                "id":'6',
                 "name":"a",
                 "as":"member",
                 "want":"Update my account detail",
@@ -96,7 +96,7 @@ class Detail extends Component {
     }));
   }
   toggleEdit() {
-    // {this.resetDataForm()};
+    //{this.resetDataForm()};
     this.setState(prevState => ({
       modalEdit: !prevState.modalEdit
     }));
@@ -125,10 +125,15 @@ class Detail extends Component {
 
  
 
-  handleAdd = (adderId,projectId,name,role,want,so,cookie) => {
+  handleAdd = () => {
+    var id='1';
     var err='';
     if(err==''){
-      this.setState(prevState=>[...prevState.data,{name:name,role:role,want,so}]);
+      this.setState(prevState => ({
+        modalAdd: !prevState.modalAdd,
+      }));
+      this.setState(prevState=>({data:[...prevState.data,{id:id,name:this.state.name,as:this.state.as,want:this.state.want,so:this.state.so}]}));
+  
     }
   };
   handleDelete = (idOwner,idProject,cookie) => {
@@ -214,7 +219,7 @@ class Detail extends Component {
                                   </Form>                           
                               </ModalBody>
                               <ModalFooter>
-                                <Button color="primary" onClick={that.handleAdd('adderId','projectId',name,as,want,so,'cookie')}>Submit</Button>{' '}
+                                <Button color="primary" onClick={that.handleAdd}>Submit</Button>
                                 <Button color="secondary" onClick={that.toggleAdd}>Cancel</Button>
                               </ModalFooter>
                             </Modal>
