@@ -8,14 +8,14 @@ public interface AddNewProductBacklogReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string userName = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
-  java.lang.String getUserName();
+  java.lang.String getRequesterId();
   /**
-   * <code>string userName = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
   com.google.protobuf.ByteString
-      getUserNameBytes();
+      getRequesterIdBytes();
 
   /**
    * <code>string projectId = 2;</code>
@@ -62,18 +62,18 @@ public interface AddNewProductBacklogReqOrBuilder extends
    *alway status="todo" when add productbacklog
    * </pre>
    *
-   * <code>string status = 6;</code>
+   * <code>string statusBacklog = 6;</code>
    */
-  java.lang.String getStatus();
+  java.lang.String getStatusBacklog();
   /**
    * <pre>
    *alway status="todo" when add productbacklog
    * </pre>
    *
-   * <code>string status = 6;</code>
+   * <code>string statusBacklog = 6;</code>
    */
   com.google.protobuf.ByteString
-      getStatusBytes();
+      getStatusBacklogBytes();
 
   /**
    * <code>string priority = 7;</code>

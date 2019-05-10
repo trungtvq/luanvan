@@ -28,21 +28,21 @@ public final class DailyscheduleGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.AddNewDailyScheduleReq,
-      co.overlead.gRPC.AddNewDailyScheduleRes> getAddNewDailyScheduleMethod;
+      co.overlead.gRPC.DailyScheduleRes> getAddNewDailyScheduleMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "addNewDailySchedule",
       requestType = co.overlead.gRPC.AddNewDailyScheduleReq.class,
-      responseType = co.overlead.gRPC.AddNewDailyScheduleRes.class,
+      responseType = co.overlead.gRPC.DailyScheduleRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<co.overlead.gRPC.AddNewDailyScheduleReq,
-      co.overlead.gRPC.AddNewDailyScheduleRes> getAddNewDailyScheduleMethod() {
-    io.grpc.MethodDescriptor<co.overlead.gRPC.AddNewDailyScheduleReq, co.overlead.gRPC.AddNewDailyScheduleRes> getAddNewDailyScheduleMethod;
+      co.overlead.gRPC.DailyScheduleRes> getAddNewDailyScheduleMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.AddNewDailyScheduleReq, co.overlead.gRPC.DailyScheduleRes> getAddNewDailyScheduleMethod;
     if ((getAddNewDailyScheduleMethod = DailyscheduleGrpc.getAddNewDailyScheduleMethod) == null) {
       synchronized (DailyscheduleGrpc.class) {
         if ((getAddNewDailyScheduleMethod = DailyscheduleGrpc.getAddNewDailyScheduleMethod) == null) {
           DailyscheduleGrpc.getAddNewDailyScheduleMethod = getAddNewDailyScheduleMethod = 
-              io.grpc.MethodDescriptor.<co.overlead.gRPC.AddNewDailyScheduleReq, co.overlead.gRPC.AddNewDailyScheduleRes>newBuilder()
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.AddNewDailyScheduleReq, co.overlead.gRPC.DailyScheduleRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "dailyschedule.Dailyschedule", "addNewDailySchedule"))
@@ -50,7 +50,7 @@ public final class DailyscheduleGrpc {
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.AddNewDailyScheduleReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.AddNewDailyScheduleRes.getDefaultInstance()))
+                  co.overlead.gRPC.DailyScheduleRes.getDefaultInstance()))
                   .setSchemaDescriptor(new DailyscheduleMethodDescriptorSupplier("addNewDailySchedule"))
                   .build();
           }
@@ -60,21 +60,21 @@ public final class DailyscheduleGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateDailyScheduleReq,
-      co.overlead.gRPC.UpdateDailyScheduleRes> getUpdateDailyScheduleMethod;
+      co.overlead.gRPC.DailyScheduleRes> getUpdateDailyScheduleMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "updateDailySchedule",
       requestType = co.overlead.gRPC.UpdateDailyScheduleReq.class,
-      responseType = co.overlead.gRPC.UpdateDailyScheduleRes.class,
+      responseType = co.overlead.gRPC.DailyScheduleRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateDailyScheduleReq,
-      co.overlead.gRPC.UpdateDailyScheduleRes> getUpdateDailyScheduleMethod() {
-    io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateDailyScheduleReq, co.overlead.gRPC.UpdateDailyScheduleRes> getUpdateDailyScheduleMethod;
+      co.overlead.gRPC.DailyScheduleRes> getUpdateDailyScheduleMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateDailyScheduleReq, co.overlead.gRPC.DailyScheduleRes> getUpdateDailyScheduleMethod;
     if ((getUpdateDailyScheduleMethod = DailyscheduleGrpc.getUpdateDailyScheduleMethod) == null) {
       synchronized (DailyscheduleGrpc.class) {
         if ((getUpdateDailyScheduleMethod = DailyscheduleGrpc.getUpdateDailyScheduleMethod) == null) {
           DailyscheduleGrpc.getUpdateDailyScheduleMethod = getUpdateDailyScheduleMethod = 
-              io.grpc.MethodDescriptor.<co.overlead.gRPC.UpdateDailyScheduleReq, co.overlead.gRPC.UpdateDailyScheduleRes>newBuilder()
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.UpdateDailyScheduleReq, co.overlead.gRPC.DailyScheduleRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "dailyschedule.Dailyschedule", "updateDailySchedule"))
@@ -82,7 +82,7 @@ public final class DailyscheduleGrpc {
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.UpdateDailyScheduleReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.UpdateDailyScheduleRes.getDefaultInstance()))
+                  co.overlead.gRPC.DailyScheduleRes.getDefaultInstance()))
                   .setSchemaDescriptor(new DailyscheduleMethodDescriptorSupplier("updateDailySchedule"))
                   .build();
           }
@@ -92,21 +92,21 @@ public final class DailyscheduleGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteDailyScheduleReq,
-      co.overlead.gRPC.DeleteDailyScheduleRes> getDeleteDailyScheduleMethod;
+      co.overlead.gRPC.DailyScheduleRes> getDeleteDailyScheduleMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "deleteDailySchedule",
       requestType = co.overlead.gRPC.DeleteDailyScheduleReq.class,
-      responseType = co.overlead.gRPC.DeleteDailyScheduleRes.class,
+      responseType = co.overlead.gRPC.DailyScheduleRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteDailyScheduleReq,
-      co.overlead.gRPC.DeleteDailyScheduleRes> getDeleteDailyScheduleMethod() {
-    io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteDailyScheduleReq, co.overlead.gRPC.DeleteDailyScheduleRes> getDeleteDailyScheduleMethod;
+      co.overlead.gRPC.DailyScheduleRes> getDeleteDailyScheduleMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteDailyScheduleReq, co.overlead.gRPC.DailyScheduleRes> getDeleteDailyScheduleMethod;
     if ((getDeleteDailyScheduleMethod = DailyscheduleGrpc.getDeleteDailyScheduleMethod) == null) {
       synchronized (DailyscheduleGrpc.class) {
         if ((getDeleteDailyScheduleMethod = DailyscheduleGrpc.getDeleteDailyScheduleMethod) == null) {
           DailyscheduleGrpc.getDeleteDailyScheduleMethod = getDeleteDailyScheduleMethod = 
-              io.grpc.MethodDescriptor.<co.overlead.gRPC.DeleteDailyScheduleReq, co.overlead.gRPC.DeleteDailyScheduleRes>newBuilder()
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.DeleteDailyScheduleReq, co.overlead.gRPC.DailyScheduleRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "dailyschedule.Dailyschedule", "deleteDailySchedule"))
@@ -114,7 +114,7 @@ public final class DailyscheduleGrpc {
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.DeleteDailyScheduleReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.DeleteDailyScheduleRes.getDefaultInstance()))
+                  co.overlead.gRPC.DailyScheduleRes.getDefaultInstance()))
                   .setSchemaDescriptor(new DailyscheduleMethodDescriptorSupplier("deleteDailySchedule"))
                   .build();
           }
@@ -124,21 +124,21 @@ public final class DailyscheduleGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllDailyScheduleReq,
-      co.overlead.gRPC.GetAllDailyScheduleRes> getGetAllDailyScheduleMethod;
+      co.overlead.gRPC.DailyScheduleRes> getGetAllDailyScheduleMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "getAllDailySchedule",
       requestType = co.overlead.gRPC.GetAllDailyScheduleReq.class,
-      responseType = co.overlead.gRPC.GetAllDailyScheduleRes.class,
+      responseType = co.overlead.gRPC.DailyScheduleRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
   public static io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllDailyScheduleReq,
-      co.overlead.gRPC.GetAllDailyScheduleRes> getGetAllDailyScheduleMethod() {
-    io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllDailyScheduleReq, co.overlead.gRPC.GetAllDailyScheduleRes> getGetAllDailyScheduleMethod;
+      co.overlead.gRPC.DailyScheduleRes> getGetAllDailyScheduleMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllDailyScheduleReq, co.overlead.gRPC.DailyScheduleRes> getGetAllDailyScheduleMethod;
     if ((getGetAllDailyScheduleMethod = DailyscheduleGrpc.getGetAllDailyScheduleMethod) == null) {
       synchronized (DailyscheduleGrpc.class) {
         if ((getGetAllDailyScheduleMethod = DailyscheduleGrpc.getGetAllDailyScheduleMethod) == null) {
           DailyscheduleGrpc.getGetAllDailyScheduleMethod = getGetAllDailyScheduleMethod = 
-              io.grpc.MethodDescriptor.<co.overlead.gRPC.GetAllDailyScheduleReq, co.overlead.gRPC.GetAllDailyScheduleRes>newBuilder()
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.GetAllDailyScheduleReq, co.overlead.gRPC.DailyScheduleRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(
                   "dailyschedule.Dailyschedule", "getAllDailySchedule"))
@@ -146,7 +146,7 @@ public final class DailyscheduleGrpc {
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.GetAllDailyScheduleReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.GetAllDailyScheduleRes.getDefaultInstance()))
+                  co.overlead.gRPC.DailyScheduleRes.getDefaultInstance()))
                   .setSchemaDescriptor(new DailyscheduleMethodDescriptorSupplier("getAllDailySchedule"))
                   .build();
           }
@@ -185,28 +185,28 @@ public final class DailyscheduleGrpc {
     /**
      */
     public void addNewDailySchedule(co.overlead.gRPC.AddNewDailyScheduleReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.AddNewDailyScheduleRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.DailyScheduleRes> responseObserver) {
       asyncUnimplementedUnaryCall(getAddNewDailyScheduleMethod(), responseObserver);
     }
 
     /**
      */
     public void updateDailySchedule(co.overlead.gRPC.UpdateDailyScheduleReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.UpdateDailyScheduleRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.DailyScheduleRes> responseObserver) {
       asyncUnimplementedUnaryCall(getUpdateDailyScheduleMethod(), responseObserver);
     }
 
     /**
      */
     public void deleteDailySchedule(co.overlead.gRPC.DeleteDailyScheduleReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.DeleteDailyScheduleRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.DailyScheduleRes> responseObserver) {
       asyncUnimplementedUnaryCall(getDeleteDailyScheduleMethod(), responseObserver);
     }
 
     /**
      */
     public void getAllDailySchedule(co.overlead.gRPC.GetAllDailyScheduleReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllDailyScheduleRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.DailyScheduleRes> responseObserver) {
       asyncUnimplementedUnaryCall(getGetAllDailyScheduleMethod(), responseObserver);
     }
 
@@ -217,28 +217,28 @@ public final class DailyscheduleGrpc {
             asyncUnaryCall(
               new MethodHandlers<
                 co.overlead.gRPC.AddNewDailyScheduleReq,
-                co.overlead.gRPC.AddNewDailyScheduleRes>(
+                co.overlead.gRPC.DailyScheduleRes>(
                   this, METHODID_ADD_NEW_DAILY_SCHEDULE)))
           .addMethod(
             getUpdateDailyScheduleMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 co.overlead.gRPC.UpdateDailyScheduleReq,
-                co.overlead.gRPC.UpdateDailyScheduleRes>(
+                co.overlead.gRPC.DailyScheduleRes>(
                   this, METHODID_UPDATE_DAILY_SCHEDULE)))
           .addMethod(
             getDeleteDailyScheduleMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 co.overlead.gRPC.DeleteDailyScheduleReq,
-                co.overlead.gRPC.DeleteDailyScheduleRes>(
+                co.overlead.gRPC.DailyScheduleRes>(
                   this, METHODID_DELETE_DAILY_SCHEDULE)))
           .addMethod(
             getGetAllDailyScheduleMethod(),
             asyncServerStreamingCall(
               new MethodHandlers<
                 co.overlead.gRPC.GetAllDailyScheduleReq,
-                co.overlead.gRPC.GetAllDailyScheduleRes>(
+                co.overlead.gRPC.DailyScheduleRes>(
                   this, METHODID_GET_ALL_DAILY_SCHEDULE)))
           .build();
     }
@@ -265,7 +265,7 @@ public final class DailyscheduleGrpc {
     /**
      */
     public void addNewDailySchedule(co.overlead.gRPC.AddNewDailyScheduleReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.AddNewDailyScheduleRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.DailyScheduleRes> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getAddNewDailyScheduleMethod(), getCallOptions()), request, responseObserver);
     }
@@ -273,7 +273,7 @@ public final class DailyscheduleGrpc {
     /**
      */
     public void updateDailySchedule(co.overlead.gRPC.UpdateDailyScheduleReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.UpdateDailyScheduleRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.DailyScheduleRes> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getUpdateDailyScheduleMethod(), getCallOptions()), request, responseObserver);
     }
@@ -281,7 +281,7 @@ public final class DailyscheduleGrpc {
     /**
      */
     public void deleteDailySchedule(co.overlead.gRPC.DeleteDailyScheduleReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.DeleteDailyScheduleRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.DailyScheduleRes> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getDeleteDailyScheduleMethod(), getCallOptions()), request, responseObserver);
     }
@@ -289,7 +289,7 @@ public final class DailyscheduleGrpc {
     /**
      */
     public void getAllDailySchedule(co.overlead.gRPC.GetAllDailyScheduleReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllDailyScheduleRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.DailyScheduleRes> responseObserver) {
       asyncServerStreamingCall(
           getChannel().newCall(getGetAllDailyScheduleMethod(), getCallOptions()), request, responseObserver);
     }
@@ -315,28 +315,28 @@ public final class DailyscheduleGrpc {
 
     /**
      */
-    public co.overlead.gRPC.AddNewDailyScheduleRes addNewDailySchedule(co.overlead.gRPC.AddNewDailyScheduleReq request) {
+    public co.overlead.gRPC.DailyScheduleRes addNewDailySchedule(co.overlead.gRPC.AddNewDailyScheduleReq request) {
       return blockingUnaryCall(
           getChannel(), getAddNewDailyScheduleMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public co.overlead.gRPC.UpdateDailyScheduleRes updateDailySchedule(co.overlead.gRPC.UpdateDailyScheduleReq request) {
+    public co.overlead.gRPC.DailyScheduleRes updateDailySchedule(co.overlead.gRPC.UpdateDailyScheduleReq request) {
       return blockingUnaryCall(
           getChannel(), getUpdateDailyScheduleMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public co.overlead.gRPC.DeleteDailyScheduleRes deleteDailySchedule(co.overlead.gRPC.DeleteDailyScheduleReq request) {
+    public co.overlead.gRPC.DailyScheduleRes deleteDailySchedule(co.overlead.gRPC.DeleteDailyScheduleReq request) {
       return blockingUnaryCall(
           getChannel(), getDeleteDailyScheduleMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public java.util.Iterator<co.overlead.gRPC.GetAllDailyScheduleRes> getAllDailySchedule(
+    public java.util.Iterator<co.overlead.gRPC.DailyScheduleRes> getAllDailySchedule(
         co.overlead.gRPC.GetAllDailyScheduleReq request) {
       return blockingServerStreamingCall(
           getChannel(), getGetAllDailyScheduleMethod(), getCallOptions(), request);
@@ -363,7 +363,7 @@ public final class DailyscheduleGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.AddNewDailyScheduleRes> addNewDailySchedule(
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.DailyScheduleRes> addNewDailySchedule(
         co.overlead.gRPC.AddNewDailyScheduleReq request) {
       return futureUnaryCall(
           getChannel().newCall(getAddNewDailyScheduleMethod(), getCallOptions()), request);
@@ -371,7 +371,7 @@ public final class DailyscheduleGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.UpdateDailyScheduleRes> updateDailySchedule(
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.DailyScheduleRes> updateDailySchedule(
         co.overlead.gRPC.UpdateDailyScheduleReq request) {
       return futureUnaryCall(
           getChannel().newCall(getUpdateDailyScheduleMethod(), getCallOptions()), request);
@@ -379,7 +379,7 @@ public final class DailyscheduleGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.DeleteDailyScheduleRes> deleteDailySchedule(
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.DailyScheduleRes> deleteDailySchedule(
         co.overlead.gRPC.DeleteDailyScheduleReq request) {
       return futureUnaryCall(
           getChannel().newCall(getDeleteDailyScheduleMethod(), getCallOptions()), request);
@@ -410,19 +410,19 @@ public final class DailyscheduleGrpc {
       switch (methodId) {
         case METHODID_ADD_NEW_DAILY_SCHEDULE:
           serviceImpl.addNewDailySchedule((co.overlead.gRPC.AddNewDailyScheduleReq) request,
-              (io.grpc.stub.StreamObserver<co.overlead.gRPC.AddNewDailyScheduleRes>) responseObserver);
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.DailyScheduleRes>) responseObserver);
           break;
         case METHODID_UPDATE_DAILY_SCHEDULE:
           serviceImpl.updateDailySchedule((co.overlead.gRPC.UpdateDailyScheduleReq) request,
-              (io.grpc.stub.StreamObserver<co.overlead.gRPC.UpdateDailyScheduleRes>) responseObserver);
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.DailyScheduleRes>) responseObserver);
           break;
         case METHODID_DELETE_DAILY_SCHEDULE:
           serviceImpl.deleteDailySchedule((co.overlead.gRPC.DeleteDailyScheduleReq) request,
-              (io.grpc.stub.StreamObserver<co.overlead.gRPC.DeleteDailyScheduleRes>) responseObserver);
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.DailyScheduleRes>) responseObserver);
           break;
         case METHODID_GET_ALL_DAILY_SCHEDULE:
           serviceImpl.getAllDailySchedule((co.overlead.gRPC.GetAllDailyScheduleReq) request,
-              (io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllDailyScheduleRes>) responseObserver);
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.DailyScheduleRes>) responseObserver);
           break;
         default:
           throw new AssertionError();

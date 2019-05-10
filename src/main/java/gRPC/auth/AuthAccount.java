@@ -21,15 +21,15 @@ public class AuthAccount {
             return foundDocument;
         }
         public void makeResponseForSignInSuccess(StreamObserver res,String id){
-            //TODO: Gen session && send to redis
             String newSession="newSession";
+            setSession(id,newSession);
             res.onNext(SignInRes.newBuilder().setStatus("SUCCESS").setError("FALSE").setSession(newSession).setId(id).build());
             res.onCompleted();
         }
-        public void setSession(String id,String session){
+        public  void setSession(String id,String session){
             Redis.LIST_SESSION_SYNC_COMMAND.lpush(id,session);
         }
-        public boolean getSession(String id,String session){
+        public static boolean getSession(String id,String session){
             Long length=Redis.LIST_SESSION_SYNC_COMMAND.llen(id);
             List<Long> list=Redis.LIST_SESSION_SYNC_COMMAND.lrange(id,0,length);
 
@@ -105,9 +105,12 @@ public class AuthAccount {
         public void signIn(SignInReq request, StreamObserver<SignInRes> responseObserver) {
             List<Document> user=getUserFromDB(request.getUsername());
             if (user.size()==1){
-                if (user.get(0).get("password")==request.getPassword()){
+                String pa=user.get(0).get("password").toString();
+                String pass=request.getPassword();
+                if (pa.equals(pass)){
                     makeResponseForSignInSuccess(responseObserver,user.get(0).get("_id").toString());
                 }else{
+                    System.out.println("WRONG");
                     makeResponseForSignInFailed(responseObserver,"WRONG_PASSWORD","TRUE");
                 }
             } else {
@@ -153,8 +156,6 @@ public class AuthAccount {
                 }
             }
         }
-
-
     }
 
 }

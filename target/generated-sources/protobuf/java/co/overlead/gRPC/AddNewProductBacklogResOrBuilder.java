@@ -18,14 +18,14 @@ public interface AddNewProductBacklogResOrBuilder extends
       getStatusBytes();
 
   /**
-   * <code>string productbacklogId = 2;</code>
+   * <code>string productBacklogId = 2;</code>
    */
-  java.lang.String getProductbacklogId();
+  java.lang.String getProductBacklogId();
   /**
-   * <code>string productbacklogId = 2;</code>
+   * <code>string productBacklogId = 2;</code>
    */
   com.google.protobuf.ByteString
-      getProductbacklogIdBytes();
+      getProductBacklogIdBytes();
 
   /**
    * <code>string error = 3;</code>

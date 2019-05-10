@@ -20,40 +20,25 @@ public final class dailyschedule {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_dailyschedule_AddNewDailyScheduleReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_dailyschedule_AddNewDailyScheduleRes_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_dailyschedule_AddNewDailyScheduleRes_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_dailyschedule_UpdateDailyScheduleReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_dailyschedule_UpdateDailyScheduleReq_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_dailyschedule_UpdateDailyScheduleRes_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_dailyschedule_UpdateDailyScheduleRes_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_dailyschedule_DeleteDailyScheduleReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_dailyschedule_DeleteDailyScheduleReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_dailyschedule_DeleteDailyScheduleRes_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_dailyschedule_DeleteDailyScheduleRes_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_dailyschedule_GetAllDailyScheduleReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_dailyschedule_GetAllDailyScheduleReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_dailyschedule_GetAllDailyScheduleRes_descriptor;
+    internal_static_dailyschedule_DailyScheduleRes_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_dailyschedule_GetAllDailyScheduleRes_fieldAccessorTable;
+      internal_static_dailyschedule_DailyScheduleRes_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -63,39 +48,35 @@ public final class dailyschedule {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\023dailyschedule.proto\022\rdailyschedule\"\234\001\n" +
-      "\026AddNewDailyScheduleReq\022\020\n\010userName\030\001 \001(" +
-      "\t\022\021\n\tprojectId\030\002 \001(\t\022\014\n\004date\030\003 \001(\t\022\021\n\tid" +
-      "backlog\030\004 \001(\t\022\014\n\004task\030\005 \001(\t\022\016\n\006status\030\006 " +
-      "\001(\t\022\016\n\006review\030\007 \001(\t\022\016\n\006cookie\030\010 \001(\t\"P\n\026A" +
-      "ddNewDailyScheduleRes\022\016\n\006status\030\001 \001(\t\022\027\n" +
-      "\017dailyscheduleId\030\002 \001(\t\022\r\n\005error\030\003 \001(\t\"\234\001" +
-      "\n\026UpdateDailyScheduleReq\022\020\n\010userName\030\001 \001" +
-      "(\t\022\021\n\tprojectId\030\002 \001(\t\022\014\n\004date\030\003 \001(\t\022\021\n\ti" +
-      "dbacklog\030\004 \001(\t\022\014\n\004task\030\005 \001(\t\022\016\n\006status\030\006" +
-      " \001(\t\022\016\n\006review\030\007 \001(\t\022\016\n\006cookie\030\010 \001(\t\"7\n\026" +
-      "UpdateDailyScheduleRes\022\016\n\006status\030\001 \001(\t\022\r" +
-      "\n\005error\030\002 \001(\t\"f\n\026DeleteDailyScheduleReq\022" +
-      "\020\n\010userName\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\027\n\017" +
-      "dailyscheduleId\030\003 \001(\t\022\016\n\006cookie\030\004 \001(\t\"7\n" +
-      "\026DeleteDailyScheduleRes\022\016\n\006status\030\001 \001(\t\022" +
-      "\r\n\005error\030\002 \001(\t\"M\n\026GetAllDailyScheduleReq" +
-      "\022\020\n\010userName\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\016\n" +
-      "\006cookie\030\003 \001(\t\"g\n\026GetAllDailyScheduleRes\022" +
-      "\014\n\004date\030\001 \001(\t\022\021\n\tidbacklog\030\002 \001(\t\022\014\n\004task" +
-      "\030\003 \001(\t\022\016\n\006status\030\004 \001(\t\022\016\n\006review\030\005 \001(\t2\255" +
-      "\003\n\rDailyschedule\022e\n\023addNewDailySchedule\022" +
-      "%.dailyschedule.AddNewDailyScheduleReq\032%" +
-      ".dailyschedule.AddNewDailyScheduleRes\"\000\022" +
-      "e\n\023updateDailySchedule\022%.dailyschedule.U" +
-      "pdateDailyScheduleReq\032%.dailyschedule.Up" +
-      "dateDailyScheduleRes\"\000\022e\n\023deleteDailySch" +
-      "edule\022%.dailyschedule.DeleteDailySchedul" +
-      "eReq\032%.dailyschedule.DeleteDailySchedule" +
-      "Res\"\000\022g\n\023getAllDailySchedule\022%.dailysche" +
-      "dule.GetAllDailyScheduleReq\032%.dailysched" +
-      "ule.GetAllDailyScheduleRes\"\0000\001B(\n\020co.ove" +
-      "rlead.gRPCB\rdailyscheduleP\001\242\002\002dsb\006proto3"
+      "\n\023dailyschedule.proto\022\rdailyschedule\"\223\001\n" +
+      "\026AddNewDailyScheduleReq\022\023\n\013requesterId\030\001" +
+      " \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\r\n\005title\030\003 \001(\t\022\014" +
+      "\n\004task\030\004 \001(\t\022\014\n\004time\030\005 \001(\t\022\026\n\016scheduleSt" +
+      "atus\030\006 \001(\t\022\016\n\006cookie\030\010 \001(\t\"\247\001\n\026UpdateDai" +
+      "lyScheduleReq\022\023\n\013requesterId\030\001 \001(\t\022\021\n\tpr" +
+      "ojectId\030\002 \001(\t\022\022\n\nscheduleId\030\003 \001(\t\022\r\n\005tit" +
+      "le\030\004 \001(\t\022\014\n\004task\030\005 \001(\t\022\014\n\004time\030\006 \001(\t\022\026\n\016" +
+      "scheduleStatus\030\007 \001(\t\022\016\n\006cookie\030\010 \001(\t\"d\n\026" +
+      "DeleteDailyScheduleReq\022\023\n\013requesterId\030\001 " +
+      "\001(\t\022\021\n\tprojectId\030\002 \001(\t\022\022\n\nscheduleId\030\003 \001" +
+      "(\t\022\016\n\006cookie\030\004 \001(\t\"P\n\026GetAllDailySchedul" +
+      "eReq\022\023\n\013requesterId\030\001 \001(\t\022\021\n\tprojectId\030\002" +
+      " \001(\t\022\016\n\006cookie\030\003 \001(\t\"\226\001\n\020DailyScheduleRe" +
+      "s\022\r\n\005error\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\022\n\nsche" +
+      "duleId\030\003 \001(\t\022\r\n\005title\030\004 \001(\t\022\014\n\004task\030\005 \001(" +
+      "\t\022\014\n\004time\030\007 \001(\t\022\014\n\004note\030\010 \001(\t\022\026\n\016schedul" +
+      "eStatus\030\t \001(\t2\225\003\n\rDailyschedule\022_\n\023addNe" +
+      "wDailySchedule\022%.dailyschedule.AddNewDai" +
+      "lyScheduleReq\032\037.dailyschedule.DailySched" +
+      "uleRes\"\000\022_\n\023updateDailySchedule\022%.dailys" +
+      "chedule.UpdateDailyScheduleReq\032\037.dailysc" +
+      "hedule.DailyScheduleRes\"\000\022_\n\023deleteDaily" +
+      "Schedule\022%.dailyschedule.DeleteDailySche" +
+      "duleReq\032\037.dailyschedule.DailyScheduleRes" +
+      "\"\000\022a\n\023getAllDailySchedule\022%.dailyschedul" +
+      "e.GetAllDailyScheduleReq\032\037.dailyschedule" +
+      ".DailyScheduleRes\"\0000\001B(\n\020co.overlead.gRP" +
+      "CB\rdailyscheduleP\001\242\002\002dsb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -114,49 +95,31 @@ public final class dailyschedule {
     internal_static_dailyschedule_AddNewDailyScheduleReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_dailyschedule_AddNewDailyScheduleReq_descriptor,
-        new java.lang.String[] { "UserName", "ProjectId", "Date", "Idbacklog", "Task", "Status", "Review", "Cookie", });
-    internal_static_dailyschedule_AddNewDailyScheduleRes_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_dailyschedule_AddNewDailyScheduleRes_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_dailyschedule_AddNewDailyScheduleRes_descriptor,
-        new java.lang.String[] { "Status", "DailyscheduleId", "Error", });
+        new java.lang.String[] { "RequesterId", "ProjectId", "Title", "Task", "Time", "ScheduleStatus", "Cookie", });
     internal_static_dailyschedule_UpdateDailyScheduleReq_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(1);
     internal_static_dailyschedule_UpdateDailyScheduleReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_dailyschedule_UpdateDailyScheduleReq_descriptor,
-        new java.lang.String[] { "UserName", "ProjectId", "Date", "Idbacklog", "Task", "Status", "Review", "Cookie", });
-    internal_static_dailyschedule_UpdateDailyScheduleRes_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_dailyschedule_UpdateDailyScheduleRes_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_dailyschedule_UpdateDailyScheduleRes_descriptor,
-        new java.lang.String[] { "Status", "Error", });
+        new java.lang.String[] { "RequesterId", "ProjectId", "ScheduleId", "Title", "Task", "Time", "ScheduleStatus", "Cookie", });
     internal_static_dailyschedule_DeleteDailyScheduleReq_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_dailyschedule_DeleteDailyScheduleReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_dailyschedule_DeleteDailyScheduleReq_descriptor,
-        new java.lang.String[] { "UserName", "ProjectId", "DailyscheduleId", "Cookie", });
-    internal_static_dailyschedule_DeleteDailyScheduleRes_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_dailyschedule_DeleteDailyScheduleRes_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_dailyschedule_DeleteDailyScheduleRes_descriptor,
-        new java.lang.String[] { "Status", "Error", });
+        new java.lang.String[] { "RequesterId", "ProjectId", "ScheduleId", "Cookie", });
     internal_static_dailyschedule_GetAllDailyScheduleReq_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_dailyschedule_GetAllDailyScheduleReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_dailyschedule_GetAllDailyScheduleReq_descriptor,
-        new java.lang.String[] { "UserName", "ProjectId", "Cookie", });
-    internal_static_dailyschedule_GetAllDailyScheduleRes_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_dailyschedule_GetAllDailyScheduleRes_fieldAccessorTable = new
+        new java.lang.String[] { "RequesterId", "ProjectId", "Cookie", });
+    internal_static_dailyschedule_DailyScheduleRes_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_dailyschedule_DailyScheduleRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_dailyschedule_GetAllDailyScheduleRes_descriptor,
-        new java.lang.String[] { "Date", "Idbacklog", "Task", "Status", "Review", });
+        internal_static_dailyschedule_DailyScheduleRes_descriptor,
+        new java.lang.String[] { "Error", "Status", "ScheduleId", "Title", "Task", "Time", "Note", "ScheduleStatus", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

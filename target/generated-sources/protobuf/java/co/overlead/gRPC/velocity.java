@@ -15,15 +15,15 @@ public final class velocity {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_velocity_GetAllTeamTaskVelocityReq_descriptor;
+    internal_static_velocity_GetVelocityReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_velocity_GetAllTeamTaskVelocityReq_fieldAccessorTable;
+      internal_static_velocity_GetVelocityReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_velocity_GetAllTeamTaskVelocityRes_descriptor;
+    internal_static_velocity_GetVelocityRes_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_velocity_GetAllTeamTaskVelocityRes_fieldAccessorTable;
+      internal_static_velocity_GetVelocityRes_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -33,15 +33,15 @@ public final class velocity {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016velocity.proto\022\010velocity\"P\n\031GetAllTeam" +
-      "TaskVelocityReq\022\020\n\010username\030\001 \001(\t\022\021\n\tpro" +
-      "jectId\030\002 \001(\t\022\016\n\006cookie\030\003 \001(\t\"O\n\031GetAllTe" +
-      "amTaskVelocityRes\022\016\n\006status\030\001 \001(\t\022\023\n\013All" +
-      "TeamTask\030\002 \001(\t\022\r\n\005error\030\003 \001(\t2j\n\010Velocit" +
-      "y\022^\n\016getAllTeamTask\022#.velocity.GetAllTea" +
-      "mTaskVelocityReq\032#.velocity.GetAllTeamTa" +
-      "skVelocityRes\"\0000\001B\"\n\020co.overlead.gRPCB\010v" +
-      "elocityP\001\242\002\001vb\006proto3"
+      "\n\016velocity.proto\022\010velocity\"j\n\016GetVelocit" +
+      "yReq\022\016\n\006cookie\030\001 \001(\t\022\023\n\013requesterId\030\002 \001(" +
+      "\t\022\021\n\tprojectId\030\003 \001(\t\022\016\n\006teamId\030\004 \001(\t\022\020\n\010" +
+      "sprintId\030\005 \001(\t\"Y\n\016GetVelocityRes\022\r\n\005erro" +
+      "r\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\014\n\004task\030\003 \001(\t\022\014\n" +
+      "\004type\030\004 \001(\t\022\014\n\004note\030\005 \001(\t2Q\n\010Velocity\022E\n" +
+      "\013getVelocity\022\030.velocity.GetVelocityReq\032\030" +
+      ".velocity.GetVelocityRes\"\0000\001B\"\n\020co.overl" +
+      "ead.gRPCB\010velocityP\001\242\002\001vb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -55,18 +55,18 @@ public final class velocity {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_velocity_GetAllTeamTaskVelocityReq_descriptor =
+    internal_static_velocity_GetVelocityReq_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_velocity_GetAllTeamTaskVelocityReq_fieldAccessorTable = new
+    internal_static_velocity_GetVelocityReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_velocity_GetAllTeamTaskVelocityReq_descriptor,
-        new java.lang.String[] { "Username", "ProjectId", "Cookie", });
-    internal_static_velocity_GetAllTeamTaskVelocityRes_descriptor =
+        internal_static_velocity_GetVelocityReq_descriptor,
+        new java.lang.String[] { "Cookie", "RequesterId", "ProjectId", "TeamId", "SprintId", });
+    internal_static_velocity_GetVelocityRes_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_velocity_GetAllTeamTaskVelocityRes_fieldAccessorTable = new
+    internal_static_velocity_GetVelocityRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_velocity_GetAllTeamTaskVelocityRes_descriptor,
-        new java.lang.String[] { "Status", "AllTeamTask", "Error", });
+        internal_static_velocity_GetVelocityRes_descriptor,
+        new java.lang.String[] { "Error", "Status", "Task", "Type", "Note", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

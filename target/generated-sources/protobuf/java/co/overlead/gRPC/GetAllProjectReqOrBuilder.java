@@ -8,14 +8,14 @@ public interface GetAllProjectReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string id = 1;</code>
+   * <code>string requesterId = 3;</code>
    */
-  java.lang.String getId();
+  java.lang.String getRequesterId();
   /**
-   * <code>string id = 1;</code>
+   * <code>string requesterId = 3;</code>
    */
   com.google.protobuf.ByteString
-      getIdBytes();
+      getRequesterIdBytes();
 
   /**
    * <code>string cookie = 2;</code>

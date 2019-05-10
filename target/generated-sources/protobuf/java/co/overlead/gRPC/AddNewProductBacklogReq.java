@@ -16,12 +16,12 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private AddNewProductBacklogReq() {
-    userName_ = "";
+    requesterId_ = "";
     projectId_ = "";
     role_ = "";
     want_ = "";
     so_ = "";
-    status_ = "";
+    statusBacklog_ = "";
     priority_ = "";
     estimation_ = "";
     sprint_ = "";
@@ -55,7 +55,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            userName_ = s;
+            requesterId_ = s;
             break;
           }
           case 18: {
@@ -85,7 +85,7 @@ private static final long serialVersionUID = 0L;
           case 50: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            status_ = s;
+            statusBacklog_ = s;
             break;
           }
           case 58: {
@@ -144,34 +144,34 @@ private static final long serialVersionUID = 0L;
             co.overlead.gRPC.AddNewProductBacklogReq.class, co.overlead.gRPC.AddNewProductBacklogReq.Builder.class);
   }
 
-  public static final int USERNAME_FIELD_NUMBER = 1;
-  private volatile java.lang.Object userName_;
+  public static final int REQUESTERID_FIELD_NUMBER = 1;
+  private volatile java.lang.Object requesterId_;
   /**
-   * <code>string userName = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
-  public java.lang.String getUserName() {
-    java.lang.Object ref = userName_;
+  public java.lang.String getRequesterId() {
+    java.lang.Object ref = requesterId_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      userName_ = s;
+      requesterId_ = s;
       return s;
     }
   }
   /**
-   * <code>string userName = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getUserNameBytes() {
-    java.lang.Object ref = userName_;
+      getRequesterIdBytes() {
+    java.lang.Object ref = requesterId_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      userName_ = b;
+      requesterId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -314,24 +314,24 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int STATUS_FIELD_NUMBER = 6;
-  private volatile java.lang.Object status_;
+  public static final int STATUSBACKLOG_FIELD_NUMBER = 6;
+  private volatile java.lang.Object statusBacklog_;
   /**
    * <pre>
    *alway status="todo" when add productbacklog
    * </pre>
    *
-   * <code>string status = 6;</code>
+   * <code>string statusBacklog = 6;</code>
    */
-  public java.lang.String getStatus() {
-    java.lang.Object ref = status_;
+  public java.lang.String getStatusBacklog() {
+    java.lang.Object ref = statusBacklog_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      status_ = s;
+      statusBacklog_ = s;
       return s;
     }
   }
@@ -340,16 +340,16 @@ private static final long serialVersionUID = 0L;
    *alway status="todo" when add productbacklog
    * </pre>
    *
-   * <code>string status = 6;</code>
+   * <code>string statusBacklog = 6;</code>
    */
   public com.google.protobuf.ByteString
-      getStatusBytes() {
-    java.lang.Object ref = status_;
+      getStatusBacklogBytes() {
+    java.lang.Object ref = statusBacklog_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      status_ = b;
+      statusBacklog_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -506,8 +506,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getUserNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, userName_);
+    if (!getRequesterIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, requesterId_);
     }
     if (!getProjectIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, projectId_);
@@ -521,8 +521,8 @@ private static final long serialVersionUID = 0L;
     if (!getSoBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 5, so_);
     }
-    if (!getStatusBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, status_);
+    if (!getStatusBacklogBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, statusBacklog_);
     }
     if (!getPriorityBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 7, priority_);
@@ -545,8 +545,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getUserNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, userName_);
+    if (!getRequesterIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, requesterId_);
     }
     if (!getProjectIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, projectId_);
@@ -560,8 +560,8 @@ private static final long serialVersionUID = 0L;
     if (!getSoBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, so_);
     }
-    if (!getStatusBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, status_);
+    if (!getStatusBacklogBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, statusBacklog_);
     }
     if (!getPriorityBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, priority_);
@@ -590,8 +590,8 @@ private static final long serialVersionUID = 0L;
     }
     co.overlead.gRPC.AddNewProductBacklogReq other = (co.overlead.gRPC.AddNewProductBacklogReq) obj;
 
-    if (!getUserName()
-        .equals(other.getUserName())) return false;
+    if (!getRequesterId()
+        .equals(other.getRequesterId())) return false;
     if (!getProjectId()
         .equals(other.getProjectId())) return false;
     if (!getRole()
@@ -600,8 +600,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getWant())) return false;
     if (!getSo()
         .equals(other.getSo())) return false;
-    if (!getStatus()
-        .equals(other.getStatus())) return false;
+    if (!getStatusBacklog()
+        .equals(other.getStatusBacklog())) return false;
     if (!getPriority()
         .equals(other.getPriority())) return false;
     if (!getEstimation()
@@ -621,8 +621,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + USERNAME_FIELD_NUMBER;
-    hash = (53 * hash) + getUserName().hashCode();
+    hash = (37 * hash) + REQUESTERID_FIELD_NUMBER;
+    hash = (53 * hash) + getRequesterId().hashCode();
     hash = (37 * hash) + PROJECTID_FIELD_NUMBER;
     hash = (53 * hash) + getProjectId().hashCode();
     hash = (37 * hash) + ROLE_FIELD_NUMBER;
@@ -631,8 +631,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getWant().hashCode();
     hash = (37 * hash) + SO_FIELD_NUMBER;
     hash = (53 * hash) + getSo().hashCode();
-    hash = (37 * hash) + STATUS_FIELD_NUMBER;
-    hash = (53 * hash) + getStatus().hashCode();
+    hash = (37 * hash) + STATUSBACKLOG_FIELD_NUMBER;
+    hash = (53 * hash) + getStatusBacklog().hashCode();
     hash = (37 * hash) + PRIORITY_FIELD_NUMBER;
     hash = (53 * hash) + getPriority().hashCode();
     hash = (37 * hash) + ESTIMATION_FIELD_NUMBER;
@@ -774,7 +774,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      userName_ = "";
+      requesterId_ = "";
 
       projectId_ = "";
 
@@ -784,7 +784,7 @@ private static final long serialVersionUID = 0L;
 
       so_ = "";
 
-      status_ = "";
+      statusBacklog_ = "";
 
       priority_ = "";
 
@@ -820,12 +820,12 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public co.overlead.gRPC.AddNewProductBacklogReq buildPartial() {
       co.overlead.gRPC.AddNewProductBacklogReq result = new co.overlead.gRPC.AddNewProductBacklogReq(this);
-      result.userName_ = userName_;
+      result.requesterId_ = requesterId_;
       result.projectId_ = projectId_;
       result.role_ = role_;
       result.want_ = want_;
       result.so_ = so_;
-      result.status_ = status_;
+      result.statusBacklog_ = statusBacklog_;
       result.priority_ = priority_;
       result.estimation_ = estimation_;
       result.sprint_ = sprint_;
@@ -878,8 +878,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(co.overlead.gRPC.AddNewProductBacklogReq other) {
       if (other == co.overlead.gRPC.AddNewProductBacklogReq.getDefaultInstance()) return this;
-      if (!other.getUserName().isEmpty()) {
-        userName_ = other.userName_;
+      if (!other.getRequesterId().isEmpty()) {
+        requesterId_ = other.requesterId_;
         onChanged();
       }
       if (!other.getProjectId().isEmpty()) {
@@ -898,8 +898,8 @@ private static final long serialVersionUID = 0L;
         so_ = other.so_;
         onChanged();
       }
-      if (!other.getStatus().isEmpty()) {
-        status_ = other.status_;
+      if (!other.getStatusBacklog().isEmpty()) {
+        statusBacklog_ = other.statusBacklog_;
         onChanged();
       }
       if (!other.getPriority().isEmpty()) {
@@ -947,71 +947,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object userName_ = "";
+    private java.lang.Object requesterId_ = "";
     /**
-     * <code>string userName = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public java.lang.String getUserName() {
-      java.lang.Object ref = userName_;
+    public java.lang.String getRequesterId() {
+      java.lang.Object ref = requesterId_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        userName_ = s;
+        requesterId_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string userName = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getUserNameBytes() {
-      java.lang.Object ref = userName_;
+        getRequesterIdBytes() {
+      java.lang.Object ref = requesterId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        userName_ = b;
+        requesterId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string userName = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder setUserName(
+    public Builder setRequesterId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      userName_ = value;
+      requesterId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string userName = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder clearUserName() {
+    public Builder clearRequesterId() {
       
-      userName_ = getDefaultInstance().getUserName();
+      requesterId_ = getDefaultInstance().getRequesterId();
       onChanged();
       return this;
     }
     /**
-     * <code>string userName = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder setUserNameBytes(
+    public Builder setRequesterIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      userName_ = value;
+      requesterId_ = value;
       onChanged();
       return this;
     }
@@ -1292,21 +1292,21 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object status_ = "";
+    private java.lang.Object statusBacklog_ = "";
     /**
      * <pre>
      *alway status="todo" when add productbacklog
      * </pre>
      *
-     * <code>string status = 6;</code>
+     * <code>string statusBacklog = 6;</code>
      */
-    public java.lang.String getStatus() {
-      java.lang.Object ref = status_;
+    public java.lang.String getStatusBacklog() {
+      java.lang.Object ref = statusBacklog_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        status_ = s;
+        statusBacklog_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
@@ -1317,16 +1317,16 @@ private static final long serialVersionUID = 0L;
      *alway status="todo" when add productbacklog
      * </pre>
      *
-     * <code>string status = 6;</code>
+     * <code>string statusBacklog = 6;</code>
      */
     public com.google.protobuf.ByteString
-        getStatusBytes() {
-      java.lang.Object ref = status_;
+        getStatusBacklogBytes() {
+      java.lang.Object ref = statusBacklog_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        status_ = b;
+        statusBacklog_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1337,15 +1337,15 @@ private static final long serialVersionUID = 0L;
      *alway status="todo" when add productbacklog
      * </pre>
      *
-     * <code>string status = 6;</code>
+     * <code>string statusBacklog = 6;</code>
      */
-    public Builder setStatus(
+    public Builder setStatusBacklog(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      status_ = value;
+      statusBacklog_ = value;
       onChanged();
       return this;
     }
@@ -1354,11 +1354,11 @@ private static final long serialVersionUID = 0L;
      *alway status="todo" when add productbacklog
      * </pre>
      *
-     * <code>string status = 6;</code>
+     * <code>string statusBacklog = 6;</code>
      */
-    public Builder clearStatus() {
+    public Builder clearStatusBacklog() {
       
-      status_ = getDefaultInstance().getStatus();
+      statusBacklog_ = getDefaultInstance().getStatusBacklog();
       onChanged();
       return this;
     }
@@ -1367,16 +1367,16 @@ private static final long serialVersionUID = 0L;
      *alway status="todo" when add productbacklog
      * </pre>
      *
-     * <code>string status = 6;</code>
+     * <code>string statusBacklog = 6;</code>
      */
-    public Builder setStatusBytes(
+    public Builder setStatusBacklogBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      status_ = value;
+      statusBacklog_ = value;
       onChanged();
       return this;
     }

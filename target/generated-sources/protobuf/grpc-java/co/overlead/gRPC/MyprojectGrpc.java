@@ -28,21 +28,21 @@ public final class MyprojectGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.AddNewProjectReq,
-      co.overlead.gRPC.AddNewProjectRes> getAddNewProjectMethod;
+      co.overlead.gRPC.ProjectRes> getAddNewProjectMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "addNewProject",
       requestType = co.overlead.gRPC.AddNewProjectReq.class,
-      responseType = co.overlead.gRPC.AddNewProjectRes.class,
+      responseType = co.overlead.gRPC.ProjectRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<co.overlead.gRPC.AddNewProjectReq,
-      co.overlead.gRPC.AddNewProjectRes> getAddNewProjectMethod() {
-    io.grpc.MethodDescriptor<co.overlead.gRPC.AddNewProjectReq, co.overlead.gRPC.AddNewProjectRes> getAddNewProjectMethod;
+      co.overlead.gRPC.ProjectRes> getAddNewProjectMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.AddNewProjectReq, co.overlead.gRPC.ProjectRes> getAddNewProjectMethod;
     if ((getAddNewProjectMethod = MyprojectGrpc.getAddNewProjectMethod) == null) {
       synchronized (MyprojectGrpc.class) {
         if ((getAddNewProjectMethod = MyprojectGrpc.getAddNewProjectMethod) == null) {
           MyprojectGrpc.getAddNewProjectMethod = getAddNewProjectMethod = 
-              io.grpc.MethodDescriptor.<co.overlead.gRPC.AddNewProjectReq, co.overlead.gRPC.AddNewProjectRes>newBuilder()
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.AddNewProjectReq, co.overlead.gRPC.ProjectRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "myproject.Myproject", "addNewProject"))
@@ -50,7 +50,7 @@ public final class MyprojectGrpc {
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.AddNewProjectReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.AddNewProjectRes.getDefaultInstance()))
+                  co.overlead.gRPC.ProjectRes.getDefaultInstance()))
                   .setSchemaDescriptor(new MyprojectMethodDescriptorSupplier("addNewProject"))
                   .build();
           }
@@ -60,21 +60,21 @@ public final class MyprojectGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateProjectReq,
-      co.overlead.gRPC.UpdateProjectRes> getUpdateProjectMethod;
+      co.overlead.gRPC.ProjectRes> getUpdateProjectMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "updateProject",
       requestType = co.overlead.gRPC.UpdateProjectReq.class,
-      responseType = co.overlead.gRPC.UpdateProjectRes.class,
+      responseType = co.overlead.gRPC.ProjectRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateProjectReq,
-      co.overlead.gRPC.UpdateProjectRes> getUpdateProjectMethod() {
-    io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateProjectReq, co.overlead.gRPC.UpdateProjectRes> getUpdateProjectMethod;
+      co.overlead.gRPC.ProjectRes> getUpdateProjectMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateProjectReq, co.overlead.gRPC.ProjectRes> getUpdateProjectMethod;
     if ((getUpdateProjectMethod = MyprojectGrpc.getUpdateProjectMethod) == null) {
       synchronized (MyprojectGrpc.class) {
         if ((getUpdateProjectMethod = MyprojectGrpc.getUpdateProjectMethod) == null) {
           MyprojectGrpc.getUpdateProjectMethod = getUpdateProjectMethod = 
-              io.grpc.MethodDescriptor.<co.overlead.gRPC.UpdateProjectReq, co.overlead.gRPC.UpdateProjectRes>newBuilder()
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.UpdateProjectReq, co.overlead.gRPC.ProjectRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "myproject.Myproject", "updateProject"))
@@ -82,7 +82,7 @@ public final class MyprojectGrpc {
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.UpdateProjectReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.UpdateProjectRes.getDefaultInstance()))
+                  co.overlead.gRPC.ProjectRes.getDefaultInstance()))
                   .setSchemaDescriptor(new MyprojectMethodDescriptorSupplier("updateProject"))
                   .build();
           }
@@ -92,21 +92,21 @@ public final class MyprojectGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteProjectReq,
-      co.overlead.gRPC.DeleteProjectRes> getDeleteProjectMethod;
+      co.overlead.gRPC.ProjectRes> getDeleteProjectMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "deleteProject",
       requestType = co.overlead.gRPC.DeleteProjectReq.class,
-      responseType = co.overlead.gRPC.DeleteProjectRes.class,
+      responseType = co.overlead.gRPC.ProjectRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteProjectReq,
-      co.overlead.gRPC.DeleteProjectRes> getDeleteProjectMethod() {
-    io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteProjectReq, co.overlead.gRPC.DeleteProjectRes> getDeleteProjectMethod;
+      co.overlead.gRPC.ProjectRes> getDeleteProjectMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteProjectReq, co.overlead.gRPC.ProjectRes> getDeleteProjectMethod;
     if ((getDeleteProjectMethod = MyprojectGrpc.getDeleteProjectMethod) == null) {
       synchronized (MyprojectGrpc.class) {
         if ((getDeleteProjectMethod = MyprojectGrpc.getDeleteProjectMethod) == null) {
           MyprojectGrpc.getDeleteProjectMethod = getDeleteProjectMethod = 
-              io.grpc.MethodDescriptor.<co.overlead.gRPC.DeleteProjectReq, co.overlead.gRPC.DeleteProjectRes>newBuilder()
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.DeleteProjectReq, co.overlead.gRPC.ProjectRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "myproject.Myproject", "deleteProject"))
@@ -114,7 +114,7 @@ public final class MyprojectGrpc {
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.DeleteProjectReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.DeleteProjectRes.getDefaultInstance()))
+                  co.overlead.gRPC.ProjectRes.getDefaultInstance()))
                   .setSchemaDescriptor(new MyprojectMethodDescriptorSupplier("deleteProject"))
                   .build();
           }
@@ -124,21 +124,21 @@ public final class MyprojectGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllProjectReq,
-      co.overlead.gRPC.GetAllProjectRes> getGetAllProjectMethod;
+      co.overlead.gRPC.ProjectRes> getGetAllProjectMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "getAllProject",
       requestType = co.overlead.gRPC.GetAllProjectReq.class,
-      responseType = co.overlead.gRPC.GetAllProjectRes.class,
+      responseType = co.overlead.gRPC.ProjectRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
   public static io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllProjectReq,
-      co.overlead.gRPC.GetAllProjectRes> getGetAllProjectMethod() {
-    io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllProjectReq, co.overlead.gRPC.GetAllProjectRes> getGetAllProjectMethod;
+      co.overlead.gRPC.ProjectRes> getGetAllProjectMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllProjectReq, co.overlead.gRPC.ProjectRes> getGetAllProjectMethod;
     if ((getGetAllProjectMethod = MyprojectGrpc.getGetAllProjectMethod) == null) {
       synchronized (MyprojectGrpc.class) {
         if ((getGetAllProjectMethod = MyprojectGrpc.getGetAllProjectMethod) == null) {
           MyprojectGrpc.getGetAllProjectMethod = getGetAllProjectMethod = 
-              io.grpc.MethodDescriptor.<co.overlead.gRPC.GetAllProjectReq, co.overlead.gRPC.GetAllProjectRes>newBuilder()
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.GetAllProjectReq, co.overlead.gRPC.ProjectRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(
                   "myproject.Myproject", "getAllProject"))
@@ -146,7 +146,7 @@ public final class MyprojectGrpc {
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.GetAllProjectReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.GetAllProjectRes.getDefaultInstance()))
+                  co.overlead.gRPC.ProjectRes.getDefaultInstance()))
                   .setSchemaDescriptor(new MyprojectMethodDescriptorSupplier("getAllProject"))
                   .build();
           }
@@ -185,28 +185,28 @@ public final class MyprojectGrpc {
     /**
      */
     public void addNewProject(co.overlead.gRPC.AddNewProjectReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.AddNewProjectRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.ProjectRes> responseObserver) {
       asyncUnimplementedUnaryCall(getAddNewProjectMethod(), responseObserver);
     }
 
     /**
      */
     public void updateProject(co.overlead.gRPC.UpdateProjectReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.UpdateProjectRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.ProjectRes> responseObserver) {
       asyncUnimplementedUnaryCall(getUpdateProjectMethod(), responseObserver);
     }
 
     /**
      */
     public void deleteProject(co.overlead.gRPC.DeleteProjectReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.DeleteProjectRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.ProjectRes> responseObserver) {
       asyncUnimplementedUnaryCall(getDeleteProjectMethod(), responseObserver);
     }
 
     /**
      */
     public void getAllProject(co.overlead.gRPC.GetAllProjectReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllProjectRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.ProjectRes> responseObserver) {
       asyncUnimplementedUnaryCall(getGetAllProjectMethod(), responseObserver);
     }
 
@@ -217,28 +217,28 @@ public final class MyprojectGrpc {
             asyncUnaryCall(
               new MethodHandlers<
                 co.overlead.gRPC.AddNewProjectReq,
-                co.overlead.gRPC.AddNewProjectRes>(
+                co.overlead.gRPC.ProjectRes>(
                   this, METHODID_ADD_NEW_PROJECT)))
           .addMethod(
             getUpdateProjectMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 co.overlead.gRPC.UpdateProjectReq,
-                co.overlead.gRPC.UpdateProjectRes>(
+                co.overlead.gRPC.ProjectRes>(
                   this, METHODID_UPDATE_PROJECT)))
           .addMethod(
             getDeleteProjectMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 co.overlead.gRPC.DeleteProjectReq,
-                co.overlead.gRPC.DeleteProjectRes>(
+                co.overlead.gRPC.ProjectRes>(
                   this, METHODID_DELETE_PROJECT)))
           .addMethod(
             getGetAllProjectMethod(),
             asyncServerStreamingCall(
               new MethodHandlers<
                 co.overlead.gRPC.GetAllProjectReq,
-                co.overlead.gRPC.GetAllProjectRes>(
+                co.overlead.gRPC.ProjectRes>(
                   this, METHODID_GET_ALL_PROJECT)))
           .build();
     }
@@ -265,7 +265,7 @@ public final class MyprojectGrpc {
     /**
      */
     public void addNewProject(co.overlead.gRPC.AddNewProjectReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.AddNewProjectRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.ProjectRes> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getAddNewProjectMethod(), getCallOptions()), request, responseObserver);
     }
@@ -273,7 +273,7 @@ public final class MyprojectGrpc {
     /**
      */
     public void updateProject(co.overlead.gRPC.UpdateProjectReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.UpdateProjectRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.ProjectRes> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getUpdateProjectMethod(), getCallOptions()), request, responseObserver);
     }
@@ -281,7 +281,7 @@ public final class MyprojectGrpc {
     /**
      */
     public void deleteProject(co.overlead.gRPC.DeleteProjectReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.DeleteProjectRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.ProjectRes> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getDeleteProjectMethod(), getCallOptions()), request, responseObserver);
     }
@@ -289,7 +289,7 @@ public final class MyprojectGrpc {
     /**
      */
     public void getAllProject(co.overlead.gRPC.GetAllProjectReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllProjectRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.ProjectRes> responseObserver) {
       asyncServerStreamingCall(
           getChannel().newCall(getGetAllProjectMethod(), getCallOptions()), request, responseObserver);
     }
@@ -315,28 +315,28 @@ public final class MyprojectGrpc {
 
     /**
      */
-    public co.overlead.gRPC.AddNewProjectRes addNewProject(co.overlead.gRPC.AddNewProjectReq request) {
+    public co.overlead.gRPC.ProjectRes addNewProject(co.overlead.gRPC.AddNewProjectReq request) {
       return blockingUnaryCall(
           getChannel(), getAddNewProjectMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public co.overlead.gRPC.UpdateProjectRes updateProject(co.overlead.gRPC.UpdateProjectReq request) {
+    public co.overlead.gRPC.ProjectRes updateProject(co.overlead.gRPC.UpdateProjectReq request) {
       return blockingUnaryCall(
           getChannel(), getUpdateProjectMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public co.overlead.gRPC.DeleteProjectRes deleteProject(co.overlead.gRPC.DeleteProjectReq request) {
+    public co.overlead.gRPC.ProjectRes deleteProject(co.overlead.gRPC.DeleteProjectReq request) {
       return blockingUnaryCall(
           getChannel(), getDeleteProjectMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public java.util.Iterator<co.overlead.gRPC.GetAllProjectRes> getAllProject(
+    public java.util.Iterator<co.overlead.gRPC.ProjectRes> getAllProject(
         co.overlead.gRPC.GetAllProjectReq request) {
       return blockingServerStreamingCall(
           getChannel(), getGetAllProjectMethod(), getCallOptions(), request);
@@ -363,7 +363,7 @@ public final class MyprojectGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.AddNewProjectRes> addNewProject(
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.ProjectRes> addNewProject(
         co.overlead.gRPC.AddNewProjectReq request) {
       return futureUnaryCall(
           getChannel().newCall(getAddNewProjectMethod(), getCallOptions()), request);
@@ -371,7 +371,7 @@ public final class MyprojectGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.UpdateProjectRes> updateProject(
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.ProjectRes> updateProject(
         co.overlead.gRPC.UpdateProjectReq request) {
       return futureUnaryCall(
           getChannel().newCall(getUpdateProjectMethod(), getCallOptions()), request);
@@ -379,7 +379,7 @@ public final class MyprojectGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.DeleteProjectRes> deleteProject(
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.ProjectRes> deleteProject(
         co.overlead.gRPC.DeleteProjectReq request) {
       return futureUnaryCall(
           getChannel().newCall(getDeleteProjectMethod(), getCallOptions()), request);
@@ -410,19 +410,19 @@ public final class MyprojectGrpc {
       switch (methodId) {
         case METHODID_ADD_NEW_PROJECT:
           serviceImpl.addNewProject((co.overlead.gRPC.AddNewProjectReq) request,
-              (io.grpc.stub.StreamObserver<co.overlead.gRPC.AddNewProjectRes>) responseObserver);
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.ProjectRes>) responseObserver);
           break;
         case METHODID_UPDATE_PROJECT:
           serviceImpl.updateProject((co.overlead.gRPC.UpdateProjectReq) request,
-              (io.grpc.stub.StreamObserver<co.overlead.gRPC.UpdateProjectRes>) responseObserver);
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.ProjectRes>) responseObserver);
           break;
         case METHODID_DELETE_PROJECT:
           serviceImpl.deleteProject((co.overlead.gRPC.DeleteProjectReq) request,
-              (io.grpc.stub.StreamObserver<co.overlead.gRPC.DeleteProjectRes>) responseObserver);
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.ProjectRes>) responseObserver);
           break;
         case METHODID_GET_ALL_PROJECT:
           serviceImpl.getAllProject((co.overlead.gRPC.GetAllProjectReq) request,
-              (io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllProjectRes>) responseObserver);
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.ProjectRes>) responseObserver);
           break;
         default:
           throw new AssertionError();

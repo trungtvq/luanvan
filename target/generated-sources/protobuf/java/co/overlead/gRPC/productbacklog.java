@@ -73,51 +73,52 @@ public final class productbacklog {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024productbacklog.proto\022\016productbacklog\"\274" +
-      "\001\n\027AddNewProductBacklogReq\022\020\n\010userName\030\001" +
-      " \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\014\n\004role\030\003 \001(\t\022\014\n" +
-      "\004want\030\004 \001(\t\022\n\n\002so\030\005 \001(\t\022\016\n\006status\030\006 \001(\t\022" +
-      "\020\n\010priority\030\007 \001(\t\022\022\n\nestimation\030\010 \001(\t\022\016\n" +
-      "\006sprint\030\t \001(\t\022\016\n\006cookie\030\n \001(\t\"R\n\027AddNewP" +
-      "roductBacklogRes\022\016\n\006status\030\001 \001(\t\022\030\n\020prod" +
-      "uctbacklogId\030\002 \001(\t\022\r\n\005error\030\003 \001(\t\"\326\001\n\027Up" +
-      "dateProductBacklogReq\022\020\n\010userName\030\001 \001(\t\022" +
-      "\021\n\tprojectId\030\002 \001(\t\022\030\n\020productbacklogId\030\003" +
-      " \001(\t\022\014\n\004role\030\004 \001(\t\022\014\n\004want\030\005 \001(\t\022\n\n\002so\030\006" +
-      " \001(\t\022\016\n\006status\030\007 \001(\t\022\020\n\010priority\030\010 \001(\t\022\022" +
-      "\n\nestimation\030\t \001(\t\022\016\n\006sprint\030\n \001(\t\022\016\n\006co" +
-      "okie\030\013 \001(\t\"8\n\027UpdateProductBacklogRes\022\016\n" +
-      "\006status\030\001 \001(\t\022\r\n\005error\030\002 \001(\t\"h\n\027DeletePr" +
-      "oductBacklogReq\022\020\n\010userName\030\001 \001(\t\022\021\n\tpro" +
-      "jectId\030\002 \001(\t\022\030\n\020productbacklogId\030\003 \001(\t\022\016" +
-      "\n\006cookie\030\004 \001(\t\"8\n\027DeleteProductBacklogRe" +
-      "s\022\016\n\006status\030\001 \001(\t\022\r\n\005error\030\002 \001(\t\"\210\001\n\026Sen" +
-      "dToSprintBacklogReq\022\020\n\010userName\030\001 \001(\t\022\021\n" +
-      "\tprojectId\030\002 \001(\t\022\030\n\020productbacklogId\030\003 \001" +
-      "(\t\022\r\n\005start\030\004 \001(\t\022\020\n\010deadline\030\005 \001(\t\022\016\n\006c" +
-      "ookie\030\006 \001(\t\"7\n\026SendToSprintBacklogRes\022\016\n" +
-      "\006status\030\001 \001(\t\022\r\n\005error\030\002 \001(\t\"N\n\027GetAllPr" +
-      "oductBacklogReq\022\020\n\010userName\030\001 \001(\t\022\021\n\tpro" +
-      "jectId\030\002 \001(\t\022\016\n\006cookie\030\003 \001(\t\"\241\001\n\027GetAllP" +
-      "roductBacklogRes\022\030\n\020productbacklogId\030\001 \001" +
-      "(\t\022\014\n\004role\030\002 \001(\t\022\014\n\004want\030\003 \001(\t\022\n\n\002so\030\004 \001" +
-      "(\t\022\016\n\006status\030\005 \001(\t\022\020\n\010priority\030\006 \001(\t\022\022\n\n" +
-      "estimation\030\007 \001(\t\022\016\n\006sprint\030\010 \001(\t2\246\004\n\016Pro" +
-      "ductbacklog\022j\n\024addNewProductBacklog\022\'.pr" +
-      "oductbacklog.AddNewProductBacklogReq\032\'.p" +
-      "roductbacklog.AddNewProductBacklogRes\"\000\022" +
-      "e\n\017updateUserStory\022\'.productbacklog.Upda" +
-      "teProductBacklogReq\032\'.productbacklog.Upd" +
-      "ateProductBacklogRes\"\000\022j\n\024deleteProductB" +
-      "acklog\022\'.productbacklog.DeleteProductBac" +
-      "klogReq\032\'.productbacklog.DeleteProductBa" +
-      "cklogRes\"\000\022g\n\023sendToSprintBacklog\022&.prod" +
-      "uctbacklog.SendToSprintBacklogReq\032&.prod" +
-      "uctbacklog.SendToSprintBacklogRes\"\000\022l\n\024g" +
-      "etAllProductBacklog\022\'.productbacklog.Get" +
-      "AllProductBacklogReq\032\'.productbacklog.Ge" +
-      "tAllProductBacklogRes\"\0000\001B)\n\020co.overlead" +
-      ".gRPCB\016productbacklogP\001\242\002\002pbb\006proto3"
+      "\n\024productbacklog.proto\022\016productbacklog\"\306" +
+      "\001\n\027AddNewProductBacklogReq\022\023\n\013requesterI" +
+      "d\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\014\n\004role\030\003 \001(\t" +
+      "\022\014\n\004want\030\004 \001(\t\022\n\n\002so\030\005 \001(\t\022\025\n\rstatusBack" +
+      "log\030\006 \001(\t\022\020\n\010priority\030\007 \001(\t\022\022\n\nestimatio" +
+      "n\030\010 \001(\t\022\016\n\006sprint\030\t \001(\t\022\016\n\006cookie\030\n \001(\t\"" +
+      "R\n\027AddNewProductBacklogRes\022\016\n\006status\030\001 \001" +
+      "(\t\022\030\n\020productBacklogId\030\002 \001(\t\022\r\n\005error\030\003 " +
+      "\001(\t\"\326\001\n\027UpdateProductBacklogReq\022\020\n\010userN" +
+      "ame\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\030\n\020productB" +
+      "acklogId\030\003 \001(\t\022\014\n\004role\030\004 \001(\t\022\014\n\004want\030\005 \001" +
+      "(\t\022\n\n\002so\030\006 \001(\t\022\016\n\006status\030\007 \001(\t\022\020\n\010priori" +
+      "ty\030\010 \001(\t\022\022\n\nestimation\030\t \001(\t\022\016\n\006sprint\030\n" +
+      " \001(\t\022\016\n\006cookie\030\013 \001(\t\"8\n\027UpdateProductBac" +
+      "klogRes\022\016\n\006status\030\001 \001(\t\022\r\n\005error\030\002 \001(\t\"h" +
+      "\n\027DeleteProductBacklogReq\022\020\n\010userName\030\001 " +
+      "\001(\t\022\021\n\tprojectId\030\002 \001(\t\022\030\n\020productBacklog" +
+      "Id\030\003 \001(\t\022\016\n\006cookie\030\004 \001(\t\"8\n\027DeleteProduc" +
+      "tBacklogRes\022\016\n\006status\030\001 \001(\t\022\r\n\005error\030\002 \001" +
+      "(\t\"\210\001\n\026SendToSprintBacklogReq\022\020\n\010userNam" +
+      "e\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\030\n\020productBac" +
+      "klogId\030\003 \001(\t\022\r\n\005start\030\004 \001(\t\022\020\n\010deadline\030" +
+      "\005 \001(\t\022\016\n\006cookie\030\006 \001(\t\"7\n\026SendToSprintBac" +
+      "klogRes\022\016\n\006status\030\001 \001(\t\022\r\n\005error\030\002 \001(\t\"N" +
+      "\n\027GetAllProductBacklogReq\022\020\n\010userName\030\001 " +
+      "\001(\t\022\021\n\tprojectId\030\002 \001(\t\022\016\n\006cookie\030\003 \001(\t\"\241" +
+      "\001\n\027GetAllProductBacklogRes\022\030\n\020productbac" +
+      "klogId\030\001 \001(\t\022\014\n\004role\030\002 \001(\t\022\014\n\004want\030\003 \001(\t" +
+      "\022\n\n\002so\030\004 \001(\t\022\016\n\006status\030\005 \001(\t\022\020\n\010priority" +
+      "\030\006 \001(\t\022\022\n\nestimation\030\007 \001(\t\022\016\n\006sprint\030\010 \001" +
+      "(\t2\246\004\n\016ProductBacklog\022j\n\024addNewProductBa" +
+      "cklog\022\'.productbacklog.AddNewProductBack" +
+      "logReq\032\'.productbacklog.AddNewProductBac" +
+      "klogRes\"\000\022e\n\017updateUserStory\022\'.productba" +
+      "cklog.UpdateProductBacklogReq\032\'.productb" +
+      "acklog.UpdateProductBacklogRes\"\000\022j\n\024dele" +
+      "teProductBacklog\022\'.productbacklog.Delete" +
+      "ProductBacklogReq\032\'.productbacklog.Delet" +
+      "eProductBacklogRes\"\000\022g\n\023sendToSprintBack" +
+      "log\022&.productbacklog.SendToSprintBacklog" +
+      "Req\032&.productbacklog.SendToSprintBacklog" +
+      "Res\"\000\022l\n\024getAllProductBacklog\022\'.productb" +
+      "acklog.GetAllProductBacklogReq\032\'.product" +
+      "backlog.GetAllProductBacklogRes\"\0000\001B)\n\020c" +
+      "o.overlead.gRPCB\016productbacklogP\001\242\002\002pbb\006" +
+      "proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -136,19 +137,19 @@ public final class productbacklog {
     internal_static_productbacklog_AddNewProductBacklogReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_productbacklog_AddNewProductBacklogReq_descriptor,
-        new java.lang.String[] { "UserName", "ProjectId", "Role", "Want", "So", "Status", "Priority", "Estimation", "Sprint", "Cookie", });
+        new java.lang.String[] { "RequesterId", "ProjectId", "Role", "Want", "So", "StatusBacklog", "Priority", "Estimation", "Sprint", "Cookie", });
     internal_static_productbacklog_AddNewProductBacklogRes_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_productbacklog_AddNewProductBacklogRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_productbacklog_AddNewProductBacklogRes_descriptor,
-        new java.lang.String[] { "Status", "ProductbacklogId", "Error", });
+        new java.lang.String[] { "Status", "ProductBacklogId", "Error", });
     internal_static_productbacklog_UpdateProductBacklogReq_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_productbacklog_UpdateProductBacklogReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_productbacklog_UpdateProductBacklogReq_descriptor,
-        new java.lang.String[] { "UserName", "ProjectId", "ProductbacklogId", "Role", "Want", "So", "Status", "Priority", "Estimation", "Sprint", "Cookie", });
+        new java.lang.String[] { "UserName", "ProjectId", "ProductBacklogId", "Role", "Want", "So", "Status", "Priority", "Estimation", "Sprint", "Cookie", });
     internal_static_productbacklog_UpdateProductBacklogRes_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_productbacklog_UpdateProductBacklogRes_fieldAccessorTable = new
@@ -160,7 +161,7 @@ public final class productbacklog {
     internal_static_productbacklog_DeleteProductBacklogReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_productbacklog_DeleteProductBacklogReq_descriptor,
-        new java.lang.String[] { "UserName", "ProjectId", "ProductbacklogId", "Cookie", });
+        new java.lang.String[] { "UserName", "ProjectId", "ProductBacklogId", "Cookie", });
     internal_static_productbacklog_DeleteProductBacklogRes_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_productbacklog_DeleteProductBacklogRes_fieldAccessorTable = new
@@ -172,7 +173,7 @@ public final class productbacklog {
     internal_static_productbacklog_SendToSprintBacklogReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_productbacklog_SendToSprintBacklogReq_descriptor,
-        new java.lang.String[] { "UserName", "ProjectId", "ProductbacklogId", "Start", "Deadline", "Cookie", });
+        new java.lang.String[] { "UserName", "ProjectId", "ProductBacklogId", "Start", "Deadline", "Cookie", });
     internal_static_productbacklog_SendToSprintBacklogRes_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_productbacklog_SendToSprintBacklogRes_fieldAccessorTable = new

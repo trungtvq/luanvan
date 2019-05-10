@@ -4,21 +4,21 @@
 package co.overlead.gRPC;
 
 /**
- * Protobuf type {@code myproject.GetAllProjectRes}
+ * Protobuf type {@code myproject.ProjectRes}
  */
-public  final class GetAllProjectRes extends
+public  final class ProjectRes extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:myproject.GetAllProjectRes)
-    GetAllProjectResOrBuilder {
+    // @@protoc_insertion_point(message_implements:myproject.ProjectRes)
+    ProjectResOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use GetAllProjectRes.newBuilder() to construct.
-  private GetAllProjectRes(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use ProjectRes.newBuilder() to construct.
+  private ProjectRes(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private GetAllProjectRes() {
-    status_ = "";
+  private ProjectRes() {
     error_ = "";
-    idProject_ = "";
+    status_ = "";
+    projectId_ = "";
     projectName_ = "";
     start_ = "";
     end_ = "";
@@ -30,7 +30,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private GetAllProjectRes(
+  private ProjectRes(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -64,7 +64,7 @@ private static final long serialVersionUID = 0L;
           case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            idProject_ = s;
+            projectId_ = s;
             break;
           }
           case 34: {
@@ -112,49 +112,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return co.overlead.gRPC.myproject.internal_static_myproject_GetAllProjectRes_descriptor;
+    return co.overlead.gRPC.myproject.internal_static_myproject_ProjectRes_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return co.overlead.gRPC.myproject.internal_static_myproject_GetAllProjectRes_fieldAccessorTable
+    return co.overlead.gRPC.myproject.internal_static_myproject_ProjectRes_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            co.overlead.gRPC.GetAllProjectRes.class, co.overlead.gRPC.GetAllProjectRes.Builder.class);
-  }
-
-  public static final int STATUS_FIELD_NUMBER = 2;
-  private volatile java.lang.Object status_;
-  /**
-   * <code>string status = 2;</code>
-   */
-  public java.lang.String getStatus() {
-    java.lang.Object ref = status_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      status_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string status = 2;</code>
-   */
-  public com.google.protobuf.ByteString
-      getStatusBytes() {
-    java.lang.Object ref = status_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      status_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+            co.overlead.gRPC.ProjectRes.class, co.overlead.gRPC.ProjectRes.Builder.class);
   }
 
   public static final int ERROR_FIELD_NUMBER = 1;
@@ -191,34 +157,68 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int IDPROJECT_FIELD_NUMBER = 3;
-  private volatile java.lang.Object idProject_;
+  public static final int STATUS_FIELD_NUMBER = 2;
+  private volatile java.lang.Object status_;
   /**
-   * <code>string idProject = 3;</code>
+   * <code>string status = 2;</code>
    */
-  public java.lang.String getIdProject() {
-    java.lang.Object ref = idProject_;
+  public java.lang.String getStatus() {
+    java.lang.Object ref = status_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      idProject_ = s;
+      status_ = s;
       return s;
     }
   }
   /**
-   * <code>string idProject = 3;</code>
+   * <code>string status = 2;</code>
    */
   public com.google.protobuf.ByteString
-      getIdProjectBytes() {
-    java.lang.Object ref = idProject_;
+      getStatusBytes() {
+    java.lang.Object ref = status_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      idProject_ = b;
+      status_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int PROJECTID_FIELD_NUMBER = 3;
+  private volatile java.lang.Object projectId_;
+  /**
+   * <code>string projectId = 3;</code>
+   */
+  public java.lang.String getProjectId() {
+    java.lang.Object ref = projectId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      projectId_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string projectId = 3;</code>
+   */
+  public com.google.protobuf.ByteString
+      getProjectIdBytes() {
+    java.lang.Object ref = projectId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      projectId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -397,8 +397,8 @@ private static final long serialVersionUID = 0L;
     if (!getStatusBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, status_);
     }
-    if (!getIdProjectBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, idProject_);
+    if (!getProjectIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, projectId_);
     }
     if (!getProjectNameBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, projectName_);
@@ -427,8 +427,8 @@ private static final long serialVersionUID = 0L;
     if (!getStatusBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, status_);
     }
-    if (!getIdProjectBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, idProject_);
+    if (!getProjectIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, projectId_);
     }
     if (!getProjectNameBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, projectName_);
@@ -452,17 +452,17 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof co.overlead.gRPC.GetAllProjectRes)) {
+    if (!(obj instanceof co.overlead.gRPC.ProjectRes)) {
       return super.equals(obj);
     }
-    co.overlead.gRPC.GetAllProjectRes other = (co.overlead.gRPC.GetAllProjectRes) obj;
+    co.overlead.gRPC.ProjectRes other = (co.overlead.gRPC.ProjectRes) obj;
 
-    if (!getStatus()
-        .equals(other.getStatus())) return false;
     if (!getError()
         .equals(other.getError())) return false;
-    if (!getIdProject()
-        .equals(other.getIdProject())) return false;
+    if (!getStatus()
+        .equals(other.getStatus())) return false;
+    if (!getProjectId()
+        .equals(other.getProjectId())) return false;
     if (!getProjectName()
         .equals(other.getProjectName())) return false;
     if (!getStart()
@@ -482,12 +482,12 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + STATUS_FIELD_NUMBER;
-    hash = (53 * hash) + getStatus().hashCode();
     hash = (37 * hash) + ERROR_FIELD_NUMBER;
     hash = (53 * hash) + getError().hashCode();
-    hash = (37 * hash) + IDPROJECT_FIELD_NUMBER;
-    hash = (53 * hash) + getIdProject().hashCode();
+    hash = (37 * hash) + STATUS_FIELD_NUMBER;
+    hash = (53 * hash) + getStatus().hashCode();
+    hash = (37 * hash) + PROJECTID_FIELD_NUMBER;
+    hash = (53 * hash) + getProjectId().hashCode();
     hash = (37 * hash) + PROJECTNAME_FIELD_NUMBER;
     hash = (53 * hash) + getProjectName().hashCode();
     hash = (37 * hash) + START_FIELD_NUMBER;
@@ -501,69 +501,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static co.overlead.gRPC.GetAllProjectRes parseFrom(
+  public static co.overlead.gRPC.ProjectRes parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.GetAllProjectRes parseFrom(
+  public static co.overlead.gRPC.ProjectRes parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.GetAllProjectRes parseFrom(
+  public static co.overlead.gRPC.ProjectRes parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.GetAllProjectRes parseFrom(
+  public static co.overlead.gRPC.ProjectRes parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.GetAllProjectRes parseFrom(byte[] data)
+  public static co.overlead.gRPC.ProjectRes parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.GetAllProjectRes parseFrom(
+  public static co.overlead.gRPC.ProjectRes parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.GetAllProjectRes parseFrom(java.io.InputStream input)
+  public static co.overlead.gRPC.ProjectRes parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.GetAllProjectRes parseFrom(
+  public static co.overlead.gRPC.ProjectRes parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static co.overlead.gRPC.GetAllProjectRes parseDelimitedFrom(java.io.InputStream input)
+  public static co.overlead.gRPC.ProjectRes parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.GetAllProjectRes parseDelimitedFrom(
+  public static co.overlead.gRPC.ProjectRes parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static co.overlead.gRPC.GetAllProjectRes parseFrom(
+  public static co.overlead.gRPC.ProjectRes parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.GetAllProjectRes parseFrom(
+  public static co.overlead.gRPC.ProjectRes parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -576,7 +576,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(co.overlead.gRPC.GetAllProjectRes prototype) {
+  public static Builder newBuilder(co.overlead.gRPC.ProjectRes prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -592,26 +592,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code myproject.GetAllProjectRes}
+   * Protobuf type {@code myproject.ProjectRes}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:myproject.GetAllProjectRes)
-      co.overlead.gRPC.GetAllProjectResOrBuilder {
+      // @@protoc_insertion_point(builder_implements:myproject.ProjectRes)
+      co.overlead.gRPC.ProjectResOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return co.overlead.gRPC.myproject.internal_static_myproject_GetAllProjectRes_descriptor;
+      return co.overlead.gRPC.myproject.internal_static_myproject_ProjectRes_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return co.overlead.gRPC.myproject.internal_static_myproject_GetAllProjectRes_fieldAccessorTable
+      return co.overlead.gRPC.myproject.internal_static_myproject_ProjectRes_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              co.overlead.gRPC.GetAllProjectRes.class, co.overlead.gRPC.GetAllProjectRes.Builder.class);
+              co.overlead.gRPC.ProjectRes.class, co.overlead.gRPC.ProjectRes.Builder.class);
     }
 
-    // Construct using co.overlead.gRPC.GetAllProjectRes.newBuilder()
+    // Construct using co.overlead.gRPC.ProjectRes.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -629,11 +629,11 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      status_ = "";
-
       error_ = "";
 
-      idProject_ = "";
+      status_ = "";
+
+      projectId_ = "";
 
       projectName_ = "";
 
@@ -649,17 +649,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return co.overlead.gRPC.myproject.internal_static_myproject_GetAllProjectRes_descriptor;
+      return co.overlead.gRPC.myproject.internal_static_myproject_ProjectRes_descriptor;
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.GetAllProjectRes getDefaultInstanceForType() {
-      return co.overlead.gRPC.GetAllProjectRes.getDefaultInstance();
+    public co.overlead.gRPC.ProjectRes getDefaultInstanceForType() {
+      return co.overlead.gRPC.ProjectRes.getDefaultInstance();
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.GetAllProjectRes build() {
-      co.overlead.gRPC.GetAllProjectRes result = buildPartial();
+    public co.overlead.gRPC.ProjectRes build() {
+      co.overlead.gRPC.ProjectRes result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -667,11 +667,11 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.GetAllProjectRes buildPartial() {
-      co.overlead.gRPC.GetAllProjectRes result = new co.overlead.gRPC.GetAllProjectRes(this);
-      result.status_ = status_;
+    public co.overlead.gRPC.ProjectRes buildPartial() {
+      co.overlead.gRPC.ProjectRes result = new co.overlead.gRPC.ProjectRes(this);
       result.error_ = error_;
-      result.idProject_ = idProject_;
+      result.status_ = status_;
+      result.projectId_ = projectId_;
       result.projectName_ = projectName_;
       result.start_ = start_;
       result.end_ = end_;
@@ -714,26 +714,26 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof co.overlead.gRPC.GetAllProjectRes) {
-        return mergeFrom((co.overlead.gRPC.GetAllProjectRes)other);
+      if (other instanceof co.overlead.gRPC.ProjectRes) {
+        return mergeFrom((co.overlead.gRPC.ProjectRes)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(co.overlead.gRPC.GetAllProjectRes other) {
-      if (other == co.overlead.gRPC.GetAllProjectRes.getDefaultInstance()) return this;
-      if (!other.getStatus().isEmpty()) {
-        status_ = other.status_;
-        onChanged();
-      }
+    public Builder mergeFrom(co.overlead.gRPC.ProjectRes other) {
+      if (other == co.overlead.gRPC.ProjectRes.getDefaultInstance()) return this;
       if (!other.getError().isEmpty()) {
         error_ = other.error_;
         onChanged();
       }
-      if (!other.getIdProject().isEmpty()) {
-        idProject_ = other.idProject_;
+      if (!other.getStatus().isEmpty()) {
+        status_ = other.status_;
+        onChanged();
+      }
+      if (!other.getProjectId().isEmpty()) {
+        projectId_ = other.projectId_;
         onChanged();
       }
       if (!other.getProjectName().isEmpty()) {
@@ -767,86 +767,17 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      co.overlead.gRPC.GetAllProjectRes parsedMessage = null;
+      co.overlead.gRPC.ProjectRes parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (co.overlead.gRPC.GetAllProjectRes) e.getUnfinishedMessage();
+        parsedMessage = (co.overlead.gRPC.ProjectRes) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
         }
       }
-      return this;
-    }
-
-    private java.lang.Object status_ = "";
-    /**
-     * <code>string status = 2;</code>
-     */
-    public java.lang.String getStatus() {
-      java.lang.Object ref = status_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        status_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string status = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getStatusBytes() {
-      java.lang.Object ref = status_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        status_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string status = 2;</code>
-     */
-    public Builder setStatus(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      status_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string status = 2;</code>
-     */
-    public Builder clearStatus() {
-      
-      status_ = getDefaultInstance().getStatus();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string status = 2;</code>
-     */
-    public Builder setStatusBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      status_ = value;
-      onChanged();
       return this;
     }
 
@@ -919,71 +850,140 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object idProject_ = "";
+    private java.lang.Object status_ = "";
     /**
-     * <code>string idProject = 3;</code>
+     * <code>string status = 2;</code>
      */
-    public java.lang.String getIdProject() {
-      java.lang.Object ref = idProject_;
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        idProject_ = s;
+        status_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string idProject = 3;</code>
+     * <code>string status = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getIdProjectBytes() {
-      java.lang.Object ref = idProject_;
+        getStatusBytes() {
+      java.lang.Object ref = status_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        idProject_ = b;
+        status_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string idProject = 3;</code>
+     * <code>string status = 2;</code>
      */
-    public Builder setIdProject(
+    public Builder setStatus(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      idProject_ = value;
+      status_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string idProject = 3;</code>
+     * <code>string status = 2;</code>
      */
-    public Builder clearIdProject() {
+    public Builder clearStatus() {
       
-      idProject_ = getDefaultInstance().getIdProject();
+      status_ = getDefaultInstance().getStatus();
       onChanged();
       return this;
     }
     /**
-     * <code>string idProject = 3;</code>
+     * <code>string status = 2;</code>
      */
-    public Builder setIdProjectBytes(
+    public Builder setStatusBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      idProject_ = value;
+      status_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object projectId_ = "";
+    /**
+     * <code>string projectId = 3;</code>
+     */
+    public java.lang.String getProjectId() {
+      java.lang.Object ref = projectId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        projectId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string projectId = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getProjectIdBytes() {
+      java.lang.Object ref = projectId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        projectId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string projectId = 3;</code>
+     */
+    public Builder setProjectId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      projectId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string projectId = 3;</code>
+     */
+    public Builder clearProjectId() {
+      
+      projectId_ = getDefaultInstance().getProjectId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string projectId = 3;</code>
+     */
+    public Builder setProjectIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      projectId_ = value;
       onChanged();
       return this;
     }
@@ -1316,41 +1316,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:myproject.GetAllProjectRes)
+    // @@protoc_insertion_point(builder_scope:myproject.ProjectRes)
   }
 
-  // @@protoc_insertion_point(class_scope:myproject.GetAllProjectRes)
-  private static final co.overlead.gRPC.GetAllProjectRes DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:myproject.ProjectRes)
+  private static final co.overlead.gRPC.ProjectRes DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new co.overlead.gRPC.GetAllProjectRes();
+    DEFAULT_INSTANCE = new co.overlead.gRPC.ProjectRes();
   }
 
-  public static co.overlead.gRPC.GetAllProjectRes getDefaultInstance() {
+  public static co.overlead.gRPC.ProjectRes getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<GetAllProjectRes>
-      PARSER = new com.google.protobuf.AbstractParser<GetAllProjectRes>() {
+  private static final com.google.protobuf.Parser<ProjectRes>
+      PARSER = new com.google.protobuf.AbstractParser<ProjectRes>() {
     @java.lang.Override
-    public GetAllProjectRes parsePartialFrom(
+    public ProjectRes parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new GetAllProjectRes(input, extensionRegistry);
+      return new ProjectRes(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<GetAllProjectRes> parser() {
+  public static com.google.protobuf.Parser<ProjectRes> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<GetAllProjectRes> getParserForType() {
+  public com.google.protobuf.Parser<ProjectRes> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public co.overlead.gRPC.GetAllProjectRes getDefaultInstanceForType() {
+  public co.overlead.gRPC.ProjectRes getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

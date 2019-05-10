@@ -8,14 +8,24 @@ public interface AddNewProjectReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string idOwner = 1;</code>
+   * <code>string ownerId = 1;</code>
    */
-  java.lang.String getIdOwner();
+  java.lang.String getOwnerId();
   /**
-   * <code>string idOwner = 1;</code>
+   * <code>string ownerId = 1;</code>
    */
   com.google.protobuf.ByteString
-      getIdOwnerBytes();
+      getOwnerIdBytes();
+
+  /**
+   * <code>string requesterId = 7;</code>
+   */
+  java.lang.String getRequesterId();
+  /**
+   * <code>string requesterId = 7;</code>
+   */
+  com.google.protobuf.ByteString
+      getRequesterIdBytes();
 
   /**
    * <code>string projectName = 2;</code>

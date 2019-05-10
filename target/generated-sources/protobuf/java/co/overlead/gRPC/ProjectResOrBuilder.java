@@ -3,19 +3,9 @@
 
 package co.overlead.gRPC;
 
-public interface GetAllProjectResOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:myproject.GetAllProjectRes)
+public interface ProjectResOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:myproject.ProjectRes)
     com.google.protobuf.MessageOrBuilder {
-
-  /**
-   * <code>string status = 2;</code>
-   */
-  java.lang.String getStatus();
-  /**
-   * <code>string status = 2;</code>
-   */
-  com.google.protobuf.ByteString
-      getStatusBytes();
 
   /**
    * <code>string error = 1;</code>
@@ -28,14 +18,24 @@ public interface GetAllProjectResOrBuilder extends
       getErrorBytes();
 
   /**
-   * <code>string idProject = 3;</code>
+   * <code>string status = 2;</code>
    */
-  java.lang.String getIdProject();
+  java.lang.String getStatus();
   /**
-   * <code>string idProject = 3;</code>
+   * <code>string status = 2;</code>
    */
   com.google.protobuf.ByteString
-      getIdProjectBytes();
+      getStatusBytes();
+
+  /**
+   * <code>string projectId = 3;</code>
+   */
+  java.lang.String getProjectId();
+  /**
+   * <code>string projectId = 3;</code>
+   */
+  com.google.protobuf.ByteString
+      getProjectIdBytes();
 
   /**
    * <code>string projectName = 4;</code>

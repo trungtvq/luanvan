@@ -27,36 +27,36 @@ public final class VelocityGrpc {
   public static final String SERVICE_NAME = "velocity.Velocity";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllTeamTaskVelocityReq,
-      co.overlead.gRPC.GetAllTeamTaskVelocityRes> getGetAllTeamTaskMethod;
+  private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.GetVelocityReq,
+      co.overlead.gRPC.GetVelocityRes> getGetVelocityMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "getAllTeamTask",
-      requestType = co.overlead.gRPC.GetAllTeamTaskVelocityReq.class,
-      responseType = co.overlead.gRPC.GetAllTeamTaskVelocityRes.class,
+      fullMethodName = SERVICE_NAME + '/' + "getVelocity",
+      requestType = co.overlead.gRPC.GetVelocityReq.class,
+      responseType = co.overlead.gRPC.GetVelocityRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllTeamTaskVelocityReq,
-      co.overlead.gRPC.GetAllTeamTaskVelocityRes> getGetAllTeamTaskMethod() {
-    io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllTeamTaskVelocityReq, co.overlead.gRPC.GetAllTeamTaskVelocityRes> getGetAllTeamTaskMethod;
-    if ((getGetAllTeamTaskMethod = VelocityGrpc.getGetAllTeamTaskMethod) == null) {
+  public static io.grpc.MethodDescriptor<co.overlead.gRPC.GetVelocityReq,
+      co.overlead.gRPC.GetVelocityRes> getGetVelocityMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.GetVelocityReq, co.overlead.gRPC.GetVelocityRes> getGetVelocityMethod;
+    if ((getGetVelocityMethod = VelocityGrpc.getGetVelocityMethod) == null) {
       synchronized (VelocityGrpc.class) {
-        if ((getGetAllTeamTaskMethod = VelocityGrpc.getGetAllTeamTaskMethod) == null) {
-          VelocityGrpc.getGetAllTeamTaskMethod = getGetAllTeamTaskMethod = 
-              io.grpc.MethodDescriptor.<co.overlead.gRPC.GetAllTeamTaskVelocityReq, co.overlead.gRPC.GetAllTeamTaskVelocityRes>newBuilder()
+        if ((getGetVelocityMethod = VelocityGrpc.getGetVelocityMethod) == null) {
+          VelocityGrpc.getGetVelocityMethod = getGetVelocityMethod = 
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.GetVelocityReq, co.overlead.gRPC.GetVelocityRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(
-                  "velocity.Velocity", "getAllTeamTask"))
+                  "velocity.Velocity", "getVelocity"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.GetAllTeamTaskVelocityReq.getDefaultInstance()))
+                  co.overlead.gRPC.GetVelocityReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.GetAllTeamTaskVelocityRes.getDefaultInstance()))
-                  .setSchemaDescriptor(new VelocityMethodDescriptorSupplier("getAllTeamTask"))
+                  co.overlead.gRPC.GetVelocityRes.getDefaultInstance()))
+                  .setSchemaDescriptor(new VelocityMethodDescriptorSupplier("getVelocity"))
                   .build();
           }
         }
      }
-     return getGetAllTeamTaskMethod;
+     return getGetVelocityMethod;
   }
 
   /**
@@ -88,20 +88,20 @@ public final class VelocityGrpc {
 
     /**
      */
-    public void getAllTeamTask(co.overlead.gRPC.GetAllTeamTaskVelocityReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllTeamTaskVelocityRes> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetAllTeamTaskMethod(), responseObserver);
+    public void getVelocity(co.overlead.gRPC.GetVelocityReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.GetVelocityRes> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetVelocityMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            getGetAllTeamTaskMethod(),
+            getGetVelocityMethod(),
             asyncServerStreamingCall(
               new MethodHandlers<
-                co.overlead.gRPC.GetAllTeamTaskVelocityReq,
-                co.overlead.gRPC.GetAllTeamTaskVelocityRes>(
-                  this, METHODID_GET_ALL_TEAM_TASK)))
+                co.overlead.gRPC.GetVelocityReq,
+                co.overlead.gRPC.GetVelocityRes>(
+                  this, METHODID_GET_VELOCITY)))
           .build();
     }
   }
@@ -126,10 +126,10 @@ public final class VelocityGrpc {
 
     /**
      */
-    public void getAllTeamTask(co.overlead.gRPC.GetAllTeamTaskVelocityReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllTeamTaskVelocityRes> responseObserver) {
+    public void getVelocity(co.overlead.gRPC.GetVelocityReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.GetVelocityRes> responseObserver) {
       asyncServerStreamingCall(
-          getChannel().newCall(getGetAllTeamTaskMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetVelocityMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -153,10 +153,10 @@ public final class VelocityGrpc {
 
     /**
      */
-    public java.util.Iterator<co.overlead.gRPC.GetAllTeamTaskVelocityRes> getAllTeamTask(
-        co.overlead.gRPC.GetAllTeamTaskVelocityReq request) {
+    public java.util.Iterator<co.overlead.gRPC.GetVelocityRes> getVelocity(
+        co.overlead.gRPC.GetVelocityReq request) {
       return blockingServerStreamingCall(
-          getChannel(), getGetAllTeamTaskMethod(), getCallOptions(), request);
+          getChannel(), getGetVelocityMethod(), getCallOptions(), request);
     }
   }
 
@@ -179,7 +179,7 @@ public final class VelocityGrpc {
     }
   }
 
-  private static final int METHODID_GET_ALL_TEAM_TASK = 0;
+  private static final int METHODID_GET_VELOCITY = 0;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -198,9 +198,9 @@ public final class VelocityGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_GET_ALL_TEAM_TASK:
-          serviceImpl.getAllTeamTask((co.overlead.gRPC.GetAllTeamTaskVelocityReq) request,
-              (io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllTeamTaskVelocityRes>) responseObserver);
+        case METHODID_GET_VELOCITY:
+          serviceImpl.getVelocity((co.overlead.gRPC.GetVelocityReq) request,
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.GetVelocityRes>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -263,7 +263,7 @@ public final class VelocityGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new VelocityFileDescriptorSupplier())
-              .addMethod(getGetAllTeamTaskMethod())
+              .addMethod(getGetVelocityMethod())
               .build();
         }
       }

@@ -28,14 +28,14 @@ public interface DeleteProductBacklogReqOrBuilder extends
       getProjectIdBytes();
 
   /**
-   * <code>string productbacklogId = 3;</code>
+   * <code>string productBacklogId = 3;</code>
    */
-  java.lang.String getProductbacklogId();
+  java.lang.String getProductBacklogId();
   /**
-   * <code>string productbacklogId = 3;</code>
+   * <code>string productBacklogId = 3;</code>
    */
   com.google.protobuf.ByteString
-      getProductbacklogIdBytes();
+      getProductBacklogIdBytes();
 
   /**
    * <code>string cookie = 4;</code>

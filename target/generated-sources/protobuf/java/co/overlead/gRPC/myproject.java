@@ -20,40 +20,25 @@ public final class myproject {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_myproject_AddNewProjectReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_myproject_AddNewProjectRes_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_myproject_AddNewProjectRes_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_myproject_UpdateProjectReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_myproject_UpdateProjectReq_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_myproject_UpdateProjectRes_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_myproject_UpdateProjectRes_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_myproject_DeleteProjectReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_myproject_DeleteProjectReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_myproject_DeleteProjectRes_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_myproject_DeleteProjectRes_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_myproject_GetAllProjectReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_myproject_GetAllProjectReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_myproject_GetAllProjectRes_descriptor;
+    internal_static_myproject_ProjectRes_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_myproject_GetAllProjectRes_fieldAccessorTable;
+      internal_static_myproject_ProjectRes_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -63,34 +48,30 @@ public final class myproject {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\017myproject.proto\022\tmyproject\"u\n\020AddNewPr" +
-      "ojectReq\022\017\n\007idOwner\030\001 \001(\t\022\023\n\013projectName" +
-      "\030\002 \001(\t\022\r\n\005start\030\003 \001(\t\022\013\n\003end\030\004 \001(\t\022\017\n\007pr" +
-      "ivate\030\005 \001(\t\022\016\n\006cookie\030\006 \001(\t\"D\n\020AddNewPro" +
-      "jectRes\022\r\n\005error\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\021" +
-      "\n\tidProject\030\003 \001(\t\"\232\001\n\020UpdateProjectReq\022\021" +
-      "\n\tidProject\030\001 \001(\t\022\017\n\007idOwner\030\002 \001(\t\022\020\n\010us" +
-      "erName\030\003 \001(\t\022\023\n\013projectName\030\004 \001(\t\022\r\n\005sta" +
-      "rt\030\005 \001(\t\022\013\n\003end\030\006 \001(\t\022\017\n\007private\030\007 \001(\t\022\016" +
-      "\n\006cookie\030\010 \001(\t\"1\n\020UpdateProjectRes\022\r\n\005er" +
-      "ror\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"F\n\020DeleteProje" +
-      "ctReq\022\017\n\007idOwner\030\001 \001(\t\022\021\n\tidProject\030\002 \001(" +
-      "\t\022\016\n\006cookie\030\003 \001(\t\"1\n\020DeleteProjectRes\022\r\n" +
-      "\005error\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\".\n\020GetAllPr" +
-      "ojectReq\022\n\n\002id\030\001 \001(\t\022\016\n\006cookie\030\002 \001(\t\"\206\001\n" +
-      "\020GetAllProjectRes\022\016\n\006status\030\002 \001(\t\022\r\n\005err" +
-      "or\030\001 \001(\t\022\021\n\tidProject\030\003 \001(\t\022\023\n\013projectNa" +
+      "\n\017myproject.proto\022\tmyproject\"\212\001\n\020AddNewP" +
+      "rojectReq\022\017\n\007ownerId\030\001 \001(\t\022\023\n\013requesterI" +
+      "d\030\007 \001(\t\022\023\n\013projectName\030\002 \001(\t\022\r\n\005start\030\003 " +
+      "\001(\t\022\013\n\003end\030\004 \001(\t\022\017\n\007private\030\005 \001(\t\022\016\n\006coo" +
+      "kie\030\006 \001(\t\"\236\001\n\020UpdateProjectReq\022\021\n\tprojec" +
+      "tId\030\001 \001(\t\022\020\n\010userName\030\003 \001(\t\022\023\n\013projectNa" +
       "me\030\004 \001(\t\022\r\n\005start\030\005 \001(\t\022\013\n\003end\030\006 \001(\t\022\017\n\007" +
-      "private\030\007 \001(\t2\301\002\n\tMyproject\022K\n\raddNewPro" +
-      "ject\022\033.myproject.AddNewProjectReq\032\033.mypr" +
-      "oject.AddNewProjectRes\"\000\022K\n\rupdateProjec" +
-      "t\022\033.myproject.UpdateProjectReq\032\033.myproje" +
-      "ct.UpdateProjectRes\"\000\022K\n\rdeleteProject\022\033" +
-      ".myproject.DeleteProjectReq\032\033.myproject." +
-      "DeleteProjectRes\"\000\022M\n\rgetAllProject\022\033.my" +
-      "project.GetAllProjectReq\032\033.myproject.Get" +
-      "AllProjectRes\"\0000\001B$\n\020co.overlead.gRPCB\tm" +
-      "yprojectP\001\242\002\002mpb\006proto3"
+      "private\030\007 \001(\t\022\016\n\006cookie\030\010 \001(\t\022\023\n\013request" +
+      "erId\030\002 \001(\t\"J\n\020DeleteProjectReq\022\021\n\tprojec" +
+      "tId\030\002 \001(\t\022\016\n\006cookie\030\003 \001(\t\022\023\n\013requesterId" +
+      "\030\001 \001(\t\"7\n\020GetAllProjectReq\022\023\n\013requesterI" +
+      "d\030\003 \001(\t\022\016\n\006cookie\030\002 \001(\t\"\200\001\n\nProjectRes\022\r" +
+      "\n\005error\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\021\n\tproject" +
+      "Id\030\003 \001(\t\022\023\n\013projectName\030\004 \001(\t\022\r\n\005start\030\005" +
+      " \001(\t\022\013\n\003end\030\006 \001(\t\022\017\n\007private\030\007 \001(\t2\251\002\n\tM" +
+      "yproject\022E\n\raddNewProject\022\033.myproject.Ad" +
+      "dNewProjectReq\032\025.myproject.ProjectRes\"\000\022" +
+      "E\n\rupdateProject\022\033.myproject.UpdateProje" +
+      "ctReq\032\025.myproject.ProjectRes\"\000\022E\n\rdelete" +
+      "Project\022\033.myproject.DeleteProjectReq\032\025.m" +
+      "yproject.ProjectRes\"\000\022G\n\rgetAllProject\022\033" +
+      ".myproject.GetAllProjectReq\032\025.myproject." +
+      "ProjectRes\"\0000\001B$\n\020co.overlead.gRPCB\tmypr" +
+      "ojectP\001\242\002\002mpb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -109,49 +90,31 @@ public final class myproject {
     internal_static_myproject_AddNewProjectReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_myproject_AddNewProjectReq_descriptor,
-        new java.lang.String[] { "IdOwner", "ProjectName", "Start", "End", "Private", "Cookie", });
-    internal_static_myproject_AddNewProjectRes_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_myproject_AddNewProjectRes_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_myproject_AddNewProjectRes_descriptor,
-        new java.lang.String[] { "Error", "Status", "IdProject", });
+        new java.lang.String[] { "OwnerId", "RequesterId", "ProjectName", "Start", "End", "Private", "Cookie", });
     internal_static_myproject_UpdateProjectReq_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(1);
     internal_static_myproject_UpdateProjectReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_myproject_UpdateProjectReq_descriptor,
-        new java.lang.String[] { "IdProject", "IdOwner", "UserName", "ProjectName", "Start", "End", "Private", "Cookie", });
-    internal_static_myproject_UpdateProjectRes_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_myproject_UpdateProjectRes_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_myproject_UpdateProjectRes_descriptor,
-        new java.lang.String[] { "Error", "Status", });
+        new java.lang.String[] { "ProjectId", "UserName", "ProjectName", "Start", "End", "Private", "Cookie", "RequesterId", });
     internal_static_myproject_DeleteProjectReq_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_myproject_DeleteProjectReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_myproject_DeleteProjectReq_descriptor,
-        new java.lang.String[] { "IdOwner", "IdProject", "Cookie", });
-    internal_static_myproject_DeleteProjectRes_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_myproject_DeleteProjectRes_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_myproject_DeleteProjectRes_descriptor,
-        new java.lang.String[] { "Error", "Status", });
+        new java.lang.String[] { "ProjectId", "Cookie", "RequesterId", });
     internal_static_myproject_GetAllProjectReq_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_myproject_GetAllProjectReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_myproject_GetAllProjectReq_descriptor,
-        new java.lang.String[] { "Id", "Cookie", });
-    internal_static_myproject_GetAllProjectRes_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_myproject_GetAllProjectRes_fieldAccessorTable = new
+        new java.lang.String[] { "RequesterId", "Cookie", });
+    internal_static_myproject_ProjectRes_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_myproject_ProjectRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_myproject_GetAllProjectRes_descriptor,
-        new java.lang.String[] { "Status", "Error", "IdProject", "ProjectName", "Start", "End", "Private", });
+        internal_static_myproject_ProjectRes_descriptor,
+        new java.lang.String[] { "Error", "Status", "ProjectId", "ProjectName", "Start", "End", "Private", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

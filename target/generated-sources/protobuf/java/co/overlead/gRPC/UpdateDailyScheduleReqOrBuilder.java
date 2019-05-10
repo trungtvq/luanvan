@@ -8,14 +8,14 @@ public interface UpdateDailyScheduleReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string userName = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
-  java.lang.String getUserName();
+  java.lang.String getRequesterId();
   /**
-   * <code>string userName = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
   com.google.protobuf.ByteString
-      getUserNameBytes();
+      getRequesterIdBytes();
 
   /**
    * <code>string projectId = 2;</code>
@@ -28,24 +28,24 @@ public interface UpdateDailyScheduleReqOrBuilder extends
       getProjectIdBytes();
 
   /**
-   * <code>string date = 3;</code>
+   * <code>string scheduleId = 3;</code>
    */
-  java.lang.String getDate();
+  java.lang.String getScheduleId();
   /**
-   * <code>string date = 3;</code>
+   * <code>string scheduleId = 3;</code>
    */
   com.google.protobuf.ByteString
-      getDateBytes();
+      getScheduleIdBytes();
 
   /**
-   * <code>string idbacklog = 4;</code>
+   * <code>string title = 4;</code>
    */
-  java.lang.String getIdbacklog();
+  java.lang.String getTitle();
   /**
-   * <code>string idbacklog = 4;</code>
+   * <code>string title = 4;</code>
    */
   com.google.protobuf.ByteString
-      getIdbacklogBytes();
+      getTitleBytes();
 
   /**
    * <code>string task = 5;</code>
@@ -58,24 +58,24 @@ public interface UpdateDailyScheduleReqOrBuilder extends
       getTaskBytes();
 
   /**
-   * <code>string status = 6;</code>
+   * <code>string time = 6;</code>
    */
-  java.lang.String getStatus();
+  java.lang.String getTime();
   /**
-   * <code>string status = 6;</code>
+   * <code>string time = 6;</code>
    */
   com.google.protobuf.ByteString
-      getStatusBytes();
+      getTimeBytes();
 
   /**
-   * <code>string review = 7;</code>
+   * <code>string scheduleStatus = 7;</code>
    */
-  java.lang.String getReview();
+  java.lang.String getScheduleStatus();
   /**
-   * <code>string review = 7;</code>
+   * <code>string scheduleStatus = 7;</code>
    */
   com.google.protobuf.ByteString
-      getReviewBytes();
+      getScheduleStatusBytes();
 
   /**
    * <code>string cookie = 8;</code>

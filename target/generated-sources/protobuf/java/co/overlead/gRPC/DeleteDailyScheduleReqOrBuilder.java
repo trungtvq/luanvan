@@ -8,14 +8,14 @@ public interface DeleteDailyScheduleReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string userName = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
-  java.lang.String getUserName();
+  java.lang.String getRequesterId();
   /**
-   * <code>string userName = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
   com.google.protobuf.ByteString
-      getUserNameBytes();
+      getRequesterIdBytes();
 
   /**
    * <code>string projectId = 2;</code>
@@ -28,14 +28,14 @@ public interface DeleteDailyScheduleReqOrBuilder extends
       getProjectIdBytes();
 
   /**
-   * <code>string dailyscheduleId = 3;</code>
+   * <code>string scheduleId = 3;</code>
    */
-  java.lang.String getDailyscheduleId();
+  java.lang.String getScheduleId();
   /**
-   * <code>string dailyscheduleId = 3;</code>
+   * <code>string scheduleId = 3;</code>
    */
   com.google.protobuf.ByteString
-      getDailyscheduleIdBytes();
+      getScheduleIdBytes();
 
   /**
    * <code>string cookie = 4;</code>

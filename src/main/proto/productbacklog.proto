@@ -6,7 +6,7 @@ option java_outer_classname = "productbacklog";
 option objc_class_prefix = "pb";
 package productbacklog;
 
-service Productbacklog{
+service ProductBacklog{
     rpc addNewProductBacklog(AddNewProductBacklogReq) returns (AddNewProductBacklogRes) {}
     rpc updateUserStory(UpdateProductBacklogReq) returns (UpdateProductBacklogRes){}
     rpc deleteProductBacklog(DeleteProductBacklogReq) returns (DeleteProductBacklogRes){}
@@ -15,27 +15,27 @@ service Productbacklog{
 }
 
 message AddNewProductBacklogReq{
-    string userName = 1;
+    string requesterId = 1;
 	string projectId = 2;
 	string role = 3;
 	string want = 4;
 	string so = 5;
-	string status = 6;										//alway status="todo" when add productbacklog
+	string statusBacklog = 6;										//alway status="todo" when add productbacklog
 	string priority = 7;
 	string estimation = 8;
-	string sprint = 9;	
+	string sprint = 9;
 	string cookie = 10;
 }
 message AddNewProductBacklogRes{
     string status = 1;
-	string productbacklogId = 2;
+	string productBacklogId = 2;
 	string error = 3;
 }
 
 message UpdateProductBacklogReq{
 	string userName = 1;
 	string projectId = 2;
-	string productbacklogId = 3;
+	string productBacklogId = 3;
 	string role = 4;
 	string want = 5;
 	string so = 6;
@@ -53,7 +53,7 @@ message UpdateProductBacklogRes{
 message DeleteProductBacklogReq{
     string userName = 1;
     string projectId = 2;
-	string productbacklogId = 3;
+	string productBacklogId = 3;
 	string cookie = 4;
 }
 message DeleteProductBacklogRes{
@@ -64,7 +64,7 @@ message DeleteProductBacklogRes{
 message SendToSprintBacklogReq{	//lay tat ca gia tri cua productbacklog dc chon gan qua sprint backlog dong thoi gan status cua no thanh inprogress
     string userName = 1;
     string projectId = 2;
-	string productbacklogId = 3;
+	string productBacklogId = 3;
 	string start = 4;		 //return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
 	string deadline = 5;			//return in form mm/hh/dd/mm/yyyy 	
 	string cookie = 6;

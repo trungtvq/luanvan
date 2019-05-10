@@ -16,13 +16,12 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private AddNewDailyScheduleReq() {
-    userName_ = "";
+    requesterId_ = "";
     projectId_ = "";
-    date_ = "";
-    idbacklog_ = "";
+    title_ = "";
     task_ = "";
-    status_ = "";
-    review_ = "";
+    time_ = "";
+    scheduleStatus_ = "";
     cookie_ = "";
   }
 
@@ -53,7 +52,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            userName_ = s;
+            requesterId_ = s;
             break;
           }
           case 18: {
@@ -65,31 +64,25 @@ private static final long serialVersionUID = 0L;
           case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            date_ = s;
+            title_ = s;
             break;
           }
           case 34: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            idbacklog_ = s;
+            task_ = s;
             break;
           }
           case 42: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            task_ = s;
+            time_ = s;
             break;
           }
           case 50: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            status_ = s;
-            break;
-          }
-          case 58: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            review_ = s;
+            scheduleStatus_ = s;
             break;
           }
           case 66: {
@@ -130,34 +123,34 @@ private static final long serialVersionUID = 0L;
             co.overlead.gRPC.AddNewDailyScheduleReq.class, co.overlead.gRPC.AddNewDailyScheduleReq.Builder.class);
   }
 
-  public static final int USERNAME_FIELD_NUMBER = 1;
-  private volatile java.lang.Object userName_;
+  public static final int REQUESTERID_FIELD_NUMBER = 1;
+  private volatile java.lang.Object requesterId_;
   /**
-   * <code>string userName = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
-  public java.lang.String getUserName() {
-    java.lang.Object ref = userName_;
+  public java.lang.String getRequesterId() {
+    java.lang.Object ref = requesterId_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      userName_ = s;
+      requesterId_ = s;
       return s;
     }
   }
   /**
-   * <code>string userName = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getUserNameBytes() {
-    java.lang.Object ref = userName_;
+      getRequesterIdBytes() {
+    java.lang.Object ref = requesterId_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      userName_ = b;
+      requesterId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -198,78 +191,52 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int DATE_FIELD_NUMBER = 3;
-  private volatile java.lang.Object date_;
+  public static final int TITLE_FIELD_NUMBER = 3;
+  private volatile java.lang.Object title_;
   /**
-   * <code>string date = 3;</code>
+   * <pre>
+   *uni
+   * </pre>
+   *
+   * <code>string title = 3;</code>
    */
-  public java.lang.String getDate() {
-    java.lang.Object ref = date_;
+  public java.lang.String getTitle() {
+    java.lang.Object ref = title_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      date_ = s;
+      title_ = s;
       return s;
     }
   }
   /**
-   * <code>string date = 3;</code>
+   * <pre>
+   *uni
+   * </pre>
+   *
+   * <code>string title = 3;</code>
    */
   public com.google.protobuf.ByteString
-      getDateBytes() {
-    java.lang.Object ref = date_;
+      getTitleBytes() {
+    java.lang.Object ref = title_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      date_ = b;
+      title_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int IDBACKLOG_FIELD_NUMBER = 4;
-  private volatile java.lang.Object idbacklog_;
-  /**
-   * <code>string idbacklog = 4;</code>
-   */
-  public java.lang.String getIdbacklog() {
-    java.lang.Object ref = idbacklog_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      idbacklog_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string idbacklog = 4;</code>
-   */
-  public com.google.protobuf.ByteString
-      getIdbacklogBytes() {
-    java.lang.Object ref = idbacklog_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      idbacklog_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int TASK_FIELD_NUMBER = 5;
+  public static final int TASK_FIELD_NUMBER = 4;
   private volatile java.lang.Object task_;
   /**
-   * <code>string task = 5;</code>
+   * <code>string task = 4;</code>
    */
   public java.lang.String getTask() {
     java.lang.Object ref = task_;
@@ -284,7 +251,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string task = 5;</code>
+   * <code>string task = 4;</code>
    */
   public com.google.protobuf.ByteString
       getTaskBytes() {
@@ -300,68 +267,68 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int STATUS_FIELD_NUMBER = 6;
-  private volatile java.lang.Object status_;
+  public static final int TIME_FIELD_NUMBER = 5;
+  private volatile java.lang.Object time_;
   /**
-   * <code>string status = 6;</code>
+   * <code>string time = 5;</code>
    */
-  public java.lang.String getStatus() {
-    java.lang.Object ref = status_;
+  public java.lang.String getTime() {
+    java.lang.Object ref = time_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      status_ = s;
+      time_ = s;
       return s;
     }
   }
   /**
-   * <code>string status = 6;</code>
+   * <code>string time = 5;</code>
    */
   public com.google.protobuf.ByteString
-      getStatusBytes() {
-    java.lang.Object ref = status_;
+      getTimeBytes() {
+    java.lang.Object ref = time_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      status_ = b;
+      time_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int REVIEW_FIELD_NUMBER = 7;
-  private volatile java.lang.Object review_;
+  public static final int SCHEDULESTATUS_FIELD_NUMBER = 6;
+  private volatile java.lang.Object scheduleStatus_;
   /**
-   * <code>string review = 7;</code>
+   * <code>string scheduleStatus = 6;</code>
    */
-  public java.lang.String getReview() {
-    java.lang.Object ref = review_;
+  public java.lang.String getScheduleStatus() {
+    java.lang.Object ref = scheduleStatus_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      review_ = s;
+      scheduleStatus_ = s;
       return s;
     }
   }
   /**
-   * <code>string review = 7;</code>
+   * <code>string scheduleStatus = 6;</code>
    */
   public com.google.protobuf.ByteString
-      getReviewBytes() {
-    java.lang.Object ref = review_;
+      getScheduleStatusBytes() {
+    java.lang.Object ref = scheduleStatus_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      review_ = b;
+      scheduleStatus_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -416,26 +383,23 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getUserNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, userName_);
+    if (!getRequesterIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, requesterId_);
     }
     if (!getProjectIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, projectId_);
     }
-    if (!getDateBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, date_);
-    }
-    if (!getIdbacklogBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, idbacklog_);
+    if (!getTitleBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, title_);
     }
     if (!getTaskBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, task_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, task_);
     }
-    if (!getStatusBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, status_);
+    if (!getTimeBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, time_);
     }
-    if (!getReviewBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, review_);
+    if (!getScheduleStatusBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, scheduleStatus_);
     }
     if (!getCookieBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 8, cookie_);
@@ -449,26 +413,23 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getUserNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, userName_);
+    if (!getRequesterIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, requesterId_);
     }
     if (!getProjectIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, projectId_);
     }
-    if (!getDateBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, date_);
-    }
-    if (!getIdbacklogBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, idbacklog_);
+    if (!getTitleBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, title_);
     }
     if (!getTaskBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, task_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, task_);
     }
-    if (!getStatusBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, status_);
+    if (!getTimeBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, time_);
     }
-    if (!getReviewBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, review_);
+    if (!getScheduleStatusBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, scheduleStatus_);
     }
     if (!getCookieBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, cookie_);
@@ -488,20 +449,18 @@ private static final long serialVersionUID = 0L;
     }
     co.overlead.gRPC.AddNewDailyScheduleReq other = (co.overlead.gRPC.AddNewDailyScheduleReq) obj;
 
-    if (!getUserName()
-        .equals(other.getUserName())) return false;
+    if (!getRequesterId()
+        .equals(other.getRequesterId())) return false;
     if (!getProjectId()
         .equals(other.getProjectId())) return false;
-    if (!getDate()
-        .equals(other.getDate())) return false;
-    if (!getIdbacklog()
-        .equals(other.getIdbacklog())) return false;
+    if (!getTitle()
+        .equals(other.getTitle())) return false;
     if (!getTask()
         .equals(other.getTask())) return false;
-    if (!getStatus()
-        .equals(other.getStatus())) return false;
-    if (!getReview()
-        .equals(other.getReview())) return false;
+    if (!getTime()
+        .equals(other.getTime())) return false;
+    if (!getScheduleStatus()
+        .equals(other.getScheduleStatus())) return false;
     if (!getCookie()
         .equals(other.getCookie())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -515,20 +474,18 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + USERNAME_FIELD_NUMBER;
-    hash = (53 * hash) + getUserName().hashCode();
+    hash = (37 * hash) + REQUESTERID_FIELD_NUMBER;
+    hash = (53 * hash) + getRequesterId().hashCode();
     hash = (37 * hash) + PROJECTID_FIELD_NUMBER;
     hash = (53 * hash) + getProjectId().hashCode();
-    hash = (37 * hash) + DATE_FIELD_NUMBER;
-    hash = (53 * hash) + getDate().hashCode();
-    hash = (37 * hash) + IDBACKLOG_FIELD_NUMBER;
-    hash = (53 * hash) + getIdbacklog().hashCode();
+    hash = (37 * hash) + TITLE_FIELD_NUMBER;
+    hash = (53 * hash) + getTitle().hashCode();
     hash = (37 * hash) + TASK_FIELD_NUMBER;
     hash = (53 * hash) + getTask().hashCode();
-    hash = (37 * hash) + STATUS_FIELD_NUMBER;
-    hash = (53 * hash) + getStatus().hashCode();
-    hash = (37 * hash) + REVIEW_FIELD_NUMBER;
-    hash = (53 * hash) + getReview().hashCode();
+    hash = (37 * hash) + TIME_FIELD_NUMBER;
+    hash = (53 * hash) + getTime().hashCode();
+    hash = (37 * hash) + SCHEDULESTATUS_FIELD_NUMBER;
+    hash = (53 * hash) + getScheduleStatus().hashCode();
     hash = (37 * hash) + COOKIE_FIELD_NUMBER;
     hash = (53 * hash) + getCookie().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -664,19 +621,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      userName_ = "";
+      requesterId_ = "";
 
       projectId_ = "";
 
-      date_ = "";
-
-      idbacklog_ = "";
+      title_ = "";
 
       task_ = "";
 
-      status_ = "";
+      time_ = "";
 
-      review_ = "";
+      scheduleStatus_ = "";
 
       cookie_ = "";
 
@@ -706,13 +661,12 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public co.overlead.gRPC.AddNewDailyScheduleReq buildPartial() {
       co.overlead.gRPC.AddNewDailyScheduleReq result = new co.overlead.gRPC.AddNewDailyScheduleReq(this);
-      result.userName_ = userName_;
+      result.requesterId_ = requesterId_;
       result.projectId_ = projectId_;
-      result.date_ = date_;
-      result.idbacklog_ = idbacklog_;
+      result.title_ = title_;
       result.task_ = task_;
-      result.status_ = status_;
-      result.review_ = review_;
+      result.time_ = time_;
+      result.scheduleStatus_ = scheduleStatus_;
       result.cookie_ = cookie_;
       onBuilt();
       return result;
@@ -762,32 +716,28 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(co.overlead.gRPC.AddNewDailyScheduleReq other) {
       if (other == co.overlead.gRPC.AddNewDailyScheduleReq.getDefaultInstance()) return this;
-      if (!other.getUserName().isEmpty()) {
-        userName_ = other.userName_;
+      if (!other.getRequesterId().isEmpty()) {
+        requesterId_ = other.requesterId_;
         onChanged();
       }
       if (!other.getProjectId().isEmpty()) {
         projectId_ = other.projectId_;
         onChanged();
       }
-      if (!other.getDate().isEmpty()) {
-        date_ = other.date_;
-        onChanged();
-      }
-      if (!other.getIdbacklog().isEmpty()) {
-        idbacklog_ = other.idbacklog_;
+      if (!other.getTitle().isEmpty()) {
+        title_ = other.title_;
         onChanged();
       }
       if (!other.getTask().isEmpty()) {
         task_ = other.task_;
         onChanged();
       }
-      if (!other.getStatus().isEmpty()) {
-        status_ = other.status_;
+      if (!other.getTime().isEmpty()) {
+        time_ = other.time_;
         onChanged();
       }
-      if (!other.getReview().isEmpty()) {
-        review_ = other.review_;
+      if (!other.getScheduleStatus().isEmpty()) {
+        scheduleStatus_ = other.scheduleStatus_;
         onChanged();
       }
       if (!other.getCookie().isEmpty()) {
@@ -823,71 +773,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object userName_ = "";
+    private java.lang.Object requesterId_ = "";
     /**
-     * <code>string userName = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public java.lang.String getUserName() {
-      java.lang.Object ref = userName_;
+    public java.lang.String getRequesterId() {
+      java.lang.Object ref = requesterId_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        userName_ = s;
+        requesterId_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string userName = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getUserNameBytes() {
-      java.lang.Object ref = userName_;
+        getRequesterIdBytes() {
+      java.lang.Object ref = requesterId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        userName_ = b;
+        requesterId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string userName = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder setUserName(
+    public Builder setRequesterId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      userName_ = value;
+      requesterId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string userName = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder clearUserName() {
+    public Builder clearRequesterId() {
       
-      userName_ = getDefaultInstance().getUserName();
+      requesterId_ = getDefaultInstance().getRequesterId();
       onChanged();
       return this;
     }
     /**
-     * <code>string userName = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder setUserNameBytes(
+    public Builder setRequesterIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      userName_ = value;
+      requesterId_ = value;
       onChanged();
       return this;
     }
@@ -961,147 +911,98 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object date_ = "";
+    private java.lang.Object title_ = "";
     /**
-     * <code>string date = 3;</code>
+     * <pre>
+     *uni
+     * </pre>
+     *
+     * <code>string title = 3;</code>
      */
-    public java.lang.String getDate() {
-      java.lang.Object ref = date_;
+    public java.lang.String getTitle() {
+      java.lang.Object ref = title_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        date_ = s;
+        title_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string date = 3;</code>
+     * <pre>
+     *uni
+     * </pre>
+     *
+     * <code>string title = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getDateBytes() {
-      java.lang.Object ref = date_;
+        getTitleBytes() {
+      java.lang.Object ref = title_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        date_ = b;
+        title_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string date = 3;</code>
+     * <pre>
+     *uni
+     * </pre>
+     *
+     * <code>string title = 3;</code>
      */
-    public Builder setDate(
+    public Builder setTitle(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      date_ = value;
+      title_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string date = 3;</code>
+     * <pre>
+     *uni
+     * </pre>
+     *
+     * <code>string title = 3;</code>
      */
-    public Builder clearDate() {
+    public Builder clearTitle() {
       
-      date_ = getDefaultInstance().getDate();
+      title_ = getDefaultInstance().getTitle();
       onChanged();
       return this;
     }
     /**
-     * <code>string date = 3;</code>
+     * <pre>
+     *uni
+     * </pre>
+     *
+     * <code>string title = 3;</code>
      */
-    public Builder setDateBytes(
+    public Builder setTitleBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      date_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object idbacklog_ = "";
-    /**
-     * <code>string idbacklog = 4;</code>
-     */
-    public java.lang.String getIdbacklog() {
-      java.lang.Object ref = idbacklog_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        idbacklog_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string idbacklog = 4;</code>
-     */
-    public com.google.protobuf.ByteString
-        getIdbacklogBytes() {
-      java.lang.Object ref = idbacklog_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        idbacklog_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string idbacklog = 4;</code>
-     */
-    public Builder setIdbacklog(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      idbacklog_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string idbacklog = 4;</code>
-     */
-    public Builder clearIdbacklog() {
-      
-      idbacklog_ = getDefaultInstance().getIdbacklog();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string idbacklog = 4;</code>
-     */
-    public Builder setIdbacklogBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      idbacklog_ = value;
+      title_ = value;
       onChanged();
       return this;
     }
 
     private java.lang.Object task_ = "";
     /**
-     * <code>string task = 5;</code>
+     * <code>string task = 4;</code>
      */
     public java.lang.String getTask() {
       java.lang.Object ref = task_;
@@ -1116,7 +1017,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string task = 5;</code>
+     * <code>string task = 4;</code>
      */
     public com.google.protobuf.ByteString
         getTaskBytes() {
@@ -1132,7 +1033,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string task = 5;</code>
+     * <code>string task = 4;</code>
      */
     public Builder setTask(
         java.lang.String value) {
@@ -1145,7 +1046,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string task = 5;</code>
+     * <code>string task = 4;</code>
      */
     public Builder clearTask() {
       
@@ -1154,7 +1055,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string task = 5;</code>
+     * <code>string task = 4;</code>
      */
     public Builder setTaskBytes(
         com.google.protobuf.ByteString value) {
@@ -1168,140 +1069,140 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object status_ = "";
+    private java.lang.Object time_ = "";
     /**
-     * <code>string status = 6;</code>
+     * <code>string time = 5;</code>
      */
-    public java.lang.String getStatus() {
-      java.lang.Object ref = status_;
+    public java.lang.String getTime() {
+      java.lang.Object ref = time_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        status_ = s;
+        time_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string status = 6;</code>
+     * <code>string time = 5;</code>
      */
     public com.google.protobuf.ByteString
-        getStatusBytes() {
-      java.lang.Object ref = status_;
+        getTimeBytes() {
+      java.lang.Object ref = time_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        status_ = b;
+        time_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string status = 6;</code>
+     * <code>string time = 5;</code>
      */
-    public Builder setStatus(
+    public Builder setTime(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      status_ = value;
+      time_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string status = 6;</code>
+     * <code>string time = 5;</code>
      */
-    public Builder clearStatus() {
+    public Builder clearTime() {
       
-      status_ = getDefaultInstance().getStatus();
+      time_ = getDefaultInstance().getTime();
       onChanged();
       return this;
     }
     /**
-     * <code>string status = 6;</code>
+     * <code>string time = 5;</code>
      */
-    public Builder setStatusBytes(
+    public Builder setTimeBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      status_ = value;
+      time_ = value;
       onChanged();
       return this;
     }
 
-    private java.lang.Object review_ = "";
+    private java.lang.Object scheduleStatus_ = "";
     /**
-     * <code>string review = 7;</code>
+     * <code>string scheduleStatus = 6;</code>
      */
-    public java.lang.String getReview() {
-      java.lang.Object ref = review_;
+    public java.lang.String getScheduleStatus() {
+      java.lang.Object ref = scheduleStatus_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        review_ = s;
+        scheduleStatus_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string review = 7;</code>
+     * <code>string scheduleStatus = 6;</code>
      */
     public com.google.protobuf.ByteString
-        getReviewBytes() {
-      java.lang.Object ref = review_;
+        getScheduleStatusBytes() {
+      java.lang.Object ref = scheduleStatus_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        review_ = b;
+        scheduleStatus_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string review = 7;</code>
+     * <code>string scheduleStatus = 6;</code>
      */
-    public Builder setReview(
+    public Builder setScheduleStatus(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      review_ = value;
+      scheduleStatus_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string review = 7;</code>
+     * <code>string scheduleStatus = 6;</code>
      */
-    public Builder clearReview() {
+    public Builder clearScheduleStatus() {
       
-      review_ = getDefaultInstance().getReview();
+      scheduleStatus_ = getDefaultInstance().getScheduleStatus();
       onChanged();
       return this;
     }
     /**
-     * <code>string review = 7;</code>
+     * <code>string scheduleStatus = 6;</code>
      */
-    public Builder setReviewBytes(
+    public Builder setScheduleStatusBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      review_ = value;
+      scheduleStatus_ = value;
       onChanged();
       return this;
     }

@@ -8,24 +8,14 @@ public interface DeleteProjectReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string idOwner = 1;</code>
+   * <code>string projectId = 2;</code>
    */
-  java.lang.String getIdOwner();
+  java.lang.String getProjectId();
   /**
-   * <code>string idOwner = 1;</code>
+   * <code>string projectId = 2;</code>
    */
   com.google.protobuf.ByteString
-      getIdOwnerBytes();
-
-  /**
-   * <code>string idProject = 2;</code>
-   */
-  java.lang.String getIdProject();
-  /**
-   * <code>string idProject = 2;</code>
-   */
-  com.google.protobuf.ByteString
-      getIdProjectBytes();
+      getProjectIdBytes();
 
   /**
    * <code>string cookie = 3;</code>
@@ -36,4 +26,14 @@ public interface DeleteProjectReqOrBuilder extends
    */
   com.google.protobuf.ByteString
       getCookieBytes();
+
+  /**
+   * <code>string requesterId = 1;</code>
+   */
+  java.lang.String getRequesterId();
+  /**
+   * <code>string requesterId = 1;</code>
+   */
+  com.google.protobuf.ByteString
+      getRequesterIdBytes();
 }

@@ -21,23 +21,34 @@ public class Mongod {
     }
 
     public static void main(String[] args) {
-        MongoDatabase aa= mongoClient.getDatabase("overlead");
 
-        MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("project");
-//        Document bson= new Document().append("a", new BsonString("MongoDB"))
-//                .append("b", new BsonArray(Arrays.asList(new BsonInt32(1), new BsonInt32(2))))
-//                .append("a","2")
-//                .append("c","3");
-//        coll.insertOne(bson);
+//        MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("project");
+////        Document bson= new Document().append("a", new BsonString("MongoDB"))
+////                .append("b", new BsonArray(Arrays.asList(new BsonInt32(1), new BsonInt32(2))))
+////                .append("a","2")
+////                .append("c","3");
+////        coll.insertOne(bson);
+//
+
+
+        MongoCollection<Document> collChat = Mongod.getOverleadConnection().getCollection("testmothaiba");
+        Document bson= new Document().append("mothaiba", new BsonString("123"))
+                .append("b", new BsonArray(Arrays.asList(new BsonInt32(1), new BsonInt32(2))))
+                .append("a","2")
+                .append("c","3");
+        //collChat.insertOne(bson);
+        List<Document> authChat=collChat.find(new Document("mothaiba","123")).into(new ArrayList<>());
+        System.out.println(authChat.size());
 
         Document listItem=new Document("b",6);
-        Document updateQuery = new Document("$set", listItem);
+        Document updateQuery = new Document("$push", listItem);
 
-        coll.findOneAndUpdate(new Document("a","2"),updateQuery);
+       // collChat.findOneAndUpdate(new Document("mothaiba","123"),updateQuery);
+        List<Document> foundDocument = collChat.find(new Document("mothaiba","123")).into(new ArrayList<Document>());
+        List<Integer> re= (List<Integer>) foundDocument.get(0).get("b");
 
-        List<Document> foundDocument = coll.find(new Document("a","22").append("c","3")).into(new ArrayList<Document>());
-        System.out.print(foundDocument.size());
-        String id= foundDocument.get(0).get("_id").toString();
-        System.out.println(id);
+        re.forEach(i->{
+            System.out.println(i);
+        });
     }
 }

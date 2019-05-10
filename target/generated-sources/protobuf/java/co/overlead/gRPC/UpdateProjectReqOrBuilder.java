@@ -8,24 +8,14 @@ public interface UpdateProjectReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string idProject = 1;</code>
+   * <code>string projectId = 1;</code>
    */
-  java.lang.String getIdProject();
+  java.lang.String getProjectId();
   /**
-   * <code>string idProject = 1;</code>
+   * <code>string projectId = 1;</code>
    */
   com.google.protobuf.ByteString
-      getIdProjectBytes();
-
-  /**
-   * <code>string idOwner = 2;</code>
-   */
-  java.lang.String getIdOwner();
-  /**
-   * <code>string idOwner = 2;</code>
-   */
-  com.google.protobuf.ByteString
-      getIdOwnerBytes();
+      getProjectIdBytes();
 
   /**
    * <code>string userName = 3;</code>
@@ -86,4 +76,14 @@ public interface UpdateProjectReqOrBuilder extends
    */
   com.google.protobuf.ByteString
       getCookieBytes();
+
+  /**
+   * <code>string requesterId = 2;</code>
+   */
+  java.lang.String getRequesterId();
+  /**
+   * <code>string requesterId = 2;</code>
+   */
+  com.google.protobuf.ByteString
+      getRequesterIdBytes();
 }
