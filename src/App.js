@@ -43,6 +43,11 @@ const DefaultLayout = Loadable({
 });
 
 // Pages no layout
+const Chat = Loadable({
+  loader: () => import('./views/Personal/Chat'),
+  loading
+});
+
 const Login = Loadable({
   loader: () => import('./views/Pages/Login'),
   loading
@@ -212,7 +217,7 @@ class App extends Component {
                       <Route exact path="/Profile/Edit" name="ProjectTodo" component={ProfileEdit} />
     
 
-
+                      {/* <Route exact path="/chat" name="Chat Page" component={Chat} /> */}
                       <Route exact path="/login" name="Login Page" component={Login} />
                       <Route exact path="/register" name="Register Page" component={Register} />
                       <Route exact path="/ResetFirst" name="ResetSecond Page" component={ResetFirst} />

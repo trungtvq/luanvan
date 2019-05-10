@@ -113,6 +113,11 @@ export default {
           url: '/500',
           icon: 'icon-star',
         },
+        {
+          name: 'Chat',
+          url: '/Chat',
+          icon: 'icon-star',
+        },
       ],
     },
     
