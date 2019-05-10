@@ -84,6 +84,7 @@ class SprintBacklog extends Component {
       
     };
   render() {
+    let that=this;
     return (
       <Row>
           <Col>    
@@ -117,7 +118,7 @@ class SprintBacklog extends Component {
                       <td><center>{item.start}</center></td>
                       <td><center>{item.deadline}</center></td>
                       <td>                        
-                      <Button type="submit" size="sm" color="danger" onClick={this.handleDelete}><i class="fa fa-trash"></i></Button>
+                      <Button type="submit" size="sm" color="danger" onClick={that.handleDelete}><i class="fa fa-trash"></i></Button>
                       </td>
                   </tr>
                 )

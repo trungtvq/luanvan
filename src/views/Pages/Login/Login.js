@@ -100,6 +100,7 @@ class Login extends Component {
     this.setState({
       signInEmail: event.target.value,
     });
+    console.log(this.state.signInEmail);
   }
 
   onTextboxChangeSignInPassword(event) {

@@ -126,7 +126,7 @@ class AllProject extends Component {
     modalTranferOwner: !prevState.modalTranferOwner
     }));
   }
-  handleAdd= () => {//chua xong
+  handleAdd= (idOwner,projectName,start,end,status,cookie) => {
     const myprojectService = new proto.myproject.MyprojectClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
     console.log(myprojectService)
@@ -209,55 +209,7 @@ class AllProject extends Component {
       status: !prevState.status,
     }));
   }
-  componentWillMount(){
-    const myprojectService = new proto.myproject.MyprojectClient('http://54.255.233.193:8084');
-    //some data of request (get that from frontend)
-    console.log(myprojectService)
-    //create var for react
-   // var AddNewProjectReq = new proto.myproject.AddNewProjectReq();
-    //rpc addNewProject(AddNewProjectReq) returns (AddNewProjectRes) {}
-    // //set data from frontend to this var
-    // ProfileReq.setUsername(username);
-    // string idOwner = 1;
-    // string projectName = 2;
-    // string start = 3;		//return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
-    // string end = 4;		   //return in form mm/hh/dd/mm/yyyy
-    // string private = 5;
-    // string cookie = 6;
-    //metadab will be config later
-    var metadata = {};
-    //make a request to server
-
-    var AddNewProjectReq= new proto.myproject.AddNewProjectReq();
-    //AddNewProjectReq.setIdOwner("tienbede");
-    AddNewProjectReq.setUsername("tienbede");
-    AddNewProjectReq.setProjectname("tienbede");
-    AddNewProjectReq.setStart("tienbede");
-    AddNewProjectReq.setEnd("tienbede");
-    AddNewProjectReq.setPrivate("tienbede");
-    AddNewProjectReq.setCookie("tienbede");
-
-    var toto=myprojectService.addNewProject(AddNewProjectReq, metadata, (err, response) => {
-      console.log("connect")
-      if (err) { //if error
-         console.log(err);
-         console.log("error")
-      } else { //if success
-              //get response
-              console.log("response")
-              console.log(response);
-              console.log("get avatar")
-              console.log(response.getStatus())
-
-              // this.setState({
-              //   av: response.getAvatar()
-              // });
-              
-              const ProfileRes = response[0];
-            }
-          });
-          console.log(toto)
-  }
+  
   render() {
     let that=this;
     

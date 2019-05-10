@@ -121,6 +121,7 @@ class TeamTask extends Component {
     this.setState({
       Title: event.target.value,
     });
+    console.log(this.state.Title);
   }
   onTextboxChangeDescription=(event)=> {
     this.setState({
@@ -131,15 +132,30 @@ class TeamTask extends Component {
     this.setState({
       Priority: event.target.value,
     });
+    console.log("vào");
+    console.log(this.state.Priority);
   }
-  onTextboxChangeStart=(event)=> {
+  
+  onTextboxChangeTimeStart=(event)=> {
     this.setState({
-      Start: event.target.value,
+      timeStart: event.target.value,
+    });
+    
+  }
+  onTextboxChangeDateStart=(event)=> {
+    this.setState({
+    dateStart: event.target.value,
+    });
+   
+  }
+  onTextboxChangeTimeDeadline=(event)=> {
+    this.setState({
+      timeDeadline: event.target.value,
     });
   }
-  onTextboxChangeDeadline=(event)=> {
+  onTextboxChangeDateDeadline=(event)=> {
     this.setState({
-      Deadline: event.target.value,
+      dateDeadline: event.target.value,
     });
   }
   onTextboxChangeAssignee=(event)=> {
@@ -162,6 +178,7 @@ class TeamTask extends Component {
       Status: event.target.value,
     });
   }
+  
   handleAdd = () => {
    
   };
@@ -243,32 +260,26 @@ class TeamTask extends Component {
                                     </FormGroup>
                                     <FormGroup row>
                                       <Col md="3">
-                                        <Label>Priority</Label>
+                                        <Label htmlFor="text-input">Priority</Label>
                                       </Col>
-                                      <Col md="9">
-                                        <FormGroup check inline>
-                                          <Input className="form-check-input" type="radio" id="inline-radio1" name="inline-radios" value="option1" />
-                                          <Label className="form-check-label" check htmlFor="inline-radio1">High</Label>
-                                        </FormGroup>
-                                        <FormGroup check inline>
-                                          <Input className="form-check-input" type="radio" id="inline-radio2" name="inline-radios" value="option2" />
-                                          <Label className="form-check-label" check htmlFor="inline-radio2">Medium</Label>
-                                        </FormGroup>
-                                        <FormGroup check inline>
-                                          <Input className="form-check-input" type="radio" id="inline-radio3" name="inline-radios" value="option3" />
-                                          <Label className="form-check-label" check htmlFor="inline-radio3">Low</Label>
-                                        </FormGroup>
+                                      <Col xs="12" md="3">
+                                        <Input type="select" name="select" id="select" onChange={that.onTextboxChangePriority}>
+                                          <option value="0">Please select</option>
+                                          <option value="High">High</option>
+                                          <option value="Medium">Medium</option>
+                                          <option value="Low">Low</option>
+                                        </Input>
                                       </Col>
-                                    </FormGroup>                     
+                                    </FormGroup>         
                                     <FormGroup row>
                                       <Col md="3">
                                         <Label htmlFor="date-input">Start  </Label>
                                       </Col>
                                       <Col xs="3" md="3">
-                                        <Input type="time" id="timeStart" name="timeStart"/>
+                                        <Input type="time" id="timeStart" name="timeStart" value={timeStart} onChange={that.onTextboxChangeTimeStart}/>
                                       </Col>
                                       <Col xs="3" md="3">
-                                        <Input type="date" id="date-input" name="date-input" />
+                                        <Input type="date" id="dateStart" name="dateStart" value={dateStart} onChange={that.onTextboxChangeDateStart}/>
                                       </Col>
                                     </FormGroup>
                                     <FormGroup row>
@@ -276,10 +287,10 @@ class TeamTask extends Component {
                                         <Label htmlFor="date-input">Deadline </Label>
                                       </Col>
                                       <Col xs="3" md="3">
-                                        <Input type="time" id="timeEnd" name="timeEnd"/>
+                                        <Input type="time" id="timeDeadline" name="timeDeadline" value={timeDeadline} onChange={that.onTextboxChangeTimeDeadline}/>
                                       </Col>
                                       <Col xs="3" md="3">
-                                        <Input type="date" id="date-input" name="date-input" />
+                                        <Input type="date" id="dateDeadline" name="dateDeadline" value={dateDeadline} onChange={that.onTextboxChangeDateDeadline}/>
                                       </Col>
                                     </FormGroup>
                                      <FormGroup row>
@@ -287,11 +298,11 @@ class TeamTask extends Component {
                                         <Label htmlFor="text-input">Assignee</Label>
                                       </Col>
                                      <Col xs="12" md="3">
-                                        <Input type="select" name="select" id="select">
+                                        <Input type="select" name="select" id="select" onChange={that.onTextboxChangeAssignee}>
                                           <option value="0">Please select</option>
-                                          <option value="1">Hùng</option>
-                                          <option value="2">Nhân</option>
-                                          <option value="3">Tâm</option>
+                                          <option value="Hùng">Hùng</option>
+                                          <option value="Nhân">Nhân</option>
+                                          <option value="Tâm">Tâm</option>
                                         </Input>
                                       </Col>
                                     </FormGroup>                                          
@@ -325,7 +336,7 @@ class TeamTask extends Component {
                             <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
                               <ModalHeader toggle={that.toggleEdit}>Team task</ModalHeader>
                               <ModalBody>
-                                  <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                                  <Form action=""  className="form-horizontal">               
                                     <FormGroup row>
                                       <Col md="3">
                                         <Label htmlFor="text-input">Title</Label>
@@ -384,7 +395,7 @@ class TeamTask extends Component {
                                         <Label htmlFor="text-input">Assignee</Label>
                                       </Col>
                                      <Col xs="12" md="2">
-                                        <Input type="select" name="select" id="select">
+                                        <Input type="select" name="select" id="select" >
                                           <option value="0">Please select</option>
                                           <option value="1">Hùng</option>
                                           <option value="2">Nhân</option>
