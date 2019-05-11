@@ -140,6 +140,7 @@ class DailySchedule extends Component {
   }
   
   handleAdd = (requesterId,projectId,title,task,time,scheduleStatus,cookie) => {
+    console.log("handleadd");
     const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
     console.log(dailyscheduleService)
@@ -163,7 +164,7 @@ class DailySchedule extends Component {
          console.log("error")
       } else { //if success
               //get response
-              console.log("response")
+              console.log("response--------------------------")
               console.log(response);
               // console.log("get avatar")
               // console.log(response.getStatus())

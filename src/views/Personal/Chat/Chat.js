@@ -86,14 +86,20 @@ class Chat extends Component {
             <Row>
             <div class="col-sm-4">   
                 <div class="card border-primary mb-3" >
-                  <div class="card-header bg-primary">Phonebook</div>
+                  <div class="card-header bg-primary">All message</div>
                     <div class="card-body">
                                 {this.state.dataUserStory.map(function(item, key) {
                                   return (
-                                          <div>
-                                            <h6>I want: {item.want}</h6>
-                                            <h6>So that:  {item.so}</h6>
-                                          </div>
+                                    <div class="list-group">
+                                      <button type="button" class="list-group-item list-group-item-action active">
+                                        Cras justo odio
+                                      </button>
+                                      <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
+                                      <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
+                                      <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+                                      <button type="button" class="list-group-item list-group-item-action" disabled>Vestibulum at eros</button>
+                                    </div>
+                                   
                                 )})
                                 }
                       </div>

@@ -11,8 +11,9 @@ import { Card, Badge, Button, Col, Container, Input, InputGroup,
 
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
+const proto = {};
+proto.userstory = require('./../../../../../gRPC/userstory/userstory_grpc_web_pb');
 class Detail extends Component {
-
   constructor(props) {
     super(props);
     this.toggleAdd = this.toggleAdd.bind(this);
@@ -125,23 +126,71 @@ class Detail extends Component {
 
  
 
-  handleAdd = () => {
-    var id='1';
-    var err='';
-    if(err==''){
-      this.setState(prevState => ({
-        modalAdd: !prevState.modalAdd,
-      }));
-      this.setState(prevState=>({data:[...prevState.data,{id:id,name:this.state.name,as:this.state.as,want:this.state.want,so:this.state.so}]}));
-  
-    }
+  // handleAdd = () => {
+  //   var id='1';
+  //   var err='';
+  //   if(err==''){
+  //     this.setState(prevState => ({
+  //       modalAdd: !prevState.modalAdd,
+  //     }));
+  //     this.setState(prevState=>({data:[...prevState.data,{id:id,name:this.state.name,as:this.state.as,want:this.state.want,so:this.state.so}]}));
+      
+  //   }
+  // };
+  handleAdd= (idOwner,UserstoryName,start,end,status,cookie) => {
+    const userstoryService = new proto.userstory.UserstoryClient('http://54.255.233.193:8085');
+    //some data of request (get that from frontend)
+    console.log(userstoryService)
+    
+    var metadata = {};
+    //make a request to server
+
+    var AddNewUserStoryReq= new proto.userstory.AddNewUserStoryReq();
+    //string name=7;
+    // string adderId = 1;
+    // string projectId = 2;
+    // string role = 3;
+    // string want = 4;
+    // string so = 5;
+    // string cookie = 6;
+    //AddNewUserStoryReq.setIdOwner("tienbede");
+    AddNewUserStoryReq.setAdderid("tienbede");
+    AddNewUserStoryReq.setProjectid("tienbede");
+    AddNewUserStoryReq.setRole("tienbede");
+    AddNewUserStoryReq.setWant("tienbede");
+    AddNewUserStoryReq.setSo("tienbede");
+    AddNewUserStoryReq.setCookie("tienbede");
+
+    var toto=userstoryService.addNewUserStory(AddNewUserStoryReq, metadata, (err, response) => {
+      console.log("connect")
+      if (err) { //if error
+         console.log(err);
+         console.log("error")
+      } else { //if success
+              //get response
+              console.log("response")
+              console.log(response);
+              console.log("get avatar")
+              console.log(response.getStatus())
+
+              // this.setState({
+              //   av: response.getAvatar()
+              // });
+              
+              const ProfileRes = response[0];
+            }
+          });
+          console.log(toto)
+        }
+  handleDelete = (idOwner,idUserstory,cookie) => {
   };
-  handleDelete = (idOwner,idProject,cookie) => {
-  };
-  handleUpdate = (idProject,idOwner,userName,projectName,start,end,status,cookie) => {
+  handleUpdate = (idUserstory,idOwner,userName,UserstoryName,start,end,status,cookie) => {
    
   };
 
+  // componentDidMount(){
+  //   this.resetAddForm();
+  // }
   render() {
      const {
       data,
@@ -280,12 +329,12 @@ class Detail extends Component {
                                   </Form>                                       
                               </ModalBody>
                               <ModalFooter>
-                                <Button color="primary" onClick={that.handleUpdate('idProject','idOwner','userName','projectName','start','end','status','cookie')}>Submit</Button>{' '}
+                                <Button color="primary" onClick={that.handleUpdate('idUserstory','idOwner','userName','UserstoryName','start','end','status','cookie')}>Submit</Button>{' '}
                                 <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
                               </ModalFooter>
                           </Modal>
                           
-                          <Button type="submit" size="sm" color="danger" onClick={that.handleDelete('idOwner','idProject','cookie')}><i class="fa fa-trash"></i></Button>
+                          <Button type="submit" size="sm" color="danger" onClick={that.handleDelete('idOwner','idUserstory','cookie')}><i class="fa fa-trash"></i></Button>
                       </td>
                     </tr>
                   )

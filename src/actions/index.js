@@ -61,3 +61,7 @@ export function fetchPostsIfNeeded(subreddit) {
     }
   }
 }
+
+export function subcriptChannel(channelId){
+  
+}
