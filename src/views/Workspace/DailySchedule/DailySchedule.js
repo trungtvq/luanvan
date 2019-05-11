@@ -140,11 +140,11 @@ class DailySchedule extends Component {
   }
   
   handleAdd = (requesterId,projectId,title,task,time,scheduleStatus,cookie) => {
-    console.log("handleadd");
+    //console.log("handleadd");
     const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
     console.log(dailyscheduleService)
-    console.log("vao daily");
+    //console.log("vao daily");
     var metadata = {};
     //make a request to server
 
@@ -166,24 +166,17 @@ class DailySchedule extends Component {
               //get response
               console.log("response--------------------------")
               console.log(response);
-              // console.log("get avatar")
-              // console.log(response.getStatus())
-
-              // this.setState({
-              //   av: response.getAvatar()
-              // });
-              
               const ProfileRes = response[0];
             }
           });
           console.log(toto)
-          console.log("ra daily");
+          
   };
   handleUpdate = (requesterId,projectId,scheduleId,title,task,time,scheduleStatus,cookie) => {
     const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
     console.log(dailyscheduleService)
-    console.log("vao daily");
+    //console.log("vao daily");
     var metadata = {};
     //make a request to server
 
@@ -191,10 +184,10 @@ class DailySchedule extends Component {
     UpdateDailyScheduleReq.setRequesterid("38e752c7-153b-4c9b-a235-f62ba9f265f2");
     UpdateDailyScheduleReq.setProjectid("5ccfbefdf43a0b0f499af2f7");
     UpdateDailyScheduleReq.setScheduleid("tienbede");
-    UpdateDailyScheduleReq.setTitle("tienbede");
-    UpdateDailyScheduleReq.setTask("tienbede");
-    UpdateDailyScheduleReq.setTime("tienbede");
-    UpdateDailyScheduleReq.setSchedulestatus("tienbede");
+    UpdateDailyScheduleReq.setTitle("tienbede1");
+    UpdateDailyScheduleReq.setTask("tienbede1");
+    UpdateDailyScheduleReq.setTime("tienbede1");
+    UpdateDailyScheduleReq.setSchedulestatus("tienbede1");
     UpdateDailyScheduleReq.setCookie("tienbede");
 
     var toto=dailyscheduleService.updateDailySchedule(UpdateDailyScheduleReq, metadata, (err, response) => {

@@ -153,7 +153,7 @@ class Detail extends Component {
     // string want = 4;
     // string so = 5;
     // string cookie = 6;
-    //AddNewUserStoryReq.setIdOwner("tienbede");
+    AddNewUserStoryReq.setName("tienbede");
     AddNewUserStoryReq.setAdderid("tienbede");
     AddNewUserStoryReq.setProjectid("tienbede");
     AddNewUserStoryReq.setRole("tienbede");
@@ -170,22 +170,87 @@ class Detail extends Component {
               //get response
               console.log("response")
               console.log(response);
-              console.log("get avatar")
-              console.log(response.getStatus())
-
-              // this.setState({
-              //   av: response.getAvatar()
-              // });
-              
               const ProfileRes = response[0];
             }
           });
           console.log(toto)
         }
   handleDelete = (idOwner,idUserstory,cookie) => {
+    const userstoryService = new proto.userstory.UserstoryClient('http://54.255.233.193:8085');
+    //some data of request (get that from frontend)
+    console.log(userstoryService)
+    
+    var metadata = {};
+    //make a request to server
+
+    var DeleteUserStoryReq= new proto.userstory.DeleteUserStoryReq();
+  //     string deleterId = 1;
+  //     string projectId = 2;
+  //     string userstoryId = 3;
+  //     string cookie = 4;
+    DeleteUserStoryReq.setDeleterid("tienbede");
+    DeleteUserStoryReq.setProjectid("tienbede");
+    DeleteUserStoryReq.setUserstoryid("tienbede");
+    DeleteUserStoryReq.setCookie("tienbede");
+
+    var toto=userstoryService.deleteUserStory(DeleteUserStoryReq, metadata, (err, response) => {
+      console.log("connect")
+      if (err) { //if error
+         console.log(err);
+         console.log("error")
+         console.log(response);
+      } else { //if success
+              //get response
+              console.log("response")
+              console.log(response);
+              console.log(response.getStatus())
+              const ProfileRes = response[0];
+            }
+          });
+          console.log(toto)
+          console.log("ra delete");
   };
   handleUpdate = (idUserstory,idOwner,userName,UserstoryName,start,end,status,cookie) => {
-   
+    const userstoryService = new proto.userstory.UserstoryClient('http://54.255.233.193:8085');
+    //some data of request (get that from frontend)
+    console.log(userstoryService)
+    
+    var metadata = {};
+    //make a request to server
+
+    var UpdateUserStoryReq= new proto.userstory.UpdateUserStoryReq();
+//     string updaterId = 1;
+// 	string projectId = 2;
+// 	string userstoryId = 3;
+// 	string role = 4;
+// 	string want = 5;
+// 	string so = 6;
+// string cookie = 7;
+    UpdateUserStoryReq.setUpdaterid("tienbede");
+    UpdateUserStoryReq.setProjectid("tienbede");
+    UpdateUserStoryReq.setUserstoryid("tienbede");
+    UpdateUserStoryReq.setRole("tienbede1");
+    UpdateUserStoryReq.setWant("tienbede1");
+    UpdateUserStoryReq.setSo("tienbede1");
+    UpdateUserStoryReq.setCookie("tienbede");
+
+    var toto=userstoryService.updateUserStory(UpdateUserStoryReq, metadata, (err, response) => {
+      console.log("connect")
+      if (err) { //if error
+         console.log(err);
+         console.log("error")
+      } else { //if success
+              //get response
+              console.log("response")
+              console.log(response);
+              console.log(response.getStatus())
+
+              
+              
+              const ProfileRes = response[0];
+            }
+          });
+          console.log(toto)
   };
 
   // componentDidMount(){
