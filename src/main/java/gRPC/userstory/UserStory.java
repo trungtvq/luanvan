@@ -162,7 +162,7 @@ public class UserStory {
                     });
                     responseObserver.onCompleted();
                 }
-                //TODOS: add userstory not own
+                //TODO: add userstory not own
             }
         }
     }

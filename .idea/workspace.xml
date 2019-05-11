@@ -2,253 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a13b32c7-5cec-4a33-a1ca-2d33e458b65d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/server.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/auth.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/chat.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/counter.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/counterservice.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dailyschedule.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/helloworld.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/myprofile.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/myproject.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mytask.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/productbacklog.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sprintbacklog.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/teamtask.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/userstory.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/velocity.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/AuthGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/AuthGrpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/ChatGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/ChatGrpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/DailyscheduleGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/DailyscheduleGrpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/MyProfileGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/MyProfileGrpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/MyprojectGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/MyprojectGrpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/MytaskGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/MytaskGrpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/ProductBacklogGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/ProductBacklogGrpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/SprintbacklogGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/SprintbacklogGrpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/TeamtaskGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/TeamtaskGrpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/UserstoryGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/UserstoryGrpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/VelocityGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/VelocityGrpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/example/grpc/CounterServiceGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/com/example/grpc/CounterServiceGrpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/examples/gRPC/CounterServiceGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/examples/gRPC/CounterServiceGrpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/examples/gRPC/GreeterGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/examples/gRPC/GreeterGrpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewDailyScheduleReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewDailyScheduleReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewDailyScheduleReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewDailyScheduleReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewProductBacklogReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewProductBacklogReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewProductBacklogReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewProductBacklogReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewProductBacklogRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewProductBacklogRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewProductBacklogResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewProductBacklogResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewProjectReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewProjectReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewProjectReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewProjectReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewTeamTaskReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewTeamTaskReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewTeamTaskReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewTeamTaskReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewTeamTaskRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewTeamTaskRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewTeamTaskResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewTeamTaskResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewUserStoryReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewUserStoryReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewUserStoryReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewUserStoryReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewUserStoryRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewUserStoryRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewUserStoryResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewUserStoryResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AuthSessionReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AuthSessionReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AuthSessionReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AuthSessionReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/CancleTeamTaskReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/CancleTeamTaskReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/CancleTeamTaskReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/CancleTeamTaskReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/CancleTeamTaskRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/CancleTeamTaskRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/CancleTeamTaskResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/CancleTeamTaskResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ConnectChatReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ConnectChatReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ConnectChatReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ConnectChatReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ConnectChatRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ConnectChatRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ConnectChatResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ConnectChatResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/CreateChannelChatReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/CreateChannelChatReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/CreateChannelChatReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/CreateChannelChatReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DailyScheduleRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DailyScheduleRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DailyScheduleResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DailyScheduleResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteDailyScheduleReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteDailyScheduleReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteDailyScheduleReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteDailyScheduleReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteProductBacklogReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteProductBacklogReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteProductBacklogReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteProductBacklogReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteProductBacklogRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteProductBacklogRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteProductBacklogResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteProductBacklogResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteProjectReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteProjectReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteProjectReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteProjectReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteSprintbacklogReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteSprintbacklogReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteSprintbacklogReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteSprintbacklogReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteSprintbacklogRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteSprintbacklogRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteSprintbacklogResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteSprintbacklogResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteUserStoryReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteUserStoryReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteUserStoryReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteUserStoryReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteUserStoryRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteUserStoryRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteUserStoryResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteUserStoryResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllDailyScheduleReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllDailyScheduleReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllDailyScheduleReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllDailyScheduleReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllMyTaskReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllMyTaskReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllMyTaskReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllMyTaskReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllMyTaskRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllMyTaskRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllMyTaskResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllMyTaskResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProductBacklogReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProductBacklogReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProductBacklogReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProductBacklogReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProductBacklogRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProductBacklogRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProductBacklogResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProductBacklogResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProjectReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProjectReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProjectReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProjectReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllSprintbacklogReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllSprintbacklogReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllSprintbacklogReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllSprintbacklogReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllSprintbacklogRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllSprintbacklogRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllSprintbacklogResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllSprintbacklogResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllTeamTaskReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllTeamTaskReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllTeamTaskReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllTeamTaskReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllTeamTaskRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllTeamTaskRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllTeamTaskResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllTeamTaskResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllUserStoryReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllUserStoryReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllUserStoryReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllUserStoryReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllUserStoryRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllUserStoryRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllUserStoryResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllUserStoryResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetVelocityReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetVelocityReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetVelocityReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetVelocityReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetVelocityRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetVelocityRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetVelocityResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetVelocityResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/InviteChatReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/InviteChatReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/InviteChatReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/InviteChatReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/JoinChatReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/JoinChatReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/JoinChatReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/JoinChatReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/LeaveChatReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/LeaveChatReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/LeaveChatReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/LeaveChatReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ProfileReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ProfileReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ProfileReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ProfileReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ProfileRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ProfileRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ProfileResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ProfileResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ProjectRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ProjectRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ProjectResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ProjectResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/RegisterTeamTaskReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/RegisterTeamTaskReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/RegisterTeamTaskReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/RegisterTeamTaskReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/RegisterTeamTaskRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/RegisterTeamTaskRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/RegisterTeamTaskResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/RegisterTeamTaskResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ResetPasswordFinalStepReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ResetPasswordFinalStepReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ResetPasswordFinalStepReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ResetPasswordFinalStepReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ResetReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ResetReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ResetReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ResetReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ResetRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ResetRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ResetResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ResetResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendMsgReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendMsgReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendMsgReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendMsgReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendTeamTaskToMyTaskReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendTeamTaskToMyTaskReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendTeamTaskToMyTaskReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendTeamTaskToMyTaskReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendTeamTaskToMyTaskRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendTeamTaskToMyTaskRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendTeamTaskToMyTaskResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendTeamTaskToMyTaskResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendToSprintBacklogReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendToSprintBacklogReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendToSprintBacklogReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendToSprintBacklogReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendToSprintBacklogRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendToSprintBacklogRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendToSprintBacklogResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendToSprintBacklogResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SignInGoogleReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SignInGoogleReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SignInGoogleReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SignInGoogleReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SignInReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SignInReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SignInReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SignInReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SignInRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SignInRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SignInResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SignInResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SignUpReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SignUpReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SignUpReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SignUpReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SimpleChatRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SimpleChatRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SimpleChatResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SimpleChatResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateDailyScheduleReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateDailyScheduleReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateDailyScheduleReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateDailyScheduleReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateProductBacklogReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateProductBacklogReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateProductBacklogReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateProductBacklogReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateProductBacklogRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateProductBacklogRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateProductBacklogResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateProductBacklogResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateProjectReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateProjectReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateProjectReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateProjectReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateTeamTaskReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateTeamTaskReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateTeamTaskReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateTeamTaskReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateTeamTaskRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateTeamTaskRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateTeamTaskResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateTeamTaskResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateUserStoryReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateUserStoryReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateUserStoryReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateUserStoryReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateUserStoryRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateUserStoryRes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateUserStoryResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateUserStoryResOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/auth.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/auth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/dailyschedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/dailyschedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/myprofile.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/myprofile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/myproject.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/myproject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/mytask.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/mytask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/productbacklog.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/productbacklog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/sprintbacklog.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/sprintbacklog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/teamtask.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/teamtask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/userstory.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/userstory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/velocity.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/velocity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/example/grpc/Counterservice.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/com/example/grpc/Counterservice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/BalanceReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/BalanceReply.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/BalanceReplyOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/BalanceReplyOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/CounterProto.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/CounterProto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/GetBalanceReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/GetBalanceReply.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/GetBalanceReplyOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/GetBalanceReplyOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/HelloReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/HelloReply.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/HelloReplyOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/HelloReplyOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/HelloRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/HelloRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/HelloRequestOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/HelloRequestOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/HelloWorldProto.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/HelloWorldProto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/ResultOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/ResultOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/SetBalanceReply.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/SetBalanceReply.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/SetBalanceReplyOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/SetBalanceReplyOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/SetBalanceReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/SetBalanceReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/SetBalanceReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/SetBalanceReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/UserReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/UserReq.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/UserReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/examples/gRPC/UserReqOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/annotations.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/auth.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/backend.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/billing.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/config_change.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/consumer.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/context.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/control.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/distribution.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/documentation.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/endpoint.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/experimental/authorization_config.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/experimental/experimental.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/http.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/httpbody.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/label.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/log.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/logging.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/metric.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/monitored_resource.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/monitoring.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/quota.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/service.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/source_info.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/system_parameter.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/api/usage.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/cloud/audit/audit_log.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/logging/type/http_request.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/logging/type/log_severity.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/longrunning/operations.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/rpc/code.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/rpc/error_details.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/rpc/status.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/type/color.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/type/date.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/type/dayofweek.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/type/latlng.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/type/money.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/type/postal_address.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/4fb9fae00936237c55475a479df2f56c/google/type/timeofday.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/5a2d12bad91cb6575e9321314adf0076/google/protobuf/any.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/5a2d12bad91cb6575e9321314adf0076/google/protobuf/api.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/5a2d12bad91cb6575e9321314adf0076/google/protobuf/compiler/plugin.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/5a2d12bad91cb6575e9321314adf0076/google/protobuf/descriptor.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/5a2d12bad91cb6575e9321314adf0076/google/protobuf/duration.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/5a2d12bad91cb6575e9321314adf0076/google/protobuf/empty.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/5a2d12bad91cb6575e9321314adf0076/google/protobuf/field_mask.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/5a2d12bad91cb6575e9321314adf0076/google/protobuf/source_context.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/5a2d12bad91cb6575e9321314adf0076/google/protobuf/struct.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/5a2d12bad91cb6575e9321314adf0076/google/protobuf/timestamp.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/5a2d12bad91cb6575e9321314adf0076/google/protobuf/type.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/protoc-dependencies/5a2d12bad91cb6575e9321314adf0076/google/protobuf/wrappers.proto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -263,35 +19,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1684">
+            <state relative-caret-position="530">
               <caret line="110" column="29" selection-start-line="110" selection-start-column="29" selection-end-line="110" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/helper/caching/IAddNew.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="93" selection-start-line="6" selection-start-column="93" selection-end-line="6" selection-end-column="93" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/helper/caching/IPopToDB.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -306,22 +41,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/main/gRPCMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/helper/caching/chat/Conversation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="93" column="73" lean-forward="true" selection-start-line="93" selection-start-column="73" selection-end-line="93" selection-end-column="73" />
+            <state relative-caret-position="306">
+              <caret line="94" column="40" lean-forward="true" selection-start-line="94" selection-start-column="40" selection-end-line="94" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1209#1210#0" expanded="true" />
@@ -342,10 +65,55 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/main/Test.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="65" selection-start-line="11" selection-start-column="65" selection-end-line="11" selection-end-column="65" />
+            <state relative-caret-position="404">
+              <caret line="163" column="33" selection-start-line="163" selection-start-column="33" selection-end-line="163" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="63" column="38" lean-forward="true" selection-start-line="63" selection-start-column="38" selection-end-line="63" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/schedule/DailySchedule.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="166">
+              <caret line="95" column="58" selection-start-line="95" selection-start-column="54" selection-end-line="95" selection-end-column="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/task/MyTask.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="158" column="62" lean-forward="true" selection-start-line="158" selection-start-column="62" selection-end-line="158" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -421,7 +189,6 @@
         <option value="$PROJECT_DIR$/src/main/java/gRPC/schedule/DailySchedule.java" />
         <option value="$PROJECT_DIR$/src/main/java/main/gRPCMain.java" />
         <option value="$PROJECT_DIR$/src/main/proto/myproject.proto" />
-        <option value="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" />
         <option value="$PROJECT_DIR$/src/main/proto/simple.proto" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/chat.java" />
         <option value="$PROJECT_DIR$/src/main/proto/chat.proto" />
@@ -440,6 +207,8 @@
         <option value="$PROJECT_DIR$/src/main/java/helper/caching/IPushToCache.java" />
         <option value="$PROJECT_DIR$/src/main/java/helper/caching/chat/Message.java" />
         <option value="$PROJECT_DIR$/src/main/java/helper/caching/chat/Conversation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" />
       </list>
     </option>
   </component>
@@ -451,7 +220,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="25" />
+    <option name="x" value="924" />
+    <option name="y" value="484" />
     <option name="width" value="1920" />
     <option name="height" value="1055" />
   </component>
@@ -504,6 +274,42 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="gRPC" type="462c0819:PsiDirectoryNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="luanvan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gRPC" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="luanvan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gRPC" type="462c0819:PsiDirectoryNode" />
+              <item name="schedule" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="luanvan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gRPC" type="462c0819:PsiDirectoryNode" />
+              <item name="task" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="luanvan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gRPC" type="462c0819:PsiDirectoryNode" />
+              <item name="userstory" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
@@ -586,7 +392,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Test">
+  <component name="RunManager" selected="Application.MyProjectClient">
     <configuration name="EmailService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="service.email.EmailService" />
       <module name="server" />
@@ -654,9 +460,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test" />
         <item itemvalue="Application.MyProjectClient" />
         <item itemvalue="Application.gRPCMain" />
+        <item itemvalue="Application.Test" />
         <item itemvalue="Application.Mongod" />
         <item itemvalue="Application.EmailService" />
       </list>
@@ -674,12 +480,12 @@
       <updated>1557136287209</updated>
       <workItem from="1557136289905" duration="4618000" />
       <workItem from="1557217475010" duration="73995000" />
-      <workItem from="1557501488023" duration="10361000" />
+      <workItem from="1557501488023" duration="12311000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88974000" />
+    <option name="totallyTimeSpent" value="90924000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -695,7 +501,7 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4983731" weight="0.3279743" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4940347" visible="true" weight="0.3687031" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4940347" weight="0.3687031" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4994664" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -789,13 +595,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/task/Velocity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -803,13 +602,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/task/MyTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -838,26 +630,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/proto/counter.proto">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-65" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="116" column="10" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/schedule/DailySchedule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="95" column="58" selection-start-line="95" selection-start-column="54" selection-end-line="95" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/Mongod.java">
@@ -924,16 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20">
-          <caret line="63" column="38" lean-forward="true" selection-start-line="63" selection-start-column="38" selection-end-line="63" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/ChatCaching.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -966,16 +728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1684">
-          <caret line="110" column="29" selection-start-line="110" selection-start-column="29" selection-end-line="110" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1039,8 +791,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/helper/caching/chat/Conversation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="93" column="73" lean-forward="true" selection-start-line="93" selection-start-column="73" selection-end-line="93" selection-end-column="73" />
+        <state relative-caret-position="306">
+          <caret line="94" column="40" lean-forward="true" selection-start-line="94" selection-start-column="40" selection-end-line="94" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1209#1210#0" expanded="true" />
@@ -1055,6 +807,60 @@
             <element signature="e#1513#1514#0" expanded="true" />
             <element signature="e#1565#1566#0" expanded="true" />
             <element signature="e#1611#1612#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/schedule/DailySchedule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="95" column="58" selection-start-line="95" selection-start-column="54" selection-end-line="95" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/task/MyTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="158" column="62" lean-forward="true" selection-start-line="158" selection-start-column="62" selection-end-line="158" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="63" column="38" lean-forward="true" selection-start-line="63" selection-start-column="38" selection-end-line="63" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="163" column="33" selection-start-line="163" selection-start-column="33" selection-end-line="163" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="110" column="29" selection-start-line="110" selection-start-column="29" selection-end-line="110" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -148,7 +148,6 @@ public class MyProject {
                 }  else {
                     foundDocument.forEach(i->{
 
-
                         if (i!=null){
                             ProjectRes reply=ProjectRes.newBuilder()
                                     .setProjectId(i.get("_id").toString())
@@ -159,12 +158,7 @@ public class MyProject {
                                     .setStatus("SUCCESS").setError("FALSE").build();
                             responseObserver.onNext(reply);
                         }
-                        try {
-                            Thread.sleep(5000);
-                            System.out.println("continue send");
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+
 
                     });
                     responseObserver.onCompleted();
