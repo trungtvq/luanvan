@@ -133,10 +133,17 @@ class AllProject extends Component {
     
     var metadata = {};
     //make a request to server
-
+    // string ownerId = 1;
+    // string requesterId=7;
+    // string projectName = 2;
+    // string start = 3;		//return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+    // string end = 4;		   //return in form mm/hh/dd/mm/yyyy
+    // string private = 5;
+    // string cookie = 6;
     var AddNewProjectReq= new proto.myproject.AddNewProjectReq();
     //AddNewProjectReq.setIdOwner("tienbede");
-    AddNewProjectReq.setUsername("tienbede");
+    AddNewProjectReq.setOwnerid("tienbede");
+    AddNewProjectReq.setRequesterid("tienbede");
     AddNewProjectReq.setProjectname("tienbede");
     AddNewProjectReq.setStart("tienbede");
     AddNewProjectReq.setEnd("tienbede");
@@ -165,14 +172,91 @@ class AllProject extends Component {
           console.log(toto)
   }
 
-  handleDelete = (idOwner,idProject,cookie) => {
-    console.log(idOwner);
-    console.log(idProject);
-    console.log(cookie);
-  };
-  
   handleUpdate = (idProject,idOwner,userName,projectName,start,end,status,cookie) => {
-   
+    const myprojectService = new proto.myproject.MyprojectClient('http://54.255.233.193:8085');
+    //some data of request (get that from frontend)
+    console.log(myprojectService)
+    
+    var metadata = {};
+    //make a request to server
+  // string projectId = 1;
+	// string userName = 3;
+	// string projectName = 4;
+	// string start = 5;
+	// string end = 6;
+	// string private = 7;
+	// string cookie = 8;
+  // string requesterId=2;
+    var UpdateProjectReq= new proto.myproject.UpdateProjectReq();
+    //AddNewProjectReq.setIdOwner("tienbede");
+    UpdateProjectReq.setRequesterid("tienbede");
+    UpdateProjectReq.setUsername("tienbede");
+    UpdateProjectReq.setProjectname("tienbede");
+    UpdateProjectReq.setProjectid("tienbede");
+    UpdateProjectReq.setStart("tienbede");
+    UpdateProjectReq.setEnd("tienbede");
+    UpdateProjectReq.setPrivate("tienbede");
+    UpdateProjectReq.setCookie("tienbede");
+
+    var toto=myprojectService.updateProject(UpdateProjectReq, metadata, (err, response) => {
+      console.log("connect")
+      if (err) { //if error
+         console.log(err);
+         console.log("error")
+      } else { //if success
+              //get response
+              console.log("response")
+              console.log(response);
+              console.log("get avatar")
+              console.log(response.getStatus())
+
+              // this.setState({
+              //   av: response.getAvatar()
+              // });
+              
+              const ProfileRes = response[0];
+            }
+          });
+          console.log(toto)
+  }
+
+  handleDelete = (idOwner,idProject,cookie) => {
+    const myprojectService = new proto.myproject.MyprojectClient('http://54.255.233.193:8085');
+    //some data of request (get that from frontend)
+    console.log(myprojectService)
+    
+    var metadata = {};
+    //make a request to server
+    // string projectId = 2;
+    // string cookie = 3;
+    // string requesterId=1;
+  
+    var DeleteProjectReq= new proto.myproject.DeleteProjectReq();
+    //AddNewProjectReq.setIdOwner("tienbede");
+    DeleteProjectReq.setRequesterid("tienbede");
+    DeleteProjectReq.setProjectid("tienbede");
+    DeleteProjectReq.setCookie("tienbede");
+
+    var toto=myprojectService.deleteProject(DeleteProjectReq, metadata, (err, response) => {
+      console.log("connect")
+      if (err) { //if error
+         console.log(err);
+         console.log("error")
+      } else { //if success
+              //get response
+              console.log("response")
+              console.log(response);
+              console.log("get avatar")
+              console.log(response.getStatus())
+
+              // this.setState({
+              //   av: response.getAvatar()
+              // });
+              
+              const ProfileRes = response[0];
+            }
+          });
+          console.log(toto)
   };
   onTextboxChangeOwnerName(event) {
     this.setState({

@@ -179,7 +179,14 @@ class DailySchedule extends Component {
     //console.log("vao daily");
     var metadata = {};
     //make a request to server
-
+    // string requesterId = 1;
+    // string projectId = 2;
+    // string scheduleId = 3;
+    // string title=4;
+    // string task=5;
+    // string time=6;
+    // string scheduleStatus = 7;
+    // string cookie = 8;
     var UpdateDailyScheduleReq= new proto.dailyschedule.UpdateDailyScheduleReq();
     UpdateDailyScheduleReq.setRequesterid("38e752c7-153b-4c9b-a235-f62ba9f265f2");
     UpdateDailyScheduleReq.setProjectid("5ccfbefdf43a0b0f499af2f7");
@@ -215,7 +222,10 @@ class DailySchedule extends Component {
     console.log("vao daily");
     var metadata = {};
     //make a request to server
-
+    // string requesterId = 1;
+	  // string projectId=2;
+	  // string scheduleId = 3;
+    // string cookie = 4;
     var DeleteDailyScheduleReq= new proto.dailyschedule.DeleteDailyScheduleReq();
     DeleteDailyScheduleReq.setRequesterid("tienbede");
     DeleteDailyScheduleReq.setProjectid("tienbede");
@@ -238,7 +248,6 @@ class DailySchedule extends Component {
             }
           });
           console.log(toto)
-          console.log("ra daily");
   };
 
  resetform = () =>{
