@@ -13,6 +13,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Bundled Protobuf Distribution" level="application" />
     <orderEntry type="library" name="Maven: com.sendgrid:sendgrid-java:4.3.0" level="project" />
     <orderEntry type="library" name="Maven: com.sendgrid:java-http-client:4.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.4" level="project" />
@@ -56,6 +57,5 @@
     <orderEntry type="library" name="Maven: io.projectreactor:reactor-core:3.2.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.imgscalr:imgscalr-lib:4.2" level="project" />
-    <orderEntry type="library" name="Bundled Protobuf Distribution" level="application" />
   </component>
 </module>

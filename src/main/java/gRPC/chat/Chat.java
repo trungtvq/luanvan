@@ -112,8 +112,7 @@ public class Chat {
                     }
                 }else{
                     makeResponseForFailed(responseObserver,"WRONG_SIZE","FALSE");
-                }
-            }else {
+                }            }else {
                 makeResponseForFailed(responseObserver,"INVALID_AUTH","TRUE");
             }
         }
