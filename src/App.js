@@ -41,7 +41,10 @@ const DefaultLayout = Loadable({
   loader: () => import('./containers/DefaultLayout'),
   loading
 });
-
+const LoginLayout = Loadable({
+  loader: () => import('./containers/LoginLayout'),
+  loading
+});
 // Pages no layout
 const Chat = Loadable({
   loader: () => import('./views/Personal/Chat'),
@@ -176,7 +179,8 @@ const store = configureStore()
 class App extends Component {
   state={
     token:null,
-    signInEmail:null
+    signInEmail:null,
+    isLogin:true
   }
 
   login = (token,signInEmail)=>{
@@ -198,37 +202,48 @@ class App extends Component {
                       logout:this.logout
                   }}>  
             <BrowserRouter>
-                <Switch>
-                <Route exact path="/homeNav" name="HomeNav" component={Demo} />
-                      <Route exact path="/Home/Main" name="HomeMain" component={HomeMain} />
-                      <Route exact path="/Home/Contact" name="HomeContact" component={HomeContact} />
-                      <Route exact path="/Home/Service" name="HomeService" component={HomeService} />
-                      <Route exact path="/Home/Solve" name="HomeSolve" component={HomeSolve} />
-                      <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
-                      <Route exact path="/Home/Final" name="HomeFinal" component={HomeFinal} />
-
-                      <Route exact path="/AllProject" name="AllProject" component={AllProject} />
-                      <Route exact path="/ProjectDone" name="ProjectDone" component={ProjectDone} />
-                      <Route exact path="/ProjectTodo" name="ProjectTodo" component={ProjectTodo} />
-                      <Route exact path="/CreateProject" name="CreateProject" component={CreateProject} />
-                      <Route exact path="/NoProject" name="NoProject" component={NoProject} />
-                     
-                      <Route exact path="/Profile/Detail" name="ProfileDetail" component={ProfileDetail} />
-                      <Route exact path="/Profile/Edit" name="ProjectTodo" component={ProfileEdit} />
-    
-
-                      {/* <Route exact path="/chat" name="Chat Page" component={Chat} /> */}
-                      <Route exact path="/login" name="Login Page" component={Login} />
-                      <Route exact path="/register" name="Register Page" component={Register} />
-                      <Route exact path="/ResetFirst" name="ResetSecond Page" component={ResetFirst} />
-                      <Route exact path="/ResetSecond" name="ResetSecond Page" component={ResetSecond} />
-                      <Route exact path="/404" name="Page 404" component={Page404} />
-                      <Route exact path="/500" name="Page 500" component={Page500} />
-                      <Route exact path="/pay" name="Page Pay" component={PagePay} />
-                      <Route exact path="/async" name="page test" component={AsyncApp} />
-                      <Route exact path="/dashboard" name="dashboard" component={DefaultLayout} />
-                      <Route path="/" name="Home" component={DefaultLayout} />
-                </Switch>
+                
+                {
+                        this.state.isLogin?<Switch>
+                        <Route exact path="/homeNav" name="HomeNav" component={Demo} />
+                              <Route exact path="/Home/Main" name="HomeMain" component={HomeMain} />
+                              <Route exact path="/Home/Contact" name="HomeContact" component={HomeContact} />
+                              <Route exact path="/Home/Service" name="HomeService" component={HomeService} />
+                              <Route exact path="/Home/Solve" name="HomeSolve" component={HomeSolve} />
+                              <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
+                              <Route exact path="/Home/Final" name="HomeFinal" component={HomeFinal} />
+        
+                              <Route exact path="/AllProject" name="AllProject" component={AllProject} />
+                              <Route exact path="/ProjectDone" name="ProjectDone" component={ProjectDone} />
+                              <Route exact path="/ProjectTodo" name="ProjectTodo" component={ProjectTodo} />
+                              <Route exact path="/CreateProject" name="CreateProject" component={CreateProject} />
+                              <Route exact path="/NoProject" name="NoProject" component={NoProject} />
+                             
+                              <Route exact path="/Profile/Detail" name="ProfileDetail" component={ProfileDetail} />
+                              <Route exact path="/Profile/Edit" name="ProjectTodo" component={ProfileEdit} />
+            
+        
+                              {/* <Route exact path="/chat" name="Chat Page" component={Chat} /> */}
+                             
+                             
+                              <Route exact path="/404" name="Page 404" component={Page404} />
+                              <Route exact path="/500" name="Page 500" component={Page500} />
+                              <Route exact path="/pay" name="Page Pay" component={PagePay} />
+                              <Route exact path="/async" name="page test" component={AsyncApp} />
+                              <Route exact path="/dashboard" name="dashboard" component={DefaultLayout} />
+        
+                              
+                              <Route path="/" name="Home" component={DefaultLayout} />
+                        </Switch>
+                        :<Switch>
+                                                 <Route exact path="/Home/Final" name="HomeFinal" component={HomeFinal} />  
+                                                 <Route exact path="/register" name="Register Page" component={Register} />
+                              <Route exact path="/ResetFirst" name="ResetSecond Page" component={ResetFirst} />
+                              <Route exact path="/ResetSecond" name="ResetSecond Page" component={ResetSecond} />
+                     <Route path="/" name="Home" component={HomeFinal} />
+                     <Route exact path="/login" name="Login Page" component={Login} />
+                        </Switch>
+                      }
             </BrowserRouter>
           </authContext.Provider>  
           </ApolloProvider>
