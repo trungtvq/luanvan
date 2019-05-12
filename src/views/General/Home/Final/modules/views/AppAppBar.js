@@ -101,14 +101,14 @@ function AppAppBar(props) {
             {'Overlead'}
           </Link>
           <div className={classes.right}>
-            <Button 
-              block color="primary"
-              className={classes.rightLink}
-              onClick={onCheck(userId,userSession,time)}
-              >
+          <Button 
+              variant="h6"
+              underline="none"
+              className={classNames(classes.rightLink, classes.linkSecondary)}
+              href="/login"
+            >
               {'Sign In'}
             </Button>
-
             <Button 
               variant="h6"
               underline="none"

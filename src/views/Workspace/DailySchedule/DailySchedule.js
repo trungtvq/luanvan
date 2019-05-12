@@ -55,7 +55,7 @@ class DailySchedule extends Component {
                 "task":"Login bằng fb1",
                 "timeStart":"02:20",
                 "dateStart":"2019-05-05",
-                "note":"có gửi code về đt",
+               
                 "status":"",
               },
               {
@@ -64,7 +64,7 @@ class DailySchedule extends Component {
                 "task":"Login bằng fb2",
                 "timeStart":"02:20",
                 "dateStart":"2019-05-05",
-                "note":"có gửi code về đt",
+                
                 "status":"",
               },
               {
@@ -73,7 +73,7 @@ class DailySchedule extends Component {
                 "task":"Login bằng fb3",
                 "timeStart":"02:20",
                 "dateStart":"2019-05-05",
-                "note":"có gửi code về đt",
+                
                 "status":"",
               },
               {
@@ -82,7 +82,7 @@ class DailySchedule extends Component {
                 "task":"Login bằng fb",
                 "timeStart":"02:20",
                 "dateStart":"2019-05-05",
-                "note":"có gửi code về đt",
+               
                 "status":"",
               },
             
@@ -309,7 +309,18 @@ class DailySchedule extends Component {
                 this.setState(prevState => ({
                   modalEdit: !prevState.modalEdit,
                   }));
-                this.setState(prevState=>({data:[...prevState.data,{id:response.getId(),name:this.state.name,as:this.state.as,want:this.state.want,so:this.state.so}]}));
+                  //Find index of specific object using findIndex method. 
+                  let tmpdata=this.state.data;  
+                  let objIndex = tmpdata.findIndex((obj => obj.id == this.state.scheduleIdUpdate));
+                  //Update object's name property.
+                  // tmpdata[objIndex].title = this.state.titleUpdate,
+                  // tmpdata[objIndex].task = this.state.taskUpdate,
+                  // tmpdata[objIndex].timeStart = this.state.timeStartUpdate,
+                  // tmpdata[objIndex].dateStart = this.state.dateStartUpdate,
+                  // tmpdata[objIndex].status = this.state.statusUpdate,
+                  this.setState({
+                    
+                  });
               }else{
                 this.setState({
                   modalActionStatus:true,

@@ -128,13 +128,13 @@ class ResetFirst extends Component {
                         <Input type="text" placeholder="Username" autoComplete="username"  value={Username}
                 onChange={this.onTextboxChangeUsername}/>
                       </InputGroup>
-                      <InputGroup className="mb-3">
+                      {/* <InputGroup className="mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>@</InputGroupText>
                         </InputGroupAddon>
                         <Input type="text" placeholder="Type" autoComplete="type" value={Type}
                 onChange={this.onTextboxChangeType}/>
-                      </InputGroup>
+                      </InputGroup> */}
                       <Link to="/ResetSecond">
                       <Button color="success" block onClick={this.onReset}>Go to next step</Button>
                       </Link>

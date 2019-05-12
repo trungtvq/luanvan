@@ -70,7 +70,7 @@ class ResetSecond extends Component {
   
   onTextboxChangeNewPassword(event) {
     this.setState({
-      signUpName: event.target.value,
+      NewPassword: event.target.value,
     });
   }
 
@@ -130,7 +130,7 @@ class ResetSecond extends Component {
                   <CardBody className="p-4">
                     <Form>
                       <h1>Reset account</h1>
-
+{/* 
                       <InputGroup className="mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>
@@ -139,7 +139,7 @@ class ResetSecond extends Component {
                         </InputGroupAddon>
                         <Input type="text" placeholder="Username" autoComplete="username"  value={Username}
                 onChange={this.onTextboxChangeUsername}/>
-                      </InputGroup>
+                      </InputGroup> */}
                       <InputGroup className="mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>@</InputGroupText>
