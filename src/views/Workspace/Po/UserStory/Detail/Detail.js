@@ -69,15 +69,25 @@ class Detail extends Component {
                 "so":"I can be contacted by admin",
               }
             ],
+      requesterId:'',
+      projectId:'',
+      cookie:'',
+
       modalAdd: false,
       modalEdit: false,
+      
       name:'',
       as:'',
       want:'',
       so:'',
+      
+      userstoryIdUpdate:'',    
+      nameUpdate:'',
+      asUpdate:'',
+      wantUpdate:'',
+      soUpdate:'',
 
-
-
+      userstoryIdDelete:','
       }
     };
   
@@ -124,7 +134,37 @@ class Detail extends Component {
     });
   }
 
- 
+  onTextboxChangenameUpdate=(event)=> {
+    this.setState({
+      nameUpdate: event.target.value,
+    });
+  }
+  onTextboxChangeasUpdate=(event)=> {
+    this.setState({
+     asUpdate: event.target.value,
+    });
+  }
+  onTextboxChangewantUpdate=(event)=> {
+    this.setState({
+      wantUpdate: event.target.value,
+    });
+  }
+  onTextboxChangesoUpdate=(event)=> {
+    this.setState({
+      soUpdate: event.target.value,
+    });
+  }
+  onTextboxChangeUserstoryIdUpdate=(event)=> {
+    this.setState({
+      userstoryIdUpdate: event.target.value,
+    });
+  }
+
+  onTextboxChangeUserstoryIdDelete=(event)=> {
+    this.setState({
+      userstoryIdDelete: event.target.value,
+    });
+  }
 
   // handleAdd = () => {
   //   var id='1';
@@ -137,7 +177,7 @@ class Detail extends Component {
       
   //   }
   // };
-  handleAdd= (idOwner,UserstoryName,start,end,status,cookie) => {
+  handleAdd= () => {
     const userstoryService = new proto.userstory.UserstoryClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
     console.log(userstoryService)
@@ -153,13 +193,13 @@ class Detail extends Component {
     // string want = 4;
     // string so = 5;
     // string cookie = 6;
-    AddNewUserStoryReq.setName("tienbede");
-    AddNewUserStoryReq.setAdderid("tienbede");
-    AddNewUserStoryReq.setProjectid("tienbede");
-    AddNewUserStoryReq.setRole("tienbede");
-    AddNewUserStoryReq.setWant("tienbede");
-    AddNewUserStoryReq.setSo("tienbede");
-    AddNewUserStoryReq.setCookie("tienbede");
+    AddNewUserStoryReq.setName(this.state.name);
+    AddNewUserStoryReq.setAdderid(this.state.requesterId);
+    AddNewUserStoryReq.setProjectid(this.state.projectId);
+    AddNewUserStoryReq.setRole(this.state.as);
+    AddNewUserStoryReq.setWant(this.state.want);
+    AddNewUserStoryReq.setSo(this.state.so);
+    AddNewUserStoryReq.setCookie(this.state.cookie);
 
     var toto=userstoryService.addNewUserStory(AddNewUserStoryReq, metadata, (err, response) => {
       console.log("connect")
@@ -171,11 +211,15 @@ class Detail extends Component {
               console.log("response")
               console.log(response);
               const ProfileRes = response[0];
+              this.setState(prevState => ({
+                     modalAdd: !prevState.modalAdd,
+                     }));
+              this.setState(prevState=>({data:[...prevState.data,{id:response.getId(),name:this.state.name,as:this.state.as,want:this.state.want,so:this.state.so}]}));
             }
           });
           console.log(toto)
-        }
-  handleDelete = (idOwner,idUserstory,cookie) => {
+}
+  handleDelete = () => {
     const userstoryService = new proto.userstory.UserstoryClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
     console.log(userstoryService)
@@ -188,10 +232,10 @@ class Detail extends Component {
   //     string projectId = 2;
   //     string userstoryId = 3;
   //     string cookie = 4;
-    DeleteUserStoryReq.setDeleterid("tienbede");
-    DeleteUserStoryReq.setProjectid("tienbede");
-    DeleteUserStoryReq.setUserstoryid("tienbede");
-    DeleteUserStoryReq.setCookie("tienbede");
+    DeleteUserStoryReq.setDeleterid(this.state.requesterId);
+    DeleteUserStoryReq.setProjectid(this.state.projectId);
+    DeleteUserStoryReq.setUserstoryid(this.state.userstoryIdDelete);
+    DeleteUserStoryReq.setCookie(this.state.cookie);
 
     var toto=userstoryService.deleteUserStory(DeleteUserStoryReq, metadata, (err, response) => {
       console.log("connect")
@@ -210,7 +254,7 @@ class Detail extends Component {
           console.log(toto)
           console.log("ra delete");
   };
-  handleUpdate = (idUserstory,idOwner,userName,UserstoryName,start,end,status,cookie) => {
+  handleUpdate = () => {
     const userstoryService = new proto.userstory.UserstoryClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
     console.log(userstoryService)
@@ -226,13 +270,13 @@ class Detail extends Component {
 // 	string want = 5;
 // 	string so = 6;
 // string cookie = 7;
-    UpdateUserStoryReq.setUpdaterid("tienbede");
-    UpdateUserStoryReq.setProjectid("tienbede");
-    UpdateUserStoryReq.setUserstoryid("tienbede");
-    UpdateUserStoryReq.setRole("tienbede1");
-    UpdateUserStoryReq.setWant("tienbede1");
-    UpdateUserStoryReq.setSo("tienbede1");
-    UpdateUserStoryReq.setCookie("tienbede");
+    UpdateUserStoryReq.setUpdaterid(this.state.requesterId);
+    UpdateUserStoryReq.setProjectid(this.state.projectId);
+    UpdateUserStoryReq.setUserstoryid(this.state.userstoryIdUpdate);
+    UpdateUserStoryReq.setRole(this.state.asUpdate);
+    UpdateUserStoryReq.setWant(this.state.wantUpdate);
+    UpdateUserStoryReq.setSo(this.state.soUpdate);
+    UpdateUserStoryReq.setCookie(this.state.cookie);
 
     var toto=userstoryService.updateUserStory(UpdateUserStoryReq, metadata, (err, response) => {
       console.log("connect")
@@ -243,10 +287,7 @@ class Detail extends Component {
               //get response
               console.log("response")
               console.log(response);
-              console.log(response.getStatus())
-
-              
-              
+              console.log(response.getStatus());
               const ProfileRes = response[0];
             }
           });
