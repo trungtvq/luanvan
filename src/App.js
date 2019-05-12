@@ -240,8 +240,9 @@ class App extends Component {
                                                  <Route exact path="/register" name="Register Page" component={Register} />
                               <Route exact path="/ResetFirst" name="ResetSecond Page" component={ResetFirst} />
                               <Route exact path="/ResetSecond" name="ResetSecond Page" component={ResetSecond} />
+                              <Route exact path="/login" name="Login Page" component={Login} />
                      <Route path="/" name="Home" component={HomeFinal} />
-                     <Route exact path="/login" name="Login Page" component={Login} />
+                    
                         </Switch>
                       }
             </BrowserRouter>

@@ -90,15 +90,15 @@ proto.myproject.MyprojectPromiseClient =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.myproject.AddNewProjectReq,
- *   !proto.myproject.AddNewProjectRes>}
+ *   !proto.myproject.ProjectRes>}
  */
 const methodInfo_Myproject_addNewProject = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.myproject.AddNewProjectRes,
+  proto.myproject.ProjectRes,
   /** @param {!proto.myproject.AddNewProjectReq} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.myproject.AddNewProjectRes.deserializeBinary
+  proto.myproject.ProjectRes.deserializeBinary
 );
 
 
@@ -107,9 +107,9 @@ const methodInfo_Myproject_addNewProject = new grpc.web.AbstractClientBase.Metho
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.myproject.AddNewProjectRes)}
+ * @param {function(?grpc.web.Error, ?proto.myproject.ProjectRes)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.myproject.AddNewProjectRes>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.myproject.ProjectRes>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.myproject.MyprojectClient.prototype.addNewProject =
@@ -128,7 +128,7 @@ proto.myproject.MyprojectClient.prototype.addNewProject =
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.myproject.AddNewProjectRes>}
+ * @return {!Promise<!proto.myproject.ProjectRes>}
  *     A native promise that resolves to the response
  */
 proto.myproject.MyprojectPromiseClient.prototype.addNewProject =
@@ -145,15 +145,15 @@ proto.myproject.MyprojectPromiseClient.prototype.addNewProject =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.myproject.UpdateProjectReq,
- *   !proto.myproject.UpdateProjectRes>}
+ *   !proto.myproject.ProjectRes>}
  */
 const methodInfo_Myproject_updateProject = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.myproject.UpdateProjectRes,
+  proto.myproject.ProjectRes,
   /** @param {!proto.myproject.UpdateProjectReq} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.myproject.UpdateProjectRes.deserializeBinary
+  proto.myproject.ProjectRes.deserializeBinary
 );
 
 
@@ -162,9 +162,9 @@ const methodInfo_Myproject_updateProject = new grpc.web.AbstractClientBase.Metho
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.myproject.UpdateProjectRes)}
+ * @param {function(?grpc.web.Error, ?proto.myproject.ProjectRes)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.myproject.UpdateProjectRes>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.myproject.ProjectRes>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.myproject.MyprojectClient.prototype.updateProject =
@@ -183,7 +183,7 @@ proto.myproject.MyprojectClient.prototype.updateProject =
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.myproject.UpdateProjectRes>}
+ * @return {!Promise<!proto.myproject.ProjectRes>}
  *     A native promise that resolves to the response
  */
 proto.myproject.MyprojectPromiseClient.prototype.updateProject =
@@ -200,15 +200,15 @@ proto.myproject.MyprojectPromiseClient.prototype.updateProject =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.myproject.DeleteProjectReq,
- *   !proto.myproject.DeleteProjectRes>}
+ *   !proto.myproject.ProjectRes>}
  */
 const methodInfo_Myproject_deleteProject = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.myproject.DeleteProjectRes,
+  proto.myproject.ProjectRes,
   /** @param {!proto.myproject.DeleteProjectReq} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.myproject.DeleteProjectRes.deserializeBinary
+  proto.myproject.ProjectRes.deserializeBinary
 );
 
 
@@ -217,9 +217,9 @@ const methodInfo_Myproject_deleteProject = new grpc.web.AbstractClientBase.Metho
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.myproject.DeleteProjectRes)}
+ * @param {function(?grpc.web.Error, ?proto.myproject.ProjectRes)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.myproject.DeleteProjectRes>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.myproject.ProjectRes>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.myproject.MyprojectClient.prototype.deleteProject =
@@ -238,7 +238,7 @@ proto.myproject.MyprojectClient.prototype.deleteProject =
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.myproject.DeleteProjectRes>}
+ * @return {!Promise<!proto.myproject.ProjectRes>}
  *     A native promise that resolves to the response
  */
 proto.myproject.MyprojectPromiseClient.prototype.deleteProject =
@@ -255,15 +255,15 @@ proto.myproject.MyprojectPromiseClient.prototype.deleteProject =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.myproject.GetAllProjectReq,
- *   !proto.myproject.GetAllProjectRes>}
+ *   !proto.myproject.ProjectRes>}
  */
 const methodInfo_Myproject_getAllProject = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.myproject.GetAllProjectRes,
+  proto.myproject.ProjectRes,
   /** @param {!proto.myproject.GetAllProjectReq} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.myproject.GetAllProjectRes.deserializeBinary
+  proto.myproject.ProjectRes.deserializeBinary
 );
 
 
@@ -271,7 +271,7 @@ const methodInfo_Myproject_getAllProject = new grpc.web.AbstractClientBase.Metho
  * @param {!proto.myproject.GetAllProjectReq} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.myproject.GetAllProjectRes>}
+ * @return {!grpc.web.ClientReadableStream<!proto.myproject.ProjectRes>}
  *     The XHR Node Readable Stream
  */
 proto.myproject.MyprojectClient.prototype.getAllProject =
@@ -288,7 +288,7 @@ proto.myproject.MyprojectClient.prototype.getAllProject =
  * @param {!proto.myproject.GetAllProjectReq} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.myproject.GetAllProjectRes>}
+ * @return {!grpc.web.ClientReadableStream<!proto.myproject.ProjectRes>}
  *     The XHR Node Readable Stream
  */
 proto.myproject.MyprojectPromiseClient.prototype.getAllProject =

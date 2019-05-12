@@ -40,7 +40,6 @@ class DailySchedule extends Component {
 
     this.onTextboxChangeTitle = this.onTextboxChangeTitle.bind(this);
     this.onTextboxChangeTask = this.onTextboxChangeTask.bind(this);
-    this.onTextboxChangeNote = this.onTextboxChangeNote.bind(this);
     this.onTextboxChangeTime = this.onTextboxChangeTime.bind(this);
     this.onTextboxChangeStatus = this.onTextboxChangeStatus.bind(this);
     this.onTextboxChangeTimeStart = this.onTextboxChangeTimeStart.bind(this);
@@ -51,39 +50,49 @@ class DailySchedule extends Component {
     this.state = {
       data: [ 
               {
-                "title":"Login",
-                "task":"Login bằng fb",
-                "time":"2:20 23/3/1019",
+                "id":"1",
+                "title":"Login1",
+                "task":"Login bằng fb1",
+                "timeStart":"02:20",
+                "dateStart":"2019-05-05",
                 "note":"có gửi code về đt",
                 "status":"",
               },
               {
-                "title":"Login",
-                "task":"Login bằng fb",
-                "time":"2:20 23/3/1019",
+                "id":"1",
+                "title":"Login2",
+                "task":"Login bằng fb2",
+                "timeStart":"02:20",
+                "dateStart":"2019-05-05",
                 "note":"có gửi code về đt",
                 "status":"",
               },
               {
-                "title":"Login",
-                "task":"Login bằng fb",
-                "time":"2:20 23/3/1019",
+                "id":"1",
+                "title":"Login3",
+                "task":"Login bằng fb3",
+                "timeStart":"02:20",
+                "dateStart":"2019-05-05",
                 "note":"có gửi code về đt",
                 "status":"",
               },
               {
+                "id":"1",
                 "title":"Login",
                 "task":"Login bằng fb",
-                "time":"2:20 23/3/1019",
+                "timeStart":"02:20",
+                "dateStart":"2019-05-05",
                 "note":"có gửi code về đt",
                 "status":"",
               },
             
             ],
       modalEdit: false,
+      modalActionStatus: false,     
       requesterId:'',
       projectId:'',
       cookie:'',
+      actionStatus:'',              //success or show error when action add delete update
       
       //add
       title:'',
@@ -108,7 +117,12 @@ class DailySchedule extends Component {
       modalEdit: !prevState.modalEdit
     }));
   }
-
+  toggleActionStatus=()=> {
+    this.setState(prevState => ({
+      modalActionStatus: !prevState.modalActionStatus
+    }));
+  }
+//add
   onTextboxChangeTitle(event) {
     this.setState({
       title: event.target.value,
@@ -122,11 +136,6 @@ class DailySchedule extends Component {
   onTextboxChangeTime(event) {
     this.setState({
       time: event.target.value,
-    });
-  }
-  onTextboxChangeNote(event) {
-    this.setState({
-      note: event.target.value,
     });
   }
   onTextboxChangeStatus(event) {
@@ -144,6 +153,55 @@ class DailySchedule extends Component {
       dateStart: event.target.value,
     });
   }
+//update
+  onTextboxChangeScheduleIdUpdate=(event)=> {
+    this.setState({
+      scheduleIdUpdate: event.target.value,
+    });
+  }
+  onTextboxChangeTitleUpdate=(event)=> {
+    this.setState({
+      titleUpdate: event.target.value,
+    });
+  }
+  onTextboxChangeTaskUpdate=(event)=> {
+    this.setState({
+      taskUpdate: event.target.value,
+    });
+  }
+  onTextboxChangeTimeStartUpdate=(event)=> {
+    this.setState({
+      timeStartUpdate: event.target.value,
+    });
+  }
+  onTextboxChangeDateStartUpdate=(event)=> {
+    this.setState({
+      dateStartUpdate: event.target.value,
+    });
+  }
+  onTextboxChangeStatusUpdate=(event)=> {
+    this.setState({
+      statusUpdate: event.target.value,
+    });
+  }
+  onGetUpdate=(scheduleIdUpdate,titleUpdate,taskUpdate,timeStartUpdate,dateStartUpdate,statusUpdate)=>{
+    this.setState({
+      scheduleIdUpdate:scheduleIdUpdate,
+      titleUpdate:titleUpdate,
+      taskUpdate:taskUpdate,
+      timeStartUpdate:timeStartUpdate,
+      dateStartUpdate:dateStartUpdate,
+      statusUpdate:statusUpdate,
+    });
+    console.log("idParam: -------"+scheduleIdUpdate);
+    console.log("id: -------"+this.state.scheduleIdUpdate);
+  }
+//delete
+  onTextboxChangeScheduleIdDelete=(id)=> {
+    this.setState({
+      scheduleIdDelete: id,
+    });
+  }
 
   handleReset= (event) => {
     console.log('vao reset');
@@ -154,7 +212,7 @@ class DailySchedule extends Component {
   
   handleAdd = () => {
     //console.log("handleadd");
-    const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://54.255.233.193:8085');
+    const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://54.255.233.193:8084');
     //some data of request (get that from frontend)
     console.log(dailyscheduleService)
     //console.log("vao daily");
@@ -174,11 +232,11 @@ class DailySchedule extends Component {
     AddNewDailyScheduleReq.setTitle(this.state.title);
     AddNewDailyScheduleReq.setTask(this.state.task);
     AddNewDailyScheduleReq.setTime(this.state.timeStart+" "+this.state.dateStart);
-    AddNewDailyScheduleReq.setSchedulestatus(this.state.status);
+    AddNewDailyScheduleReq.setSchedulestatus("to do");
     AddNewDailyScheduleReq.setCookie(this.state.cookie);
 
     var toto=dailyscheduleService.addNewDailySchedule(AddNewDailyScheduleReq, metadata, (err, response) => {
-      console.log("connect")
+      console.log("AddNewDailyScheduleReq----------connect")
       if (err) { //if error
          console.log(err);
          console.log("error")
@@ -186,6 +244,25 @@ class DailySchedule extends Component {
               //get response
               console.log("response--------------------------")
               console.log(response);
+              console.log(response.getStatus())
+              if(response.getStatus()=="SUCCESS")
+              {
+                this.setState(prevState=>({data:[...prevState.data,{id:response.getId(),title:this.state.title,task:this.state.task,timeStart:this.state.timeStart,dateStart:this.state.dateStart}]}));
+                this.setState({
+                  title:'',
+                  task:'',
+                  timeStart:'',
+                  dateStart:'',
+                  modalActionStatus:true,
+                  actionStatus:'SUCCESS'
+                });
+              }else{
+                this.setState({
+                  modalActionStatus:true,
+                  actionStatus:'FALSE',
+                });
+              }
+               
               const ProfileRes = response[0];
             }
           });
@@ -218,7 +295,7 @@ class DailySchedule extends Component {
     UpdateDailyScheduleReq.setCookie(this.state.cookie);
 
     var toto=dailyscheduleService.updateDailySchedule(UpdateDailyScheduleReq, metadata, (err, response) => {
-      console.log("connect")
+      console.log("UpdateDailyScheduleReqconnect")
       if (err) { //if error
          console.log(err);
          console.log("error")
@@ -226,9 +303,19 @@ class DailySchedule extends Component {
               //get response
               console.log("response")
               console.log(response);
-              // console.log("get avatar")
-              // console.log(response.getStatus())
-              
+             
+              if(response.getStatus()=="SUCCESS")
+              {
+                this.setState(prevState => ({
+                  modalEdit: !prevState.modalEdit,
+                  }));
+                this.setState(prevState=>({data:[...prevState.data,{id:response.getId(),name:this.state.name,as:this.state.as,want:this.state.want,so:this.state.so}]}));
+              }else{
+                this.setState({
+                  modalActionStatus:true,
+                  actionStatus:"FALSE",
+                });
+              }
               const ProfileRes = response[0];
             }
           });
@@ -280,8 +367,6 @@ class DailySchedule extends Component {
       modalEdit,
       title,
       task,
-      time,
-      note,
       status,
       timeStart,
       dateStart,
@@ -293,6 +378,11 @@ class DailySchedule extends Component {
 
     return (
       <Row>
+          <Modal size="sm"  isOpen={that.state.modalActionStatus} toggle={that.toggleActionStatus} className={that.props.className}>
+          <ModalBody>
+            <center><h4>{that.state.actionStatus}</h4></center>
+          </ModalBody>
+          </Modal>
           <Col>  
             <Card>           
                 <table class="table table-lg">
@@ -312,21 +402,22 @@ class DailySchedule extends Component {
                   <tr key = {key}>
                       <td>{item.title}</td>
                       <td>{item.task}</td>
-                      <td>{item.time}</td>
+                      <td>{item.timeStart} {item.dateStart}</td>
                       
                       <td>{item.status}</td>
                       <td>
-                      <Button color="warning" size="sm" onClick={that.toggleEdit}><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
+                      <Button color="warning" size="sm" onClick={(event)=>{that.toggleEdit();that.onGetUpdate(item.id,item.title,item.task,item.timeStart,item.dateStart,item.status)}}>
+                      <i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
                         <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
                               <ModalHeader toggle={that.toggleEdit}>Daily schedule</ModalHeader>
                               <ModalBody>
                               <Form  className="form-horizontal">               
                                 <FormGroup row>
                                   <Col md="3">
-                                    <Label htmlFor="text-input">IdBacklog</Label>
+                                    <Label htmlFor="text-input">Title</Label>
                                   </Col>
                                   <Col xs="12" md="9">
-                                    <Input type="text" id="IdBacklog" name="IdBacklog" placeholder="IdBacklog" />
+                                    <Input type="text" id="Title" name="Title" placeholder="Title" value={that.state.titleUpdate} onChange={that.onTextboxChangeTitleUpdate}/>
                                     
                                   </Col>
                                 </FormGroup>
@@ -337,7 +428,7 @@ class DailySchedule extends Component {
                                   </Col>
                                   <Col xs="12" md="9">
                                     <Input type="textarea" name="Task" id="Task" rows="9"
-                                          placeholder="Task..." />
+                                          placeholder="Task..." value={that.state.taskUpdate} onChange={that.onTextboxChangeTaskUpdate}/>
                                   </Col>
                                 </FormGroup>
                                                 
@@ -346,39 +437,33 @@ class DailySchedule extends Component {
                                     <Label htmlFor="date-input">Start </Label>
                                   </Col>
                                   <Col xs="3" md="3">
-                                    <Input type="time" id="timeStart" name="timeStart" />
+                                  
+                                    <Input type="time" id="timeStart" name="timeStart" value={that.state.timeStartUpdate} onChange={that.onTextboxChangeTimeStartUpdate}/>
                                   </Col>
                                   <Col xs="3" md="3">
-                                    <Input type="date" id="dateStart" name="dateStart" />
+                                    <Input type="date" id="dateStart" name="dateStart" value={that.state.dateStartUpdate} onChange={that.onTextboxChangeDateStartUpdate}/>
                                   </Col>
                                 </FormGroup>
                                 
-                                <FormGroup row>
-                                  <Col md="3">
-                                    <Label htmlFor="text-input">Note</Label>
-                                  </Col>
-                                  <Col xs="12" md="9">
-                                    <Input type="text" id="note" name="note" placeholder="Note" />
-                                  </Col>
-                                </FormGroup>
+              
 
                                 <FormGroup row>
                                   <Col md="3">
                                     <Label>Status</Label>
                                   </Col>
                                   <Col xs="12" md="9">
-                                    <p className="form-control-static">To do</p>
+                                  <Input type="text" id="status" name="status" value={that.state.statusUpdate} onChange={that.onTextboxChangeStatusUpdate}/>
                                   </Col>
                                 </FormGroup>                                       
                               </Form>                  
                               </ModalBody>
                               <ModalFooter>
-                                <Button color="primary" onClick={that.handleUpdate('requesterId11','projectId','scheduleId','title','task','time','scheduleStatus','cookie')}>Submit</Button>{' '}
+                                <Button color="primary" onClick={that.handleUpdate()}>Submit</Button>{' '}
                                 <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
                               </ModalFooter>
                         </Modal>
 
-                      <Button color="danger" size="sm" ><i class="fa fa-trash" onClick={that.handleDelete('requesterId','projectId','scheduleId','cookie') }></i></Button>
+                      <Button color="danger" size="sm" ><i class="fa fa-trash" onClick={(event) => { that.onTextboxChangeScheduleIdDelete(item.id); that.handleDelete();}}></i></Button>
                       </td>
                   </tr>
                 )
@@ -420,15 +505,6 @@ class DailySchedule extends Component {
                       <Input type="date" id="dateStart" name="dateStart" value={dateStart} onChange={that.onTextboxChangeDateStart}/>
                     </Col>
                   </FormGroup>
-                  
-                  <FormGroup row>
-                    <Col md="3">
-                      <Label htmlFor="text-input">Note</Label>
-                    </Col>
-                    <Col xs="12" md="9">
-                      <Input type="text" id="note" name="note" placeholder="Note" value={note} onChange={that.onTextboxChangeNote}/>
-                    </Col>
-                  </FormGroup>
 
                   <FormGroup row>
                     <Col md="3">
@@ -441,8 +517,7 @@ class DailySchedule extends Component {
                 </Form>
               </CardBody>
               <CardFooter>
-                <Button type="submit" size="sm" color="primary" onClick={that.handleAdd('requesterId','projectId','title','task','time','scheduleStatus','cookie')}><i className="fa fa-dot-circle-o"></i> Add</Button>
-                <Button  size="sm" color="danger"><i className="fa fa-ban" onClick={that.resetform()}></i> Reset</Button>
+                <Button type="submit" size="sm" color="primary" onClick={that.handleAdd}><i className="fa fa-dot-circle-o"></i> Add</Button>
               </CardFooter>
             </Card>
          </Col>

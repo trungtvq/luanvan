@@ -105,12 +105,8 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
           console.log(err);
         } else { //if success
           //get response
-          const SignInRes = response.getResponse();
-          if (SignInRes == null) {// if response null => not found
-            console.log(`Something was wrong ${signUpEmail} wasn't found`);
-          } else {
-            console.log(`Fetched TODO with ID ${signUpEmail}: ${SignInRes}`);
-          }
+          const SignUpRes = response.getResponse();
+          
         }
       });
       
@@ -159,14 +155,14 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
                           <i className="icon-user"></i>
                         </InputGroupText>
                       </InputGroupAddon>
-                      <Input type="text" placeholder="Username" autoComplete="username"  value={signUpName}
+                      <Input type="text" placeholder="Name" autoComplete="Name"  value={signUpName}
               onChange={this.onTextboxChangeSignUpName}/>
                     </InputGroup>
                     <InputGroup className="mb-3">
                       <InputGroupAddon addonType="prepend">
                         <InputGroupText>@</InputGroupText>
                       </InputGroupAddon>
-                      <Input type="text" placeholder="Email" autoComplete="email" value={signUpEmail}
+                      <Input type="email" placeholder="Email" autoComplete="email" value={signUpEmail}
               onChange={this.onTextboxChangeSignUpEmail}/>
                     </InputGroup>
                     <InputGroup className="mb-3">
@@ -178,14 +174,7 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
                       <Input type="password" placeholder="Password" autoComplete="new-password" value={signUpPassword}
               onChange={this.onTextboxChangeSignUpPassword}/>
                     </InputGroup>
-                    <InputGroup className="mb-4">
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="icon-lock"></i>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input type="password" placeholder="Repeat password" autoComplete="new-password" />
-                    </InputGroup>
+                    
                     <Button color="success" block onClick={this.onSignUp}>Create Account</Button>
                   </Form>
                 </CardBody>
