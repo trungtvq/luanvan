@@ -145,13 +145,18 @@ public class AuthAccount {
             if (user!=null){ //NOT EXIST USERNAME
                 makeResponseForSignInFailed(responseObserver,"NOT_EXIST_USERNAME","TRUE");
             } else{
-                String token=Redis.TOKEN_SYNC_COMMAND.get(request.getUsername()).toString();
-                if (token!=request.getToken()){
-                    makeResponseForSignInFailed(responseObserver,"WRONG_TOKEN","TRUE");
-                }else{
-                    coll.findOneAndUpdate(new Document("username",request.getUsername()),new Document("password",request.getPassword()));
-                    makeResponseForSignInSuccess(responseObserver,user.get("_id").toString());
-                    Redis.TOKEN_SYNC_KEY_COMMAND.del(request.getUsername());
+                Object token=Redis.TOKEN_SYNC_COMMAND.get(request.getUsername());
+                if(token!=null){
+
+                    if (token.toString()!=request.getToken()){
+                        makeResponseForSignInFailed(responseObserver,"WRONG_TOKEN","TRUE");
+                    }else{
+                        coll.findOneAndUpdate(new Document("username",request.getUsername()),new Document("password",request.getPassword()));
+                        makeResponseForSignInSuccess(responseObserver,user.get("_id").toString());
+                        Redis.TOKEN_SYNC_KEY_COMMAND.del(request.getUsername());
+                    }
+                } else{
+                    makeResponseForSignInFailed(responseObserver,"NOT_EXIST_TOKEN","TRUE");
                 }
             }
         }

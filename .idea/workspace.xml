@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a13b32c7-5cec-4a33-a1ca-2d33e458b65d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Redis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Redis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/auth/AuthAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/auth/AuthAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/schedule/DailySchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/schedule/DailySchedule.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -45,8 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/auth/AuthAccount.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+            <state relative-caret-position="413">
+              <caret line="158" column="88" selection-start-line="158" selection-start-column="88" selection-end-line="158" selection-end-column="88" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1186#1187#0" expanded="true" />
@@ -73,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/../../client/src/views/Pages/ResetFirst/ResetFirst.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="101" column="1" lean-forward="true" selection-start-line="100" selection-end-line="101" selection-end-column="1" />
+              <caret line="101" column="1" lean-forward="true" selection-start-line="101" selection-start-column="1" selection-end-line="101" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -541,7 +538,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126754000" />
+    <option name="totallyTimeSpent" value="128372000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -892,7 +889,7 @@
     <entry file="file://$PROJECT_DIR$/../../client/src/views/Pages/ResetFirst/ResetFirst.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="101" column="1" lean-forward="true" selection-start-line="100" selection-end-line="101" selection-end-column="1" />
+          <caret line="101" column="1" lean-forward="true" selection-start-line="101" selection-start-column="1" selection-end-line="101" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -915,8 +912,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/auth/AuthAccount.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+        <state relative-caret-position="413">
+          <caret line="158" column="88" selection-start-line="158" selection-start-column="88" selection-end-line="158" selection-end-column="88" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1186#1187#0" expanded="true" />
