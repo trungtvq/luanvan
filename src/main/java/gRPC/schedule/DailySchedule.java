@@ -92,15 +92,12 @@ public class DailySchedule {
         public void deleteDailySchedule(DeleteDailyScheduleReq request, StreamObserver<DailyScheduleRes> responseObserver) {
             if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getCookie())){
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("schedule"); //get connect
-
-                Document needDelete=new Document()
-                        .append("projectId",request.getProjectId())
-                        .append("_id",request.getScheduleId());
-                coll.findOneAndDelete(needDelete);
-
                 MongoCollection<Document> collProject = Mongod.getOverleadConnection().getCollection("project");
+
+                coll.findOneAndDelete(new Document("_id",new ObjectId(request.getScheduleId())));
+
                 Document deleteQuery = new Document("$pull", new Document("dailySchedule",request.getScheduleId()));
-                collProject.findOneAndUpdate(new Document("projectId",request.getProjectId()),deleteQuery);
+                collProject.findOneAndUpdate(new Document("_id",new ObjectId(request.getProjectId()) ),deleteQuery);
 
                 makeResponseForUpdateSuccess(responseObserver,request.getScheduleId());
 
@@ -114,10 +111,10 @@ public class DailySchedule {
             if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getCookie())){
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("schedule"); //get connect
                 MongoCollection<Document> collProject= Mongod.getOverleadConnection().getCollection("project");
-                List<Document> schedule= collProject.find(new Document("_id",request.getProjectId())).into(new ArrayList<>());
+                List<Document> schedule= collProject.find(new Document("_id",new ObjectId(request.getProjectId()) )).into(new ArrayList<>());
                 List<String> re= (List) schedule.get(0).get("dailySchedule");
                 re.forEach(i->{
-                    Document ele=coll.find(new Document("_id",i)).into(new ArrayList<>()).get(0);
+                    Document ele=coll.find(new Document("_id",new ObjectId(i))).into(new ArrayList<>()).get(0);
                     responseObserver.onNext(DailyScheduleRes.newBuilder().setStatus("SUCCESS").setError("FALSE")
                             .setScheduleId(i)
                             .setTask(ele.get("task").toString())
