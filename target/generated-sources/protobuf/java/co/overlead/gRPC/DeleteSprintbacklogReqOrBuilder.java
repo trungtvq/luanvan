@@ -3,19 +3,19 @@
 
 package co.overlead.gRPC;
 
-public interface DeleteSprintbacklogReqOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:sprintbacklog.DeleteSprintbacklogReq)
+public interface DeleteSprintBacklogReqOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:sprintbacklog.DeleteSprintBacklogReq)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string userName = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
-  java.lang.String getUserName();
+  java.lang.String getRequesterId();
   /**
-   * <code>string userName = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
   com.google.protobuf.ByteString
-      getUserNameBytes();
+      getRequesterIdBytes();
 
   /**
    * <code>string projectId = 2;</code>
@@ -28,14 +28,14 @@ public interface DeleteSprintbacklogReqOrBuilder extends
       getProjectIdBytes();
 
   /**
-   * <code>string sprintbacklogId = 3;</code>
+   * <code>string sprintBacklogId = 3;</code>
    */
-  java.lang.String getSprintbacklogId();
+  java.lang.String getSprintBacklogId();
   /**
-   * <code>string sprintbacklogId = 3;</code>
+   * <code>string sprintBacklogId = 3;</code>
    */
   com.google.protobuf.ByteString
-      getSprintbacklogIdBytes();
+      getSprintBacklogIdBytes();
 
   /**
    * <code>string cookie = 4;</code>

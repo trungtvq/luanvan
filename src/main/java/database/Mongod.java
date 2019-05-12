@@ -14,7 +14,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Mongod {
-    private static MongoClient mongoClient = MongoClients.create("mongodb+srv://tien:tien@overlead0-ykr4q.gcp.mongodb.net/test?retryWrites=true");
+   // private static MongoClient mongoClient = MongoClients.create("mongodb+srv://tien:tien@overlead0-ykr4q.gcp.mongodb.net/test?retryWrites=true");
+    private static MongoClient mongoClient = MongoClients.create("mongodb://localhost/overlead");
+
     private static MongoDatabase overleadDB=mongoClient.getDatabase("overlead");
     public static MongoDatabase getOverleadConnection(){
         return overleadDB;
@@ -22,17 +24,17 @@ public class Mongod {
 
     public static void main(String[] args) {
 
-//        MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("project");
-////        Document bson= new Document().append("a", new BsonString("MongoDB"))
-////                .append("b", new BsonArray(Arrays.asList(new BsonInt32(1), new BsonInt32(2))))
-////                .append("a","2")
-////                .append("c","3");
-////        coll.insertOne(bson);
-//
+        MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("project");
+        Document bson= new Document().append("a", new BsonString("MongoDB"))
+                .append("b", new BsonArray(Arrays.asList(new BsonInt32(1), new BsonInt32(2))))
+                .append("a","2")
+                .append("c","3");
+        coll.insertOne(bson);
+
 
 
         MongoCollection<Document> collChat = Mongod.getOverleadConnection().getCollection("testmothaiba");
-        Document bson= new Document().append("mothaiba", new BsonString("123"))
+         bson= new Document().append("mothaiba", new BsonString("123"))
                 .append("b", new BsonArray(Arrays.asList(new BsonInt32(1), new BsonInt32(2))))
                 .append("a","2")
                 .append("c","3");

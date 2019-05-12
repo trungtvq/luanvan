@@ -6,29 +6,30 @@ option java_outer_classname = "sprintbacklog";
 option objc_class_prefix = "sb";
 package sprintbacklog;
 
-service Sprintbacklog{
-    rpc deleteSprintbacklog(DeleteSprintbacklogReq) returns (DeleteSprintbacklogRes) {}
-	rpc getAllSprintbacklog(GetAllSprintbacklogReq) returns (stream GetAllSprintbacklogRes){}
+service SprintBacklog{
+    rpc deleteSprintBacklog(DeleteSprintBacklogReq) returns (SprintBacklogRes) {}
+	rpc getAllSprintBacklog(GetAllSprintBacklogReq) returns (stream GetAllSprintBacklogRes){}
 }
 
-message DeleteSprintbacklogReq{
-    string userName = 1;
+message DeleteSprintBacklogReq{
+    string requesterId = 1;
     string projectId = 2;
-	string sprintbacklogId = 3;
+	string sprintBacklogId = 3;
 	string cookie = 4;
 }
-message DeleteSprintbacklogRes{
+message SprintBacklogRes{
     string status = 1;
 	string error = 2;
+	string sprintBacklogId=3;
 }
 
-message GetAllSprintbacklogReq{
-    string userName = 1;
+message GetAllSprintBacklogReq{
+    string requesterId = 1;
 	string projectId = 2;
 	string cookie = 3;
 }
-message GetAllSprintbacklogRes{
-	string sprintbacklogId = 1;
+message GetAllSprintBacklogRes{
+	string sprintBacklogId = 1;
 	string role = 2;
 	string want = 3;
 	string so = 4;

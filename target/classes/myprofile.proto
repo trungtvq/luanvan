@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "co.overlead.gRPC";
+option java_outer_classname = "myprofile";
+option objc_class_prefix = "myprofile";
+package profile;
+
+
+service MyProfile{
+    rpc getProfile(ProfileReq) returns (stream ProfileRes){}
+    rpc getProfileSimple(ProfileReq) returns (ProfileRes){}
+
+}
+
+message ProfileReq{
+    string username = 1;
+}
+
+message ProfileRes{
+    string avatar=1;
+    string status=2;
+
+}

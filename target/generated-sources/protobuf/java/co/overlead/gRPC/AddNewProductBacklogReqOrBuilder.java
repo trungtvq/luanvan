@@ -96,14 +96,14 @@ public interface AddNewProductBacklogReqOrBuilder extends
       getEstimationBytes();
 
   /**
-   * <code>string sprint = 9;</code>
+   * <code>string sprintId = 9;</code>
    */
-  java.lang.String getSprint();
+  java.lang.String getSprintId();
   /**
-   * <code>string sprint = 9;</code>
+   * <code>string sprintId = 9;</code>
    */
   com.google.protobuf.ByteString
-      getSprintBytes();
+      getSprintIdBytes();
 
   /**
    * <code>string cookie = 10;</code>

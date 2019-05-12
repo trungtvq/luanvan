@@ -20,246 +20,246 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.20.0)",
     comments = "Source: sprintbacklog.proto")
-public final class SprintbacklogGrpc {
+public final class SprintBacklogGrpc {
 
-  private SprintbacklogGrpc() {}
+  private SprintBacklogGrpc() {}
 
-  public static final String SERVICE_NAME = "sprintbacklog.Sprintbacklog";
+  public static final String SERVICE_NAME = "sprintbacklog.SprintBacklog";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteSprintbacklogReq,
-      co.overlead.gRPC.DeleteSprintbacklogRes> getDeleteSprintbacklogMethod;
+  private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteSprintBacklogReq,
+      co.overlead.gRPC.SprintBacklogRes> getDeleteSprintBacklogMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "deleteSprintbacklog",
-      requestType = co.overlead.gRPC.DeleteSprintbacklogReq.class,
-      responseType = co.overlead.gRPC.DeleteSprintbacklogRes.class,
+      fullMethodName = SERVICE_NAME + '/' + "deleteSprintBacklog",
+      requestType = co.overlead.gRPC.DeleteSprintBacklogReq.class,
+      responseType = co.overlead.gRPC.SprintBacklogRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteSprintbacklogReq,
-      co.overlead.gRPC.DeleteSprintbacklogRes> getDeleteSprintbacklogMethod() {
-    io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteSprintbacklogReq, co.overlead.gRPC.DeleteSprintbacklogRes> getDeleteSprintbacklogMethod;
-    if ((getDeleteSprintbacklogMethod = SprintbacklogGrpc.getDeleteSprintbacklogMethod) == null) {
-      synchronized (SprintbacklogGrpc.class) {
-        if ((getDeleteSprintbacklogMethod = SprintbacklogGrpc.getDeleteSprintbacklogMethod) == null) {
-          SprintbacklogGrpc.getDeleteSprintbacklogMethod = getDeleteSprintbacklogMethod = 
-              io.grpc.MethodDescriptor.<co.overlead.gRPC.DeleteSprintbacklogReq, co.overlead.gRPC.DeleteSprintbacklogRes>newBuilder()
+  public static io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteSprintBacklogReq,
+      co.overlead.gRPC.SprintBacklogRes> getDeleteSprintBacklogMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteSprintBacklogReq, co.overlead.gRPC.SprintBacklogRes> getDeleteSprintBacklogMethod;
+    if ((getDeleteSprintBacklogMethod = SprintBacklogGrpc.getDeleteSprintBacklogMethod) == null) {
+      synchronized (SprintBacklogGrpc.class) {
+        if ((getDeleteSprintBacklogMethod = SprintBacklogGrpc.getDeleteSprintBacklogMethod) == null) {
+          SprintBacklogGrpc.getDeleteSprintBacklogMethod = getDeleteSprintBacklogMethod = 
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.DeleteSprintBacklogReq, co.overlead.gRPC.SprintBacklogRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "sprintbacklog.Sprintbacklog", "deleteSprintbacklog"))
+                  "sprintbacklog.SprintBacklog", "deleteSprintBacklog"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.DeleteSprintbacklogReq.getDefaultInstance()))
+                  co.overlead.gRPC.DeleteSprintBacklogReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.DeleteSprintbacklogRes.getDefaultInstance()))
-                  .setSchemaDescriptor(new SprintbacklogMethodDescriptorSupplier("deleteSprintbacklog"))
+                  co.overlead.gRPC.SprintBacklogRes.getDefaultInstance()))
+                  .setSchemaDescriptor(new SprintBacklogMethodDescriptorSupplier("deleteSprintBacklog"))
                   .build();
           }
         }
      }
-     return getDeleteSprintbacklogMethod;
+     return getDeleteSprintBacklogMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllSprintbacklogReq,
-      co.overlead.gRPC.GetAllSprintbacklogRes> getGetAllSprintbacklogMethod;
+  private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllSprintBacklogReq,
+      co.overlead.gRPC.GetAllSprintBacklogRes> getGetAllSprintBacklogMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "getAllSprintbacklog",
-      requestType = co.overlead.gRPC.GetAllSprintbacklogReq.class,
-      responseType = co.overlead.gRPC.GetAllSprintbacklogRes.class,
+      fullMethodName = SERVICE_NAME + '/' + "getAllSprintBacklog",
+      requestType = co.overlead.gRPC.GetAllSprintBacklogReq.class,
+      responseType = co.overlead.gRPC.GetAllSprintBacklogRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllSprintbacklogReq,
-      co.overlead.gRPC.GetAllSprintbacklogRes> getGetAllSprintbacklogMethod() {
-    io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllSprintbacklogReq, co.overlead.gRPC.GetAllSprintbacklogRes> getGetAllSprintbacklogMethod;
-    if ((getGetAllSprintbacklogMethod = SprintbacklogGrpc.getGetAllSprintbacklogMethod) == null) {
-      synchronized (SprintbacklogGrpc.class) {
-        if ((getGetAllSprintbacklogMethod = SprintbacklogGrpc.getGetAllSprintbacklogMethod) == null) {
-          SprintbacklogGrpc.getGetAllSprintbacklogMethod = getGetAllSprintbacklogMethod = 
-              io.grpc.MethodDescriptor.<co.overlead.gRPC.GetAllSprintbacklogReq, co.overlead.gRPC.GetAllSprintbacklogRes>newBuilder()
+  public static io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllSprintBacklogReq,
+      co.overlead.gRPC.GetAllSprintBacklogRes> getGetAllSprintBacklogMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllSprintBacklogReq, co.overlead.gRPC.GetAllSprintBacklogRes> getGetAllSprintBacklogMethod;
+    if ((getGetAllSprintBacklogMethod = SprintBacklogGrpc.getGetAllSprintBacklogMethod) == null) {
+      synchronized (SprintBacklogGrpc.class) {
+        if ((getGetAllSprintBacklogMethod = SprintBacklogGrpc.getGetAllSprintBacklogMethod) == null) {
+          SprintBacklogGrpc.getGetAllSprintBacklogMethod = getGetAllSprintBacklogMethod = 
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.GetAllSprintBacklogReq, co.overlead.gRPC.GetAllSprintBacklogRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(
-                  "sprintbacklog.Sprintbacklog", "getAllSprintbacklog"))
+                  "sprintbacklog.SprintBacklog", "getAllSprintBacklog"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.GetAllSprintbacklogReq.getDefaultInstance()))
+                  co.overlead.gRPC.GetAllSprintBacklogReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.GetAllSprintbacklogRes.getDefaultInstance()))
-                  .setSchemaDescriptor(new SprintbacklogMethodDescriptorSupplier("getAllSprintbacklog"))
+                  co.overlead.gRPC.GetAllSprintBacklogRes.getDefaultInstance()))
+                  .setSchemaDescriptor(new SprintBacklogMethodDescriptorSupplier("getAllSprintBacklog"))
                   .build();
           }
         }
      }
-     return getGetAllSprintbacklogMethod;
+     return getGetAllSprintBacklogMethod;
   }
 
   /**
    * Creates a new async stub that supports all call types for the service
    */
-  public static SprintbacklogStub newStub(io.grpc.Channel channel) {
-    return new SprintbacklogStub(channel);
+  public static SprintBacklogStub newStub(io.grpc.Channel channel) {
+    return new SprintBacklogStub(channel);
   }
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
-  public static SprintbacklogBlockingStub newBlockingStub(
+  public static SprintBacklogBlockingStub newBlockingStub(
       io.grpc.Channel channel) {
-    return new SprintbacklogBlockingStub(channel);
+    return new SprintBacklogBlockingStub(channel);
   }
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
-  public static SprintbacklogFutureStub newFutureStub(
+  public static SprintBacklogFutureStub newFutureStub(
       io.grpc.Channel channel) {
-    return new SprintbacklogFutureStub(channel);
+    return new SprintBacklogFutureStub(channel);
   }
 
   /**
    */
-  public static abstract class SprintbacklogImplBase implements io.grpc.BindableService {
+  public static abstract class SprintBacklogImplBase implements io.grpc.BindableService {
 
     /**
      */
-    public void deleteSprintbacklog(co.overlead.gRPC.DeleteSprintbacklogReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.DeleteSprintbacklogRes> responseObserver) {
-      asyncUnimplementedUnaryCall(getDeleteSprintbacklogMethod(), responseObserver);
+    public void deleteSprintBacklog(co.overlead.gRPC.DeleteSprintBacklogReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.SprintBacklogRes> responseObserver) {
+      asyncUnimplementedUnaryCall(getDeleteSprintBacklogMethod(), responseObserver);
     }
 
     /**
      */
-    public void getAllSprintbacklog(co.overlead.gRPC.GetAllSprintbacklogReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllSprintbacklogRes> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetAllSprintbacklogMethod(), responseObserver);
+    public void getAllSprintBacklog(co.overlead.gRPC.GetAllSprintBacklogReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllSprintBacklogRes> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetAllSprintBacklogMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            getDeleteSprintbacklogMethod(),
+            getDeleteSprintBacklogMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                co.overlead.gRPC.DeleteSprintbacklogReq,
-                co.overlead.gRPC.DeleteSprintbacklogRes>(
-                  this, METHODID_DELETE_SPRINTBACKLOG)))
+                co.overlead.gRPC.DeleteSprintBacklogReq,
+                co.overlead.gRPC.SprintBacklogRes>(
+                  this, METHODID_DELETE_SPRINT_BACKLOG)))
           .addMethod(
-            getGetAllSprintbacklogMethod(),
+            getGetAllSprintBacklogMethod(),
             asyncServerStreamingCall(
               new MethodHandlers<
-                co.overlead.gRPC.GetAllSprintbacklogReq,
-                co.overlead.gRPC.GetAllSprintbacklogRes>(
-                  this, METHODID_GET_ALL_SPRINTBACKLOG)))
+                co.overlead.gRPC.GetAllSprintBacklogReq,
+                co.overlead.gRPC.GetAllSprintBacklogRes>(
+                  this, METHODID_GET_ALL_SPRINT_BACKLOG)))
           .build();
     }
   }
 
   /**
    */
-  public static final class SprintbacklogStub extends io.grpc.stub.AbstractStub<SprintbacklogStub> {
-    private SprintbacklogStub(io.grpc.Channel channel) {
+  public static final class SprintBacklogStub extends io.grpc.stub.AbstractStub<SprintBacklogStub> {
+    private SprintBacklogStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private SprintbacklogStub(io.grpc.Channel channel,
+    private SprintBacklogStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected SprintbacklogStub build(io.grpc.Channel channel,
+    protected SprintBacklogStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new SprintbacklogStub(channel, callOptions);
+      return new SprintBacklogStub(channel, callOptions);
     }
 
     /**
      */
-    public void deleteSprintbacklog(co.overlead.gRPC.DeleteSprintbacklogReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.DeleteSprintbacklogRes> responseObserver) {
+    public void deleteSprintBacklog(co.overlead.gRPC.DeleteSprintBacklogReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.SprintBacklogRes> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getDeleteSprintbacklogMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getDeleteSprintBacklogMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getAllSprintbacklog(co.overlead.gRPC.GetAllSprintbacklogReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllSprintbacklogRes> responseObserver) {
+    public void getAllSprintBacklog(co.overlead.gRPC.GetAllSprintBacklogReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllSprintBacklogRes> responseObserver) {
       asyncServerStreamingCall(
-          getChannel().newCall(getGetAllSprintbacklogMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetAllSprintBacklogMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
   /**
    */
-  public static final class SprintbacklogBlockingStub extends io.grpc.stub.AbstractStub<SprintbacklogBlockingStub> {
-    private SprintbacklogBlockingStub(io.grpc.Channel channel) {
+  public static final class SprintBacklogBlockingStub extends io.grpc.stub.AbstractStub<SprintBacklogBlockingStub> {
+    private SprintBacklogBlockingStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private SprintbacklogBlockingStub(io.grpc.Channel channel,
+    private SprintBacklogBlockingStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected SprintbacklogBlockingStub build(io.grpc.Channel channel,
+    protected SprintBacklogBlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new SprintbacklogBlockingStub(channel, callOptions);
+      return new SprintBacklogBlockingStub(channel, callOptions);
     }
 
     /**
      */
-    public co.overlead.gRPC.DeleteSprintbacklogRes deleteSprintbacklog(co.overlead.gRPC.DeleteSprintbacklogReq request) {
+    public co.overlead.gRPC.SprintBacklogRes deleteSprintBacklog(co.overlead.gRPC.DeleteSprintBacklogReq request) {
       return blockingUnaryCall(
-          getChannel(), getDeleteSprintbacklogMethod(), getCallOptions(), request);
+          getChannel(), getDeleteSprintBacklogMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public java.util.Iterator<co.overlead.gRPC.GetAllSprintbacklogRes> getAllSprintbacklog(
-        co.overlead.gRPC.GetAllSprintbacklogReq request) {
+    public java.util.Iterator<co.overlead.gRPC.GetAllSprintBacklogRes> getAllSprintBacklog(
+        co.overlead.gRPC.GetAllSprintBacklogReq request) {
       return blockingServerStreamingCall(
-          getChannel(), getGetAllSprintbacklogMethod(), getCallOptions(), request);
+          getChannel(), getGetAllSprintBacklogMethod(), getCallOptions(), request);
     }
   }
 
   /**
    */
-  public static final class SprintbacklogFutureStub extends io.grpc.stub.AbstractStub<SprintbacklogFutureStub> {
-    private SprintbacklogFutureStub(io.grpc.Channel channel) {
+  public static final class SprintBacklogFutureStub extends io.grpc.stub.AbstractStub<SprintBacklogFutureStub> {
+    private SprintBacklogFutureStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private SprintbacklogFutureStub(io.grpc.Channel channel,
+    private SprintBacklogFutureStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected SprintbacklogFutureStub build(io.grpc.Channel channel,
+    protected SprintBacklogFutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new SprintbacklogFutureStub(channel, callOptions);
+      return new SprintBacklogFutureStub(channel, callOptions);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.DeleteSprintbacklogRes> deleteSprintbacklog(
-        co.overlead.gRPC.DeleteSprintbacklogReq request) {
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.SprintBacklogRes> deleteSprintBacklog(
+        co.overlead.gRPC.DeleteSprintBacklogReq request) {
       return futureUnaryCall(
-          getChannel().newCall(getDeleteSprintbacklogMethod(), getCallOptions()), request);
+          getChannel().newCall(getDeleteSprintBacklogMethod(), getCallOptions()), request);
     }
   }
 
-  private static final int METHODID_DELETE_SPRINTBACKLOG = 0;
-  private static final int METHODID_GET_ALL_SPRINTBACKLOG = 1;
+  private static final int METHODID_DELETE_SPRINT_BACKLOG = 0;
+  private static final int METHODID_GET_ALL_SPRINT_BACKLOG = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final SprintbacklogImplBase serviceImpl;
+    private final SprintBacklogImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(SprintbacklogImplBase serviceImpl, int methodId) {
+    MethodHandlers(SprintBacklogImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -268,13 +268,13 @@ public final class SprintbacklogGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_DELETE_SPRINTBACKLOG:
-          serviceImpl.deleteSprintbacklog((co.overlead.gRPC.DeleteSprintbacklogReq) request,
-              (io.grpc.stub.StreamObserver<co.overlead.gRPC.DeleteSprintbacklogRes>) responseObserver);
+        case METHODID_DELETE_SPRINT_BACKLOG:
+          serviceImpl.deleteSprintBacklog((co.overlead.gRPC.DeleteSprintBacklogReq) request,
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.SprintBacklogRes>) responseObserver);
           break;
-        case METHODID_GET_ALL_SPRINTBACKLOG:
-          serviceImpl.getAllSprintbacklog((co.overlead.gRPC.GetAllSprintbacklogReq) request,
-              (io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllSprintbacklogRes>) responseObserver);
+        case METHODID_GET_ALL_SPRINT_BACKLOG:
+          serviceImpl.getAllSprintBacklog((co.overlead.gRPC.GetAllSprintBacklogReq) request,
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllSprintBacklogRes>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -292,9 +292,9 @@ public final class SprintbacklogGrpc {
     }
   }
 
-  private static abstract class SprintbacklogBaseDescriptorSupplier
+  private static abstract class SprintBacklogBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    SprintbacklogBaseDescriptorSupplier() {}
+    SprintBacklogBaseDescriptorSupplier() {}
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
@@ -303,21 +303,21 @@ public final class SprintbacklogGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("Sprintbacklog");
+      return getFileDescriptor().findServiceByName("SprintBacklog");
     }
   }
 
-  private static final class SprintbacklogFileDescriptorSupplier
-      extends SprintbacklogBaseDescriptorSupplier {
-    SprintbacklogFileDescriptorSupplier() {}
+  private static final class SprintBacklogFileDescriptorSupplier
+      extends SprintBacklogBaseDescriptorSupplier {
+    SprintBacklogFileDescriptorSupplier() {}
   }
 
-  private static final class SprintbacklogMethodDescriptorSupplier
-      extends SprintbacklogBaseDescriptorSupplier
+  private static final class SprintBacklogMethodDescriptorSupplier
+      extends SprintBacklogBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
     private final String methodName;
 
-    SprintbacklogMethodDescriptorSupplier(String methodName) {
+    SprintBacklogMethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 
@@ -332,13 +332,13 @@ public final class SprintbacklogGrpc {
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
     if (result == null) {
-      synchronized (SprintbacklogGrpc.class) {
+      synchronized (SprintBacklogGrpc.class) {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new SprintbacklogFileDescriptorSupplier())
-              .addMethod(getDeleteSprintbacklogMethod())
-              .addMethod(getGetAllSprintbacklogMethod())
+              .setSchemaDescriptor(new SprintBacklogFileDescriptorSupplier())
+              .addMethod(getDeleteSprintBacklogMethod())
+              .addMethod(getGetAllSprintBacklogMethod())
               .build();
         }
       }

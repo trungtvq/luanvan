@@ -8,54 +8,74 @@ public interface GetAllProductBacklogResOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string productbacklogId = 1;</code>
+   * <code>string productBacklogId = 2;</code>
    */
-  java.lang.String getProductbacklogId();
+  java.lang.String getProductBacklogId();
   /**
-   * <code>string productbacklogId = 1;</code>
+   * <code>string productBacklogId = 2;</code>
    */
   com.google.protobuf.ByteString
-      getProductbacklogIdBytes();
+      getProductBacklogIdBytes();
 
   /**
-   * <code>string role = 2;</code>
+   * <code>string role = 3;</code>
    */
   java.lang.String getRole();
   /**
-   * <code>string role = 2;</code>
+   * <code>string role = 3;</code>
    */
   com.google.protobuf.ByteString
       getRoleBytes();
 
   /**
-   * <code>string want = 3;</code>
+   * <code>string want = 4;</code>
    */
   java.lang.String getWant();
   /**
-   * <code>string want = 3;</code>
+   * <code>string want = 4;</code>
    */
   com.google.protobuf.ByteString
       getWantBytes();
 
   /**
-   * <code>string so = 4;</code>
+   * <code>string so = 5;</code>
    */
   java.lang.String getSo();
   /**
-   * <code>string so = 4;</code>
+   * <code>string so = 5;</code>
    */
   com.google.protobuf.ByteString
       getSoBytes();
 
   /**
-   * <code>string status = 5;</code>
+   * <code>string statusBacklog = 11;</code>
+   */
+  java.lang.String getStatusBacklog();
+  /**
+   * <code>string statusBacklog = 11;</code>
+   */
+  com.google.protobuf.ByteString
+      getStatusBacklogBytes();
+
+  /**
+   * <code>string status = 9;</code>
    */
   java.lang.String getStatus();
   /**
-   * <code>string status = 5;</code>
+   * <code>string status = 9;</code>
    */
   com.google.protobuf.ByteString
       getStatusBytes();
+
+  /**
+   * <code>string error = 1;</code>
+   */
+  java.lang.String getError();
+  /**
+   * <code>string error = 1;</code>
+   */
+  com.google.protobuf.ByteString
+      getErrorBytes();
 
   /**
    * <code>string priority = 6;</code>
@@ -78,12 +98,12 @@ public interface GetAllProductBacklogResOrBuilder extends
       getEstimationBytes();
 
   /**
-   * <code>string sprint = 8;</code>
+   * <code>string sprintId = 8;</code>
    */
-  java.lang.String getSprint();
+  java.lang.String getSprintId();
   /**
-   * <code>string sprint = 8;</code>
+   * <code>string sprintId = 8;</code>
    */
   com.google.protobuf.ByteString
-      getSprintBytes();
+      getSprintIdBytes();
 }

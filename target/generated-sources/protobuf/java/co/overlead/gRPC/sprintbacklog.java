@@ -15,25 +15,25 @@ public final class sprintbacklog {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_sprintbacklog_DeleteSprintbacklogReq_descriptor;
+    internal_static_sprintbacklog_DeleteSprintBacklogReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_sprintbacklog_DeleteSprintbacklogReq_fieldAccessorTable;
+      internal_static_sprintbacklog_DeleteSprintBacklogReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_sprintbacklog_DeleteSprintbacklogRes_descriptor;
+    internal_static_sprintbacklog_SprintBacklogRes_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_sprintbacklog_DeleteSprintbacklogRes_fieldAccessorTable;
+      internal_static_sprintbacklog_SprintBacklogRes_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_sprintbacklog_GetAllSprintbacklogReq_descriptor;
+    internal_static_sprintbacklog_GetAllSprintBacklogReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_sprintbacklog_GetAllSprintbacklogReq_fieldAccessorTable;
+      internal_static_sprintbacklog_GetAllSprintBacklogReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_sprintbacklog_GetAllSprintbacklogRes_descriptor;
+    internal_static_sprintbacklog_GetAllSprintBacklogRes_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_sprintbacklog_GetAllSprintbacklogRes_fieldAccessorTable;
+      internal_static_sprintbacklog_GetAllSprintBacklogRes_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -43,25 +43,26 @@ public final class sprintbacklog {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\023sprintbacklog.proto\022\rsprintbacklog\"f\n\026" +
-      "DeleteSprintbacklogReq\022\020\n\010userName\030\001 \001(\t" +
-      "\022\021\n\tprojectId\030\002 \001(\t\022\027\n\017sprintbacklogId\030\003" +
-      " \001(\t\022\016\n\006cookie\030\004 \001(\t\"7\n\026DeleteSprintback" +
-      "logRes\022\016\n\006status\030\001 \001(\t\022\r\n\005error\030\002 \001(\t\"M\n" +
-      "\026GetAllSprintbacklogReq\022\020\n\010userName\030\001 \001(" +
-      "\t\022\021\n\tprojectId\030\002 \001(\t\022\016\n\006cookie\030\003 \001(\t\"\300\001\n" +
-      "\026GetAllSprintbacklogRes\022\027\n\017sprintbacklog" +
-      "Id\030\001 \001(\t\022\014\n\004role\030\002 \001(\t\022\014\n\004want\030\003 \001(\t\022\n\n\002" +
-      "so\030\004 \001(\t\022\016\n\006status\030\005 \001(\t\022\020\n\010priority\030\006 \001" +
-      "(\t\022\022\n\nestimation\030\007 \001(\t\022\016\n\006sprint\030\010 \001(\t\022\r" +
-      "\n\005start\030\t \001(\t\022\020\n\010deadline\030\n \001(\t2\337\001\n\rSpri" +
-      "ntbacklog\022e\n\023deleteSprintbacklog\022%.sprin" +
-      "tbacklog.DeleteSprintbacklogReq\032%.sprint" +
-      "backlog.DeleteSprintbacklogRes\"\000\022g\n\023getA" +
-      "llSprintbacklog\022%.sprintbacklog.GetAllSp" +
-      "rintbacklogReq\032%.sprintbacklog.GetAllSpr" +
-      "intbacklogRes\"\0000\001B(\n\020co.overlead.gRPCB\rs" +
-      "printbacklogP\001\242\002\002sbb\006proto3"
+      "\n\023sprintbacklog.proto\022\rsprintbacklog\"i\n\026" +
+      "DeleteSprintBacklogReq\022\023\n\013requesterId\030\001 " +
+      "\001(\t\022\021\n\tprojectId\030\002 \001(\t\022\027\n\017sprintBacklogI" +
+      "d\030\003 \001(\t\022\016\n\006cookie\030\004 \001(\t\"J\n\020SprintBacklog" +
+      "Res\022\016\n\006status\030\001 \001(\t\022\r\n\005error\030\002 \001(\t\022\027\n\017sp" +
+      "rintBacklogId\030\003 \001(\t\"P\n\026GetAllSprintBackl" +
+      "ogReq\022\023\n\013requesterId\030\001 \001(\t\022\021\n\tprojectId\030" +
+      "\002 \001(\t\022\016\n\006cookie\030\003 \001(\t\"\300\001\n\026GetAllSprintBa" +
+      "cklogRes\022\027\n\017sprintBacklogId\030\001 \001(\t\022\014\n\004rol" +
+      "e\030\002 \001(\t\022\014\n\004want\030\003 \001(\t\022\n\n\002so\030\004 \001(\t\022\016\n\006sta" +
+      "tus\030\005 \001(\t\022\020\n\010priority\030\006 \001(\t\022\022\n\nestimatio" +
+      "n\030\007 \001(\t\022\016\n\006sprint\030\010 \001(\t\022\r\n\005start\030\t \001(\t\022\020" +
+      "\n\010deadline\030\n \001(\t2\331\001\n\rSprintBacklog\022_\n\023de" +
+      "leteSprintBacklog\022%.sprintbacklog.Delete" +
+      "SprintBacklogReq\032\037.sprintbacklog.SprintB" +
+      "acklogRes\"\000\022g\n\023getAllSprintBacklog\022%.spr" +
+      "intbacklog.GetAllSprintBacklogReq\032%.spri" +
+      "ntbacklog.GetAllSprintBacklogRes\"\0000\001B(\n\020" +
+      "co.overlead.gRPCB\rsprintbacklogP\001\242\002\002sbb\006" +
+      "proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -75,30 +76,30 @@ public final class sprintbacklog {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_sprintbacklog_DeleteSprintbacklogReq_descriptor =
+    internal_static_sprintbacklog_DeleteSprintBacklogReq_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_sprintbacklog_DeleteSprintbacklogReq_fieldAccessorTable = new
+    internal_static_sprintbacklog_DeleteSprintBacklogReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_sprintbacklog_DeleteSprintbacklogReq_descriptor,
-        new java.lang.String[] { "UserName", "ProjectId", "SprintbacklogId", "Cookie", });
-    internal_static_sprintbacklog_DeleteSprintbacklogRes_descriptor =
+        internal_static_sprintbacklog_DeleteSprintBacklogReq_descriptor,
+        new java.lang.String[] { "RequesterId", "ProjectId", "SprintBacklogId", "Cookie", });
+    internal_static_sprintbacklog_SprintBacklogRes_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_sprintbacklog_DeleteSprintbacklogRes_fieldAccessorTable = new
+    internal_static_sprintbacklog_SprintBacklogRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_sprintbacklog_DeleteSprintbacklogRes_descriptor,
-        new java.lang.String[] { "Status", "Error", });
-    internal_static_sprintbacklog_GetAllSprintbacklogReq_descriptor =
+        internal_static_sprintbacklog_SprintBacklogRes_descriptor,
+        new java.lang.String[] { "Status", "Error", "SprintBacklogId", });
+    internal_static_sprintbacklog_GetAllSprintBacklogReq_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_sprintbacklog_GetAllSprintbacklogReq_fieldAccessorTable = new
+    internal_static_sprintbacklog_GetAllSprintBacklogReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_sprintbacklog_GetAllSprintbacklogReq_descriptor,
-        new java.lang.String[] { "UserName", "ProjectId", "Cookie", });
-    internal_static_sprintbacklog_GetAllSprintbacklogRes_descriptor =
+        internal_static_sprintbacklog_GetAllSprintBacklogReq_descriptor,
+        new java.lang.String[] { "RequesterId", "ProjectId", "Cookie", });
+    internal_static_sprintbacklog_GetAllSprintBacklogRes_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_sprintbacklog_GetAllSprintbacklogRes_fieldAccessorTable = new
+    internal_static_sprintbacklog_GetAllSprintBacklogRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_sprintbacklog_GetAllSprintbacklogRes_descriptor,
-        new java.lang.String[] { "SprintbacklogId", "Role", "Want", "So", "Status", "Priority", "Estimation", "Sprint", "Start", "Deadline", });
+        internal_static_sprintbacklog_GetAllSprintBacklogRes_descriptor,
+        new java.lang.String[] { "SprintBacklogId", "Role", "Want", "So", "Status", "Priority", "Estimation", "Sprint", "Start", "Deadline", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

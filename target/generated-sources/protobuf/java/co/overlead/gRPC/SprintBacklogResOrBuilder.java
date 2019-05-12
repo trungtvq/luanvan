@@ -3,8 +3,8 @@
 
 package co.overlead.gRPC;
 
-public interface DeleteSprintbacklogResOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:sprintbacklog.DeleteSprintbacklogRes)
+public interface SprintBacklogResOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:sprintbacklog.SprintBacklogRes)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -26,4 +26,14 @@ public interface DeleteSprintbacklogResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getErrorBytes();
+
+  /**
+   * <code>string sprintBacklogId = 3;</code>
+   */
+  java.lang.String getSprintBacklogId();
+  /**
+   * <code>string sprintBacklogId = 3;</code>
+   */
+  com.google.protobuf.ByteString
+      getSprintBacklogIdBytes();
 }

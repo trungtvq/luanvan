@@ -24,7 +24,7 @@ private static final long serialVersionUID = 0L;
     statusBacklog_ = "";
     priority_ = "";
     estimation_ = "";
-    sprint_ = "";
+    sprintId_ = "";
     cookie_ = "";
   }
 
@@ -103,7 +103,7 @@ private static final long serialVersionUID = 0L;
           case 74: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            sprint_ = s;
+            sprintId_ = s;
             break;
           }
           case 82: {
@@ -424,34 +424,34 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int SPRINT_FIELD_NUMBER = 9;
-  private volatile java.lang.Object sprint_;
+  public static final int SPRINTID_FIELD_NUMBER = 9;
+  private volatile java.lang.Object sprintId_;
   /**
-   * <code>string sprint = 9;</code>
+   * <code>string sprintId = 9;</code>
    */
-  public java.lang.String getSprint() {
-    java.lang.Object ref = sprint_;
+  public java.lang.String getSprintId() {
+    java.lang.Object ref = sprintId_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      sprint_ = s;
+      sprintId_ = s;
       return s;
     }
   }
   /**
-   * <code>string sprint = 9;</code>
+   * <code>string sprintId = 9;</code>
    */
   public com.google.protobuf.ByteString
-      getSprintBytes() {
-    java.lang.Object ref = sprint_;
+      getSprintIdBytes() {
+    java.lang.Object ref = sprintId_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      sprint_ = b;
+      sprintId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -530,8 +530,8 @@ private static final long serialVersionUID = 0L;
     if (!getEstimationBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 8, estimation_);
     }
-    if (!getSprintBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, sprint_);
+    if (!getSprintIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, sprintId_);
     }
     if (!getCookieBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 10, cookie_);
@@ -569,8 +569,8 @@ private static final long serialVersionUID = 0L;
     if (!getEstimationBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, estimation_);
     }
-    if (!getSprintBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, sprint_);
+    if (!getSprintIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, sprintId_);
     }
     if (!getCookieBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, cookie_);
@@ -606,8 +606,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getPriority())) return false;
     if (!getEstimation()
         .equals(other.getEstimation())) return false;
-    if (!getSprint()
-        .equals(other.getSprint())) return false;
+    if (!getSprintId()
+        .equals(other.getSprintId())) return false;
     if (!getCookie()
         .equals(other.getCookie())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -637,8 +637,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getPriority().hashCode();
     hash = (37 * hash) + ESTIMATION_FIELD_NUMBER;
     hash = (53 * hash) + getEstimation().hashCode();
-    hash = (37 * hash) + SPRINT_FIELD_NUMBER;
-    hash = (53 * hash) + getSprint().hashCode();
+    hash = (37 * hash) + SPRINTID_FIELD_NUMBER;
+    hash = (53 * hash) + getSprintId().hashCode();
     hash = (37 * hash) + COOKIE_FIELD_NUMBER;
     hash = (53 * hash) + getCookie().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -790,7 +790,7 @@ private static final long serialVersionUID = 0L;
 
       estimation_ = "";
 
-      sprint_ = "";
+      sprintId_ = "";
 
       cookie_ = "";
 
@@ -828,7 +828,7 @@ private static final long serialVersionUID = 0L;
       result.statusBacklog_ = statusBacklog_;
       result.priority_ = priority_;
       result.estimation_ = estimation_;
-      result.sprint_ = sprint_;
+      result.sprintId_ = sprintId_;
       result.cookie_ = cookie_;
       onBuilt();
       return result;
@@ -910,8 +910,8 @@ private static final long serialVersionUID = 0L;
         estimation_ = other.estimation_;
         onChanged();
       }
-      if (!other.getSprint().isEmpty()) {
-        sprint_ = other.sprint_;
+      if (!other.getSprintId().isEmpty()) {
+        sprintId_ = other.sprintId_;
         onChanged();
       }
       if (!other.getCookie().isEmpty()) {
@@ -1519,71 +1519,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object sprint_ = "";
+    private java.lang.Object sprintId_ = "";
     /**
-     * <code>string sprint = 9;</code>
+     * <code>string sprintId = 9;</code>
      */
-    public java.lang.String getSprint() {
-      java.lang.Object ref = sprint_;
+    public java.lang.String getSprintId() {
+      java.lang.Object ref = sprintId_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        sprint_ = s;
+        sprintId_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string sprint = 9;</code>
+     * <code>string sprintId = 9;</code>
      */
     public com.google.protobuf.ByteString
-        getSprintBytes() {
-      java.lang.Object ref = sprint_;
+        getSprintIdBytes() {
+      java.lang.Object ref = sprintId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        sprint_ = b;
+        sprintId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string sprint = 9;</code>
+     * <code>string sprintId = 9;</code>
      */
-    public Builder setSprint(
+    public Builder setSprintId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      sprint_ = value;
+      sprintId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string sprint = 9;</code>
+     * <code>string sprintId = 9;</code>
      */
-    public Builder clearSprint() {
+    public Builder clearSprintId() {
       
-      sprint_ = getDefaultInstance().getSprint();
+      sprintId_ = getDefaultInstance().getSprintId();
       onChanged();
       return this;
     }
     /**
-     * <code>string sprint = 9;</code>
+     * <code>string sprintId = 9;</code>
      */
-    public Builder setSprintBytes(
+    public Builder setSprintIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      sprint_ = value;
+      sprintId_ = value;
       onChanged();
       return this;
     }

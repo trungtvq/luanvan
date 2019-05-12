@@ -4,21 +4,21 @@
 package co.overlead.gRPC;
 
 /**
- * Protobuf type {@code sprintbacklog.DeleteSprintbacklogReq}
+ * Protobuf type {@code sprintbacklog.DeleteSprintBacklogReq}
  */
-public  final class DeleteSprintbacklogReq extends
+public  final class DeleteSprintBacklogReq extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:sprintbacklog.DeleteSprintbacklogReq)
-    DeleteSprintbacklogReqOrBuilder {
+    // @@protoc_insertion_point(message_implements:sprintbacklog.DeleteSprintBacklogReq)
+    DeleteSprintBacklogReqOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use DeleteSprintbacklogReq.newBuilder() to construct.
-  private DeleteSprintbacklogReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use DeleteSprintBacklogReq.newBuilder() to construct.
+  private DeleteSprintBacklogReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private DeleteSprintbacklogReq() {
-    userName_ = "";
+  private DeleteSprintBacklogReq() {
+    requesterId_ = "";
     projectId_ = "";
-    sprintbacklogId_ = "";
+    sprintBacklogId_ = "";
     cookie_ = "";
   }
 
@@ -27,7 +27,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private DeleteSprintbacklogReq(
+  private DeleteSprintBacklogReq(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -49,7 +49,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            userName_ = s;
+            requesterId_ = s;
             break;
           }
           case 18: {
@@ -61,7 +61,7 @@ private static final long serialVersionUID = 0L;
           case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            sprintbacklogId_ = s;
+            sprintBacklogId_ = s;
             break;
           }
           case 34: {
@@ -91,45 +91,45 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return co.overlead.gRPC.sprintbacklog.internal_static_sprintbacklog_DeleteSprintbacklogReq_descriptor;
+    return co.overlead.gRPC.sprintbacklog.internal_static_sprintbacklog_DeleteSprintBacklogReq_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return co.overlead.gRPC.sprintbacklog.internal_static_sprintbacklog_DeleteSprintbacklogReq_fieldAccessorTable
+    return co.overlead.gRPC.sprintbacklog.internal_static_sprintbacklog_DeleteSprintBacklogReq_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            co.overlead.gRPC.DeleteSprintbacklogReq.class, co.overlead.gRPC.DeleteSprintbacklogReq.Builder.class);
+            co.overlead.gRPC.DeleteSprintBacklogReq.class, co.overlead.gRPC.DeleteSprintBacklogReq.Builder.class);
   }
 
-  public static final int USERNAME_FIELD_NUMBER = 1;
-  private volatile java.lang.Object userName_;
+  public static final int REQUESTERID_FIELD_NUMBER = 1;
+  private volatile java.lang.Object requesterId_;
   /**
-   * <code>string userName = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
-  public java.lang.String getUserName() {
-    java.lang.Object ref = userName_;
+  public java.lang.String getRequesterId() {
+    java.lang.Object ref = requesterId_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      userName_ = s;
+      requesterId_ = s;
       return s;
     }
   }
   /**
-   * <code>string userName = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getUserNameBytes() {
-    java.lang.Object ref = userName_;
+      getRequesterIdBytes() {
+    java.lang.Object ref = requesterId_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      userName_ = b;
+      requesterId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -171,33 +171,33 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int SPRINTBACKLOGID_FIELD_NUMBER = 3;
-  private volatile java.lang.Object sprintbacklogId_;
+  private volatile java.lang.Object sprintBacklogId_;
   /**
-   * <code>string sprintbacklogId = 3;</code>
+   * <code>string sprintBacklogId = 3;</code>
    */
-  public java.lang.String getSprintbacklogId() {
-    java.lang.Object ref = sprintbacklogId_;
+  public java.lang.String getSprintBacklogId() {
+    java.lang.Object ref = sprintBacklogId_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      sprintbacklogId_ = s;
+      sprintBacklogId_ = s;
       return s;
     }
   }
   /**
-   * <code>string sprintbacklogId = 3;</code>
+   * <code>string sprintBacklogId = 3;</code>
    */
   public com.google.protobuf.ByteString
-      getSprintbacklogIdBytes() {
-    java.lang.Object ref = sprintbacklogId_;
+      getSprintBacklogIdBytes() {
+    java.lang.Object ref = sprintBacklogId_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      sprintbacklogId_ = b;
+      sprintBacklogId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -252,14 +252,14 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getUserNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, userName_);
+    if (!getRequesterIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, requesterId_);
     }
     if (!getProjectIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, projectId_);
     }
-    if (!getSprintbacklogIdBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, sprintbacklogId_);
+    if (!getSprintBacklogIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, sprintBacklogId_);
     }
     if (!getCookieBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, cookie_);
@@ -273,14 +273,14 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getUserNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, userName_);
+    if (!getRequesterIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, requesterId_);
     }
     if (!getProjectIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, projectId_);
     }
-    if (!getSprintbacklogIdBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, sprintbacklogId_);
+    if (!getSprintBacklogIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, sprintBacklogId_);
     }
     if (!getCookieBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, cookie_);
@@ -295,17 +295,17 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof co.overlead.gRPC.DeleteSprintbacklogReq)) {
+    if (!(obj instanceof co.overlead.gRPC.DeleteSprintBacklogReq)) {
       return super.equals(obj);
     }
-    co.overlead.gRPC.DeleteSprintbacklogReq other = (co.overlead.gRPC.DeleteSprintbacklogReq) obj;
+    co.overlead.gRPC.DeleteSprintBacklogReq other = (co.overlead.gRPC.DeleteSprintBacklogReq) obj;
 
-    if (!getUserName()
-        .equals(other.getUserName())) return false;
+    if (!getRequesterId()
+        .equals(other.getRequesterId())) return false;
     if (!getProjectId()
         .equals(other.getProjectId())) return false;
-    if (!getSprintbacklogId()
-        .equals(other.getSprintbacklogId())) return false;
+    if (!getSprintBacklogId()
+        .equals(other.getSprintBacklogId())) return false;
     if (!getCookie()
         .equals(other.getCookie())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -319,12 +319,12 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + USERNAME_FIELD_NUMBER;
-    hash = (53 * hash) + getUserName().hashCode();
+    hash = (37 * hash) + REQUESTERID_FIELD_NUMBER;
+    hash = (53 * hash) + getRequesterId().hashCode();
     hash = (37 * hash) + PROJECTID_FIELD_NUMBER;
     hash = (53 * hash) + getProjectId().hashCode();
     hash = (37 * hash) + SPRINTBACKLOGID_FIELD_NUMBER;
-    hash = (53 * hash) + getSprintbacklogId().hashCode();
+    hash = (53 * hash) + getSprintBacklogId().hashCode();
     hash = (37 * hash) + COOKIE_FIELD_NUMBER;
     hash = (53 * hash) + getCookie().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -332,69 +332,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static co.overlead.gRPC.DeleteSprintbacklogReq parseFrom(
+  public static co.overlead.gRPC.DeleteSprintBacklogReq parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.DeleteSprintbacklogReq parseFrom(
+  public static co.overlead.gRPC.DeleteSprintBacklogReq parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.DeleteSprintbacklogReq parseFrom(
+  public static co.overlead.gRPC.DeleteSprintBacklogReq parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.DeleteSprintbacklogReq parseFrom(
+  public static co.overlead.gRPC.DeleteSprintBacklogReq parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.DeleteSprintbacklogReq parseFrom(byte[] data)
+  public static co.overlead.gRPC.DeleteSprintBacklogReq parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.DeleteSprintbacklogReq parseFrom(
+  public static co.overlead.gRPC.DeleteSprintBacklogReq parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.DeleteSprintbacklogReq parseFrom(java.io.InputStream input)
+  public static co.overlead.gRPC.DeleteSprintBacklogReq parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.DeleteSprintbacklogReq parseFrom(
+  public static co.overlead.gRPC.DeleteSprintBacklogReq parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static co.overlead.gRPC.DeleteSprintbacklogReq parseDelimitedFrom(java.io.InputStream input)
+  public static co.overlead.gRPC.DeleteSprintBacklogReq parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.DeleteSprintbacklogReq parseDelimitedFrom(
+  public static co.overlead.gRPC.DeleteSprintBacklogReq parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static co.overlead.gRPC.DeleteSprintbacklogReq parseFrom(
+  public static co.overlead.gRPC.DeleteSprintBacklogReq parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.DeleteSprintbacklogReq parseFrom(
+  public static co.overlead.gRPC.DeleteSprintBacklogReq parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -407,7 +407,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(co.overlead.gRPC.DeleteSprintbacklogReq prototype) {
+  public static Builder newBuilder(co.overlead.gRPC.DeleteSprintBacklogReq prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -423,26 +423,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code sprintbacklog.DeleteSprintbacklogReq}
+   * Protobuf type {@code sprintbacklog.DeleteSprintBacklogReq}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:sprintbacklog.DeleteSprintbacklogReq)
-      co.overlead.gRPC.DeleteSprintbacklogReqOrBuilder {
+      // @@protoc_insertion_point(builder_implements:sprintbacklog.DeleteSprintBacklogReq)
+      co.overlead.gRPC.DeleteSprintBacklogReqOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return co.overlead.gRPC.sprintbacklog.internal_static_sprintbacklog_DeleteSprintbacklogReq_descriptor;
+      return co.overlead.gRPC.sprintbacklog.internal_static_sprintbacklog_DeleteSprintBacklogReq_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return co.overlead.gRPC.sprintbacklog.internal_static_sprintbacklog_DeleteSprintbacklogReq_fieldAccessorTable
+      return co.overlead.gRPC.sprintbacklog.internal_static_sprintbacklog_DeleteSprintBacklogReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              co.overlead.gRPC.DeleteSprintbacklogReq.class, co.overlead.gRPC.DeleteSprintbacklogReq.Builder.class);
+              co.overlead.gRPC.DeleteSprintBacklogReq.class, co.overlead.gRPC.DeleteSprintBacklogReq.Builder.class);
     }
 
-    // Construct using co.overlead.gRPC.DeleteSprintbacklogReq.newBuilder()
+    // Construct using co.overlead.gRPC.DeleteSprintBacklogReq.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -460,11 +460,11 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      userName_ = "";
+      requesterId_ = "";
 
       projectId_ = "";
 
-      sprintbacklogId_ = "";
+      sprintBacklogId_ = "";
 
       cookie_ = "";
 
@@ -474,17 +474,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return co.overlead.gRPC.sprintbacklog.internal_static_sprintbacklog_DeleteSprintbacklogReq_descriptor;
+      return co.overlead.gRPC.sprintbacklog.internal_static_sprintbacklog_DeleteSprintBacklogReq_descriptor;
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.DeleteSprintbacklogReq getDefaultInstanceForType() {
-      return co.overlead.gRPC.DeleteSprintbacklogReq.getDefaultInstance();
+    public co.overlead.gRPC.DeleteSprintBacklogReq getDefaultInstanceForType() {
+      return co.overlead.gRPC.DeleteSprintBacklogReq.getDefaultInstance();
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.DeleteSprintbacklogReq build() {
-      co.overlead.gRPC.DeleteSprintbacklogReq result = buildPartial();
+    public co.overlead.gRPC.DeleteSprintBacklogReq build() {
+      co.overlead.gRPC.DeleteSprintBacklogReq result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -492,11 +492,11 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.DeleteSprintbacklogReq buildPartial() {
-      co.overlead.gRPC.DeleteSprintbacklogReq result = new co.overlead.gRPC.DeleteSprintbacklogReq(this);
-      result.userName_ = userName_;
+    public co.overlead.gRPC.DeleteSprintBacklogReq buildPartial() {
+      co.overlead.gRPC.DeleteSprintBacklogReq result = new co.overlead.gRPC.DeleteSprintBacklogReq(this);
+      result.requesterId_ = requesterId_;
       result.projectId_ = projectId_;
-      result.sprintbacklogId_ = sprintbacklogId_;
+      result.sprintBacklogId_ = sprintBacklogId_;
       result.cookie_ = cookie_;
       onBuilt();
       return result;
@@ -536,26 +536,26 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof co.overlead.gRPC.DeleteSprintbacklogReq) {
-        return mergeFrom((co.overlead.gRPC.DeleteSprintbacklogReq)other);
+      if (other instanceof co.overlead.gRPC.DeleteSprintBacklogReq) {
+        return mergeFrom((co.overlead.gRPC.DeleteSprintBacklogReq)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(co.overlead.gRPC.DeleteSprintbacklogReq other) {
-      if (other == co.overlead.gRPC.DeleteSprintbacklogReq.getDefaultInstance()) return this;
-      if (!other.getUserName().isEmpty()) {
-        userName_ = other.userName_;
+    public Builder mergeFrom(co.overlead.gRPC.DeleteSprintBacklogReq other) {
+      if (other == co.overlead.gRPC.DeleteSprintBacklogReq.getDefaultInstance()) return this;
+      if (!other.getRequesterId().isEmpty()) {
+        requesterId_ = other.requesterId_;
         onChanged();
       }
       if (!other.getProjectId().isEmpty()) {
         projectId_ = other.projectId_;
         onChanged();
       }
-      if (!other.getSprintbacklogId().isEmpty()) {
-        sprintbacklogId_ = other.sprintbacklogId_;
+      if (!other.getSprintBacklogId().isEmpty()) {
+        sprintBacklogId_ = other.sprintBacklogId_;
         onChanged();
       }
       if (!other.getCookie().isEmpty()) {
@@ -577,11 +577,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      co.overlead.gRPC.DeleteSprintbacklogReq parsedMessage = null;
+      co.overlead.gRPC.DeleteSprintBacklogReq parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (co.overlead.gRPC.DeleteSprintbacklogReq) e.getUnfinishedMessage();
+        parsedMessage = (co.overlead.gRPC.DeleteSprintBacklogReq) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -591,71 +591,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object userName_ = "";
+    private java.lang.Object requesterId_ = "";
     /**
-     * <code>string userName = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public java.lang.String getUserName() {
-      java.lang.Object ref = userName_;
+    public java.lang.String getRequesterId() {
+      java.lang.Object ref = requesterId_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        userName_ = s;
+        requesterId_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string userName = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getUserNameBytes() {
-      java.lang.Object ref = userName_;
+        getRequesterIdBytes() {
+      java.lang.Object ref = requesterId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        userName_ = b;
+        requesterId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string userName = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder setUserName(
+    public Builder setRequesterId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      userName_ = value;
+      requesterId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string userName = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder clearUserName() {
+    public Builder clearRequesterId() {
       
-      userName_ = getDefaultInstance().getUserName();
+      requesterId_ = getDefaultInstance().getRequesterId();
       onChanged();
       return this;
     }
     /**
-     * <code>string userName = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder setUserNameBytes(
+    public Builder setRequesterIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      userName_ = value;
+      requesterId_ = value;
       onChanged();
       return this;
     }
@@ -729,71 +729,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object sprintbacklogId_ = "";
+    private java.lang.Object sprintBacklogId_ = "";
     /**
-     * <code>string sprintbacklogId = 3;</code>
+     * <code>string sprintBacklogId = 3;</code>
      */
-    public java.lang.String getSprintbacklogId() {
-      java.lang.Object ref = sprintbacklogId_;
+    public java.lang.String getSprintBacklogId() {
+      java.lang.Object ref = sprintBacklogId_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        sprintbacklogId_ = s;
+        sprintBacklogId_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string sprintbacklogId = 3;</code>
+     * <code>string sprintBacklogId = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getSprintbacklogIdBytes() {
-      java.lang.Object ref = sprintbacklogId_;
+        getSprintBacklogIdBytes() {
+      java.lang.Object ref = sprintBacklogId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        sprintbacklogId_ = b;
+        sprintBacklogId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string sprintbacklogId = 3;</code>
+     * <code>string sprintBacklogId = 3;</code>
      */
-    public Builder setSprintbacklogId(
+    public Builder setSprintBacklogId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      sprintbacklogId_ = value;
+      sprintBacklogId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string sprintbacklogId = 3;</code>
+     * <code>string sprintBacklogId = 3;</code>
      */
-    public Builder clearSprintbacklogId() {
+    public Builder clearSprintBacklogId() {
       
-      sprintbacklogId_ = getDefaultInstance().getSprintbacklogId();
+      sprintBacklogId_ = getDefaultInstance().getSprintBacklogId();
       onChanged();
       return this;
     }
     /**
-     * <code>string sprintbacklogId = 3;</code>
+     * <code>string sprintBacklogId = 3;</code>
      */
-    public Builder setSprintbacklogIdBytes(
+    public Builder setSprintBacklogIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      sprintbacklogId_ = value;
+      sprintBacklogId_ = value;
       onChanged();
       return this;
     }
@@ -879,41 +879,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:sprintbacklog.DeleteSprintbacklogReq)
+    // @@protoc_insertion_point(builder_scope:sprintbacklog.DeleteSprintBacklogReq)
   }
 
-  // @@protoc_insertion_point(class_scope:sprintbacklog.DeleteSprintbacklogReq)
-  private static final co.overlead.gRPC.DeleteSprintbacklogReq DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:sprintbacklog.DeleteSprintBacklogReq)
+  private static final co.overlead.gRPC.DeleteSprintBacklogReq DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new co.overlead.gRPC.DeleteSprintbacklogReq();
+    DEFAULT_INSTANCE = new co.overlead.gRPC.DeleteSprintBacklogReq();
   }
 
-  public static co.overlead.gRPC.DeleteSprintbacklogReq getDefaultInstance() {
+  public static co.overlead.gRPC.DeleteSprintBacklogReq getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<DeleteSprintbacklogReq>
-      PARSER = new com.google.protobuf.AbstractParser<DeleteSprintbacklogReq>() {
+  private static final com.google.protobuf.Parser<DeleteSprintBacklogReq>
+      PARSER = new com.google.protobuf.AbstractParser<DeleteSprintBacklogReq>() {
     @java.lang.Override
-    public DeleteSprintbacklogReq parsePartialFrom(
+    public DeleteSprintBacklogReq parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new DeleteSprintbacklogReq(input, extensionRegistry);
+      return new DeleteSprintBacklogReq(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<DeleteSprintbacklogReq> parser() {
+  public static com.google.protobuf.Parser<DeleteSprintBacklogReq> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<DeleteSprintbacklogReq> getParserForType() {
+  public com.google.protobuf.Parser<DeleteSprintBacklogReq> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public co.overlead.gRPC.DeleteSprintbacklogReq getDefaultInstanceForType() {
+  public co.overlead.gRPC.DeleteSprintBacklogReq getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

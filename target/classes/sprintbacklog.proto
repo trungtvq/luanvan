@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "co.overlead.gRPC";
+option java_outer_classname = "sprintbacklog";
+option objc_class_prefix = "sb";
+package sprintbacklog;
+
+service SprintBacklog{
+    rpc deleteSprintBacklog(DeleteSprintBacklogReq) returns (SprintBacklogRes) {}
+	rpc getAllSprintBacklog(GetAllSprintBacklogReq) returns (stream GetAllSprintBacklogRes){}
+}
+
+message DeleteSprintBacklogReq{
+    string requesterId = 1;
+    string projectId = 2;
+	string sprintBacklogId = 3;
+	string cookie = 4;
+}
+message SprintBacklogRes{
+    string status = 1;
+	string error = 2;
+	string sprintBacklogId=3;
+}
+
+message GetAllSprintBacklogReq{
+    string requesterId = 1;
+	string projectId = 2;
+	string cookie = 3;
+}
+message GetAllSprintBacklogRes{
+	string sprintBacklogId = 1;
+	string role = 2;
+	string want = 3;
+	string so = 4;
+	string status = 5;										
+	string priority = 6;
+	string estimation = 7;
+	string sprint = 8;
+	string start = 9;		 //return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+	string deadline = 10;			//return in form mm/hh/dd/mm/yyyy 	
+}

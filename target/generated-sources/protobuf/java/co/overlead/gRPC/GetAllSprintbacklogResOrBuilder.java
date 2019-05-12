@@ -3,19 +3,19 @@
 
 package co.overlead.gRPC;
 
-public interface GetAllSprintbacklogResOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:sprintbacklog.GetAllSprintbacklogRes)
+public interface GetAllSprintBacklogResOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:sprintbacklog.GetAllSprintBacklogRes)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string sprintbacklogId = 1;</code>
+   * <code>string sprintBacklogId = 1;</code>
    */
-  java.lang.String getSprintbacklogId();
+  java.lang.String getSprintBacklogId();
   /**
-   * <code>string sprintbacklogId = 1;</code>
+   * <code>string sprintBacklogId = 1;</code>
    */
   com.google.protobuf.ByteString
-      getSprintbacklogIdBytes();
+      getSprintBacklogIdBytes();
 
   /**
    * <code>string role = 2;</code>
