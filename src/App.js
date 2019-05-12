@@ -175,6 +175,7 @@ const store = configureStore()
   // { path: '/Home/Contact', exact: true, name: 'HomeContact', component: HomeContact },
   // { path: '/Home/Service', exact: true, name: 'HomeService', component: HomeService },
   // { path: '/Home/Solve', exact: true, name: 'HomeSolve', component: HomeSolve},
+  store.subscribe(() => console.log(store.getState()))
 
 class App extends Component {
   state={
@@ -241,6 +242,8 @@ class App extends Component {
                               <Route exact path="/ResetFirst" name="ResetSecond Page" component={ResetFirst} />
                               <Route exact path="/ResetSecond" name="ResetSecond Page" component={ResetSecond} />
                               <Route exact path="/login" name="Login Page" component={Login} />
+                              <Route exact path="/async" name="page test" component={AsyncApp} />
+
                      <Route path="/" name="Home" component={HomeFinal} />
                     
                         </Switch>

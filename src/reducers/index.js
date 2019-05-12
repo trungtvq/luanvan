@@ -3,7 +3,9 @@ import {
   SELECT_SUBREDDIT,
   INVALIDATE_SUBREDDIT,
   REQUEST_POSTS,
-  RECEIVE_POSTS
+  RECEIVE_POSTS,
+  DO_LOGOUT,
+  DO_LOGIN
 } from '../actions'
 
 function selectedSubreddit(state = 'reactjs', action) {
@@ -57,10 +59,20 @@ function postsBySubreddit(state = {}, action) {
       return state
   }
 }
-
+function changeStatusLogin(state = {isLogin:false}, action) {
+  switch (action.type) {
+    case DO_LOGIN:
+      return action.login
+    case DO_LOGOUT:
+      return action.logout
+    default:
+      return state
+  }
+}
 const rootReducer = combineReducers({
   postsBySubreddit,
-  selectedSubreddit
+  selectedSubreddit,
+  changeStatusLogin
 })
 
 export default rootReducer

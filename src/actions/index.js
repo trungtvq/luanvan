@@ -3,6 +3,8 @@ export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
 export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
+export const DO_LOGIN = 'DO_LOGIN'
+export const DO_LOGOUT = 'DO_LOGOUT'
 
 export function selectSubreddit(subreddit) {
   return {
@@ -63,5 +65,9 @@ export function fetchPostsIfNeeded(subreddit) {
 }
 
 export function subcriptChannel(channelId){
+  
+}
+
+export function doLogin(user){
   
 }
