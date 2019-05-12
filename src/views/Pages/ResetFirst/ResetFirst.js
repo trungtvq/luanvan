@@ -69,6 +69,7 @@ class ResetFirst extends Component {
 
   onReset() {
     // Grab state
+    console.log("onResetFirst")
     const {
       Username,
       Type,
@@ -78,7 +79,7 @@ class ResetFirst extends Component {
       isLoading: true,
     });
     //create service to request
-    const authService = new proto.auth.AuthClient('54.255.233.193:8085');
+    const authService = new proto.auth.AuthClient('http://54.255.233.193:8085');
     //metadab will be config later
     var metadata = {};
     
@@ -92,13 +93,7 @@ class ResetFirst extends Component {
         if (err) { //if error
           console.log(err);
         } else { //if success
-          //get response
-          const ResetRes = response.getResponse();
-          // if (ResetRes == null) {// if response null => not found
-          //   console.log(`Something was wrong ${signUpEmail} wasn't found`);
-          // } else {
-          //   console.log(`Fetched TODO with ID ${signUpEmail}: ${SignInRes}`);
-          // }
+         console.log(response.getStatus())
         }
       });
       

@@ -134,7 +134,7 @@ class Login extends Component {
     });
 
      //create service to request
-     const authService = new proto.auth.AuthClient('http://54.255.233.193:8084');
+     const authService = new proto.auth.AuthClient('http://54.255.233.193:8085');
      //metadab will be config later
      var metadata = {};
      
@@ -150,21 +150,22 @@ class Login extends Component {
         } else { //if success
           //cookie.save('userId', signInEmail, { path: '/' });
           //get response
-          const SignInRes = response.getResponse();
-          if (SignInRes == null) {// if response null => not found
-            console.log(`Something was wrong ${signInEmail} wasn't found`);
-          } else {
-            console.log(`Fetched TODO with ID ${signInEmail}: ${SignInRes}`);
-          }
+          console.log("success")
+          console.log(response.getStatus())
+          console.log(response.getError())
+          console.log(response.getResponse()) //no have value yet
+          console.log(response.getType())//type of NO PAY member: normal
+          console.log(response.getId())
+          console.log(response.getSession())
         }
       });
   }
 
   onSignInGoogle(profileObj) {
-     console.log('vào');
+     console.log('onSignInGoogle');
      console.log(profileObj);
      //create service to request
-     const authService = new proto.auth.AuthClient('54.255.233.193:8085');
+     const authService = new proto.auth.AuthClient('http://54.255.233.193:8085');
      //metadab will be config later
      var metadata = {};
      
@@ -180,12 +181,13 @@ class Login extends Component {
           console.log(err);
         } else { //if success
           //get response
-          const SignInRes = response.getResponse();
-          if (SignInRes == null) {// if response null => not found
-            console.log(`Something was wrong ${profileObj.email} wasn't found`);
-          } else {
-            console.log(`Fetched TODO with ID ${profileObj.email}: ${SignInRes}`);
-          }
+          console.log("success")
+          console.log(response.getStatus())
+          console.log(response.getError())
+          console.log(response.getResponse()) //no have value yet
+          console.log(response.getType())//type of NO PAY member: normal
+          console.log(response.getId())
+          console.log(response.getSession())
         }
       });
   }
@@ -201,6 +203,10 @@ class Login extends Component {
   render() {
     const responseGoogle = (response) => {
       console.log(response);
+      console.log(response.profileObj.email)
+      this.onSignInGoogle(response.profileObj);
+
+
     }
     const logout = ()=>{
       console.log("logout")

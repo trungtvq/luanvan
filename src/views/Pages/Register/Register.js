@@ -88,8 +88,9 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
     this.setState({
       isLoading: true,
     });
+    console.log("onSignUp")
     //create service to request
-    const authService = new proto.auth.AuthClient('54.255.233.193:8085');
+    const authService = new proto.auth.AuthClient('http://54.255.233.193:8085');
     //metadab will be config later
     var metadata = {};
     
@@ -100,13 +101,22 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
     SignUpReq.setPassword(signUpPassword);
     SignUpReq.setName(signUpName);
       //make a request to server
+      console.log(signUpEmail+":"+signUpName+":"+signUpPassword)
+      console.log("still no error")
+
       var getTodo = authService.signUp(SignUpReq, metadata, (err, response) => {
         if (err) { //if error
+          console.log("error")
           console.log(err);
         } else { //if success
           //get response
-          const SignUpRes = response.getResponse();
-          
+          console.log("success")
+          console.log(response.getStatus())
+          console.log(response.getError())
+          console.log(response.getResponse()) //no have value yet
+          console.log(response.getType())//type of NO PAY member: normal
+          console.log(response.getId())
+          console.log(response.getSession())
         }
       });
       

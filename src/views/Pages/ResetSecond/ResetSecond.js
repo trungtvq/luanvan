@@ -76,6 +76,8 @@ class ResetSecond extends Component {
 
   onResetFinal() {
     // Grab state
+    console.log("onResetFinal")
+
     const {
       Username,
       Code,
@@ -86,7 +88,7 @@ class ResetSecond extends Component {
       isLoading: true,
     });
     //create service to request
-    const authService = new proto.auth.AuthClient('54.255.233.193:8085');
+    const authService = new proto.auth.AuthClient('http://54.255.233.193:8085');
     //metadab will be config later
     var metadata = {};
     
@@ -101,13 +103,8 @@ class ResetSecond extends Component {
         if (err) { //if error
           console.log(err);
         } else { //if success
-          //get response
-          const SignInRes = response.getResponse();
-          // if (SignInRes == null) {// if response null => not found
-          //   console.log(`Something was wrong ${signUpEmail} wasn't found`);
-          // } else {
-          //   console.log(`Fetched TODO with ID ${signUpEmail}: ${SignInRes}`);
-          // }
+          console.log(response.getStatus())
+
         }
       });
       
