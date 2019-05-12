@@ -81,12 +81,25 @@ class DailySchedule extends Component {
             
             ],
       modalEdit: false,
+      requesterId:'',
+      projectId:'',
+      cookie:'',
+      
+      //add
       title:'',
       task:'',
       timeStart:'',
       dateStart:'',
-      note:'',
       status:'',
+      //update
+      scheduleIdUpdate:'',
+      titleUpdate:'',
+      taskUpdate:'',
+      timeStartUpdate:'',
+      dateStartUpdate:'',
+      statusUpdate:'',
+      //delete
+      scheduleIdDelete:'',
       }
     };
 
@@ -139,7 +152,7 @@ class DailySchedule extends Component {
     });
   }
   
-  handleAdd = (requesterId,projectId,title,task,time,scheduleStatus,cookie) => {
+  handleAdd = () => {
     //console.log("handleadd");
     const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
@@ -147,15 +160,22 @@ class DailySchedule extends Component {
     //console.log("vao daily");
     var metadata = {};
     //make a request to server
-
+  //   string requesterId = 1;
+  //   string projectId = 2;
+  
+  //   string title=3; //uni
+  //   string task=4;
+  //   string time=5;
+  //   string scheduleStatus = 6;
+  // string cookie = 8;
     var AddNewDailyScheduleReq= new proto.dailyschedule.AddNewDailyScheduleReq();
-    AddNewDailyScheduleReq.setRequesterid("tienbede");
-    AddNewDailyScheduleReq.setProjectid("tienbede");
-    AddNewDailyScheduleReq.setTitle("tienbede");
-    AddNewDailyScheduleReq.setTask("tienbede");
-    AddNewDailyScheduleReq.setTime("tienbede");
-    AddNewDailyScheduleReq.setSchedulestatus("tienbede");
-    AddNewDailyScheduleReq.setCookie("tienbede");
+    AddNewDailyScheduleReq.setRequesterid(this.state.requesterId);
+    AddNewDailyScheduleReq.setProjectid(this.state.projectId);
+    AddNewDailyScheduleReq.setTitle(this.state.title);
+    AddNewDailyScheduleReq.setTask(this.state.task);
+    AddNewDailyScheduleReq.setTime(this.state.timeStart+" "+this.state.dateStart);
+    AddNewDailyScheduleReq.setSchedulestatus(this.state.status);
+    AddNewDailyScheduleReq.setCookie(this.state.cookie);
 
     var toto=dailyscheduleService.addNewDailySchedule(AddNewDailyScheduleReq, metadata, (err, response) => {
       console.log("connect")
@@ -172,7 +192,7 @@ class DailySchedule extends Component {
           console.log(toto)
           
   };
-  handleUpdate = (requesterId,projectId,scheduleId,title,task,time,scheduleStatus,cookie) => {
+  handleUpdate = () => {
     const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
     console.log(dailyscheduleService)
@@ -188,14 +208,14 @@ class DailySchedule extends Component {
     // string scheduleStatus = 7;
     // string cookie = 8;
     var UpdateDailyScheduleReq= new proto.dailyschedule.UpdateDailyScheduleReq();
-    UpdateDailyScheduleReq.setRequesterid("38e752c7-153b-4c9b-a235-f62ba9f265f2");
-    UpdateDailyScheduleReq.setProjectid("5ccfbefdf43a0b0f499af2f7");
-    UpdateDailyScheduleReq.setScheduleid("tienbede");
-    UpdateDailyScheduleReq.setTitle("tienbede1");
-    UpdateDailyScheduleReq.setTask("tienbede1");
-    UpdateDailyScheduleReq.setTime("tienbede1");
-    UpdateDailyScheduleReq.setSchedulestatus("tienbede1");
-    UpdateDailyScheduleReq.setCookie("tienbede");
+    UpdateDailyScheduleReq.setRequesterid(this.state.requesterId);
+    UpdateDailyScheduleReq.setProjectid(this.state.projectId);
+    UpdateDailyScheduleReq.setScheduleid(this.state.scheduleIdUpdate);
+    UpdateDailyScheduleReq.setTitle(this.state.titleUpdate);
+    UpdateDailyScheduleReq.setTask(this.state.taskUpdate);
+    UpdateDailyScheduleReq.setTime(this.state.timeStartUpdate+" "+this.state.dateStartUpdate);
+    UpdateDailyScheduleReq.setSchedulestatus(this.state.statusUpdate);
+    UpdateDailyScheduleReq.setCookie(this.state.cookie);
 
     var toto=dailyscheduleService.updateDailySchedule(UpdateDailyScheduleReq, metadata, (err, response) => {
       console.log("connect")
@@ -215,7 +235,7 @@ class DailySchedule extends Component {
           console.log(toto)
           console.log("ra daily");
   };
-  handleDelete = (requesterId,projectId,scheduleId,cookie) => {
+  handleDelete = () => {
     const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
     console.log(dailyscheduleService)
@@ -227,10 +247,10 @@ class DailySchedule extends Component {
 	  // string scheduleId = 3;
     // string cookie = 4;
     var DeleteDailyScheduleReq= new proto.dailyschedule.DeleteDailyScheduleReq();
-    DeleteDailyScheduleReq.setRequesterid("tienbede");
-    DeleteDailyScheduleReq.setProjectid("tienbede");
-    DeleteDailyScheduleReq.setScheduleid("tienbede");
-    DeleteDailyScheduleReq.setCookie("tienbede");
+    DeleteDailyScheduleReq.setRequesterid(this.state.requesterId);
+    DeleteDailyScheduleReq.setProjectid(this.state.projectId);
+    DeleteDailyScheduleReq.setScheduleid(this.state.scheduleIdDelete);
+    DeleteDailyScheduleReq.setCookie(this.state.cookie);
 
     var toto=dailyscheduleService.deleteDailySchedule(DeleteDailyScheduleReq, metadata, (err, response) => {
       console.log("connect")
@@ -281,7 +301,7 @@ class DailySchedule extends Component {
                     <th>Title</th>
                     <th>Task</th>
                     <th>Time</th>
-                    <th>Note</th>
+                   
                     <th>Status</th>  
                     <th> </th>                 
                   </tr>
@@ -293,7 +313,7 @@ class DailySchedule extends Component {
                       <td>{item.title}</td>
                       <td>{item.task}</td>
                       <td>{item.time}</td>
-                      <td>{item.note}</td>
+                      
                       <td>{item.status}</td>
                       <td>
                       <Button color="warning" size="sm" onClick={that.toggleEdit}><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
