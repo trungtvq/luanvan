@@ -312,6 +312,7 @@ class DailySchedule extends Component {
               {
                 this.setState({
                   actionStatus:"SUCCESS",
+
                 });
                 this.setState(prevState => ({
                   modalEdit: !prevState.modalEdit,
@@ -379,6 +380,7 @@ class DailySchedule extends Component {
              {
               this.setState({
                 actionStatus:"SUCCESS",
+                modalActionStatus:true
               });
               this.setState(prevState=>({data:[...prevState.data.filter(function(e) { return e.id !== id; })]}));
              }else{

@@ -72,22 +72,27 @@ class Detail extends Component {
       requesterId:'',
       projectId:'',
       cookie:'',
-
+      actionStatus:'',              //success or show error when action add delete update
+      
       modalAdd: false,
       modalEdit: false,
+      modalActionStatus: false,     
       
+      //add
       name:'',
       as:'',
       want:'',
       so:'',
       
+      //update
       userstoryIdUpdate:'',    
       nameUpdate:'',
       asUpdate:'',
       wantUpdate:'',
       soUpdate:'',
-
-      userstoryIdDelete:','
+      
+      //delete
+      userstoryIdDelete:'',
       }
     };
   
@@ -110,6 +115,11 @@ class Detail extends Component {
     //{this.resetDataForm()};
     this.setState(prevState => ({
       modalEdit: !prevState.modalEdit
+    }));
+  }
+  toggleActionStatus=()=> {
+    this.setState(prevState => ({
+      modalActionStatus: !prevState.modalActionStatus
     }));
   }
 
@@ -165,18 +175,16 @@ class Detail extends Component {
       userstoryIdDelete: event.target.value,
     });
   }
-
-  // handleAdd = () => {
-  //   var id='1';
-  //   var err='';
-  //   if(err==''){
-  //     this.setState(prevState => ({
-  //       modalAdd: !prevState.modalAdd,
-  //     }));
-  //     this.setState(prevState=>({data:[...prevState.data,{id:id,name:this.state.name,as:this.state.as,want:this.state.want,so:this.state.so}]}));
-      
-  //   }
-  // };
+  onGetUpdate=(userstoryIdUpdate,name,role,want,so)=>{
+    this.setState({
+      rouserstoryIdUpdate:userstoryIdUpdate,
+      asUpdate:role,
+      wantUpdate:want,
+      soUpdate:so,
+      nameUpdate:name
+    });
+  }
+  
   handleAdd= () => {
     const userstoryService = new proto.userstory.UserstoryClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
@@ -210,16 +218,35 @@ class Detail extends Component {
               //get response
               console.log("response")
               console.log(response);
-              const ProfileRes = response[0];
-              this.setState(prevState => ({
-                     modalAdd: !prevState.modalAdd,
-                     }));
-              this.setState(prevState=>({data:[...prevState.data,{id:response.getId(),name:this.state.name,as:this.state.as,want:this.state.want,so:this.state.so}]}));
+              if(response.getStatus()=="SUCCESS")
+              {
+                this.setState(prevState => ({
+                  modalAdd: !prevState.modalAdd,
+                  }));
+                this.setState(prevState=>({data:[...prevState.data,{id:response.getId(),name:this.state.name,as:this.state.as,want:this.state.want,so:this.state.so}]}));
+                            
+                this.setState({
+                  name:'',
+                  as:'',
+                  want:'',
+                  so:'',
+                  modalActionStatus:true,
+                  actionStatus:'SUCCESS'
+                });
+              }else{
+                this.setState({
+                  modalActionStatus:true,
+                  actionStatus:'FALSE',
+                });
+              }
+              
             }
           });
-          console.log(toto)
+        
 }
-  handleDelete = () => {
+  handleDelete = (id) => {
+   
+    
     const userstoryService = new proto.userstory.UserstoryClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
     console.log(userstoryService)
@@ -247,12 +274,25 @@ class Detail extends Component {
               //get response
               console.log("response")
               console.log(response);
-              console.log(response.getStatus())
-              const ProfileRes = response[0];
-            }
+              if(response.getStatus()=="SUCCESS")
+              {
+               this.setState({
+                 actionStatus:"SUCCESS",
+                 modalActionStatus:true,
+               });
+               this.setState(prevState=>({data:[...prevState.data.filter(function(e) { return e.id !== id; })]}));
+              }else{
+                   this.setState({
+                     actionStatus:"FALSE",
+                   });
+                   this.setState(prevState => ({
+                     modalActionStatus:!prevState.modalActionStatus,
+                     }));
+                 }
+              }
+            
           });
-          console.log(toto)
-          console.log("ra delete");
+         
   };
   handleUpdate = () => {
     const userstoryService = new proto.userstory.UserstoryClient('http://54.255.233.193:8085');
@@ -288,7 +328,36 @@ class Detail extends Component {
               console.log("response")
               console.log(response);
               console.log(response.getStatus());
-              const ProfileRes = response[0];
+              if(response.getStatus()=="SUCCESS")
+              {
+                this.setState({
+                  actionStatus:"SUCCESS",
+                });
+                this.setState(prevState => ({
+                  modalEdit: !prevState.modalEdit,
+                  modalActionStatus:!prevState.modalActionStatus,
+                  }));
+                  const tmpdata = this.state.data.map(p =>
+                    p.id === this.state.userstoryIdUpdate
+                      ? { ...p, name: this.state.nameUpdate,as:this.state.asUpdate,
+                        want:this.state.wantUpdate,so:this.state.so}
+                      : p
+                  );
+                 
+                  this.setState({
+                    data:tmpdata,
+                  });
+                 
+                  
+              }else{
+                this.setState({
+                  actionStatus:"FALSE",
+                });
+                this.setState(prevState => ({
+                  modalEdit: !prevState.modalEdit,
+                  modalActionStatus:!prevState.modalActionStatus,
+                  }));
+              }
             }
           });
           console.log(toto)
@@ -308,6 +377,11 @@ class Detail extends Component {
     let that=this;
     return (
       <Row>
+        <Modal size="sm"  isOpen={that.state.modalActionStatus} toggle={that.toggleActionStatus} className={that.props.className}>
+          <ModalBody>
+            <center><h4>{that.state.actionStatus}</h4></center>
+          </ModalBody>
+          </Modal>
           <Col>       
               <Row>       
                           <Col xs="2" md="2">
@@ -391,7 +465,7 @@ class Detail extends Component {
                         <td>{item.so}</td>
                         <td>
                          
-                          <Button color="warning" size="sm" onClick={that.toggleEdit}><i class="fa fa-edit"></i></Button>
+                          <Button color="warning" size="sm" onClick={(event)=>{that.toggleEdit();that.onGetUpdate(item.id,item.name,item.as,item.want,item.so)}}><i class="fa fa-edit"></i></Button>
                           <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} >
                               <ModalHeader toggle={that.toggleEdit}>UserStory</ModalHeader>
                               <ModalBody>
@@ -440,7 +514,7 @@ class Detail extends Component {
                               </ModalFooter>
                           </Modal>
                           
-                          <Button type="submit" size="sm" color="danger" onClick={that.handleDelete('idOwner','idUserstory','cookie')}><i class="fa fa-trash"></i></Button>
+                          <Button type="submit" size="sm" color="danger" onClick={(event) => {  that.handleDelete(item.id)}}><i class="fa fa-trash"></i></Button>
                       </td>
                     </tr>
                   )
