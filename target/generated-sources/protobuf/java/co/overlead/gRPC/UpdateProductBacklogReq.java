@@ -22,11 +22,13 @@ private static final long serialVersionUID = 0L;
     role_ = "";
     want_ = "";
     so_ = "";
-    status_ = "";
+    statusBacklog_ = "";
     priority_ = "";
     estimation_ = "";
     sprint_ = "";
     cookie_ = "";
+    title_ = "";
+    sprintId_ = "";
   }
 
   @java.lang.Override
@@ -92,7 +94,7 @@ private static final long serialVersionUID = 0L;
           case 58: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            status_ = s;
+            statusBacklog_ = s;
             break;
           }
           case 66: {
@@ -117,6 +119,18 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             cookie_ = s;
+            break;
+          }
+          case 98: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            title_ = s;
+            break;
+          }
+          case 106: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            sprintId_ = s;
             break;
           }
           default: {
@@ -355,24 +369,24 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int STATUS_FIELD_NUMBER = 7;
-  private volatile java.lang.Object status_;
+  public static final int STATUSBACKLOG_FIELD_NUMBER = 7;
+  private volatile java.lang.Object statusBacklog_;
   /**
    * <pre>
    *alway status="todo" when add productbacklog
    * </pre>
    *
-   * <code>string status = 7;</code>
+   * <code>string statusBacklog = 7;</code>
    */
-  public java.lang.String getStatus() {
-    java.lang.Object ref = status_;
+  public java.lang.String getStatusBacklog() {
+    java.lang.Object ref = statusBacklog_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      status_ = s;
+      statusBacklog_ = s;
       return s;
     }
   }
@@ -381,16 +395,16 @@ private static final long serialVersionUID = 0L;
    *alway status="todo" when add productbacklog
    * </pre>
    *
-   * <code>string status = 7;</code>
+   * <code>string statusBacklog = 7;</code>
    */
   public com.google.protobuf.ByteString
-      getStatusBytes() {
-    java.lang.Object ref = status_;
+      getStatusBacklogBytes() {
+    java.lang.Object ref = statusBacklog_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      status_ = b;
+      statusBacklog_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -533,6 +547,74 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int TITLE_FIELD_NUMBER = 12;
+  private volatile java.lang.Object title_;
+  /**
+   * <code>string title = 12;</code>
+   */
+  public java.lang.String getTitle() {
+    java.lang.Object ref = title_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      title_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string title = 12;</code>
+   */
+  public com.google.protobuf.ByteString
+      getTitleBytes() {
+    java.lang.Object ref = title_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      title_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int SPRINTID_FIELD_NUMBER = 13;
+  private volatile java.lang.Object sprintId_;
+  /**
+   * <code>string sprintId = 13;</code>
+   */
+  public java.lang.String getSprintId() {
+    java.lang.Object ref = sprintId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      sprintId_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string sprintId = 13;</code>
+   */
+  public com.google.protobuf.ByteString
+      getSprintIdBytes() {
+    java.lang.Object ref = sprintId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      sprintId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -565,8 +647,8 @@ private static final long serialVersionUID = 0L;
     if (!getSoBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 6, so_);
     }
-    if (!getStatusBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, status_);
+    if (!getStatusBacklogBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, statusBacklog_);
     }
     if (!getPriorityBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 8, priority_);
@@ -579,6 +661,12 @@ private static final long serialVersionUID = 0L;
     }
     if (!getCookieBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 11, cookie_);
+    }
+    if (!getTitleBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 12, title_);
+    }
+    if (!getSprintIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 13, sprintId_);
     }
     unknownFields.writeTo(output);
   }
@@ -607,8 +695,8 @@ private static final long serialVersionUID = 0L;
     if (!getSoBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, so_);
     }
-    if (!getStatusBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, status_);
+    if (!getStatusBacklogBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, statusBacklog_);
     }
     if (!getPriorityBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, priority_);
@@ -621,6 +709,12 @@ private static final long serialVersionUID = 0L;
     }
     if (!getCookieBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, cookie_);
+    }
+    if (!getTitleBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, title_);
+    }
+    if (!getSprintIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, sprintId_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -649,8 +743,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getWant())) return false;
     if (!getSo()
         .equals(other.getSo())) return false;
-    if (!getStatus()
-        .equals(other.getStatus())) return false;
+    if (!getStatusBacklog()
+        .equals(other.getStatusBacklog())) return false;
     if (!getPriority()
         .equals(other.getPriority())) return false;
     if (!getEstimation()
@@ -659,6 +753,10 @@ private static final long serialVersionUID = 0L;
         .equals(other.getSprint())) return false;
     if (!getCookie()
         .equals(other.getCookie())) return false;
+    if (!getTitle()
+        .equals(other.getTitle())) return false;
+    if (!getSprintId()
+        .equals(other.getSprintId())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -682,8 +780,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getWant().hashCode();
     hash = (37 * hash) + SO_FIELD_NUMBER;
     hash = (53 * hash) + getSo().hashCode();
-    hash = (37 * hash) + STATUS_FIELD_NUMBER;
-    hash = (53 * hash) + getStatus().hashCode();
+    hash = (37 * hash) + STATUSBACKLOG_FIELD_NUMBER;
+    hash = (53 * hash) + getStatusBacklog().hashCode();
     hash = (37 * hash) + PRIORITY_FIELD_NUMBER;
     hash = (53 * hash) + getPriority().hashCode();
     hash = (37 * hash) + ESTIMATION_FIELD_NUMBER;
@@ -692,6 +790,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getSprint().hashCode();
     hash = (37 * hash) + COOKIE_FIELD_NUMBER;
     hash = (53 * hash) + getCookie().hashCode();
+    hash = (37 * hash) + TITLE_FIELD_NUMBER;
+    hash = (53 * hash) + getTitle().hashCode();
+    hash = (37 * hash) + SPRINTID_FIELD_NUMBER;
+    hash = (53 * hash) + getSprintId().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -837,7 +939,7 @@ private static final long serialVersionUID = 0L;
 
       so_ = "";
 
-      status_ = "";
+      statusBacklog_ = "";
 
       priority_ = "";
 
@@ -846,6 +948,10 @@ private static final long serialVersionUID = 0L;
       sprint_ = "";
 
       cookie_ = "";
+
+      title_ = "";
+
+      sprintId_ = "";
 
       return this;
     }
@@ -879,11 +985,13 @@ private static final long serialVersionUID = 0L;
       result.role_ = role_;
       result.want_ = want_;
       result.so_ = so_;
-      result.status_ = status_;
+      result.statusBacklog_ = statusBacklog_;
       result.priority_ = priority_;
       result.estimation_ = estimation_;
       result.sprint_ = sprint_;
       result.cookie_ = cookie_;
+      result.title_ = title_;
+      result.sprintId_ = sprintId_;
       onBuilt();
       return result;
     }
@@ -956,8 +1064,8 @@ private static final long serialVersionUID = 0L;
         so_ = other.so_;
         onChanged();
       }
-      if (!other.getStatus().isEmpty()) {
-        status_ = other.status_;
+      if (!other.getStatusBacklog().isEmpty()) {
+        statusBacklog_ = other.statusBacklog_;
         onChanged();
       }
       if (!other.getPriority().isEmpty()) {
@@ -974,6 +1082,14 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getCookie().isEmpty()) {
         cookie_ = other.cookie_;
+        onChanged();
+      }
+      if (!other.getTitle().isEmpty()) {
+        title_ = other.title_;
+        onChanged();
+      }
+      if (!other.getSprintId().isEmpty()) {
+        sprintId_ = other.sprintId_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -1419,21 +1535,21 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object status_ = "";
+    private java.lang.Object statusBacklog_ = "";
     /**
      * <pre>
      *alway status="todo" when add productbacklog
      * </pre>
      *
-     * <code>string status = 7;</code>
+     * <code>string statusBacklog = 7;</code>
      */
-    public java.lang.String getStatus() {
-      java.lang.Object ref = status_;
+    public java.lang.String getStatusBacklog() {
+      java.lang.Object ref = statusBacklog_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        status_ = s;
+        statusBacklog_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
@@ -1444,16 +1560,16 @@ private static final long serialVersionUID = 0L;
      *alway status="todo" when add productbacklog
      * </pre>
      *
-     * <code>string status = 7;</code>
+     * <code>string statusBacklog = 7;</code>
      */
     public com.google.protobuf.ByteString
-        getStatusBytes() {
-      java.lang.Object ref = status_;
+        getStatusBacklogBytes() {
+      java.lang.Object ref = statusBacklog_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        status_ = b;
+        statusBacklog_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1464,15 +1580,15 @@ private static final long serialVersionUID = 0L;
      *alway status="todo" when add productbacklog
      * </pre>
      *
-     * <code>string status = 7;</code>
+     * <code>string statusBacklog = 7;</code>
      */
-    public Builder setStatus(
+    public Builder setStatusBacklog(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      status_ = value;
+      statusBacklog_ = value;
       onChanged();
       return this;
     }
@@ -1481,11 +1597,11 @@ private static final long serialVersionUID = 0L;
      *alway status="todo" when add productbacklog
      * </pre>
      *
-     * <code>string status = 7;</code>
+     * <code>string statusBacklog = 7;</code>
      */
-    public Builder clearStatus() {
+    public Builder clearStatusBacklog() {
       
-      status_ = getDefaultInstance().getStatus();
+      statusBacklog_ = getDefaultInstance().getStatusBacklog();
       onChanged();
       return this;
     }
@@ -1494,16 +1610,16 @@ private static final long serialVersionUID = 0L;
      *alway status="todo" when add productbacklog
      * </pre>
      *
-     * <code>string status = 7;</code>
+     * <code>string statusBacklog = 7;</code>
      */
-    public Builder setStatusBytes(
+    public Builder setStatusBacklogBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      status_ = value;
+      statusBacklog_ = value;
       onChanged();
       return this;
     }
@@ -1780,6 +1896,144 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       cookie_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object title_ = "";
+    /**
+     * <code>string title = 12;</code>
+     */
+    public java.lang.String getTitle() {
+      java.lang.Object ref = title_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        title_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string title = 12;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTitleBytes() {
+      java.lang.Object ref = title_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        title_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string title = 12;</code>
+     */
+    public Builder setTitle(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      title_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string title = 12;</code>
+     */
+    public Builder clearTitle() {
+      
+      title_ = getDefaultInstance().getTitle();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string title = 12;</code>
+     */
+    public Builder setTitleBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      title_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object sprintId_ = "";
+    /**
+     * <code>string sprintId = 13;</code>
+     */
+    public java.lang.String getSprintId() {
+      java.lang.Object ref = sprintId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sprintId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string sprintId = 13;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSprintIdBytes() {
+      java.lang.Object ref = sprintId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sprintId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string sprintId = 13;</code>
+     */
+    public Builder setSprintId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      sprintId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string sprintId = 13;</code>
+     */
+    public Builder clearSprintId() {
+      
+      sprintId_ = getDefaultInstance().getSprintId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string sprintId = 13;</code>
+     */
+    public Builder setSprintIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      sprintId_ = value;
       onChanged();
       return this;
     }

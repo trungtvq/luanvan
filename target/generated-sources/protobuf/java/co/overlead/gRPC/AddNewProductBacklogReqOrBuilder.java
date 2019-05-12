@@ -114,4 +114,22 @@ public interface AddNewProductBacklogReqOrBuilder extends
    */
   com.google.protobuf.ByteString
       getCookieBytes();
+
+  /**
+   * <pre>
+   *unique
+   * </pre>
+   *
+   * <code>string title = 11;</code>
+   */
+  java.lang.String getTitle();
+  /**
+   * <pre>
+   *unique
+   * </pre>
+   *
+   * <code>string title = 11;</code>
+   */
+  com.google.protobuf.ByteString
+      getTitleBytes();
 }

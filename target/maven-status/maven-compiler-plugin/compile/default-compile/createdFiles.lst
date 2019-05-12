@@ -58,6 +58,7 @@ co\overlead\gRPC\LeaveChatReq$1.class
 examples\gRPC\GreeterGrpc$1.class
 co\overlead\gRPC\ProductBacklogResOrBuilder.class
 co\overlead\gRPC\AddNewDailyScheduleReq$1.class
+helper\auth\RequestAuth.class
 co\overlead\gRPC\GetAllSprintBacklogReqOrBuilder.class
 co\overlead\gRPC\SendTeamTaskToMyTaskRes$1.class
 co\overlead\gRPC\ResetRes$1.class
@@ -152,6 +153,7 @@ co\overlead\gRPC\UserstoryGrpc$UserstoryStub.class
 co\overlead\gRPC\GetAllTeamTaskReq$Builder.class
 examples\gRPC\HelloRequest$Builder.class
 co\overlead\gRPC\SignInGoogleReqOrBuilder.class
+gRPC\productbacklog\ProductBacklog$ProductBacklogImpl.class
 co\overlead\gRPC\ChatGrpc$ChatFutureStub.class
 co\overlead\gRPC\DeleteUserStoryRes.class
 co\overlead\gRPC\GetAllTeamTaskReqOrBuilder.class
@@ -305,6 +307,7 @@ co\overlead\gRPC\userstory$1.class
 co\overlead\gRPC\ProductBacklogGrpc$ProductBacklogMethodDescriptorSupplier.class
 co\overlead\gRPC\GetAllMyTaskReqOrBuilder.class
 co\overlead\gRPC\ConnectChatReq.class
+gRPC\sprintbacklog\SprintBacklog.class
 co\overlead\gRPC\DailyscheduleGrpc$DailyscheduleBlockingStub.class
 examples\gRPC\CounterProto$1.class
 co\overlead\gRPC\ProductBacklogRes$Builder.class

@@ -60,35 +60,35 @@ public final class ProductBacklogGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateProductBacklogReq,
-      co.overlead.gRPC.ProductBacklogRes> getUpdateUserStoryMethod;
+      co.overlead.gRPC.ProductBacklogRes> getUpdateProductBacklogMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "updateUserStory",
+      fullMethodName = SERVICE_NAME + '/' + "updateProductBacklog",
       requestType = co.overlead.gRPC.UpdateProductBacklogReq.class,
       responseType = co.overlead.gRPC.ProductBacklogRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateProductBacklogReq,
-      co.overlead.gRPC.ProductBacklogRes> getUpdateUserStoryMethod() {
-    io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateProductBacklogReq, co.overlead.gRPC.ProductBacklogRes> getUpdateUserStoryMethod;
-    if ((getUpdateUserStoryMethod = ProductBacklogGrpc.getUpdateUserStoryMethod) == null) {
+      co.overlead.gRPC.ProductBacklogRes> getUpdateProductBacklogMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateProductBacklogReq, co.overlead.gRPC.ProductBacklogRes> getUpdateProductBacklogMethod;
+    if ((getUpdateProductBacklogMethod = ProductBacklogGrpc.getUpdateProductBacklogMethod) == null) {
       synchronized (ProductBacklogGrpc.class) {
-        if ((getUpdateUserStoryMethod = ProductBacklogGrpc.getUpdateUserStoryMethod) == null) {
-          ProductBacklogGrpc.getUpdateUserStoryMethod = getUpdateUserStoryMethod = 
+        if ((getUpdateProductBacklogMethod = ProductBacklogGrpc.getUpdateProductBacklogMethod) == null) {
+          ProductBacklogGrpc.getUpdateProductBacklogMethod = getUpdateProductBacklogMethod = 
               io.grpc.MethodDescriptor.<co.overlead.gRPC.UpdateProductBacklogReq, co.overlead.gRPC.ProductBacklogRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "productbacklog.ProductBacklog", "updateUserStory"))
+                  "productbacklog.ProductBacklog", "updateProductBacklog"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.UpdateProductBacklogReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.ProductBacklogRes.getDefaultInstance()))
-                  .setSchemaDescriptor(new ProductBacklogMethodDescriptorSupplier("updateUserStory"))
+                  .setSchemaDescriptor(new ProductBacklogMethodDescriptorSupplier("updateProductBacklog"))
                   .build();
           }
         }
      }
-     return getUpdateUserStoryMethod;
+     return getUpdateProductBacklogMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteProductBacklogReq,
@@ -223,9 +223,9 @@ public final class ProductBacklogGrpc {
 
     /**
      */
-    public void updateUserStory(co.overlead.gRPC.UpdateProductBacklogReq request,
+    public void updateProductBacklog(co.overlead.gRPC.UpdateProductBacklogReq request,
         io.grpc.stub.StreamObserver<co.overlead.gRPC.ProductBacklogRes> responseObserver) {
-      asyncUnimplementedUnaryCall(getUpdateUserStoryMethod(), responseObserver);
+      asyncUnimplementedUnaryCall(getUpdateProductBacklogMethod(), responseObserver);
     }
 
     /**
@@ -259,12 +259,12 @@ public final class ProductBacklogGrpc {
                 co.overlead.gRPC.ProductBacklogRes>(
                   this, METHODID_ADD_NEW_PRODUCT_BACKLOG)))
           .addMethod(
-            getUpdateUserStoryMethod(),
+            getUpdateProductBacklogMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 co.overlead.gRPC.UpdateProductBacklogReq,
                 co.overlead.gRPC.ProductBacklogRes>(
-                  this, METHODID_UPDATE_USER_STORY)))
+                  this, METHODID_UPDATE_PRODUCT_BACKLOG)))
           .addMethod(
             getDeleteProductBacklogMethod(),
             asyncUnaryCall(
@@ -318,10 +318,10 @@ public final class ProductBacklogGrpc {
 
     /**
      */
-    public void updateUserStory(co.overlead.gRPC.UpdateProductBacklogReq request,
+    public void updateProductBacklog(co.overlead.gRPC.UpdateProductBacklogReq request,
         io.grpc.stub.StreamObserver<co.overlead.gRPC.ProductBacklogRes> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getUpdateUserStoryMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getUpdateProductBacklogMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -376,9 +376,9 @@ public final class ProductBacklogGrpc {
 
     /**
      */
-    public co.overlead.gRPC.ProductBacklogRes updateUserStory(co.overlead.gRPC.UpdateProductBacklogReq request) {
+    public co.overlead.gRPC.ProductBacklogRes updateProductBacklog(co.overlead.gRPC.UpdateProductBacklogReq request) {
       return blockingUnaryCall(
-          getChannel(), getUpdateUserStoryMethod(), getCallOptions(), request);
+          getChannel(), getUpdateProductBacklogMethod(), getCallOptions(), request);
     }
 
     /**
@@ -432,10 +432,10 @@ public final class ProductBacklogGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.ProductBacklogRes> updateUserStory(
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.ProductBacklogRes> updateProductBacklog(
         co.overlead.gRPC.UpdateProductBacklogReq request) {
       return futureUnaryCall(
-          getChannel().newCall(getUpdateUserStoryMethod(), getCallOptions()), request);
+          getChannel().newCall(getUpdateProductBacklogMethod(), getCallOptions()), request);
     }
 
     /**
@@ -456,7 +456,7 @@ public final class ProductBacklogGrpc {
   }
 
   private static final int METHODID_ADD_NEW_PRODUCT_BACKLOG = 0;
-  private static final int METHODID_UPDATE_USER_STORY = 1;
+  private static final int METHODID_UPDATE_PRODUCT_BACKLOG = 1;
   private static final int METHODID_DELETE_PRODUCT_BACKLOG = 2;
   private static final int METHODID_SEND_TO_SPRINT_BACKLOG = 3;
   private static final int METHODID_GET_ALL_PRODUCT_BACKLOG = 4;
@@ -482,8 +482,8 @@ public final class ProductBacklogGrpc {
           serviceImpl.addNewProductBacklog((co.overlead.gRPC.AddNewProductBacklogReq) request,
               (io.grpc.stub.StreamObserver<co.overlead.gRPC.ProductBacklogRes>) responseObserver);
           break;
-        case METHODID_UPDATE_USER_STORY:
-          serviceImpl.updateUserStory((co.overlead.gRPC.UpdateProductBacklogReq) request,
+        case METHODID_UPDATE_PRODUCT_BACKLOG:
+          serviceImpl.updateProductBacklog((co.overlead.gRPC.UpdateProductBacklogReq) request,
               (io.grpc.stub.StreamObserver<co.overlead.gRPC.ProductBacklogRes>) responseObserver);
           break;
         case METHODID_DELETE_PRODUCT_BACKLOG:
@@ -560,7 +560,7 @@ public final class ProductBacklogGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new ProductBacklogFileDescriptorSupplier())
               .addMethod(getAddNewProductBacklogMethod())
-              .addMethod(getUpdateUserStoryMethod())
+              .addMethod(getUpdateProductBacklogMethod())
               .addMethod(getDeleteProductBacklogMethod())
               .addMethod(getSendToSprintBacklogMethod())
               .addMethod(getGetAllProductBacklogMethod())

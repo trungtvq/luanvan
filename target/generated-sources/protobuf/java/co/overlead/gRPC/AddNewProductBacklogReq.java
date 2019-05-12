@@ -26,6 +26,7 @@ private static final long serialVersionUID = 0L;
     estimation_ = "";
     sprintId_ = "";
     cookie_ = "";
+    title_ = "";
   }
 
   @java.lang.Override
@@ -110,6 +111,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             cookie_ = s;
+            break;
+          }
+          case 90: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            title_ = s;
             break;
           }
           default: {
@@ -492,6 +499,48 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int TITLE_FIELD_NUMBER = 11;
+  private volatile java.lang.Object title_;
+  /**
+   * <pre>
+   *unique
+   * </pre>
+   *
+   * <code>string title = 11;</code>
+   */
+  public java.lang.String getTitle() {
+    java.lang.Object ref = title_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      title_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *unique
+   * </pre>
+   *
+   * <code>string title = 11;</code>
+   */
+  public com.google.protobuf.ByteString
+      getTitleBytes() {
+    java.lang.Object ref = title_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      title_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -536,6 +585,9 @@ private static final long serialVersionUID = 0L;
     if (!getCookieBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 10, cookie_);
     }
+    if (!getTitleBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, title_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -575,6 +627,9 @@ private static final long serialVersionUID = 0L;
     if (!getCookieBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, cookie_);
     }
+    if (!getTitleBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, title_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -610,6 +665,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getSprintId())) return false;
     if (!getCookie()
         .equals(other.getCookie())) return false;
+    if (!getTitle()
+        .equals(other.getTitle())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -641,6 +698,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getSprintId().hashCode();
     hash = (37 * hash) + COOKIE_FIELD_NUMBER;
     hash = (53 * hash) + getCookie().hashCode();
+    hash = (37 * hash) + TITLE_FIELD_NUMBER;
+    hash = (53 * hash) + getTitle().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -794,6 +853,8 @@ private static final long serialVersionUID = 0L;
 
       cookie_ = "";
 
+      title_ = "";
+
       return this;
     }
 
@@ -830,6 +891,7 @@ private static final long serialVersionUID = 0L;
       result.estimation_ = estimation_;
       result.sprintId_ = sprintId_;
       result.cookie_ = cookie_;
+      result.title_ = title_;
       onBuilt();
       return result;
     }
@@ -916,6 +978,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getCookie().isEmpty()) {
         cookie_ = other.cookie_;
+        onChanged();
+      }
+      if (!other.getTitle().isEmpty()) {
+        title_ = other.title_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -1653,6 +1719,95 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       cookie_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object title_ = "";
+    /**
+     * <pre>
+     *unique
+     * </pre>
+     *
+     * <code>string title = 11;</code>
+     */
+    public java.lang.String getTitle() {
+      java.lang.Object ref = title_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        title_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *unique
+     * </pre>
+     *
+     * <code>string title = 11;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTitleBytes() {
+      java.lang.Object ref = title_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        title_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *unique
+     * </pre>
+     *
+     * <code>string title = 11;</code>
+     */
+    public Builder setTitle(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      title_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *unique
+     * </pre>
+     *
+     * <code>string title = 11;</code>
+     */
+    public Builder clearTitle() {
+      
+      title_ = getDefaultInstance().getTitle();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *unique
+     * </pre>
+     *
+     * <code>string title = 11;</code>
+     */
+    public Builder setTitleBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      title_ = value;
       onChanged();
       return this;
     }

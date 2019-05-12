@@ -18,13 +18,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static helper.auth.RequestAuth.isValidAuth;
+
 public class MyProject {
 
     public static class MyProjectImpl extends MyprojectGrpc.MyprojectImplBase{
-        public static boolean isValidAuth(String id,String session){
-            if (true) return true;
-            return AuthAccount.AuthImpl.getSession(id,session);
-        }
+
         public void makeResponseForUpdateSuccess(StreamObserver res,String id){
 
             res.onNext(ProjectRes.newBuilder().setStatus("SUCCESS").setError("FALSE").setProjectId(id).build());

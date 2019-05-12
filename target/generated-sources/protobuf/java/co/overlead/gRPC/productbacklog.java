@@ -58,48 +58,49 @@ public final class productbacklog {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024productbacklog.proto\022\016productbacklog\"\310" +
+      "\n\024productbacklog.proto\022\016productbacklog\"\327" +
       "\001\n\027AddNewProductBacklogReq\022\023\n\013requesterI" +
       "d\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\014\n\004role\030\003 \001(\t" +
       "\022\014\n\004want\030\004 \001(\t\022\n\n\002so\030\005 \001(\t\022\025\n\rstatusBack" +
       "log\030\006 \001(\t\022\020\n\010priority\030\007 \001(\t\022\022\n\nestimatio" +
       "n\030\010 \001(\t\022\020\n\010sprintId\030\t \001(\t\022\016\n\006cookie\030\n \001(" +
-      "\t\"L\n\021ProductBacklogRes\022\r\n\005error\030\001 \001(\t\022\016\n" +
-      "\006status\030\002 \001(\t\022\030\n\020productBacklogId\030\003 \001(\t\"" +
-      "\331\001\n\027UpdateProductBacklogReq\022\023\n\013requester" +
-      "Id\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\030\n\020productBa" +
-      "cklogId\030\003 \001(\t\022\014\n\004role\030\004 \001(\t\022\014\n\004want\030\005 \001(" +
-      "\t\022\n\n\002so\030\006 \001(\t\022\016\n\006status\030\007 \001(\t\022\020\n\010priorit" +
-      "y\030\010 \001(\t\022\022\n\nestimation\030\t \001(\t\022\016\n\006sprint\030\n " +
-      "\001(\t\022\016\n\006cookie\030\013 \001(\t\"k\n\027DeleteProductBack" +
-      "logReq\022\023\n\013requesterId\030\001 \001(\t\022\021\n\tprojectId" +
-      "\030\002 \001(\t\022\030\n\020productBacklogId\030\003 \001(\t\022\016\n\006cook" +
-      "ie\030\004 \001(\t\"\213\001\n\026SendToSprintBacklogReq\022\023\n\013r" +
-      "equesterId\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\030\n\020p" +
-      "roductBacklogId\030\003 \001(\t\022\r\n\005start\030\004 \001(\t\022\020\n\010" +
-      "deadline\030\005 \001(\t\022\016\n\006cookie\030\006 \001(\t\"Q\n\027GetAll" +
-      "ProductBacklogReq\022\023\n\013requesterId\030\001 \001(\t\022\021" +
-      "\n\tprojectId\030\002 \001(\t\022\016\n\006cookie\030\003 \001(\t\"\311\001\n\027Ge" +
-      "tAllProductBacklogRes\022\030\n\020productBacklogI" +
-      "d\030\002 \001(\t\022\014\n\004role\030\003 \001(\t\022\014\n\004want\030\004 \001(\t\022\n\n\002s" +
-      "o\030\005 \001(\t\022\025\n\rstatusBacklog\030\013 \001(\t\022\016\n\006status" +
-      "\030\t \001(\t\022\r\n\005error\030\001 \001(\t\022\020\n\010priority\030\006 \001(\t\022" +
-      "\022\n\nestimation\030\007 \001(\t\022\020\n\010sprintId\030\010 \001(\t2\217\004" +
-      "\n\016ProductBacklog\022d\n\024addNewProductBacklog" +
-      "\022\'.productbacklog.AddNewProductBacklogRe" +
-      "q\032!.productbacklog.ProductBacklogRes\"\000\022_" +
-      "\n\017updateUserStory\022\'.productbacklog.Updat" +
-      "eProductBacklogReq\032!.productbacklog.Prod" +
-      "uctBacklogRes\"\000\022d\n\024deleteProductBacklog\022" +
-      "\'.productbacklog.DeleteProductBacklogReq" +
-      "\032!.productbacklog.ProductBacklogRes\"\000\022b\n" +
-      "\023sendToSprintBacklog\022&.productbacklog.Se" +
-      "ndToSprintBacklogReq\032!.productbacklog.Pr" +
-      "oductBacklogRes\"\000\022l\n\024getAllProductBacklo" +
-      "g\022\'.productbacklog.GetAllProductBacklogR" +
-      "eq\032\'.productbacklog.GetAllProductBacklog" +
-      "Res\"\0000\001B)\n\020co.overlead.gRPCB\016productback" +
-      "logP\001\242\002\002pbb\006proto3"
+      "\t\022\r\n\005title\030\013 \001(\t\"L\n\021ProductBacklogRes\022\r\n" +
+      "\005error\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\030\n\020productB" +
+      "acklogId\030\003 \001(\t\"\201\002\n\027UpdateProductBacklogR" +
+      "eq\022\023\n\013requesterId\030\001 \001(\t\022\021\n\tprojectId\030\002 \001" +
+      "(\t\022\030\n\020productBacklogId\030\003 \001(\t\022\014\n\004role\030\004 \001" +
+      "(\t\022\014\n\004want\030\005 \001(\t\022\n\n\002so\030\006 \001(\t\022\025\n\rstatusBa" +
+      "cklog\030\007 \001(\t\022\020\n\010priority\030\010 \001(\t\022\022\n\nestimat" +
+      "ion\030\t \001(\t\022\016\n\006sprint\030\n \001(\t\022\016\n\006cookie\030\013 \001(" +
+      "\t\022\r\n\005title\030\014 \001(\t\022\020\n\010sprintId\030\r \001(\t\"k\n\027De" +
+      "leteProductBacklogReq\022\023\n\013requesterId\030\001 \001" +
+      "(\t\022\021\n\tprojectId\030\002 \001(\t\022\030\n\020productBacklogI" +
+      "d\030\003 \001(\t\022\016\n\006cookie\030\004 \001(\t\"\213\001\n\026SendToSprint" +
+      "BacklogReq\022\023\n\013requesterId\030\001 \001(\t\022\021\n\tproje" +
+      "ctId\030\002 \001(\t\022\030\n\020productBacklogId\030\003 \001(\t\022\r\n\005" +
+      "start\030\004 \001(\t\022\020\n\010deadline\030\005 \001(\t\022\016\n\006cookie\030" +
+      "\006 \001(\t\"Q\n\027GetAllProductBacklogReq\022\023\n\013requ" +
+      "esterId\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\016\n\006cook" +
+      "ie\030\003 \001(\t\"\311\001\n\027GetAllProductBacklogRes\022\030\n\020" +
+      "productBacklogId\030\002 \001(\t\022\014\n\004role\030\003 \001(\t\022\014\n\004" +
+      "want\030\004 \001(\t\022\n\n\002so\030\005 \001(\t\022\025\n\rstatusBacklog\030" +
+      "\013 \001(\t\022\016\n\006status\030\t \001(\t\022\r\n\005error\030\001 \001(\t\022\020\n\010" +
+      "priority\030\006 \001(\t\022\022\n\nestimation\030\007 \001(\t\022\020\n\010sp" +
+      "rintId\030\010 \001(\t2\224\004\n\016ProductBacklog\022d\n\024addNe" +
+      "wProductBacklog\022\'.productbacklog.AddNewP" +
+      "roductBacklogReq\032!.productbacklog.Produc" +
+      "tBacklogRes\"\000\022d\n\024updateProductBacklog\022\'." +
+      "productbacklog.UpdateProductBacklogReq\032!" +
+      ".productbacklog.ProductBacklogRes\"\000\022d\n\024d" +
+      "eleteProductBacklog\022\'.productbacklog.Del" +
+      "eteProductBacklogReq\032!.productbacklog.Pr" +
+      "oductBacklogRes\"\000\022b\n\023sendToSprintBacklog" +
+      "\022&.productbacklog.SendToSprintBacklogReq" +
+      "\032!.productbacklog.ProductBacklogRes\"\000\022l\n" +
+      "\024getAllProductBacklog\022\'.productbacklog.G" +
+      "etAllProductBacklogReq\032\'.productbacklog." +
+      "GetAllProductBacklogRes\"\0000\001B)\n\020co.overle" +
+      "ad.gRPCB\016productbacklogP\001\242\002\002pbb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -118,7 +119,7 @@ public final class productbacklog {
     internal_static_productbacklog_AddNewProductBacklogReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_productbacklog_AddNewProductBacklogReq_descriptor,
-        new java.lang.String[] { "RequesterId", "ProjectId", "Role", "Want", "So", "StatusBacklog", "Priority", "Estimation", "SprintId", "Cookie", });
+        new java.lang.String[] { "RequesterId", "ProjectId", "Role", "Want", "So", "StatusBacklog", "Priority", "Estimation", "SprintId", "Cookie", "Title", });
     internal_static_productbacklog_ProductBacklogRes_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_productbacklog_ProductBacklogRes_fieldAccessorTable = new
@@ -130,7 +131,7 @@ public final class productbacklog {
     internal_static_productbacklog_UpdateProductBacklogReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_productbacklog_UpdateProductBacklogReq_descriptor,
-        new java.lang.String[] { "RequesterId", "ProjectId", "ProductBacklogId", "Role", "Want", "So", "Status", "Priority", "Estimation", "Sprint", "Cookie", });
+        new java.lang.String[] { "RequesterId", "ProjectId", "ProductBacklogId", "Role", "Want", "So", "StatusBacklog", "Priority", "Estimation", "Sprint", "Cookie", "Title", "SprintId", });
     internal_static_productbacklog_DeleteProductBacklogReq_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_productbacklog_DeleteProductBacklogReq_fieldAccessorTable = new

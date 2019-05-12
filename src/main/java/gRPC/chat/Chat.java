@@ -15,12 +15,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static helper.auth.RequestAuth.isValidAuth;
+
 public class Chat {
     public static class ChatImpl extends ChatGrpc.ChatImplBase{
-        public static boolean isValidAuth(String id,String session){
-            if (true) return true;
-            return AuthAccount.AuthImpl.getSession(id,session);
-        }
+
         public void makeResponseForUpdateSuccess(StreamObserver res,String id){
             res.onNext(SimpleChatRes.newBuilder().setStatus("SUCCESS").setError("FALSE").setOption(id).build());
             res.onCompleted();

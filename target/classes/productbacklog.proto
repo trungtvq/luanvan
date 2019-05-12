@@ -8,7 +8,7 @@ package productbacklog;
 
 service ProductBacklog{
     rpc addNewProductBacklog(AddNewProductBacklogReq) returns (ProductBacklogRes) {}
-    rpc updateUserStory(UpdateProductBacklogReq) returns (ProductBacklogRes){}
+    rpc updateProductBacklog(UpdateProductBacklogReq) returns (ProductBacklogRes){}
     rpc deleteProductBacklog(DeleteProductBacklogReq) returns (ProductBacklogRes){}
 	rpc sendToSprintBacklog(SendToSprintBacklogReq) returns (ProductBacklogRes){}
 	rpc getAllProductBacklog(GetAllProductBacklogReq) returns (stream GetAllProductBacklogRes){}
@@ -25,6 +25,7 @@ message AddNewProductBacklogReq{
 	string estimation = 8;
 	string sprintId = 9;
 	string cookie = 10;
+	string title=11; //unique
 }
 message ProductBacklogRes{
 	string error = 1;
@@ -40,11 +41,14 @@ message UpdateProductBacklogReq{
 	string role = 4;
 	string want = 5;
 	string so = 6;
-	string status = 7;									//alway status="todo" when add productbacklog
+	string statusBacklog = 7;									//alway status="todo" when add productbacklog
 	string priority = 8;
 	string estimation = 9;
 	string sprint = 10;	
 	string cookie = 11;
+	string title=12;
+	string sprintId=13;
+
 }
 
 message DeleteProductBacklogReq{
