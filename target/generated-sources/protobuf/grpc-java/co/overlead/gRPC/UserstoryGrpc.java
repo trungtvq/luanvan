@@ -20,38 +20,38 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.20.0)",
     comments = "Source: userstory.proto")
-public final class UserstoryGrpc {
+public final class UserStoryGrpc {
 
-  private UserstoryGrpc() {}
+  private UserStoryGrpc() {}
 
-  public static final String SERVICE_NAME = "userstory.Userstory";
+  public static final String SERVICE_NAME = "userstory.UserStory";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.AddNewUserStoryReq,
-      co.overlead.gRPC.AddNewUserStoryRes> getAddNewUserStoryMethod;
+      co.overlead.gRPC.UserStoryRes> getAddNewUserStoryMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "addNewUserStory",
       requestType = co.overlead.gRPC.AddNewUserStoryReq.class,
-      responseType = co.overlead.gRPC.AddNewUserStoryRes.class,
+      responseType = co.overlead.gRPC.UserStoryRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<co.overlead.gRPC.AddNewUserStoryReq,
-      co.overlead.gRPC.AddNewUserStoryRes> getAddNewUserStoryMethod() {
-    io.grpc.MethodDescriptor<co.overlead.gRPC.AddNewUserStoryReq, co.overlead.gRPC.AddNewUserStoryRes> getAddNewUserStoryMethod;
-    if ((getAddNewUserStoryMethod = UserstoryGrpc.getAddNewUserStoryMethod) == null) {
-      synchronized (UserstoryGrpc.class) {
-        if ((getAddNewUserStoryMethod = UserstoryGrpc.getAddNewUserStoryMethod) == null) {
-          UserstoryGrpc.getAddNewUserStoryMethod = getAddNewUserStoryMethod = 
-              io.grpc.MethodDescriptor.<co.overlead.gRPC.AddNewUserStoryReq, co.overlead.gRPC.AddNewUserStoryRes>newBuilder()
+      co.overlead.gRPC.UserStoryRes> getAddNewUserStoryMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.AddNewUserStoryReq, co.overlead.gRPC.UserStoryRes> getAddNewUserStoryMethod;
+    if ((getAddNewUserStoryMethod = UserStoryGrpc.getAddNewUserStoryMethod) == null) {
+      synchronized (UserStoryGrpc.class) {
+        if ((getAddNewUserStoryMethod = UserStoryGrpc.getAddNewUserStoryMethod) == null) {
+          UserStoryGrpc.getAddNewUserStoryMethod = getAddNewUserStoryMethod = 
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.AddNewUserStoryReq, co.overlead.gRPC.UserStoryRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "userstory.Userstory", "addNewUserStory"))
+                  "userstory.UserStory", "addNewUserStory"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.AddNewUserStoryReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.AddNewUserStoryRes.getDefaultInstance()))
-                  .setSchemaDescriptor(new UserstoryMethodDescriptorSupplier("addNewUserStory"))
+                  co.overlead.gRPC.UserStoryRes.getDefaultInstance()))
+                  .setSchemaDescriptor(new UserStoryMethodDescriptorSupplier("addNewUserStory"))
                   .build();
           }
         }
@@ -60,30 +60,30 @@ public final class UserstoryGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateUserStoryReq,
-      co.overlead.gRPC.UpdateUserStoryRes> getUpdateUserStoryMethod;
+      co.overlead.gRPC.UserStoryRes> getUpdateUserStoryMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "updateUserStory",
       requestType = co.overlead.gRPC.UpdateUserStoryReq.class,
-      responseType = co.overlead.gRPC.UpdateUserStoryRes.class,
+      responseType = co.overlead.gRPC.UserStoryRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateUserStoryReq,
-      co.overlead.gRPC.UpdateUserStoryRes> getUpdateUserStoryMethod() {
-    io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateUserStoryReq, co.overlead.gRPC.UpdateUserStoryRes> getUpdateUserStoryMethod;
-    if ((getUpdateUserStoryMethod = UserstoryGrpc.getUpdateUserStoryMethod) == null) {
-      synchronized (UserstoryGrpc.class) {
-        if ((getUpdateUserStoryMethod = UserstoryGrpc.getUpdateUserStoryMethod) == null) {
-          UserstoryGrpc.getUpdateUserStoryMethod = getUpdateUserStoryMethod = 
-              io.grpc.MethodDescriptor.<co.overlead.gRPC.UpdateUserStoryReq, co.overlead.gRPC.UpdateUserStoryRes>newBuilder()
+      co.overlead.gRPC.UserStoryRes> getUpdateUserStoryMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateUserStoryReq, co.overlead.gRPC.UserStoryRes> getUpdateUserStoryMethod;
+    if ((getUpdateUserStoryMethod = UserStoryGrpc.getUpdateUserStoryMethod) == null) {
+      synchronized (UserStoryGrpc.class) {
+        if ((getUpdateUserStoryMethod = UserStoryGrpc.getUpdateUserStoryMethod) == null) {
+          UserStoryGrpc.getUpdateUserStoryMethod = getUpdateUserStoryMethod = 
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.UpdateUserStoryReq, co.overlead.gRPC.UserStoryRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "userstory.Userstory", "updateUserStory"))
+                  "userstory.UserStory", "updateUserStory"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.UpdateUserStoryReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.UpdateUserStoryRes.getDefaultInstance()))
-                  .setSchemaDescriptor(new UserstoryMethodDescriptorSupplier("updateUserStory"))
+                  co.overlead.gRPC.UserStoryRes.getDefaultInstance()))
+                  .setSchemaDescriptor(new UserStoryMethodDescriptorSupplier("updateUserStory"))
                   .build();
           }
         }
@@ -92,30 +92,30 @@ public final class UserstoryGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteUserStoryReq,
-      co.overlead.gRPC.DeleteUserStoryRes> getDeleteUserStoryMethod;
+      co.overlead.gRPC.UserStoryRes> getDeleteUserStoryMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "deleteUserStory",
       requestType = co.overlead.gRPC.DeleteUserStoryReq.class,
-      responseType = co.overlead.gRPC.DeleteUserStoryRes.class,
+      responseType = co.overlead.gRPC.UserStoryRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteUserStoryReq,
-      co.overlead.gRPC.DeleteUserStoryRes> getDeleteUserStoryMethod() {
-    io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteUserStoryReq, co.overlead.gRPC.DeleteUserStoryRes> getDeleteUserStoryMethod;
-    if ((getDeleteUserStoryMethod = UserstoryGrpc.getDeleteUserStoryMethod) == null) {
-      synchronized (UserstoryGrpc.class) {
-        if ((getDeleteUserStoryMethod = UserstoryGrpc.getDeleteUserStoryMethod) == null) {
-          UserstoryGrpc.getDeleteUserStoryMethod = getDeleteUserStoryMethod = 
-              io.grpc.MethodDescriptor.<co.overlead.gRPC.DeleteUserStoryReq, co.overlead.gRPC.DeleteUserStoryRes>newBuilder()
+      co.overlead.gRPC.UserStoryRes> getDeleteUserStoryMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.DeleteUserStoryReq, co.overlead.gRPC.UserStoryRes> getDeleteUserStoryMethod;
+    if ((getDeleteUserStoryMethod = UserStoryGrpc.getDeleteUserStoryMethod) == null) {
+      synchronized (UserStoryGrpc.class) {
+        if ((getDeleteUserStoryMethod = UserStoryGrpc.getDeleteUserStoryMethod) == null) {
+          UserStoryGrpc.getDeleteUserStoryMethod = getDeleteUserStoryMethod = 
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.DeleteUserStoryReq, co.overlead.gRPC.UserStoryRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "userstory.Userstory", "deleteUserStory"))
+                  "userstory.UserStory", "deleteUserStory"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.DeleteUserStoryReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.DeleteUserStoryRes.getDefaultInstance()))
-                  .setSchemaDescriptor(new UserstoryMethodDescriptorSupplier("deleteUserStory"))
+                  co.overlead.gRPC.UserStoryRes.getDefaultInstance()))
+                  .setSchemaDescriptor(new UserStoryMethodDescriptorSupplier("deleteUserStory"))
                   .build();
           }
         }
@@ -134,20 +134,20 @@ public final class UserstoryGrpc {
   public static io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllUserStoryReq,
       co.overlead.gRPC.GetAllUserStoryRes> getGetAllUserStoryMethod() {
     io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllUserStoryReq, co.overlead.gRPC.GetAllUserStoryRes> getGetAllUserStoryMethod;
-    if ((getGetAllUserStoryMethod = UserstoryGrpc.getGetAllUserStoryMethod) == null) {
-      synchronized (UserstoryGrpc.class) {
-        if ((getGetAllUserStoryMethod = UserstoryGrpc.getGetAllUserStoryMethod) == null) {
-          UserstoryGrpc.getGetAllUserStoryMethod = getGetAllUserStoryMethod = 
+    if ((getGetAllUserStoryMethod = UserStoryGrpc.getGetAllUserStoryMethod) == null) {
+      synchronized (UserStoryGrpc.class) {
+        if ((getGetAllUserStoryMethod = UserStoryGrpc.getGetAllUserStoryMethod) == null) {
+          UserStoryGrpc.getGetAllUserStoryMethod = getGetAllUserStoryMethod = 
               io.grpc.MethodDescriptor.<co.overlead.gRPC.GetAllUserStoryReq, co.overlead.gRPC.GetAllUserStoryRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(
-                  "userstory.Userstory", "getAllUserStory"))
+                  "userstory.UserStory", "getAllUserStory"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.GetAllUserStoryReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.GetAllUserStoryRes.getDefaultInstance()))
-                  .setSchemaDescriptor(new UserstoryMethodDescriptorSupplier("getAllUserStory"))
+                  .setSchemaDescriptor(new UserStoryMethodDescriptorSupplier("getAllUserStory"))
                   .build();
           }
         }
@@ -158,48 +158,48 @@ public final class UserstoryGrpc {
   /**
    * Creates a new async stub that supports all call types for the service
    */
-  public static UserstoryStub newStub(io.grpc.Channel channel) {
-    return new UserstoryStub(channel);
+  public static UserStoryStub newStub(io.grpc.Channel channel) {
+    return new UserStoryStub(channel);
   }
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
-  public static UserstoryBlockingStub newBlockingStub(
+  public static UserStoryBlockingStub newBlockingStub(
       io.grpc.Channel channel) {
-    return new UserstoryBlockingStub(channel);
+    return new UserStoryBlockingStub(channel);
   }
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
-  public static UserstoryFutureStub newFutureStub(
+  public static UserStoryFutureStub newFutureStub(
       io.grpc.Channel channel) {
-    return new UserstoryFutureStub(channel);
+    return new UserStoryFutureStub(channel);
   }
 
   /**
    */
-  public static abstract class UserstoryImplBase implements io.grpc.BindableService {
+  public static abstract class UserStoryImplBase implements io.grpc.BindableService {
 
     /**
      */
     public void addNewUserStory(co.overlead.gRPC.AddNewUserStoryReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.AddNewUserStoryRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.UserStoryRes> responseObserver) {
       asyncUnimplementedUnaryCall(getAddNewUserStoryMethod(), responseObserver);
     }
 
     /**
      */
     public void updateUserStory(co.overlead.gRPC.UpdateUserStoryReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.UpdateUserStoryRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.UserStoryRes> responseObserver) {
       asyncUnimplementedUnaryCall(getUpdateUserStoryMethod(), responseObserver);
     }
 
     /**
      */
     public void deleteUserStory(co.overlead.gRPC.DeleteUserStoryReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.DeleteUserStoryRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.UserStoryRes> responseObserver) {
       asyncUnimplementedUnaryCall(getDeleteUserStoryMethod(), responseObserver);
     }
 
@@ -217,21 +217,21 @@ public final class UserstoryGrpc {
             asyncUnaryCall(
               new MethodHandlers<
                 co.overlead.gRPC.AddNewUserStoryReq,
-                co.overlead.gRPC.AddNewUserStoryRes>(
+                co.overlead.gRPC.UserStoryRes>(
                   this, METHODID_ADD_NEW_USER_STORY)))
           .addMethod(
             getUpdateUserStoryMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 co.overlead.gRPC.UpdateUserStoryReq,
-                co.overlead.gRPC.UpdateUserStoryRes>(
+                co.overlead.gRPC.UserStoryRes>(
                   this, METHODID_UPDATE_USER_STORY)))
           .addMethod(
             getDeleteUserStoryMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 co.overlead.gRPC.DeleteUserStoryReq,
-                co.overlead.gRPC.DeleteUserStoryRes>(
+                co.overlead.gRPC.UserStoryRes>(
                   this, METHODID_DELETE_USER_STORY)))
           .addMethod(
             getGetAllUserStoryMethod(),
@@ -246,26 +246,26 @@ public final class UserstoryGrpc {
 
   /**
    */
-  public static final class UserstoryStub extends io.grpc.stub.AbstractStub<UserstoryStub> {
-    private UserstoryStub(io.grpc.Channel channel) {
+  public static final class UserStoryStub extends io.grpc.stub.AbstractStub<UserStoryStub> {
+    private UserStoryStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private UserstoryStub(io.grpc.Channel channel,
+    private UserStoryStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected UserstoryStub build(io.grpc.Channel channel,
+    protected UserStoryStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new UserstoryStub(channel, callOptions);
+      return new UserStoryStub(channel, callOptions);
     }
 
     /**
      */
     public void addNewUserStory(co.overlead.gRPC.AddNewUserStoryReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.AddNewUserStoryRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.UserStoryRes> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getAddNewUserStoryMethod(), getCallOptions()), request, responseObserver);
     }
@@ -273,7 +273,7 @@ public final class UserstoryGrpc {
     /**
      */
     public void updateUserStory(co.overlead.gRPC.UpdateUserStoryReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.UpdateUserStoryRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.UserStoryRes> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getUpdateUserStoryMethod(), getCallOptions()), request, responseObserver);
     }
@@ -281,7 +281,7 @@ public final class UserstoryGrpc {
     /**
      */
     public void deleteUserStory(co.overlead.gRPC.DeleteUserStoryReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.DeleteUserStoryRes> responseObserver) {
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.UserStoryRes> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getDeleteUserStoryMethod(), getCallOptions()), request, responseObserver);
     }
@@ -297,39 +297,39 @@ public final class UserstoryGrpc {
 
   /**
    */
-  public static final class UserstoryBlockingStub extends io.grpc.stub.AbstractStub<UserstoryBlockingStub> {
-    private UserstoryBlockingStub(io.grpc.Channel channel) {
+  public static final class UserStoryBlockingStub extends io.grpc.stub.AbstractStub<UserStoryBlockingStub> {
+    private UserStoryBlockingStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private UserstoryBlockingStub(io.grpc.Channel channel,
+    private UserStoryBlockingStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected UserstoryBlockingStub build(io.grpc.Channel channel,
+    protected UserStoryBlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new UserstoryBlockingStub(channel, callOptions);
+      return new UserStoryBlockingStub(channel, callOptions);
     }
 
     /**
      */
-    public co.overlead.gRPC.AddNewUserStoryRes addNewUserStory(co.overlead.gRPC.AddNewUserStoryReq request) {
+    public co.overlead.gRPC.UserStoryRes addNewUserStory(co.overlead.gRPC.AddNewUserStoryReq request) {
       return blockingUnaryCall(
           getChannel(), getAddNewUserStoryMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public co.overlead.gRPC.UpdateUserStoryRes updateUserStory(co.overlead.gRPC.UpdateUserStoryReq request) {
+    public co.overlead.gRPC.UserStoryRes updateUserStory(co.overlead.gRPC.UpdateUserStoryReq request) {
       return blockingUnaryCall(
           getChannel(), getUpdateUserStoryMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public co.overlead.gRPC.DeleteUserStoryRes deleteUserStory(co.overlead.gRPC.DeleteUserStoryReq request) {
+    public co.overlead.gRPC.UserStoryRes deleteUserStory(co.overlead.gRPC.DeleteUserStoryReq request) {
       return blockingUnaryCall(
           getChannel(), getDeleteUserStoryMethod(), getCallOptions(), request);
     }
@@ -345,25 +345,25 @@ public final class UserstoryGrpc {
 
   /**
    */
-  public static final class UserstoryFutureStub extends io.grpc.stub.AbstractStub<UserstoryFutureStub> {
-    private UserstoryFutureStub(io.grpc.Channel channel) {
+  public static final class UserStoryFutureStub extends io.grpc.stub.AbstractStub<UserStoryFutureStub> {
+    private UserStoryFutureStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private UserstoryFutureStub(io.grpc.Channel channel,
+    private UserStoryFutureStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected UserstoryFutureStub build(io.grpc.Channel channel,
+    protected UserStoryFutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new UserstoryFutureStub(channel, callOptions);
+      return new UserStoryFutureStub(channel, callOptions);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.AddNewUserStoryRes> addNewUserStory(
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.UserStoryRes> addNewUserStory(
         co.overlead.gRPC.AddNewUserStoryReq request) {
       return futureUnaryCall(
           getChannel().newCall(getAddNewUserStoryMethod(), getCallOptions()), request);
@@ -371,7 +371,7 @@ public final class UserstoryGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.UpdateUserStoryRes> updateUserStory(
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.UserStoryRes> updateUserStory(
         co.overlead.gRPC.UpdateUserStoryReq request) {
       return futureUnaryCall(
           getChannel().newCall(getUpdateUserStoryMethod(), getCallOptions()), request);
@@ -379,7 +379,7 @@ public final class UserstoryGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.DeleteUserStoryRes> deleteUserStory(
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.UserStoryRes> deleteUserStory(
         co.overlead.gRPC.DeleteUserStoryReq request) {
       return futureUnaryCall(
           getChannel().newCall(getDeleteUserStoryMethod(), getCallOptions()), request);
@@ -396,10 +396,10 @@ public final class UserstoryGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final UserstoryImplBase serviceImpl;
+    private final UserStoryImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(UserstoryImplBase serviceImpl, int methodId) {
+    MethodHandlers(UserStoryImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -410,15 +410,15 @@ public final class UserstoryGrpc {
       switch (methodId) {
         case METHODID_ADD_NEW_USER_STORY:
           serviceImpl.addNewUserStory((co.overlead.gRPC.AddNewUserStoryReq) request,
-              (io.grpc.stub.StreamObserver<co.overlead.gRPC.AddNewUserStoryRes>) responseObserver);
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.UserStoryRes>) responseObserver);
           break;
         case METHODID_UPDATE_USER_STORY:
           serviceImpl.updateUserStory((co.overlead.gRPC.UpdateUserStoryReq) request,
-              (io.grpc.stub.StreamObserver<co.overlead.gRPC.UpdateUserStoryRes>) responseObserver);
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.UserStoryRes>) responseObserver);
           break;
         case METHODID_DELETE_USER_STORY:
           serviceImpl.deleteUserStory((co.overlead.gRPC.DeleteUserStoryReq) request,
-              (io.grpc.stub.StreamObserver<co.overlead.gRPC.DeleteUserStoryRes>) responseObserver);
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.UserStoryRes>) responseObserver);
           break;
         case METHODID_GET_ALL_USER_STORY:
           serviceImpl.getAllUserStory((co.overlead.gRPC.GetAllUserStoryReq) request,
@@ -440,9 +440,9 @@ public final class UserstoryGrpc {
     }
   }
 
-  private static abstract class UserstoryBaseDescriptorSupplier
+  private static abstract class UserStoryBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    UserstoryBaseDescriptorSupplier() {}
+    UserStoryBaseDescriptorSupplier() {}
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
@@ -451,21 +451,21 @@ public final class UserstoryGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("Userstory");
+      return getFileDescriptor().findServiceByName("UserStory");
     }
   }
 
-  private static final class UserstoryFileDescriptorSupplier
-      extends UserstoryBaseDescriptorSupplier {
-    UserstoryFileDescriptorSupplier() {}
+  private static final class UserStoryFileDescriptorSupplier
+      extends UserStoryBaseDescriptorSupplier {
+    UserStoryFileDescriptorSupplier() {}
   }
 
-  private static final class UserstoryMethodDescriptorSupplier
-      extends UserstoryBaseDescriptorSupplier
+  private static final class UserStoryMethodDescriptorSupplier
+      extends UserStoryBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
     private final String methodName;
 
-    UserstoryMethodDescriptorSupplier(String methodName) {
+    UserStoryMethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 
@@ -480,11 +480,11 @@ public final class UserstoryGrpc {
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
     if (result == null) {
-      synchronized (UserstoryGrpc.class) {
+      synchronized (UserStoryGrpc.class) {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new UserstoryFileDescriptorSupplier())
+              .setSchemaDescriptor(new UserStoryFileDescriptorSupplier())
               .addMethod(getAddNewUserStoryMethod())
               .addMethod(getUpdateUserStoryMethod())
               .addMethod(getDeleteUserStoryMethod())

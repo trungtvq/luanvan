@@ -20,30 +20,20 @@ public final class userstory {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_userstory_AddNewUserStoryReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_userstory_AddNewUserStoryRes_descriptor;
+    internal_static_userstory_UserStoryRes_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_userstory_AddNewUserStoryRes_fieldAccessorTable;
+      internal_static_userstory_UserStoryRes_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_userstory_UpdateUserStoryReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_userstory_UpdateUserStoryReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_userstory_UpdateUserStoryRes_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_userstory_UpdateUserStoryRes_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_userstory_DeleteUserStoryReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_userstory_DeleteUserStoryReq_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_userstory_DeleteUserStoryRes_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_userstory_DeleteUserStoryRes_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_userstory_GetAllUserStoryReq_descriptor;
   static final 
@@ -66,32 +56,28 @@ public final class userstory {
       "\n\017userstory.proto\022\tuserstory\"~\n\022AddNewUs" +
       "erStoryReq\022\014\n\004name\030\007 \001(\t\022\017\n\007adderId\030\001 \001(" +
       "\t\022\021\n\tprojectId\030\002 \001(\t\022\014\n\004role\030\003 \001(\t\022\014\n\004wa" +
-      "nt\030\004 \001(\t\022\n\n\002so\030\005 \001(\t\022\016\n\006cookie\030\006 \001(\t\"?\n\022" +
-      "AddNewUserStoryRes\022\016\n\006status\030\001 \001(\t\022\n\n\002id" +
-      "\030\002 \001(\t\022\r\n\005error\030\003 \001(\t\"\207\001\n\022UpdateUserStor" +
-      "yReq\022\021\n\tupdaterId\030\001 \001(\t\022\021\n\tprojectId\030\002 \001" +
-      "(\t\022\023\n\013userstoryId\030\003 \001(\t\022\014\n\004role\030\004 \001(\t\022\014\n" +
-      "\004want\030\005 \001(\t\022\n\n\002so\030\006 \001(\t\022\016\n\006cookie\030\007 \001(\t\"" +
-      "3\n\022UpdateUserStoryRes\022\016\n\006status\030\001 \001(\t\022\r\n" +
-      "\005error\030\002 \001(\t\"_\n\022DeleteUserStoryReq\022\021\n\tde" +
-      "leterId\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\023\n\013user" +
-      "storyId\030\003 \001(\t\022\016\n\006cookie\030\004 \001(\t\"3\n\022DeleteU" +
-      "serStoryRes\022\016\n\006status\030\001 \001(\t\022\r\n\005error\030\002 \001" +
-      "(\t\"I\n\022GetAllUserStoryReq\022\020\n\010getterId\030\001 \001" +
-      "(\t\022\021\n\tprojectId\030\002 \001(\t\022\016\n\006cookie\030\003 \001(\t\"[\n" +
-      "\022GetAllUserStoryRes\022\014\n\004role\030\001 \001(\t\022\014\n\004wan" +
-      "t\030\002 \001(\t\022\n\n\002so\030\003 \001(\t\022\016\n\006status\030\004 \001(\t\022\r\n\005e" +
-      "rror\030\005 \001(\t2\331\002\n\tUserstory\022Q\n\017addNewUserSt" +
-      "ory\022\035.userstory.AddNewUserStoryReq\032\035.use" +
-      "rstory.AddNewUserStoryRes\"\000\022Q\n\017updateUse" +
-      "rStory\022\035.userstory.UpdateUserStoryReq\032\035." +
-      "userstory.UpdateUserStoryRes\"\000\022Q\n\017delete" +
-      "UserStory\022\035.userstory.DeleteUserStoryReq" +
-      "\032\035.userstory.DeleteUserStoryRes\"\000\022S\n\017get" +
-      "AllUserStory\022\035.userstory.GetAllUserStory" +
-      "Req\032\035.userstory.GetAllUserStoryRes\"\0000\001B$" +
-      "\n\020co.overlead.gRPCB\tuserstoryP\001\242\002\002usb\006pr" +
-      "oto3"
+      "nt\030\004 \001(\t\022\n\n\002so\030\005 \001(\t\022\016\n\006cookie\030\006 \001(\t\"9\n\014" +
+      "UserStoryRes\022\016\n\006status\030\001 \001(\t\022\n\n\002id\030\002 \001(\t" +
+      "\022\r\n\005error\030\003 \001(\t\"\207\001\n\022UpdateUserStoryReq\022\021" +
+      "\n\tupdaterId\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\023\n\013" +
+      "userStoryId\030\003 \001(\t\022\014\n\004role\030\004 \001(\t\022\014\n\004want\030" +
+      "\005 \001(\t\022\n\n\002so\030\006 \001(\t\022\016\n\006cookie\030\007 \001(\t\"_\n\022Del" +
+      "eteUserStoryReq\022\021\n\tdeleterId\030\001 \001(\t\022\021\n\tpr" +
+      "ojectId\030\002 \001(\t\022\023\n\013userStoryId\030\003 \001(\t\022\016\n\006co" +
+      "okie\030\004 \001(\t\"I\n\022GetAllUserStoryReq\022\020\n\010gett" +
+      "erId\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\016\n\006cookie\030" +
+      "\003 \001(\t\"[\n\022GetAllUserStoryRes\022\014\n\004role\030\001 \001(" +
+      "\t\022\014\n\004want\030\002 \001(\t\022\n\n\002so\030\003 \001(\t\022\016\n\006status\030\004 " +
+      "\001(\t\022\r\n\005error\030\005 \001(\t2\307\002\n\tUserStory\022K\n\017addN" +
+      "ewUserStory\022\035.userstory.AddNewUserStoryR" +
+      "eq\032\027.userstory.UserStoryRes\"\000\022K\n\017updateU" +
+      "serStory\022\035.userstory.UpdateUserStoryReq\032" +
+      "\027.userstory.UserStoryRes\"\000\022K\n\017deleteUser" +
+      "Story\022\035.userstory.DeleteUserStoryReq\032\027.u" +
+      "serstory.UserStoryRes\"\000\022S\n\017getAllUserSto" +
+      "ry\022\035.userstory.GetAllUserStoryReq\032\035.user" +
+      "story.GetAllUserStoryRes\"\0000\001B$\n\020co.overl" +
+      "ead.gRPCB\tuserstoryP\001\242\002\002usb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -111,44 +97,32 @@ public final class userstory {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_userstory_AddNewUserStoryReq_descriptor,
         new java.lang.String[] { "Name", "AdderId", "ProjectId", "Role", "Want", "So", "Cookie", });
-    internal_static_userstory_AddNewUserStoryRes_descriptor =
+    internal_static_userstory_UserStoryRes_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_userstory_AddNewUserStoryRes_fieldAccessorTable = new
+    internal_static_userstory_UserStoryRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_userstory_AddNewUserStoryRes_descriptor,
+        internal_static_userstory_UserStoryRes_descriptor,
         new java.lang.String[] { "Status", "Id", "Error", });
     internal_static_userstory_UpdateUserStoryReq_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_userstory_UpdateUserStoryReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_userstory_UpdateUserStoryReq_descriptor,
-        new java.lang.String[] { "UpdaterId", "ProjectId", "UserstoryId", "Role", "Want", "So", "Cookie", });
-    internal_static_userstory_UpdateUserStoryRes_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_userstory_UpdateUserStoryRes_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_userstory_UpdateUserStoryRes_descriptor,
-        new java.lang.String[] { "Status", "Error", });
+        new java.lang.String[] { "UpdaterId", "ProjectId", "UserStoryId", "Role", "Want", "So", "Cookie", });
     internal_static_userstory_DeleteUserStoryReq_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_userstory_DeleteUserStoryReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_userstory_DeleteUserStoryReq_descriptor,
-        new java.lang.String[] { "DeleterId", "ProjectId", "UserstoryId", "Cookie", });
-    internal_static_userstory_DeleteUserStoryRes_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_userstory_DeleteUserStoryRes_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_userstory_DeleteUserStoryRes_descriptor,
-        new java.lang.String[] { "Status", "Error", });
+        new java.lang.String[] { "DeleterId", "ProjectId", "UserStoryId", "Cookie", });
     internal_static_userstory_GetAllUserStoryReq_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_userstory_GetAllUserStoryReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_userstory_GetAllUserStoryReq_descriptor,
         new java.lang.String[] { "GetterId", "ProjectId", "Cookie", });
     internal_static_userstory_GetAllUserStoryRes_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_userstory_GetAllUserStoryRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_userstory_GetAllUserStoryRes_descriptor,

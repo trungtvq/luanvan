@@ -32,6 +32,7 @@ public class Velocity {
                                 .setNote(i.get("note").toString())
                                 .setStatus(i.get("status").toString())
                                 .setError(i.get("error").toString())
+
                                 .build());
                     });
                 }

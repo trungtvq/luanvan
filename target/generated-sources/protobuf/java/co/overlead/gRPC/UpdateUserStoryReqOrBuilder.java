@@ -28,14 +28,14 @@ public interface UpdateUserStoryReqOrBuilder extends
       getProjectIdBytes();
 
   /**
-   * <code>string userstoryId = 3;</code>
+   * <code>string userStoryId = 3;</code>
    */
-  java.lang.String getUserstoryId();
+  java.lang.String getUserStoryId();
   /**
-   * <code>string userstoryId = 3;</code>
+   * <code>string userStoryId = 3;</code>
    */
   com.google.protobuf.ByteString
-      getUserstoryIdBytes();
+      getUserStoryIdBytes();
 
   /**
    * <code>string role = 4;</code>

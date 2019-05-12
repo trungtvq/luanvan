@@ -6,10 +6,10 @@ option java_outer_classname = "userstory";
 option objc_class_prefix = "us";
 package userstory;
 
-service Userstory{
-    rpc addNewUserStory(AddNewUserStoryReq) returns (AddNewUserStoryRes) {}
-    rpc updateUserStory(UpdateUserStoryReq) returns (UpdateUserStoryRes){}
-    rpc deleteUserStory(DeleteUserStoryReq) returns (DeleteUserStoryRes){}
+service UserStory{
+    rpc addNewUserStory(AddNewUserStoryReq) returns (UserStoryRes) {}
+    rpc updateUserStory(UpdateUserStoryReq) returns (UserStoryRes){}
+    rpc deleteUserStory(DeleteUserStoryReq) returns (UserStoryRes){}
 	rpc getAllUserStory(GetAllUserStoryReq) returns (stream GetAllUserStoryRes){}
 }
 
@@ -22,7 +22,7 @@ message AddNewUserStoryReq{
 	string so = 5;
 	string cookie = 6;
 }
-message AddNewUserStoryRes{
+message UserStoryRes{
     string status = 1;
 	string id = 2;
 	string error = 3;
@@ -31,26 +31,18 @@ message AddNewUserStoryRes{
 message UpdateUserStoryReq{
 	string updaterId = 1;
 	string projectId = 2;
-	string userstoryId = 3;
+	string userStoryId = 3;
 	string role = 4;
 	string want = 5;
 	string so = 6;
 	string cookie = 7;
 }
-message UpdateUserStoryRes{
-    string status = 1;
-	string error = 2;
-}
 
 message DeleteUserStoryReq{
     string deleterId = 1;
     string projectId = 2;
-	string userstoryId = 3;
+	string userStoryId = 3;
 	string cookie = 4;
-}
-message DeleteUserStoryRes{
-    string status = 1;
-	string error = 2;
 }
 
 message GetAllUserStoryReq{

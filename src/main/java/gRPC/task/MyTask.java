@@ -7,6 +7,7 @@ import com.mongodb.client.MongoCollection;
 import database.Mongod;
 import io.grpc.stub.StreamObserver;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class MyTask {
                 responseObserver.onCompleted();
             } else {
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("project");
-                List<Document> foundDocument = coll.find(new Document("projectId",request.getProjectId()).append("requesterId",request.getRequesterId())).into(new ArrayList<Document>());
+                List<Document> foundDocument = coll.find(new Document("_id",new ObjectId( request.getProjectId())).append("requesterId",request.getRequesterId())).into(new ArrayList<Document>());
 
                 if (foundDocument.size()==0){
 

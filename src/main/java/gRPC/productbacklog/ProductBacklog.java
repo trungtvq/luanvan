@@ -6,6 +6,7 @@ import database.Mongod;
 import io.grpc.stub.StreamObserver;
 import org.bson.*;
 import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +19,6 @@ public class ProductBacklog {
 
     public static class ProductBacklogImpl extends ProductBacklogGrpc.ProductBacklogImplBase {
         public void makeResponseForUpdateSuccess(StreamObserver res, String id) {
-
             res.onNext(ProductBacklogRes.newBuilder().setStatus("SUCCESS").setError("FALSE").setProductBacklogId(id).build());
             res.onCompleted();
         }
@@ -43,7 +43,7 @@ public class ProductBacklog {
         public Document findProductBacklogWithId(String projectId, String id) {
             MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("productbacklog");
             List<Document> newBacklog = coll.find(new Document()
-                    .append("id", id)
+                    .append("_id", new ObjectId(id))
                     .append("projectId", projectId)
             ).into(new ArrayList<>());
             if (newBacklog.size() == 1) {
@@ -57,12 +57,11 @@ public class ProductBacklog {
             if (!isValidAuth(request.getRequesterId(), request.getCookie())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
-
                 MongoCollection<Document> collProject = Mongod.getOverleadConnection().getCollection("project");
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("productbacklog");
 
 
-                List<Document> project = collProject.find(new Document("projectId", request.getProjectId())).into(new ArrayList<Document>());
+                List<Document> project = collProject.find(new Document("_id",new ObjectId(request.getProjectId()))).into(new ArrayList<Document>());
 
                 if (project.size() == 0) {
                     makeResponseForFailed(responseObserver, "NOT_EXIST_PROJECT", "FALSE");
@@ -93,12 +92,12 @@ public class ProductBacklog {
 
                             //create query
                             Document bson = new Document("backlogs", new BsonArray(Arrays.asList(new BsonString(id))));
-                            collProject.findOneAndUpdate(new Document("_id", request.getProjectId()), bson);
+                            collProject.findOneAndUpdate(new Document("_id",new ObjectId( request.getProjectId())),new Document("$set",bson));
                         } else {
                             //add query
                             Document listItem = new Document("backlogs", id);
                             Document updateQuery = new Document("$push", listItem);
-                            collProject.findOneAndUpdate(new Document("_id", request.getProjectId()), updateQuery);
+                            collProject.findOneAndUpdate(new Document("_id",new ObjectId(request.getProjectId()) ), updateQuery);
                         }
                         makeResponseForUpdateSuccess(responseObserver, id);
                     }
@@ -118,7 +117,7 @@ public class ProductBacklog {
                 if (found != null) {
                     makeResponseForFailed(responseObserver, "NOT_FOUND_DATA", "FALSE");
                 } else {
-                    coll.findOneAndUpdate(new Document().append("_id",request.getProductBacklogId()).append("projectId",request.getProjectId()),
+                    coll.findOneAndUpdate(new Document().append("_id",new ObjectId( request.getProductBacklogId())).append("projectId",request.getProjectId()),
                             new Document().append("title", request.getTitle())
                                     .append("projectId", request.getProjectId())
                                     .append("role", request.getRole())
@@ -147,11 +146,12 @@ public class ProductBacklog {
 
                 Document found = findProductBacklogWithId(request.getProjectId(), request.getProductBacklogId());
                 //create query
-                if (found != null) {
+                if (found == null) {
                     makeResponseForFailed(responseObserver, "NOT_FOUND_DATA", "FALSE");
                 } else {
                     Document deleteQuery = new Document("$pull", new Document("backlogs",request.getProductBacklogId()));
-                    collProject.findOneAndUpdate(new Document("projectId",request.getProjectId()),deleteQuery);
+                    collProject.findOneAndUpdate(new Document("_id",new ObjectId(request.getProjectId()) ),deleteQuery);
+                    coll.findOneAndDelete(new Document("_id",new ObjectId(request.getProductBacklogId())));
                     //TODO: Add list log delete
                     makeResponseForUpdateSuccess(responseObserver,request.getProductBacklogId());
                 }
@@ -169,9 +169,9 @@ public class ProductBacklog {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("productbacklog");
-                MongoCollection<Document> collProject = Mongod.getOverleadConnection().getCollection("productbacklog");
+                MongoCollection<Document> collProject = Mongod.getOverleadConnection().getCollection("project");
 
-                List<Document> listId=collProject.find(new Document("_id",request.getProjectId())).into(new ArrayList<>());
+                List<Document> listId=collProject.find(new Document("_id",new ObjectId(request.getProjectId()))).into(new ArrayList<>());
                 if (listId.size()==0){
                     makeResponseForFailed(responseObserver,"NOT_FOUND_PROJECT","FALSE");
                 }else{
@@ -180,7 +180,7 @@ public class ProductBacklog {
                         makeResponseForFailed(responseObserver,"EMPTY","FALSE");
                     }else{
                         re.forEach(i->{
-                            Document r= coll.find(new Document("_id",i)).into(new ArrayList<>()).get(0);
+                            Document r= coll.find(new Document("_id",new ObjectId(i))).into(new ArrayList<>()).get(0);
                             responseObserver.onNext(GetAllProductBacklogRes.newBuilder()
                                     .setProductBacklogId(i)
                                     .setRole(r.get("role").toString())
@@ -200,5 +200,4 @@ public class ProductBacklog {
             }
         }
     }
-
 }

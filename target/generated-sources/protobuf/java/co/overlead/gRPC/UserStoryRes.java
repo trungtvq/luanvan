@@ -4,18 +4,18 @@
 package co.overlead.gRPC;
 
 /**
- * Protobuf type {@code userstory.AddNewUserStoryRes}
+ * Protobuf type {@code userstory.UserStoryRes}
  */
-public  final class AddNewUserStoryRes extends
+public  final class UserStoryRes extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:userstory.AddNewUserStoryRes)
-    AddNewUserStoryResOrBuilder {
+    // @@protoc_insertion_point(message_implements:userstory.UserStoryRes)
+    UserStoryResOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use AddNewUserStoryRes.newBuilder() to construct.
-  private AddNewUserStoryRes(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use UserStoryRes.newBuilder() to construct.
+  private UserStoryRes(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private AddNewUserStoryRes() {
+  private UserStoryRes() {
     status_ = "";
     id_ = "";
     error_ = "";
@@ -26,7 +26,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private AddNewUserStoryRes(
+  private UserStoryRes(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -84,15 +84,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return co.overlead.gRPC.userstory.internal_static_userstory_AddNewUserStoryRes_descriptor;
+    return co.overlead.gRPC.userstory.internal_static_userstory_UserStoryRes_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return co.overlead.gRPC.userstory.internal_static_userstory_AddNewUserStoryRes_fieldAccessorTable
+    return co.overlead.gRPC.userstory.internal_static_userstory_UserStoryRes_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            co.overlead.gRPC.AddNewUserStoryRes.class, co.overlead.gRPC.AddNewUserStoryRes.Builder.class);
+            co.overlead.gRPC.UserStoryRes.class, co.overlead.gRPC.UserStoryRes.Builder.class);
   }
 
   public static final int STATUS_FIELD_NUMBER = 1;
@@ -248,10 +248,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof co.overlead.gRPC.AddNewUserStoryRes)) {
+    if (!(obj instanceof co.overlead.gRPC.UserStoryRes)) {
       return super.equals(obj);
     }
-    co.overlead.gRPC.AddNewUserStoryRes other = (co.overlead.gRPC.AddNewUserStoryRes) obj;
+    co.overlead.gRPC.UserStoryRes other = (co.overlead.gRPC.UserStoryRes) obj;
 
     if (!getStatus()
         .equals(other.getStatus())) return false;
@@ -281,69 +281,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static co.overlead.gRPC.AddNewUserStoryRes parseFrom(
+  public static co.overlead.gRPC.UserStoryRes parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.AddNewUserStoryRes parseFrom(
+  public static co.overlead.gRPC.UserStoryRes parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.AddNewUserStoryRes parseFrom(
+  public static co.overlead.gRPC.UserStoryRes parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.AddNewUserStoryRes parseFrom(
+  public static co.overlead.gRPC.UserStoryRes parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.AddNewUserStoryRes parseFrom(byte[] data)
+  public static co.overlead.gRPC.UserStoryRes parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.AddNewUserStoryRes parseFrom(
+  public static co.overlead.gRPC.UserStoryRes parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.AddNewUserStoryRes parseFrom(java.io.InputStream input)
+  public static co.overlead.gRPC.UserStoryRes parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.AddNewUserStoryRes parseFrom(
+  public static co.overlead.gRPC.UserStoryRes parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static co.overlead.gRPC.AddNewUserStoryRes parseDelimitedFrom(java.io.InputStream input)
+  public static co.overlead.gRPC.UserStoryRes parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.AddNewUserStoryRes parseDelimitedFrom(
+  public static co.overlead.gRPC.UserStoryRes parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static co.overlead.gRPC.AddNewUserStoryRes parseFrom(
+  public static co.overlead.gRPC.UserStoryRes parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.AddNewUserStoryRes parseFrom(
+  public static co.overlead.gRPC.UserStoryRes parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -356,7 +356,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(co.overlead.gRPC.AddNewUserStoryRes prototype) {
+  public static Builder newBuilder(co.overlead.gRPC.UserStoryRes prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -372,26 +372,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code userstory.AddNewUserStoryRes}
+   * Protobuf type {@code userstory.UserStoryRes}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:userstory.AddNewUserStoryRes)
-      co.overlead.gRPC.AddNewUserStoryResOrBuilder {
+      // @@protoc_insertion_point(builder_implements:userstory.UserStoryRes)
+      co.overlead.gRPC.UserStoryResOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return co.overlead.gRPC.userstory.internal_static_userstory_AddNewUserStoryRes_descriptor;
+      return co.overlead.gRPC.userstory.internal_static_userstory_UserStoryRes_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return co.overlead.gRPC.userstory.internal_static_userstory_AddNewUserStoryRes_fieldAccessorTable
+      return co.overlead.gRPC.userstory.internal_static_userstory_UserStoryRes_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              co.overlead.gRPC.AddNewUserStoryRes.class, co.overlead.gRPC.AddNewUserStoryRes.Builder.class);
+              co.overlead.gRPC.UserStoryRes.class, co.overlead.gRPC.UserStoryRes.Builder.class);
     }
 
-    // Construct using co.overlead.gRPC.AddNewUserStoryRes.newBuilder()
+    // Construct using co.overlead.gRPC.UserStoryRes.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -421,17 +421,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return co.overlead.gRPC.userstory.internal_static_userstory_AddNewUserStoryRes_descriptor;
+      return co.overlead.gRPC.userstory.internal_static_userstory_UserStoryRes_descriptor;
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.AddNewUserStoryRes getDefaultInstanceForType() {
-      return co.overlead.gRPC.AddNewUserStoryRes.getDefaultInstance();
+    public co.overlead.gRPC.UserStoryRes getDefaultInstanceForType() {
+      return co.overlead.gRPC.UserStoryRes.getDefaultInstance();
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.AddNewUserStoryRes build() {
-      co.overlead.gRPC.AddNewUserStoryRes result = buildPartial();
+    public co.overlead.gRPC.UserStoryRes build() {
+      co.overlead.gRPC.UserStoryRes result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -439,8 +439,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.AddNewUserStoryRes buildPartial() {
-      co.overlead.gRPC.AddNewUserStoryRes result = new co.overlead.gRPC.AddNewUserStoryRes(this);
+    public co.overlead.gRPC.UserStoryRes buildPartial() {
+      co.overlead.gRPC.UserStoryRes result = new co.overlead.gRPC.UserStoryRes(this);
       result.status_ = status_;
       result.id_ = id_;
       result.error_ = error_;
@@ -482,16 +482,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof co.overlead.gRPC.AddNewUserStoryRes) {
-        return mergeFrom((co.overlead.gRPC.AddNewUserStoryRes)other);
+      if (other instanceof co.overlead.gRPC.UserStoryRes) {
+        return mergeFrom((co.overlead.gRPC.UserStoryRes)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(co.overlead.gRPC.AddNewUserStoryRes other) {
-      if (other == co.overlead.gRPC.AddNewUserStoryRes.getDefaultInstance()) return this;
+    public Builder mergeFrom(co.overlead.gRPC.UserStoryRes other) {
+      if (other == co.overlead.gRPC.UserStoryRes.getDefaultInstance()) return this;
       if (!other.getStatus().isEmpty()) {
         status_ = other.status_;
         onChanged();
@@ -519,11 +519,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      co.overlead.gRPC.AddNewUserStoryRes parsedMessage = null;
+      co.overlead.gRPC.UserStoryRes parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (co.overlead.gRPC.AddNewUserStoryRes) e.getUnfinishedMessage();
+        parsedMessage = (co.overlead.gRPC.UserStoryRes) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -752,41 +752,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:userstory.AddNewUserStoryRes)
+    // @@protoc_insertion_point(builder_scope:userstory.UserStoryRes)
   }
 
-  // @@protoc_insertion_point(class_scope:userstory.AddNewUserStoryRes)
-  private static final co.overlead.gRPC.AddNewUserStoryRes DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:userstory.UserStoryRes)
+  private static final co.overlead.gRPC.UserStoryRes DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new co.overlead.gRPC.AddNewUserStoryRes();
+    DEFAULT_INSTANCE = new co.overlead.gRPC.UserStoryRes();
   }
 
-  public static co.overlead.gRPC.AddNewUserStoryRes getDefaultInstance() {
+  public static co.overlead.gRPC.UserStoryRes getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<AddNewUserStoryRes>
-      PARSER = new com.google.protobuf.AbstractParser<AddNewUserStoryRes>() {
+  private static final com.google.protobuf.Parser<UserStoryRes>
+      PARSER = new com.google.protobuf.AbstractParser<UserStoryRes>() {
     @java.lang.Override
-    public AddNewUserStoryRes parsePartialFrom(
+    public UserStoryRes parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new AddNewUserStoryRes(input, extensionRegistry);
+      return new UserStoryRes(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<AddNewUserStoryRes> parser() {
+  public static com.google.protobuf.Parser<UserStoryRes> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<AddNewUserStoryRes> getParserForType() {
+  public com.google.protobuf.Parser<UserStoryRes> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public co.overlead.gRPC.AddNewUserStoryRes getDefaultInstanceForType() {
+  public co.overlead.gRPC.UserStoryRes getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

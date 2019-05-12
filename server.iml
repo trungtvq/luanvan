@@ -45,7 +45,6 @@
     <orderEntry type="library" name="Maven: io.grpc:grpc-protobuf-lite:1.20.0" level="project" />
     <orderEntry type="library" name="Maven: io.grpc:grpc-stub:1.20.0" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-sync:3.10.1" level="project" />
-    <orderEntry type="library" name="Maven: org.mongodb:bson:3.10.1" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-core:3.10.1" level="project" />
     <orderEntry type="library" name="Maven: io.lettuce:lettuce-core:5.1.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-common:4.1.33.Final" level="project" />
@@ -57,5 +56,6 @@
     <orderEntry type="library" name="Maven: io.projectreactor:reactor-core:3.2.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.imgscalr:imgscalr-lib:4.2" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:bson:3.10.1" level="project" />
   </component>
 </module>

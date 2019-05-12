@@ -13,6 +13,7 @@ import io.grpc.stub.StreamObserver;
 import org.bson.*;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -78,12 +79,10 @@ public class MyProject {
             } else {
                 //Todos: check projectname is exist
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("project");
-                List<Document> foundDocument = coll.find(new Document("ProjectId",request.getProjectId())).into(new ArrayList<Document>());
+                List<Document> foundDocument = coll.find(new Document("_id",new ObjectId(request.getProjectId()) )).into(new ArrayList<Document>());
                 if (foundDocument.size()==1){
-                    Document needUpdate=new Document(new Document("ProjectId",request.getProjectId()));
-
+                    Document needUpdate=new Document(new Document("_id",new ObjectId(request.getProjectId()) ));
                     Document listUpdate=new Document();
-
                     if (request.getStart()!=""){
                         listUpdate.append("start",request.getStart());
                     }
@@ -119,7 +118,7 @@ public class MyProject {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID","TRUE");
             } else {
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("project");
-                DeleteResult result = coll.deleteOne(new Document("ProjectId", request.getProjectId()).append("ownerId", request.getRequesterId()));
+                DeleteResult result = coll.deleteOne(new Document("_id",new ObjectId(request.getProjectId()) ).append("ownerId", request.getRequesterId()));
 
                 if (result.getDeletedCount() != 1) {
                     System.out.println("Size delete differ 1");

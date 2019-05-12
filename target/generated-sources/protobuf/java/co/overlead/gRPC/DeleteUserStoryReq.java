@@ -18,7 +18,7 @@ private static final long serialVersionUID = 0L;
   private DeleteUserStoryReq() {
     deleterId_ = "";
     projectId_ = "";
-    userstoryId_ = "";
+    userStoryId_ = "";
     cookie_ = "";
   }
 
@@ -61,7 +61,7 @@ private static final long serialVersionUID = 0L;
           case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            userstoryId_ = s;
+            userStoryId_ = s;
             break;
           }
           case 34: {
@@ -171,33 +171,33 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int USERSTORYID_FIELD_NUMBER = 3;
-  private volatile java.lang.Object userstoryId_;
+  private volatile java.lang.Object userStoryId_;
   /**
-   * <code>string userstoryId = 3;</code>
+   * <code>string userStoryId = 3;</code>
    */
-  public java.lang.String getUserstoryId() {
-    java.lang.Object ref = userstoryId_;
+  public java.lang.String getUserStoryId() {
+    java.lang.Object ref = userStoryId_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      userstoryId_ = s;
+      userStoryId_ = s;
       return s;
     }
   }
   /**
-   * <code>string userstoryId = 3;</code>
+   * <code>string userStoryId = 3;</code>
    */
   public com.google.protobuf.ByteString
-      getUserstoryIdBytes() {
-    java.lang.Object ref = userstoryId_;
+      getUserStoryIdBytes() {
+    java.lang.Object ref = userStoryId_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      userstoryId_ = b;
+      userStoryId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -258,8 +258,8 @@ private static final long serialVersionUID = 0L;
     if (!getProjectIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, projectId_);
     }
-    if (!getUserstoryIdBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, userstoryId_);
+    if (!getUserStoryIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, userStoryId_);
     }
     if (!getCookieBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, cookie_);
@@ -279,8 +279,8 @@ private static final long serialVersionUID = 0L;
     if (!getProjectIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, projectId_);
     }
-    if (!getUserstoryIdBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, userstoryId_);
+    if (!getUserStoryIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, userStoryId_);
     }
     if (!getCookieBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, cookie_);
@@ -304,8 +304,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getDeleterId())) return false;
     if (!getProjectId()
         .equals(other.getProjectId())) return false;
-    if (!getUserstoryId()
-        .equals(other.getUserstoryId())) return false;
+    if (!getUserStoryId()
+        .equals(other.getUserStoryId())) return false;
     if (!getCookie()
         .equals(other.getCookie())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -324,7 +324,7 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + PROJECTID_FIELD_NUMBER;
     hash = (53 * hash) + getProjectId().hashCode();
     hash = (37 * hash) + USERSTORYID_FIELD_NUMBER;
-    hash = (53 * hash) + getUserstoryId().hashCode();
+    hash = (53 * hash) + getUserStoryId().hashCode();
     hash = (37 * hash) + COOKIE_FIELD_NUMBER;
     hash = (53 * hash) + getCookie().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -464,7 +464,7 @@ private static final long serialVersionUID = 0L;
 
       projectId_ = "";
 
-      userstoryId_ = "";
+      userStoryId_ = "";
 
       cookie_ = "";
 
@@ -496,7 +496,7 @@ private static final long serialVersionUID = 0L;
       co.overlead.gRPC.DeleteUserStoryReq result = new co.overlead.gRPC.DeleteUserStoryReq(this);
       result.deleterId_ = deleterId_;
       result.projectId_ = projectId_;
-      result.userstoryId_ = userstoryId_;
+      result.userStoryId_ = userStoryId_;
       result.cookie_ = cookie_;
       onBuilt();
       return result;
@@ -554,8 +554,8 @@ private static final long serialVersionUID = 0L;
         projectId_ = other.projectId_;
         onChanged();
       }
-      if (!other.getUserstoryId().isEmpty()) {
-        userstoryId_ = other.userstoryId_;
+      if (!other.getUserStoryId().isEmpty()) {
+        userStoryId_ = other.userStoryId_;
         onChanged();
       }
       if (!other.getCookie().isEmpty()) {
@@ -729,71 +729,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object userstoryId_ = "";
+    private java.lang.Object userStoryId_ = "";
     /**
-     * <code>string userstoryId = 3;</code>
+     * <code>string userStoryId = 3;</code>
      */
-    public java.lang.String getUserstoryId() {
-      java.lang.Object ref = userstoryId_;
+    public java.lang.String getUserStoryId() {
+      java.lang.Object ref = userStoryId_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        userstoryId_ = s;
+        userStoryId_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string userstoryId = 3;</code>
+     * <code>string userStoryId = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getUserstoryIdBytes() {
-      java.lang.Object ref = userstoryId_;
+        getUserStoryIdBytes() {
+      java.lang.Object ref = userStoryId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        userstoryId_ = b;
+        userStoryId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string userstoryId = 3;</code>
+     * <code>string userStoryId = 3;</code>
      */
-    public Builder setUserstoryId(
+    public Builder setUserStoryId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      userstoryId_ = value;
+      userStoryId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string userstoryId = 3;</code>
+     * <code>string userStoryId = 3;</code>
      */
-    public Builder clearUserstoryId() {
+    public Builder clearUserStoryId() {
       
-      userstoryId_ = getDefaultInstance().getUserstoryId();
+      userStoryId_ = getDefaultInstance().getUserStoryId();
       onChanged();
       return this;
     }
     /**
-     * <code>string userstoryId = 3;</code>
+     * <code>string userStoryId = 3;</code>
      */
-    public Builder setUserstoryIdBytes(
+    public Builder setUserStoryIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      userstoryId_ = value;
+      userStoryId_ = value;
       onChanged();
       return this;
     }

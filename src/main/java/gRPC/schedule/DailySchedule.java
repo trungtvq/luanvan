@@ -40,7 +40,7 @@ public class DailySchedule {
                 List<Document> re= coll.find(newDoc).into(new ArrayList<Document>());
                 if (re.size()==1){
                     MongoCollection<Document> collProject = Mongod.getOverleadConnection().getCollection("project");
-                    System.out.println(request.getProjectId());
+
                     Document project=collProject.find(new Document("_id",new ObjectId(request.getProjectId()))).into(new ArrayList<>()).get(0);
                     if (project.get("dailySchedule")==null){
                         //EMPTY dailySchedule
