@@ -19,8 +19,10 @@ public class Redis {
     //...
 
     public static final StatefulRedisConnection<String, String> USERCONNECTION = USERCLIENT.connect();
+
     public static final StatefulRedisConnection<String, String> SESSIONCONNECTION = SESSIONCLIENT.connect();
-    public static final StatefulRedisConnection<String, String> TOKENCONNECTION = SESSIONCLIENT.connect();
+
+    public static final StatefulRedisConnection<String, String> TOKENCONNECTION = TOKENCLIENT.connect();
 
 
     public static final RedisStringCommands USER_SYNC_COMMAND = USERCONNECTION.sync();

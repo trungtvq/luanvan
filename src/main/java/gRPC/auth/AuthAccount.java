@@ -15,15 +15,19 @@ import java.util.List;
 public class AuthAccount {
 
     public  static class AuthImpl extends AuthGrpc.AuthImplBase{
-        public List<Document> getUserFromDB(String username){
-            MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("auth");
-            List<Document> foundDocument = coll.find(new Document("username",username)).into(new ArrayList<Document>());
-            return foundDocument;
+        public static final MongoCollection<Document> coll=Mongod.getOverleadConnection().getCollection("auth");
+        public Document getUserFromDB(String username){
+            List<Document> foundDocument = coll.find(new Document("username",username)).into(new ArrayList<>());
+            if (foundDocument.size()!=0)
+            {
+                return foundDocument.get(0);
+            }
+            else return null;
         }
         public void makeResponseForSignInSuccess(StreamObserver res,String id){
             String newSession="newSession";
             setSession(id,newSession);
-            res.onNext(SignInRes.newBuilder().setStatus("SUCCESS").setError("FALSE").setSession(newSession).setId(id).build());
+            res.onNext(SignInRes.newBuilder().setStatus("SUCCESS").setError("FALSE").setSession(newSession).setId(id).setType("normal").build());
             res.onCompleted();
         }
         public  void setSession(String id,String session){
@@ -47,27 +51,18 @@ public class AuthAccount {
         }
 
         public void makeResponseAfterUpdate(StreamObserver res,String username){
-            List<Document> user = getUserFromDB(username);
-            //check size after insert
-            if (user.size()!=1){
-                System.out.println("After add size >1 or ==0");
-                makeResponseForSignInFailed(res,"WRONG_SIZE","TRUE");
+            Document user = getUserFromDB(username);
+            if (user==null){
+                makeResponseForSignInFailed(res,"FAIL_DB","TRUE");
             } else {
-                makeResponseForSignInSuccess(res,user.get(0).get("_id").toString());
+                makeResponseForSignInSuccess(res,user.get("_id").toString());
             }
         }
 
-
-
-
-
-
-
         @Override
         public void signUp(SignUpReq request, StreamObserver<SignInRes> responseObserver) {
-                MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("auth"); //get connect
-                List<Document> user = getUserFromDB(request.getUsername()); //check username is exist
-                if (user.size()==1){ //EXIST USERNAME
+                Document user = getUserFromDB(request.getUsername()); //check username is exist
+                if (user!=null){ //EXIST USERNAME
                     makeResponseForSignInFailed(responseObserver,"EXISTED_USERNAME","TRUE");
                 } else{
                     Document document = new Document("username", request.getUsername())
@@ -80,10 +75,9 @@ public class AuthAccount {
 
         @Override
         public void signInGoogle(SignInGoogleReq request, StreamObserver<SignInRes> responseObserver) {
-            MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("auth"); //get connect
-            List<Document> user = getUserFromDB(request.getUsername()); //check username is exist
-            if (user.size()==1){ //EXIST USERNAME => LOGIN
-                makeResponseForSignInSuccess(responseObserver,user.get(0).get("_id").toString());
+            Document user = getUserFromDB(request.getUsername()); //check username is exist
+            if (user!=null){ //EXIST USERNAME => LOGIN
+                makeResponseForSignInSuccess(responseObserver,user.get("_id").toString());
             } else{ //CREATE NEW ACCOUNT
                 Document document = new Document("username", request.getUsername())
                         .append("name", request.getName())
@@ -97,20 +91,19 @@ public class AuthAccount {
             if (getSession(request.getId(),request.getSession())){
                 makeResponseForSignInSuccess(responseObserver,request.getId());
             } else{
-                makeResponseForSignInFailed(responseObserver,"NOT_EXIST_SESION","TRUE");
+                makeResponseForSignInFailed(responseObserver,"INVALID_SESSION","TRUE");
             }
         }
 
         @Override
         public void signIn(SignInReq request, StreamObserver<SignInRes> responseObserver) {
-            List<Document> user=getUserFromDB(request.getUsername());
-            if (user.size()==1){
-                String pa=user.get(0).get("password").toString();
+            Document user=getUserFromDB(request.getUsername());
+            if (user!=null){
+                String pa=user.get("password").toString();
                 String pass=request.getPassword();
                 if (pa.equals(pass)){
-                    makeResponseForSignInSuccess(responseObserver,user.get(0).get("_id").toString());
+                    makeResponseForSignInSuccess(responseObserver,user.get("_id").toString());
                 }else{
-                    System.out.println("WRONG");
                     makeResponseForSignInFailed(responseObserver,"WRONG_PASSWORD","TRUE");
                 }
             } else {
@@ -119,16 +112,23 @@ public class AuthAccount {
         }
         @Override
         public void resetPassword(ResetReq request, StreamObserver<ResetRes> responseObserver) {
-                long random=Math.round(Math.random()*99999);
+
+                long random = Math.round (Math.random() * ( 99999 - 10000 )) + 10000;
+
                 try {
-                    EmailService.sendText("no-reply@overlead.co",request.getUsername(),"RESET PASSWORD","Your code is: "+random+". Expire in 5 minutes");
-                    if (Redis.TOKEN_SYNC_COMMAND.get(request.getUsername()).toString()==""){
-                        Redis.TOKEN_SYNC_COMMAND.set(request.getUsername(),random);
+                    if (Redis.TOKEN_SYNC_COMMAND.get(request.getUsername())==null){
+                        EmailService.sendText("no-reply@overlead.co",request.getUsername(),"RESET PASSWORD","Your code is: "+random+". Expire in 5 minutes");
+                        Redis.TOKEN_SYNC_COMMAND.set(request.getUsername(),String.valueOf(random));
                         Redis.TOKEN_SYNC_KEY_COMMAND.expire(request.getUsername(),300);
-                    };
-                    ResetRes reply=ResetRes.newBuilder().setStatus("SUCCESS").setError("FALSE").build();
-                    responseObserver.onNext(reply);
-                    responseObserver.onCompleted();
+                        ResetRes reply=ResetRes.newBuilder().setStatus("SUCCESS").setError("FALSE").build();
+                        responseObserver.onNext(reply);
+                        responseObserver.onCompleted();
+                    }else {
+                        ResetRes reply=ResetRes.newBuilder().setStatus("ALREADY_SENDED").setError("FALSE").build();
+                        responseObserver.onNext(reply);
+                        responseObserver.onCompleted();
+                    }
+
                 } catch (IOException e) {
                     e.printStackTrace();
                     ResetRes reply=ResetRes.newBuilder().setStatus("FAILED_TO_SEND_MAIL").setError("TRUE").build();
@@ -141,9 +141,8 @@ public class AuthAccount {
         //OK
         @Override
         public void resetPasswordFinalStep(ResetPasswordFinalStepReq request, StreamObserver<SignInRes> responseObserver) {
-            MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("auth"); //get connect
-            List<Document> user = getUserFromDB(request.getUsername()); //check username is exist
-            if (user.size()!=1){ //NOT EXIST USERNAME
+            Document user = getUserFromDB(request.getUsername()); //check username is exist
+            if (user!=null){ //NOT EXIST USERNAME
                 makeResponseForSignInFailed(responseObserver,"NOT_EXIST_USERNAME","TRUE");
             } else{
                 String token=Redis.TOKEN_SYNC_COMMAND.get(request.getUsername()).toString();
@@ -151,7 +150,7 @@ public class AuthAccount {
                     makeResponseForSignInFailed(responseObserver,"WRONG_TOKEN","TRUE");
                 }else{
                     coll.findOneAndUpdate(new Document("username",request.getUsername()),new Document("password",request.getPassword()));
-                    makeResponseForSignInSuccess(responseObserver,user.get(0).get("_id").toString());
+                    makeResponseForSignInSuccess(responseObserver,user.get("_id").toString());
                     Redis.TOKEN_SYNC_KEY_COMMAND.del(request.getUsername());
                 }
             }

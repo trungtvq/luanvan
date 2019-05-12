@@ -45,9 +45,8 @@ public class MyProject {
             if (!isValidAuth(request.getRequesterId(),request.getCookie())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID","TRUE");
             } else {
-                //Todos: check projectname is exist
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("project");
-                List<Document> foundDocument = coll.find(new Document("projectName",request.getProjectName()).append("ownerId",request.getRequesterId())).into(new ArrayList<Document>());
+                List<Document> foundDocument = coll.find(new Document("projectName",request.getProjectName()).append("ownerId",request.getRequesterId())).into(new ArrayList<>());
                 if (foundDocument.size()!=0){
                     makeResponseForFailed(responseObserver,"EXIST_PROJECT_NAME","TRUE");
                 } else{
@@ -58,10 +57,8 @@ public class MyProject {
                             .append("private", request.getPrivate());
                     coll.insertOne(document);
 
-                    foundDocument = coll.find(new Document("projectName",request.getProjectName()).append("ownerId",request.getRequesterId())).into(new ArrayList<Document>());
-                    //check size
+                    foundDocument = coll.find(document).into(new ArrayList<>());
                     if (foundDocument.size()!=1){
-                        System.out.println("After add size >1 or ==0");
                         makeResponseForFailed(responseObserver,"WRONG_SIZE","TRUE");
                     } else {
                         String id= foundDocument.get(0).get("_id").toString();
@@ -73,13 +70,11 @@ public class MyProject {
 
         @Override
         public void updateProject(UpdateProjectReq request, StreamObserver<ProjectRes> responseObserver) {
-            //Todos auth cookie
             if (!isValidAuth(request.getRequesterId(),request.getCookie())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID","TRUE");
             } else {
-                //Todos: check projectname is exist
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("project");
-                List<Document> foundDocument = coll.find(new Document("_id",new ObjectId(request.getProjectId()) )).into(new ArrayList<Document>());
+                List<Document> foundDocument = coll.find(new Document("_id",new ObjectId(request.getProjectId()))).into(new ArrayList<>());
                 if (foundDocument.size()==1){
                     Document needUpdate=new Document(new Document("_id",new ObjectId(request.getProjectId()) ));
                     Document listUpdate=new Document();
@@ -93,12 +88,12 @@ public class MyProject {
                         listUpdate.append("private",request.getPrivate());
                     }
                     if (request.getUserName()!=""){
-                        foundDocument = coll.find(new Document("projectName",request.getProjectName()).append("ownerId",request.getRequesterId())).into(new ArrayList<Document>());
+                        foundDocument = coll.find(new Document("projectName",request.getProjectName()).append("ownerId",request.getRequesterId())).into(new ArrayList<>());
                         if (foundDocument.size()==0){
                             listUpdate.append("projectName",request.getProjectName());
 
                         }else {
-                            makeResponseForFailed(responseObserver,"EXIST_PROJECT_NAME","TRUE");
+                            makeResponseForFailed(responseObserver,"EXIST_PROJECT_NAME","FALSE");
                             return;
                         }
                     }
@@ -113,7 +108,6 @@ public class MyProject {
 
         @Override
         public void deleteProject(DeleteProjectReq request, StreamObserver<ProjectRes> responseObserver) {
-            //Todos auth cookie
             if (!isValidAuth(request.getRequesterId(),request.getCookie())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID","TRUE");
             } else {
@@ -121,8 +115,7 @@ public class MyProject {
                 DeleteResult result = coll.deleteOne(new Document("_id",new ObjectId(request.getProjectId()) ).append("ownerId", request.getRequesterId()));
 
                 if (result.getDeletedCount() != 1) {
-                    System.out.println("Size delete differ 1");
-                    makeResponseForFailed(responseObserver,"WRONG_SIZE","TRUE");
+                    makeResponseForFailed(responseObserver,"WRONG_SIZE","FALSE");
                 }else{
                     makeResponseForUpdateSuccess(responseObserver,request.getProjectId());
                 }
@@ -134,10 +127,8 @@ public class MyProject {
             if (!isValidAuth(request.getRequesterId(),request.getCookie())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID","TRUE");
             } else{
-                System.out.println("valid auth");
-
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("project");
-                System.out.println("ownerId"+request.getRequesterId());
+                //TODO: GET NOT OWN PROJECT
                 List<Document> foundDocument = coll.find(new Document("ownerId",request.getRequesterId())).into(new ArrayList<Document>());
                 System.out.println(foundDocument.size());
 
@@ -145,7 +136,6 @@ public class MyProject {
                     makeResponseForFailed(responseObserver,"EMPTY","FALSE");
                 }  else {
                     foundDocument.forEach(i->{
-
                         if (i!=null){
                             ProjectRes reply=ProjectRes.newBuilder()
                                     .setProjectId(i.get("_id").toString())
@@ -156,12 +146,9 @@ public class MyProject {
                                     .setStatus("SUCCESS").setError("FALSE").build();
                             responseObserver.onNext(reply);
                         }
-
-
                     });
                     responseObserver.onCompleted();
                 }
-                //TODOS: add project not own
             }
         }
     }

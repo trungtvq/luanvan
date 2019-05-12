@@ -15,7 +15,6 @@ import java.util.List;
 public class DailySchedule {
     public static class DailyScheduleImpl extends DailyscheduleGrpc.DailyscheduleImplBase{
         public void makeResponseForUpdateSuccess(StreamObserver res,String id){
-
             res.onNext(DailyScheduleRes.newBuilder().setStatus("SUCCESS").setError("FALSE").setScheduleId (id).build());
             res.onCompleted();
         }
@@ -27,8 +26,8 @@ public class DailySchedule {
         @Override
         public void addNewDailySchedule(AddNewDailyScheduleReq request, StreamObserver<DailyScheduleRes> responseObserver) {
             System.out.println(request.getTitle());
-         if (true){
-          //  if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getCookie())){//VALID AUTH
+        // if (true){
+            if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getCookie())){//VALID AUTH
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("schedule"); //get connect
                 Document newDoc=new Document()
                         .append("title",request.getTitle())
@@ -37,7 +36,7 @@ public class DailySchedule {
                         .append("scheduleStatus",request.getScheduleStatus());
                 coll.insertOne(newDoc);
 
-                List<Document> re= coll.find(newDoc).into(new ArrayList<Document>());
+                List<Document> re= coll.find(newDoc).into(new ArrayList<>());
                 if (re.size()==1){
                     MongoCollection<Document> collProject = Mongod.getOverleadConnection().getCollection("project");
 
