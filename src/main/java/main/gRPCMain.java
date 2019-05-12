@@ -3,6 +3,7 @@ package main;
 import gRPC.auth.AuthAccount;
 import gRPC.productbacklog.ProductBacklog;
 import gRPC.project.MyProject;
+import gRPC.schedule.DailySchedule;
 import gRPC.userstory.UserStory;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -20,6 +21,7 @@ public class gRPCMain {
                 .addService(new UserStory.UserStoryImpl())
                 .addService(new AuthAccount.AuthImpl())
                 .addService(new ProductBacklog.ProductBacklogImpl())
+                .addService(new DailySchedule.DailyScheduleImpl())
                 .build()
                 .start();
 

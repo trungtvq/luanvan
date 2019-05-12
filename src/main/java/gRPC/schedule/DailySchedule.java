@@ -5,10 +5,8 @@ import com.mongodb.client.MongoCollection;
 import database.Mongod;
 import gRPC.auth.AuthAccount;
 import io.grpc.stub.StreamObserver;
-import org.bson.BsonArray;
-import org.bson.BsonInt32;
-import org.bson.BsonString;
-import org.bson.Document;
+import org.bson.*;
+import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +26,9 @@ public class DailySchedule {
         }
         @Override
         public void addNewDailySchedule(AddNewDailyScheduleReq request, StreamObserver<DailyScheduleRes> responseObserver) {
-            if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getCookie())){//VALID AUTH
+            System.out.println(request.getTitle());
+         if (true){
+          //  if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getCookie())){//VALID AUTH
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("schedule"); //get connect
                 Document newDoc=new Document()
                         .append("title",request.getTitle())
@@ -40,17 +40,23 @@ public class DailySchedule {
                 List<Document> re= coll.find(newDoc).into(new ArrayList<Document>());
                 if (re.size()==1){
                     MongoCollection<Document> collProject = Mongod.getOverleadConnection().getCollection("project");
-                    if (collProject.find(new Document("_id",request.getProjectId())).into(new ArrayList<>()).get(0).get("dailySchedule").toString().equals("")){
+                    System.out.println(request.getProjectId());
+                    Document project=collProject.find(new Document("_id",new ObjectId(request.getProjectId()))).into(new ArrayList<>()).get(0);
+                    if (project.get("dailySchedule")==null){
                         //EMPTY dailySchedule
                         System.out.println("EMPTY");
-                        Document bson= new Document("dailySchedule", new BsonArray(Arrays.asList(new BsonString(re.get(0).get("_id").toString()))));
-                        collProject.findOneAndUpdate(new Document("projectId",request.getProjectId()),bson);
+                        System.out.println(re.get(0).get("_id").toString());
+
+                        Document listItem=new Document("dailySchedule", new BsonArray(Arrays.asList(new BsonString(re.get(0).get("_id").toString()))));
+
+                        Document updateQuery = new Document("$set", listItem);
+                        System.out.println(collProject.find(new Document("_id",new ObjectId(request.getProjectId()))).into(new ArrayList<>()));
+                        collProject.findOneAndUpdate(new Document("_id",new ObjectId(request.getProjectId())),updateQuery);
                     } else{
                         System.out.println("NOT EMPTY=>INSERT");
                         Document updateQuery = new Document("$push", new Document("dailySchedule",re.get(0).get("_id").toString()));
-                        collProject.findOneAndUpdate(new Document("projectId",request.getProjectId()),updateQuery);
+                        collProject.findOneAndUpdate(new Document("_id",new ObjectId(request.getProjectId())),updateQuery);
                     }
-
                     makeResponseForUpdateSuccess(responseObserver,re.get(0).get("_id").toString());
                 }else {
                     makeResponseForFailed(responseObserver,"WRONG_SIZE","TRUE");

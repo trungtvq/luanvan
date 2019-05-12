@@ -8,6 +8,7 @@ import org.bson.BsonArray;
 import org.bson.BsonInt32;
 import org.bson.BsonString;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,14 +26,19 @@ public class Mongod {
     public static void main(String[] args) {
 
         MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("project");
-        Document bson= new Document().append("a", new BsonString("MongoDB"))
-                .append("b", new BsonArray(Arrays.asList(new BsonInt32(1), new BsonInt32(2))))
-                .append("a","2")
-                .append("c","3");
+        Document bson= new Document().append("aaaa", new BsonString("MongoDB"))
+          //      .append("b", new BsonArray(Arrays.asList(new BsonInt32(1), new BsonInt32(2))))
+                .append("aaad","2")
+                .append("cfdf","3");
         coll.insertOne(bson);
 
+        Document a=new Document().append("b", new BsonArray(Arrays.asList(new BsonInt32(1), new BsonInt32(2))));
+        coll.findOneAndUpdate(bson,a);
+        String id=coll.find(bson).into(new ArrayList<>()).get(0).get("_id").toString();
 
 
+        List< Document> project=coll.find(new Document("_id",new ObjectId(id) )).into(new ArrayList<>());
+        System.out.println(project);
         MongoCollection<Document> collChat = Mongod.getOverleadConnection().getCollection("testmothaiba");
          bson= new Document().append("mothaiba", new BsonString("123"))
                 .append("b", new BsonArray(Arrays.asList(new BsonInt32(1), new BsonInt32(2))))
