@@ -59,7 +59,7 @@ class DailySchedule extends Component {
                 "status":"",
               },
               {
-                "id":"1",
+                "id":"2",
                 "title":"Login2",
                 "task":"Login bằng fb2",
                 "timeStart":"02:20",
@@ -68,7 +68,7 @@ class DailySchedule extends Component {
                 "status":"",
               },
               {
-                "id":"1",
+                "id":"3",
                 "title":"Login3",
                 "task":"Login bằng fb3",
                 "timeStart":"02:20",
@@ -77,9 +77,9 @@ class DailySchedule extends Component {
                 "status":"",
               },
               {
-                "id":"1",
+                "id":"4",
                 "title":"Login",
-                "task":"Login bằng fb",
+                "task":"Login bằng fb4",
                 "timeStart":"02:20",
                 "dateStart":"2019-05-05",
                
@@ -201,6 +201,7 @@ class DailySchedule extends Component {
     this.setState({
       scheduleIdDelete: id,
     });
+    console.log("first==="+this.state.scheduleIdDelete)
   }
 
   handleReset= (event) => {
@@ -269,7 +270,10 @@ class DailySchedule extends Component {
           console.log(toto)
           
   };
+
+  
   handleUpdate = () => {
+    
     const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
     console.log(dailyscheduleService)
@@ -296,7 +300,7 @@ class DailySchedule extends Component {
 
     var toto=dailyscheduleService.updateDailySchedule(UpdateDailyScheduleReq, metadata, (err, response) => {
       console.log("UpdateDailyScheduleReqconnect")
-      if (err) { //if error
+      if (!err) { //if error
          console.log(err);
          console.log("error")
       } else { //if success
@@ -306,34 +310,46 @@ class DailySchedule extends Component {
              
               if(response.getStatus()=="SUCCESS")
               {
+                this.setState({
+                  actionStatus:"SUCCESS",
+                });
                 this.setState(prevState => ({
                   modalEdit: !prevState.modalEdit,
+                  modalActionStatus:!prevState.modalActionStatus,
                   }));
-                  //Find index of specific object using findIndex method. 
-                  let tmpdata=this.state.data;  
-                  let objIndex = tmpdata.findIndex((obj => obj.id == this.state.scheduleIdUpdate));
-                  //Update object's name property.
-                  // tmpdata[objIndex].title = this.state.titleUpdate,
-                  // tmpdata[objIndex].task = this.state.taskUpdate,
-                  // tmpdata[objIndex].timeStart = this.state.timeStartUpdate,
-                  // tmpdata[objIndex].dateStart = this.state.dateStartUpdate,
-                  // tmpdata[objIndex].status = this.state.statusUpdate,
+                  const tmpdata = this.state.data.map(p =>
+                    p.id === this.state.scheduleIdUpdate
+                      ? { ...p, title: this.state.titleUpdate,task:this.state.taskUpdate,
+                        timeStart:this.state.timeStartUpdate,dateStart:this.state.dateStartUpdate,status:this.state.statusUpdate}
+                      : p
+                  );
+                 
                   this.setState({
-                    
+                    data:tmpdata,
                   });
+                 
+                  
               }else{
                 this.setState({
-                  modalActionStatus:true,
                   actionStatus:"FALSE",
                 });
+                this.setState(prevState => ({
+                  modalEdit: !prevState.modalEdit,
+                  modalActionStatus:!prevState.modalActionStatus,
+                  }));
               }
-              const ProfileRes = response[0];
+             
             }
           });
           console.log(toto)
           console.log("ra daily");
   };
-  handleDelete = () => {
+  handleDelete = (id) => {
+    console.log("vào");
+
+   
+
+
     const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
     console.log(dailyscheduleService)
@@ -359,13 +375,26 @@ class DailySchedule extends Component {
               //get response
               console.log("response")
               console.log(response);
-              // console.log("get avatar")
-              // console.log(response.getStatus())
+             if(response.getStatus()=="SUCCESS")
+             {
+              this.setState({
+                actionStatus:"SUCCESS",
+              });
+              this.setState(prevState=>({data:[...prevState.data.filter(function(e) { return e.id !== id; })]}));
+             }else{
+                  this.setState({
+                    actionStatus:"FALSE",
+                  });
+                  this.setState(prevState => ({
+                    modalActionStatus:!prevState.modalActionStatus,
+                    }));
+                }
+             }
               
-              const ProfileRes = response[0];
-            }
+             
+            
           });
-          console.log(toto)
+      
   };
 
  resetform = () =>{
@@ -469,12 +498,12 @@ class DailySchedule extends Component {
                               </Form>                  
                               </ModalBody>
                               <ModalFooter>
-                                <Button color="primary" onClick={that.handleUpdate()}>Submit</Button>{' '}
+                                <Button color="primary" onClick={that.handleUpdate}>Submit</Button>{' '}
                                 <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
                               </ModalFooter>
                         </Modal>
 
-                      <Button color="danger" size="sm" ><i class="fa fa-trash" onClick={(event) => { that.onTextboxChangeScheduleIdDelete(item.id); that.handleDelete();}}></i></Button>
+                      <Button color="danger" size="sm" ><i class="fa fa-trash" onClick={(event) => {  that.handleDelete(item.id)}}></i></Button>
                       </td>
                   </tr>
                 )

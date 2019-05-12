@@ -180,7 +180,7 @@ class App extends Component {
   state={
     token:null,
     signInEmail:null,
-    isLogin:false
+    isLogin:true
   }
 
   login = (token,signInEmail)=>{

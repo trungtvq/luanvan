@@ -201,7 +201,7 @@ class Detail extends Component {
                       <div>
                             <Button color="primary" size="sm" className="mt-3" onClick={that.toggleAdd}><i class="fa fa-plus-square"></i>{this.props.buttonLabel}</Button>
                             <Modal size="lg" isOpen={that.state.modalAdd} toggle={that.toggleAdd} className={that.props.className}>
-                              <ModalHeader toggle={that.toggleAdd}>UserStory</ModalHeader>
+                              <ModalHeader toggle={that.toggleAdd}>ProductBacklog</ModalHeader>
                               <ModalBody>
                                   <Form  className="form-horizontal">               
                                     <FormGroup row>
