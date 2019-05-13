@@ -3,8 +3,8 @@
 
 package co.overlead.gRPC;
 
-public interface RegisterTeamTaskResOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:teamtask.RegisterTeamTaskRes)
+public interface TeamTaskResOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:teamtask.TeamTaskRes)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -18,11 +18,21 @@ public interface RegisterTeamTaskResOrBuilder extends
       getStatusBytes();
 
   /**
-   * <code>string error = 2;</code>
+   * <code>string teamTaskId = 2;</code>
+   */
+  java.lang.String getTeamTaskId();
+  /**
+   * <code>string teamTaskId = 2;</code>
+   */
+  com.google.protobuf.ByteString
+      getTeamTaskIdBytes();
+
+  /**
+   * <code>string error = 3;</code>
    */
   java.lang.String getError();
   /**
-   * <code>string error = 2;</code>
+   * <code>string error = 3;</code>
    */
   com.google.protobuf.ByteString
       getErrorBytes();

@@ -18,6 +18,36 @@ public interface GetAllSprintBacklogResOrBuilder extends
       getSprintBacklogIdBytes();
 
   /**
+   * <code>string statusBacklog = 11;</code>
+   */
+  java.lang.String getStatusBacklog();
+  /**
+   * <code>string statusBacklog = 11;</code>
+   */
+  com.google.protobuf.ByteString
+      getStatusBacklogBytes();
+
+  /**
+   * <code>string sprintId = 12;</code>
+   */
+  java.lang.String getSprintId();
+  /**
+   * <code>string sprintId = 12;</code>
+   */
+  com.google.protobuf.ByteString
+      getSprintIdBytes();
+
+  /**
+   * <code>string error = 13;</code>
+   */
+  java.lang.String getError();
+  /**
+   * <code>string error = 13;</code>
+   */
+  com.google.protobuf.ByteString
+      getErrorBytes();
+
+  /**
    * <code>string role = 2;</code>
    */
   java.lang.String getRole();

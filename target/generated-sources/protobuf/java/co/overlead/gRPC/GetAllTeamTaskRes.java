@@ -16,16 +16,18 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private GetAllTeamTaskRes() {
-    teamtaskId_ = "";
+    teamTaskId_ = "";
     title_ = "";
     description_ = "";
     priority_ = "";
     start_ = "";
-    deadliine_ = "";
+    deadline_ = "";
     assigneeArray_ = "";
     comment_ = "";
+    statusTeamTask_ = "";
     status_ = "";
     review_ = "";
+    error_ = "";
   }
 
   @java.lang.Override
@@ -55,7 +57,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            teamtaskId_ = s;
+            teamTaskId_ = s;
             break;
           }
           case 18: {
@@ -85,7 +87,7 @@ private static final long serialVersionUID = 0L;
           case 50: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            deadliine_ = s;
+            deadline_ = s;
             break;
           }
           case 58: {
@@ -110,6 +112,18 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             review_ = s;
+            break;
+          }
+          case 90: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            error_ = s;
+            break;
+          }
+          case 98: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            statusTeamTask_ = s;
             break;
           }
           default: {
@@ -145,33 +159,33 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int TEAMTASKID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object teamtaskId_;
+  private volatile java.lang.Object teamTaskId_;
   /**
-   * <code>string teamtaskId = 1;</code>
+   * <code>string teamTaskId = 1;</code>
    */
-  public java.lang.String getTeamtaskId() {
-    java.lang.Object ref = teamtaskId_;
+  public java.lang.String getTeamTaskId() {
+    java.lang.Object ref = teamTaskId_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      teamtaskId_ = s;
+      teamTaskId_ = s;
       return s;
     }
   }
   /**
-   * <code>string teamtaskId = 1;</code>
+   * <code>string teamTaskId = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getTeamtaskIdBytes() {
-    java.lang.Object ref = teamtaskId_;
+      getTeamTaskIdBytes() {
+    java.lang.Object ref = teamTaskId_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      teamtaskId_ = b;
+      teamTaskId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -322,42 +336,42 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int DEADLIINE_FIELD_NUMBER = 6;
-  private volatile java.lang.Object deadliine_;
+  public static final int DEADLINE_FIELD_NUMBER = 6;
+  private volatile java.lang.Object deadline_;
   /**
    * <pre>
-   * form mm/hh/dd/mm/yyyy 
+   * form mm/hh/dd/mm/yyyy
    * </pre>
    *
-   * <code>string deadliine = 6;</code>
+   * <code>string deadline = 6;</code>
    */
-  public java.lang.String getDeadliine() {
-    java.lang.Object ref = deadliine_;
+  public java.lang.String getDeadline() {
+    java.lang.Object ref = deadline_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      deadliine_ = s;
+      deadline_ = s;
       return s;
     }
   }
   /**
    * <pre>
-   * form mm/hh/dd/mm/yyyy 
+   * form mm/hh/dd/mm/yyyy
    * </pre>
    *
-   * <code>string deadliine = 6;</code>
+   * <code>string deadline = 6;</code>
    */
   public com.google.protobuf.ByteString
-      getDeadliineBytes() {
-    java.lang.Object ref = deadliine_;
+      getDeadlineBytes() {
+    java.lang.Object ref = deadline_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      deadliine_ = b;
+      deadline_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -432,6 +446,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int STATUSTEAMTASK_FIELD_NUMBER = 12;
+  private volatile java.lang.Object statusTeamTask_;
+  /**
+   * <code>string statusTeamTask = 12;</code>
+   */
+  public java.lang.String getStatusTeamTask() {
+    java.lang.Object ref = statusTeamTask_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      statusTeamTask_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string statusTeamTask = 12;</code>
+   */
+  public com.google.protobuf.ByteString
+      getStatusTeamTaskBytes() {
+    java.lang.Object ref = statusTeamTask_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      statusTeamTask_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   public static final int STATUS_FIELD_NUMBER = 9;
   private volatile java.lang.Object status_;
   /**
@@ -500,6 +548,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int ERROR_FIELD_NUMBER = 11;
+  private volatile java.lang.Object error_;
+  /**
+   * <code>string error = 11;</code>
+   */
+  public java.lang.String getError() {
+    java.lang.Object ref = error_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      error_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string error = 11;</code>
+   */
+  public com.google.protobuf.ByteString
+      getErrorBytes() {
+    java.lang.Object ref = error_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      error_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -514,8 +596,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getTeamtaskIdBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, teamtaskId_);
+    if (!getTeamTaskIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, teamTaskId_);
     }
     if (!getTitleBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, title_);
@@ -529,8 +611,8 @@ private static final long serialVersionUID = 0L;
     if (!getStartBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 5, start_);
     }
-    if (!getDeadliineBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, deadliine_);
+    if (!getDeadlineBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, deadline_);
     }
     if (!getAssigneeArrayBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 7, assigneeArray_);
@@ -544,6 +626,12 @@ private static final long serialVersionUID = 0L;
     if (!getReviewBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 10, review_);
     }
+    if (!getErrorBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, error_);
+    }
+    if (!getStatusTeamTaskBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 12, statusTeamTask_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -553,8 +641,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getTeamtaskIdBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, teamtaskId_);
+    if (!getTeamTaskIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, teamTaskId_);
     }
     if (!getTitleBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, title_);
@@ -568,8 +656,8 @@ private static final long serialVersionUID = 0L;
     if (!getStartBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, start_);
     }
-    if (!getDeadliineBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, deadliine_);
+    if (!getDeadlineBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, deadline_);
     }
     if (!getAssigneeArrayBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, assigneeArray_);
@@ -582,6 +670,12 @@ private static final long serialVersionUID = 0L;
     }
     if (!getReviewBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, review_);
+    }
+    if (!getErrorBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, error_);
+    }
+    if (!getStatusTeamTaskBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, statusTeamTask_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -598,8 +692,8 @@ private static final long serialVersionUID = 0L;
     }
     co.overlead.gRPC.GetAllTeamTaskRes other = (co.overlead.gRPC.GetAllTeamTaskRes) obj;
 
-    if (!getTeamtaskId()
-        .equals(other.getTeamtaskId())) return false;
+    if (!getTeamTaskId()
+        .equals(other.getTeamTaskId())) return false;
     if (!getTitle()
         .equals(other.getTitle())) return false;
     if (!getDescription()
@@ -608,16 +702,20 @@ private static final long serialVersionUID = 0L;
         .equals(other.getPriority())) return false;
     if (!getStart()
         .equals(other.getStart())) return false;
-    if (!getDeadliine()
-        .equals(other.getDeadliine())) return false;
+    if (!getDeadline()
+        .equals(other.getDeadline())) return false;
     if (!getAssigneeArray()
         .equals(other.getAssigneeArray())) return false;
     if (!getComment()
         .equals(other.getComment())) return false;
+    if (!getStatusTeamTask()
+        .equals(other.getStatusTeamTask())) return false;
     if (!getStatus()
         .equals(other.getStatus())) return false;
     if (!getReview()
         .equals(other.getReview())) return false;
+    if (!getError()
+        .equals(other.getError())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -630,7 +728,7 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + TEAMTASKID_FIELD_NUMBER;
-    hash = (53 * hash) + getTeamtaskId().hashCode();
+    hash = (53 * hash) + getTeamTaskId().hashCode();
     hash = (37 * hash) + TITLE_FIELD_NUMBER;
     hash = (53 * hash) + getTitle().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
@@ -639,16 +737,20 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getPriority().hashCode();
     hash = (37 * hash) + START_FIELD_NUMBER;
     hash = (53 * hash) + getStart().hashCode();
-    hash = (37 * hash) + DEADLIINE_FIELD_NUMBER;
-    hash = (53 * hash) + getDeadliine().hashCode();
+    hash = (37 * hash) + DEADLINE_FIELD_NUMBER;
+    hash = (53 * hash) + getDeadline().hashCode();
     hash = (37 * hash) + ASSIGNEEARRAY_FIELD_NUMBER;
     hash = (53 * hash) + getAssigneeArray().hashCode();
     hash = (37 * hash) + COMMENT_FIELD_NUMBER;
     hash = (53 * hash) + getComment().hashCode();
+    hash = (37 * hash) + STATUSTEAMTASK_FIELD_NUMBER;
+    hash = (53 * hash) + getStatusTeamTask().hashCode();
     hash = (37 * hash) + STATUS_FIELD_NUMBER;
     hash = (53 * hash) + getStatus().hashCode();
     hash = (37 * hash) + REVIEW_FIELD_NUMBER;
     hash = (53 * hash) + getReview().hashCode();
+    hash = (37 * hash) + ERROR_FIELD_NUMBER;
+    hash = (53 * hash) + getError().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -782,7 +884,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      teamtaskId_ = "";
+      teamTaskId_ = "";
 
       title_ = "";
 
@@ -792,15 +894,19 @@ private static final long serialVersionUID = 0L;
 
       start_ = "";
 
-      deadliine_ = "";
+      deadline_ = "";
 
       assigneeArray_ = "";
 
       comment_ = "";
 
+      statusTeamTask_ = "";
+
       status_ = "";
 
       review_ = "";
+
+      error_ = "";
 
       return this;
     }
@@ -828,16 +934,18 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public co.overlead.gRPC.GetAllTeamTaskRes buildPartial() {
       co.overlead.gRPC.GetAllTeamTaskRes result = new co.overlead.gRPC.GetAllTeamTaskRes(this);
-      result.teamtaskId_ = teamtaskId_;
+      result.teamTaskId_ = teamTaskId_;
       result.title_ = title_;
       result.description_ = description_;
       result.priority_ = priority_;
       result.start_ = start_;
-      result.deadliine_ = deadliine_;
+      result.deadline_ = deadline_;
       result.assigneeArray_ = assigneeArray_;
       result.comment_ = comment_;
+      result.statusTeamTask_ = statusTeamTask_;
       result.status_ = status_;
       result.review_ = review_;
+      result.error_ = error_;
       onBuilt();
       return result;
     }
@@ -886,8 +994,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(co.overlead.gRPC.GetAllTeamTaskRes other) {
       if (other == co.overlead.gRPC.GetAllTeamTaskRes.getDefaultInstance()) return this;
-      if (!other.getTeamtaskId().isEmpty()) {
-        teamtaskId_ = other.teamtaskId_;
+      if (!other.getTeamTaskId().isEmpty()) {
+        teamTaskId_ = other.teamTaskId_;
         onChanged();
       }
       if (!other.getTitle().isEmpty()) {
@@ -906,8 +1014,8 @@ private static final long serialVersionUID = 0L;
         start_ = other.start_;
         onChanged();
       }
-      if (!other.getDeadliine().isEmpty()) {
-        deadliine_ = other.deadliine_;
+      if (!other.getDeadline().isEmpty()) {
+        deadline_ = other.deadline_;
         onChanged();
       }
       if (!other.getAssigneeArray().isEmpty()) {
@@ -918,12 +1026,20 @@ private static final long serialVersionUID = 0L;
         comment_ = other.comment_;
         onChanged();
       }
+      if (!other.getStatusTeamTask().isEmpty()) {
+        statusTeamTask_ = other.statusTeamTask_;
+        onChanged();
+      }
       if (!other.getStatus().isEmpty()) {
         status_ = other.status_;
         onChanged();
       }
       if (!other.getReview().isEmpty()) {
         review_ = other.review_;
+        onChanged();
+      }
+      if (!other.getError().isEmpty()) {
+        error_ = other.error_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -955,71 +1071,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object teamtaskId_ = "";
+    private java.lang.Object teamTaskId_ = "";
     /**
-     * <code>string teamtaskId = 1;</code>
+     * <code>string teamTaskId = 1;</code>
      */
-    public java.lang.String getTeamtaskId() {
-      java.lang.Object ref = teamtaskId_;
+    public java.lang.String getTeamTaskId() {
+      java.lang.Object ref = teamTaskId_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        teamtaskId_ = s;
+        teamTaskId_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string teamtaskId = 1;</code>
+     * <code>string teamTaskId = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getTeamtaskIdBytes() {
-      java.lang.Object ref = teamtaskId_;
+        getTeamTaskIdBytes() {
+      java.lang.Object ref = teamTaskId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        teamtaskId_ = b;
+        teamTaskId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string teamtaskId = 1;</code>
+     * <code>string teamTaskId = 1;</code>
      */
-    public Builder setTeamtaskId(
+    public Builder setTeamTaskId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      teamtaskId_ = value;
+      teamTaskId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string teamtaskId = 1;</code>
+     * <code>string teamTaskId = 1;</code>
      */
-    public Builder clearTeamtaskId() {
+    public Builder clearTeamTaskId() {
       
-      teamtaskId_ = getDefaultInstance().getTeamtaskId();
+      teamTaskId_ = getDefaultInstance().getTeamTaskId();
       onChanged();
       return this;
     }
     /**
-     * <code>string teamtaskId = 1;</code>
+     * <code>string teamTaskId = 1;</code>
      */
-    public Builder setTeamtaskIdBytes(
+    public Builder setTeamTaskIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      teamtaskId_ = value;
+      teamTaskId_ = value;
       onChanged();
       return this;
     }
@@ -1320,21 +1436,21 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object deadliine_ = "";
+    private java.lang.Object deadline_ = "";
     /**
      * <pre>
-     * form mm/hh/dd/mm/yyyy 
+     * form mm/hh/dd/mm/yyyy
      * </pre>
      *
-     * <code>string deadliine = 6;</code>
+     * <code>string deadline = 6;</code>
      */
-    public java.lang.String getDeadliine() {
-      java.lang.Object ref = deadliine_;
+    public java.lang.String getDeadline() {
+      java.lang.Object ref = deadline_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        deadliine_ = s;
+        deadline_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
@@ -1342,19 +1458,19 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * form mm/hh/dd/mm/yyyy 
+     * form mm/hh/dd/mm/yyyy
      * </pre>
      *
-     * <code>string deadliine = 6;</code>
+     * <code>string deadline = 6;</code>
      */
     public com.google.protobuf.ByteString
-        getDeadliineBytes() {
-      java.lang.Object ref = deadliine_;
+        getDeadlineBytes() {
+      java.lang.Object ref = deadline_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        deadliine_ = b;
+        deadline_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1362,49 +1478,49 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * form mm/hh/dd/mm/yyyy 
+     * form mm/hh/dd/mm/yyyy
      * </pre>
      *
-     * <code>string deadliine = 6;</code>
+     * <code>string deadline = 6;</code>
      */
-    public Builder setDeadliine(
+    public Builder setDeadline(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      deadliine_ = value;
+      deadline_ = value;
       onChanged();
       return this;
     }
     /**
      * <pre>
-     * form mm/hh/dd/mm/yyyy 
+     * form mm/hh/dd/mm/yyyy
      * </pre>
      *
-     * <code>string deadliine = 6;</code>
+     * <code>string deadline = 6;</code>
      */
-    public Builder clearDeadliine() {
+    public Builder clearDeadline() {
       
-      deadliine_ = getDefaultInstance().getDeadliine();
+      deadline_ = getDefaultInstance().getDeadline();
       onChanged();
       return this;
     }
     /**
      * <pre>
-     * form mm/hh/dd/mm/yyyy 
+     * form mm/hh/dd/mm/yyyy
      * </pre>
      *
-     * <code>string deadliine = 6;</code>
+     * <code>string deadline = 6;</code>
      */
-    public Builder setDeadliineBytes(
+    public Builder setDeadlineBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      deadliine_ = value;
+      deadline_ = value;
       onChanged();
       return this;
     }
@@ -1547,6 +1663,75 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private java.lang.Object statusTeamTask_ = "";
+    /**
+     * <code>string statusTeamTask = 12;</code>
+     */
+    public java.lang.String getStatusTeamTask() {
+      java.lang.Object ref = statusTeamTask_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        statusTeamTask_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string statusTeamTask = 12;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStatusTeamTaskBytes() {
+      java.lang.Object ref = statusTeamTask_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        statusTeamTask_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string statusTeamTask = 12;</code>
+     */
+    public Builder setStatusTeamTask(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      statusTeamTask_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string statusTeamTask = 12;</code>
+     */
+    public Builder clearStatusTeamTask() {
+      
+      statusTeamTask_ = getDefaultInstance().getStatusTeamTask();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string statusTeamTask = 12;</code>
+     */
+    public Builder setStatusTeamTaskBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      statusTeamTask_ = value;
+      onChanged();
+      return this;
+    }
+
     private java.lang.Object status_ = "";
     /**
      * <code>string status = 9;</code>
@@ -1681,6 +1866,75 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       review_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object error_ = "";
+    /**
+     * <code>string error = 11;</code>
+     */
+    public java.lang.String getError() {
+      java.lang.Object ref = error_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        error_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string error = 11;</code>
+     */
+    public com.google.protobuf.ByteString
+        getErrorBytes() {
+      java.lang.Object ref = error_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        error_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string error = 11;</code>
+     */
+    public Builder setError(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      error_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string error = 11;</code>
+     */
+    public Builder clearError() {
+      
+      error_ = getDefaultInstance().getError();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string error = 11;</code>
+     */
+    public Builder setErrorBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      error_ = value;
       onChanged();
       return this;
     }

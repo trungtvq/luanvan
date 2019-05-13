@@ -7,16 +7,16 @@ option objc_class_prefix = "tt";
 package teamtask;
 
 service TeamTask{
-    rpc addNewTeamTask(AddNewTeamTaskReq) returns (AddNewTeamTaskRes) {}
-    rpc updateTeamTask(UpdateTeamTaskReq) returns (UpdateTeamTaskRes){}
-    rpc registerTeamTask(RegisterTeamTaskReq) returns (RegisterTeamTaskRes){}
-	rpc cancelTeamTask(CancelTeamTaskReq) returns (CancelTeamTaskRes){}
-	rpc sendTeamTaskToMyTask(SendTeamTaskToMyTaskReq) returns (SendTeamTaskToMyTaskRes){}
+    rpc addNewTeamTask(AddNewTeamTaskReq) returns (TeamTaskRes) {}
+    rpc updateTeamTask(UpdateTeamTaskReq) returns (TeamTaskRes){}
+    rpc registerTeamTask(RegisterTeamTaskReq) returns (TeamTaskRes){}
+	rpc cancelTeamTask(CancelTeamTaskReq) returns (TeamTaskRes){}
+	rpc sendTeamTaskToMyTask(SendTeamTaskToMyTaskReq) returns (TeamTaskRes){}
 	rpc getAllTeamTask(GetAllTeamTaskReq) returns (stream GetAllTeamTaskRes){}
 }
 
 message AddNewTeamTaskReq{
-    string username = 1;
+    string requesterId = 1;
 	string projectId = 2;
 	string title = 3;		
 	string description = 4;		   
@@ -27,17 +27,17 @@ message AddNewTeamTaskReq{
 	string comment = 9;
 	string status = 10;				// khi add mac dinh status = "todo"
 	string review = 11;	
-	string cookie = 12;
+	string tokenAccess = 12;
 }
 
-message AddNewTeamTaskRes{
+message TeamTaskRes{
     string status = 1;
 	string teamTaskId = 2;
 	string error = 3;
 }
 
 message UpdateTeamTaskReq{
-	string username = 1;
+	string requesterId = 1;
 	string projectId = 2;
 	string teamTaskId = 3;
 	string title = 4;		
@@ -49,21 +49,21 @@ message UpdateTeamTaskReq{
 	string comment = 10;
 	string status = 11;	
 	string review = 12;	
-	string cookie = 13;
+	string tokenAccess = 13;
 }
 
 message RegisterTeamTaskReq{
-	string username = 1;
+	string requesterId = 1;
 	string projectId = 2;
 	string teamTaskId = 3;          // them username vao assignee cua teamtaskId dc chon
-	string cookie = 4;
+	string tokenAccess = 4;
 }
 
 message CancelTeamTaskReq{
-	string username = 1;
+	string requesterId = 1;
 	string projectId = 2;
 	string teamTaskId = 3;          // xoa username nay ra khoi assignee cua teamtaskId dc chon
-	string cookie = 4;
+	string tokenAccess = 4;
 }
 
 message SendTeamTaskToMyTaskReq{		//them task trong teamtask vao mytask
@@ -75,24 +75,28 @@ message SendTeamTaskToMyTaskReq{		//them task trong teamtask vao mytask
 	string start = 6;		 		 // form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
 	string deadline = 7;			// form mm/hh/dd/mm/yyyy
 	string comment = 8;
-	string status = 9;	
-	string cookie = 10;	
+	string status = 9;
+	string teamTaskId=11;
+	string tokenAccess = 10;
+
 }
 
 message GetAllTeamTaskReq{
-    string userName = 1;
+    string requesterId = 1;
 	string projectId = 2;
-	string cookie = 3;
+	string tokenAccess = 3;
 }
 message GetAllTeamTaskRes{
-	string teamtaskId = 1;
+	string teamTaskId = 1;
 	string title = 2;		
 	string description = 3;		   
 	string priority = 4;
 	string start = 5;		 // form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
-	string deadliine = 6;			// form mm/hh/dd/mm/yyyy 
+	string deadline = 6;			// form mm/hh/dd/mm/yyyy
 	string assigneeArray = 7;
 	string comment = 8;
+	string statusTeamTask=12;
 	string status = 9;	
-	string review = 10;		
+	string review = 10;
+	string error=11;
 }

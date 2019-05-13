@@ -17,6 +17,9 @@ private static final long serialVersionUID = 0L;
   }
   private GetAllSprintBacklogRes() {
     sprintBacklogId_ = "";
+    statusBacklog_ = "";
+    sprintId_ = "";
+    error_ = "";
     role_ = "";
     want_ = "";
     so_ = "";
@@ -112,6 +115,24 @@ private static final long serialVersionUID = 0L;
             deadline_ = s;
             break;
           }
+          case 90: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            statusBacklog_ = s;
+            break;
+          }
+          case 98: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            sprintId_ = s;
+            break;
+          }
+          case 106: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            error_ = s;
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -172,6 +193,108 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
       sprintBacklogId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int STATUSBACKLOG_FIELD_NUMBER = 11;
+  private volatile java.lang.Object statusBacklog_;
+  /**
+   * <code>string statusBacklog = 11;</code>
+   */
+  public java.lang.String getStatusBacklog() {
+    java.lang.Object ref = statusBacklog_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      statusBacklog_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string statusBacklog = 11;</code>
+   */
+  public com.google.protobuf.ByteString
+      getStatusBacklogBytes() {
+    java.lang.Object ref = statusBacklog_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      statusBacklog_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int SPRINTID_FIELD_NUMBER = 12;
+  private volatile java.lang.Object sprintId_;
+  /**
+   * <code>string sprintId = 12;</code>
+   */
+  public java.lang.String getSprintId() {
+    java.lang.Object ref = sprintId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      sprintId_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string sprintId = 12;</code>
+   */
+  public com.google.protobuf.ByteString
+      getSprintIdBytes() {
+    java.lang.Object ref = sprintId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      sprintId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int ERROR_FIELD_NUMBER = 13;
+  private volatile java.lang.Object error_;
+  /**
+   * <code>string error = 13;</code>
+   */
+  public java.lang.String getError() {
+    java.lang.Object ref = error_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      error_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string error = 13;</code>
+   */
+  public com.google.protobuf.ByteString
+      getErrorBytes() {
+    java.lang.Object ref = error_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      error_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -544,6 +667,15 @@ private static final long serialVersionUID = 0L;
     if (!getDeadlineBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 10, deadline_);
     }
+    if (!getStatusBacklogBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, statusBacklog_);
+    }
+    if (!getSprintIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 12, sprintId_);
+    }
+    if (!getErrorBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 13, error_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -583,6 +715,15 @@ private static final long serialVersionUID = 0L;
     if (!getDeadlineBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, deadline_);
     }
+    if (!getStatusBacklogBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, statusBacklog_);
+    }
+    if (!getSprintIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, sprintId_);
+    }
+    if (!getErrorBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, error_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -600,6 +741,12 @@ private static final long serialVersionUID = 0L;
 
     if (!getSprintBacklogId()
         .equals(other.getSprintBacklogId())) return false;
+    if (!getStatusBacklog()
+        .equals(other.getStatusBacklog())) return false;
+    if (!getSprintId()
+        .equals(other.getSprintId())) return false;
+    if (!getError()
+        .equals(other.getError())) return false;
     if (!getRole()
         .equals(other.getRole())) return false;
     if (!getWant()
@@ -631,6 +778,12 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + SPRINTBACKLOGID_FIELD_NUMBER;
     hash = (53 * hash) + getSprintBacklogId().hashCode();
+    hash = (37 * hash) + STATUSBACKLOG_FIELD_NUMBER;
+    hash = (53 * hash) + getStatusBacklog().hashCode();
+    hash = (37 * hash) + SPRINTID_FIELD_NUMBER;
+    hash = (53 * hash) + getSprintId().hashCode();
+    hash = (37 * hash) + ERROR_FIELD_NUMBER;
+    hash = (53 * hash) + getError().hashCode();
     hash = (37 * hash) + ROLE_FIELD_NUMBER;
     hash = (53 * hash) + getRole().hashCode();
     hash = (37 * hash) + WANT_FIELD_NUMBER;
@@ -784,6 +937,12 @@ private static final long serialVersionUID = 0L;
       super.clear();
       sprintBacklogId_ = "";
 
+      statusBacklog_ = "";
+
+      sprintId_ = "";
+
+      error_ = "";
+
       role_ = "";
 
       want_ = "";
@@ -829,6 +988,9 @@ private static final long serialVersionUID = 0L;
     public co.overlead.gRPC.GetAllSprintBacklogRes buildPartial() {
       co.overlead.gRPC.GetAllSprintBacklogRes result = new co.overlead.gRPC.GetAllSprintBacklogRes(this);
       result.sprintBacklogId_ = sprintBacklogId_;
+      result.statusBacklog_ = statusBacklog_;
+      result.sprintId_ = sprintId_;
+      result.error_ = error_;
       result.role_ = role_;
       result.want_ = want_;
       result.so_ = so_;
@@ -888,6 +1050,18 @@ private static final long serialVersionUID = 0L;
       if (other == co.overlead.gRPC.GetAllSprintBacklogRes.getDefaultInstance()) return this;
       if (!other.getSprintBacklogId().isEmpty()) {
         sprintBacklogId_ = other.sprintBacklogId_;
+        onChanged();
+      }
+      if (!other.getStatusBacklog().isEmpty()) {
+        statusBacklog_ = other.statusBacklog_;
+        onChanged();
+      }
+      if (!other.getSprintId().isEmpty()) {
+        sprintId_ = other.sprintId_;
+        onChanged();
+      }
+      if (!other.getError().isEmpty()) {
+        error_ = other.error_;
         onChanged();
       }
       if (!other.getRole().isEmpty()) {
@@ -1020,6 +1194,213 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       sprintBacklogId_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object statusBacklog_ = "";
+    /**
+     * <code>string statusBacklog = 11;</code>
+     */
+    public java.lang.String getStatusBacklog() {
+      java.lang.Object ref = statusBacklog_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        statusBacklog_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string statusBacklog = 11;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStatusBacklogBytes() {
+      java.lang.Object ref = statusBacklog_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        statusBacklog_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string statusBacklog = 11;</code>
+     */
+    public Builder setStatusBacklog(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      statusBacklog_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string statusBacklog = 11;</code>
+     */
+    public Builder clearStatusBacklog() {
+      
+      statusBacklog_ = getDefaultInstance().getStatusBacklog();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string statusBacklog = 11;</code>
+     */
+    public Builder setStatusBacklogBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      statusBacklog_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object sprintId_ = "";
+    /**
+     * <code>string sprintId = 12;</code>
+     */
+    public java.lang.String getSprintId() {
+      java.lang.Object ref = sprintId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sprintId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string sprintId = 12;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSprintIdBytes() {
+      java.lang.Object ref = sprintId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sprintId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string sprintId = 12;</code>
+     */
+    public Builder setSprintId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      sprintId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string sprintId = 12;</code>
+     */
+    public Builder clearSprintId() {
+      
+      sprintId_ = getDefaultInstance().getSprintId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string sprintId = 12;</code>
+     */
+    public Builder setSprintIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      sprintId_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object error_ = "";
+    /**
+     * <code>string error = 13;</code>
+     */
+    public java.lang.String getError() {
+      java.lang.Object ref = error_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        error_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string error = 13;</code>
+     */
+    public com.google.protobuf.ByteString
+        getErrorBytes() {
+      java.lang.Object ref = error_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        error_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string error = 13;</code>
+     */
+    public Builder setError(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      error_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string error = 13;</code>
+     */
+    public Builder clearError() {
+      
+      error_ = getDefaultInstance().getError();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string error = 13;</code>
+     */
+    public Builder setErrorBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      error_ = value;
       onChanged();
       return this;
     }

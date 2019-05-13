@@ -54,7 +54,8 @@ public class MyProject {
                             .append("projectName", request.getProjectName())
                             .append("start", request.getStart())
                             .append("end", request.getEnd())
-                            .append("private", request.getPrivate());
+                            .append("private", request.getPrivate())
+                            .append("tasks",new BsonArray(Arrays.asList()));
                     coll.insertOne(document);
 
                     foundDocument = coll.find(document).into(new ArrayList<>());

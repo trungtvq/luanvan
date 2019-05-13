@@ -8,14 +8,14 @@ public interface SendTeamTaskToMyTaskReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string username = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
-  java.lang.String getUsername();
+  java.lang.String getRequesterId();
   /**
-   * <code>string username = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
   com.google.protobuf.ByteString
-      getUsernameBytes();
+      getRequesterIdBytes();
 
   /**
    * <code>string projectId = 2;</code>
@@ -77,21 +77,21 @@ public interface SendTeamTaskToMyTaskReqOrBuilder extends
 
   /**
    * <pre>
-   * form mm/hh/dd/mm/yyyy 
+   * form mm/hh/dd/mm/yyyy
    * </pre>
    *
-   * <code>string deadliine = 7;</code>
+   * <code>string deadline = 7;</code>
    */
-  java.lang.String getDeadliine();
+  java.lang.String getDeadline();
   /**
    * <pre>
-   * form mm/hh/dd/mm/yyyy 
+   * form mm/hh/dd/mm/yyyy
    * </pre>
    *
-   * <code>string deadliine = 7;</code>
+   * <code>string deadline = 7;</code>
    */
   com.google.protobuf.ByteString
-      getDeadliineBytes();
+      getDeadlineBytes();
 
   /**
    * <code>string comment = 8;</code>
@@ -114,12 +114,22 @@ public interface SendTeamTaskToMyTaskReqOrBuilder extends
       getStatusBytes();
 
   /**
-   * <code>string cookie = 10;</code>
+   * <code>string teamTaskId = 11;</code>
    */
-  java.lang.String getCookie();
+  java.lang.String getTeamTaskId();
   /**
-   * <code>string cookie = 10;</code>
+   * <code>string teamTaskId = 11;</code>
    */
   com.google.protobuf.ByteString
-      getCookieBytes();
+      getTeamTaskIdBytes();
+
+  /**
+   * <code>string tokenAccess = 10;</code>
+   */
+  java.lang.String getTokenAccess();
+  /**
+   * <code>string tokenAccess = 10;</code>
+   */
+  com.google.protobuf.ByteString
+      getTokenAccessBytes();
 }

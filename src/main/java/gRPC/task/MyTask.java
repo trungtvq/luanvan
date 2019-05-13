@@ -16,7 +16,6 @@ public class MyTask {
     public static class TaskImpl extends MytaskGrpc.MytaskImplBase{
         public static boolean isValidAuth(){
             return false;
-
         }
 
         @Override

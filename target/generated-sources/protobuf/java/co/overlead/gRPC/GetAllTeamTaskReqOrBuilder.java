@@ -8,14 +8,14 @@ public interface GetAllTeamTaskReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string userName = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
-  java.lang.String getUserName();
+  java.lang.String getRequesterId();
   /**
-   * <code>string userName = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
   com.google.protobuf.ByteString
-      getUserNameBytes();
+      getRequesterIdBytes();
 
   /**
    * <code>string projectId = 2;</code>
@@ -28,12 +28,12 @@ public interface GetAllTeamTaskReqOrBuilder extends
       getProjectIdBytes();
 
   /**
-   * <code>string cookie = 3;</code>
+   * <code>string tokenAccess = 3;</code>
    */
-  java.lang.String getCookie();
+  java.lang.String getTokenAccess();
   /**
-   * <code>string cookie = 3;</code>
+   * <code>string tokenAccess = 3;</code>
    */
   com.google.protobuf.ByteString
-      getCookieBytes();
+      getTokenAccessBytes();
 }

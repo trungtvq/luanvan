@@ -4,21 +4,22 @@
 package co.overlead.gRPC;
 
 /**
- * Protobuf type {@code teamtask.AddNewTeamTaskRes}
+ * Protobuf type {@code teamtask.CancelTeamTaskReq}
  */
-public  final class AddNewTeamTaskRes extends
+public  final class CancelTeamTaskReq extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:teamtask.AddNewTeamTaskRes)
-    AddNewTeamTaskResOrBuilder {
+    // @@protoc_insertion_point(message_implements:teamtask.CancelTeamTaskReq)
+    CancelTeamTaskReqOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use AddNewTeamTaskRes.newBuilder() to construct.
-  private AddNewTeamTaskRes(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use CancelTeamTaskReq.newBuilder() to construct.
+  private CancelTeamTaskReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private AddNewTeamTaskRes() {
-    status_ = "";
-    teamtaskId_ = "";
-    error_ = "";
+  private CancelTeamTaskReq() {
+    requesterId_ = "";
+    projectId_ = "";
+    teamTaskId_ = "";
+    tokenAccess_ = "";
   }
 
   @java.lang.Override
@@ -26,7 +27,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private AddNewTeamTaskRes(
+  private CancelTeamTaskReq(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -48,19 +49,25 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            status_ = s;
+            requesterId_ = s;
             break;
           }
           case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            teamtaskId_ = s;
+            projectId_ = s;
             break;
           }
           case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            error_ = s;
+            teamTaskId_ = s;
+            break;
+          }
+          case 34: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            tokenAccess_ = s;
             break;
           }
           default: {
@@ -84,113 +91,155 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return co.overlead.gRPC.teamtask.internal_static_teamtask_AddNewTeamTaskRes_descriptor;
+    return co.overlead.gRPC.teamtask.internal_static_teamtask_CancelTeamTaskReq_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return co.overlead.gRPC.teamtask.internal_static_teamtask_AddNewTeamTaskRes_fieldAccessorTable
+    return co.overlead.gRPC.teamtask.internal_static_teamtask_CancelTeamTaskReq_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            co.overlead.gRPC.AddNewTeamTaskRes.class, co.overlead.gRPC.AddNewTeamTaskRes.Builder.class);
+            co.overlead.gRPC.CancelTeamTaskReq.class, co.overlead.gRPC.CancelTeamTaskReq.Builder.class);
   }
 
-  public static final int STATUS_FIELD_NUMBER = 1;
-  private volatile java.lang.Object status_;
+  public static final int REQUESTERID_FIELD_NUMBER = 1;
+  private volatile java.lang.Object requesterId_;
   /**
-   * <code>string status = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
-  public java.lang.String getStatus() {
-    java.lang.Object ref = status_;
+  public java.lang.String getRequesterId() {
+    java.lang.Object ref = requesterId_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      status_ = s;
+      requesterId_ = s;
       return s;
     }
   }
   /**
-   * <code>string status = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getStatusBytes() {
-    java.lang.Object ref = status_;
+      getRequesterIdBytes() {
+    java.lang.Object ref = requesterId_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      status_ = b;
+      requesterId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int TEAMTASKID_FIELD_NUMBER = 2;
-  private volatile java.lang.Object teamtaskId_;
+  public static final int PROJECTID_FIELD_NUMBER = 2;
+  private volatile java.lang.Object projectId_;
   /**
-   * <code>string teamtaskId = 2;</code>
+   * <code>string projectId = 2;</code>
    */
-  public java.lang.String getTeamtaskId() {
-    java.lang.Object ref = teamtaskId_;
+  public java.lang.String getProjectId() {
+    java.lang.Object ref = projectId_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      teamtaskId_ = s;
+      projectId_ = s;
       return s;
     }
   }
   /**
-   * <code>string teamtaskId = 2;</code>
+   * <code>string projectId = 2;</code>
    */
   public com.google.protobuf.ByteString
-      getTeamtaskIdBytes() {
-    java.lang.Object ref = teamtaskId_;
+      getProjectIdBytes() {
+    java.lang.Object ref = projectId_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      teamtaskId_ = b;
+      projectId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int ERROR_FIELD_NUMBER = 3;
-  private volatile java.lang.Object error_;
+  public static final int TEAMTASKID_FIELD_NUMBER = 3;
+  private volatile java.lang.Object teamTaskId_;
   /**
-   * <code>string error = 3;</code>
+   * <pre>
+   * xoa username nay ra khoi assignee cua teamtaskId dc chon
+   * </pre>
+   *
+   * <code>string teamTaskId = 3;</code>
    */
-  public java.lang.String getError() {
-    java.lang.Object ref = error_;
+  public java.lang.String getTeamTaskId() {
+    java.lang.Object ref = teamTaskId_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      error_ = s;
+      teamTaskId_ = s;
       return s;
     }
   }
   /**
-   * <code>string error = 3;</code>
+   * <pre>
+   * xoa username nay ra khoi assignee cua teamtaskId dc chon
+   * </pre>
+   *
+   * <code>string teamTaskId = 3;</code>
    */
   public com.google.protobuf.ByteString
-      getErrorBytes() {
-    java.lang.Object ref = error_;
+      getTeamTaskIdBytes() {
+    java.lang.Object ref = teamTaskId_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      error_ = b;
+      teamTaskId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int TOKENACCESS_FIELD_NUMBER = 4;
+  private volatile java.lang.Object tokenAccess_;
+  /**
+   * <code>string tokenAccess = 4;</code>
+   */
+  public java.lang.String getTokenAccess() {
+    java.lang.Object ref = tokenAccess_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      tokenAccess_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string tokenAccess = 4;</code>
+   */
+  public com.google.protobuf.ByteString
+      getTokenAccessBytes() {
+    java.lang.Object ref = tokenAccess_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      tokenAccess_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -211,14 +260,17 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getStatusBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, status_);
+    if (!getRequesterIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, requesterId_);
     }
-    if (!getTeamtaskIdBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, teamtaskId_);
+    if (!getProjectIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, projectId_);
     }
-    if (!getErrorBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, error_);
+    if (!getTeamTaskIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, teamTaskId_);
+    }
+    if (!getTokenAccessBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, tokenAccess_);
     }
     unknownFields.writeTo(output);
   }
@@ -229,14 +281,17 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getStatusBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, status_);
+    if (!getRequesterIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, requesterId_);
     }
-    if (!getTeamtaskIdBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, teamtaskId_);
+    if (!getProjectIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, projectId_);
     }
-    if (!getErrorBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, error_);
+    if (!getTeamTaskIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, teamTaskId_);
+    }
+    if (!getTokenAccessBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, tokenAccess_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -248,17 +303,19 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof co.overlead.gRPC.AddNewTeamTaskRes)) {
+    if (!(obj instanceof co.overlead.gRPC.CancelTeamTaskReq)) {
       return super.equals(obj);
     }
-    co.overlead.gRPC.AddNewTeamTaskRes other = (co.overlead.gRPC.AddNewTeamTaskRes) obj;
+    co.overlead.gRPC.CancelTeamTaskReq other = (co.overlead.gRPC.CancelTeamTaskReq) obj;
 
-    if (!getStatus()
-        .equals(other.getStatus())) return false;
-    if (!getTeamtaskId()
-        .equals(other.getTeamtaskId())) return false;
-    if (!getError()
-        .equals(other.getError())) return false;
+    if (!getRequesterId()
+        .equals(other.getRequesterId())) return false;
+    if (!getProjectId()
+        .equals(other.getProjectId())) return false;
+    if (!getTeamTaskId()
+        .equals(other.getTeamTaskId())) return false;
+    if (!getTokenAccess()
+        .equals(other.getTokenAccess())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -270,80 +327,82 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + STATUS_FIELD_NUMBER;
-    hash = (53 * hash) + getStatus().hashCode();
+    hash = (37 * hash) + REQUESTERID_FIELD_NUMBER;
+    hash = (53 * hash) + getRequesterId().hashCode();
+    hash = (37 * hash) + PROJECTID_FIELD_NUMBER;
+    hash = (53 * hash) + getProjectId().hashCode();
     hash = (37 * hash) + TEAMTASKID_FIELD_NUMBER;
-    hash = (53 * hash) + getTeamtaskId().hashCode();
-    hash = (37 * hash) + ERROR_FIELD_NUMBER;
-    hash = (53 * hash) + getError().hashCode();
+    hash = (53 * hash) + getTeamTaskId().hashCode();
+    hash = (37 * hash) + TOKENACCESS_FIELD_NUMBER;
+    hash = (53 * hash) + getTokenAccess().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static co.overlead.gRPC.AddNewTeamTaskRes parseFrom(
+  public static co.overlead.gRPC.CancelTeamTaskReq parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.AddNewTeamTaskRes parseFrom(
+  public static co.overlead.gRPC.CancelTeamTaskReq parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.AddNewTeamTaskRes parseFrom(
+  public static co.overlead.gRPC.CancelTeamTaskReq parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.AddNewTeamTaskRes parseFrom(
+  public static co.overlead.gRPC.CancelTeamTaskReq parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.AddNewTeamTaskRes parseFrom(byte[] data)
+  public static co.overlead.gRPC.CancelTeamTaskReq parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.AddNewTeamTaskRes parseFrom(
+  public static co.overlead.gRPC.CancelTeamTaskReq parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.AddNewTeamTaskRes parseFrom(java.io.InputStream input)
+  public static co.overlead.gRPC.CancelTeamTaskReq parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.AddNewTeamTaskRes parseFrom(
+  public static co.overlead.gRPC.CancelTeamTaskReq parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static co.overlead.gRPC.AddNewTeamTaskRes parseDelimitedFrom(java.io.InputStream input)
+  public static co.overlead.gRPC.CancelTeamTaskReq parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.AddNewTeamTaskRes parseDelimitedFrom(
+  public static co.overlead.gRPC.CancelTeamTaskReq parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static co.overlead.gRPC.AddNewTeamTaskRes parseFrom(
+  public static co.overlead.gRPC.CancelTeamTaskReq parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.AddNewTeamTaskRes parseFrom(
+  public static co.overlead.gRPC.CancelTeamTaskReq parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -356,7 +415,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(co.overlead.gRPC.AddNewTeamTaskRes prototype) {
+  public static Builder newBuilder(co.overlead.gRPC.CancelTeamTaskReq prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -372,26 +431,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code teamtask.AddNewTeamTaskRes}
+   * Protobuf type {@code teamtask.CancelTeamTaskReq}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:teamtask.AddNewTeamTaskRes)
-      co.overlead.gRPC.AddNewTeamTaskResOrBuilder {
+      // @@protoc_insertion_point(builder_implements:teamtask.CancelTeamTaskReq)
+      co.overlead.gRPC.CancelTeamTaskReqOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return co.overlead.gRPC.teamtask.internal_static_teamtask_AddNewTeamTaskRes_descriptor;
+      return co.overlead.gRPC.teamtask.internal_static_teamtask_CancelTeamTaskReq_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return co.overlead.gRPC.teamtask.internal_static_teamtask_AddNewTeamTaskRes_fieldAccessorTable
+      return co.overlead.gRPC.teamtask.internal_static_teamtask_CancelTeamTaskReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              co.overlead.gRPC.AddNewTeamTaskRes.class, co.overlead.gRPC.AddNewTeamTaskRes.Builder.class);
+              co.overlead.gRPC.CancelTeamTaskReq.class, co.overlead.gRPC.CancelTeamTaskReq.Builder.class);
     }
 
-    // Construct using co.overlead.gRPC.AddNewTeamTaskRes.newBuilder()
+    // Construct using co.overlead.gRPC.CancelTeamTaskReq.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -409,11 +468,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      status_ = "";
+      requesterId_ = "";
 
-      teamtaskId_ = "";
+      projectId_ = "";
 
-      error_ = "";
+      teamTaskId_ = "";
+
+      tokenAccess_ = "";
 
       return this;
     }
@@ -421,17 +482,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return co.overlead.gRPC.teamtask.internal_static_teamtask_AddNewTeamTaskRes_descriptor;
+      return co.overlead.gRPC.teamtask.internal_static_teamtask_CancelTeamTaskReq_descriptor;
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.AddNewTeamTaskRes getDefaultInstanceForType() {
-      return co.overlead.gRPC.AddNewTeamTaskRes.getDefaultInstance();
+    public co.overlead.gRPC.CancelTeamTaskReq getDefaultInstanceForType() {
+      return co.overlead.gRPC.CancelTeamTaskReq.getDefaultInstance();
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.AddNewTeamTaskRes build() {
-      co.overlead.gRPC.AddNewTeamTaskRes result = buildPartial();
+    public co.overlead.gRPC.CancelTeamTaskReq build() {
+      co.overlead.gRPC.CancelTeamTaskReq result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -439,11 +500,12 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.AddNewTeamTaskRes buildPartial() {
-      co.overlead.gRPC.AddNewTeamTaskRes result = new co.overlead.gRPC.AddNewTeamTaskRes(this);
-      result.status_ = status_;
-      result.teamtaskId_ = teamtaskId_;
-      result.error_ = error_;
+    public co.overlead.gRPC.CancelTeamTaskReq buildPartial() {
+      co.overlead.gRPC.CancelTeamTaskReq result = new co.overlead.gRPC.CancelTeamTaskReq(this);
+      result.requesterId_ = requesterId_;
+      result.projectId_ = projectId_;
+      result.teamTaskId_ = teamTaskId_;
+      result.tokenAccess_ = tokenAccess_;
       onBuilt();
       return result;
     }
@@ -482,26 +544,30 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof co.overlead.gRPC.AddNewTeamTaskRes) {
-        return mergeFrom((co.overlead.gRPC.AddNewTeamTaskRes)other);
+      if (other instanceof co.overlead.gRPC.CancelTeamTaskReq) {
+        return mergeFrom((co.overlead.gRPC.CancelTeamTaskReq)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(co.overlead.gRPC.AddNewTeamTaskRes other) {
-      if (other == co.overlead.gRPC.AddNewTeamTaskRes.getDefaultInstance()) return this;
-      if (!other.getStatus().isEmpty()) {
-        status_ = other.status_;
+    public Builder mergeFrom(co.overlead.gRPC.CancelTeamTaskReq other) {
+      if (other == co.overlead.gRPC.CancelTeamTaskReq.getDefaultInstance()) return this;
+      if (!other.getRequesterId().isEmpty()) {
+        requesterId_ = other.requesterId_;
         onChanged();
       }
-      if (!other.getTeamtaskId().isEmpty()) {
-        teamtaskId_ = other.teamtaskId_;
+      if (!other.getProjectId().isEmpty()) {
+        projectId_ = other.projectId_;
         onChanged();
       }
-      if (!other.getError().isEmpty()) {
-        error_ = other.error_;
+      if (!other.getTeamTaskId().isEmpty()) {
+        teamTaskId_ = other.teamTaskId_;
+        onChanged();
+      }
+      if (!other.getTokenAccess().isEmpty()) {
+        tokenAccess_ = other.tokenAccess_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -519,11 +585,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      co.overlead.gRPC.AddNewTeamTaskRes parsedMessage = null;
+      co.overlead.gRPC.CancelTeamTaskReq parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (co.overlead.gRPC.AddNewTeamTaskRes) e.getUnfinishedMessage();
+        parsedMessage = (co.overlead.gRPC.CancelTeamTaskReq) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -533,209 +599,298 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object status_ = "";
+    private java.lang.Object requesterId_ = "";
     /**
-     * <code>string status = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public java.lang.String getStatus() {
-      java.lang.Object ref = status_;
+    public java.lang.String getRequesterId() {
+      java.lang.Object ref = requesterId_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        status_ = s;
+        requesterId_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string status = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getStatusBytes() {
-      java.lang.Object ref = status_;
+        getRequesterIdBytes() {
+      java.lang.Object ref = requesterId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        status_ = b;
+        requesterId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string status = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder setStatus(
+    public Builder setRequesterId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      status_ = value;
+      requesterId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string status = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder clearStatus() {
+    public Builder clearRequesterId() {
       
-      status_ = getDefaultInstance().getStatus();
+      requesterId_ = getDefaultInstance().getRequesterId();
       onChanged();
       return this;
     }
     /**
-     * <code>string status = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder setStatusBytes(
+    public Builder setRequesterIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      status_ = value;
+      requesterId_ = value;
       onChanged();
       return this;
     }
 
-    private java.lang.Object teamtaskId_ = "";
+    private java.lang.Object projectId_ = "";
     /**
-     * <code>string teamtaskId = 2;</code>
+     * <code>string projectId = 2;</code>
      */
-    public java.lang.String getTeamtaskId() {
-      java.lang.Object ref = teamtaskId_;
+    public java.lang.String getProjectId() {
+      java.lang.Object ref = projectId_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        teamtaskId_ = s;
+        projectId_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string teamtaskId = 2;</code>
+     * <code>string projectId = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getTeamtaskIdBytes() {
-      java.lang.Object ref = teamtaskId_;
+        getProjectIdBytes() {
+      java.lang.Object ref = projectId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        teamtaskId_ = b;
+        projectId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string teamtaskId = 2;</code>
+     * <code>string projectId = 2;</code>
      */
-    public Builder setTeamtaskId(
+    public Builder setProjectId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      teamtaskId_ = value;
+      projectId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string teamtaskId = 2;</code>
+     * <code>string projectId = 2;</code>
      */
-    public Builder clearTeamtaskId() {
+    public Builder clearProjectId() {
       
-      teamtaskId_ = getDefaultInstance().getTeamtaskId();
+      projectId_ = getDefaultInstance().getProjectId();
       onChanged();
       return this;
     }
     /**
-     * <code>string teamtaskId = 2;</code>
+     * <code>string projectId = 2;</code>
      */
-    public Builder setTeamtaskIdBytes(
+    public Builder setProjectIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      teamtaskId_ = value;
+      projectId_ = value;
       onChanged();
       return this;
     }
 
-    private java.lang.Object error_ = "";
+    private java.lang.Object teamTaskId_ = "";
     /**
-     * <code>string error = 3;</code>
+     * <pre>
+     * xoa username nay ra khoi assignee cua teamtaskId dc chon
+     * </pre>
+     *
+     * <code>string teamTaskId = 3;</code>
      */
-    public java.lang.String getError() {
-      java.lang.Object ref = error_;
+    public java.lang.String getTeamTaskId() {
+      java.lang.Object ref = teamTaskId_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        error_ = s;
+        teamTaskId_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string error = 3;</code>
+     * <pre>
+     * xoa username nay ra khoi assignee cua teamtaskId dc chon
+     * </pre>
+     *
+     * <code>string teamTaskId = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getErrorBytes() {
-      java.lang.Object ref = error_;
+        getTeamTaskIdBytes() {
+      java.lang.Object ref = teamTaskId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        error_ = b;
+        teamTaskId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string error = 3;</code>
+     * <pre>
+     * xoa username nay ra khoi assignee cua teamtaskId dc chon
+     * </pre>
+     *
+     * <code>string teamTaskId = 3;</code>
      */
-    public Builder setError(
+    public Builder setTeamTaskId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      error_ = value;
+      teamTaskId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string error = 3;</code>
+     * <pre>
+     * xoa username nay ra khoi assignee cua teamtaskId dc chon
+     * </pre>
+     *
+     * <code>string teamTaskId = 3;</code>
      */
-    public Builder clearError() {
+    public Builder clearTeamTaskId() {
       
-      error_ = getDefaultInstance().getError();
+      teamTaskId_ = getDefaultInstance().getTeamTaskId();
       onChanged();
       return this;
     }
     /**
-     * <code>string error = 3;</code>
+     * <pre>
+     * xoa username nay ra khoi assignee cua teamtaskId dc chon
+     * </pre>
+     *
+     * <code>string teamTaskId = 3;</code>
      */
-    public Builder setErrorBytes(
+    public Builder setTeamTaskIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      error_ = value;
+      teamTaskId_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object tokenAccess_ = "";
+    /**
+     * <code>string tokenAccess = 4;</code>
+     */
+    public java.lang.String getTokenAccess() {
+      java.lang.Object ref = tokenAccess_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        tokenAccess_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string tokenAccess = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTokenAccessBytes() {
+      java.lang.Object ref = tokenAccess_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        tokenAccess_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string tokenAccess = 4;</code>
+     */
+    public Builder setTokenAccess(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      tokenAccess_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string tokenAccess = 4;</code>
+     */
+    public Builder clearTokenAccess() {
+      
+      tokenAccess_ = getDefaultInstance().getTokenAccess();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string tokenAccess = 4;</code>
+     */
+    public Builder setTokenAccessBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      tokenAccess_ = value;
       onChanged();
       return this;
     }
@@ -752,41 +907,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:teamtask.AddNewTeamTaskRes)
+    // @@protoc_insertion_point(builder_scope:teamtask.CancelTeamTaskReq)
   }
 
-  // @@protoc_insertion_point(class_scope:teamtask.AddNewTeamTaskRes)
-  private static final co.overlead.gRPC.AddNewTeamTaskRes DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:teamtask.CancelTeamTaskReq)
+  private static final co.overlead.gRPC.CancelTeamTaskReq DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new co.overlead.gRPC.AddNewTeamTaskRes();
+    DEFAULT_INSTANCE = new co.overlead.gRPC.CancelTeamTaskReq();
   }
 
-  public static co.overlead.gRPC.AddNewTeamTaskRes getDefaultInstance() {
+  public static co.overlead.gRPC.CancelTeamTaskReq getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<AddNewTeamTaskRes>
-      PARSER = new com.google.protobuf.AbstractParser<AddNewTeamTaskRes>() {
+  private static final com.google.protobuf.Parser<CancelTeamTaskReq>
+      PARSER = new com.google.protobuf.AbstractParser<CancelTeamTaskReq>() {
     @java.lang.Override
-    public AddNewTeamTaskRes parsePartialFrom(
+    public CancelTeamTaskReq parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new AddNewTeamTaskRes(input, extensionRegistry);
+      return new CancelTeamTaskReq(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<AddNewTeamTaskRes> parser() {
+  public static com.google.protobuf.Parser<CancelTeamTaskReq> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<AddNewTeamTaskRes> getParserForType() {
+  public com.google.protobuf.Parser<CancelTeamTaskReq> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public co.overlead.gRPC.AddNewTeamTaskRes getDefaultInstanceForType() {
+  public co.overlead.gRPC.CancelTeamTaskReq getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

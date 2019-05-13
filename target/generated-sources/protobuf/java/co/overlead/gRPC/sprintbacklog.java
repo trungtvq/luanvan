@@ -50,19 +50,20 @@ public final class sprintbacklog {
       "Res\022\016\n\006status\030\001 \001(\t\022\r\n\005error\030\002 \001(\t\022\027\n\017sp" +
       "rintBacklogId\030\003 \001(\t\"P\n\026GetAllSprintBackl" +
       "ogReq\022\023\n\013requesterId\030\001 \001(\t\022\021\n\tprojectId\030" +
-      "\002 \001(\t\022\016\n\006cookie\030\003 \001(\t\"\300\001\n\026GetAllSprintBa" +
-      "cklogRes\022\027\n\017sprintBacklogId\030\001 \001(\t\022\014\n\004rol" +
-      "e\030\002 \001(\t\022\014\n\004want\030\003 \001(\t\022\n\n\002so\030\004 \001(\t\022\016\n\006sta" +
-      "tus\030\005 \001(\t\022\020\n\010priority\030\006 \001(\t\022\022\n\nestimatio" +
-      "n\030\007 \001(\t\022\016\n\006sprint\030\010 \001(\t\022\r\n\005start\030\t \001(\t\022\020" +
-      "\n\010deadline\030\n \001(\t2\331\001\n\rSprintBacklog\022_\n\023de" +
-      "leteSprintBacklog\022%.sprintbacklog.Delete" +
-      "SprintBacklogReq\032\037.sprintbacklog.SprintB" +
-      "acklogRes\"\000\022g\n\023getAllSprintBacklog\022%.spr" +
-      "intbacklog.GetAllSprintBacklogReq\032%.spri" +
-      "ntbacklog.GetAllSprintBacklogRes\"\0000\001B(\n\020" +
-      "co.overlead.gRPCB\rsprintbacklogP\001\242\002\002sbb\006" +
-      "proto3"
+      "\002 \001(\t\022\016\n\006cookie\030\003 \001(\t\"\370\001\n\026GetAllSprintBa" +
+      "cklogRes\022\027\n\017sprintBacklogId\030\001 \001(\t\022\025\n\rsta" +
+      "tusBacklog\030\013 \001(\t\022\020\n\010sprintId\030\014 \001(\t\022\r\n\005er" +
+      "ror\030\r \001(\t\022\014\n\004role\030\002 \001(\t\022\014\n\004want\030\003 \001(\t\022\n\n" +
+      "\002so\030\004 \001(\t\022\016\n\006status\030\005 \001(\t\022\020\n\010priority\030\006 " +
+      "\001(\t\022\022\n\nestimation\030\007 \001(\t\022\016\n\006sprint\030\010 \001(\t\022" +
+      "\r\n\005start\030\t \001(\t\022\020\n\010deadline\030\n \001(\t2\331\001\n\rSpr" +
+      "intBacklog\022_\n\023deleteSprintBacklog\022%.spri" +
+      "ntbacklog.DeleteSprintBacklogReq\032\037.sprin" +
+      "tbacklog.SprintBacklogRes\"\000\022g\n\023getAllSpr" +
+      "intBacklog\022%.sprintbacklog.GetAllSprintB" +
+      "acklogReq\032%.sprintbacklog.GetAllSprintBa" +
+      "cklogRes\"\0000\001B(\n\020co.overlead.gRPCB\rsprint" +
+      "backlogP\001\242\002\002sbb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -99,7 +100,7 @@ public final class sprintbacklog {
     internal_static_sprintbacklog_GetAllSprintBacklogRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sprintbacklog_GetAllSprintBacklogRes_descriptor,
-        new java.lang.String[] { "SprintBacklogId", "Role", "Want", "So", "Status", "Priority", "Estimation", "Sprint", "Start", "Deadline", });
+        new java.lang.String[] { "SprintBacklogId", "StatusBacklog", "SprintId", "Error", "Role", "Want", "So", "Status", "Priority", "Estimation", "Sprint", "Start", "Deadline", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

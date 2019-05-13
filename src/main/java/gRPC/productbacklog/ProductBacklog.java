@@ -8,6 +8,7 @@ import org.bson.*;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
+import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -79,6 +80,7 @@ public class ProductBacklog {
                             .append("estimation", request.getEstimation())
                             .append("sprintId", request.getSprintId())
                             .append("createTime", createTime)
+                            .append("isSprintBacklog","false")
                     );
                     Document newBacklog = findProductBacklogInPB(request.getProjectId(), request.getTitle(), createTime);
 
@@ -127,6 +129,7 @@ public class ProductBacklog {
                                     .append("priority", request.getPriority())
                                     .append("estimation", request.getEstimation())
                                     .append("sprintId", request.getSprintId())
+
                     );
                     //TODO: Add list log update
                     makeResponseForUpdateSuccess(responseObserver,request.getProductBacklogId());
@@ -142,7 +145,7 @@ public class ProductBacklog {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("productbacklog");
-                MongoCollection<Document> collProject = Mongod.getOverleadConnection().getCollection("productbacklog");
+                MongoCollection<Document> collProject = Mongod.getOverleadConnection().getCollection("project");
 
                 Document found = findProductBacklogWithId(request.getProjectId(), request.getProductBacklogId());
                 //create query
@@ -160,7 +163,24 @@ public class ProductBacklog {
 
         @Override
         public void sendToSprintBacklog(SendToSprintBacklogReq request, StreamObserver<ProductBacklogRes> responseObserver) {
-            super.sendToSprintBacklog(request, responseObserver);
+            System.out.println("sendToSprintBacklog");
+            if (!isValidAuth(request.getRequesterId(), request.getCookie())) {
+                makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
+            } else {
+                MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("productbacklog");
+                MongoCollection<Document> collProject = Mongod.getOverleadConnection().getCollection("project");
+                List<Document> get=collProject.find(new Document("_id",new ObjectId(request.getProjectId()))).into(new ArrayList<>());
+                if (get.size()==0){
+                    makeResponseForFailed(responseObserver,"NOT_EXIST_PROJECT","FALSE");
+                }else{
+                    collProject.findOneAndUpdate(new Document("_id",new ObjectId(request.getProjectId())),
+                            new Document("$set",
+                                    new Document("isSprintBacklog","true")
+                                            .append("start",request.getStart())
+                                            .append("deadline",request.getDeadline())));
+                    makeResponseForUpdateSuccess(responseObserver,request.getProductBacklogId());
+                }
+            }
         }
 
         @Override
@@ -180,7 +200,7 @@ public class ProductBacklog {
                         makeResponseForFailed(responseObserver,"EMPTY","FALSE");
                     }else{
                         re.forEach(i->{
-                            Document r= coll.find(new Document("_id",new ObjectId(i))).into(new ArrayList<>()).get(0);
+                            Document r= coll.find(new Document("_id",new ObjectId(i)).append("isSprintBacklog","false")).into(new ArrayList<>()).get(0);
                             responseObserver.onNext(GetAllProductBacklogRes.newBuilder()
                                     .setProductBacklogId(i)
                                     .setRole(r.get("role").toString())

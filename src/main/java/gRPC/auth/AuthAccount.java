@@ -34,11 +34,13 @@ public class AuthAccount {
             Redis.LIST_SESSION_SYNC_COMMAND.lpush(id,session);
         }
         public static boolean getSession(String id,String session){
+
             Long length=Redis.LIST_SESSION_SYNC_COMMAND.llen(id);
-            List<Long> list=Redis.LIST_SESSION_SYNC_COMMAND.lrange(id,0,length);
+            System.out.println("validate session"+length);
+            List<String> list=Redis.LIST_SESSION_SYNC_COMMAND.lrange(id,0,length);
 
             for (int i=0;i<list.size();i++){
-                if (list.get(i).toString()==session) return true;
+                if (list.get(i).equals(session)) return true;
             }
             return false;
         }
@@ -88,6 +90,8 @@ public class AuthAccount {
         }
         @Override
         public void authSession(AuthSessionReq request, StreamObserver<SignInRes> responseObserver) {
+            System.out.println(request.getId());
+
             if (getSession(request.getId(),request.getSession())){
                 makeResponseForSignInSuccess(responseObserver,request.getId());
             } else{
@@ -141,17 +145,18 @@ public class AuthAccount {
         //OK
         @Override
         public void resetPasswordFinalStep(ResetPasswordFinalStepReq request, StreamObserver<SignInRes> responseObserver) {
+            System.out.println(request.getUsername());
             Document user = getUserFromDB(request.getUsername()); //check username is exist
-            if (user!=null){ //NOT EXIST USERNAME
+            if (user==null){ //NOT EXIST USERNAME
                 makeResponseForSignInFailed(responseObserver,"NOT_EXIST_USERNAME","TRUE");
             } else{
                 Object token=Redis.TOKEN_SYNC_COMMAND.get(request.getUsername());
                 if(token!=null){
 
-                    if (token.toString()!=request.getToken()){
+                    if (!token.equals(request.getToken())){
                         makeResponseForSignInFailed(responseObserver,"WRONG_TOKEN","TRUE");
                     }else{
-                        coll.findOneAndUpdate(new Document("username",request.getUsername()),new Document("password",request.getPassword()));
+                        coll.findOneAndUpdate(new Document("username",request.getUsername()),new Document("$set", new Document("password",request.getPassword())));
                         makeResponseForSignInSuccess(responseObserver,user.get("_id").toString());
                         Redis.TOKEN_SYNC_KEY_COMMAND.del(request.getUsername());
                     }

@@ -8,14 +8,14 @@ public interface GetAllTeamTaskResOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string teamtaskId = 1;</code>
+   * <code>string teamTaskId = 1;</code>
    */
-  java.lang.String getTeamtaskId();
+  java.lang.String getTeamTaskId();
   /**
-   * <code>string teamtaskId = 1;</code>
+   * <code>string teamTaskId = 1;</code>
    */
   com.google.protobuf.ByteString
-      getTeamtaskIdBytes();
+      getTeamTaskIdBytes();
 
   /**
    * <code>string title = 2;</code>
@@ -67,21 +67,21 @@ public interface GetAllTeamTaskResOrBuilder extends
 
   /**
    * <pre>
-   * form mm/hh/dd/mm/yyyy 
+   * form mm/hh/dd/mm/yyyy
    * </pre>
    *
-   * <code>string deadliine = 6;</code>
+   * <code>string deadline = 6;</code>
    */
-  java.lang.String getDeadliine();
+  java.lang.String getDeadline();
   /**
    * <pre>
-   * form mm/hh/dd/mm/yyyy 
+   * form mm/hh/dd/mm/yyyy
    * </pre>
    *
-   * <code>string deadliine = 6;</code>
+   * <code>string deadline = 6;</code>
    */
   com.google.protobuf.ByteString
-      getDeadliineBytes();
+      getDeadlineBytes();
 
   /**
    * <code>string assigneeArray = 7;</code>
@@ -104,6 +104,16 @@ public interface GetAllTeamTaskResOrBuilder extends
       getCommentBytes();
 
   /**
+   * <code>string statusTeamTask = 12;</code>
+   */
+  java.lang.String getStatusTeamTask();
+  /**
+   * <code>string statusTeamTask = 12;</code>
+   */
+  com.google.protobuf.ByteString
+      getStatusTeamTaskBytes();
+
+  /**
    * <code>string status = 9;</code>
    */
   java.lang.String getStatus();
@@ -122,4 +132,14 @@ public interface GetAllTeamTaskResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getReviewBytes();
+
+  /**
+   * <code>string error = 11;</code>
+   */
+  java.lang.String getError();
+  /**
+   * <code>string error = 11;</code>
+   */
+  com.google.protobuf.ByteString
+      getErrorBytes();
 }

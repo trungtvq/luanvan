@@ -3,19 +3,19 @@
 
 package co.overlead.gRPC;
 
-public interface CancleTeamTaskReqOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:teamtask.CancleTeamTaskReq)
+public interface CancelTeamTaskReqOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:teamtask.CancelTeamTaskReq)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string username = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
-  java.lang.String getUsername();
+  java.lang.String getRequesterId();
   /**
-   * <code>string username = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
   com.google.protobuf.ByteString
-      getUsernameBytes();
+      getRequesterIdBytes();
 
   /**
    * <code>string projectId = 2;</code>
@@ -32,26 +32,26 @@ public interface CancleTeamTaskReqOrBuilder extends
    * xoa username nay ra khoi assignee cua teamtaskId dc chon
    * </pre>
    *
-   * <code>string teamtaskId = 3;</code>
+   * <code>string teamTaskId = 3;</code>
    */
-  java.lang.String getTeamtaskId();
+  java.lang.String getTeamTaskId();
   /**
    * <pre>
    * xoa username nay ra khoi assignee cua teamtaskId dc chon
    * </pre>
    *
-   * <code>string teamtaskId = 3;</code>
+   * <code>string teamTaskId = 3;</code>
    */
   com.google.protobuf.ByteString
-      getTeamtaskIdBytes();
+      getTeamTaskIdBytes();
 
   /**
-   * <code>string cookie = 4;</code>
+   * <code>string tokenAccess = 4;</code>
    */
-  java.lang.String getCookie();
+  java.lang.String getTokenAccess();
   /**
-   * <code>string cookie = 4;</code>
+   * <code>string tokenAccess = 4;</code>
    */
   com.google.protobuf.ByteString
-      getCookieBytes();
+      getTokenAccessBytes();
 }

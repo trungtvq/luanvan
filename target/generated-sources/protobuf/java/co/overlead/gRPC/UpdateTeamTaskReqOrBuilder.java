@@ -8,14 +8,14 @@ public interface UpdateTeamTaskReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string username = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
-  java.lang.String getUsername();
+  java.lang.String getRequesterId();
   /**
-   * <code>string username = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
   com.google.protobuf.ByteString
-      getUsernameBytes();
+      getRequesterIdBytes();
 
   /**
    * <code>string projectId = 2;</code>
@@ -28,14 +28,14 @@ public interface UpdateTeamTaskReqOrBuilder extends
       getProjectIdBytes();
 
   /**
-   * <code>string teamtaskId = 3;</code>
+   * <code>string teamTaskId = 3;</code>
    */
-  java.lang.String getTeamtaskId();
+  java.lang.String getTeamTaskId();
   /**
-   * <code>string teamtaskId = 3;</code>
+   * <code>string teamTaskId = 3;</code>
    */
   com.google.protobuf.ByteString
-      getTeamtaskIdBytes();
+      getTeamTaskIdBytes();
 
   /**
    * <code>string title = 4;</code>
@@ -87,21 +87,21 @@ public interface UpdateTeamTaskReqOrBuilder extends
 
   /**
    * <pre>
-   * form mm/hh/dd/mm/yyyy 
+   * form mm/hh/dd/mm/yyyy
    * </pre>
    *
-   * <code>string deadliine = 8;</code>
+   * <code>string deadline = 8;</code>
    */
-  java.lang.String getDeadliine();
+  java.lang.String getDeadline();
   /**
    * <pre>
-   * form mm/hh/dd/mm/yyyy 
+   * form mm/hh/dd/mm/yyyy
    * </pre>
    *
-   * <code>string deadliine = 8;</code>
+   * <code>string deadline = 8;</code>
    */
   com.google.protobuf.ByteString
-      getDeadliineBytes();
+      getDeadlineBytes();
 
   /**
    * <code>string assigneeArray = 9;</code>
@@ -144,12 +144,12 @@ public interface UpdateTeamTaskReqOrBuilder extends
       getReviewBytes();
 
   /**
-   * <code>string cookie = 13;</code>
+   * <code>string tokenAccess = 13;</code>
    */
-  java.lang.String getCookie();
+  java.lang.String getTokenAccess();
   /**
-   * <code>string cookie = 13;</code>
+   * <code>string tokenAccess = 13;</code>
    */
   com.google.protobuf.ByteString
-      getCookieBytes();
+      getTokenAccessBytes();
 }
