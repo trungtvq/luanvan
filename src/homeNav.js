@@ -16,35 +16,16 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import cookie from 'react-cookies';
+import {saveLogin} from './actions'
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
+import {addProject} from './actions'
+
 import {  
 Button, 
 Col, 
-Container, 
-Input, 
-InputGroup, 
-InputGroupAddon, 
-InputGroupText, 
-Row, 
-Table, 
-Pagination, 
-PaginationItem, 
-PaginationLink, 
-Card, 
-CardBody, 
-CardHeader, 
-Jumbotron,
-Progress,
-Navbar,
-NavbarBrand,
-NavbarToggler,
-Collapse,
-Nav,
-NavItem,
-NavLink,
-UncontrolledDropdown,
-DropdownToggle,
-DropdownMenu,
-DropdownItem,
+Input,
 Modal,
 ModalHeader,
 ModalBody,
@@ -128,31 +109,23 @@ const styles = theme => ({
 class PrimarySearchAppBar extends React.Component {
   constructor(props) {
     super(props);
-    this.onTextboxChangeOwnerName = this.onTextboxChangeOwnerName.bind(this);
-    this.onTextboxChangeProjectName = this.onTextboxChangeProjectName.bind(this);
-    this.onTextboxChangetimeStart = this.onTextboxChangetimeStart.bind(this);
-    this.onTextboxChangedateStart = this.onTextboxChangedateStart.bind(this);
-    this.onTextboxChangetimeEnd = this.onTextboxChangetimeEnd.bind(this);
-    this.onTextboxChangedateEnd = this.onTextboxChangedateEnd.bind(this);
-    this.toggleCreatePj = this.toggleCreatePj.bind(this);
-
-      
+         
       this.state = {
         anchorEl: null,
         mobileMoreAnchorEl: null,
         modalCreatePj: false,
         
-        OwnerName:'',
+        Topic:'',
         ProjectName:'',
         timeStart:'',
         dateStart:'',
         timeEnd:'',
         dateEnd:'',
-        status:false,
+        isPrivate:"false",
       };
     };
 
-  toggleCreatePj(){
+  toggleCreatePj=()=>{
     this.setState(prevState => ({
       modalCreatePj: !prevState.modalCreatePj,
       mobileMoreAnchorEl: null,
@@ -176,103 +149,77 @@ class PrimarySearchAppBar extends React.Component {
     this.setState({ mobileMoreAnchorEl: null });
   };
 
-  handleCreatePj=(event)=> {
-    const myprojectService = new proto.myproject.MyprojectClient('http://54.255.233.193:8085');
-    //some data of request (get that from frontend)
-    console.log(myprojectService)
-    
-    var metadata = {};
-    //make a request to server
-    // string ownerId = 1;
-    // string requesterId=7;
-    // string projectName = 2;
-    // string start = 3;		//return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
-    // string end = 4;		   //return in form mm/hh/dd/mm/yyyy
-    // string private = 5;
-    // string cookie = 6;
+  handleCreatePj=()=> {
+    const myprojectService = new proto.myproject.MyprojectClient('http://54.255.233.193:8085');    
+    var metadata = {};   
     var AddNewProjectReq= new proto.myproject.AddNewProjectReq();
-    //AddNewProjectReq.setIdOwner("tienbede");
-    AddNewProjectReq.setOwnerid("tienbede");
-    AddNewProjectReq.setRequesterid("tienbede");
-    AddNewProjectReq.setProjectname("tienbede");
-    AddNewProjectReq.setStart("tienbede");
-    AddNewProjectReq.setEnd("tienbede");
-    AddNewProjectReq.setPrivate("tienbede");
-    AddNewProjectReq.setCookie("tienbede");
-
-    var toto=myprojectService.addNewProject(AddNewProjectReq, metadata, (err, response) => {
-      console.log("connect")
+    AddNewProjectReq.setTopic(this.state.Topic);
+    AddNewProjectReq.setRequesterid(cookie.load("userId"));
+    AddNewProjectReq.setProjectname(this.state.ProjectName);
+    AddNewProjectReq.setStart(this.state.dateStart);
+    AddNewProjectReq.setEnd(this.state.dateEnd);
+    AddNewProjectReq.setPrivate(this.state.isPrivate);
+    AddNewProjectReq.setCookie(cookie.load("accessToken"));
+    myprojectService.addNewProject(AddNewProjectReq, metadata, (err, response) => {
       if (err) { //if error
          console.log(err);
-         console.log("error")
-      } else { //if success
-              //get response
-              console.log("response")
-              console.log(response);
-              console.log("get avatar")
-              console.log(response.getStatus())
-
-              // this.setState({
-              //   av: response.getAvatar()
-              // });
+         console.log("error AddNewProjectReq")
+      } else { 
+        console.log(response.getStatus())
+              if (response.getStatus()=="SUCCESS"){
+                this.props.dispatch(addProject(response.getProjectid(),this.state.Topic,this.state.ProjectName,this.state.dateStart,this.state.dateEnd,this.state.isPrivate)) 
+                console.log(this.props.project) 
+                this.toggleCreatePj()   
+              }
+             
               
-              const ProfileRes = response[0];
             }
           });
-          console.log(toto)
-
   }
 
-  onTextboxChangeOwnerName(event) {
+  onTextboxChangeTopic=(event)=> {
     this.setState({
-      OwnerName: event.target.value,
+      Topic: event.target.value,
     });
   }
-  onTextboxChangeProjectName(event) {
+  onTextboxChangeProjectName=(event)=> {
     this.setState({
       ProjectName: event.target.value,
     });
   }
-  onTextboxChangetimeStart(event) {
+  onTextboxChangetimeStart=(event)=> {
     this.setState({
       timeStart: event.target.value,
     });
   }
-  onTextboxChangedateStart(event) {
+  onTextboxChangedateStart=(event)=> {
     this.setState({
       dateStart: event.target.value,
     });
   }
-  onTextboxChangetimeEnd(event) {
+  onTextboxChangetimeEnd=(event)=> {
     this.setState({
       timeEnd: event.target.value,
     });
   }
-  onTextboxChangedateEnd(event) {
+  onTextboxChangedateEnd=(event)=> {
     this.setState({
       dateEnd: event.target.value,
     });
   }
-  onTextboxChangeStatus(event) {
-    this.setState(prevState => ({
-      status: !prevState.status,
-    }));
+  onTextboxChangePrivate=event=> {    
+    this.setState({
+      isPrivate: this.state.isPrivate=="false"?"true":"false",
+    });    
   }
 
   
-  render() {
+  render() {    
     const { classes } = this.props;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
     let that=this;
-    const {
-      OwnerName,
-      ProjectName,
-      timeStart,
-      dateStart,
-      timeEnd,
-      dateEnd,
-      status,   
+    const {      
       anchorEl,
       mobileMoreAnchorEl,
     } = this.state;
@@ -358,10 +305,10 @@ class PrimarySearchAppBar extends React.Component {
                                             
                                             <FormGroup row>
                                                 <Col md="3">
-                                                  <Label htmlFor="text-input">Owner Name</Label>
+                                                  <Label htmlFor="text-input">Topic Name</Label>
                                                 </Col>
                                                 <Col xs="5" md="5">
-                                                  <Input type="text" id="OwnerName" name="OwnerName" placeholder="Name" value={OwnerName} onChange={that.onTextboxChangeOwnerName} />
+                                                  <Input type="text" id="Topic" name="Topic" placeholder="Topic" value={this.state.Topic} onChange={that.onTextboxChangeTopic} />
                                                 </Col>
                                               </FormGroup>
   
@@ -371,7 +318,7 @@ class PrimarySearchAppBar extends React.Component {
                                                   <Label htmlFor="text-input">Project Name</Label>
                                                 </Col>
                                                 <Col xs="5" md="5">
-                                                  <Input type="text" id="ProjectName" name="ProjectName" placeholder="Project Name" value={ProjectName} onChange={that.onTextboxChangeProjectName} />
+                                                  <Input type="text" id="ProjectName" name="ProjectName" placeholder="Project Name" value={this.state.ProjectName} onChange={that.onTextboxChangeProjectName} />
                                                   
                                                 </Col>
                                               </FormGroup>
@@ -381,10 +328,10 @@ class PrimarySearchAppBar extends React.Component {
                                                   <Label htmlFor="date-input">Start </Label>
                                                 </Col>
                                                 <Col xs="3" md="3">
-                                                <Input type="time" id="timeStart" name="timeStart" value={timeStart} onChange={that.onTextboxChangetimeStart} />
+                                                <Input type="time" id="timeStart" name="timeStart" value={this.state.timeStart} onChange={that.onTextboxChangetimeStart} />
                                                 </Col>
                                                 <Col xs="3" md="3">
-                                                  <Input type="date" id="dateStart" name="dateStart" value={dateStart} onChange={that.onTextboxChangedateStart}/>
+                                                  <Input type="date" id="dateStart" name="dateStart" value={this.state.dateStart} onChange={that.onTextboxChangedateStart}/>
                                                 </Col>
                                               </FormGroup>
   
@@ -393,19 +340,19 @@ class PrimarySearchAppBar extends React.Component {
                                                   <Label htmlFor="date-input">End </Label>
                                                 </Col>
                                                 <Col xs="3" md="3">
-                                                <Input type="time" id="timeEnd" name="timeEnd" value={timeEnd} onChange={that.onTextboxChangetimeEnd}/>
+                                                <Input type="time" id="timeEnd" name="timeEnd" value={this.state.timeEnd} onChange={that.onTextboxChangetimeEnd}/>
                                                 </Col>
                                                 <Col xs="3" md="3">
-                                                  <Input type="date" id="dateEnd" name="dateEnd"  value={dateEnd} onChange={that.onTextboxChangedateEnd}/>
+                                                  <Input type="date" id="dateEnd" name="dateEnd"  value={this.state.dateEnd} onChange={that.onTextboxChangedateEnd}/>
                                                 </Col>
                                               </FormGroup>
                                               
                                               <FormGroup row>
                                                 <Col md="5">
-                                                  <Label htmlFor="date-input">Private </Label>onTextboxChangeStatus
+                                                  <Label htmlFor="date-input">Private </Label>
                                                 </Col>
                                                 <Col xs="5" md="5">
-                                                  <Input type="checkbox" id="Private" name="Private" value={status} onChange={that.onTextboxChangeStatus}/>
+                                                  <Input type="checkbox" id="Private" name="Private" value={this.state.isPrivate} onChange={that.onTextboxChangePrivate}/>
                                                 </Col>
                                               </FormGroup>
                                             </Form>
@@ -417,6 +364,7 @@ class PrimarySearchAppBar extends React.Component {
                                     <Button color="secondary" onClick={that.toggleCreatePj}>Cancel</Button>
                                     </ModalFooter>
               </Modal>
+              
               <IconButton color="inherit">
                 <Badge badgeContent={4} color="secondary">
                   <MailIcon />
@@ -455,5 +403,12 @@ class PrimarySearchAppBar extends React.Component {
 PrimarySearchAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-
-export default withStyles(styles)(PrimarySearchAppBar);
+function mapStateToProps(state) {
+  console.log("mapStateToProps homeNav")
+  const { updateProjectLoaded } = state
+  const {project,needUpdate}=updateProjectLoaded
+  return {
+    project,needUpdate
+  }
+}
+export default connect(mapStateToProps)(withStyles(styles)(PrimarySearchAppBar));

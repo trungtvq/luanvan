@@ -6,9 +6,16 @@ import {
   RECEIVE_POSTS,
   DO_LOGOUT,
   DO_LOGIN,
-  GET_PROJECT,
-  SET_PROJECT
+  GET_PROJECT_SELECTED,
+  SET_PROJECT_SELETED,
+  FETCH_ALL_PROJECT,
+  UPDATE_PROJECT,
+  DELETE_PROJECT,
+  ADD_PROJECT,
+  FORCE_RERENDER
 } from '../actions'
+const proto = {};
+proto.myproject = require('../gRPC/myproject/myproject_grpc_web_pb');
 
 function selectedSubreddit(state = 'reactjs', action) {
   switch (action.type) {
@@ -80,13 +87,42 @@ function changeStatusLogin(state = {isLogin:false}, action) {
   }
 }
 function changeStatusProject(state={projectId:"noid"},action){
+  console.log("changeStatusProject")
   switch (action.type) {    
-    case SET_PROJECT:
+    case SET_PROJECT_SELETED:
       return Object.assign({},{
         projectId:action.id,
         projectName:action.name
       })
-    case GET_PROJECT:    
+    case GET_PROJECT_SELECTED:    
+    default:
+      return state
+  }
+}
+
+function updateProjectLoaded(state={project:[],needUpdate:false},action){
+  console.log("updateProjectLoaded")
+
+  switch (action.type) {    
+    case FETCH_ALL_PROJECT:
+      return Object.assign({},{
+        projectId:action.id,
+        projectName:action.name
+      })
+    case ADD_PROJECT:
+        state.project.push(Object.assign({},{
+            id:action.id,
+            topic:action.topic,
+            projectName:action.name,
+            start:action.start,
+            end:action.end,
+            private:action.isPrivate,          
+        }))
+        return Object.assign({}, state,{needUpdate:action.id});
+    case UPDATE_PROJECT:    
+    case DELETE_PROJECT:
+    case FORCE_RERENDER:
+        return Object.assign({},state,{random:Math.random()})
     default:
       return state
   }
@@ -95,7 +131,8 @@ const rootReducer = combineReducers({
   postsBySubreddit,
   selectedSubreddit,
   changeStatusLogin,
-  changeStatusProject
+  changeStatusProject,
+  updateProjectLoaded,
 })
 
 export default rootReducer

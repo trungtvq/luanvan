@@ -7,11 +7,6 @@ import React, { Component } from 'react';
 import Client from "./Client"
 
 
-
-
-
-
-
 import PropTypes from 'prop-types'
 
 //redux

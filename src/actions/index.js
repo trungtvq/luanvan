@@ -5,8 +5,13 @@ export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
 export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
 export const DO_LOGIN = 'DO_LOGIN'
 export const DO_LOGOUT = 'DO_LOGOUT'
-export const GET_PROJECT = 'GET_PROJECT'
-export const SET_PROJECT = 'SET_PROJECT'
+export const GET_PROJECT_SELECTED = 'GET_PROJECT_SELECTED'
+export const SET_PROJECT_SELETED = 'SET_PROJECT_SELETED'
+export const FETCH_ALL_PROJECT = 'FETCH_ALL_PROJECT'
+export const UPDATE_PROJECT = 'UPDATE_PROJECT'
+export const DELETE_PROJECT = 'DELETE_PROJECT'
+export const ADD_PROJECT = 'ADD_PROJECT'
+export const FORCE_RERENDER = 'FORCE_RERENDER'
 
 export function selectSubreddit(subreddit) {
   return {
@@ -87,13 +92,30 @@ export function removeLogin() {
 }
 export function getProject(){
   return {
-    type: GET_PROJECT
+    type: GET_PROJECT_SELECTED
   }
 }
 export function setProject(id,name){
   return {
-    type: SET_PROJECT,
+    type: SET_PROJECT_SELETED,
     id,
     name
+  }
+}
+export function addProject(id,topic,name,start,end,isPrivate){
+  return {
+    type: ADD_PROJECT,
+    id,topic,name,start,end,isPrivate
+  }
+}
+export function fetchAllProject(id,topic,name,start,end,isPrivate){
+  return {
+    type: ADD_PROJECT,
+    id,topic,name,start,end,isPrivate
+  }
+}
+export function forceRerender(){
+  return {
+    type: FORCE_RERENDER,
   }
 }
