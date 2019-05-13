@@ -10,6 +10,11 @@ import { Card, Badge, Button, Col, Container, Input, InputGroup,
   ModalFooter,
 
 } from 'reactstrap';
+import cookie from 'react-cookies';
+import {getProject} from '../../../../../actions'
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
+
 import { Link } from 'react-router-dom';
 const proto = {};
 proto.userstory = require('./../../../../../gRPC/userstory/userstory_grpc_web_pb');
@@ -164,13 +169,13 @@ class Detail extends Component {
       soUpdate: event.target.value,
     });
   }
-  onTextboxChangeUserstoryIdUpdate=(event)=> {
+  onTextboxChangeUserStoryIdUpdate=(event)=> {
     this.setState({
       userstoryIdUpdate: event.target.value,
     });
   }
 
-  onTextboxChangeUserstoryIdDelete=(event)=> {
+  onTextboxChangeUserStoryIdDelete=(event)=> {
     this.setState({
       userstoryIdDelete: event.target.value,
     });
@@ -186,7 +191,8 @@ class Detail extends Component {
   }
   
   handleAdd= () => {
-    const userstoryService = new proto.userstory.UserstoryClient('http://54.255.233.193:8085');
+    console.log("handleAdd")
+    const userstoryService = new proto.userstory.UserStoryClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
     console.log(userstoryService)
     
@@ -202,8 +208,8 @@ class Detail extends Component {
     // string so = 5;
     // string cookie = 6;
     AddNewUserStoryReq.setName(this.state.name);
-    AddNewUserStoryReq.setAdderid(this.state.requesterId);
-    AddNewUserStoryReq.setProjectid(this.state.projectId);
+    AddNewUserStoryReq.setAdderid(cookie.load("userId"));
+    AddNewUserStoryReq.setProjectid(this.props.projectId);
     AddNewUserStoryReq.setRole(this.state.as);
     AddNewUserStoryReq.setWant(this.state.want);
     AddNewUserStoryReq.setSo(this.state.so);
@@ -245,9 +251,10 @@ class Detail extends Component {
         
 }
   handleDelete = (id) => {
-   
+    console.log("handleDelete")
+
     
-    const userstoryService = new proto.userstory.UserstoryClient('http://54.255.233.193:8085');
+    const userstoryService = new proto.userstory.UserStoryClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
     console.log(userstoryService)
     
@@ -260,7 +267,7 @@ class Detail extends Component {
   //     string userstoryId = 3;
   //     string cookie = 4;
     DeleteUserStoryReq.setDeleterid(this.state.requesterId);
-    DeleteUserStoryReq.setProjectid(this.state.projectId);
+    DeleteUserStoryReq.setProjectid(this.props.projectId);
     DeleteUserStoryReq.setUserstoryid(this.state.userstoryIdDelete);
     DeleteUserStoryReq.setCookie(this.state.cookie);
 
@@ -295,10 +302,11 @@ class Detail extends Component {
          
   };
   handleUpdate = () => {
-    const userstoryService = new proto.userstory.UserstoryClient('http://54.255.233.193:8085');
+    console.log("handleUpdate")
+
+    const userstoryService = new proto.userstory.UserStoryClient('http://54.255.233.193:8085');
     //some data of request (get that from frontend)
     console.log(userstoryService)
-    
     var metadata = {};
     //make a request to server
 
@@ -311,7 +319,7 @@ class Detail extends Component {
 // 	string so = 6;
 // string cookie = 7;
     UpdateUserStoryReq.setUpdaterid(this.state.requesterId);
-    UpdateUserStoryReq.setProjectid(this.state.projectId);
+    UpdateUserStoryReq.setProjectid(this.props.projectId);
     UpdateUserStoryReq.setUserstoryid(this.state.userstoryIdUpdate);
     UpdateUserStoryReq.setRole(this.state.asUpdate);
     UpdateUserStoryReq.setWant(this.state.wantUpdate);
@@ -509,7 +517,7 @@ class Detail extends Component {
                                   </Form>                                       
                               </ModalBody>
                               <ModalFooter>
-                                <Button color="primary" onClick={that.handleUpdate('idUserstory','idOwner','userName','UserstoryName','start','end','status','cookie')}>Submit</Button>{' '}
+                                <Button color="primary" onClick={that.handleUpdate}>Submit</Button>{' '}
                                 <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
                               </ModalFooter>
                           </Modal>
@@ -528,5 +536,11 @@ class Detail extends Component {
     );
   }
 }
-
-export default Detail;
+function mapStateToProps(state) {
+  const { changeStatusProject } = state
+  const { projectId, projectName } = changeStatusProject
+  return {
+    projectId, projectName,
+  }
+}
+export default connect(mapStateToProps)(Detail);

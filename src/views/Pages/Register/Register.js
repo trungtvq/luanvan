@@ -97,10 +97,10 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
           console.log(response.getId())
           console.log(response.getSession())
           if (response.getStatus()=="SUCCESS"){
-            this.props.dispatch(saveLogin(response.getId(),response.getSession()))
             cookie.save('userId',response.getId())
             cookie.save('tokenAccess',response.getSession())
-            return <Redirect from="/register" to="/dashboard" />
+            this.props.dispatch(saveLogin(response.getId(),response.getSession()))
+
           }
         }
       });

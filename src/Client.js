@@ -231,7 +231,7 @@ class Client extends Component {
                                 <Route exact path="/Profile/Edit" name="ProjectTodo" component={ProfileEdit} />
 
 
-                                {/* <Route exact path="/chat" name="Chat Page" component={Chat} /> */}
+                                <Route exact path="/chat" name="Chat Page" component={Chat} />
 
 
                                 <Route exact path="/404" name="Page 404" component={Page404} />

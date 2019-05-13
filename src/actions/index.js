@@ -5,6 +5,8 @@ export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
 export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
 export const DO_LOGIN = 'DO_LOGIN'
 export const DO_LOGOUT = 'DO_LOGOUT'
+export const GET_PROJECT = 'GET_PROJECT'
+export const SET_PROJECT = 'SET_PROJECT'
 
 export function selectSubreddit(subreddit) {
   return {
@@ -68,15 +70,30 @@ export function subcriptChannel(channelId){
   
 }
 
-export function saveLogin(id,token) {
+export function saveLogin(id,token,email,name,avatar) {
   return {
     type: DO_LOGIN,
     id,
-    token
+    token,
+    email,
+    name,
+    avatar
   }
 }
 export function removeLogin() {
   return {
     type: DO_LOGOUT
+  }
+}
+export function getProject(){
+  return {
+    type: GET_PROJECT
+  }
+}
+export function setProject(id,name){
+  return {
+    type: SET_PROJECT,
+    id,
+    name
   }
 }

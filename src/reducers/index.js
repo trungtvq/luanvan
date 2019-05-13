@@ -5,7 +5,9 @@ import {
   REQUEST_POSTS,
   RECEIVE_POSTS,
   DO_LOGOUT,
-  DO_LOGIN
+  DO_LOGIN,
+  GET_PROJECT,
+  SET_PROJECT
 } from '../actions'
 
 function selectedSubreddit(state = 'reactjs', action) {
@@ -60,11 +62,31 @@ function postsBySubreddit(state = {}, action) {
   }
 }
 function changeStatusLogin(state = {isLogin:false}, action) {
+  console.log("changeStatusLogin")
+  console.log(action)
   switch (action.type) {
     case DO_LOGIN:    
-      return Object.assign({}, {id:action.id,token:action.token,isLogin:true})      
+      return Object.assign({}, {
+                id:action.id,
+                token:action.token,
+                isLogin:true,
+                email:action.email,
+                name:action.name,
+                avatar:action.avatar})      
     case DO_LOGOUT:
       return Object.assign({},{isLogin:false})
+    default:
+      return state
+  }
+}
+function changeStatusProject(state={projectId:"noid"},action){
+  switch (action.type) {    
+    case SET_PROJECT:
+      return Object.assign({},{
+        projectId:action.id,
+        projectName:action.name
+      })
+    case GET_PROJECT:    
     default:
       return state
   }
@@ -72,7 +94,8 @@ function changeStatusLogin(state = {isLogin:false}, action) {
 const rootReducer = combineReducers({
   postsBySubreddit,
   selectedSubreddit,
-  changeStatusLogin
+  changeStatusLogin,
+  changeStatusProject
 })
 
 export default rootReducer

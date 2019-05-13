@@ -109,10 +109,10 @@ class ResetSecond extends Component {
         } else { //if success
           console.log(response.getStatus())
           if (response.getStatus()=="SUCCESS"){
-            this.props.dispatch(saveLogin(response.getId(),response.getSession()))
             cookie.save('userId',response.getId())
             cookie.save('tokenAccess',response.getSession())
-            return <Redirect from="/register" to="/dashboard" />
+            this.props.dispatch(saveLogin(response.getId(),response.getSession()))
+          
           }
           
         }

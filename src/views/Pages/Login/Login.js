@@ -127,12 +127,11 @@ class Login extends Component {
           console.log(response.getType())//type of NO PAY member: normal
           console.log(response.getId())
           console.log(response.getSession())
-          if (response.getStatus()=="SUCCESS"){
-            this.props.dispatch(saveLogin(response.getId(),response.getSession()))
-            cookie.save('userId',response.getId())
-            cookie.save('tokenAccess',response.getSession())
-            return <Redirect from="/register" to="/dashboard" />
-          }
+          if (response.getStatus()=="SUCCESS")
+          this.props.dispatch(saveLogin(response.getId(),response.getSession()))
+          cookie.save('userId',response.getId())
+          cookie.save('tokenAccess',response.getSession())
+      //    return <Redirect from="/login" to="/dashboard" />
         }
       });
   }
@@ -164,6 +163,12 @@ class Login extends Component {
           console.log(response.getType())//type of NO PAY member: normal
           console.log(response.getId())
           console.log(response.getSession())
+          if (response.getStatus()=="SUCCESS"){
+            cookie.save('userId',response.getId())
+            cookie.save('tokenAccess',response.getSession())
+            this.props.dispatch(saveLogin(response.getId(),response.getSession()))
+           
+          }
         }
       });
   }

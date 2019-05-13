@@ -22,7 +22,7 @@ proto.userstory = require('./userstory_pb.js');
  * @struct
  * @final
  */
-proto.userstory.UserstoryClient =
+proto.userstory.UserStoryClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -58,7 +58,7 @@ proto.userstory.UserstoryClient =
  * @struct
  * @final
  */
-proto.userstory.UserstoryPromiseClient =
+proto.userstory.UserStoryPromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -90,15 +90,15 @@ proto.userstory.UserstoryPromiseClient =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.userstory.AddNewUserStoryReq,
- *   !proto.userstory.AddNewUserStoryRes>}
+ *   !proto.userstory.UserStoryRes>}
  */
-const methodInfo_Userstory_addNewUserStory = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.userstory.AddNewUserStoryRes,
+const methodInfo_UserStory_addNewUserStory = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.userstory.UserStoryRes,
   /** @param {!proto.userstory.AddNewUserStoryReq} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.userstory.AddNewUserStoryRes.deserializeBinary
+  proto.userstory.UserStoryRes.deserializeBinary
 );
 
 
@@ -107,18 +107,18 @@ const methodInfo_Userstory_addNewUserStory = new grpc.web.AbstractClientBase.Met
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.userstory.AddNewUserStoryRes)}
+ * @param {function(?grpc.web.Error, ?proto.userstory.UserStoryRes)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.userstory.AddNewUserStoryRes>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.userstory.UserStoryRes>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.userstory.UserstoryClient.prototype.addNewUserStory =
+proto.userstory.UserStoryClient.prototype.addNewUserStory =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/userstory.Userstory/addNewUserStory',
+      '/userstory.UserStory/addNewUserStory',
       request,
       metadata || {},
-      methodInfo_Userstory_addNewUserStory,
+      methodInfo_UserStory_addNewUserStory,
       callback);
 };
 
@@ -128,16 +128,16 @@ proto.userstory.UserstoryClient.prototype.addNewUserStory =
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.userstory.AddNewUserStoryRes>}
+ * @return {!Promise<!proto.userstory.UserStoryRes>}
  *     A native promise that resolves to the response
  */
-proto.userstory.UserstoryPromiseClient.prototype.addNewUserStory =
+proto.userstory.UserStoryPromiseClient.prototype.addNewUserStory =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/userstory.Userstory/addNewUserStory',
+      '/userstory.UserStory/addNewUserStory',
       request,
       metadata || {},
-      methodInfo_Userstory_addNewUserStory);
+      methodInfo_UserStory_addNewUserStory);
 };
 
 
@@ -145,15 +145,15 @@ proto.userstory.UserstoryPromiseClient.prototype.addNewUserStory =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.userstory.UpdateUserStoryReq,
- *   !proto.userstory.UpdateUserStoryRes>}
+ *   !proto.userstory.UserStoryRes>}
  */
-const methodInfo_Userstory_updateUserStory = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.userstory.UpdateUserStoryRes,
+const methodInfo_UserStory_updateUserStory = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.userstory.UserStoryRes,
   /** @param {!proto.userstory.UpdateUserStoryReq} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.userstory.UpdateUserStoryRes.deserializeBinary
+  proto.userstory.UserStoryRes.deserializeBinary
 );
 
 
@@ -162,18 +162,18 @@ const methodInfo_Userstory_updateUserStory = new grpc.web.AbstractClientBase.Met
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.userstory.UpdateUserStoryRes)}
+ * @param {function(?grpc.web.Error, ?proto.userstory.UserStoryRes)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.userstory.UpdateUserStoryRes>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.userstory.UserStoryRes>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.userstory.UserstoryClient.prototype.updateUserStory =
+proto.userstory.UserStoryClient.prototype.updateUserStory =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/userstory.Userstory/updateUserStory',
+      '/userstory.UserStory/updateUserStory',
       request,
       metadata || {},
-      methodInfo_Userstory_updateUserStory,
+      methodInfo_UserStory_updateUserStory,
       callback);
 };
 
@@ -183,16 +183,16 @@ proto.userstory.UserstoryClient.prototype.updateUserStory =
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.userstory.UpdateUserStoryRes>}
+ * @return {!Promise<!proto.userstory.UserStoryRes>}
  *     A native promise that resolves to the response
  */
-proto.userstory.UserstoryPromiseClient.prototype.updateUserStory =
+proto.userstory.UserStoryPromiseClient.prototype.updateUserStory =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/userstory.Userstory/updateUserStory',
+      '/userstory.UserStory/updateUserStory',
       request,
       metadata || {},
-      methodInfo_Userstory_updateUserStory);
+      methodInfo_UserStory_updateUserStory);
 };
 
 
@@ -200,15 +200,15 @@ proto.userstory.UserstoryPromiseClient.prototype.updateUserStory =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.userstory.DeleteUserStoryReq,
- *   !proto.userstory.DeleteUserStoryRes>}
+ *   !proto.userstory.UserStoryRes>}
  */
-const methodInfo_Userstory_deleteUserStory = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.userstory.DeleteUserStoryRes,
+const methodInfo_UserStory_deleteUserStory = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.userstory.UserStoryRes,
   /** @param {!proto.userstory.DeleteUserStoryReq} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.userstory.DeleteUserStoryRes.deserializeBinary
+  proto.userstory.UserStoryRes.deserializeBinary
 );
 
 
@@ -217,18 +217,18 @@ const methodInfo_Userstory_deleteUserStory = new grpc.web.AbstractClientBase.Met
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.userstory.DeleteUserStoryRes)}
+ * @param {function(?grpc.web.Error, ?proto.userstory.UserStoryRes)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.userstory.DeleteUserStoryRes>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.userstory.UserStoryRes>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.userstory.UserstoryClient.prototype.deleteUserStory =
+proto.userstory.UserStoryClient.prototype.deleteUserStory =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/userstory.Userstory/deleteUserStory',
+      '/userstory.UserStory/deleteUserStory',
       request,
       metadata || {},
-      methodInfo_Userstory_deleteUserStory,
+      methodInfo_UserStory_deleteUserStory,
       callback);
 };
 
@@ -238,16 +238,16 @@ proto.userstory.UserstoryClient.prototype.deleteUserStory =
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.userstory.DeleteUserStoryRes>}
+ * @return {!Promise<!proto.userstory.UserStoryRes>}
  *     A native promise that resolves to the response
  */
-proto.userstory.UserstoryPromiseClient.prototype.deleteUserStory =
+proto.userstory.UserStoryPromiseClient.prototype.deleteUserStory =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/userstory.Userstory/deleteUserStory',
+      '/userstory.UserStory/deleteUserStory',
       request,
       metadata || {},
-      methodInfo_Userstory_deleteUserStory);
+      methodInfo_UserStory_deleteUserStory);
 };
 
 
@@ -257,7 +257,7 @@ proto.userstory.UserstoryPromiseClient.prototype.deleteUserStory =
  *   !proto.userstory.GetAllUserStoryReq,
  *   !proto.userstory.GetAllUserStoryRes>}
  */
-const methodInfo_Userstory_getAllUserStory = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_UserStory_getAllUserStory = new grpc.web.AbstractClientBase.MethodInfo(
   proto.userstory.GetAllUserStoryRes,
   /** @param {!proto.userstory.GetAllUserStoryReq} request */
   function(request) {
@@ -274,13 +274,13 @@ const methodInfo_Userstory_getAllUserStory = new grpc.web.AbstractClientBase.Met
  * @return {!grpc.web.ClientReadableStream<!proto.userstory.GetAllUserStoryRes>}
  *     The XHR Node Readable Stream
  */
-proto.userstory.UserstoryClient.prototype.getAllUserStory =
+proto.userstory.UserStoryClient.prototype.getAllUserStory =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/userstory.Userstory/getAllUserStory',
+      '/userstory.UserStory/getAllUserStory',
       request,
       metadata || {},
-      methodInfo_Userstory_getAllUserStory);
+      methodInfo_UserStory_getAllUserStory);
 };
 
 
@@ -291,13 +291,13 @@ proto.userstory.UserstoryClient.prototype.getAllUserStory =
  * @return {!grpc.web.ClientReadableStream<!proto.userstory.GetAllUserStoryRes>}
  *     The XHR Node Readable Stream
  */
-proto.userstory.UserstoryPromiseClient.prototype.getAllUserStory =
+proto.userstory.UserStoryPromiseClient.prototype.getAllUserStory =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/userstory.Userstory/getAllUserStory',
+      '/userstory.UserStory/getAllUserStory',
       request,
       metadata || {},
-      methodInfo_Userstory_getAllUserStory);
+      methodInfo_UserStory_getAllUserStory);
 };
 
 
