@@ -5,6 +5,10 @@ import {
   getFromStorage,
   } from '../../../service/storage';
 import Logout from './../../../components/Logout'
+import cookie from 'react-cookies';
+import {saveLogin} from '../../../actions'
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 import AppFooter from './modules/views/AppFooter';
 import AppAppBar from './modules/views/AppAppBar';
@@ -33,31 +37,6 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
     this.onSignUp = this.onSignUp.bind(this);
   }
 
-  componentDidMount() {
-    const obj = getFromStorage('the_main_app');
-    if (obj && obj.token) {
-      const { token } = obj;
-      // Verify token
-      fetch('/api/account/verify?token=' + token)
-        .then(res => res.json())
-        .then(json => {
-          if (json.success) {
-            this.setState({
-              token,
-              isLoading: false
-            });
-          } else {
-            this.setState({
-              isLoading: false,
-            });
-          }
-        });
-    } else {
-      this.setState({
-        isLoading: false,
-      });
-    }
-  }
 
 
   onTextboxChangeSignUpEmail(event) {
@@ -117,6 +96,12 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
           console.log(response.getType())//type of NO PAY member: normal
           console.log(response.getId())
           console.log(response.getSession())
+          if (response.getStatus()=="SUCCESS"){
+            this.props.dispatch(saveLogin(response.getId(),response.getSession()))
+            cookie.save('userId',response.getId())
+            cookie.save('tokenAccess',response.getSession())
+            return <Redirect from="/register" to="/dashboard" />
+          }
         }
       });
       
@@ -137,20 +122,14 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
       signUpError,
     } = this.state;
 
-    if (isLoading) {
-      return (<div><p>Loading...</p></div>);
-    }
+    
 
-    if (!token) {
+ 
     return (
       <div>
         <AppAppBar />
       <div className="app flex-row align-items-center">
-      {
-              (signUpError) ? (
-                <p>{signUpError}</p>
-              ) : (null)
-            }
+    
         <Container>
           <Row className="justify-content-center">
             <Col md="9" lg="7" xl="6">
@@ -208,9 +187,14 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
     );
   }
 
-  return (
-    <Logout isLoading={this.state.isLoading}/>
-  );
-  }}
 
-export default Register;
+  }
+
+  function mapStateToProps(state) {
+    const { changeStatusLogin } = state
+    const { isLogin, id, token } = changeStatusLogin
+    return {
+        isLogin, id, token
+    }
+  }
+  export default connect(mapStateToProps)(Register);

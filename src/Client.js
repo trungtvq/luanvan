@@ -2,16 +2,19 @@
 //loading async with text "Loading"
 
 import React, { Component } from 'react';
-
+import cookie from 'react-cookies';
+import {saveLogin} from './actions'
 import { connect } from 'react-redux'
 import authContext from "./contexts/authContext";///////
-import { HashRouter, BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, BrowserRouter, Route, Switch,Redirect } from 'react-router-dom';
 //Appolo
 import ApolloClient from 'apollo-boost';
 import { AppoloProvider, ApolloProvider } from 'react-apollo';
 import Loadable from 'react-loadable';
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
+const proto = {};
+proto.auth = require('./gRPC/auth/auth_grpc_web_pb');
 //apollo client setup
 const client = new ApolloClient({
     uri: 'https://overlead.co/api/graphql'
@@ -137,7 +140,49 @@ const ProfileEdit = Loadable({
     loader: () => import('./views/Personal/Profile/edit'),
     loading
 });
+
 class Client extends Component {
+    componentWillMount(){
+        console.log(cookie.load("userId"))
+        console.log(cookie.load("123123"))
+      
+          
+           //create service to request
+           const authService = new proto.auth.AuthClient('http://54.255.233.193:8085');
+           //metadab will be config later
+           var metadata = {};
+           
+           //create var for react
+           var AuthSessionReq = new proto.auth.AuthSessionReq();
+           //set data from frontend to this var
+           AuthSessionReq.setSession(cookie.load("tokenAccess"));
+           AuthSessionReq.setId(cookie.load("userId"));
+            //make a request to server
+            var getTodo = authService.authSession(AuthSessionReq, metadata, (err, response) => {
+              if (err) { //if error
+                console.log(err);
+              } else { //if success
+                //cookie.save('userId', signInEmail, { path: '/' });
+                //get response
+                console.log("success")
+                console.log(response.getStatus())
+                console.log(response.getError())
+                console.log(response.getResponse()) //no have value yet
+                console.log(response.getType())//type of NO PAY member: normal
+                console.log(response.getId())
+                console.log(response.getSession())
+                if (response.getStatus()=="SUCCESS")
+                this.props.dispatch(saveLogin(cookie.load("userId"),cookie.load("tokenAccess")))
+                return <Redirect from="/" to="/dashboard" />
+              }
+            });
+        
+    }
+    componentDidMount(){
+        console.log("componetDidMount")
+        console.log(this.state)
+
+    }
     state = {
         token: null,
         signInEmail: null,
@@ -151,8 +196,10 @@ class Client extends Component {
         this.setState({ token: null, signInEmail: null });
     }
     render() {
-        const {     isLogin,id,token
+        console.log("render")
+        const {isLogin,id,token
         } = this.props
+
         return (
             <ApolloProvider client={client}>
                 <authContext.Provider

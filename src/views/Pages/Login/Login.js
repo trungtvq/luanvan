@@ -65,39 +65,6 @@ class Login extends Component {
     this.logout = this.logout.bind(this);
   }
   
-  componentDidMount() {
-    const obj = getFromStorage('the_main_app');
-    if (obj && obj.token) {
-      const { token } = obj;
-      // Verify token
-      fetch('/api/account/verify',{
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          token,          
-        }),
-      })
-        .then(res => res.json())
-        .then(json => {
-          if (json.success) {
-            this.setState({
-              token,
-              isLoading: false
-            });
-          } else {
-            this.setState({
-              isLoading: false,
-            });
-          }
-        });
-    } else {
-      this.setState({
-        isLoading: false,
-      });
-    }
-  }
 
   onTextboxChangeSignInEmail(event) {
     this.setState({
@@ -160,11 +127,12 @@ class Login extends Component {
           console.log(response.getType())//type of NO PAY member: normal
           console.log(response.getId())
           console.log(response.getSession())
-          if (response.getStatus()=="SUCCESS")
-          this.props.dispatch(saveLogin(response.getId(),response.getSession()))
-          cookie.save('userId',response.getId())
-          cookie.save('tokenAccess',response.getSession())
-          return <Redirect from="/login" to="/dashboard" />
+          if (response.getStatus()=="SUCCESS"){
+            this.props.dispatch(saveLogin(response.getId(),response.getSession()))
+            cookie.save('userId',response.getId())
+            cookie.save('tokenAccess',response.getSession())
+            return <Redirect from="/register" to="/dashboard" />
+          }
         }
       });
   }
@@ -230,11 +198,7 @@ class Login extends Component {
       
     } = this.state;
 
-    if (isLoading) {
-      return (<div><p>Loading...</p></div>);
-    }
 
-    if (!token) {
     return (
       <div>
          <AppAppBar />
@@ -242,14 +206,7 @@ class Login extends Component {
       <div className="app flex-row align-items-center">
         
         <Container>
-          <Row>
-          {
-              (signInError) ? (
-                <p>{signInError}</p>
-              ) : (null)
-            }
-          </Row>
-          <Row className="justify-content-center">
+               <Row className="justify-content-center">
             <Col md="8">
               <CardGroup>
                 <Card className="p-4">
@@ -325,14 +282,8 @@ class Login extends Component {
       </div>
     );
   } 
-  // logined
-      return (
-      <div>
-        <p>Account</p>
-        <button onClick={this.logout}>Logout</button>
-      </div>
-    );
-}
+ 
+
 
 }
 function mapStateToProps(state) {

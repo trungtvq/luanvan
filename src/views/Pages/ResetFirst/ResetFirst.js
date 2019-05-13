@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import cookie from 'react-cookies';
 
 import {
   getFromStorage,
@@ -27,32 +28,7 @@ class ResetFirst extends Component {
     this.onReset = this.onReset.bind(this);
   }
 
-  componentDidMount() {
-    const obj = getFromStorage('the_main_app');
-    if (obj && obj.token) {
-      const { token } = obj;
-      // Verify token
-      fetch('/api/account/verify?token=' + token)
-        .then(res => res.json())
-        .then(json => {
-          if (json.success) {
-            this.setState({
-              token,
-              isLoading: false
-            });
-          } else {
-            this.setState({
-              isLoading: false,
-            });
-          }
-        });
-    } else {
-      this.setState({
-        isLoading: false,
-      });
-    }
-  }
-
+ 
 
   onTextboxChangeUsername(event) {
     this.setState({
@@ -90,6 +66,7 @@ class ResetFirst extends Component {
     ResetReq.setType(Type);
       //make a request to server
       var getTodo = authService.resetPassword(ResetReq, metadata, (err, response) => {
+        cookie.save("resetUsername",Username)
         if (err) { //if error
           console.log(err);
         } else { //if success

@@ -75,3 +75,8 @@ export function saveLogin(id,token) {
     token
   }
 }
+export function removeLogin() {
+  return {
+    type: DO_LOGOUT
+  }
+}

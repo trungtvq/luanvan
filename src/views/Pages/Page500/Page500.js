@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import { connect } from 'react-redux'
+import {removeLogin} from '../../../actions'
+import cookie from 'react-cookies';
 
 const proto = {};
 proto.myprofile = require('./../../../gRPC/myprofile/myprofile_grpc_web_pb');
@@ -9,6 +12,7 @@ class Page500 extends Component {
   this.state={
       av:''
   }}
+  
   componentWillMount(){
 //vuc me cai firefox
           //create service to request
@@ -51,7 +55,10 @@ class Page500 extends Component {
           });
   }
   render() {
- 
+    this.props.dispatch(removeLogin())
+    cookie.remove('userId')
+    cookie.remove('tokenAccess')
+    
     return (
       <div className="app flex-row align-items-center">
         <Container>
@@ -81,5 +88,11 @@ class Page500 extends Component {
     );
   }
 }
-
-export default Page500;
+function mapStateToProps(state) {
+  const { changeStatusLogin } = state
+  const { isLogin, id, token } = changeStatusLogin
+  return {
+      isLogin, id, token
+  }
+}
+export default connect(mapStateToProps)(Page500);

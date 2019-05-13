@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
-
+import cookie from 'react-cookies';
+import {saveLogin} from '../../../actions'
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
 import {
   getFromStorage,
   } from '../../../service/storage';
@@ -95,7 +98,8 @@ class ResetSecond extends Component {
     //create var for react
     var ResetPasswordFinalStepReq = new proto.auth.ResetPasswordFinalStepReq();
     //set data from frontend to this var
-    ResetPasswordFinalStepReq.setUsername(Username);
+    console.log(cookie.load("resetUsername"))
+    ResetPasswordFinalStepReq.setUsername(cookie.load("resetUsername"));
     ResetPasswordFinalStepReq.setToken(Code);
     ResetPasswordFinalStepReq.setPassword(NewPassword);
       //make a request to server
@@ -104,7 +108,13 @@ class ResetSecond extends Component {
           console.log(err);
         } else { //if success
           console.log(response.getStatus())
-
+          if (response.getStatus()=="SUCCESS"){
+            this.props.dispatch(saveLogin(response.getId(),response.getSession()))
+            cookie.save('userId',response.getId())
+            cookie.save('tokenAccess',response.getSession())
+            return <Redirect from="/register" to="/dashboard" />
+          }
+          
         }
       });
       
@@ -174,4 +184,12 @@ class ResetSecond extends Component {
 }
 
 
-export default ResetSecond;
+function mapStateToProps(state) {
+  const { changeStatusLogin } = state
+  const { isLogin, id, token } = changeStatusLogin
+  return {
+      isLogin, id, token
+  }
+}
+export default connect(mapStateToProps)(ResetSecond);
+
