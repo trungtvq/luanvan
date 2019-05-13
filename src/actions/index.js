@@ -68,6 +68,10 @@ export function subcriptChannel(channelId){
   
 }
 
-export function doLogin(user){
-  
+export function saveLogin(id,token) {
+  return {
+    type: DO_LOGIN,
+    id,
+    token
+  }
 }

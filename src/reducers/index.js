@@ -62,9 +62,9 @@ function postsBySubreddit(state = {}, action) {
 function changeStatusLogin(state = {isLogin:false}, action) {
   switch (action.type) {
     case DO_LOGIN:
-      return action.login
+      return Object.assign({}, {id:action.id,token:action.token,isLogin:true})      
     case DO_LOGOUT:
-      return action.logout
+      return Object.assign({},{isLogin:false})
     default:
       return state
   }
