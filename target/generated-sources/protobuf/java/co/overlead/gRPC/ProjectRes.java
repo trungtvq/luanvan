@@ -16,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private ProjectRes() {
+    topic_ = "";
     error_ = "";
     status_ = "";
     projectId_ = "";
@@ -23,6 +24,8 @@ private static final long serialVersionUID = 0L;
     start_ = "";
     end_ = "";
     private_ = "";
+    detail_ = "";
+    progress_ = "";
   }
 
   @java.lang.Override
@@ -91,6 +94,24 @@ private static final long serialVersionUID = 0L;
             private_ = s;
             break;
           }
+          case 66: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            detail_ = s;
+            break;
+          }
+          case 74: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            progress_ = s;
+            break;
+          }
+          case 82: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            topic_ = s;
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -121,6 +142,40 @@ private static final long serialVersionUID = 0L;
     return co.overlead.gRPC.myproject.internal_static_myproject_ProjectRes_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             co.overlead.gRPC.ProjectRes.class, co.overlead.gRPC.ProjectRes.Builder.class);
+  }
+
+  public static final int TOPIC_FIELD_NUMBER = 10;
+  private volatile java.lang.Object topic_;
+  /**
+   * <code>string topic = 10;</code>
+   */
+  public java.lang.String getTopic() {
+    java.lang.Object ref = topic_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      topic_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string topic = 10;</code>
+   */
+  public com.google.protobuf.ByteString
+      getTopicBytes() {
+    java.lang.Object ref = topic_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      topic_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int ERROR_FIELD_NUMBER = 1;
@@ -377,6 +432,74 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int DETAIL_FIELD_NUMBER = 8;
+  private volatile java.lang.Object detail_;
+  /**
+   * <code>string detail = 8;</code>
+   */
+  public java.lang.String getDetail() {
+    java.lang.Object ref = detail_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      detail_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string detail = 8;</code>
+   */
+  public com.google.protobuf.ByteString
+      getDetailBytes() {
+    java.lang.Object ref = detail_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      detail_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int PROGRESS_FIELD_NUMBER = 9;
+  private volatile java.lang.Object progress_;
+  /**
+   * <code>string progress = 9;</code>
+   */
+  public java.lang.String getProgress() {
+    java.lang.Object ref = progress_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      progress_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string progress = 9;</code>
+   */
+  public com.google.protobuf.ByteString
+      getProgressBytes() {
+    java.lang.Object ref = progress_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      progress_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -412,6 +535,15 @@ private static final long serialVersionUID = 0L;
     if (!getPrivateBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 7, private_);
     }
+    if (!getDetailBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, detail_);
+    }
+    if (!getProgressBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, progress_);
+    }
+    if (!getTopicBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, topic_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -442,6 +574,15 @@ private static final long serialVersionUID = 0L;
     if (!getPrivateBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, private_);
     }
+    if (!getDetailBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, detail_);
+    }
+    if (!getProgressBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, progress_);
+    }
+    if (!getTopicBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, topic_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -457,6 +598,8 @@ private static final long serialVersionUID = 0L;
     }
     co.overlead.gRPC.ProjectRes other = (co.overlead.gRPC.ProjectRes) obj;
 
+    if (!getTopic()
+        .equals(other.getTopic())) return false;
     if (!getError()
         .equals(other.getError())) return false;
     if (!getStatus()
@@ -471,6 +614,10 @@ private static final long serialVersionUID = 0L;
         .equals(other.getEnd())) return false;
     if (!getPrivate()
         .equals(other.getPrivate())) return false;
+    if (!getDetail()
+        .equals(other.getDetail())) return false;
+    if (!getProgress()
+        .equals(other.getProgress())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -482,6 +629,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + TOPIC_FIELD_NUMBER;
+    hash = (53 * hash) + getTopic().hashCode();
     hash = (37 * hash) + ERROR_FIELD_NUMBER;
     hash = (53 * hash) + getError().hashCode();
     hash = (37 * hash) + STATUS_FIELD_NUMBER;
@@ -496,6 +645,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getEnd().hashCode();
     hash = (37 * hash) + PRIVATE_FIELD_NUMBER;
     hash = (53 * hash) + getPrivate().hashCode();
+    hash = (37 * hash) + DETAIL_FIELD_NUMBER;
+    hash = (53 * hash) + getDetail().hashCode();
+    hash = (37 * hash) + PROGRESS_FIELD_NUMBER;
+    hash = (53 * hash) + getProgress().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -629,6 +782,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      topic_ = "";
+
       error_ = "";
 
       status_ = "";
@@ -642,6 +797,10 @@ private static final long serialVersionUID = 0L;
       end_ = "";
 
       private_ = "";
+
+      detail_ = "";
+
+      progress_ = "";
 
       return this;
     }
@@ -669,6 +828,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public co.overlead.gRPC.ProjectRes buildPartial() {
       co.overlead.gRPC.ProjectRes result = new co.overlead.gRPC.ProjectRes(this);
+      result.topic_ = topic_;
       result.error_ = error_;
       result.status_ = status_;
       result.projectId_ = projectId_;
@@ -676,6 +836,8 @@ private static final long serialVersionUID = 0L;
       result.start_ = start_;
       result.end_ = end_;
       result.private_ = private_;
+      result.detail_ = detail_;
+      result.progress_ = progress_;
       onBuilt();
       return result;
     }
@@ -724,6 +886,10 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(co.overlead.gRPC.ProjectRes other) {
       if (other == co.overlead.gRPC.ProjectRes.getDefaultInstance()) return this;
+      if (!other.getTopic().isEmpty()) {
+        topic_ = other.topic_;
+        onChanged();
+      }
       if (!other.getError().isEmpty()) {
         error_ = other.error_;
         onChanged();
@@ -752,6 +918,14 @@ private static final long serialVersionUID = 0L;
         private_ = other.private_;
         onChanged();
       }
+      if (!other.getDetail().isEmpty()) {
+        detail_ = other.detail_;
+        onChanged();
+      }
+      if (!other.getProgress().isEmpty()) {
+        progress_ = other.progress_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -778,6 +952,75 @@ private static final long serialVersionUID = 0L;
           mergeFrom(parsedMessage);
         }
       }
+      return this;
+    }
+
+    private java.lang.Object topic_ = "";
+    /**
+     * <code>string topic = 10;</code>
+     */
+    public java.lang.String getTopic() {
+      java.lang.Object ref = topic_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        topic_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string topic = 10;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTopicBytes() {
+      java.lang.Object ref = topic_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        topic_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string topic = 10;</code>
+     */
+    public Builder setTopic(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      topic_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string topic = 10;</code>
+     */
+    public Builder clearTopic() {
+      
+      topic_ = getDefaultInstance().getTopic();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string topic = 10;</code>
+     */
+    public Builder setTopicBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      topic_ = value;
+      onChanged();
       return this;
     }
 
@@ -1300,6 +1543,144 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       private_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object detail_ = "";
+    /**
+     * <code>string detail = 8;</code>
+     */
+    public java.lang.String getDetail() {
+      java.lang.Object ref = detail_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        detail_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string detail = 8;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDetailBytes() {
+      java.lang.Object ref = detail_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        detail_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string detail = 8;</code>
+     */
+    public Builder setDetail(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      detail_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string detail = 8;</code>
+     */
+    public Builder clearDetail() {
+      
+      detail_ = getDefaultInstance().getDetail();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string detail = 8;</code>
+     */
+    public Builder setDetailBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      detail_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object progress_ = "";
+    /**
+     * <code>string progress = 9;</code>
+     */
+    public java.lang.String getProgress() {
+      java.lang.Object ref = progress_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        progress_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string progress = 9;</code>
+     */
+    public com.google.protobuf.ByteString
+        getProgressBytes() {
+      java.lang.Object ref = progress_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        progress_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string progress = 9;</code>
+     */
+    public Builder setProgress(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      progress_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string progress = 9;</code>
+     */
+    public Builder clearProgress() {
+      
+      progress_ = getDefaultInstance().getProgress();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string progress = 9;</code>
+     */
+    public Builder setProgressBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      progress_ = value;
       onChanged();
       return this;
     }

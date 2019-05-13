@@ -8,31 +8,31 @@ public interface AddNewProjectReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string ownerId = 1;</code>
+   * <code>string topic = 1;</code>
    */
-  java.lang.String getOwnerId();
+  java.lang.String getTopic();
   /**
-   * <code>string ownerId = 1;</code>
+   * <code>string topic = 1;</code>
    */
   com.google.protobuf.ByteString
-      getOwnerIdBytes();
+      getTopicBytes();
 
   /**
-   * <code>string requesterId = 7;</code>
+   * <code>string requesterId = 2;</code>
    */
   java.lang.String getRequesterId();
   /**
-   * <code>string requesterId = 7;</code>
+   * <code>string requesterId = 2;</code>
    */
   com.google.protobuf.ByteString
       getRequesterIdBytes();
 
   /**
-   * <code>string projectName = 2;</code>
+   * <code>string projectName = 3;</code>
    */
   java.lang.String getProjectName();
   /**
-   * <code>string projectName = 2;</code>
+   * <code>string projectName = 3;</code>
    */
   com.google.protobuf.ByteString
       getProjectNameBytes();
@@ -42,7 +42,7 @@ public interface AddNewProjectReqOrBuilder extends
    *return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
    * </pre>
    *
-   * <code>string start = 3;</code>
+   * <code>string start = 4;</code>
    */
   java.lang.String getStart();
   /**
@@ -50,7 +50,7 @@ public interface AddNewProjectReqOrBuilder extends
    *return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
    * </pre>
    *
-   * <code>string start = 3;</code>
+   * <code>string start = 4;</code>
    */
   com.google.protobuf.ByteString
       getStartBytes();
@@ -60,7 +60,7 @@ public interface AddNewProjectReqOrBuilder extends
    *return in form mm/hh/dd/mm/yyyy
    * </pre>
    *
-   * <code>string end = 4;</code>
+   * <code>string end = 5;</code>
    */
   java.lang.String getEnd();
   /**
@@ -68,27 +68,37 @@ public interface AddNewProjectReqOrBuilder extends
    *return in form mm/hh/dd/mm/yyyy
    * </pre>
    *
-   * <code>string end = 4;</code>
+   * <code>string end = 5;</code>
    */
   com.google.protobuf.ByteString
       getEndBytes();
 
   /**
-   * <code>string private = 5;</code>
+   * <code>string private = 6;</code>
    */
   java.lang.String getPrivate();
   /**
-   * <code>string private = 5;</code>
+   * <code>string private = 6;</code>
    */
   com.google.protobuf.ByteString
       getPrivateBytes();
 
   /**
-   * <code>string cookie = 6;</code>
+   * <code>string detail = 8;</code>
+   */
+  java.lang.String getDetail();
+  /**
+   * <code>string detail = 8;</code>
+   */
+  com.google.protobuf.ByteString
+      getDetailBytes();
+
+  /**
+   * <code>string cookie = 7;</code>
    */
   java.lang.String getCookie();
   /**
-   * <code>string cookie = 6;</code>
+   * <code>string cookie = 7;</code>
    */
   com.google.protobuf.ByteString
       getCookieBytes();

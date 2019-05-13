@@ -14,25 +14,27 @@ service Myproject{
 }
 
 message AddNewProjectReq{
-	string ownerId = 1;
-	string requesterId=7;
-	string projectName = 2;
-	string start = 3;		//return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
-	string end = 4;		   //return in form mm/hh/dd/mm/yyyy
-	string private = 5;
-	string cookie = 6;
+	string topic = 1;
+	string requesterId=2;
+	string projectName = 3;
+	string start = 4;		//return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+	string end = 5;		   //return in form mm/hh/dd/mm/yyyy
+	string private = 6;
+	string detail=8;
+	string cookie = 7;
 }
 
 message UpdateProjectReq{
 	string projectId = 1;
-	string userName = 3;
+	string requesterId = 3;
 	string projectName = 4;
 	string start = 5;
 	string end = 6;
 	string private = 7;
 	string cookie = 8;
-	string requesterId=2;
-
+	string detail=9;
+	string progress=10;
+    string topic=11;
 }
 
 message DeleteProjectReq{
@@ -47,6 +49,7 @@ message GetAllProjectReq{
 	string cookie = 2;
 }
 message ProjectRes{
+	string topic=10;
 	string error = 1;
 	string status = 2;
 	string projectId = 3;
@@ -54,4 +57,6 @@ message ProjectRes{
 	string start = 5;		 //return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
 	string end = 6;			//return in form mm/hh/dd/mm/yyyy
 	string private = 7;
+	string detail=8;
+	string progress=9;
 }

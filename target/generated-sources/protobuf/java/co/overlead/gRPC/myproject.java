@@ -48,30 +48,32 @@ public final class myproject {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\017myproject.proto\022\tmyproject\"\212\001\n\020AddNewP" +
-      "rojectReq\022\017\n\007ownerId\030\001 \001(\t\022\023\n\013requesterI" +
-      "d\030\007 \001(\t\022\023\n\013projectName\030\002 \001(\t\022\r\n\005start\030\003 " +
-      "\001(\t\022\013\n\003end\030\004 \001(\t\022\017\n\007private\030\005 \001(\t\022\016\n\006coo" +
-      "kie\030\006 \001(\t\"\236\001\n\020UpdateProjectReq\022\021\n\tprojec" +
-      "tId\030\001 \001(\t\022\020\n\010userName\030\003 \001(\t\022\023\n\013projectNa" +
-      "me\030\004 \001(\t\022\r\n\005start\030\005 \001(\t\022\013\n\003end\030\006 \001(\t\022\017\n\007" +
-      "private\030\007 \001(\t\022\016\n\006cookie\030\010 \001(\t\022\023\n\013request" +
-      "erId\030\002 \001(\t\"J\n\020DeleteProjectReq\022\021\n\tprojec" +
-      "tId\030\002 \001(\t\022\016\n\006cookie\030\003 \001(\t\022\023\n\013requesterId" +
-      "\030\001 \001(\t\"7\n\020GetAllProjectReq\022\023\n\013requesterI" +
-      "d\030\003 \001(\t\022\016\n\006cookie\030\002 \001(\t\"\200\001\n\nProjectRes\022\r" +
-      "\n\005error\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\021\n\tproject" +
-      "Id\030\003 \001(\t\022\023\n\013projectName\030\004 \001(\t\022\r\n\005start\030\005" +
-      " \001(\t\022\013\n\003end\030\006 \001(\t\022\017\n\007private\030\007 \001(\t2\251\002\n\tM" +
-      "yproject\022E\n\raddNewProject\022\033.myproject.Ad" +
-      "dNewProjectReq\032\025.myproject.ProjectRes\"\000\022" +
-      "E\n\rupdateProject\022\033.myproject.UpdateProje" +
-      "ctReq\032\025.myproject.ProjectRes\"\000\022E\n\rdelete" +
-      "Project\022\033.myproject.DeleteProjectReq\032\025.m" +
-      "yproject.ProjectRes\"\000\022G\n\rgetAllProject\022\033" +
-      ".myproject.GetAllProjectReq\032\025.myproject." +
-      "ProjectRes\"\0000\001B$\n\020co.overlead.gRPCB\tmypr" +
-      "ojectP\001\242\002\002mpb\006proto3"
+      "\n\017myproject.proto\022\tmyproject\"\230\001\n\020AddNewP" +
+      "rojectReq\022\r\n\005topic\030\001 \001(\t\022\023\n\013requesterId\030" +
+      "\002 \001(\t\022\023\n\013projectName\030\003 \001(\t\022\r\n\005start\030\004 \001(" +
+      "\t\022\013\n\003end\030\005 \001(\t\022\017\n\007private\030\006 \001(\t\022\016\n\006detai" +
+      "l\030\010 \001(\t\022\016\n\006cookie\030\007 \001(\t\"\275\001\n\020UpdateProjec" +
+      "tReq\022\021\n\tprojectId\030\001 \001(\t\022\023\n\013requesterId\030\003" +
+      " \001(\t\022\023\n\013projectName\030\004 \001(\t\022\r\n\005start\030\005 \001(\t" +
+      "\022\013\n\003end\030\006 \001(\t\022\017\n\007private\030\007 \001(\t\022\016\n\006cookie" +
+      "\030\010 \001(\t\022\016\n\006detail\030\t \001(\t\022\020\n\010progress\030\n \001(\t" +
+      "\022\r\n\005topic\030\013 \001(\t\"J\n\020DeleteProjectReq\022\021\n\tp" +
+      "rojectId\030\002 \001(\t\022\016\n\006cookie\030\003 \001(\t\022\023\n\013reques" +
+      "terId\030\001 \001(\t\"7\n\020GetAllProjectReq\022\023\n\013reque" +
+      "sterId\030\003 \001(\t\022\016\n\006cookie\030\002 \001(\t\"\261\001\n\nProject" +
+      "Res\022\r\n\005topic\030\n \001(\t\022\r\n\005error\030\001 \001(\t\022\016\n\006sta" +
+      "tus\030\002 \001(\t\022\021\n\tprojectId\030\003 \001(\t\022\023\n\013projectN" +
+      "ame\030\004 \001(\t\022\r\n\005start\030\005 \001(\t\022\013\n\003end\030\006 \001(\t\022\017\n" +
+      "\007private\030\007 \001(\t\022\016\n\006detail\030\010 \001(\t\022\020\n\010progre" +
+      "ss\030\t \001(\t2\251\002\n\tMyproject\022E\n\raddNewProject\022" +
+      "\033.myproject.AddNewProjectReq\032\025.myproject" +
+      ".ProjectRes\"\000\022E\n\rupdateProject\022\033.myproje" +
+      "ct.UpdateProjectReq\032\025.myproject.ProjectR" +
+      "es\"\000\022E\n\rdeleteProject\022\033.myproject.Delete" +
+      "ProjectReq\032\025.myproject.ProjectRes\"\000\022G\n\rg" +
+      "etAllProject\022\033.myproject.GetAllProjectRe" +
+      "q\032\025.myproject.ProjectRes\"\0000\001B$\n\020co.overl" +
+      "ead.gRPCB\tmyprojectP\001\242\002\002mpb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -90,13 +92,13 @@ public final class myproject {
     internal_static_myproject_AddNewProjectReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_myproject_AddNewProjectReq_descriptor,
-        new java.lang.String[] { "OwnerId", "RequesterId", "ProjectName", "Start", "End", "Private", "Cookie", });
+        new java.lang.String[] { "Topic", "RequesterId", "ProjectName", "Start", "End", "Private", "Detail", "Cookie", });
     internal_static_myproject_UpdateProjectReq_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_myproject_UpdateProjectReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_myproject_UpdateProjectReq_descriptor,
-        new java.lang.String[] { "ProjectId", "UserName", "ProjectName", "Start", "End", "Private", "Cookie", "RequesterId", });
+        new java.lang.String[] { "ProjectId", "RequesterId", "ProjectName", "Start", "End", "Private", "Cookie", "Detail", "Progress", "Topic", });
     internal_static_myproject_DeleteProjectReq_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_myproject_DeleteProjectReq_fieldAccessorTable = new
@@ -114,7 +116,7 @@ public final class myproject {
     internal_static_myproject_ProjectRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_myproject_ProjectRes_descriptor,
-        new java.lang.String[] { "Error", "Status", "ProjectId", "ProjectName", "Start", "End", "Private", });
+        new java.lang.String[] { "Topic", "Error", "Status", "ProjectId", "ProjectName", "Start", "End", "Private", "Detail", "Progress", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

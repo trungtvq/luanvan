@@ -8,6 +8,16 @@ public interface ProjectResOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>string topic = 10;</code>
+   */
+  java.lang.String getTopic();
+  /**
+   * <code>string topic = 10;</code>
+   */
+  com.google.protobuf.ByteString
+      getTopicBytes();
+
+  /**
    * <code>string error = 1;</code>
    */
   java.lang.String getError();
@@ -92,4 +102,24 @@ public interface ProjectResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getPrivateBytes();
+
+  /**
+   * <code>string detail = 8;</code>
+   */
+  java.lang.String getDetail();
+  /**
+   * <code>string detail = 8;</code>
+   */
+  com.google.protobuf.ByteString
+      getDetailBytes();
+
+  /**
+   * <code>string progress = 9;</code>
+   */
+  java.lang.String getProgress();
+  /**
+   * <code>string progress = 9;</code>
+   */
+  com.google.protobuf.ByteString
+      getProgressBytes();
 }

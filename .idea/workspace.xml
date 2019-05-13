@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a13b32c7-5cec-4a33-a1ca-2d33e458b65d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/proto/counter.test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/gRPCMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/gRPCMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/myproject.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/myproject.proto" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -18,52 +22,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-15">
-              <caret line="50" column="57" lean-forward="true" selection-start-line="50" selection-start-column="57" selection-end-line="50" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../client/src/views/Pages/Login/Login.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="64" selection-start-line="64" selection-end-line="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/Thread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3314">
-              <caret line="760" column="38" selection-start-line="760" selection-start-column="38" selection-end-line="760" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="603">
-              <caret line="77" column="53" selection-start-line="77" selection-start-column="53" selection-end-line="77" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="57" column="73" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="73" />
+            <state relative-caret-position="322">
+              <caret line="48" column="24" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,10 +34,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/main/gRPCMain.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="23" column="66" lean-forward="true" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
+            <state relative-caret-position="534">
+              <caret line="150" column="75" selection-start-line="150" selection-start-column="67" selection-end-line="150" selection-end-column="75" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,9 +46,48 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../client/src/views/Personal/Project/AllProject/AllProject.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="192" selection-start-line="192" selection-end-line="192" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/proto/myproject.proto">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="487">
+              <caret line="60" column="19" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/main/gRPCMain.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../client/src/homeNav.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="868">
+              <caret line="262" selection-start-line="262" selection-end-line="262" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/schedule/DailySchedule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
+            <state relative-caret-position="646">
               <caret line="48" column="72" selection-start-line="48" selection-start-column="72" selection-end-line="48" selection-end-column="149" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -98,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="21" column="44" lean-forward="true" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+            <state relative-caret-position="204">
+              <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -110,8 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../client/src/views/Workspace/Po/UserStory/Detail/Detail.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="297" selection-start-line="297" selection-end-line="297" />
+            <state relative-caret-position="4964">
+              <caret line="304" selection-start-line="304" selection-end-line="304" />
             </state>
           </provider>
         </entry>
@@ -119,7 +120,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/proto/userstory.proto">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
+            <state relative-caret-position="527">
               <caret line="31" column="20" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="20" />
             </state>
           </provider>
@@ -137,7 +138,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>list</find>
       <find>==</find>
       <find>res</find>
       <find>makeResponseForUpdateSuccess</find>
@@ -164,6 +164,10 @@
       <find>TOKENCONNECTION</find>
       <find>GetAllTeamTaskReq</find>
       <find>getSession</find>
+      <find>ownerId</find>
+      <find>Topic</find>
+      <find>getUserName</find>
+      <find>topic</find>
     </findStrings>
     <replaceStrings>
       <replace>getRequesterId</replace>
@@ -182,7 +186,6 @@
         <option value="$PROJECT_DIR$/src/main/proto/auth.proto" />
         <option value="$PROJECT_DIR$/src/main/proto/dailyschedule.proto" />
         <option value="$PROJECT_DIR$/src/main/proto/velocity.proto" />
-        <option value="$PROJECT_DIR$/src/main/proto/myproject.proto" />
         <option value="$PROJECT_DIR$/src/main/proto/simple.proto" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/chat.java" />
         <option value="$PROJECT_DIR$/src/main/proto/chat.proto" />
@@ -202,21 +205,22 @@
         <option value="$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java" />
         <option value="$PROJECT_DIR$/src/main/proto/productbacklog.proto" />
         <option value="$PROJECT_DIR$/src/main/proto/userstory.proto" />
-        <option value="$PROJECT_DIR$/src/main/java/main/gRPCMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/task/Velocity.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/schedule/DailySchedule.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/task/MyTask.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" />
         <option value="$PROJECT_DIR$/src/main/proto/teamtask.proto" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/task/TeamTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/database/Mongod.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java" />
         <option value="$PROJECT_DIR$/src/main/proto/sprintbacklog.proto" />
-        <option value="$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java" />
         <option value="$PROJECT_DIR$/src/main/java/database/Redis.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/auth/AuthAccount.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java" />
+        <option value="$PROJECT_DIR$/src/main/java/main/gRPCMain.java" />
+        <option value="$PROJECT_DIR$/src/main/proto/myproject.proto" />
+        <option value="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" />
       </list>
     </option>
   </component>
@@ -242,7 +246,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -410,6 +413,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -435,7 +439,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Redis">
+  <component name="RunManager" selected="Application.gRPCMain">
     <configuration name="Mongod" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="database.Mongod" />
       <module name="server" />
@@ -527,12 +531,13 @@
       <workItem from="1557589869462" duration="3861000" />
       <workItem from="1557597022832" duration="148000" />
       <workItem from="1557618602187" duration="14658000" />
-      <workItem from="1557704461543" duration="15267000" />
+      <workItem from="1557704461543" duration="16385000" />
+      <workItem from="1557738889581" duration="10586000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144060000" />
+    <option name="totallyTimeSpent" value="155764000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -546,7 +551,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31449893" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.31769723" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -556,12 +561,12 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4983731" weight="0.3279743" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4940347" visible="true" weight="0.36655948" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4940347" weight="0.36655948" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4994664" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3290461" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4951193" weight="0.29046088" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.4951193" visible="true" weight="0.29046088" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5059653" side_tool="true" weight="0.36969697" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4994664" weight="0.3279743" />
@@ -614,14 +619,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/sendgrid.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="40" selection-start-column="40" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/auth/AuthRequest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/service/email/EmailService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-15">
@@ -651,7 +648,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat.java" />
     <entry file="file://$PROJECT_DIR$/src/main/proto/counter.proto" />
     <entry file="file://$PROJECT_DIR$/src/main/proto/mytask.proto" />
-    <entry file="file://$PROJECT_DIR$/src/main/proto/myproject.proto" />
     <entry file="file://$PROJECT_DIR$/src/main/proto/myprofile.proto" />
     <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/ChatCaching.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/ConversationCaching.java" />
@@ -861,40 +857,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="57" column="73" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="77" column="53" selection-start-line="77" selection-start-column="53" selection-end-line="77" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/schedule/DailySchedule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="48" column="72" selection-start-line="48" selection-start-column="72" selection-end-line="48" selection-end-column="149" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="50" column="57" lean-forward="true" selection-start-line="50" selection-start-column="57" selection-end-line="50" selection-end-column="57" />
+        <state relative-caret-position="119">
+          <caret line="17" column="52" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -903,22 +869,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../client/src/views/Pages/Login/Login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
+        <state relative-caret-position="799">
           <caret line="64" selection-start-line="64" selection-end-line="64" />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3314">
+        <state relative-caret-position="11985">
           <caret line="760" column="38" selection-start-line="760" selection-start-column="38" selection-end-line="760" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/schedule/DailySchedule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="48" column="72" selection-start-line="48" selection-start-column="72" selection-end-line="48" selection-end-column="149" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="21" column="44" lean-forward="true" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+        <state relative-caret-position="204">
+          <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -927,22 +903,63 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../client/src/views/Workspace/Po/UserStory/Detail/Detail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="297" selection-start-line="297" selection-end-line="297" />
+        <state relative-caret-position="4964">
+          <caret line="304" selection-start-line="304" selection-end-line="304" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/proto/userstory.proto">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
+        <state relative-caret-position="527">
           <caret line="31" column="20" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/main/gRPCMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="23" column="66" lean-forward="true" selection-start-line="23" selection-start-column="66" selection-end-line="23" selection-end-column="66" />
+        <state relative-caret-position="289">
+          <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../client/src/homeNav.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="868">
+          <caret line="262" selection-start-line="262" selection-end-line="262" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../client/src/views/Personal/Project/AllProject/AllProject.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="192" selection-start-line="192" selection-end-line="192" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="48" column="24" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/proto/myproject.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="60" column="19" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="150" column="75" selection-start-line="150" selection-start-column="67" selection-end-line="150" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

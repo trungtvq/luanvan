@@ -18,14 +18,14 @@ public interface UpdateProjectReqOrBuilder extends
       getProjectIdBytes();
 
   /**
-   * <code>string userName = 3;</code>
+   * <code>string requesterId = 3;</code>
    */
-  java.lang.String getUserName();
+  java.lang.String getRequesterId();
   /**
-   * <code>string userName = 3;</code>
+   * <code>string requesterId = 3;</code>
    */
   com.google.protobuf.ByteString
-      getUserNameBytes();
+      getRequesterIdBytes();
 
   /**
    * <code>string projectName = 4;</code>
@@ -78,12 +78,32 @@ public interface UpdateProjectReqOrBuilder extends
       getCookieBytes();
 
   /**
-   * <code>string requesterId = 2;</code>
+   * <code>string detail = 9;</code>
    */
-  java.lang.String getRequesterId();
+  java.lang.String getDetail();
   /**
-   * <code>string requesterId = 2;</code>
+   * <code>string detail = 9;</code>
    */
   com.google.protobuf.ByteString
-      getRequesterIdBytes();
+      getDetailBytes();
+
+  /**
+   * <code>string progress = 10;</code>
+   */
+  java.lang.String getProgress();
+  /**
+   * <code>string progress = 10;</code>
+   */
+  com.google.protobuf.ByteString
+      getProgressBytes();
+
+  /**
+   * <code>string topic = 11;</code>
+   */
+  java.lang.String getTopic();
+  /**
+   * <code>string topic = 11;</code>
+   */
+  com.google.protobuf.ByteString
+      getTopicBytes();
 }

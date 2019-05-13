@@ -40,7 +40,6 @@ public class MyProject {
 
         @Override
         public void addNewProject(AddNewProjectReq request, StreamObserver<ProjectRes> responseObserver) {
-
             System.out.println("addNewProject");
             if (!isValidAuth(request.getRequesterId(),request.getCookie())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID","TRUE");
@@ -51,10 +50,12 @@ public class MyProject {
                     makeResponseForFailed(responseObserver,"EXIST_PROJECT_NAME","TRUE");
                 } else{
                     Document document = new Document("ownerId", request.getRequesterId())
+                            .append("topic",request.getTopic())
                             .append("projectName", request.getProjectName())
                             .append("start", request.getStart())
                             .append("end", request.getEnd())
                             .append("private", request.getPrivate())
+                            .append("progress",0)
                             .append("tasks",new BsonArray(Arrays.asList()));
                     coll.insertOne(document);
 
@@ -85,10 +86,11 @@ public class MyProject {
                     if (request.getEnd()!=""){
                         listUpdate.append("end",request.getEnd());
                     }
+                    System.out.println(request.getPrivate());
                     if (request.getPrivate()!=""){
                         listUpdate.append("private",request.getPrivate());
                     }
-                    if (request.getUserName()!=""){
+                    if (request.getRequesterId()!=""){
                         foundDocument = coll.find(new Document("projectName",request.getProjectName()).append("ownerId",request.getRequesterId())).into(new ArrayList<>());
                         if (foundDocument.size()==0){
                             listUpdate.append("projectName",request.getProjectName());
@@ -109,11 +111,12 @@ public class MyProject {
 
         @Override
         public void deleteProject(DeleteProjectReq request, StreamObserver<ProjectRes> responseObserver) {
+            System.out.println("deleteProject");
             if (!isValidAuth(request.getRequesterId(),request.getCookie())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID","TRUE");
             } else {
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("project");
-                DeleteResult result = coll.deleteOne(new Document("_id",new ObjectId(request.getProjectId()) ).append("ownerId", request.getRequesterId()));
+                DeleteResult result = coll.deleteOne(new Document("_id",new ObjectId(request.getProjectId())).append("ownerId", request.getRequesterId()));
 
                 if (result.getDeletedCount() != 1) {
                     makeResponseForFailed(responseObserver,"WRONG_SIZE","FALSE");
@@ -138,14 +141,17 @@ public class MyProject {
                 }  else {
                     foundDocument.forEach(i->{
                         if (i!=null){
+
                             ProjectRes reply=ProjectRes.newBuilder()
                                     .setProjectId(i.get("_id").toString())
                                     .setProjectName(i.get("projectName").toString())
                                     .setStart(i.get("start").toString())
                                     .setEnd(i.get("end").toString())
                                     .setPrivate(i.get("private").toString())
+                                    .setProgress(i.get("progress").toString())
                                     .setStatus("SUCCESS").setError("FALSE").build();
                             responseObserver.onNext(reply);
+
                         }
                     });
                     responseObserver.onCompleted();
