@@ -103,7 +103,7 @@ class Login extends Component {
     });
 
      //create service to request
-     const authService = new proto.auth.AuthClient('http://54.255.233.193:8085');
+     const authService = new proto.auth.AuthClient('http://overlead.co:8085');
      //metadab will be config later
      var metadata = {};
      
@@ -139,7 +139,7 @@ class Login extends Component {
      console.log('onSignInGoogle');
      console.log(profileObj);
      //create service to request
-     const authService = new proto.auth.AuthClient('http://54.255.233.193:8085');
+     const authService = new proto.auth.AuthClient('http://overlead.co:8085');
      //metadab will be config later
      var metadata = {};
      

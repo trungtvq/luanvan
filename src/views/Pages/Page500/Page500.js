@@ -16,7 +16,7 @@ class Page500 extends Component {
   componentWillMount(){
 //vuc me cai firefox
           //create service to request
-          const myprofileService = new proto.myprofile.MyProfileClient('54.255.233.193:8085');
+          const myprofileService = new proto.myprofile.MyProfileClient('overlead.co:8085');
           //some data of request (get that from frontend)
           const username = "useridoremail";
 

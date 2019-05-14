@@ -150,7 +150,7 @@ class PrimarySearchAppBar extends React.Component {
   };
 
   handleCreatePj=()=> {
-    const myprojectService = new proto.myproject.MyprojectClient('http://54.255.233.193:8085');    
+    const myprojectService = new proto.myproject.MyprojectClient('http://overlead.co:8085');    
     var metadata = {};   
     var AddNewProjectReq= new proto.myproject.AddNewProjectReq();
     AddNewProjectReq.setTopic(this.state.Topic);

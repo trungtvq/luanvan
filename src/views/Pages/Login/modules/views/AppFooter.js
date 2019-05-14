@@ -66,7 +66,7 @@ function AppFooter(props) {
               spacing={16}
             >
               <Grid item className={classes.icons}>
-                <a href="https://overlead.co/" className={classes.icon}>
+                <a href="http://overlead.co/" className={classes.icon}>
                   <img src="/Home/appFooterFacebook.png" alt="Facebook" />
                 </a>
                 <a href="https://twitter.com/overlead" className={classes.icon}>

@@ -67,7 +67,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://overlead.co",
+  "proxy": "http://overlead.co:8085",
   "eslintConfig": {
     "extends": "react-app"
   },

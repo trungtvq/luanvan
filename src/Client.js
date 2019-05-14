@@ -17,7 +17,7 @@ const proto = {};
 proto.auth = require('./gRPC/auth/auth_grpc_web_pb');
 //apollo client setup
 const client = new ApolloClient({
-    uri: 'https://overlead.co/api/graphql'
+    uri: 'http://overlead.co/api/graphql'
 })
 
 
@@ -148,7 +148,7 @@ class Client extends Component {
       
           
            //create service to request
-           const authService = new proto.auth.AuthClient('http://54.255.233.193:8085');
+           const authService = new proto.auth.AuthClient('http://overlead.co:8085');
            //metadab will be config later
            var metadata = {};
            
