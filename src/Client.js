@@ -148,7 +148,7 @@ class Client extends Component {
       
           
            //create service to request
-           const authService = new proto.auth.AuthClient('http://overlead.co:8085');
+           const authService = new proto.auth.AuthClient('https://www.overlead.co');
            //metadab will be config later
            var metadata = {};
            
@@ -172,8 +172,8 @@ class Client extends Component {
                 console.log(response.getId())
                 console.log(response.getSession())
                 if (response.getStatus()=="SUCCESS")
-                this.props.dispatch(saveLogin(cookie.load("userId"),cookie.load("tokenAccess")))
-                return <Redirect from="/" to="/dashboard" />
+                this.props.dispatch(saveLogin(cookie.load("userId"),cookie.load("tokenAccess"),cookie.load("username"),cookie.load("name"),cookie.load("avatar")))
+                
               }
             });
         

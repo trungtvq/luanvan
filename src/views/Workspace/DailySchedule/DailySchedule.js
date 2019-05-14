@@ -274,7 +274,7 @@ class DailySchedule extends Component {
   
   handleUpdate = () => {
     
-    const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://overlead.co:8085');
+    const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('https://trungcs.com');
     //some data of request (get that from frontend)
     console.log(dailyscheduleService)
     //console.log("vao daily");
@@ -351,7 +351,7 @@ class DailySchedule extends Component {
    
 
 
-    const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://overlead.co:8085');
+    const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('https://trungcs.com');
     //some data of request (get that from frontend)
     console.log(dailyscheduleService)
     console.log("vao daily");

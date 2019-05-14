@@ -468,7 +468,9 @@ proto.Auth.SignInRes.toObject = function(includeInstance, msg) {
     response: msg.getResponse(),
     type: msg.getType(),
     id: msg.getId(),
-    session: msg.getSession()
+    session: msg.getSession(),
+    name: msg.getName(),
+    avatar: msg.getAvatar()
   };
 
   if (includeInstance) {
@@ -528,6 +530,14 @@ proto.Auth.SignInRes.deserializeBinaryFromReader = function(msg, reader) {
     case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.setSession(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAvatar(value);
       break;
     default:
       reader.skipField();
@@ -606,6 +616,20 @@ proto.Auth.SignInRes.prototype.serializeBinaryToWriter = function (writer) {
   if (f.length > 0) {
     writer.writeString(
       6,
+      f
+    );
+  }
+  f = this.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
+  f = this.getAvatar();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
       f
     );
   }
@@ -708,6 +732,36 @@ proto.Auth.SignInRes.prototype.getSession = function() {
 /** @param {string} value  */
 proto.Auth.SignInRes.prototype.setSession = function(value) {
   jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * optional string name = 7;
+ * @return {string}
+ */
+proto.Auth.SignInRes.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 7, ""));
+};
+
+
+/** @param {string} value  */
+proto.Auth.SignInRes.prototype.setName = function(value) {
+  jspb.Message.setField(this, 7, value);
+};
+
+
+/**
+ * optional string avatar = 8;
+ * @return {string}
+ */
+proto.Auth.SignInRes.prototype.getAvatar = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 8, ""));
+};
+
+
+/** @param {string} value  */
+proto.Auth.SignInRes.prototype.setAvatar = function(value) {
+  jspb.Message.setField(this, 8, value);
 };
 
 

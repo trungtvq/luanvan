@@ -6,9 +6,7 @@ import Link from '@material-ui/core/Link';
 import AppBar from '../components/AppBar';
 import Toolbar, { styles as toolbarStyles } from '../components/Toolbar';
 import cookie from 'react-cookies';
-import { Route, Redirect } from 'react-router';
 import { Button } from '@material-ui/core';
-import { withRouter } from "react-router";
 const proto = {};
 proto.auth = require('./../../../../../../gRPC/auth/auth_grpc_web_pb');
 
@@ -63,7 +61,7 @@ function AppAppBar(props) {
      AuthSessionReq.setId(id);
      AuthSessionReq.setId(time);
       //make a request to server
-      var getTodo = authService.authSession(AuthSessionReq, metadata, (err, response) => {
+      authService.authSession(AuthSessionReq, metadata, (err, response) => {
         if (err) { //if error
           console.log(err);
         } else { //if success

@@ -39,6 +39,25 @@ const styles = theme => ({
 class Login extends Component {
   static contextType =  authContext;
 
+  componentDidMount(){
+    console.log("componentDidMount")
+  }
+
+  componentWillMount(){
+    console.log("componentWillMount")
+  }
+
+  componentDidMount(){
+    console.log("componentDidMount")
+  }
+
+  componentDidMount(){
+    console.log("componentDidMount")
+  }
+
+  componentDidMount(){
+    console.log("componentDidMount")
+  }
     constructor(props) {
     super(props);
 
@@ -53,45 +72,37 @@ class Login extends Component {
       signUpPassword: '',
     };
 
-    this.onTextboxChangeSignInEmail = this.onTextboxChangeSignInEmail.bind(this);
-    this.onTextboxChangeSignInPassword = this.onTextboxChangeSignInPassword.bind(this);
-    this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
-    this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(this);
     
-    this.onSignIn = this.onSignIn.bind(this);
-    this.onSignInGoogle = this.onSignInGoogle.bind(this);
-
-    this.logout = this.logout.bind(this);
   }
   
 
-  onTextboxChangeSignInEmail(event) {
+  onTextboxChangeSignInEmail=(event)=> {
     this.setState({
       signInEmail: event.target.value,
     });
     console.log(this.state.signInEmail);
   }
 
-  onTextboxChangeSignInPassword(event) {
+  onTextboxChangeSignInPassword=(event)=> {
     this.setState({
       signInPassword: event.target.value,
     });
   }
 
-  onTextboxChangeSignUpEmail(event) {
+  onTextboxChangeSignUpEmail=(event)=> {
     this.setState({
       signUpEmail: event.target.value,
     });
   }
 
-  onTextboxChangeSignUpPassword(event) {
+  onTextboxChangeSignUpPassword=(event)=> {
     this.setState({
       signUpPassword: event.target.value,
     });
   }
 
 
-  onSignIn() {
+  onSignIn=() =>{
     //some data of request (get that from frontend)
     const {
       signInEmail,
@@ -103,7 +114,7 @@ class Login extends Component {
     });
 
      //create service to request
-     const authService = new proto.auth.AuthClient('http://overlead.co:8085');
+     const authService = new proto.auth.AuthClient('https://www.overlead.co');
      //metadab will be config later
      var metadata = {};
      
@@ -118,28 +129,29 @@ class Login extends Component {
           console.log(err);
         } else { //if success
           //cookie.save('userId', signInEmail, { path: '/' });
-          //get response
-          console.log("success")
-          console.log(response.getStatus())
-          console.log(response.getError())
-          console.log(response.getResponse()) //no have value yet
-          console.log(response.getType())//type of NO PAY member: normal
-          console.log(response.getId())
-          console.log(response.getSession())
-          if (response.getStatus()=="SUCCESS")
-          this.props.dispatch(saveLogin(response.getId(),response.getSession()))
-          cookie.save('userId',response.getId())
-          cookie.save('tokenAccess',response.getSession())
+          //get response   
+          console.log("SUCCESSLOGIN")
+          console.log(response.getName())      
+          if (response.getStatus()=="SUCCESS"){
+            cookie.save('userId',response.getId())
+            cookie.save('tokenAccess',response.getSession())
+            cookie.save('username',signInEmail)
+            cookie.save('name',response.getName())
+            cookie.save('avatar',response.getAvatar())
+            this.props.dispatch(saveLogin(response.getId(),response.getSession(),signInEmail,response.getName(),response.getAvatar()))
+
+          }
+          
       //    return <Redirect from="/login" to="/dashboard" />
         }
       });
   }
 
-  onSignInGoogle(profileObj) {
+  onSignInGoogle=(profileObj)  =>{
      console.log('onSignInGoogle');
      console.log(profileObj);
      //create service to request
-     const authService = new proto.auth.AuthClient('http://overlead.co:8085');
+     const authService = new proto.auth.AuthClient('https://www.overlead.co');
      //metadab will be config later
      var metadata = {};
      
@@ -156,23 +168,20 @@ class Login extends Component {
         } else { //if success
           //get response
           console.log("success")
-          console.log(response.getStatus())
-          console.log(response.getError())
-          console.log(response.getResponse()) //no have value yet
-          console.log(response.getType())//type of NO PAY member: normal
-          console.log(response.getId())
-          console.log(response.getSession())
           if (response.getStatus()=="SUCCESS"){
             cookie.save('userId',response.getId())
             cookie.save('tokenAccess',response.getSession())
-            this.props.dispatch(saveLogin(response.getId(),response.getSession()))
-           
+            cookie.save('username',profileObj.email)
+            cookie.save('name',response.getName())
+            cookie.save('avatar',profileObj.imageUrl)
+            this.props.dispatch(saveLogin(response.getId(),response.getSession(),profileObj.email,response.getName(),profileObj.imageUrl))
+
           }
         }
       });
   }
 
-  logout() {
+  logout=()=> {
     this.setState({
       isLoading: true,
     });
@@ -187,9 +196,6 @@ class Login extends Component {
       this.onSignInGoogle(response.profileObj);
 
 
-    }
-    const logout = ()=>{
-      console.log("logout")
     }
     let renderProps={}
     renderProps.disabled=false;
@@ -271,7 +277,7 @@ class Login extends Component {
    
     <GoogleLogout
       buttonText="Logout"
-      onLogoutSuccess={logout}
+      onLogoutSuccess={this.logout}
     >
     </GoogleLogout>
                     </div>

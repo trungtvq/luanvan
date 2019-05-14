@@ -192,7 +192,7 @@ class Detail extends Component {
   
   handleAdd= () => {
     console.log("handleAdd")
-    const userstoryService = new proto.userstory.UserStoryClient('http://overlead.co:8085');
+    const userstoryService = new proto.userstory.UserStoryClient('https://www.overlead.co');
     //some data of request (get that from frontend)
     console.log(userstoryService)
     
@@ -254,7 +254,7 @@ class Detail extends Component {
     console.log("handleDelete")
 
     
-    const userstoryService = new proto.userstory.UserStoryClient('http://overlead.co:8085');
+    const userstoryService = new proto.userstory.UserStoryClient('https://www.overlead.co');
     //some data of request (get that from frontend)
     console.log(userstoryService)
     
@@ -304,7 +304,7 @@ class Detail extends Component {
   handleUpdate = () => {
     console.log("handleUpdate")
 
-    const userstoryService = new proto.userstory.UserStoryClient('http://overlead.co:8085');
+    const userstoryService = new proto.userstory.UserStoryClient('https://www.overlead.co');
     //some data of request (get that from frontend)
     console.log(userstoryService)
     var metadata = {};

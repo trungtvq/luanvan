@@ -12,7 +12,6 @@ import {
   UPDATE_PROJECT,
   DELETE_PROJECT,
   ADD_PROJECT,
-  FORCE_RERENDER
 } from '../actions'
 const proto = {};
 proto.myproject = require('../gRPC/myproject/myproject_grpc_web_pb');
@@ -102,7 +101,7 @@ function changeStatusProject(state={projectId:"noid"},action){
 
 function updateProjectLoaded(state={project:[],needUpdate:false},action){
   console.log("updateProjectLoaded")
-
+  let newProject
   switch (action.type) {    
     case FETCH_ALL_PROJECT:
       return Object.assign({},{
@@ -112,17 +111,39 @@ function updateProjectLoaded(state={project:[],needUpdate:false},action){
     case ADD_PROJECT:
         state.project.push(Object.assign({},{
             id:action.id,
+            ownerName:action.ownerName,
             topic:action.topic,
             projectName:action.name,
             start:action.start,
             end:action.end,
-            private:action.isPrivate,          
+            private:action.isPrivate,     
+            progress:action.progress     
         }))
         return Object.assign({}, state,{needUpdate:action.id});
-    case UPDATE_PROJECT:    
-    case DELETE_PROJECT:
-    case FORCE_RERENDER:
-        return Object.assign({},state,{random:Math.random()})
+    case UPDATE_PROJECT: 
+        newProject=[];
+        state.project=state.project.map(function (item, key) {
+            if (item.id!=action.id) newProject.push(item)
+              else{
+                newProject.push(Object.assign({},{
+                  id:action.id,
+                  ownerName:action.ownerName,
+                  topic:action.topic,
+                  projectName:action.name,
+                  start:action.start,
+                  end:action.end,
+                  private:action.isPrivate,     
+                  progress:action.progress
+              }))}})      
+        return Object.assign({},state, {project:newProject},{needUpdate:action.id});
+        
+    case DELETE_PROJECT:    
+        newProject=[];
+        state.project=state.project.map(function (item, key) {
+            if (item.id!=action.id) newProject.push(item)
+        })
+        return Object.assign({},state, {project:newProject},{needUpdate:action.id});
+
     default:
       return state
   }

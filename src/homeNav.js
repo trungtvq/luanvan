@@ -21,7 +21,9 @@ import {saveLogin} from './actions'
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import {addProject} from './actions'
-
+import DatePicker from "react-datepicker";
+ 
+import "react-datepicker/dist/react-datepicker.css";
 import {  
 Button, 
 Col, 
@@ -113,18 +115,21 @@ class PrimarySearchAppBar extends React.Component {
       this.state = {
         anchorEl: null,
         mobileMoreAnchorEl: null,
-        modalCreatePj: false,
-        
+        modalCreatePj: false,        
         Topic:'',
-        ProjectName:'',
-        timeStart:'',
-        dateStart:'',
-        timeEnd:'',
-        dateEnd:'',
+        ProjectName:'',       
+        startDate:new Date(),
+        endDate:new Date(),    
         isPrivate:"false",
       };
     };
-
+componentDidMount(){
+  let end=this.state.endDate
+  end.setDate(end.getDate()+15)
+  this.setState({
+    endDate:end
+  })
+}
   toggleCreatePj=()=>{
     this.setState(prevState => ({
       modalCreatePj: !prevState.modalCreatePj,
@@ -148,16 +153,22 @@ class PrimarySearchAppBar extends React.Component {
   handleMobileMenuClose = () => {
     this.setState({ mobileMoreAnchorEl: null });
   };
-
+ 
   handleCreatePj=()=> {
-    const myprojectService = new proto.myproject.MyprojectClient('http://overlead.co:8085');    
+    const myprojectService = new proto.myproject.MyprojectClient('https://www.overlead.co');    
     var metadata = {};   
+    let d=this.state.startDate;
+    let start=d.getMinutes()+"-"+d.getHours()+"-"+d.getDate()+"-"+d.getMonth()+"-"+d.getFullYear();
+    d=this.state.endDate;
+    let end=d.getMinutes()+"-"+d.getHours()+"-"+d.getDate()+"-"+d.getMonth()+"-"+d.getFullYear();
+
     var AddNewProjectReq= new proto.myproject.AddNewProjectReq();
     AddNewProjectReq.setTopic(this.state.Topic);
     AddNewProjectReq.setRequesterid(cookie.load("userId"));
     AddNewProjectReq.setProjectname(this.state.ProjectName);
-    AddNewProjectReq.setStart(this.state.dateStart);
-    AddNewProjectReq.setEnd(this.state.dateEnd);
+
+    AddNewProjectReq.setStart(start);
+    AddNewProjectReq.setEnd(end);
     AddNewProjectReq.setPrivate(this.state.isPrivate);
     AddNewProjectReq.setCookie(cookie.load("accessToken"));
     myprojectService.addNewProject(AddNewProjectReq, metadata, (err, response) => {
@@ -167,7 +178,7 @@ class PrimarySearchAppBar extends React.Component {
       } else { 
         console.log(response.getStatus())
               if (response.getStatus()=="SUCCESS"){
-                this.props.dispatch(addProject(response.getProjectid(),this.state.Topic,this.state.ProjectName,this.state.dateStart,this.state.dateEnd,this.state.isPrivate)) 
+                this.props.dispatch(addProject(response.getProjectid(),this.state.Topic,this.state.ProjectName,start,end,this.state.isPrivate,"0")) 
                 console.log(this.props.project) 
                 this.toggleCreatePj()   
               }
@@ -187,26 +198,18 @@ class PrimarySearchAppBar extends React.Component {
       ProjectName: event.target.value,
     });
   }
-  onTextboxChangetimeStart=(event)=> {
+  onChangeStartDate=(date)=> {
     this.setState({
-      timeStart: event.target.value,
+      startDate: date
     });
   }
-  onTextboxChangedateStart=(event)=> {
+  onChangeEndDate=(date)=> {
     this.setState({
-      dateStart: event.target.value,
+      endDate: date
     });
   }
-  onTextboxChangetimeEnd=(event)=> {
-    this.setState({
-      timeEnd: event.target.value,
-    });
-  }
-  onTextboxChangedateEnd=(event)=> {
-    this.setState({
-      dateEnd: event.target.value,
-    });
-  }
+  
+ 
   onTextboxChangePrivate=event=> {    
     this.setState({
       isPrivate: this.state.isPrivate=="false"?"true":"false",
@@ -328,11 +331,17 @@ class PrimarySearchAppBar extends React.Component {
                                                   <Label htmlFor="date-input">Start </Label>
                                                 </Col>
                                                 <Col xs="3" md="3">
-                                                <Input type="time" id="timeStart" name="timeStart" value={this.state.timeStart} onChange={that.onTextboxChangetimeStart} />
+                                                
+                                                <DatePicker                                                
+
+                                                      selected={that.state.startDate}
+                                                      timeInputLabel="Time:"
+                                                      onChange={that.onChangeStartDate}
+                                                      dateFormat="dd/MM/yyyy h:mm aa"
+                                                      showTimeInput
+                                                  />
                                                 </Col>
-                                                <Col xs="3" md="3">
-                                                  <Input type="date" id="dateStart" name="dateStart" value={this.state.dateStart} onChange={that.onTextboxChangedateStart}/>
-                                                </Col>
+                                               
                                               </FormGroup>
   
                                               <FormGroup row>
@@ -340,11 +349,17 @@ class PrimarySearchAppBar extends React.Component {
                                                   <Label htmlFor="date-input">End </Label>
                                                 </Col>
                                                 <Col xs="3" md="3">
-                                                <Input type="time" id="timeEnd" name="timeEnd" value={this.state.timeEnd} onChange={that.onTextboxChangetimeEnd}/>
+                                                <DatePicker
+                                                   
+
+                                                      selected={that.state.endDate}
+                                                      timeInputLabel="Time:"
+                                                      onChange={that.onChangeEndDate}
+                                                      dateFormat="dd/MM/yyyy h:mm aa"
+                                                      showTimeInput
+                                                  />
                                                 </Col>
-                                                <Col xs="3" md="3">
-                                                  <Input type="date" id="dateEnd" name="dateEnd"  value={this.state.dateEnd} onChange={that.onTextboxChangedateEnd}/>
-                                                </Col>
+                                               
                                               </FormGroup>
                                               
                                               <FormGroup row>

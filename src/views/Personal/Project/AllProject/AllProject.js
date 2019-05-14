@@ -2,38 +2,41 @@ import React, { Component } from 'react';
 import cookie from 'react-cookies';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {fetchAllProject, forceRerender} from './../../../../actions'
-import {addProject} from './../../../../actions'
+import { fetchAllProject } from './../../../../actions'
+import { addProject,deleteProject,updateProject } from './../../../../actions'
+import {
+  Badge,
+  Button,
+  Col,
+  Container,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  Row,
+  Table,
+  Pagination,
+  PaginationItem,
+  PaginationLink,
+  Card,
+  CardBody,
+  CardHeader,
+  CardFooter,
+  Jumbotron,
+  Progress,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Form,
+  FormGroup,
 
-import { Badge, 
-Button, 
-Col, 
-Container, 
-Input, 
-InputGroup, 
-InputGroupAddon, 
-InputGroupText, 
-Row, 
-Table, 
-Pagination, 
-PaginationItem, 
-PaginationLink, 
-Card, 
-CardBody, 
-CardHeader, 
-CardFooter,
-Jumbotron,
-Progress,
-Modal,
-ModalHeader,
-ModalBody,
-Form,
-FormGroup,
+  Label,
 
-Label,
-
-ModalFooter
+  ModalFooter
 } from 'reactstrap';
+import DatePicker from "react-datepicker";
+ 
+import "react-datepicker/dist/react-datepicker.css";
 import { Link } from 'react-router-dom';
 import Demo from '../../../../homeNav'
 
@@ -45,285 +48,417 @@ proto.myproject = require('./../../../../gRPC/myproject/myproject_grpc_web_pb');
 class AllProject extends Component {
   constructor(props) {
     super(props);
-    this.toggleAdd = this.toggleAdd.bind(this);
-    this.toggleEdit = this.toggleEdit.bind(this);
-    this.toggleTranferOwner = this.toggleTranferOwner.bind(this);
-    this.onTextboxChangeOwnerName = this.onTextboxChangeOwnerName.bind(this);
-    this.onTextboxChangeProjectName = this.onTextboxChangeProjectName.bind(this);
-    this.onTextboxChangetimeStart = this.onTextboxChangetimeStart.bind(this);
-    this.onTextboxChangedateStart = this.onTextboxChangedateStart.bind(this);
-    this.onTextboxChangetimeEnd = this.onTextboxChangetimeEnd.bind(this);
-    this.onTextboxChangedateEnd = this.onTextboxChangedateEnd.bind(this);
 
     this.state = {
-      result:{},
+      result: {},
       modalAdd: false,
       modalEdit: false,
       modalTranferOwner: false,
+      startDate: new Date(),
+      endDate:new Date() ,
 
-      OwnerName:'',
-      ProjectName:'',
-      timeStart:'',
-      dateStart:'',
-      timeEnd:'',
-      dateEnd:'',
-      status:false,
+      topic: '',
+      ProjectName: '',
+      timeStart: '',
+      dateStart: '',
+      timeEnd: '',
+      dateEnd: '',
+      isPrivate: "false",
 
-
-      data: [ 
+      items: 10,
+      loadingState: false,
+      data: [
         {
-          "projectName":"Web bán giày",
-          "idOwner":"tam@gmail.com",
-          "status":"public",
-          "start":" 9:00 3/01/2019",
-          "end":"9:00 23/05/2019",
-          "progress":20,
+          "projectName": "Web bán giày",
+          "idOwner": "tam@gmail.com",
+          "status": "public",
+          "start": " 9:00 3/01/2019",
+          "end": "9:00 23/05/2019",
+          "progress": 20,
         },
         {
-          "projectName":"Web bán giày",
-          "idOwner":"lam@gmail.com",
-          "status":"public",
-          "start":" 9:00 3/01/2019",
-          "end":"9:00 23/05/2019",
-          "progress":50,
+          "projectName": "Web bán giày",
+          "idOwner": "lam@gmail.com",
+          "status": "public",
+          "start": " 9:00 3/01/2019",
+          "end": "9:00 23/05/2019",
+          "progress": 50,
         },
       ],
-      }
-    };
-    componentDidMount() {
-      console.log("willmount")
-      const myprojectService = new proto.myproject.MyprojectClient('http://overlead.co:8085');    
-    var metadata = {};   
-    var AddNewProjectReq= new proto.myproject.GetAllProjectReq();
+    }
+  };
+  forceUpdateHandler = () => {
+    this.forceUpdate();
+  };
+  componentDidMount() {
+    console.log("didmount")
+    let end=this.state.endDate;
+    end.setDate(end.getDate() + 15);
+    this.setState({
+      endDate:end
+    })
+    let dispatch = this.props.dispatch
+    const myprojectService = new proto.myproject.MyprojectClient('https://www.overlead.co');
+    var metadata = {};
+    var AddNewProjectReq = new proto.myproject.GetAllProjectReq();
     AddNewProjectReq.setRequesterid(cookie.load("userId"));
     AddNewProjectReq.setCookie(cookie.load("accessToken"));
-    var response=myprojectService.getAllProject(AddNewProjectReq, metadata)
-    let dispatch=this.props.dispatch
-   // let count=0;
-    response.on('data', function(response) {
-      if (response.getStatus()=="SUCCESS"){
-        dispatch(addProject(response.getProjectid(),response.getTopic(),response.getProjectname(),response.getStart(),response.getEnd(),response.getPrivate())) 
-        //count++;
-       // if (count%20==0) dispatch(forceRerender())
+    var response = myprojectService.getAllProject(AddNewProjectReq, metadata)
 
+    response.on('data', function (response) {
+      if (response.getStatus() == "SUCCESS") {
+
+        dispatch(addProject(response.getProjectid(), response.getTopic(), response.getProjectname(), response.getStart(), response.getEnd(), response.getPrivate(), response.getProgress()))
+       
       }
-
     });
-    response.on('status', function(status) {
+    response.on('status', function (status) {
       console.log("status")
-
       console.log(status.code);
       console.log(status.details);
       console.log(status.metadata);
     });
-    response.on('end', function(end) {
-      // stream end signal
+    response.on('end', function (end) {
       console.log("end")
       console.log(end)
+      
     });
-  }
-  
-    componentDidUpdate(prevProps) {
-      console.log("componentDidUpdate")
 
-    }
-  toggleAdd() {
+  }
+
+
+
+
+
+  toggleAdd = () => {
     this.setState(prevState => ({
       modalAdd: !prevState.modalAdd
     }));
   }
-  toggleEdit() {
+  toggleEdit = () => {
     this.setState(prevState => ({
-      modalEdit: !prevState.modalEdit
+      modalEdit: !prevState.modalEdit,
     }));
   }
-  toggleTranferOwner() {
-    this.setState(prevState => ({
-    modalTranferOwner: !prevState.modalTranferOwner
-    }));
-  }
-
-
-  onTextboxChangeOwnerName(event) {
+  setProjectUpdateId = (event) => {
     this.setState({
-      OwnerName: event.target.value,
+      updateId:event.currentTarget.dataset.id
     });
   }
-  onTextboxChangeProjectName(event) {
+  toggleTranferOwner = () => {
+    this.setState(prevState => ({
+      modalTranferOwner: !prevState.modalTranferOwner
+    }));
+  }
+
+
+  onTextboxChangeTopic = (event) => {
+    this.setState({
+      topic: event.target.value,
+    });
+  }
+  onTextboxChangeProjectName = (event) => {
     this.setState({
       ProjectName: event.target.value,
     });
   }
-  onTextboxChangetimeStart(event) {
+  onTextboxChangetimeStart = (event) => {
     this.setState({
       timeStart: event.target.value,
     });
   }
-  onTextboxChangedateStart(event) {
+  onTextboxChangedateStart = (event) => {
     this.setState({
       dateStart: event.target.value,
     });
   }
-  onTextboxChangetimeEnd(event) {
+  onTextboxChangetimeEnd = (event) => {
     this.setState({
       timeEnd: event.target.value,
     });
   }
-  onTextboxChangedateEnd(event) {
+  onTextboxChangedateEnd = (event) => {
     this.setState({
       dateEnd: event.target.value,
     });
   }
-  onTextboxChangeStatus(event) {
-    this.setState(prevState => ({
-      status: !prevState.status,
-    }));
+  onTextboxChangePrivate = () => {
+    this.setState({
+      isPrivate: this.state.isPrivate=="false"?"true":"false",
+    });
   }
 
-
-  handleUpdate = () => {
-    const myprojectService = new proto.myproject.MyprojectClient('http://overlead.co:8085');
-    
+  handleUpdate = (event) => {
+    const myprojectService = new proto.myproject.MyprojectClient('https://www.overlead.co');
+    let idProject=event.currentTarget.dataset.id
+    console.log(idProject)
+    let d=this.state.startDate;
+    let start=d.getMinutes()+"-"+d.getHours()+"-"+d.getDate()+"-"+d.getMonth()+"-"+d.getFullYear();
+    d=this.state.endDate;
+    let end=d.getMinutes()+"-"+d.getHours()+"-"+d.getDate()+"-"+d.getMonth()+"-"+d.getFullYear();
     var metadata = {};
-    var UpdateProjectReq= new proto.myproject.UpdateProjectReq();
-    UpdateProjectReq.setRequesterid("tienbede");
+    var UpdateProjectReq = new proto.myproject.UpdateProjectReq();
     UpdateProjectReq.setRequesterid(cookie.load("userId"));
-    UpdateProjectReq.setProjectname("tienbede");
-    UpdateProjectReq.setProjectid("tienbede");
-    UpdateProjectReq.setStart("tienbede");
-    UpdateProjectReq.setEnd("tienbede");
-    UpdateProjectReq.setPrivate("tienbede");
+    UpdateProjectReq.setProjectid(this.state.updateId);
+    UpdateProjectReq.setTopic(this.state.topic);
+
+    UpdateProjectReq.setProjectname(this.state.ProjectName);
+    UpdateProjectReq.setStart(start);
+    UpdateProjectReq.setEnd(end);
+    UpdateProjectReq.setPrivate(this.state.isPrivate);
     UpdateProjectReq.setCookie(cookie.load("tokenAccess"));
+    let dispatch=this.props.dispatch
+//    id,topic,name,start,end,isPrivate,progress
 
     myprojectService.updateProject(UpdateProjectReq, metadata, (err, response) => {
       if (err) { //if error
-         console.log(err);
-         console.log("error updateProject")
+        console.log(err);
+        console.log("error updateProject")
       } else { //if success
         console.log(response.getStatus())
+        if (response.getStatus()=="SUCCESS")
+          dispatch(updateProject(this.state.updateId,this.state.topic,this.state.ProjectName,start,end,this.state.isPrivate,this.state.progress))
+          this.toggleEdit()
       }
-          });
+    });
   }
 
-  handleDelete = () => {
-    const myprojectService = new proto.myproject.MyprojectClient('http://overlead.co:8085');
-    
-    var metadata = {};
-  
-    var DeleteProjectReq= new proto.myproject.DeleteProjectReq();
-    //AddNewProjectReq.setIdOwner("tienbede");
-    DeleteProjectReq.setRequesterid("tienbede");
-    DeleteProjectReq.setProjectid("tienbede");
-    DeleteProjectReq.setCookie("tienbede");
+  handleDelete = (event) => {
+    let id=event.currentTarget.dataset.id
+    console.log("delete")
+    console.log(id)
+    const myprojectService = new proto.myproject.MyprojectClient('https://www.overlead.co');
 
+    var metadata = {};
+    var DeleteProjectReq = new proto.myproject.DeleteProjectReq();
+    //AddNewProjectReq.setIdOwner("tienbede");
+    DeleteProjectReq.setRequesterid(cookie.load("userId"));
+    DeleteProjectReq.setProjectid(id);
+    DeleteProjectReq.setCookie(cookie.load("tokenAccess"));
+    let dispatch=this.props.dispatch
     myprojectService.deleteProject(DeleteProjectReq, metadata, (err, response) => {
       if (err) { //if error
-         console.log(err);
-         console.log("error")
+        console.log(err);
+        console.log("error")
       } else { //if success
-              //get response
-              console.log(response.getStatus())
+        //get response
+        console.log(response.getStatus())
+        if (response.getStatus()=="SUCCESS"){
+          dispatch(deleteProject(id))
+        }
+        // this.setState({
+        //   av: response.getAvatar()
+        // });
 
-              // this.setState({
-              //   av: response.getAvatar()
-              // });
-              
-            }
-          });
+      }
+    });
   };
 
-  
+  onChangeStartDate=(date) =>{
+    this.setState({
+      startDate: date
+    });
+  }
+  onChangeEndDate=(date) =>{
+    this.setState({
+      endDate: date
+    });
+  }
   render() {
-    let that=this;    
-    const {
-      OwnerName,
-      ProjectName,
-      timeStart,
-      dateStart,
-      timeEnd,
-      dateEnd,
-      status,   
-      
-    } = this.state;
+    let that = this;
+  
+
+
     return (
-    <div>
-      <Demo/>
-      <div><br/></div>
-      <Container>
-        <Row>
-          <Col>  
-            <Row>
-            {
-                this.props.project.map(function(item,key){
-             return (
-              <Col xs="12" sm="3" md="3">                        
-              <Card>
-                <CardHeader>
-                  <Link to="/DashBoard">
-                    <i className=""></i><strong>{item.projectName}</strong>
-                    </Link>
-                    <div className="card-header-actions">
-                    <div className="card-header-action btn btn-setting"  onClick={that.handleDelete}><i className="icon-trash"></i>{that.props.buttonLabel}</div>
-                    <div className="card-header-action btn btn-setting" onClick={that.toggleEdit}><i className="icon-settings"></i>{that.props.buttonLabel}</div>                    
-                    </div>
-                </CardHeader>
-                <CardBody>             
-                  <h6>Owner Name: {item.idOwner}</h6>        
-                  <h6>{item.status}</h6>
-                  <h6>Start:  {item.start}</h6>
-                  <h6>  End:  {item.end}</h6>
-                  <Progress value={item.progress}/>
-                  <div className="text-center">{item.progress}%</div>
-                </CardBody>
-                <CardFooter>    
-                  <center>
-                    <Button className="button-center" type="submit" size="sm" color="success" onClick={that.toggleTranferOwner}><i class="fa fa-share"></i></Button>  
-                    <Modal size="lg" isOpen={that.state.modalTranferOwner} toggle={that.toggleTranferOwner} className={that.props.className}>
-                    <ModalHeader toggle={that.toggleTranferOwner}>item.projectName</ModalHeader>
-                      <ModalBody>
-                        <div class="card  bg-primary mb-3">
-                          <div class="card-body">
-                            <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
-                              <FormGroup row>
-                                <Col md="3">
-                                  <Label htmlFor="text-input">TranferOwner Name</Label>
-                                </Col>
-                                <Col xs="5" md="5">
-                                  <Input type="text" id="TranferOwner" name="TranferOwner" placeholder=" Name" />
-                                </Col>
-                              </FormGroup>
-                            </Form>
-                          </div>
-                        </div>                         
-                      </ModalBody>
-                      <ModalFooter>
-                        <Button color="primary" onClick={that.toggleTranferOwner}>Submit</Button>{' '}
-                        <Button color="secondary" onClick={that.toggleTranferOwner}>Cancel</Button>
-                      </ModalFooter>
-                    </Modal>
-                  </center>
-                </CardFooter>      
-              </Card>                     
-              </Col>     
-             )
-                })}
-            
-            </Row>              
-          </Col>
-        </Row>
-      </Container>  
-    </div>  
-    
-     
+      <div>
+        <Demo />
+        
+        <div><br /></div>
+        <Container>
+          <Row>
+            <Col>
+              <Row>
+
+                {
+
+                  this.props.project.map(function (i, key) {
+                    let item=i;
+                    
+                    if (item!=null){
+                      let arr=item.start.split('-');
+                      let start=""
+                      let end=""
+                      if (arr[1]>12){
+                        arr[1]=arr[1]-12
+                        start=(arr[1].length==1?"0"+arr[1]:arr[1])+":"+(arr[0].length==1?"0"+arr[0]:arr[0])+"PM"+`\xa0\xa0\xa0`+arr[2]+"/"+arr[3]+"/"+arr[4]
+                      } else{
+                        start=(arr[1].length==1?"0"+arr[1]:arr[1])+":"+(arr[0].length==1?"0"+arr[0]:arr[0])+"AM"+`\xa0\xa0\xa0`+arr[2]+"/"+arr[3]+"/"+arr[4]
+                      }
+                        
+
+
+                      arr=item.end.split('-')
+                      if (arr[1]>12){
+                        arr[1]=arr[1]-12
+                        end="\xa0"+(arr[1].length==1?"0"+arr[1]:arr[1])+":"+(arr[0].length==1?"0"+arr[0]:arr[0])+"PM"+`\xa0\xa0\xa0`+arr[2]+"/"+arr[3]+"/"+arr[4]
+                      } else{
+                        end="\xa0"+(arr[1].length==1?"0"+arr[1]:arr[1])+":"+(arr[0].length==1?"0"+arr[0]:arr[0])+"AM"+`\xa0\xa0\xa0`+arr[2]+"/"+arr[3]+"/"+arr[4]
+                      }
+                      return (
+                        <Col xs="12" sm="3" md="3">
+                          <Card>
+                            <CardHeader>
+                              <Link to="/DashBoard">
+                                <i className=""></i><strong>{item.projectName}</strong>
+                              </Link>
+                              <div className="card-header-actions">
+                                <div className="card-header-action btn btn-setting" data-id={item.id} onClick={that.handleDelete}><i className="icon-trash">{item.id}</i>{that.props.buttonLabel}</div>
+                                <div data-id={item.id} onClick={that.setProjectUpdateId}><div className="card-header-action btn btn-setting"  onClick={that.toggleEdit}><i className="icon-settings"></i>{that.props.buttonLabel}</div></div>
+                                <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>	
+                        <ModalHeader toggle={that.toggleEdit}>Project</ModalHeader>	
+                        <ModalBody>	
+                          <div class="card  bg-primary mb-3">	
+                            <div class="card-body">	
+                            <Form  className="form-horizontal">              	
+  
+                                               <FormGroup row>	
+                                                  <Col md="3">	
+                                                    <Label htmlFor="text-input">Topic</Label>	
+                                                  </Col>	
+                                                  <Col xs="5" md="5">	
+                                                    <Input type="text" id="topic" name="topic" placeholder="topic" value={that.state.topic} onChange={that.onTextboxChangeTopic} />	
+                                                  </Col>	
+                                                </FormGroup>	
+  
+  
+                                                 <FormGroup row>	
+                                                  <Col md="3">	
+                                                    <Label htmlFor="text-input">Project Name</Label>	
+                                                  </Col>	
+                                                  <Col xs="5" md="5">	
+                                                    <Input type="text" id="ProjectName" name="ProjectName" placeholder="Project Name" value={that.state.ProjectName} onChange={that.onTextboxChangeProjectName} />	
+  
+                                                   </Col>	
+                                                </FormGroup>	
+  
+                                                 <FormGroup row>	
+                                                  <Col md="3">	
+                                                    <Label htmlFor="date-input">Start </Label>	
+                                                  </Col>	
+                                                 
+                                                  <Col xs="3" md="3">	
+                                                    {/* <Input type="date" id="dateStart" name="dateStart" value={that.state.dateStart} onChange={that.onTextboxChangedateStart}/>	 */}
+                                                    {/* <DatePicker dateFormat="dd/MM/yyyy"  selected={that.state.startDate}  onChange={that.onChangeStartDate} /> */}
+                                                    <DatePicker                                                   
+  
+                                                        selected={that.state.startDate}
+                                                        timeInputLabel="Time:"
+                                                        onChange={that.onChangeStartDate}
+                                                        dateFormat="dd/MM/yyyy h:mm aa"
+                                                        showTimeInput
+                                                    />
+                                                  </Col>	
+                                                </FormGroup>	
+  
+                                                 <FormGroup row>	
+                                                  <Col md="3">	
+                                                    <Label htmlFor="date-input">End </Label>	
+                                                  </Col>	
+                                                  
+                                                  <Col xs="3" md="3">	
+                                                    {/* <Input type="date" id="dateEnd" name="dateEnd"  value={that.state.dateEnd} onChange={that.onTextboxChangedateEnd}/>	 */}
+                                                    {/* <DatePicker dateFormat="dd/MM/yyyy"  selected={that.state.endDate}  onChange={that.onChangeEndDate} /> */}
+                                                    <DatePicker
+                                                     
+  
+                                                        selected={that.state.endDate}
+                                                        timeInputLabel="Time:"
+                                                        onChange={that.onChangeEndDate}
+                                                        dateFormat="dd/MM/yyyy h:mm aa"
+                                                        showTimeInput
+                                                    />
+                                                  </Col>	
+                                                </FormGroup>	
+  
+                                                 <FormGroup row>	
+                                                  <Col md="5">	
+                                                    <Label htmlFor="date-input">Private </Label>	
+                                                  </Col>	
+                                                  <Col xs="5" md="5">	
+                                                    <Input type="checkbox" id="Private" name="Private" value={that.state.isPrivate} onChange={that.onTextboxChangePrivate}/>	
+                                                  </Col>	
+                                                </FormGroup>	
+                                              </Form>	
+                            </div>	
+                          </div>                         	
+                        </ModalBody>	
+                        <ModalFooter>	
+                          <Button color="primary" onClick={that.handleUpdate}>Submit</Button>{' '}	
+                          <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>	
+                        </ModalFooter>	
+                      </Modal>
+                              </div>
+                            </CardHeader>
+                            <CardBody>
+                              <h6>Owner: {item.ownerName}</h6>
+                              <h6>Private: {item.private}</h6>
+                              <h6>Start:  {start}</h6>
+                              <h6>  End:  {end}</h6>
+                              <Progress value={item.progress} />
+                              <div className="text-center">{item.progress}%</div>
+                            </CardBody>
+                            <CardFooter>
+                              <center>
+                                <Button className="button-center" type="submit" size="sm" color="success" onClick={that.toggleTranferOwner}><i class="fa fa-share"></i></Button>
+                                <Modal size="lg" isOpen={that.state.modalTranferOwner} toggle={that.toggleTranferOwner} className={that.props.className}>
+                                  <ModalHeader toggle={that.toggleTranferOwner}>item.projectName</ModalHeader>
+                                  <ModalBody>
+                                    <div class="card  bg-primary mb-3">
+                                      <div class="card-body">
+                                        <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">
+                                          <FormGroup row>
+                                            <Col md="3">
+                                              <Label htmlFor="text-input">Owner Tranfer To</Label>
+                                            </Col>
+                                            <Col xs="5" md="5">
+                                              <Input type="text" id="TranferOwner" name="TranferOwner" placeholder=" Name" />
+                                            </Col>
+                                          </FormGroup>
+                                        </Form>
+                                      </div>
+                                    </div>
+                                  </ModalBody>
+                                  <ModalFooter>
+                                    <Button color="primary" onClick={that.toggleTranferOwner}>Submit</Button>{' '}
+                                    <Button color="secondary" onClick={that.toggleTranferOwner}>Cancel</Button>
+                                  </ModalFooter>
+                                </Modal>
+                              </center>
+                            </CardFooter>
+                          </Card>
+                        </Col>
+                      )
+                    }
+                  
+                  })}
+
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+
+
     );
   }
 }
 function mapStateToProps(state) {
   console.log("mapStateToProps")
-  const { updateProjectLoaded } = state
-  const {project,needUpdate}=updateProjectLoaded
+  const { updateProjectLoaded, changeStatusLogin } = state
+  const { project,needUpdate } = updateProjectLoaded
+  const { name } = changeStatusLogin
   return {
-    project,needUpdate
+    project, name,needUpdate
   }
 }
 export default connect(mapStateToProps)(AllProject);

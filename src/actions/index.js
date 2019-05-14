@@ -8,10 +8,12 @@ export const DO_LOGOUT = 'DO_LOGOUT'
 export const GET_PROJECT_SELECTED = 'GET_PROJECT_SELECTED'
 export const SET_PROJECT_SELETED = 'SET_PROJECT_SELETED'
 export const FETCH_ALL_PROJECT = 'FETCH_ALL_PROJECT'
-export const UPDATE_PROJECT = 'UPDATE_PROJECT'
-export const DELETE_PROJECT = 'DELETE_PROJECT'
-export const ADD_PROJECT = 'ADD_PROJECT'
-export const FORCE_RERENDER = 'FORCE_RERENDER'
+
+
+//hook
+export const NEW_PROJECT_COME = 'NEW_PROJECT_COME'
+export const UPDATE_PROJECT_COME = 'UPDATE_PROJECT_COME'
+export const REMOVE_PROJECT_COME = 'REMOVE_PROJECT_COMEs'
 
 export function selectSubreddit(subreddit) {
   return {
@@ -64,7 +66,10 @@ function shouldFetchPosts(state, subreddit) {
 }
 
 export function fetchPostsIfNeeded(subreddit) {
+  console.log("fetchPostsIfNeeded")  
   return (dispatch, getState) => {
+    console.log(dispatch)
+    console.log(getState())
     if (shouldFetchPosts(getState(), subreddit)) {
       return dispatch(fetchPosts(subreddit))
     }
@@ -102,20 +107,57 @@ export function setProject(id,name){
     name
   }
 }
-export function addProject(id,topic,name,start,end,isPrivate){
+export function addProject(id,topic,name,start,end,isPrivate,progress){
   return {
     type: ADD_PROJECT,
-    id,topic,name,start,end,isPrivate
+    id,topic,name,start,end,isPrivate,progress
   }
 }
-export function fetchAllProject(id,topic,name,start,end,isPrivate){
+export function deleteProject(id){
+  return {
+    type: DELETE_PROJECT,
+    id
+  }
+}
+export function updateProject(id,topic,name,start,end,isPrivate,progress  ){
+  return {
+    type: UPDATE_PROJECT,
+    id,topic,name,start,end,isPrivate,progress
+  }
+}
+export function fetchAllProject(id,ownerName,topic,name,start,end,isPrivate){
   return {
     type: ADD_PROJECT,
-    id,topic,name,start,end,isPrivate
+    id,ownerName,topic,name,start,end,isPrivate
   }
 }
-export function forceRerender(){
-  return {
-    type: FORCE_RERENDER,
+
+//TYPE:
+export const ADD_PROJECT = 'ADD_PROJECT'
+export const UPDATE_PROJECT = 'UPDATE_PROJECT'
+export const DELETE_PROJECT = 'DELETE_PROJECT'
+export const FORCE_RERENDER = 'FORCE_RERENDER'
+export const NOTIFY_COME = 'FORCE_RERENDER'
+
+function fetch_notify(){
+
+}
+function fetch_message(){
+
+}
+function fetch_task(){
+
+}
+export function hook(type,id,detail){
+  return (dispatch, getState) => {
+  switch (type){
+    case "new_message":
+        return dispatch(fetch_message(id,detail))
+    case "new_notify":
+        return dispatch(fetch_notify(id,detail))
+    case "new_task":
+        return dispatch(fetch_task(id,detail))
+    
+    }
   }
 }

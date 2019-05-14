@@ -91,7 +91,7 @@ class ResetSecond extends Component {
       isLoading: true,
     });
     //create service to request
-    const authService = new proto.auth.AuthClient('http://overlead.co:8085');
+    const authService = new proto.auth.AuthClient('https://trungcs.com');
     //metadab will be config later
     var metadata = {};
     
@@ -110,8 +110,11 @@ class ResetSecond extends Component {
           console.log(response.getStatus())
           if (response.getStatus()=="SUCCESS"){
             cookie.save('userId',response.getId())
-            cookie.save('tokenAccess',response.getSession())
-            this.props.dispatch(saveLogin(response.getId(),response.getSession()))
+            cookie.save('tokenAccess',response.getSession())//id,token,email,name,avatar
+            cookie.save('username',cookie.load("resetUsername"))
+            cookie.save('name',response.getName())
+            cookie.save('avatar',response.getAvatar())
+            this.props.dispatch(saveLogin(response.getId(),response.getSession(),cookie.load("resetUsername"),response.getName(),response.getAvatar()))
           
           }
           

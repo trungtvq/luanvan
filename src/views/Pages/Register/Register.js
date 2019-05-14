@@ -69,7 +69,7 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
     });
     console.log("onSignUp")
     //create service to request
-    const authService = new proto.auth.AuthClient('http://overlead.co:8085');
+    const authService = new proto.auth.AuthClient('https://www.overlead.co');
     //metadab will be config later
     var metadata = {};
     
@@ -80,8 +80,6 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
     SignUpReq.setPassword(signUpPassword);
     SignUpReq.setName(signUpName);
       //make a request to server
-      console.log(signUpEmail+":"+signUpName+":"+signUpPassword)
-      console.log("still no error")
 
       var getTodo = authService.signUp(SignUpReq, metadata, (err, response) => {
         if (err) { //if error
@@ -89,17 +87,13 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
           console.log(err);
         } else { //if success
           //get response
-          console.log("success")
-          console.log(response.getStatus())
-          console.log(response.getError())
-          console.log(response.getResponse()) //no have value yet
-          console.log(response.getType())//type of NO PAY member: normal
-          console.log(response.getId())
-          console.log(response.getSession())
           if (response.getStatus()=="SUCCESS"){
             cookie.save('userId',response.getId())
-            cookie.save('tokenAccess',response.getSession())
-            this.props.dispatch(saveLogin(response.getId(),response.getSession()))
+            cookie.save('tokenAccess',response.getSession())//id,token,email,name,avatar
+            cookie.save('username',signUpEmail)
+            cookie.save('name',signUpName)
+            cookie.save('avatar',response.getAvatar())
+            this.props.dispatch(saveLogin(response.getId(),response.getSession(),signUpEmail,signUpName,response.getAvatar()))
 
           }
         }
