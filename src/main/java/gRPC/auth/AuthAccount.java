@@ -24,10 +24,10 @@ public class AuthAccount {
             }
             else return null;
         }
-        public void makeResponseForSignInSuccess(StreamObserver res,String id){
+        public void makeResponseForSignInSuccess(StreamObserver res,String id,String username,String name,String avatar){
             String newSession="newSession";
             setSession(id,newSession);
-            res.onNext(SignInRes.newBuilder().setStatus("SUCCESS").setError("FALSE").setSession(newSession).setId(id).setType("normal").build());
+            res.onNext(SignInRes.newBuilder().setStatus("SUCCESS").setError("FALSE").setAvatar(avatar).setName(name).setSession(newSession).setId(id).setType("normal").build());
             res.onCompleted();
         }
         public  void setSession(String id,String session){
@@ -57,7 +57,7 @@ public class AuthAccount {
             if (user==null){
                 makeResponseForSignInFailed(res,"FAIL_DB","TRUE");
             } else {
-                makeResponseForSignInSuccess(res,user.get("_id").toString());
+                makeResponseForSignInSuccess(res,user.get("_id").toString(),user.get("username").toString(),user.get("name").toString(),user.get("avatar").toString());
             }
         }
 
@@ -69,7 +69,9 @@ public class AuthAccount {
                 } else{
                     Document document = new Document("username", request.getUsername())
                             .append("name", request.getName())
-                            .append("password", request.getPassword());
+                            .append("password", request.getPassword())
+                            .append("avatar","");
+
                     coll.insertOne(document);
                     makeResponseAfterUpdate(responseObserver,request.getUsername());
                 }
@@ -79,7 +81,7 @@ public class AuthAccount {
         public void signInGoogle(SignInGoogleReq request, StreamObserver<SignInRes> responseObserver) {
             Document user = getUserFromDB(request.getUsername()); //check username is exist
             if (user!=null){ //EXIST USERNAME => LOGIN
-                makeResponseForSignInSuccess(responseObserver,user.get("_id").toString());
+                makeResponseForSignInSuccess(responseObserver,user.get("_id").toString(),request.getUsername(),request.getName(),request.getAvatar());
             } else{ //CREATE NEW ACCOUNT
                 Document document = new Document("username", request.getUsername())
                         .append("name", request.getName())
@@ -93,7 +95,7 @@ public class AuthAccount {
             System.out.println(request.getId());
 
             if (getSession(request.getId(),request.getSession())){
-                makeResponseForSignInSuccess(responseObserver,request.getId());
+                makeResponseForSignInSuccess(responseObserver,request.getId(),"","","");
             } else{
                 makeResponseForSignInFailed(responseObserver,"INVALID_SESSION","TRUE");
             }
@@ -106,7 +108,7 @@ public class AuthAccount {
                 String pa=user.get("password").toString();
                 String pass=request.getPassword();
                 if (pa.equals(pass)){
-                    makeResponseForSignInSuccess(responseObserver,user.get("_id").toString());
+                    makeResponseForSignInSuccess(responseObserver,user.get("_id").toString(),user.get("username").toString(),user.get("name").toString(),user.get("avatar").toString());
                 }else{
                     makeResponseForSignInFailed(responseObserver,"WRONG_PASSWORD","TRUE");
                 }
@@ -157,7 +159,7 @@ public class AuthAccount {
                         makeResponseForSignInFailed(responseObserver,"WRONG_TOKEN","TRUE");
                     }else{
                         coll.findOneAndUpdate(new Document("username",request.getUsername()),new Document("$set", new Document("password",request.getPassword())));
-                        makeResponseForSignInSuccess(responseObserver,user.get("_id").toString());
+                        makeResponseForSignInSuccess(responseObserver,user.get("_id").toString(),user.get("username").toString(),user.get("name").toString(),user.get("avatar").toString());
                         Redis.TOKEN_SYNC_KEY_COMMAND.del(request.getUsername());
                     }
                 } else{
@@ -165,6 +167,6 @@ public class AuthAccount {
                 }
             }
         }
-    }
+   }
 
 }

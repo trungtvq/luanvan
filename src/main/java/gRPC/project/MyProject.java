@@ -41,6 +41,10 @@ public class MyProject {
         @Override
         public void addNewProject(AddNewProjectReq request, StreamObserver<ProjectRes> responseObserver) {
             System.out.println("addNewProject");
+            System.out.println(request.getStart());
+            System.out.println(request.getEnd());
+            System.out.println(request.getPrivate());
+            System.out.println(request.getProjectName());
             if (!isValidAuth(request.getRequesterId(),request.getCookie())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID","TRUE");
             } else {
@@ -55,7 +59,7 @@ public class MyProject {
                             .append("start", request.getStart())
                             .append("end", request.getEnd())
                             .append("private", request.getPrivate())
-                            .append("progress",0)
+                            .append("progress","10")
                             .append("tasks",new BsonArray(Arrays.asList()));
                     coll.insertOne(document);
 
@@ -72,6 +76,12 @@ public class MyProject {
 
         @Override
         public void updateProject(UpdateProjectReq request, StreamObserver<ProjectRes> responseObserver) {
+            System.out.println("updateProject");
+            System.out.println(request.getProjectId());
+            System.out.println(request.getStart());
+            System.out.println(request.getEnd());
+            System.out.println(request.getPrivate());
+            System.out.println(request.getProjectName());
             if (!isValidAuth(request.getRequesterId(),request.getCookie())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID","TRUE");
             } else {
@@ -81,13 +91,17 @@ public class MyProject {
                     Document needUpdate=new Document(new Document("_id",new ObjectId(request.getProjectId()) ));
                     Document listUpdate=new Document();
                     if (request.getStart()!=""){
+                        System.out.println("notnull"+"getStart");
                         listUpdate.append("start",request.getStart());
                     }
                     if (request.getEnd()!=""){
+                        System.out.println("notnull"+"getEnd");
+
                         listUpdate.append("end",request.getEnd());
                     }
-                    System.out.println(request.getPrivate());
                     if (request.getPrivate()!=""){
+                        System.out.println("notnull"+"getPrivate");
+
                         listUpdate.append("private",request.getPrivate());
                     }
                     if (request.getRequesterId()!=""){
@@ -100,7 +114,7 @@ public class MyProject {
                             return;
                         }
                     }
-                    coll.findOneAndUpdate(needUpdate,listUpdate);
+                    coll.findOneAndUpdate(needUpdate,new Document("$set",listUpdate));
                     makeResponseForUpdateSuccess(responseObserver,request.getProjectId());
                     } else{
                         System.out.println("NOT_EXIST_PROJECT_NAME");
@@ -112,6 +126,7 @@ public class MyProject {
         @Override
         public void deleteProject(DeleteProjectReq request, StreamObserver<ProjectRes> responseObserver) {
             System.out.println("deleteProject");
+            System.out.println(request.getProjectId());
             if (!isValidAuth(request.getRequesterId(),request.getCookie())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID","TRUE");
             } else {

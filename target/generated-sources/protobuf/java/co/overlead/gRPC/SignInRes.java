@@ -22,6 +22,8 @@ private static final long serialVersionUID = 0L;
     type_ = "";
     id_ = "";
     session_ = "";
+    name_ = "";
+    avatar_ = "";
   }
 
   @java.lang.Override
@@ -82,6 +84,18 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             session_ = s;
+            break;
+          }
+          case 58: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            name_ = s;
+            break;
+          }
+          case 66: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            avatar_ = s;
             break;
           }
           default: {
@@ -320,6 +334,74 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int NAME_FIELD_NUMBER = 7;
+  private volatile java.lang.Object name_;
+  /**
+   * <code>string name = 7;</code>
+   */
+  public java.lang.String getName() {
+    java.lang.Object ref = name_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      name_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string name = 7;</code>
+   */
+  public com.google.protobuf.ByteString
+      getNameBytes() {
+    java.lang.Object ref = name_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      name_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int AVATAR_FIELD_NUMBER = 8;
+  private volatile java.lang.Object avatar_;
+  /**
+   * <code>string avatar = 8;</code>
+   */
+  public java.lang.String getAvatar() {
+    java.lang.Object ref = avatar_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      avatar_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string avatar = 8;</code>
+   */
+  public com.google.protobuf.ByteString
+      getAvatarBytes() {
+    java.lang.Object ref = avatar_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      avatar_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -352,6 +434,12 @@ private static final long serialVersionUID = 0L;
     if (!getSessionBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 6, session_);
     }
+    if (!getNameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, name_);
+    }
+    if (!getAvatarBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, avatar_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -378,6 +466,12 @@ private static final long serialVersionUID = 0L;
     }
     if (!getSessionBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, session_);
+    }
+    if (!getNameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, name_);
+    }
+    if (!getAvatarBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, avatar_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -406,6 +500,10 @@ private static final long serialVersionUID = 0L;
         .equals(other.getId())) return false;
     if (!getSession()
         .equals(other.getSession())) return false;
+    if (!getName()
+        .equals(other.getName())) return false;
+    if (!getAvatar()
+        .equals(other.getAvatar())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -429,6 +527,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getId().hashCode();
     hash = (37 * hash) + SESSION_FIELD_NUMBER;
     hash = (53 * hash) + getSession().hashCode();
+    hash = (37 * hash) + NAME_FIELD_NUMBER;
+    hash = (53 * hash) + getName().hashCode();
+    hash = (37 * hash) + AVATAR_FIELD_NUMBER;
+    hash = (53 * hash) + getAvatar().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -574,6 +676,10 @@ private static final long serialVersionUID = 0L;
 
       session_ = "";
 
+      name_ = "";
+
+      avatar_ = "";
+
       return this;
     }
 
@@ -606,6 +712,8 @@ private static final long serialVersionUID = 0L;
       result.type_ = type_;
       result.id_ = id_;
       result.session_ = session_;
+      result.name_ = name_;
+      result.avatar_ = avatar_;
       onBuilt();
       return result;
     }
@@ -676,6 +784,14 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getSession().isEmpty()) {
         session_ = other.session_;
+        onChanged();
+      }
+      if (!other.getName().isEmpty()) {
+        name_ = other.name_;
+        onChanged();
+      }
+      if (!other.getAvatar().isEmpty()) {
+        avatar_ = other.avatar_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -1117,6 +1233,144 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       session_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object name_ = "";
+    /**
+     * <code>string name = 7;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string name = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string name = 7;</code>
+     */
+    public Builder setName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      name_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string name = 7;</code>
+     */
+    public Builder clearName() {
+      
+      name_ = getDefaultInstance().getName();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string name = 7;</code>
+     */
+    public Builder setNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      name_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object avatar_ = "";
+    /**
+     * <code>string avatar = 8;</code>
+     */
+    public java.lang.String getAvatar() {
+      java.lang.Object ref = avatar_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        avatar_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string avatar = 8;</code>
+     */
+    public com.google.protobuf.ByteString
+        getAvatarBytes() {
+      java.lang.Object ref = avatar_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        avatar_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string avatar = 8;</code>
+     */
+    public Builder setAvatar(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      avatar_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string avatar = 8;</code>
+     */
+    public Builder clearAvatar() {
+      
+      avatar_ = getDefaultInstance().getAvatar();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string avatar = 8;</code>
+     */
+    public Builder setAvatarBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      avatar_ = value;
       onChanged();
       return this;
     }
