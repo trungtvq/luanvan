@@ -1,12 +1,3 @@
-
-// import React, { Component } from 'react';
-// import 'whatwg-fetch';
-
-import {
-  getFromStorage,
-  setInStorage,
-} from '../../../service/storage';
-import Demo from '../../../homeNav'
 import {saveLogin} from '../../../actions'
 import { connect } from 'react-redux'
 import React, { Component } from 'react';
@@ -37,27 +28,7 @@ const styles = theme => ({
 });
 
 class Login extends Component {
-  static contextType =  authContext;
-
-  componentDidMount(){
-    console.log("componentDidMount")
-  }
-
-  componentWillMount(){
-    console.log("componentWillMount")
-  }
-
-  componentDidMount(){
-    console.log("componentDidMount")
-  }
-
-  componentDidMount(){
-    console.log("componentDidMount")
-  }
-
-  componentDidMount(){
-    console.log("componentDidMount")
-  }
+    static contextType =  authContext; 
     constructor(props) {
     super(props);
 
@@ -70,17 +41,13 @@ class Login extends Component {
       signInPassword: '',
       signUpEmail: '',
       signUpPassword: '',
-    };
-
-    
-  }
-  
+    };    
+  } 
 
   onTextboxChangeSignInEmail=(event)=> {
     this.setState({
       signInEmail: event.target.value,
     });
-    console.log(this.state.signInEmail);
   }
 
   onTextboxChangeSignInPassword=(event)=> {
@@ -103,7 +70,6 @@ class Login extends Component {
 
 
   onSignIn=() =>{
-    //some data of request (get that from frontend)
     const {
       signInEmail,
       signInPassword,
@@ -113,25 +79,17 @@ class Login extends Component {
       isLoading: true,
     });
 
-     //create service to request
      const authService = new proto.auth.AuthClient('https://www.overlead.co');
-     //metadab will be config later
      var metadata = {};
-     
-     //create var for react
      var SignInReq = new proto.auth.SignInReq();
-     //set data from frontend to this var
      SignInReq.setUsername(signInEmail);
      SignInReq.setPassword(signInPassword);
-      //make a request to server
-      var getTodo = authService.signIn(SignInReq, metadata, (err, response) => {
-        if (err) { //if error
+     
+     console.log("signIn")
+      authService.signIn(SignInReq, metadata, (err, response) => {
+        if (err) { 
           console.log(err);
-        } else { //if success
-          //cookie.save('userId', signInEmail, { path: '/' });
-          //get response   
-          console.log("SUCCESSLOGIN")
-          console.log(response.getName())      
+        } else { 
           if (response.getStatus()=="SUCCESS"){
             cookie.save('userId',response.getId())
             cookie.save('tokenAccess',response.getSession())
@@ -139,35 +97,24 @@ class Login extends Component {
             cookie.save('name',response.getName())
             cookie.save('avatar',response.getAvatar())
             this.props.dispatch(saveLogin(response.getId(),response.getSession(),signInEmail,response.getName(),response.getAvatar()))
-
           }
-          
-      //    return <Redirect from="/login" to="/dashboard" />
         }
       });
   }
 
   onSignInGoogle=(profileObj)  =>{
-     console.log('onSignInGoogle');
-     console.log(profileObj);
-     //create service to request
+     console.log('signInGoogle');
      const authService = new proto.auth.AuthClient('https://www.overlead.co');
-     //metadab will be config later
      var metadata = {};
-     
-     //create var for react
      var SignInGoogleReq = new proto.auth.SignInGoogleReq();
-     //set data from frontend to this var
      SignInGoogleReq.setUsername(profileObj.email);
      SignInGoogleReq.setName(profileObj.givenName+" "+profileObj.givenName);
      SignInGoogleReq.setAvatar(profileObj.imageUrl);
-      //make a request to server
-      var getTodo = authService.signInGoogle(SignInGoogleReq, metadata, (err, response) => {
-        if (err) { //if error
+     authService.signInGoogle(SignInGoogleReq, metadata, (err, response) => {
+        if (err) { 
           console.log(err);
-        } else { //if success
-          //get response
-          console.log("success")
+        } else { 
+          console.log("SUCCESS")
           if (response.getStatus()=="SUCCESS"){
             cookie.save('userId',response.getId())
             cookie.save('tokenAccess',response.getSession())
@@ -175,38 +122,19 @@ class Login extends Component {
             cookie.save('name',response.getName())
             cookie.save('avatar',profileObj.imageUrl)
             this.props.dispatch(saveLogin(response.getId(),response.getSession(),profileObj.email,response.getName(),profileObj.imageUrl))
-
           }
         }
       });
   }
 
-  logout=()=> {
-    this.setState({
-      isLoading: true,
-    });
-    cookie.remove('userId', { path: '/' });
-    cookie.remove('userSession', { path: '/' });
-  }
-
+ 
   render() {
     const responseGoogle = (response) => {
-      console.log(response);
-      console.log(response.profileObj.email)
       this.onSignInGoogle(response.profileObj);
-
-
     }
     let renderProps={}
     renderProps.disabled=false;
-        const {
-      isLoading,
-      token,
-      signInError,
-      signInEmail,
-      signInPassword,    
-      
-    } = this.state;
+       
 
 
     return (
@@ -230,7 +158,7 @@ class Login extends Component {
                             <i className="icon-user"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="text" placeholder="Username/ Email" autoComplete="username" value={signInEmail}
+                        <Input type="email" placeholder="Username/ Email" autoComplete="email" value={this.state.signInEmail}
               onChange={this.onTextboxChangeSignInEmail} />
                       </InputGroup>
                       <InputGroup className="mb-4">
@@ -239,7 +167,7 @@ class Login extends Component {
                             <i className="icon-lock"></i>
                           </InputGroupText>
                         </InputGroupAddon>
-                        <Input type="password" placeholder="Password" autoComplete="current-password" value={signInPassword}
+                        <Input type="password" placeholder="Password" autoComplete="current-password" value={this.state.signInPassword}
               onChange={this.onTextboxChangeSignInPassword}/>
                       </InputGroup>
                       <Row>
@@ -264,16 +192,17 @@ class Login extends Component {
                         <Button color="primary" className="mt-3" active tabIndex={-1}>Register Now!</Button>
                       </Link>
                       <GoogleLogin
-    clientId="1044290572211-9tqo456g2kknsaj3tpi72lmcjnp18rms.apps.googleusercontent.com"
-    render={renderProps => (
-      <button onClick={renderProps.onClick } >This is my custom Google button</button>
-    )}
-    buttonText="Login"
-    onSuccess={responseGoogle}
-  //  {...this.onSignInGoogle(this.onSuccess.gapi.auth2.BasicProfileogle.getBasicProfile())}
-    onFailure={responseGoogle}
-    cookiePolicy={'single_host_origin'}
-  />,
+                        clientId="1044290572211-9tqo456g2kknsaj3tpi72lmcjnp18rms.apps.googleusercontent.com"
+                        
+                        buttonText="Login"
+                        onSuccess={responseGoogle}
+                      //  {...this.onSignInGoogle(this.onSuccess.gapi.auth2.BasicProfileogle.getBasicProfile())}
+                        onFailure={responseGoogle}
+                        cookiePolicy={'single_host_origin'}
+                        render={renderProps => {
+                          return (<button onClick={renderProps.onClick } >Login with Google</button>)
+                        }}
+                      />,
    
     <GoogleLogout
       buttonText="Logout"

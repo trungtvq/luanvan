@@ -8,7 +8,10 @@ import logo from '../../assets/img/brand/logo.png'
 import sygnet from '../../assets/img/brand/sygnet.svg'
 
 import authContext from "../../contexts/authContext";
-
+import cookie from 'react-cookies';
+import {saveLogin} from '../../actions'
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 const propTypes = {
   children: PropTypes.node,
@@ -68,15 +71,12 @@ class DefaultHeader extends Component {
               <img src={''} className="img-avatar" alt="" />
             </DropdownToggle>
             <DropdownMenu right style={{ right: 'auto' }}>
-              <authContext.Consumer> 
-                {(context) => {
-                    return(
+              
+               
                       <DropdownItem header tag="div" className="text-center"><strong>
-                          {context.signInEmail}
+                          {this.props.email}
                       </strong></DropdownItem>
-                    )
-                }}
-              </authContext.Consumer> 
+                   
 
 
 
@@ -111,4 +111,12 @@ class DefaultHeader extends Component {
 DefaultHeader.propTypes = propTypes;
 DefaultHeader.defaultProps = defaultProps;
 
-export default DefaultHeader;
+
+function mapStateToProps(state) {
+  const { changeStatusLogin } = state
+  const { isLogin, id, token,email } = changeStatusLogin
+  return {
+      isLogin, id, token,email
+  }
+}
+export default connect(mapStateToProps)(DefaultHeader);

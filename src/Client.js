@@ -1,33 +1,20 @@
-
-//loading async with text "Loading"
-
 import React, { Component } from 'react';
 import cookie from 'react-cookies';
 import {saveLogin} from './actions'
 import { connect } from 'react-redux'
 import authContext from "./contexts/authContext";///////
 import { HashRouter, BrowserRouter, Route, Switch,Redirect } from 'react-router-dom';
-//Appolo
-import ApolloClient from 'apollo-boost';
-import { AppoloProvider, ApolloProvider } from 'react-apollo';
+
 import Loadable from 'react-loadable';
+
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
 
 const proto = {};
 proto.auth = require('./gRPC/auth/auth_grpc_web_pb');
-//apollo client setup
-const client = new ApolloClient({
-    uri: 'http://overlead.co/api/graphql'
-})
-
 
 // Containers layout
 const DefaultLayout = Loadable({
     loader: () => import('./containers/DefaultLayout'),
-    loading
-});
-const LoginLayout = Loadable({
-    loader: () => import('./containers/LoginLayout'),
     loading
 });
 // Pages no layout
@@ -142,75 +129,37 @@ const ProfileEdit = Loadable({
 });
 
 class Client extends Component {
-    componentWillMount(){
-        console.log(cookie.load("userId"))
-        console.log(cookie.load("123123"))
-      
-          
-           //create service to request
+   
+
+    componentWillMount(){      
            const authService = new proto.auth.AuthClient('https://www.overlead.co');
-           //metadab will be config later
            var metadata = {};
-           
-           //create var for react
            var AuthSessionReq = new proto.auth.AuthSessionReq();
-           //set data from frontend to this var
            AuthSessionReq.setSession(cookie.load("tokenAccess"));
            AuthSessionReq.setId(cookie.load("userId"));
-            //make a request to server
-            var getTodo = authService.authSession(AuthSessionReq, metadata, (err, response) => {
-              if (err) { //if error
+           console.log("authSession")
+            authService.authSession(AuthSessionReq, metadata, (err, response) => {
+              if (err) { 
                 console.log(err);
-              } else { //if success
-                //cookie.save('userId', signInEmail, { path: '/' });
-                //get response
-                console.log("success")
-                console.log(response.getStatus())
-                console.log(response.getError())
-                console.log(response.getResponse()) //no have value yet
-                console.log(response.getType())//type of NO PAY member: normal
-                console.log(response.getId())
-                console.log(response.getSession())
+              } else { 
+                console.log("SUCCESS")
                 if (response.getStatus()=="SUCCESS")
-                this.props.dispatch(saveLogin(cookie.load("userId"),cookie.load("tokenAccess"),cookie.load("username"),cookie.load("name"),cookie.load("avatar")))
-                
+                    this.props.dispatch(saveLogin(cookie.load("userId"),cookie.load("tokenAccess"),cookie.load("username"),cookie.load("name"),cookie.load("avatar")))       
+                else {
+                    cookie.remove("userId")
+                    cookie.remove("tokenAccess")
+                    cookie.remove("username")
+                    cookie.remove("name")
+                    cookie.remove("avatar")
+                }         
               }
-            });
-        
-    }
-    componentDidMount(){
-        console.log("componetDidMount")
-        console.log(this.state)
-
-    }
-    state = {
-        token: null,
-        signInEmail: null,
-        isLogin: true
-    }
-
-    login = (token, signInEmail) => {
-        this.setState({ token: token, signInEmail: signInEmail });
-    }
-    logout = () => {
-        this.setState({ token: null, signInEmail: null });
-    }
+            });        
+    }   
+   
     render() {
-        console.log("render")
-        const {isLogin,id,token
-        } = this.props
-
         return (
-            <ApolloProvider client={client}>
-                <authContext.Provider
-                    value={{
-                        token: this.state.token,
-                        signInEmail: this.state.signInEmail,
-                        login: this.login,
-                        logout: this.logout
-                    }}>
+                <authContext.Provider>
                     <BrowserRouter>
-
                         {
                             this.props.isLogin ? <Switch>
                                 <Route exact path="/homeNav" name="HomeNav" component={Demo} />
@@ -257,15 +206,14 @@ class Client extends Component {
                         }
                     </BrowserRouter>
                 </authContext.Provider>
-            </ApolloProvider>
         )
     }
 }
 function mapStateToProps(state) {
     const { changeStatusLogin } = state
-    const { isLogin, id, token } = changeStatusLogin
+    const { isLogin,  } = changeStatusLogin
     return {
-        isLogin, id, token
+        isLogin,
     }
 }
 export default connect(mapStateToProps)(Client);
