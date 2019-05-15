@@ -11,7 +11,6 @@ import { GoogleLogout } from 'react-google-login';
 import { GoogleLogin } from 'react-google-login';
 import cookie from 'react-cookies';
 import ReactList from 'react-list';
-
 const proto = {};
 proto.auth = require('./../../../gRPC/auth/auth_grpc_web_pb');
 
@@ -141,7 +140,6 @@ class Login extends Component {
     return (
       <div>
          <AppAppBar />
-          <Examples></Examples>
       <div className="app flex-row align-items-center">
         
         <Container>
@@ -227,6 +225,9 @@ class Login extends Component {
 
 }
 
+
+
+//////////////////scoll
 const renderItem = (index, key) =>
   <div key={key} className={'item' + (index % 2 ? '' : ' even')}>
     {index}
@@ -353,8 +354,8 @@ class Examples extends Component {
   renderExamples() {
     return examples.map((props, key) =>
       <div key={key} className={`example axis-${props.axis}`}>
-        <strong>Propsss</strong>
-        <pre className='props'>{JSON.stringify(props, null, 2)}</pre>
+        <strong>Props</strong>
+        <pre className='props'>{JSON.stringify(props, null, 3)}</pre>
         <strong>Component</strong>
         <div className='component'  style={{
          border: '10px solid #38afd4',
