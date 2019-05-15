@@ -8,8 +8,7 @@ package chat;
 
 service Chat{
 
-    rpc sendMsg(SendMsgReq) returns (ConnectChatRes){}
-    rpc connectChat(ConnectChatReq) returns (stream ConnectChatRes){}
+    rpc connectChat(stream SendMsgReq) returns (stream SendMsgRes){}
 }
 
 
@@ -17,17 +16,14 @@ service Chat{
 message SendMsgReq{
     string accessToken =1;
     string requesterId=2;
+    string name=6;
     string channelId=3;
     string msg=4;
     string type=5;
 }
 
-message ConnectChatReq{
-    string accessToken=1;
-    string requesterId=2;
-}
 
-message ConnectChatRes{
+message SendMsgRes{
     string channelId=1;
     string msg=2;
     string type=3;

@@ -1,6 +1,7 @@
 package main;
 
 import gRPC.auth.AuthAccount;
+import gRPC.chat.Chat;
 import gRPC.productbacklog.ProductBacklog;
 import gRPC.project.MyProject;
 import gRPC.schedule.DailySchedule;
@@ -24,6 +25,7 @@ public class gRPCMain {
                 .addService(new ProductBacklog.ProductBacklogImpl())
                 .addService(new DailySchedule.DailyScheduleImpl())
                 .addService(new SprintBacklog.SprintBacklogImpl())
+                .addService(new Chat.ChatImpl())
                 .build()
                 .start();
 

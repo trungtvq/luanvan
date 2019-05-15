@@ -3,8 +3,8 @@
 
 package co.overlead.gRPC;
 
-public interface ConnectChatResOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:chat.ConnectChatRes)
+public interface SendMsgResOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:chat.SendMsgRes)
     com.google.protobuf.MessageOrBuilder {
 
   /**

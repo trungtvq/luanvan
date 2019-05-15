@@ -4,18 +4,18 @@
 package co.overlead.gRPC;
 
 /**
- * Protobuf type {@code chat.ConnectChatRes}
+ * Protobuf type {@code chat.SendMsgRes}
  */
-public  final class ConnectChatRes extends
+public  final class SendMsgRes extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:chat.ConnectChatRes)
-    ConnectChatResOrBuilder {
+    // @@protoc_insertion_point(message_implements:chat.SendMsgRes)
+    SendMsgResOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use ConnectChatRes.newBuilder() to construct.
-  private ConnectChatRes(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use SendMsgRes.newBuilder() to construct.
+  private SendMsgRes(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private ConnectChatRes() {
+  private SendMsgRes() {
     channelId_ = "";
     msg_ = "";
     type_ = "";
@@ -28,7 +28,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private ConnectChatRes(
+  private SendMsgRes(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -98,15 +98,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return co.overlead.gRPC.chat.internal_static_chat_ConnectChatRes_descriptor;
+    return co.overlead.gRPC.chat.internal_static_chat_SendMsgRes_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return co.overlead.gRPC.chat.internal_static_chat_ConnectChatRes_fieldAccessorTable
+    return co.overlead.gRPC.chat.internal_static_chat_SendMsgRes_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            co.overlead.gRPC.ConnectChatRes.class, co.overlead.gRPC.ConnectChatRes.Builder.class);
+            co.overlead.gRPC.SendMsgRes.class, co.overlead.gRPC.SendMsgRes.Builder.class);
   }
 
   public static final int CHANNELID_FIELD_NUMBER = 1;
@@ -342,10 +342,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof co.overlead.gRPC.ConnectChatRes)) {
+    if (!(obj instanceof co.overlead.gRPC.SendMsgRes)) {
       return super.equals(obj);
     }
-    co.overlead.gRPC.ConnectChatRes other = (co.overlead.gRPC.ConnectChatRes) obj;
+    co.overlead.gRPC.SendMsgRes other = (co.overlead.gRPC.SendMsgRes) obj;
 
     if (!getChannelId()
         .equals(other.getChannelId())) return false;
@@ -383,69 +383,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static co.overlead.gRPC.ConnectChatRes parseFrom(
+  public static co.overlead.gRPC.SendMsgRes parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.ConnectChatRes parseFrom(
+  public static co.overlead.gRPC.SendMsgRes parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.ConnectChatRes parseFrom(
+  public static co.overlead.gRPC.SendMsgRes parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.ConnectChatRes parseFrom(
+  public static co.overlead.gRPC.SendMsgRes parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.ConnectChatRes parseFrom(byte[] data)
+  public static co.overlead.gRPC.SendMsgRes parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.ConnectChatRes parseFrom(
+  public static co.overlead.gRPC.SendMsgRes parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.ConnectChatRes parseFrom(java.io.InputStream input)
+  public static co.overlead.gRPC.SendMsgRes parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.ConnectChatRes parseFrom(
+  public static co.overlead.gRPC.SendMsgRes parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static co.overlead.gRPC.ConnectChatRes parseDelimitedFrom(java.io.InputStream input)
+  public static co.overlead.gRPC.SendMsgRes parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.ConnectChatRes parseDelimitedFrom(
+  public static co.overlead.gRPC.SendMsgRes parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static co.overlead.gRPC.ConnectChatRes parseFrom(
+  public static co.overlead.gRPC.SendMsgRes parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.ConnectChatRes parseFrom(
+  public static co.overlead.gRPC.SendMsgRes parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -458,7 +458,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(co.overlead.gRPC.ConnectChatRes prototype) {
+  public static Builder newBuilder(co.overlead.gRPC.SendMsgRes prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -474,26 +474,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code chat.ConnectChatRes}
+   * Protobuf type {@code chat.SendMsgRes}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:chat.ConnectChatRes)
-      co.overlead.gRPC.ConnectChatResOrBuilder {
+      // @@protoc_insertion_point(builder_implements:chat.SendMsgRes)
+      co.overlead.gRPC.SendMsgResOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return co.overlead.gRPC.chat.internal_static_chat_ConnectChatRes_descriptor;
+      return co.overlead.gRPC.chat.internal_static_chat_SendMsgRes_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return co.overlead.gRPC.chat.internal_static_chat_ConnectChatRes_fieldAccessorTable
+      return co.overlead.gRPC.chat.internal_static_chat_SendMsgRes_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              co.overlead.gRPC.ConnectChatRes.class, co.overlead.gRPC.ConnectChatRes.Builder.class);
+              co.overlead.gRPC.SendMsgRes.class, co.overlead.gRPC.SendMsgRes.Builder.class);
     }
 
-    // Construct using co.overlead.gRPC.ConnectChatRes.newBuilder()
+    // Construct using co.overlead.gRPC.SendMsgRes.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -527,17 +527,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return co.overlead.gRPC.chat.internal_static_chat_ConnectChatRes_descriptor;
+      return co.overlead.gRPC.chat.internal_static_chat_SendMsgRes_descriptor;
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.ConnectChatRes getDefaultInstanceForType() {
-      return co.overlead.gRPC.ConnectChatRes.getDefaultInstance();
+    public co.overlead.gRPC.SendMsgRes getDefaultInstanceForType() {
+      return co.overlead.gRPC.SendMsgRes.getDefaultInstance();
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.ConnectChatRes build() {
-      co.overlead.gRPC.ConnectChatRes result = buildPartial();
+    public co.overlead.gRPC.SendMsgRes build() {
+      co.overlead.gRPC.SendMsgRes result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -545,8 +545,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.ConnectChatRes buildPartial() {
-      co.overlead.gRPC.ConnectChatRes result = new co.overlead.gRPC.ConnectChatRes(this);
+    public co.overlead.gRPC.SendMsgRes buildPartial() {
+      co.overlead.gRPC.SendMsgRes result = new co.overlead.gRPC.SendMsgRes(this);
       result.channelId_ = channelId_;
       result.msg_ = msg_;
       result.type_ = type_;
@@ -590,16 +590,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof co.overlead.gRPC.ConnectChatRes) {
-        return mergeFrom((co.overlead.gRPC.ConnectChatRes)other);
+      if (other instanceof co.overlead.gRPC.SendMsgRes) {
+        return mergeFrom((co.overlead.gRPC.SendMsgRes)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(co.overlead.gRPC.ConnectChatRes other) {
-      if (other == co.overlead.gRPC.ConnectChatRes.getDefaultInstance()) return this;
+    public Builder mergeFrom(co.overlead.gRPC.SendMsgRes other) {
+      if (other == co.overlead.gRPC.SendMsgRes.getDefaultInstance()) return this;
       if (!other.getChannelId().isEmpty()) {
         channelId_ = other.channelId_;
         onChanged();
@@ -635,11 +635,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      co.overlead.gRPC.ConnectChatRes parsedMessage = null;
+      co.overlead.gRPC.SendMsgRes parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (co.overlead.gRPC.ConnectChatRes) e.getUnfinishedMessage();
+        parsedMessage = (co.overlead.gRPC.SendMsgRes) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -1006,41 +1006,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:chat.ConnectChatRes)
+    // @@protoc_insertion_point(builder_scope:chat.SendMsgRes)
   }
 
-  // @@protoc_insertion_point(class_scope:chat.ConnectChatRes)
-  private static final co.overlead.gRPC.ConnectChatRes DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:chat.SendMsgRes)
+  private static final co.overlead.gRPC.SendMsgRes DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new co.overlead.gRPC.ConnectChatRes();
+    DEFAULT_INSTANCE = new co.overlead.gRPC.SendMsgRes();
   }
 
-  public static co.overlead.gRPC.ConnectChatRes getDefaultInstance() {
+  public static co.overlead.gRPC.SendMsgRes getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ConnectChatRes>
-      PARSER = new com.google.protobuf.AbstractParser<ConnectChatRes>() {
+  private static final com.google.protobuf.Parser<SendMsgRes>
+      PARSER = new com.google.protobuf.AbstractParser<SendMsgRes>() {
     @java.lang.Override
-    public ConnectChatRes parsePartialFrom(
+    public SendMsgRes parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new ConnectChatRes(input, extensionRegistry);
+      return new SendMsgRes(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<ConnectChatRes> parser() {
+  public static com.google.protobuf.Parser<SendMsgRes> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<ConnectChatRes> getParserForType() {
+  public com.google.protobuf.Parser<SendMsgRes> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public co.overlead.gRPC.ConnectChatRes getDefaultInstanceForType() {
+  public co.overlead.gRPC.SendMsgRes getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

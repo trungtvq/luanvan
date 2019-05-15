@@ -8,14 +8,14 @@ public interface SendMsgReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string cookie = 1;</code>
+   * <code>string accessToken = 1;</code>
    */
-  java.lang.String getCookie();
+  java.lang.String getAccessToken();
   /**
-   * <code>string cookie = 1;</code>
+   * <code>string accessToken = 1;</code>
    */
   com.google.protobuf.ByteString
-      getCookieBytes();
+      getAccessTokenBytes();
 
   /**
    * <code>string requesterId = 2;</code>
@@ -26,6 +26,16 @@ public interface SendMsgReqOrBuilder extends
    */
   com.google.protobuf.ByteString
       getRequesterIdBytes();
+
+  /**
+   * <code>string name = 6;</code>
+   */
+  java.lang.String getName();
+  /**
+   * <code>string name = 6;</code>
+   */
+  com.google.protobuf.ByteString
+      getNameBytes();
 
   /**
    * <code>string channelId = 3;</code>
@@ -46,4 +56,14 @@ public interface SendMsgReqOrBuilder extends
    */
   com.google.protobuf.ByteString
       getMsgBytes();
+
+  /**
+   * <code>string type = 5;</code>
+   */
+  java.lang.String getType();
+  /**
+   * <code>string type = 5;</code>
+   */
+  com.google.protobuf.ByteString
+      getTypeBytes();
 }

@@ -20,16 +20,28 @@ import static helper.auth.RequestAuth.isValidAuth;
 public class Chat {
     public static class ChatImpl extends ChatGrpc.ChatImplBase{
 
-        public void makeResponseForUpdateSuccess(StreamObserver res,String id){
-            res.onNext(SimpleChatRes.newBuilder().setStatus("SUCCESS").setError("FALSE").setOption(id).build());
-            res.onCompleted();
-        }
+        @Override
+        public StreamObserver<SendMsgReq> connectChat(StreamObserver<SendMsgRes> responseObserver) {
+            System.out.println("chating");
+            StreamObserver<SendMsgReq> so =new StreamObserver<SendMsgReq>() {
+                @Override
+                public void onNext(SendMsgReq sendMsgReq) {
+                    System.out.println("onNext fron server");
+                    responseObserver.onNext(SendMsgRes.getDefaultInstance());
+                }
 
-        public void makeResponseForFailed(StreamObserver res, String status, String error){
-            res.onNext(SimpleChatRes.newBuilder().setStatus(status).setError(error).build());
-            res.onCompleted();
-        }
+                @Override
+                public void onError(Throwable throwable) {
+                    System.out.println("onError");
+                }
 
+                @Override
+                public void onCompleted() {
+                    System.out.println("onCompleted");
+                }
+            };
+        return so;
+        }
 
     }
 }

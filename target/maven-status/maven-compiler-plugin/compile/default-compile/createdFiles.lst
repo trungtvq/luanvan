@@ -21,10 +21,12 @@ co\overlead\gRPC\GetAllUserStoryReq.class
 co\overlead\gRPC\UpdateTeamTaskReq.class
 service\email\EmailService.class
 co\overlead\gRPC\GetAllUserStoryRes.class
+co\overlead\gRPC\SendMsgRes.class
 examples\gRPC\GetBalanceReply$1.class
 co\overlead\gRPC\CancelTeamTaskReq.class
 gRPC\project\MyProject.class
 examples\gRPC\GetBalanceReply$Builder.class
+co\overlead\gRPC\SendMsgRes$1.class
 gRPC\task\Velocity$VelocityImpl.class
 co\overlead\gRPC\TeamRes$1.class
 co\overlead\gRPC\GetAllUserStoryReqOrBuilder.class
@@ -67,12 +69,12 @@ co\overlead\gRPC\UserStoryGrpc$1.class
 co\overlead\gRPC\TeamResOrBuilder.class
 examples\gRPC\CounterServiceGrpc$CounterServiceMethodDescriptorSupplier.class
 co\overlead\gRPC\GetAllMemberReq$Builder.class
+co\overlead\gRPC\SendMsgResOrBuilder.class
 co\overlead\gRPC\AddNewUserStoryReqOrBuilder.class
 co\overlead\gRPC\UserStoryGrpc$UserStoryBlockingStub.class
 examples\gRPC\CounterServiceGrpc$1.class
 co\overlead\gRPC\TeamTaskGrpc$TeamTaskImplBase.class
 co\overlead\gRPC\TeamGrpc$TeamMethodDescriptorSupplier.class
-co\overlead\gRPC\ConnectChatReqOrBuilder.class
 co\overlead\gRPC\TeamGrpc$MethodHandlers.class
 co\overlead\gRPC\RegisterTeamTaskReqOrBuilder.class
 examples\gRPC\CounterServiceGrpc$MethodHandlers.class
@@ -113,7 +115,6 @@ co\overlead\gRPC\UpdateTeamReq$1.class
 co\overlead\gRPC\TeamTaskResOrBuilder.class
 co\overlead\gRPC\team.class
 co\overlead\gRPC\UpdateTeamReq$Builder.class
-co\overlead\gRPC\JoinChatReqOrBuilder.class
 gRPC\auth\AuthAccount$AuthImpl.class
 co\overlead\gRPC\AddNewTeamReq$1.class
 co\overlead\gRPC\TeamTaskGrpc$TeamTaskFileDescriptorSupplier.class
@@ -138,6 +139,7 @@ gRPC\project\MyProjectClient.class
 co\overlead\gRPC\GetAllTeamTaskRes$1.class
 examples\gRPC\CounterServiceGrpc$CounterServiceBlockingStub.class
 co\overlead\gRPC\DeleteTeamReq$Builder.class
+co\overlead\gRPC\SendMsgRes$Builder.class
 examples\gRPC\CounterServiceGrpc$CounterServiceFutureStub.class
 co\overlead\gRPC\AddNewUserStoryReq$1.class
 co\overlead\gRPC\UserStoryResOrBuilder.class
