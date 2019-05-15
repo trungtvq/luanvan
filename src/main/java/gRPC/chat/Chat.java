@@ -37,11 +37,14 @@ public class Chat {
                 Document document = new Document("ownerId", request.getRequesterId())
                         .append("title", request.getTitle())
                         //Todo: later link create, now just gen
-                       .append("link", request.getLink());
+                       .append("link", "team");
                 coll.insertOne(document);
-                Document re=coll.find(new Document("link",request.getLink())).into(new ArrayList<>()).get(0);
+                Document re=coll.find(document).into(new ArrayList<>()).get(0);
                 makeResponseForUpdateSuccess(responseObserver,re.get("_id").toString());
+                //Todo: add member
+
                 //Todo: add new channel to subrice
+
             }else {
                 makeResponseForFailed(responseObserver,"INVALID_AUTH","TRUE");
             }

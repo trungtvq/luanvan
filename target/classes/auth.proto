@@ -34,6 +34,7 @@ message SignInRes{
     string session=6;
     string name=7;
     string avatar=8;
+
 }
 message SignInGoogleReq{
     string username =1;
