@@ -16,13 +16,13 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private UpdateUserStoryReq() {
-    updaterId_ = "";
+    requesterId_ = "";
     projectId_ = "";
     userStoryId_ = "";
     role_ = "";
     want_ = "";
     so_ = "";
-    cookie_ = "";
+    accessToken_ = "";
   }
 
   @java.lang.Override
@@ -52,7 +52,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            updaterId_ = s;
+            requesterId_ = s;
             break;
           }
           case 18: {
@@ -88,7 +88,7 @@ private static final long serialVersionUID = 0L;
           case 58: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            cookie_ = s;
+            accessToken_ = s;
             break;
           }
           default: {
@@ -123,34 +123,34 @@ private static final long serialVersionUID = 0L;
             co.overlead.gRPC.UpdateUserStoryReq.class, co.overlead.gRPC.UpdateUserStoryReq.Builder.class);
   }
 
-  public static final int UPDATERID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object updaterId_;
+  public static final int REQUESTERID_FIELD_NUMBER = 1;
+  private volatile java.lang.Object requesterId_;
   /**
-   * <code>string updaterId = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
-  public java.lang.String getUpdaterId() {
-    java.lang.Object ref = updaterId_;
+  public java.lang.String getRequesterId() {
+    java.lang.Object ref = requesterId_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      updaterId_ = s;
+      requesterId_ = s;
       return s;
     }
   }
   /**
-   * <code>string updaterId = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getUpdaterIdBytes() {
-    java.lang.Object ref = updaterId_;
+      getRequesterIdBytes() {
+    java.lang.Object ref = requesterId_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      updaterId_ = b;
+      requesterId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -327,34 +327,34 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int COOKIE_FIELD_NUMBER = 7;
-  private volatile java.lang.Object cookie_;
+  public static final int ACCESSTOKEN_FIELD_NUMBER = 7;
+  private volatile java.lang.Object accessToken_;
   /**
-   * <code>string cookie = 7;</code>
+   * <code>string accessToken = 7;</code>
    */
-  public java.lang.String getCookie() {
-    java.lang.Object ref = cookie_;
+  public java.lang.String getAccessToken() {
+    java.lang.Object ref = accessToken_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      cookie_ = s;
+      accessToken_ = s;
       return s;
     }
   }
   /**
-   * <code>string cookie = 7;</code>
+   * <code>string accessToken = 7;</code>
    */
   public com.google.protobuf.ByteString
-      getCookieBytes() {
-    java.lang.Object ref = cookie_;
+      getAccessTokenBytes() {
+    java.lang.Object ref = accessToken_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      cookie_ = b;
+      accessToken_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -375,8 +375,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getUpdaterIdBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, updaterId_);
+    if (!getRequesterIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, requesterId_);
     }
     if (!getProjectIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, projectId_);
@@ -393,8 +393,8 @@ private static final long serialVersionUID = 0L;
     if (!getSoBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 6, so_);
     }
-    if (!getCookieBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, cookie_);
+    if (!getAccessTokenBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, accessToken_);
     }
     unknownFields.writeTo(output);
   }
@@ -405,8 +405,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getUpdaterIdBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, updaterId_);
+    if (!getRequesterIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, requesterId_);
     }
     if (!getProjectIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, projectId_);
@@ -423,8 +423,8 @@ private static final long serialVersionUID = 0L;
     if (!getSoBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, so_);
     }
-    if (!getCookieBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, cookie_);
+    if (!getAccessTokenBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, accessToken_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -441,8 +441,8 @@ private static final long serialVersionUID = 0L;
     }
     co.overlead.gRPC.UpdateUserStoryReq other = (co.overlead.gRPC.UpdateUserStoryReq) obj;
 
-    if (!getUpdaterId()
-        .equals(other.getUpdaterId())) return false;
+    if (!getRequesterId()
+        .equals(other.getRequesterId())) return false;
     if (!getProjectId()
         .equals(other.getProjectId())) return false;
     if (!getUserStoryId()
@@ -453,8 +453,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getWant())) return false;
     if (!getSo()
         .equals(other.getSo())) return false;
-    if (!getCookie()
-        .equals(other.getCookie())) return false;
+    if (!getAccessToken()
+        .equals(other.getAccessToken())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -466,8 +466,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + UPDATERID_FIELD_NUMBER;
-    hash = (53 * hash) + getUpdaterId().hashCode();
+    hash = (37 * hash) + REQUESTERID_FIELD_NUMBER;
+    hash = (53 * hash) + getRequesterId().hashCode();
     hash = (37 * hash) + PROJECTID_FIELD_NUMBER;
     hash = (53 * hash) + getProjectId().hashCode();
     hash = (37 * hash) + USERSTORYID_FIELD_NUMBER;
@@ -478,8 +478,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getWant().hashCode();
     hash = (37 * hash) + SO_FIELD_NUMBER;
     hash = (53 * hash) + getSo().hashCode();
-    hash = (37 * hash) + COOKIE_FIELD_NUMBER;
-    hash = (53 * hash) + getCookie().hashCode();
+    hash = (37 * hash) + ACCESSTOKEN_FIELD_NUMBER;
+    hash = (53 * hash) + getAccessToken().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -613,7 +613,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      updaterId_ = "";
+      requesterId_ = "";
 
       projectId_ = "";
 
@@ -625,7 +625,7 @@ private static final long serialVersionUID = 0L;
 
       so_ = "";
 
-      cookie_ = "";
+      accessToken_ = "";
 
       return this;
     }
@@ -653,13 +653,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public co.overlead.gRPC.UpdateUserStoryReq buildPartial() {
       co.overlead.gRPC.UpdateUserStoryReq result = new co.overlead.gRPC.UpdateUserStoryReq(this);
-      result.updaterId_ = updaterId_;
+      result.requesterId_ = requesterId_;
       result.projectId_ = projectId_;
       result.userStoryId_ = userStoryId_;
       result.role_ = role_;
       result.want_ = want_;
       result.so_ = so_;
-      result.cookie_ = cookie_;
+      result.accessToken_ = accessToken_;
       onBuilt();
       return result;
     }
@@ -708,8 +708,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(co.overlead.gRPC.UpdateUserStoryReq other) {
       if (other == co.overlead.gRPC.UpdateUserStoryReq.getDefaultInstance()) return this;
-      if (!other.getUpdaterId().isEmpty()) {
-        updaterId_ = other.updaterId_;
+      if (!other.getRequesterId().isEmpty()) {
+        requesterId_ = other.requesterId_;
         onChanged();
       }
       if (!other.getProjectId().isEmpty()) {
@@ -732,8 +732,8 @@ private static final long serialVersionUID = 0L;
         so_ = other.so_;
         onChanged();
       }
-      if (!other.getCookie().isEmpty()) {
-        cookie_ = other.cookie_;
+      if (!other.getAccessToken().isEmpty()) {
+        accessToken_ = other.accessToken_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -765,71 +765,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object updaterId_ = "";
+    private java.lang.Object requesterId_ = "";
     /**
-     * <code>string updaterId = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public java.lang.String getUpdaterId() {
-      java.lang.Object ref = updaterId_;
+    public java.lang.String getRequesterId() {
+      java.lang.Object ref = requesterId_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        updaterId_ = s;
+        requesterId_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string updaterId = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getUpdaterIdBytes() {
-      java.lang.Object ref = updaterId_;
+        getRequesterIdBytes() {
+      java.lang.Object ref = requesterId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        updaterId_ = b;
+        requesterId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string updaterId = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder setUpdaterId(
+    public Builder setRequesterId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      updaterId_ = value;
+      requesterId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string updaterId = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder clearUpdaterId() {
+    public Builder clearRequesterId() {
       
-      updaterId_ = getDefaultInstance().getUpdaterId();
+      requesterId_ = getDefaultInstance().getRequesterId();
       onChanged();
       return this;
     }
     /**
-     * <code>string updaterId = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder setUpdaterIdBytes(
+    public Builder setRequesterIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      updaterId_ = value;
+      requesterId_ = value;
       onChanged();
       return this;
     }
@@ -1179,71 +1179,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object cookie_ = "";
+    private java.lang.Object accessToken_ = "";
     /**
-     * <code>string cookie = 7;</code>
+     * <code>string accessToken = 7;</code>
      */
-    public java.lang.String getCookie() {
-      java.lang.Object ref = cookie_;
+    public java.lang.String getAccessToken() {
+      java.lang.Object ref = accessToken_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        cookie_ = s;
+        accessToken_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string cookie = 7;</code>
+     * <code>string accessToken = 7;</code>
      */
     public com.google.protobuf.ByteString
-        getCookieBytes() {
-      java.lang.Object ref = cookie_;
+        getAccessTokenBytes() {
+      java.lang.Object ref = accessToken_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        cookie_ = b;
+        accessToken_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string cookie = 7;</code>
+     * <code>string accessToken = 7;</code>
      */
-    public Builder setCookie(
+    public Builder setAccessToken(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      cookie_ = value;
+      accessToken_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string cookie = 7;</code>
+     * <code>string accessToken = 7;</code>
      */
-    public Builder clearCookie() {
+    public Builder clearAccessToken() {
       
-      cookie_ = getDefaultInstance().getCookie();
+      accessToken_ = getDefaultInstance().getAccessToken();
       onChanged();
       return this;
     }
     /**
-     * <code>string cookie = 7;</code>
+     * <code>string accessToken = 7;</code>
      */
-    public Builder setCookieBytes(
+    public Builder setAccessTokenBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      cookie_ = value;
+      accessToken_ = value;
       onChanged();
       return this;
     }

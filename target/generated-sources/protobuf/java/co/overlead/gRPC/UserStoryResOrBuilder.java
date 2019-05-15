@@ -26,14 +26,4 @@ public interface UserStoryResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getIdBytes();
-
-  /**
-   * <code>string error = 3;</code>
-   */
-  java.lang.String getError();
-  /**
-   * <code>string error = 3;</code>
-   */
-  com.google.protobuf.ByteString
-      getErrorBytes();
 }

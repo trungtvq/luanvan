@@ -23,6 +23,13 @@ public class Mongod {
         return overleadDB;
     }
 
+    public static final MongoCollection<Document> collProject = Mongod.getOverleadConnection().getCollection("project");
+    public static final MongoCollection<Document> collTeam = Mongod.getOverleadConnection().getCollection("team");
+    public static final MongoCollection<Document> collUser = Mongod.getOverleadConnection().getCollection("user");
+    public static final MongoCollection<Document> collTask = Mongod.getOverleadConnection().getCollection("task");
+    public static final MongoCollection<Document> collUserstory = Mongod.getOverleadConnection().getCollection("userstory");
+
+
     public static void main(String[] args) {
 
 //        MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("project");

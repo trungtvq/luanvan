@@ -8,14 +8,14 @@ public interface GetAllUserStoryReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string getterId = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
-  java.lang.String getGetterId();
+  java.lang.String getRequesterId();
   /**
-   * <code>string getterId = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
   com.google.protobuf.ByteString
-      getGetterIdBytes();
+      getRequesterIdBytes();
 
   /**
    * <code>string projectId = 2;</code>
@@ -28,12 +28,12 @@ public interface GetAllUserStoryReqOrBuilder extends
       getProjectIdBytes();
 
   /**
-   * <code>string cookie = 3;</code>
+   * <code>string accessToken = 3;</code>
    */
-  java.lang.String getCookie();
+  java.lang.String getAccessToken();
   /**
-   * <code>string cookie = 3;</code>
+   * <code>string accessToken = 3;</code>
    */
   com.google.protobuf.ByteString
-      getCookieBytes();
+      getAccessTokenBytes();
 }

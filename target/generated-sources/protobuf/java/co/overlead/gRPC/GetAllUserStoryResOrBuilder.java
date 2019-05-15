@@ -46,14 +46,4 @@ public interface GetAllUserStoryResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getStatusBytes();
-
-  /**
-   * <code>string error = 5;</code>
-   */
-  java.lang.String getError();
-  /**
-   * <code>string error = 5;</code>
-   */
-  com.google.protobuf.ByteString
-      getErrorBytes();
 }

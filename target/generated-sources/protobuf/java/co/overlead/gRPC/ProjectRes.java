@@ -26,6 +26,7 @@ private static final long serialVersionUID = 0L;
     private_ = "";
     detail_ = "";
     progress_ = "";
+    members_ = "";
   }
 
   @java.lang.Override
@@ -110,6 +111,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             topic_ = s;
+            break;
+          }
+          case 90: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            members_ = s;
             break;
           }
           default: {
@@ -500,6 +507,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int MEMBERS_FIELD_NUMBER = 11;
+  private volatile java.lang.Object members_;
+  /**
+   * <code>string members = 11;</code>
+   */
+  public java.lang.String getMembers() {
+    java.lang.Object ref = members_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      members_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string members = 11;</code>
+   */
+  public com.google.protobuf.ByteString
+      getMembersBytes() {
+    java.lang.Object ref = members_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      members_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -544,6 +585,9 @@ private static final long serialVersionUID = 0L;
     if (!getTopicBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 10, topic_);
     }
+    if (!getMembersBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, members_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -583,6 +627,9 @@ private static final long serialVersionUID = 0L;
     if (!getTopicBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, topic_);
     }
+    if (!getMembersBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, members_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -618,6 +665,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getDetail())) return false;
     if (!getProgress()
         .equals(other.getProgress())) return false;
+    if (!getMembers()
+        .equals(other.getMembers())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -649,6 +698,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getDetail().hashCode();
     hash = (37 * hash) + PROGRESS_FIELD_NUMBER;
     hash = (53 * hash) + getProgress().hashCode();
+    hash = (37 * hash) + MEMBERS_FIELD_NUMBER;
+    hash = (53 * hash) + getMembers().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -802,6 +853,8 @@ private static final long serialVersionUID = 0L;
 
       progress_ = "";
 
+      members_ = "";
+
       return this;
     }
 
@@ -838,6 +891,7 @@ private static final long serialVersionUID = 0L;
       result.private_ = private_;
       result.detail_ = detail_;
       result.progress_ = progress_;
+      result.members_ = members_;
       onBuilt();
       return result;
     }
@@ -924,6 +978,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getProgress().isEmpty()) {
         progress_ = other.progress_;
+        onChanged();
+      }
+      if (!other.getMembers().isEmpty()) {
+        members_ = other.members_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -1681,6 +1739,75 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       progress_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object members_ = "";
+    /**
+     * <code>string members = 11;</code>
+     */
+    public java.lang.String getMembers() {
+      java.lang.Object ref = members_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        members_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string members = 11;</code>
+     */
+    public com.google.protobuf.ByteString
+        getMembersBytes() {
+      java.lang.Object ref = members_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        members_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string members = 11;</code>
+     */
+    public Builder setMembers(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      members_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string members = 11;</code>
+     */
+    public Builder clearMembers() {
+      
+      members_ = getDefaultInstance().getMembers();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string members = 11;</code>
+     */
+    public Builder setMembersBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      members_ = value;
       onChanged();
       return this;
     }

@@ -122,4 +122,14 @@ public interface ProjectResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getProgressBytes();
+
+  /**
+   * <code>string members = 11;</code>
+   */
+  java.lang.String getMembers();
+  /**
+   * <code>string members = 11;</code>
+   */
+  com.google.protobuf.ByteString
+      getMembersBytes();
 }

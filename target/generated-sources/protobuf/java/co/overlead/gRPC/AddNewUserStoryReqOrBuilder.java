@@ -8,24 +8,14 @@ public interface AddNewUserStoryReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string name = 7;</code>
+   * <code>string requesterId = 1;</code>
    */
-  java.lang.String getName();
+  java.lang.String getRequesterId();
   /**
-   * <code>string name = 7;</code>
+   * <code>string requesterId = 1;</code>
    */
   com.google.protobuf.ByteString
-      getNameBytes();
-
-  /**
-   * <code>string adderId = 1;</code>
-   */
-  java.lang.String getAdderId();
-  /**
-   * <code>string adderId = 1;</code>
-   */
-  com.google.protobuf.ByteString
-      getAdderIdBytes();
+      getRequesterIdBytes();
 
   /**
    * <code>string projectId = 2;</code>
@@ -68,12 +58,22 @@ public interface AddNewUserStoryReqOrBuilder extends
       getSoBytes();
 
   /**
-   * <code>string cookie = 6;</code>
+   * <code>string accessToken = 6;</code>
    */
-  java.lang.String getCookie();
+  java.lang.String getAccessToken();
   /**
-   * <code>string cookie = 6;</code>
+   * <code>string accessToken = 6;</code>
    */
   com.google.protobuf.ByteString
-      getCookieBytes();
+      getAccessTokenBytes();
+
+  /**
+   * <code>string name = 7;</code>
+   */
+  java.lang.String getName();
+  /**
+   * <code>string name = 7;</code>
+   */
+  com.google.protobuf.ByteString
+      getNameBytes();
 }

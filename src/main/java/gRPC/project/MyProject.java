@@ -60,7 +60,10 @@ public class MyProject {
                             .append("end", request.getEnd())
                             .append("private", request.getPrivate())
                             .append("progress","10")
-                            .append("tasks",new BsonArray(Arrays.asList()));
+                            .append("tasks",new BsonArray(Arrays.asList())) //TODO: MOVE TO TEAM
+                            .append("teams",new BsonArray(Arrays.asList()));
+
+
                     coll.insertOne(document);
 
                     foundDocument = coll.find(document).into(new ArrayList<>());

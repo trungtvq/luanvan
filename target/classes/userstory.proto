@@ -14,46 +14,45 @@ service UserStory{
 }
 
 message AddNewUserStoryReq{
-	string name=7;
-    string adderId = 1;
+
+    string requesterId = 1;
 	string projectId = 2;
 	string role = 3;
 	string want = 4;
 	string so = 5;
-	string cookie = 6;
+	string accessToken = 6;
+	string name=7;
 }
 message UserStoryRes{
     string status = 1;
 	string id = 2;
-	string error = 3;
 }
 
 message UpdateUserStoryReq{
-	string updaterId = 1;
+	string requesterId = 1;
 	string projectId = 2;
 	string userStoryId = 3;
 	string role = 4;
 	string want = 5;
 	string so = 6;
-	string cookie = 7;
+	string accessToken = 7;
 }
 
 message DeleteUserStoryReq{
-    string deleterId = 1;
+    string requesterId = 1;
     string projectId = 2;
 	string userStoryId = 3;
-	string cookie = 4;
+	string accessToken = 4;
 }
 
 message GetAllUserStoryReq{
-    string getterId = 1;
+    string requesterId = 1;
 	string projectId = 2;
-	string cookie = 3;
+	string accessToken = 3;
 }
 message GetAllUserStoryRes{
 	string role = 1;
 	string want = 2;
 	string so = 3;
 	string status = 4;
-	string error=5;
 }

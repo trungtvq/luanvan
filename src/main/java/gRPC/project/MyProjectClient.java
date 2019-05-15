@@ -56,7 +56,7 @@ public class MyProjectClient {
     }
     public static void main(String[] args) throws Exception {
       //  MyProjectClient client = new MyProjectClient("54.255.233.193", 8085);
-       MyProjectClient client = new MyProjectClient("trungcs.com",8085);
+       MyProjectClient client = new MyProjectClient("localhost",9090);
 
         // MyProjectClient client = new MyProjectClient("0.0.0.0", 8085);
         try {
@@ -67,19 +67,19 @@ public class MyProjectClient {
             }
             //client.getBalance(user);
             // client.addProject(user,100L);
-            client.addProject(user,"newSession","name");
-            client.addProject(user,"newSession","name2");
-            client.addProject(user,"newSession","name3");
-            client.addProject(user,"newSession","name4");
-            client.addProject(user,"newSession","name5");
-            client.addProject(user,"newSession","name6");
-            client.addProject(user,"newSession","name7");
-            client.addProject(user,"newSession","name8");
-            client.addProject(user,"newSession","name9");
-            client.addProject(user,"newSession","name11");
-            client.addProject(user,"newSession","name23");
-            client.addProject(user,"newSession","name323");
-            client.addProject(user,"newSession","name323");
+//            client.addProject(user,"newSession","name");
+//            client.addProject(user,"newSession","name2");
+//            client.addProject(user,"newSession","name3");
+//            client.addProject(user,"newSession","name4");
+//            client.addProject(user,"newSession","name5");
+//            client.addProject(user,"newSession","name6");
+//            client.addProject(user,"newSession","name7");
+//            client.addProject(user,"newSession","name8");
+//            client.addProject(user,"newSession","name9");
+//            client.addProject(user,"newSession","name11");
+//            client.addProject(user,"newSession","name23");
+//            client.addProject(user,"newSession","name323");
+//            client.addProject(user,"newSession","name323");
 client.getAllProject("trungtvq");
 
         } finally {

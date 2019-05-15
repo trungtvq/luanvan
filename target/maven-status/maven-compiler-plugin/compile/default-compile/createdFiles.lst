@@ -3,12 +3,14 @@ co\overlead\gRPC\AddNewTeamTaskReqOrBuilder.class
 co\overlead\gRPC\UpdateTeamReqOrBuilder.class
 co\overlead\gRPC\GetAllUserStoryReq$1.class
 co\overlead\gRPC\UpdateMemberReqOrBuilder.class
+gRPC\team\CoTeam$CoTeamImpl.class
 gRPC\schedule\DailySchedule.class
 examples\gRPC\UserReq$Builder.class
 co\overlead\gRPC\SendTeamTaskToMyTaskReq$Builder.class
 co\overlead\gRPC\AddNewTeamReq.class
 co\overlead\gRPC\DeleteUserStoryReqOrBuilder.class
 gRPC\task\Velocity.class
+co\overlead\gRPC\TeamRes$Builder.class
 examples\gRPC\CounterServiceGrpc$CounterServiceBaseDescriptorSupplier.class
 co\overlead\gRPC\GetAllUserStoryResOrBuilder.class
 co\overlead\gRPC\DeleteUserStoryReq.class
@@ -24,6 +26,7 @@ co\overlead\gRPC\CancelTeamTaskReq.class
 gRPC\project\MyProject.class
 examples\gRPC\GetBalanceReply$Builder.class
 gRPC\task\Velocity$VelocityImpl.class
+co\overlead\gRPC\TeamRes$1.class
 co\overlead\gRPC\GetAllUserStoryReqOrBuilder.class
 examples\gRPC\UserReq$1.class
 co\overlead\gRPC\UpdateTeamReq.class
@@ -31,6 +34,7 @@ co\overlead\gRPC\TeamTaskRes.class
 co\overlead\gRPC\SignUpReq.class
 co\overlead\gRPC\UpdateMemberReq.class
 co\overlead\gRPC\DeleteTeamReqOrBuilder.class
+co\overlead\gRPC\TeamRes.class
 co\overlead\gRPC\GetAllTeamTaskResOrBuilder.class
 co\overlead\gRPC\UpdateTeamTaskReq$Builder.class
 co\overlead\gRPC\AddNewTeamTaskReq$Builder.class
@@ -60,6 +64,7 @@ co\overlead\gRPC\UserStoryRes$1.class
 co\overlead\gRPC\UserStoryGrpc$UserStoryFileDescriptorSupplier.class
 co\overlead\gRPC\RegisterTeamTaskReq$1.class
 co\overlead\gRPC\UserStoryGrpc$1.class
+co\overlead\gRPC\TeamResOrBuilder.class
 examples\gRPC\CounterServiceGrpc$CounterServiceMethodDescriptorSupplier.class
 co\overlead\gRPC\GetAllMemberReq$Builder.class
 co\overlead\gRPC\AddNewUserStoryReqOrBuilder.class
@@ -85,7 +90,6 @@ gRPC\project\MyProject$MyProjectImpl.class
 co\overlead\gRPC\GetAllMemberReqOrBuilder.class
 examples\gRPC\GetBalanceReplyOrBuilder.class
 co\overlead\gRPC\TeamGrpc$TeamImplBase.class
-co\overlead\gRPC\TeamReqOrBuilder.class
 co\overlead\gRPC\TeamTaskGrpc$TeamTaskBlockingStub.class
 examples\gRPC\CounterServiceGrpc$CounterServiceStub.class
 main\gRPCMain.class
@@ -105,7 +109,6 @@ examples\gRPC\SetBalanceReq.class
 main\gRPCMain$1.class
 co\overlead\gRPC\UserStoryGrpc$UserStoryStub.class
 gRPC\sprintbacklog\SprintBacklog.class
-co\overlead\gRPC\TeamReq.class
 co\overlead\gRPC\UpdateTeamReq$1.class
 co\overlead\gRPC\TeamTaskResOrBuilder.class
 co\overlead\gRPC\team.class
@@ -119,6 +122,7 @@ co\overlead\gRPC\RemoveMemberReqOrBuilder.class
 co\overlead\gRPC\UpdateUserStoryReq$1.class
 co\overlead\gRPC\UserStoryGrpc.class
 co\overlead\gRPC\TeamTaskRes$1.class
+gRPC\team\CoTeam.class
 co\overlead\gRPC\UpdateMemberReq$1.class
 co\overlead\gRPC\AddNewUserStoryReq$Builder.class
 co\overlead\gRPC\TeamGrpc$TeamFileDescriptorSupplier.class
@@ -129,7 +133,6 @@ examples\gRPC\SetBalanceReq$1.class
 database\Redis.class
 co\overlead\gRPC\TeamTaskGrpc$TeamTaskFutureStub.class
 examples\gRPC\CounterServiceGrpc$CounterServiceFileDescriptorSupplier.class
-co\overlead\gRPC\TeamReq$Builder.class
 co\overlead\gRPC\GetAllTeamTaskReq.class
 gRPC\project\MyProjectClient.class
 co\overlead\gRPC\GetAllTeamTaskRes$1.class
@@ -137,7 +140,6 @@ examples\gRPC\CounterServiceGrpc$CounterServiceBlockingStub.class
 co\overlead\gRPC\DeleteTeamReq$Builder.class
 examples\gRPC\CounterServiceGrpc$CounterServiceFutureStub.class
 co\overlead\gRPC\AddNewUserStoryReq$1.class
-co\overlead\gRPC\TeamReq$1.class
 co\overlead\gRPC\UserStoryResOrBuilder.class
 co\overlead\gRPC\UpdateTeamTaskReqOrBuilder.class
 examples\gRPC\Result.class

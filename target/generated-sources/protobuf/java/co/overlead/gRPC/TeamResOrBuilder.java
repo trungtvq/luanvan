@@ -3,8 +3,8 @@
 
 package co.overlead.gRPC;
 
-public interface TeamReqOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:teamtask.TeamReq)
+public interface TeamResOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:teamtask.TeamRes)
     com.google.protobuf.MessageOrBuilder {
 
   /**

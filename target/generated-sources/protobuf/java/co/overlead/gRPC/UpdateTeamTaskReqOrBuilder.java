@@ -152,4 +152,14 @@ public interface UpdateTeamTaskReqOrBuilder extends
    */
   com.google.protobuf.ByteString
       getTokenAccessBytes();
+
+  /**
+   * <code>string teamId = 14;</code>
+   */
+  java.lang.String getTeamId();
+  /**
+   * <code>string teamId = 14;</code>
+   */
+  com.google.protobuf.ByteString
+      getTeamIdBytes();
 }

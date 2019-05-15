@@ -54,4 +54,14 @@ public interface RegisterTeamTaskReqOrBuilder extends
    */
   com.google.protobuf.ByteString
       getTokenAccessBytes();
+
+  /**
+   * <code>string teamId = 13;</code>
+   */
+  java.lang.String getTeamId();
+  /**
+   * <code>string teamId = 13;</code>
+   */
+  com.google.protobuf.ByteString
+      getTeamIdBytes();
 }

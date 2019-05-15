@@ -8,14 +8,14 @@ public interface DeleteUserStoryReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string deleterId = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
-  java.lang.String getDeleterId();
+  java.lang.String getRequesterId();
   /**
-   * <code>string deleterId = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
   com.google.protobuf.ByteString
-      getDeleterIdBytes();
+      getRequesterIdBytes();
 
   /**
    * <code>string projectId = 2;</code>
@@ -38,12 +38,12 @@ public interface DeleteUserStoryReqOrBuilder extends
       getUserStoryIdBytes();
 
   /**
-   * <code>string cookie = 4;</code>
+   * <code>string accessToken = 4;</code>
    */
-  java.lang.String getCookie();
+  java.lang.String getAccessToken();
   /**
-   * <code>string cookie = 4;</code>
+   * <code>string accessToken = 4;</code>
    */
   com.google.protobuf.ByteString
-      getCookieBytes();
+      getAccessTokenBytes();
 }

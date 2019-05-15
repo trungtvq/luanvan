@@ -15,10 +15,10 @@ public final class team {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_teamtask_TeamReq_descriptor;
+    internal_static_teamtask_TeamRes_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_teamtask_TeamReq_fieldAccessorTable;
+      internal_static_teamtask_TeamRes_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_teamtask_AddNewTeamReq_descriptor;
   static final 
@@ -63,7 +63,7 @@ public final class team {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nteam.proto\022\010teamtask\"D\n\007TeamReq\022\016\n\006sta" +
+      "\n\nteam.proto\022\010teamtask\"D\n\007TeamRes\022\016\n\006sta" +
       "tus\030\001 \001(\t\022\n\n\002id\030\002 \001(\t\022\r\n\005error\030\003 \001(\t\022\016\n\006" +
       "option\030\004 \001(\t\"\203\001\n\rAddNewTeamReq\022\023\n\013reques" +
       "terId\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\014\n\004name\030\003" +
@@ -84,19 +84,19 @@ public final class team {
       "cessToken\030\004 \001(\t\022\023\n\013memberEmail\030\005 \001(\t\022\014\n\004" +
       "role\030\002 \001(\t\"K\n\017GetAllMemberReq\022\023\n\013request" +
       "erId\030\001 \001(\t\022\016\n\006teamId\030\003 \001(\t\022\023\n\013accessToke" +
-      "n\030\004 \001(\t2\272\003\n\004Team\022:\n\naddNewTeam\022\027.teamtas" +
-      "k.AddNewTeamReq\032\021.teamtask.TeamReq\"\000\022>\n\016" +
-      "updateTeamTask\022\027.teamtask.UpdateTeamReq\032" +
-      "\021.teamtask.TeamReq\"\000\022:\n\ndeleteTeam\022\027.tea" +
-      "mtask.DeleteTeamReq\032\021.teamtask.TeamReq\"\000" +
-      "\0228\n\taddMember\022\026.teamtask.AddMemberReq\032\021." +
-      "teamtask.TeamReq\"\000\022>\n\014removeMember\022\031.tea" +
-      "mtask.RemoveMemberReq\032\021.teamtask.TeamReq" +
-      "\"\000\022>\n\014updateMember\022\031.teamtask.UpdateMemb" +
-      "erReq\032\021.teamtask.TeamReq\"\000\022@\n\014getAllMemb" +
-      "er\022\031.teamtask.GetAllMemberReq\032\021.teamtask" +
-      ".TeamReq\"\0000\001B\036\n\020co.overlead.gRPCB\004teamP\001" +
-      "\242\002\001tb\006proto3"
+      "n\030\004 \001(\t2\266\003\n\004Team\022:\n\naddNewTeam\022\027.teamtas" +
+      "k.AddNewTeamReq\032\021.teamtask.TeamRes\"\000\022:\n\n" +
+      "updateTeam\022\027.teamtask.UpdateTeamReq\032\021.te" +
+      "amtask.TeamRes\"\000\022:\n\ndeleteTeam\022\027.teamtas" +
+      "k.DeleteTeamReq\032\021.teamtask.TeamRes\"\000\0228\n\t" +
+      "addMember\022\026.teamtask.AddMemberReq\032\021.team" +
+      "task.TeamRes\"\000\022>\n\014removeMember\022\031.teamtas" +
+      "k.RemoveMemberReq\032\021.teamtask.TeamRes\"\000\022>" +
+      "\n\014updateMember\022\031.teamtask.UpdateMemberRe" +
+      "q\032\021.teamtask.TeamRes\"\000\022@\n\014getAllMember\022\031" +
+      ".teamtask.GetAllMemberReq\032\021.teamtask.Tea" +
+      "mRes\"\0000\001B\036\n\020co.overlead.gRPCB\004teamP\001\242\002\001t" +
+      "b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -110,11 +110,11 @@ public final class team {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_teamtask_TeamReq_descriptor =
+    internal_static_teamtask_TeamRes_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_teamtask_TeamReq_fieldAccessorTable = new
+    internal_static_teamtask_TeamRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_teamtask_TeamReq_descriptor,
+        internal_static_teamtask_TeamRes_descriptor,
         new java.lang.String[] { "Status", "Id", "Error", "Option", });
     internal_static_teamtask_AddNewTeamReq_descriptor =
       getDescriptor().getMessageTypes().get(1);

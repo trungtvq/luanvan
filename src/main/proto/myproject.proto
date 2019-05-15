@@ -59,4 +59,5 @@ message ProjectRes{
 	string private = 7;
 	string detail=8;
 	string progress=9;
+	string members=11;
 }

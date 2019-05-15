@@ -3,8 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="a13b32c7-5cec-4a33-a1ca-2d33e458b65d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/Mongod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Mongod.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/auth.proto" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/auth.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/task/TeamTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/task/TeamTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/team/CoTeam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/team/CoTeam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/chat.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/chat.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/myproject.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/myproject.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/team.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/team.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/teamtask.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/teamtask.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/userstory.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/userstory.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/TeamReq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/TeamReqOrBuilder.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -20,10 +32,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/main/gRPCMain.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/team/CoTeam.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="55" column="7" selection-start-line="55" selection-start-column="7" selection-end-line="55" selection-end-column="7" />
+            <state relative-caret-position="216">
+              <caret line="213" column="39" selection-start-line="213" selection-start-column="39" selection-end-line="213" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -32,43 +44,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="44" selection-start-line="44" selection-end-line="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="204" column="36" selection-start-line="204" selection-start-column="36" selection-end-line="214" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/src/main/proto/mytask.proto">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/proto/team.proto">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="80" column="22" selection-start-line="80" selection-start-column="22" selection-end-line="80" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="27" />
+            <state relative-caret-position="208">
+              <caret line="170" column="26" selection-start-line="170" selection-start-column="26" selection-end-line="174" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -77,10 +61,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/team/CoTeam.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-32">
-              <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+            <state relative-caret-position="121">
+              <caret line="69" column="11" selection-start-line="69" selection-start-column="11" selection-end-line="81" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,13 +73,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/task/Velocity.java">
+        <entry file="file://$PROJECT_DIR$/src/main/proto/myproject.proto">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="38" selection-end-column="47" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="535">
+              <caret line="61" column="21" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -103,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+            <state relative-caret-position="624">
+              <caret line="43" column="50" selection-start-line="43" selection-start-column="50" selection-end-line="43" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -115,8 +96,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/proto/teamtask.proto">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="77" column="19" selection-end-line="101" selection-end-column="1" />
+            <state relative-caret-position="510">
+              <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -124,8 +105,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/proto/userstory.proto">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="20" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="20" />
+            <state relative-caret-position="314">
+              <caret line="21" column="18" lean-forward="true" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/proto/chat.proto">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="382">
+              <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,9 +144,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>makeResponseForUpdateSuccess</find>
-      <find>getIdOwner</find>
-      <find>idproject</find>
       <find>idProject</find>
       <find>idOwner</find>
       <find>setId</find>
@@ -172,11 +171,15 @@
       <find>topic</find>
       <find>insertOne</find>
       <find>signIn</find>
+      <find>teamtask</find>
+      <find>TeamReq</find>
+      <find>cookie</find>
     </findStrings>
     <replaceStrings>
       <replace>getRequesterId</replace>
       <replace>ProjectId</replace>
       <replace>ownerId</replace>
+      <replace>TeamRes</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -191,7 +194,6 @@
         <option value="$PROJECT_DIR$/src/main/proto/velocity.proto" />
         <option value="$PROJECT_DIR$/src/main/proto/simple.proto" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/chat.java" />
-        <option value="$PROJECT_DIR$/src/main/proto/chat.proto" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/chat/ChatCaching.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/chat/ConversationCaching.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Message.java" />
@@ -206,27 +208,28 @@
         <option value="$PROJECT_DIR$/src/main/java/helper/caching/chat/Conversation.java" />
         <option value="$PROJECT_DIR$/src/main/java/helper/auth/RequestAuth.java" />
         <option value="$PROJECT_DIR$/src/main/proto/productbacklog.proto" />
-        <option value="$PROJECT_DIR$/src/main/proto/userstory.proto" />
-        <option value="$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/task/Velocity.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/schedule/DailySchedule.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/task/MyTask.java" />
-        <option value="$PROJECT_DIR$/src/main/proto/teamtask.proto" />
-        <option value="$PROJECT_DIR$/src/main/java/gRPC/task/TeamTask.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/Mongod.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java" />
         <option value="$PROJECT_DIR$/src/main/proto/sprintbacklog.proto" />
         <option value="$PROJECT_DIR$/src/main/java/database/Redis.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java" />
         <option value="$PROJECT_DIR$/src/main/java/main/gRPCMain.java" />
-        <option value="$PROJECT_DIR$/src/main/proto/myproject.proto" />
-        <option value="$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/auth/AuthAccount.java" />
         <option value="$PROJECT_DIR$/src/main/proto/auth.proto" />
-        <option value="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gRPC/team/CoTeam.java" />
+        <option value="$PROJECT_DIR$/src/main/proto/teamtask.proto" />
+        <option value="$PROJECT_DIR$/src/main/java/gRPC/task/TeamTask.java" />
+        <option value="$PROJECT_DIR$/src/main/java/database/Mongod.java" />
         <option value="$PROJECT_DIR$/src/main/proto/team.proto" />
+        <option value="$PROJECT_DIR$/src/main/proto/myproject.proto" />
+        <option value="$PROJECT_DIR$/src/main/java/gRPC/team/CoTeam.java" />
+        <option value="$PROJECT_DIR$/src/main/proto/userstory.proto" />
+        <option value="$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java" />
+        <option value="$PROJECT_DIR$/src/main/proto/chat.proto" />
+        <option value="$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" />
       </list>
     </option>
   </component>
@@ -283,7 +286,33 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="luanvan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="gRPC" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="luanvan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gRPC" type="462c0819:PsiDirectoryNode" />
+              <item name="chat" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="luanvan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gRPC" type="462c0819:PsiDirectoryNode" />
+              <item name="project" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
@@ -401,7 +430,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.gRPCMain">
+  <component name="RunManager" selected="Application.MyProjectClient">
     <configuration name="Mongod" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="database.Mongod" />
       <module name="server" />
@@ -469,8 +498,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.gRPCMain" />
         <item itemvalue="Application.MyProjectClient" />
+        <item itemvalue="Application.gRPCMain" />
         <item itemvalue="Application.Redis" />
         <item itemvalue="Application.Mongod" />
         <item itemvalue="Application.Test" />
@@ -497,12 +526,13 @@
       <workItem from="1557738889581" duration="11218000" />
       <workItem from="1557794108256" duration="22130000" />
       <workItem from="1557877902013" duration="1536000" />
-      <workItem from="1557887559849" duration="5597000" />
+      <workItem from="1557887559849" duration="6239000" />
+      <workItem from="1557903525857" duration="8412000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="185659000" />
+    <option name="totallyTimeSpent" value="194713000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -517,7 +547,7 @@
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3283582" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33208954" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -527,12 +557,12 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4983731" weight="0.3279743" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4940347" weight="0.36655948" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4940347" visible="true" weight="0.36655948" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4994664" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3290461" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4951193" visible="true" weight="0.29046088" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4951193" weight="0.29046088" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5059653" side_tool="true" weight="0.36969697" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4994664" weight="0.3279743" />
@@ -598,7 +628,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/proto/simple.proto" />
     <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat.java" />
     <entry file="file://$PROJECT_DIR$/src/main/proto/counter.proto" />
-    <entry file="file://$PROJECT_DIR$/src/main/proto/mytask.proto" />
     <entry file="file://$PROJECT_DIR$/src/main/proto/myprofile.proto" />
     <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/ChatCaching.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/ConversationCaching.java" />
@@ -629,13 +658,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/chat.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="48" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/helper/caching/IPushToCache.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -660,13 +682,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/helper/auth/RequestAuth.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -698,27 +713,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/task/MyTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-          <folding>
-            <element signature="e#485#486#0" expanded="true" />
-            <element signature="e#521#522#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/Mongod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="69" column="94" selection-start-line="69" selection-start-column="94" selection-end-line="69" selection-end-column="94" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/proto/productbacklog.proto">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
@@ -737,16 +731,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
           <caret line="43" column="45" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/task/TeamTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="139" column="37" lean-forward="true" selection-start-line="139" selection-start-column="37" selection-end-line="139" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -774,23 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/myproject.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="60" column="19" selection-start-line="60" selection-start-column="11" selection-end-line="60" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="37" column="14" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../client/src/homeNav.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2992">
@@ -815,27 +782,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/userstory.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="20" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../client/src/containers/DefaultLayout/DefaultHeader.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="613">
           <caret line="98" column="24" lean-forward="true" selection-start-line="98" selection-start-column="24" selection-end-line="98" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="72" column="14" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -866,47 +816,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
+        <state relative-caret-position="3230">
           <caret line="204" column="36" selection-start-line="204" selection-start-column="36" selection-end-line="214" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/teamtask.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="77" column="19" selection-end-line="101" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/task/Velocity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="38" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -923,10 +836,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/team/CoTeam.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/helper/auth/RequestAuth.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-32">
-          <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/task/Velocity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="38" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/task/TeamTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1127">
+          <caret line="98" column="49" selection-start-line="98" selection-start-column="49" selection-end-line="98" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/task/MyTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+          <folding>
+            <element signature="e#485#486#0" expanded="true" />
+            <element signature="e#521#522#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/Mongod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="36" column="77" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -935,8 +886,89 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/proto/team.proto">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="80" column="22" selection-start-line="80" selection-start-column="22" selection-end-line="80" selection-end-column="22" />
+        <state relative-caret-position="425">
+          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/proto/mytask.proto">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/proto/myproject.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="61" column="21" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/team/CoTeam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="213" column="39" selection-start-line="213" selection-start-column="39" selection-end-line="213" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/proto/teamtask.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="43" column="50" selection-start-line="43" selection-start-column="50" selection-end-line="43" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/proto/userstory.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="21" column="18" lean-forward="true" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/proto/chat.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="69" column="11" selection-start-line="69" selection-start-column="11" selection-end-line="81" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="170" column="26" selection-start-line="170" selection-start-column="26" selection-end-line="174" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

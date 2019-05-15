@@ -7,23 +7,23 @@ option objc_class_prefix = "t";
 package teamtask;
 
 service Team {
-    rpc addNewTeam (AddNewTeamReq) returns (TeamReq) {
+    rpc addNewTeam (AddNewTeamReq) returns (TeamRes) {
     }
-    rpc updateTeamTask (UpdateTeamReq) returns (TeamReq) {
+    rpc updateTeam (UpdateTeamReq) returns (TeamRes) {
     }
-    rpc deleteTeam (DeleteTeamReq) returns (TeamReq){}
+    rpc deleteTeam (DeleteTeamReq) returns (TeamRes){}
 
-    rpc addMember (AddMemberReq) returns (TeamReq) {
+    rpc addMember (AddMemberReq) returns (TeamRes) {
     }
-    rpc removeMember (RemoveMemberReq) returns (TeamReq) {
+    rpc removeMember (RemoveMemberReq) returns (TeamRes) {
     }
-    rpc updateMember (UpdateMemberReq) returns (TeamReq) {
+    rpc updateMember (UpdateMemberReq) returns (TeamRes) {
     }
-    rpc getAllMember (GetAllMemberReq) returns (stream TeamReq) {
+    rpc getAllMember (GetAllMemberReq) returns (stream TeamRes) {
     }
 }
 
-message TeamReq {
+message TeamRes {
     string status = 1;
     string id = 2;
     string error = 3;

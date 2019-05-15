@@ -4,18 +4,18 @@
 package co.overlead.gRPC;
 
 /**
- * Protobuf type {@code teamtask.TeamReq}
+ * Protobuf type {@code teamtask.TeamRes}
  */
-public  final class TeamReq extends
+public  final class TeamRes extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:teamtask.TeamReq)
-    TeamReqOrBuilder {
+    // @@protoc_insertion_point(message_implements:teamtask.TeamRes)
+    TeamResOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use TeamReq.newBuilder() to construct.
-  private TeamReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use TeamRes.newBuilder() to construct.
+  private TeamRes(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private TeamReq() {
+  private TeamRes() {
     status_ = "";
     id_ = "";
     error_ = "";
@@ -27,7 +27,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private TeamReq(
+  private TeamRes(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -91,15 +91,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return co.overlead.gRPC.team.internal_static_teamtask_TeamReq_descriptor;
+    return co.overlead.gRPC.team.internal_static_teamtask_TeamRes_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return co.overlead.gRPC.team.internal_static_teamtask_TeamReq_fieldAccessorTable
+    return co.overlead.gRPC.team.internal_static_teamtask_TeamRes_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            co.overlead.gRPC.TeamReq.class, co.overlead.gRPC.TeamReq.Builder.class);
+            co.overlead.gRPC.TeamRes.class, co.overlead.gRPC.TeamRes.Builder.class);
   }
 
   public static final int STATUS_FIELD_NUMBER = 1;
@@ -295,10 +295,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof co.overlead.gRPC.TeamReq)) {
+    if (!(obj instanceof co.overlead.gRPC.TeamRes)) {
       return super.equals(obj);
     }
-    co.overlead.gRPC.TeamReq other = (co.overlead.gRPC.TeamReq) obj;
+    co.overlead.gRPC.TeamRes other = (co.overlead.gRPC.TeamRes) obj;
 
     if (!getStatus()
         .equals(other.getStatus())) return false;
@@ -332,69 +332,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static co.overlead.gRPC.TeamReq parseFrom(
+  public static co.overlead.gRPC.TeamRes parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.TeamReq parseFrom(
+  public static co.overlead.gRPC.TeamRes parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.TeamReq parseFrom(
+  public static co.overlead.gRPC.TeamRes parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.TeamReq parseFrom(
+  public static co.overlead.gRPC.TeamRes parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.TeamReq parseFrom(byte[] data)
+  public static co.overlead.gRPC.TeamRes parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.TeamReq parseFrom(
+  public static co.overlead.gRPC.TeamRes parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.TeamReq parseFrom(java.io.InputStream input)
+  public static co.overlead.gRPC.TeamRes parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.TeamReq parseFrom(
+  public static co.overlead.gRPC.TeamRes parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static co.overlead.gRPC.TeamReq parseDelimitedFrom(java.io.InputStream input)
+  public static co.overlead.gRPC.TeamRes parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.TeamReq parseDelimitedFrom(
+  public static co.overlead.gRPC.TeamRes parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static co.overlead.gRPC.TeamReq parseFrom(
+  public static co.overlead.gRPC.TeamRes parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.TeamReq parseFrom(
+  public static co.overlead.gRPC.TeamRes parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -407,7 +407,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(co.overlead.gRPC.TeamReq prototype) {
+  public static Builder newBuilder(co.overlead.gRPC.TeamRes prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -423,26 +423,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code teamtask.TeamReq}
+   * Protobuf type {@code teamtask.TeamRes}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:teamtask.TeamReq)
-      co.overlead.gRPC.TeamReqOrBuilder {
+      // @@protoc_insertion_point(builder_implements:teamtask.TeamRes)
+      co.overlead.gRPC.TeamResOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return co.overlead.gRPC.team.internal_static_teamtask_TeamReq_descriptor;
+      return co.overlead.gRPC.team.internal_static_teamtask_TeamRes_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return co.overlead.gRPC.team.internal_static_teamtask_TeamReq_fieldAccessorTable
+      return co.overlead.gRPC.team.internal_static_teamtask_TeamRes_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              co.overlead.gRPC.TeamReq.class, co.overlead.gRPC.TeamReq.Builder.class);
+              co.overlead.gRPC.TeamRes.class, co.overlead.gRPC.TeamRes.Builder.class);
     }
 
-    // Construct using co.overlead.gRPC.TeamReq.newBuilder()
+    // Construct using co.overlead.gRPC.TeamRes.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -474,17 +474,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return co.overlead.gRPC.team.internal_static_teamtask_TeamReq_descriptor;
+      return co.overlead.gRPC.team.internal_static_teamtask_TeamRes_descriptor;
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.TeamReq getDefaultInstanceForType() {
-      return co.overlead.gRPC.TeamReq.getDefaultInstance();
+    public co.overlead.gRPC.TeamRes getDefaultInstanceForType() {
+      return co.overlead.gRPC.TeamRes.getDefaultInstance();
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.TeamReq build() {
-      co.overlead.gRPC.TeamReq result = buildPartial();
+    public co.overlead.gRPC.TeamRes build() {
+      co.overlead.gRPC.TeamRes result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -492,8 +492,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.TeamReq buildPartial() {
-      co.overlead.gRPC.TeamReq result = new co.overlead.gRPC.TeamReq(this);
+    public co.overlead.gRPC.TeamRes buildPartial() {
+      co.overlead.gRPC.TeamRes result = new co.overlead.gRPC.TeamRes(this);
       result.status_ = status_;
       result.id_ = id_;
       result.error_ = error_;
@@ -536,16 +536,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof co.overlead.gRPC.TeamReq) {
-        return mergeFrom((co.overlead.gRPC.TeamReq)other);
+      if (other instanceof co.overlead.gRPC.TeamRes) {
+        return mergeFrom((co.overlead.gRPC.TeamRes)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(co.overlead.gRPC.TeamReq other) {
-      if (other == co.overlead.gRPC.TeamReq.getDefaultInstance()) return this;
+    public Builder mergeFrom(co.overlead.gRPC.TeamRes other) {
+      if (other == co.overlead.gRPC.TeamRes.getDefaultInstance()) return this;
       if (!other.getStatus().isEmpty()) {
         status_ = other.status_;
         onChanged();
@@ -577,11 +577,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      co.overlead.gRPC.TeamReq parsedMessage = null;
+      co.overlead.gRPC.TeamRes parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (co.overlead.gRPC.TeamReq) e.getUnfinishedMessage();
+        parsedMessage = (co.overlead.gRPC.TeamRes) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -879,41 +879,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:teamtask.TeamReq)
+    // @@protoc_insertion_point(builder_scope:teamtask.TeamRes)
   }
 
-  // @@protoc_insertion_point(class_scope:teamtask.TeamReq)
-  private static final co.overlead.gRPC.TeamReq DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:teamtask.TeamRes)
+  private static final co.overlead.gRPC.TeamRes DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new co.overlead.gRPC.TeamReq();
+    DEFAULT_INSTANCE = new co.overlead.gRPC.TeamRes();
   }
 
-  public static co.overlead.gRPC.TeamReq getDefaultInstance() {
+  public static co.overlead.gRPC.TeamRes getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<TeamReq>
-      PARSER = new com.google.protobuf.AbstractParser<TeamReq>() {
+  private static final com.google.protobuf.Parser<TeamRes>
+      PARSER = new com.google.protobuf.AbstractParser<TeamRes>() {
     @java.lang.Override
-    public TeamReq parsePartialFrom(
+    public TeamRes parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new TeamReq(input, extensionRegistry);
+      return new TeamRes(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<TeamReq> parser() {
+  public static com.google.protobuf.Parser<TeamRes> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<TeamReq> getParserForType() {
+  public com.google.protobuf.Parser<TeamRes> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public co.overlead.gRPC.TeamReq getDefaultInstanceForType() {
+  public co.overlead.gRPC.TeamRes getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

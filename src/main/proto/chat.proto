@@ -7,49 +7,23 @@ option objc_class_prefix = "c";
 package chat;
 
 service Chat{
-    rpc createChannelChat(CreateChannelChatReq) returns (SimpleChatRes){}
-    rpc inviteChat(InviteChatReq) returns (SimpleChatRes){}
-    rpc joinChat(JoinChatReq) returns (SimpleChatRes){}
-    rpc leaveChat(LeaveChatReq) returns (SimpleChatRes){}
-    rpc sendMsg(SendMsgReq) returns (SimpleChatRes){}
+
+    rpc sendMsg(SendMsgReq) returns (ConnectChatRes){}
     rpc connectChat(ConnectChatReq) returns (stream ConnectChatRes){}
 }
-message CreateChannelChatReq{
-    string cookie = 1;
-    string requesterId=2;
-    string title=3;
-    string link=4;//this is a advance feature
-}
 
-message InviteChatReq{
-    string cookie =1;
-    string requesterId=2;
-    string channelId=3;
-    string username=4;
-}
 
-message JoinChatReq{
-    string cookie =1;
-    string requesterId=2;
-    string link=3;//because this is unique
-    string channelId=4;//can be use 3 or 4 to request join chat. Only send one (3 or 4, NOT BOTH)
-}
-
-message LeaveChatReq{
-    string cookie =1;
-    string requesterId=2;
-    string link=3;//because this is unique
-    string channelId=4;//can be use 3 or 4 to request join chat. Only send one (3 or 4, NOT BOTH)
-}
 
 message SendMsgReq{
-    string cookie =1;
+    string accessToken =1;
     string requesterId=2;
     string channelId=3;
     string msg=4;
+    string type=5;
 }
+
 message ConnectChatReq{
-    string cookie=1;
+    string accessToken=1;
     string requesterId=2;
 }
 
@@ -59,11 +33,4 @@ message ConnectChatRes{
     string type=3;
     string senderName=4;
     string time=5;
-}
-
-
-message SimpleChatRes{
-    string error=1;
-    string status=2;
-    string option=3;//optional (can be id or anything). Use this for simplest implementation
 }

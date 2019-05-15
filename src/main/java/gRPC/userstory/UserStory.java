@@ -12,12 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserStory {
-    //string adderId = 1;
-    //	string projectId = 2;
-    //	string str = 3;
-    //	string want = 4;
-    //	string so = 5;
-    //	string cookie = 6;
     public static class UserStoryImpl extends UserStoryGrpc.UserStoryImplBase{
         public static boolean isValidAuth(){
             return true;
@@ -25,40 +19,39 @@ public class UserStory {
         }
         public void makeResponseForUpdateSuccess(StreamObserver res,String id){
 
-            res.onNext(UserStoryRes.newBuilder().setStatus("SUCCESS").setError("FALSE").setId(id).build());
+            res.onNext(UserStoryRes.newBuilder().setStatus("SUCCESS").setId(id).build());
             res.onCompleted();
         }
 
-        public void makeResponseForFailed(StreamObserver res, String status, String error){
-            res.onNext(UserStoryRes.newBuilder().setStatus(status).setError(error).build());
+        public void makeResponseForFailed(StreamObserver res, String status){
+            res.onNext(UserStoryRes.newBuilder().setStatus(status).build());
             res.onCompleted();
         }
         @Override
         public void addNewUserStory(AddNewUserStoryReq request, StreamObserver<UserStoryRes> responseObserver) {
             if (!isValidAuth()) {
-                makeResponseForFailed(responseObserver,"AUTH_INVALID","TRUE");
+                makeResponseForFailed(responseObserver,"AUTH_INVALID");
             } else {
 
-                //Todos: check projectname is exist
-                MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("userstory");
-                List<Document> foundDocument = coll.find(new Document("name",request.getName()).append("projectId",request.getProjectId())).into(new ArrayList<Document>());
+
+                List<Document> foundDocument = Mongod.collUserstory.find(new Document("name",request.getName()).append("projectId",request.getProjectId())).into(new ArrayList<>());
                 if (foundDocument.size()!=0){
-                    makeResponseForFailed(responseObserver,"EXIST_USERSTORY_NAME","FALSE");
+                    makeResponseForFailed(responseObserver,"EXIST_USERSTORY_NAME");
 
                 } else{
                     Document document = new Document()
                             .append("name",request.getName())
-                            .append("adderId", request.getAdderId())
+                            .append("ownerId", request.getRequesterId())
                             .append("projectId", request.getProjectId())
                             .append("role", request.getRole())
                             .append("want", request.getWant())
                             .append("so", request.getSo());
-                    coll.insertOne(document);
+                    Mongod.collUserstory.insertOne(document);
 
-                    foundDocument = coll.find(document).into(new ArrayList<>());
+                    foundDocument = Mongod.collUserstory.find(document).into(new ArrayList<>());
                     //check size
                     if (foundDocument.size()!=1){
-                        makeResponseForFailed(responseObserver,"WRONG_SIZE","FALSE");
+                        makeResponseForFailed(responseObserver,"WRONG_SIZE");
                     } else {
                         makeResponseForUpdateSuccess(responseObserver,foundDocument.get(0).get("_id").toString());
                     }
@@ -69,12 +62,11 @@ public class UserStory {
         @Override
         public void updateUserStory(UpdateUserStoryReq request, StreamObserver<UserStoryRes> responseObserver) {
             if (!isValidAuth()) {
-                makeResponseForFailed(responseObserver,"AUTH_INVALID","TRUE");
+                makeResponseForFailed(responseObserver,"AUTH_INVALID");
 
             } else {
                 //Todos: check projectname is exist
-                MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("userstory");
-                List<Document> foundDocument = coll.find(new Document("_id",new ObjectId( request.getUserStoryId()))).into(new ArrayList<>());
+                List<Document> foundDocument = Mongod.collUserstory.find(new Document("_id",new ObjectId( request.getUserStoryId()))).into(new ArrayList<>());
                 if (foundDocument.size()==1){
                     Document needUpdate=new Document("_id",new ObjectId(request.getUserStoryId()));
                     Document listUpdate=new Document();
@@ -89,10 +81,10 @@ public class UserStory {
                         listUpdate.append("so",request.getSo());
                     }
 
-                    coll.findOneAndUpdate(needUpdate,listUpdate);
-                    makeResponseForUpdateSuccess(responseObserver,request.getProjectId());
+                    Mongod.collUserstory.findOneAndUpdate(needUpdate,listUpdate);
+                    makeResponseForUpdateSuccess(responseObserver,request.getUserStoryId());
                 } else{
-                    makeResponseForFailed(responseObserver,"NOT_EXIST_USERSTORY_NAME","FALSE");
+                    makeResponseForFailed(responseObserver,"NOT_EXIST_USERSTORY_NAME");
                 }
             }
         }
@@ -100,14 +92,13 @@ public class UserStory {
         @Override
         public void deleteUserStory(DeleteUserStoryReq request, StreamObserver<UserStoryRes> responseObserver) {
             if (!isValidAuth()) {
-                makeResponseForFailed(responseObserver,"AUTH_INVALID","TRUE");
+                makeResponseForFailed(responseObserver,"AUTH_INVALID");
 
             } else {
-                MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("userstory");
-                DeleteResult result = coll.deleteOne(new Document("_id",new ObjectId(request.getUserStoryId()) ));
+                DeleteResult result = Mongod.collUserstory.deleteOne(new Document("_id",new ObjectId(request.getUserStoryId()) ));
 
                 if (result.getDeletedCount() != 1) {
-                    makeResponseForFailed(responseObserver,"WRONG_SIZE","FALSE");
+                    makeResponseForFailed(responseObserver,"WRONG_SIZE");
                 }else{
                     makeResponseForUpdateSuccess(responseObserver,request.getUserStoryId());
                 }
@@ -117,14 +108,13 @@ public class UserStory {
         @Override
         public void getAllUserStory(GetAllUserStoryReq request, StreamObserver<GetAllUserStoryRes> responseObserver) {
             if (!isValidAuth()) {
-                makeResponseForFailed(responseObserver,"AUTH_INVALID","TRUE");
+                makeResponseForFailed(responseObserver,"AUTH_INVALID");
 
             } else {
-                MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("project");
-                List<Document> foundDocument = coll.find(new Document("_id",new ObjectId(request.getProjectId()))).into(new ArrayList<>());
+                List<Document> foundDocument = Mongod.collProject.find(new Document("_id",new ObjectId(request.getProjectId()))).into(new ArrayList<>());
 
                 if (foundDocument.size()==0){
-                    makeResponseForFailed(responseObserver,"EMPTY","FALSE");
+                    makeResponseForFailed(responseObserver,"EMPTY");
 
                 }  else {
                     foundDocument.forEach(i->{
@@ -132,7 +122,7 @@ public class UserStory {
                                 .setRole(i.get("role").toString())
                                 .setWant(i.get("want").toString())
                                 .setSo(i.get("so").toString())
-                                .setStatus("SUCCESS").setError("FALSE").build();
+                                .setStatus("SUCCESS").build();
                         responseObserver.onNext(reply);
                     });
                     responseObserver.onCompleted();

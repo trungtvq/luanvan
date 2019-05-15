@@ -53,31 +53,31 @@ public final class userstory {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\017userstory.proto\022\tuserstory\"~\n\022AddNewUs" +
-      "erStoryReq\022\014\n\004name\030\007 \001(\t\022\017\n\007adderId\030\001 \001(" +
-      "\t\022\021\n\tprojectId\030\002 \001(\t\022\014\n\004role\030\003 \001(\t\022\014\n\004wa" +
-      "nt\030\004 \001(\t\022\n\n\002so\030\005 \001(\t\022\016\n\006cookie\030\006 \001(\t\"9\n\014" +
-      "UserStoryRes\022\016\n\006status\030\001 \001(\t\022\n\n\002id\030\002 \001(\t" +
-      "\022\r\n\005error\030\003 \001(\t\"\207\001\n\022UpdateUserStoryReq\022\021" +
-      "\n\tupdaterId\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\023\n\013" +
-      "userStoryId\030\003 \001(\t\022\014\n\004role\030\004 \001(\t\022\014\n\004want\030" +
-      "\005 \001(\t\022\n\n\002so\030\006 \001(\t\022\016\n\006cookie\030\007 \001(\t\"_\n\022Del" +
-      "eteUserStoryReq\022\021\n\tdeleterId\030\001 \001(\t\022\021\n\tpr" +
-      "ojectId\030\002 \001(\t\022\023\n\013userStoryId\030\003 \001(\t\022\016\n\006co" +
-      "okie\030\004 \001(\t\"I\n\022GetAllUserStoryReq\022\020\n\010gett" +
-      "erId\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\016\n\006cookie\030" +
-      "\003 \001(\t\"[\n\022GetAllUserStoryRes\022\014\n\004role\030\001 \001(" +
-      "\t\022\014\n\004want\030\002 \001(\t\022\n\n\002so\030\003 \001(\t\022\016\n\006status\030\004 " +
-      "\001(\t\022\r\n\005error\030\005 \001(\t2\307\002\n\tUserStory\022K\n\017addN" +
-      "ewUserStory\022\035.userstory.AddNewUserStoryR" +
-      "eq\032\027.userstory.UserStoryRes\"\000\022K\n\017updateU" +
-      "serStory\022\035.userstory.UpdateUserStoryReq\032" +
-      "\027.userstory.UserStoryRes\"\000\022K\n\017deleteUser" +
-      "Story\022\035.userstory.DeleteUserStoryReq\032\027.u" +
-      "serstory.UserStoryRes\"\000\022S\n\017getAllUserSto" +
-      "ry\022\035.userstory.GetAllUserStoryReq\032\035.user" +
-      "story.GetAllUserStoryRes\"\0000\001B$\n\020co.overl" +
-      "ead.gRPCB\tuserstoryP\001\242\002\002usb\006proto3"
+      "\n\017userstory.proto\022\tuserstory\"\207\001\n\022AddNewU" +
+      "serStoryReq\022\023\n\013requesterId\030\001 \001(\t\022\021\n\tproj" +
+      "ectId\030\002 \001(\t\022\014\n\004role\030\003 \001(\t\022\014\n\004want\030\004 \001(\t\022" +
+      "\n\n\002so\030\005 \001(\t\022\023\n\013accessToken\030\006 \001(\t\022\014\n\004name" +
+      "\030\007 \001(\t\"*\n\014UserStoryRes\022\016\n\006status\030\001 \001(\t\022\n" +
+      "\n\002id\030\002 \001(\t\"\216\001\n\022UpdateUserStoryReq\022\023\n\013req" +
+      "uesterId\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\023\n\013use" +
+      "rStoryId\030\003 \001(\t\022\014\n\004role\030\004 \001(\t\022\014\n\004want\030\005 \001" +
+      "(\t\022\n\n\002so\030\006 \001(\t\022\023\n\013accessToken\030\007 \001(\t\"f\n\022D" +
+      "eleteUserStoryReq\022\023\n\013requesterId\030\001 \001(\t\022\021" +
+      "\n\tprojectId\030\002 \001(\t\022\023\n\013userStoryId\030\003 \001(\t\022\023" +
+      "\n\013accessToken\030\004 \001(\t\"Q\n\022GetAllUserStoryRe" +
+      "q\022\023\n\013requesterId\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(" +
+      "\t\022\023\n\013accessToken\030\003 \001(\t\"L\n\022GetAllUserStor" +
+      "yRes\022\014\n\004role\030\001 \001(\t\022\014\n\004want\030\002 \001(\t\022\n\n\002so\030\003" +
+      " \001(\t\022\016\n\006status\030\004 \001(\t2\307\002\n\tUserStory\022K\n\017ad" +
+      "dNewUserStory\022\035.userstory.AddNewUserStor" +
+      "yReq\032\027.userstory.UserStoryRes\"\000\022K\n\017updat" +
+      "eUserStory\022\035.userstory.UpdateUserStoryRe" +
+      "q\032\027.userstory.UserStoryRes\"\000\022K\n\017deleteUs" +
+      "erStory\022\035.userstory.DeleteUserStoryReq\032\027" +
+      ".userstory.UserStoryRes\"\000\022S\n\017getAllUserS" +
+      "tory\022\035.userstory.GetAllUserStoryReq\032\035.us" +
+      "erstory.GetAllUserStoryRes\"\0000\001B$\n\020co.ove" +
+      "rlead.gRPCB\tuserstoryP\001\242\002\002usb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -96,37 +96,37 @@ public final class userstory {
     internal_static_userstory_AddNewUserStoryReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_userstory_AddNewUserStoryReq_descriptor,
-        new java.lang.String[] { "Name", "AdderId", "ProjectId", "Role", "Want", "So", "Cookie", });
+        new java.lang.String[] { "RequesterId", "ProjectId", "Role", "Want", "So", "AccessToken", "Name", });
     internal_static_userstory_UserStoryRes_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_userstory_UserStoryRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_userstory_UserStoryRes_descriptor,
-        new java.lang.String[] { "Status", "Id", "Error", });
+        new java.lang.String[] { "Status", "Id", });
     internal_static_userstory_UpdateUserStoryReq_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_userstory_UpdateUserStoryReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_userstory_UpdateUserStoryReq_descriptor,
-        new java.lang.String[] { "UpdaterId", "ProjectId", "UserStoryId", "Role", "Want", "So", "Cookie", });
+        new java.lang.String[] { "RequesterId", "ProjectId", "UserStoryId", "Role", "Want", "So", "AccessToken", });
     internal_static_userstory_DeleteUserStoryReq_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_userstory_DeleteUserStoryReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_userstory_DeleteUserStoryReq_descriptor,
-        new java.lang.String[] { "DeleterId", "ProjectId", "UserStoryId", "Cookie", });
+        new java.lang.String[] { "RequesterId", "ProjectId", "UserStoryId", "AccessToken", });
     internal_static_userstory_GetAllUserStoryReq_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_userstory_GetAllUserStoryReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_userstory_GetAllUserStoryReq_descriptor,
-        new java.lang.String[] { "GetterId", "ProjectId", "Cookie", });
+        new java.lang.String[] { "RequesterId", "ProjectId", "AccessToken", });
     internal_static_userstory_GetAllUserStoryRes_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_userstory_GetAllUserStoryRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_userstory_GetAllUserStoryRes_descriptor,
-        new java.lang.String[] { "Role", "Want", "So", "Status", "Error", });
+        new java.lang.String[] { "Role", "Want", "So", "Status", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

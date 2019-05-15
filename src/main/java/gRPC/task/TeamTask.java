@@ -46,13 +46,12 @@ public class TeamTask {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("task");
-                MongoCollection<Document> collProject = Mongod.getOverleadConnection().getCollection("project");
+                MongoCollection<Document> collTeam = Mongod.getOverleadConnection().getCollection("team");
 
                 Document document = new Document()
                         .append("ownerId",request.getRequesterId())
                         .append("title", request.getTitle())
                         .append("start", request.getStart())
-                        .append("projectId", request.getProjectId())
                         .append("description", request.getDescription())
                         .append("priority", request.getPriority())
                         .append("deadline", request.getDeadline())
@@ -62,7 +61,7 @@ public class TeamTask {
                         .append("review", request.getReview());
                 coll.insertOne(document);
                 Document getBack=coll.find(document).into(new ArrayList<>()).get(0);
-                collProject.findOneAndUpdate(new Document("_id",new ObjectId(request.getProjectId())),new Document("$push",new Document("tasks",getBack.get("_id"))));
+                collTeam.findOneAndUpdate(new Document("_id",new ObjectId(request.getTeamId())),new Document("$push",new Document("tasks",getBack.get("_id"))));
                 makeResponseForUpdateSuccess(responseObserver,getBack.get("_id").toString());
             }
         }
