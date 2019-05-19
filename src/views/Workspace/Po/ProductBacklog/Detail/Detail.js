@@ -35,7 +35,6 @@ class Detail extends Component {
     }
   };
   componentDidMount() {
-
     const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
     var metadata = {};
     var GetAllProductBacklogReq = new proto.productbacklog.GetAllProductBacklogReq();

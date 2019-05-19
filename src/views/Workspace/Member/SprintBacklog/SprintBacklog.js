@@ -1,85 +1,62 @@
 import React, { Component } from 'react';
 import { Card,CardHeader,Badge, Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Table, Pagination, PaginationItem, PaginationLink, } from 'reactstrap';
+import cookie from 'react-cookies';
+const proto = {};
+proto.sprintbacklog = require('./../../../../gRPC/sprintbacklog/sprintbacklog_grpc_web_pb');
 
 class SprintBacklog extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [ 
-              {
-                "id":1,
-                "as":"admin",
-                "want":"See a list of all members and visitors",
-                "so":"I can monitor site visits",
-                "priority":1,
-                "estimation":3,
-                "sprint":1,
-                "start":"9:00 20/5/2019",
-                "deadline":"9:00 25/5/2019",
-                
-              },
-              {
-                "id":2,
-                "as":"admin",
-                "want":"Add new categories",
-                "so":"I can allow members to create engaging content",
-                 "priority":2,
-                "estimation":1,
-                "sprint":1,
-                "start":"9:00 20/5/2019",
-                "deadline":"9:00 25/5/2019",
-               
-              },
-              {
-                "id":3,
-                "as":"admin",
-                "want":"Add new security groups",
-                "so":"Security levels are approriate",
-                 "priority":3,
-                "estimation":4,
-                "sprint":1,
-                "start":"9:00 20/5/2019",
-                "deadline":"9:00 25/5/2019",
-                
-              },
-              {
-                "id":4,
-                "as":"admin",
-                "want":"Delete comment",
-                "so":"Offensive content is removed",
-                 "priority":4,
-                "estimation":6,
-                "sprint":1,
-                "start":"9:00 20/5/2019",
-                "deadline":"9:00 25/5/2019",
-               
-              },
-              {
-                "id":5,
-                "as":"admin",
-                "want":"Add new key words",
-                "so":"Content is easy to groups and search for",
-                "priority":5,
-                "estimation":1,
-                "sprint":1,
-                "start":"9:00 20/5/2019",
-                "deadline":"9:00 25/5/2019",
-              
-              },
-              {
-                "id":6,
-                "as":"member",
-                "want":"Update my account detail",
-                "so":"I can be contacted by admin",
-                "priority":5,
-                "estimation":3,
-                "sprint":2,
-                "start":"9:00 20/5/2019",
-                "deadline":"9:00 25/5/2019",
-              }
-            ],
+      data: [],
       }
     };
+    componentDidMount() {
+  
+      const sprintbacklogService = new proto.sprintbacklog.SprintBacklogClient('https://www.overlead.co');
+      var metadata = {};
+      var GetAllSprintBacklogReq = new proto.sprintbacklog.GetAllSprintBacklogReq();
+      GetAllSprintBacklogReq.setRequesterid(cookie.load("userId"));
+      GetAllSprintBacklogReq.setAccesstoken(cookie.load("accessToken"));
+      GetAllSprintBacklogReq.setProjectid(cookie.load("currentProject"));
+  
+      var response = sprintbacklogService.getAllSprintBacklog(GetAllSprintBacklogReq, metadata)
+      let that = this
+      response.on('data', function (response) {
+        if (response.getStatus() == "SUCCESS") {
+          that.setState(prevState => ({
+            data: [...prevState.data,
+            {
+              id: response.getBacklogid(),
+            title: response.getTitle(),
+            role: response.getRole(),
+            want: response.getWant(),
+            so: response.getSo(),
+            priority: response.getPriority(),
+            estimation: response.getEstimation(),
+            sprint: response.getSprintid(),
+            status: response.getStatusbacklog(),
+            start: response.getStart(),
+            deadline: response.getDeadline()
+            }]
+          }));
+  
+        }
+      })
+      response.on('status', function (status) {
+        console.log("status")
+        console.log(status.code);
+        console.log(status.details);
+        console.log(status.metadata);
+      });
+      response.on('end', function (end) {
+        console.log("end")
+        console.log(end)
+      });
+  
+  
+  
+    }
     handleDelete = () => {
       
     };
@@ -93,7 +70,7 @@ class SprintBacklog extends Component {
                 <table class="table table-lg">
                   <thead class="thead">
                   <tr class="bg-primary">
-                    <th>ID <i class="fa fa-sort"></i></th>
+                    <th>Title... <i class="fa fa-sort"></i></th>
                     <th>As a... <i class="fa fa-sort"></i></th>
                     <th>I want to be able to... <i class="fa fa-sort"></i></th>
                     <th>So that... <i class="fa fa-sort"></i></th>
@@ -108,8 +85,8 @@ class SprintBacklog extends Component {
                     <tbody>{this.state.data.map(function(item, key) {    
                return (
                   <tr key = {key}>
-                      <td>{item.id}</td>
-                      <td>{item.as}</td>
+                      <td>{item.title}</td>
+                      <td>{item.role}</td>
                       <td>{item.want}</td>
                       <td>{item.so}</td>
                       <td><center>{item.priority}</center></td>
