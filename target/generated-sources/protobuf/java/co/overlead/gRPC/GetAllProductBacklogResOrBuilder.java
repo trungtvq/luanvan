@@ -106,4 +106,14 @@ public interface GetAllProductBacklogResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getSprintIdBytes();
+
+  /**
+   * <code>string title = 10;</code>
+   */
+  java.lang.String getTitle();
+  /**
+   * <code>string title = 10;</code>
+   */
+  com.google.protobuf.ByteString
+      getTitleBytes();
 }

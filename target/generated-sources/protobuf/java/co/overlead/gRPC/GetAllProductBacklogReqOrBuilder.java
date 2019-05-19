@@ -28,12 +28,12 @@ public interface GetAllProductBacklogReqOrBuilder extends
       getProjectIdBytes();
 
   /**
-   * <code>string cookie = 3;</code>
+   * <code>string accessToken = 3;</code>
    */
-  java.lang.String getCookie();
+  java.lang.String getAccessToken();
   /**
-   * <code>string cookie = 3;</code>
+   * <code>string accessToken = 3;</code>
    */
   com.google.protobuf.ByteString
-      getCookieBytes();
+      getAccessTokenBytes();
 }

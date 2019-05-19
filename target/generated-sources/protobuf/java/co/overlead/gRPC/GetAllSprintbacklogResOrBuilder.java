@@ -8,14 +8,54 @@ public interface GetAllSprintBacklogResOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string sprintBacklogId = 1;</code>
+   * <code>string title = 1;</code>
    */
-  java.lang.String getSprintBacklogId();
+  java.lang.String getTitle();
   /**
-   * <code>string sprintBacklogId = 1;</code>
+   * <code>string title = 1;</code>
    */
   com.google.protobuf.ByteString
-      getSprintBacklogIdBytes();
+      getTitleBytes();
+
+  /**
+   * <code>string backlogId = 2;</code>
+   */
+  java.lang.String getBacklogId();
+  /**
+   * <code>string backlogId = 2;</code>
+   */
+  com.google.protobuf.ByteString
+      getBacklogIdBytes();
+
+  /**
+   * <code>string role = 3;</code>
+   */
+  java.lang.String getRole();
+  /**
+   * <code>string role = 3;</code>
+   */
+  com.google.protobuf.ByteString
+      getRoleBytes();
+
+  /**
+   * <code>string want = 4;</code>
+   */
+  java.lang.String getWant();
+  /**
+   * <code>string want = 4;</code>
+   */
+  com.google.protobuf.ByteString
+      getWantBytes();
+
+  /**
+   * <code>string so = 5;</code>
+   */
+  java.lang.String getSo();
+  /**
+   * <code>string so = 5;</code>
+   */
+  com.google.protobuf.ByteString
+      getSoBytes();
 
   /**
    * <code>string statusBacklog = 11;</code>
@@ -26,66 +66,6 @@ public interface GetAllSprintBacklogResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getStatusBacklogBytes();
-
-  /**
-   * <code>string sprintId = 12;</code>
-   */
-  java.lang.String getSprintId();
-  /**
-   * <code>string sprintId = 12;</code>
-   */
-  com.google.protobuf.ByteString
-      getSprintIdBytes();
-
-  /**
-   * <code>string error = 13;</code>
-   */
-  java.lang.String getError();
-  /**
-   * <code>string error = 13;</code>
-   */
-  com.google.protobuf.ByteString
-      getErrorBytes();
-
-  /**
-   * <code>string role = 2;</code>
-   */
-  java.lang.String getRole();
-  /**
-   * <code>string role = 2;</code>
-   */
-  com.google.protobuf.ByteString
-      getRoleBytes();
-
-  /**
-   * <code>string want = 3;</code>
-   */
-  java.lang.String getWant();
-  /**
-   * <code>string want = 3;</code>
-   */
-  com.google.protobuf.ByteString
-      getWantBytes();
-
-  /**
-   * <code>string so = 4;</code>
-   */
-  java.lang.String getSo();
-  /**
-   * <code>string so = 4;</code>
-   */
-  com.google.protobuf.ByteString
-      getSoBytes();
-
-  /**
-   * <code>string status = 5;</code>
-   */
-  java.lang.String getStatus();
-  /**
-   * <code>string status = 5;</code>
-   */
-  com.google.protobuf.ByteString
-      getStatusBytes();
 
   /**
    * <code>string priority = 6;</code>
@@ -108,21 +88,21 @@ public interface GetAllSprintBacklogResOrBuilder extends
       getEstimationBytes();
 
   /**
-   * <code>string sprint = 8;</code>
+   * <code>string sprintId = 8;</code>
    */
-  java.lang.String getSprint();
+  java.lang.String getSprintId();
   /**
-   * <code>string sprint = 8;</code>
+   * <code>string sprintId = 8;</code>
    */
   com.google.protobuf.ByteString
-      getSprintBytes();
+      getSprintIdBytes();
 
   /**
    * <pre>
    *return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
    * </pre>
    *
-   * <code>string start = 9;</code>
+   * <code>string start = 12;</code>
    */
   java.lang.String getStart();
   /**
@@ -130,14 +110,14 @@ public interface GetAllSprintBacklogResOrBuilder extends
    *return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
    * </pre>
    *
-   * <code>string start = 9;</code>
+   * <code>string start = 12;</code>
    */
   com.google.protobuf.ByteString
       getStartBytes();
 
   /**
    * <pre>
-   *return in form mm/hh/dd/mm/yyyy 	
+   *return in form mm/hh/dd/mm/yyyy
    * </pre>
    *
    * <code>string deadline = 10;</code>
@@ -145,11 +125,21 @@ public interface GetAllSprintBacklogResOrBuilder extends
   java.lang.String getDeadline();
   /**
    * <pre>
-   *return in form mm/hh/dd/mm/yyyy 	
+   *return in form mm/hh/dd/mm/yyyy
    * </pre>
    *
    * <code>string deadline = 10;</code>
    */
   com.google.protobuf.ByteString
       getDeadlineBytes();
+
+  /**
+   * <code>string status = 9;</code>
+   */
+  java.lang.String getStatus();
+  /**
+   * <code>string status = 9;</code>
+   */
+  com.google.protobuf.ByteString
+      getStatusBytes();
 }

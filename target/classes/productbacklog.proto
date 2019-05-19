@@ -24,7 +24,7 @@ message AddNewProductBacklogReq{
 	string priority = 7;
 	string estimation = 8;
 	string sprintId = 9;
-	string cookie = 10;
+	string accessToken = 10;
 	string title=11; //unique
 }
 message ProductBacklogRes{
@@ -45,7 +45,7 @@ message UpdateProductBacklogReq{
 	string priority = 8;
 	string estimation = 9;
 	string sprint = 10;	
-	string cookie = 11;
+	string accessToken = 11;
 	string title=12;
 	string sprintId=13;
 
@@ -55,7 +55,7 @@ message DeleteProductBacklogReq{
     string requesterId = 1;
     string projectId = 2;
 	string productBacklogId = 3;
-	string cookie = 4;
+	string accessToken = 4;
 }
 
 
@@ -65,14 +65,14 @@ message SendToSprintBacklogReq{	//lay tat ca gia tri cua productbacklog dc chon 
 	string productBacklogId = 3;
 	string start = 4;		 //return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
 	string deadline = 5;			//return in form mm/hh/dd/mm/yyyy 	
-	string cookie = 6;
+	string accessToken = 6;
 }
 
 
 message GetAllProductBacklogReq{
     string requesterId = 1;
 	string projectId = 2;
-	string cookie = 3;
+	string accessToken = 3;
 }
 message GetAllProductBacklogRes{
 	string productBacklogId = 2;
@@ -85,4 +85,5 @@ message GetAllProductBacklogRes{
 	string priority = 6;
 	string estimation = 7;
 	string sprintId = 8;
+	string title=10;
 }

@@ -74,12 +74,12 @@ public interface SendToSprintBacklogReqOrBuilder extends
       getDeadlineBytes();
 
   /**
-   * <code>string cookie = 6;</code>
+   * <code>string accessToken = 6;</code>
    */
-  java.lang.String getCookie();
+  java.lang.String getAccessToken();
   /**
-   * <code>string cookie = 6;</code>
+   * <code>string accessToken = 6;</code>
    */
   com.google.protobuf.ByteString
-      getCookieBytes();
+      getAccessTokenBytes();
 }

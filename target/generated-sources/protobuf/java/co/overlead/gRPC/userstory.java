@@ -66,18 +66,19 @@ public final class userstory {
       "\n\tprojectId\030\002 \001(\t\022\023\n\013userStoryId\030\003 \001(\t\022\023" +
       "\n\013accessToken\030\004 \001(\t\"Q\n\022GetAllUserStoryRe" +
       "q\022\023\n\013requesterId\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(" +
-      "\t\022\023\n\013accessToken\030\003 \001(\t\"L\n\022GetAllUserStor" +
+      "\t\022\023\n\013accessToken\030\003 \001(\t\"f\n\022GetAllUserStor" +
       "yRes\022\014\n\004role\030\001 \001(\t\022\014\n\004want\030\002 \001(\t\022\n\n\002so\030\003" +
-      " \001(\t\022\016\n\006status\030\004 \001(\t2\307\002\n\tUserStory\022K\n\017ad" +
-      "dNewUserStory\022\035.userstory.AddNewUserStor" +
-      "yReq\032\027.userstory.UserStoryRes\"\000\022K\n\017updat" +
-      "eUserStory\022\035.userstory.UpdateUserStoryRe" +
-      "q\032\027.userstory.UserStoryRes\"\000\022K\n\017deleteUs" +
-      "erStory\022\035.userstory.DeleteUserStoryReq\032\027" +
-      ".userstory.UserStoryRes\"\000\022S\n\017getAllUserS" +
-      "tory\022\035.userstory.GetAllUserStoryReq\032\035.us" +
-      "erstory.GetAllUserStoryRes\"\0000\001B$\n\020co.ove" +
-      "rlead.gRPCB\tuserstoryP\001\242\002\002usb\006proto3"
+      " \001(\t\022\016\n\006status\030\004 \001(\t\022\n\n\002id\030\005 \001(\t\022\014\n\004name" +
+      "\030\006 \001(\t2\307\002\n\tUserStory\022K\n\017addNewUserStory\022" +
+      "\035.userstory.AddNewUserStoryReq\032\027.usersto" +
+      "ry.UserStoryRes\"\000\022K\n\017updateUserStory\022\035.u" +
+      "serstory.UpdateUserStoryReq\032\027.userstory." +
+      "UserStoryRes\"\000\022K\n\017deleteUserStory\022\035.user" +
+      "story.DeleteUserStoryReq\032\027.userstory.Use" +
+      "rStoryRes\"\000\022S\n\017getAllUserStory\022\035.usersto" +
+      "ry.GetAllUserStoryReq\032\035.userstory.GetAll" +
+      "UserStoryRes\"\0000\001B$\n\020co.overlead.gRPCB\tus" +
+      "erstoryP\001\242\002\002usb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -126,7 +127,7 @@ public final class userstory {
     internal_static_userstory_GetAllUserStoryRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_userstory_GetAllUserStoryRes_descriptor,
-        new java.lang.String[] { "Role", "Want", "So", "Status", });
+        new java.lang.String[] { "Role", "Want", "So", "Status", "Id", "Name", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

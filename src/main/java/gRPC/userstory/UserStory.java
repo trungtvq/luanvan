@@ -5,6 +5,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.result.DeleteResult;
 import database.Mongod;
 import io.grpc.stub.StreamObserver;
+import org.bson.BsonString;
 import org.bson.Document;
 import org.bson.types.ObjectId;
 
@@ -43,16 +44,20 @@ public class UserStory {
                             .append("name",request.getName())
                             .append("ownerId", request.getRequesterId())
                             .append("projectId", request.getProjectId())
-                            .append("role", request.getRole())
+                            .append("role", new BsonString(request.getRole()))
                             .append("want", request.getWant())
                             .append("so", request.getSo());
                     Mongod.collUserstory.insertOne(document);
+
 
                     foundDocument = Mongod.collUserstory.find(document).into(new ArrayList<>());
                     //check size
                     if (foundDocument.size()!=1){
                         makeResponseForFailed(responseObserver,"WRONG_SIZE");
                     } else {
+                        Mongod.collProject.findOneAndUpdate(new Document("_id",new ObjectId(request.getProjectId())),
+                                new Document("$push",
+                                        new Document("stories",foundDocument.get(0).get("_id").toString())));
                         makeResponseForUpdateSuccess(responseObserver,foundDocument.get(0).get("_id").toString());
                     }
                 }
@@ -61,6 +66,10 @@ public class UserStory {
 
         @Override
         public void updateUserStory(UpdateUserStoryReq request, StreamObserver<UserStoryRes> responseObserver) {
+            System.out.println("updateUserStory");
+            System.out.println(request.getRole());
+            System.out.println(request.getWant());
+            System.out.println(request.getSo());
             if (!isValidAuth()) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID");
 
@@ -72,7 +81,7 @@ public class UserStory {
                     Document listUpdate=new Document();
 
                     if (request.getRole()!=""){
-                        listUpdate.append("role",request.getRole());
+                        listUpdate.append("role",new BsonString(request.getRole()));
                     }
                     if (request.getWant()!=""){
                         listUpdate.append("want",request.getWant());
@@ -81,7 +90,7 @@ public class UserStory {
                         listUpdate.append("so",request.getSo());
                     }
 
-                    Mongod.collUserstory.findOneAndUpdate(needUpdate,listUpdate);
+                    Mongod.collUserstory.findOneAndUpdate(needUpdate,new Document("$set",listUpdate));
                     makeResponseForUpdateSuccess(responseObserver,request.getUserStoryId());
                 } else{
                     makeResponseForFailed(responseObserver,"NOT_EXIST_USERSTORY_NAME");
@@ -100,6 +109,9 @@ public class UserStory {
                 if (result.getDeletedCount() != 1) {
                     makeResponseForFailed(responseObserver,"WRONG_SIZE");
                 }else{
+                    Mongod.collProject.findOneAndUpdate(
+                            new Document("_id",new ObjectId(request.getProjectId())),
+                                    new Document("$pull",new Document("stories",request.getUserStoryId())));
                     makeResponseForUpdateSuccess(responseObserver,request.getUserStoryId());
                 }
             }
@@ -117,17 +129,22 @@ public class UserStory {
                     makeResponseForFailed(responseObserver,"EMPTY");
 
                 }  else {
-                    foundDocument.forEach(i->{
-                        GetAllUserStoryRes reply=GetAllUserStoryRes.newBuilder()
-                                .setRole(i.get("role").toString())
-                                .setWant(i.get("want").toString())
-                                .setSo(i.get("so").toString())
-                                .setStatus("SUCCESS").build();
-                        responseObserver.onNext(reply);
+                    List<String> idList= (List<String>) foundDocument.get(0).get("stories");
+                    idList.forEach(i->{
+                        List<Document> story=Mongod.collUserstory.find(new Document("_id",new ObjectId(i.toString()))).into(new ArrayList<>());
+                        if (story.size()==1) {
+                            GetAllUserStoryRes reply=GetAllUserStoryRes.newBuilder()
+                                    .setId(story.get(0).get("_id").toString())
+                                    .setRole(story.get(0).get("role").toString())
+                                    .setWant(story.get(0).get("want").toString())
+                                    .setSo(story.get(0).get("so").toString())
+                                    .setName(story.get(0).get("name").toString())
+                                    .setStatus("SUCCESS").build();
+                            responseObserver.onNext(reply);
+                        }
                     });
                     responseObserver.onCompleted();
                 }
-                //TODO: add userstory not own
             }
         }
     }

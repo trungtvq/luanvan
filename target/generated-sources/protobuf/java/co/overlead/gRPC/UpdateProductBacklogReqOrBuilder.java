@@ -116,14 +116,14 @@ public interface UpdateProductBacklogReqOrBuilder extends
       getSprintBytes();
 
   /**
-   * <code>string cookie = 11;</code>
+   * <code>string accessToken = 11;</code>
    */
-  java.lang.String getCookie();
+  java.lang.String getAccessToken();
   /**
-   * <code>string cookie = 11;</code>
+   * <code>string accessToken = 11;</code>
    */
   com.google.protobuf.ByteString
-      getCookieBytes();
+      getAccessTokenBytes();
 
   /**
    * <code>string title = 12;</code>

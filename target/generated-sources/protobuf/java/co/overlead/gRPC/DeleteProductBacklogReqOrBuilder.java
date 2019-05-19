@@ -38,12 +38,12 @@ public interface DeleteProductBacklogReqOrBuilder extends
       getProductBacklogIdBytes();
 
   /**
-   * <code>string cookie = 4;</code>
+   * <code>string accessToken = 4;</code>
    */
-  java.lang.String getCookie();
+  java.lang.String getAccessToken();
   /**
-   * <code>string cookie = 4;</code>
+   * <code>string accessToken = 4;</code>
    */
   com.google.protobuf.ByteString
-      getCookieBytes();
+      getAccessTokenBytes();
 }

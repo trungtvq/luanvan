@@ -7,8 +7,9 @@ option objc_class_prefix = "c";
 package chat;
 
 service Chat{
-
-    rpc connectChat(stream SendMsgReq) returns (stream SendMsgRes){}
+    rpc ConnectRenew(SendMsgReq) returns (SendMsgRes){}
+    rpc ConnectChat(SendMsgReq) returns (stream SendMsgRes){}
+    rpc SendMsg(SendMsgReq) returns (SendMsgRes){}
 }
 
 
@@ -29,4 +30,6 @@ message SendMsgRes{
     string type=3;
     string senderName=4;
     string time=5;
+    string status=6;
 }
+

@@ -106,14 +106,14 @@ public interface AddNewProductBacklogReqOrBuilder extends
       getSprintIdBytes();
 
   /**
-   * <code>string cookie = 10;</code>
+   * <code>string accessToken = 10;</code>
    */
-  java.lang.String getCookie();
+  java.lang.String getAccessToken();
   /**
-   * <code>string cookie = 10;</code>
+   * <code>string accessToken = 10;</code>
    */
   com.google.protobuf.ByteString
-      getCookieBytes();
+      getAccessTokenBytes();
 
   /**
    * <pre>

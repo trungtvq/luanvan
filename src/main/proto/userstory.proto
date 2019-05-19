@@ -55,4 +55,6 @@ message GetAllUserStoryRes{
 	string want = 2;
 	string so = 3;
 	string status = 4;
+    string id=5;
+	string name=6;
 }

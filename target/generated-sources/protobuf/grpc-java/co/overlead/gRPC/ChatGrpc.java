@@ -28,13 +28,45 @@ public final class ChatGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.SendMsgReq,
+      co.overlead.gRPC.SendMsgRes> getConnectRenewMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ConnectRenew",
+      requestType = co.overlead.gRPC.SendMsgReq.class,
+      responseType = co.overlead.gRPC.SendMsgRes.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<co.overlead.gRPC.SendMsgReq,
+      co.overlead.gRPC.SendMsgRes> getConnectRenewMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.SendMsgReq, co.overlead.gRPC.SendMsgRes> getConnectRenewMethod;
+    if ((getConnectRenewMethod = ChatGrpc.getConnectRenewMethod) == null) {
+      synchronized (ChatGrpc.class) {
+        if ((getConnectRenewMethod = ChatGrpc.getConnectRenewMethod) == null) {
+          ChatGrpc.getConnectRenewMethod = getConnectRenewMethod = 
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.SendMsgReq, co.overlead.gRPC.SendMsgRes>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "chat.Chat", "ConnectRenew"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.SendMsgReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.SendMsgRes.getDefaultInstance()))
+                  .setSchemaDescriptor(new ChatMethodDescriptorSupplier("ConnectRenew"))
+                  .build();
+          }
+        }
+     }
+     return getConnectRenewMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.SendMsgReq,
       co.overlead.gRPC.SendMsgRes> getConnectChatMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "connectChat",
+      fullMethodName = SERVICE_NAME + '/' + "ConnectChat",
       requestType = co.overlead.gRPC.SendMsgReq.class,
       responseType = co.overlead.gRPC.SendMsgRes.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
   public static io.grpc.MethodDescriptor<co.overlead.gRPC.SendMsgReq,
       co.overlead.gRPC.SendMsgRes> getConnectChatMethod() {
     io.grpc.MethodDescriptor<co.overlead.gRPC.SendMsgReq, co.overlead.gRPC.SendMsgRes> getConnectChatMethod;
@@ -43,20 +75,52 @@ public final class ChatGrpc {
         if ((getConnectChatMethod = ChatGrpc.getConnectChatMethod) == null) {
           ChatGrpc.getConnectChatMethod = getConnectChatMethod = 
               io.grpc.MethodDescriptor.<co.overlead.gRPC.SendMsgReq, co.overlead.gRPC.SendMsgRes>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(
-                  "chat.Chat", "connectChat"))
+                  "chat.Chat", "ConnectChat"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.SendMsgReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   co.overlead.gRPC.SendMsgRes.getDefaultInstance()))
-                  .setSchemaDescriptor(new ChatMethodDescriptorSupplier("connectChat"))
+                  .setSchemaDescriptor(new ChatMethodDescriptorSupplier("ConnectChat"))
                   .build();
           }
         }
      }
      return getConnectChatMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.SendMsgReq,
+      co.overlead.gRPC.SendMsgRes> getSendMsgMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SendMsg",
+      requestType = co.overlead.gRPC.SendMsgReq.class,
+      responseType = co.overlead.gRPC.SendMsgRes.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<co.overlead.gRPC.SendMsgReq,
+      co.overlead.gRPC.SendMsgRes> getSendMsgMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.SendMsgReq, co.overlead.gRPC.SendMsgRes> getSendMsgMethod;
+    if ((getSendMsgMethod = ChatGrpc.getSendMsgMethod) == null) {
+      synchronized (ChatGrpc.class) {
+        if ((getSendMsgMethod = ChatGrpc.getSendMsgMethod) == null) {
+          ChatGrpc.getSendMsgMethod = getSendMsgMethod = 
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.SendMsgReq, co.overlead.gRPC.SendMsgRes>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "chat.Chat", "SendMsg"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.SendMsgReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.SendMsgRes.getDefaultInstance()))
+                  .setSchemaDescriptor(new ChatMethodDescriptorSupplier("SendMsg"))
+                  .build();
+          }
+        }
+     }
+     return getSendMsgMethod;
   }
 
   /**
@@ -88,20 +152,48 @@ public final class ChatGrpc {
 
     /**
      */
-    public io.grpc.stub.StreamObserver<co.overlead.gRPC.SendMsgReq> connectChat(
+    public void connectRenew(co.overlead.gRPC.SendMsgReq request,
         io.grpc.stub.StreamObserver<co.overlead.gRPC.SendMsgRes> responseObserver) {
-      return asyncUnimplementedStreamingCall(getConnectChatMethod(), responseObserver);
+      asyncUnimplementedUnaryCall(getConnectRenewMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void connectChat(co.overlead.gRPC.SendMsgReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.SendMsgRes> responseObserver) {
+      asyncUnimplementedUnaryCall(getConnectChatMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void sendMsg(co.overlead.gRPC.SendMsgReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.SendMsgRes> responseObserver) {
+      asyncUnimplementedUnaryCall(getSendMsgMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
+            getConnectRenewMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                co.overlead.gRPC.SendMsgReq,
+                co.overlead.gRPC.SendMsgRes>(
+                  this, METHODID_CONNECT_RENEW)))
+          .addMethod(
             getConnectChatMethod(),
-            asyncBidiStreamingCall(
+            asyncServerStreamingCall(
               new MethodHandlers<
                 co.overlead.gRPC.SendMsgReq,
                 co.overlead.gRPC.SendMsgRes>(
                   this, METHODID_CONNECT_CHAT)))
+          .addMethod(
+            getSendMsgMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                co.overlead.gRPC.SendMsgReq,
+                co.overlead.gRPC.SendMsgRes>(
+                  this, METHODID_SEND_MSG)))
           .build();
     }
   }
@@ -126,10 +218,26 @@ public final class ChatGrpc {
 
     /**
      */
-    public io.grpc.stub.StreamObserver<co.overlead.gRPC.SendMsgReq> connectChat(
+    public void connectRenew(co.overlead.gRPC.SendMsgReq request,
         io.grpc.stub.StreamObserver<co.overlead.gRPC.SendMsgRes> responseObserver) {
-      return asyncBidiStreamingCall(
-          getChannel().newCall(getConnectChatMethod(), getCallOptions()), responseObserver);
+      asyncUnaryCall(
+          getChannel().newCall(getConnectRenewMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void connectChat(co.overlead.gRPC.SendMsgReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.SendMsgRes> responseObserver) {
+      asyncServerStreamingCall(
+          getChannel().newCall(getConnectChatMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void sendMsg(co.overlead.gRPC.SendMsgReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.SendMsgRes> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getSendMsgMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -150,6 +258,28 @@ public final class ChatGrpc {
         io.grpc.CallOptions callOptions) {
       return new ChatBlockingStub(channel, callOptions);
     }
+
+    /**
+     */
+    public co.overlead.gRPC.SendMsgRes connectRenew(co.overlead.gRPC.SendMsgReq request) {
+      return blockingUnaryCall(
+          getChannel(), getConnectRenewMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<co.overlead.gRPC.SendMsgRes> connectChat(
+        co.overlead.gRPC.SendMsgReq request) {
+      return blockingServerStreamingCall(
+          getChannel(), getConnectChatMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public co.overlead.gRPC.SendMsgRes sendMsg(co.overlead.gRPC.SendMsgReq request) {
+      return blockingUnaryCall(
+          getChannel(), getSendMsgMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -169,9 +299,27 @@ public final class ChatGrpc {
         io.grpc.CallOptions callOptions) {
       return new ChatFutureStub(channel, callOptions);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.SendMsgRes> connectRenew(
+        co.overlead.gRPC.SendMsgReq request) {
+      return futureUnaryCall(
+          getChannel().newCall(getConnectRenewMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.SendMsgRes> sendMsg(
+        co.overlead.gRPC.SendMsgReq request) {
+      return futureUnaryCall(
+          getChannel().newCall(getSendMsgMethod(), getCallOptions()), request);
+    }
   }
 
-  private static final int METHODID_CONNECT_CHAT = 0;
+  private static final int METHODID_CONNECT_RENEW = 0;
+  private static final int METHODID_CONNECT_CHAT = 1;
+  private static final int METHODID_SEND_MSG = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -190,6 +338,18 @@ public final class ChatGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_CONNECT_RENEW:
+          serviceImpl.connectRenew((co.overlead.gRPC.SendMsgReq) request,
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.SendMsgRes>) responseObserver);
+          break;
+        case METHODID_CONNECT_CHAT:
+          serviceImpl.connectChat((co.overlead.gRPC.SendMsgReq) request,
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.SendMsgRes>) responseObserver);
+          break;
+        case METHODID_SEND_MSG:
+          serviceImpl.sendMsg((co.overlead.gRPC.SendMsgReq) request,
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.SendMsgRes>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -200,9 +360,6 @@ public final class ChatGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_CONNECT_CHAT:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.connectChat(
-              (io.grpc.stub.StreamObserver<co.overlead.gRPC.SendMsgRes>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -254,7 +411,9 @@ public final class ChatGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new ChatFileDescriptorSupplier())
+              .addMethod(getConnectRenewMethod())
               .addMethod(getConnectChatMethod())
+              .addMethod(getSendMsgMethod())
               .build();
         }
       }

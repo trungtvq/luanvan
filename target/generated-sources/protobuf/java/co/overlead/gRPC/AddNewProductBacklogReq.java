@@ -25,7 +25,7 @@ private static final long serialVersionUID = 0L;
     priority_ = "";
     estimation_ = "";
     sprintId_ = "";
-    cookie_ = "";
+    accessToken_ = "";
     title_ = "";
   }
 
@@ -110,7 +110,7 @@ private static final long serialVersionUID = 0L;
           case 82: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            cookie_ = s;
+            accessToken_ = s;
             break;
           }
           case 90: {
@@ -465,34 +465,34 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int COOKIE_FIELD_NUMBER = 10;
-  private volatile java.lang.Object cookie_;
+  public static final int ACCESSTOKEN_FIELD_NUMBER = 10;
+  private volatile java.lang.Object accessToken_;
   /**
-   * <code>string cookie = 10;</code>
+   * <code>string accessToken = 10;</code>
    */
-  public java.lang.String getCookie() {
-    java.lang.Object ref = cookie_;
+  public java.lang.String getAccessToken() {
+    java.lang.Object ref = accessToken_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      cookie_ = s;
+      accessToken_ = s;
       return s;
     }
   }
   /**
-   * <code>string cookie = 10;</code>
+   * <code>string accessToken = 10;</code>
    */
   public com.google.protobuf.ByteString
-      getCookieBytes() {
-    java.lang.Object ref = cookie_;
+      getAccessTokenBytes() {
+    java.lang.Object ref = accessToken_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      cookie_ = b;
+      accessToken_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -582,8 +582,8 @@ private static final long serialVersionUID = 0L;
     if (!getSprintIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 9, sprintId_);
     }
-    if (!getCookieBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, cookie_);
+    if (!getAccessTokenBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, accessToken_);
     }
     if (!getTitleBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 11, title_);
@@ -624,8 +624,8 @@ private static final long serialVersionUID = 0L;
     if (!getSprintIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, sprintId_);
     }
-    if (!getCookieBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, cookie_);
+    if (!getAccessTokenBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, accessToken_);
     }
     if (!getTitleBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, title_);
@@ -663,8 +663,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getEstimation())) return false;
     if (!getSprintId()
         .equals(other.getSprintId())) return false;
-    if (!getCookie()
-        .equals(other.getCookie())) return false;
+    if (!getAccessToken()
+        .equals(other.getAccessToken())) return false;
     if (!getTitle()
         .equals(other.getTitle())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -696,8 +696,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getEstimation().hashCode();
     hash = (37 * hash) + SPRINTID_FIELD_NUMBER;
     hash = (53 * hash) + getSprintId().hashCode();
-    hash = (37 * hash) + COOKIE_FIELD_NUMBER;
-    hash = (53 * hash) + getCookie().hashCode();
+    hash = (37 * hash) + ACCESSTOKEN_FIELD_NUMBER;
+    hash = (53 * hash) + getAccessToken().hashCode();
     hash = (37 * hash) + TITLE_FIELD_NUMBER;
     hash = (53 * hash) + getTitle().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -851,7 +851,7 @@ private static final long serialVersionUID = 0L;
 
       sprintId_ = "";
 
-      cookie_ = "";
+      accessToken_ = "";
 
       title_ = "";
 
@@ -890,7 +890,7 @@ private static final long serialVersionUID = 0L;
       result.priority_ = priority_;
       result.estimation_ = estimation_;
       result.sprintId_ = sprintId_;
-      result.cookie_ = cookie_;
+      result.accessToken_ = accessToken_;
       result.title_ = title_;
       onBuilt();
       return result;
@@ -976,8 +976,8 @@ private static final long serialVersionUID = 0L;
         sprintId_ = other.sprintId_;
         onChanged();
       }
-      if (!other.getCookie().isEmpty()) {
-        cookie_ = other.cookie_;
+      if (!other.getAccessToken().isEmpty()) {
+        accessToken_ = other.accessToken_;
         onChanged();
       }
       if (!other.getTitle().isEmpty()) {
@@ -1654,71 +1654,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object cookie_ = "";
+    private java.lang.Object accessToken_ = "";
     /**
-     * <code>string cookie = 10;</code>
+     * <code>string accessToken = 10;</code>
      */
-    public java.lang.String getCookie() {
-      java.lang.Object ref = cookie_;
+    public java.lang.String getAccessToken() {
+      java.lang.Object ref = accessToken_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        cookie_ = s;
+        accessToken_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string cookie = 10;</code>
+     * <code>string accessToken = 10;</code>
      */
     public com.google.protobuf.ByteString
-        getCookieBytes() {
-      java.lang.Object ref = cookie_;
+        getAccessTokenBytes() {
+      java.lang.Object ref = accessToken_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        cookie_ = b;
+        accessToken_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string cookie = 10;</code>
+     * <code>string accessToken = 10;</code>
      */
-    public Builder setCookie(
+    public Builder setAccessToken(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      cookie_ = value;
+      accessToken_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string cookie = 10;</code>
+     * <code>string accessToken = 10;</code>
      */
-    public Builder clearCookie() {
+    public Builder clearAccessToken() {
       
-      cookie_ = getDefaultInstance().getCookie();
+      accessToken_ = getDefaultInstance().getAccessToken();
       onChanged();
       return this;
     }
     /**
-     * <code>string cookie = 10;</code>
+     * <code>string accessToken = 10;</code>
      */
-    public Builder setCookieBytes(
+    public Builder setAccessTokenBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      cookie_ = value;
+      accessToken_ = value;
       onChanged();
       return this;
     }

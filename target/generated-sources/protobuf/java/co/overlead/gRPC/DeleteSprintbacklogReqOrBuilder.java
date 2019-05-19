@@ -28,22 +28,22 @@ public interface DeleteSprintBacklogReqOrBuilder extends
       getProjectIdBytes();
 
   /**
-   * <code>string sprintBacklogId = 3;</code>
+   * <code>string backlogId = 3;</code>
    */
-  java.lang.String getSprintBacklogId();
+  java.lang.String getBacklogId();
   /**
-   * <code>string sprintBacklogId = 3;</code>
+   * <code>string backlogId = 3;</code>
    */
   com.google.protobuf.ByteString
-      getSprintBacklogIdBytes();
+      getBacklogIdBytes();
 
   /**
-   * <code>string cookie = 4;</code>
+   * <code>string accessToken = 4;</code>
    */
-  java.lang.String getCookie();
+  java.lang.String getAccessToken();
   /**
-   * <code>string cookie = 4;</code>
+   * <code>string accessToken = 4;</code>
    */
   com.google.protobuf.ByteString
-      getCookieBytes();
+      getAccessTokenBytes();
 }

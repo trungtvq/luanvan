@@ -36,12 +36,15 @@ public final class chat {
       "\n\nchat.proto\022\004chat\"r\n\nSendMsgReq\022\023\n\013acce" +
       "ssToken\030\001 \001(\t\022\023\n\013requesterId\030\002 \001(\t\022\014\n\004na" +
       "me\030\006 \001(\t\022\021\n\tchannelId\030\003 \001(\t\022\013\n\003msg\030\004 \001(\t" +
-      "\022\014\n\004type\030\005 \001(\t\"\\\n\nSendMsgRes\022\021\n\tchannelI" +
+      "\022\014\n\004type\030\005 \001(\t\"l\n\nSendMsgRes\022\021\n\tchannelI" +
       "d\030\001 \001(\t\022\013\n\003msg\030\002 \001(\t\022\014\n\004type\030\003 \001(\t\022\022\n\nse" +
-      "nderName\030\004 \001(\t\022\014\n\004time\030\005 \001(\t2?\n\004Chat\0227\n\013" +
-      "connectChat\022\020.chat.SendMsgReq\032\020.chat.Sen" +
-      "dMsgRes\"\000(\0010\001B\036\n\020co.overlead.gRPCB\004chatP" +
-      "\001\242\002\001cb\006proto3"
+      "nderName\030\004 \001(\t\022\014\n\004time\030\005 \001(\t\022\016\n\006status\030\006" +
+      " \001(\t2\244\001\n\004Chat\0224\n\014ConnectRenew\022\020.chat.Sen" +
+      "dMsgReq\032\020.chat.SendMsgRes\"\000\0225\n\013ConnectCh" +
+      "at\022\020.chat.SendMsgReq\032\020.chat.SendMsgRes\"\000" +
+      "0\001\022/\n\007SendMsg\022\020.chat.SendMsgReq\032\020.chat.S" +
+      "endMsgRes\"\000B\036\n\020co.overlead.gRPCB\004chatP\001\242" +
+      "\002\001cb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -66,7 +69,7 @@ public final class chat {
     internal_static_chat_SendMsgRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_chat_SendMsgRes_descriptor,
-        new java.lang.String[] { "ChannelId", "Msg", "Type", "SenderName", "Time", });
+        new java.lang.String[] { "ChannelId", "Msg", "Type", "SenderName", "Time", "Status", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

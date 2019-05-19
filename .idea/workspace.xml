@@ -2,23 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a13b32c7-5cec-4a33-a1ca-2d33e458b65d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/Mongod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Mongod.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/gRPCMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/gRPCMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/chat/ClientChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/chat/ClientChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/proto/chat.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/chat.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ConnectChatReq.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ConnectChatReqOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ConnectChatRes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/ConnectChatResOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/CreateChannelChatReq.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/CreateChannelChatReqOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/InviteChatReq.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/InviteChatReqOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/JoinChatReq.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/JoinChatReqOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/LeaveChatReq.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/LeaveChatReqOrBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SimpleChatRes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SimpleChatResOrBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/productbacklog.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/productbacklog.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/sprintbacklog.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/sprintbacklog.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/proto/userstory.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/userstory.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/chat.proto" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/chat.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/productbacklog.proto" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/productbacklog.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/sprintbacklog.proto" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/sprintbacklog.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/userstory.proto" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/userstory.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/ChatGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/ChatGrpc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewProductBacklogReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewProductBacklogReq.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewProductBacklogReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/AddNewProductBacklogReqOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteProductBacklogReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteProductBacklogReq.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteProductBacklogReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteProductBacklogReqOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteSprintbacklogReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteSprintbacklogReq.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteSprintbacklogReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/DeleteSprintbacklogReqOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProductBacklogReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProductBacklogReq.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProductBacklogReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProductBacklogReqOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProductBacklogRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProductBacklogRes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProductBacklogResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllProductBacklogResOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllSprintbacklogReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllSprintbacklogReq.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllSprintbacklogReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllSprintbacklogReqOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllSprintbacklogRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllSprintbacklogRes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllSprintbacklogResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllSprintbacklogResOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllUserStoryRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllUserStoryRes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllUserStoryResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/GetAllUserStoryResOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendMsgRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendMsgRes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendMsgResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendMsgResOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendToSprintBacklogReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendToSprintBacklogReq.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendToSprintBacklogReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SendToSprintBacklogReqOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SprintBacklogRes.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SprintBacklogRes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SprintBacklogResOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/SprintBacklogResOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateProductBacklogReq.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateProductBacklogReq.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateProductBacklogReqOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/UpdateProductBacklogReqOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/chat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/productbacklog.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/productbacklog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/sprintbacklog.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/sprintbacklog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/userstory.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/userstory.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -34,15 +62,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/proto/mytask.proto">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1041">
-              <caret line="169" column="84" selection-start-line="169" selection-start-column="84" selection-end-line="169" selection-end-column="84" />
+            <state relative-caret-position="359">
+              <caret line="64" column="45" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -51,10 +74,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="58" column="70" lean-forward="true" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="70" />
+            <state relative-caret-position="284">
+              <caret line="186" column="59" selection-start-line="186" selection-start-column="59" selection-end-line="186" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -63,10 +86,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/ClientChat.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+            <state relative-caret-position="179">
+              <caret line="63" column="39" lean-forward="true" selection-start-line="63" selection-start-column="39" selection-end-line="63" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,68 +98,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/main/gRPCMain.java">
+        <entry file="file://$PROJECT_DIR$/src/main/proto/sprintbacklog.proto">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="272">
+              <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java">
+        <entry file="file://$PROJECT_DIR$/src/main/proto/productbacklog.proto">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="43" column="50" selection-start-line="43" selection-start-column="50" selection-end-line="43" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="199">
+              <caret line="77" column="4" selection-start-line="77" selection-start-column="4" selection-end-line="87" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/proto/teamtask.proto">
+        <entry file="file://$PROJECT_DIR$/src/main/proto/team.proto">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/proto/userstory.proto">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/proto/chat.proto">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="29" column="75" selection-start-line="29" selection-start-column="75" selection-end-line="29" selection-end-column="75" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#994#995#0" expanded="true" />
-                <element signature="e#1039#1040#0" expanded="true" />
-                <element signature="e#1134#1135#0" expanded="true" />
-                <element signature="e#1179#1180#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-187">
+              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -153,17 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>idProject</find>
-      <find>idOwner</find>
-      <find>setId</find>
-      <find>SimpleRes</find>
-      <find>invalid</find>
-      <find>Invalid</find>
-      <find>getTitle</find>
-      <find>_id</find>
-      <find>id</find>
-      <find>find</find>
-      <find>pull</find>
       <find>WRONG_SIZE</find>
       <find>getUserFromDB</find>
       <find>MongoCollection</find>
@@ -182,13 +154,26 @@
       <find>signIn</find>
       <find>teamtask</find>
       <find>TeamReq</find>
+      <find>connect</find>
+      <find>ChatImplBase</find>
+      <find>request</find>
+      <find>adderid</find>
+      <find>role</find>
+      <find>getCookie</find>
+      <find>&quot;cookie&quot;</find>
+      <find>setProductBacklogId</find>
+      <find>findProductBacklogInPB</find>
+      <find>ProductBacklogId</find>
       <find>cookie</find>
+      <find>setSprintBacklogId</find>
     </findStrings>
     <replaceStrings>
       <replace>getRequesterId</replace>
       <replace>ProjectId</replace>
       <replace>ownerId</replace>
       <replace>TeamRes</replace>
+      <replace>accessToken</replace>
+      <replace>getAccessToken</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -216,30 +201,30 @@
         <option value="$PROJECT_DIR$/src/main/java/helper/caching/chat/Message.java" />
         <option value="$PROJECT_DIR$/src/main/java/helper/caching/chat/Conversation.java" />
         <option value="$PROJECT_DIR$/src/main/java/helper/auth/RequestAuth.java" />
-        <option value="$PROJECT_DIR$/src/main/proto/productbacklog.proto" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/task/Velocity.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/schedule/DailySchedule.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/task/MyTask.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java" />
-        <option value="$PROJECT_DIR$/src/main/proto/sprintbacklog.proto" />
         <option value="$PROJECT_DIR$/src/main/java/database/Redis.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/auth/AuthAccount.java" />
         <option value="$PROJECT_DIR$/src/main/proto/auth.proto" />
         <option value="$PROJECT_DIR$/src/main/proto/teamtask.proto" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/task/TeamTask.java" />
-        <option value="$PROJECT_DIR$/src/main/java/database/Mongod.java" />
         <option value="$PROJECT_DIR$/src/main/proto/team.proto" />
         <option value="$PROJECT_DIR$/src/main/proto/myproject.proto" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/team/CoTeam.java" />
-        <option value="$PROJECT_DIR$/src/main/proto/userstory.proto" />
-        <option value="$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" />
-        <option value="$PROJECT_DIR$/src/main/proto/chat.proto" />
         <option value="$PROJECT_DIR$/src/main/java/main/gRPCMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/chat/ClientChat.java" />
+        <option value="$PROJECT_DIR$/src/main/proto/chat.proto" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java" />
+        <option value="$PROJECT_DIR$/src/main/proto/userstory.proto" />
+        <option value="$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/database/Mongod.java" />
+        <option value="$PROJECT_DIR$/src/main/proto/productbacklog.proto" />
+        <option value="$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java" />
+        <option value="$PROJECT_DIR$/src/main/proto/sprintbacklog.proto" />
+        <option value="$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java" />
       </list>
     </option>
   </component>
@@ -250,11 +235,10 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1096" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-7" />
+    <option name="width" value="1509" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -314,6 +298,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="gRPC" type="462c0819:PsiDirectoryNode" />
               <item name="chat" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="luanvan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gRPC" type="462c0819:PsiDirectoryNode" />
+              <item name="productbacklog" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="server" type="b2602c69:ProjectViewProjectNode" />
@@ -410,6 +403,49 @@
               <item name="generated-sources" type="462c0819:PsiDirectoryNode" />
               <item name="protobuf" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="luanvan" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="generated-sources" type="462c0819:PsiDirectoryNode" />
+              <item name="protobuf" type="462c0819:PsiDirectoryNode" />
+              <item name="grpc-java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="luanvan" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="generated-sources" type="462c0819:PsiDirectoryNode" />
+              <item name="protobuf" type="462c0819:PsiDirectoryNode" />
+              <item name="grpc-java" type="462c0819:PsiDirectoryNode" />
+              <item name="gRPC" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="luanvan" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="generated-sources" type="462c0819:PsiDirectoryNode" />
+              <item name="protobuf" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="luanvan" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="generated-sources" type="462c0819:PsiDirectoryNode" />
+              <item name="protobuf" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gRPC" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="luanvan" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="generated-sources" type="462c0819:PsiDirectoryNode" />
+              <item name="protobuf" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="grpc" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -440,7 +476,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ClientChat">
+  <component name="RunManager" selected="Application.gRPCMain">
     <configuration name="ClientChat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gRPC.chat.ClientChat" />
       <module name="server" />
@@ -508,8 +544,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClientChat" />
         <item itemvalue="Application.gRPCMain" />
+        <item itemvalue="Application.ClientChat" />
         <item itemvalue="Application.MyProjectClient" />
         <item itemvalue="Application.Redis" />
         <item itemvalue="Application.Mongod" />
@@ -537,12 +573,16 @@
       <workItem from="1557794108256" duration="22130000" />
       <workItem from="1557877902013" duration="1536000" />
       <workItem from="1557887559849" duration="6239000" />
-      <workItem from="1557903525857" duration="12855000" />
+      <workItem from="1557903525857" duration="13268000" />
+      <workItem from="1558230763792" duration="2963000" />
+      <workItem from="1558239796493" duration="318000" />
+      <workItem from="1558240144859" duration="17551000" />
+      <workItem from="1558268914649" duration="11799000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199156000" />
+    <option name="totallyTimeSpent" value="232200000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -554,10 +594,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-7" y="0" width="1509" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33208954" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20496894" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -567,15 +607,15 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4983731" weight="0.3279743" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4940347" visible="true" weight="0.36655948" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.72601795" visible="true" weight="0.37878788" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4994664" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3290461" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4951193" weight="0.29046088" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.57280886" weight="0.2900433" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5059653" side_tool="true" weight="0.36969697" />
-      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4994664" weight="0.3279743" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.27398205" side_tool="true" visible="true" weight="0.37878788" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49827468" weight="0.32792208" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -624,14 +664,21 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java</url>
+          <line>31</line>
+          <properties class="gRPC.userstory.UserStory.UserStoryImpl" method="addNewUserStory">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/proto/simple.proto" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/proto/counter.proto" />
-    <entry file="file://$PROJECT_DIR$/src/main/proto/myprofile.proto" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/ChatCaching.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/ConversationCaching.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/helper/IConversationCaching.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/helper/caching/chat.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/helper/caching/ádf.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/main/Test.java">
@@ -713,20 +760,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/productbacklog.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="67" column="22" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/sprintbacklog.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="39" column="15" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/Redis.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
@@ -751,13 +784,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../client/src/views/Personal/Project/AllProject/AllProject.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3196">
-          <caret line="189" selection-start-line="189" selection-end-line="189" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../client/src/views/Personal/Project/AllProject/AllProject.js" />
     <entry file="file://$PROJECT_DIR$/../../client/src/homeNav.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2992">
@@ -789,37 +816,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/auth.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/auth/AuthAccount.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3230">
-          <caret line="204" column="36" selection-start-line="204" selection-start-column="36" selection-end-line="214" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -864,34 +864,113 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/database/Mongod.java">
+    <entry file="file://$PROJECT_DIR$/src/main/proto/mytask.proto">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/main/gRPCMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="36" column="77" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="77" />
+        <state relative-caret-position="459">
+          <caret line="37" column="53" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/team.proto">
+    <entry file="file://$PROJECT_DIR$/src/main/proto/auth.proto">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
+        <state relative-caret-position="340">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/myproject.proto">
+    <entry file="file://$PROJECT_DIR$/target/generated-sources/protobuf/java/co/overlead/gRPC/chat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="61" column="21" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
+        <state relative-caret-position="68">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/generated-sources/protobuf/grpc-java/co/overlead/gRPC/ChatGrpc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1501">
+          <caret line="161" column="64" selection-start-line="161" selection-start-column="64" selection-end-line="161" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/proto/chat_grpc_web_pb.js" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/HashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="474" column="11" selection-start-line="474" selection-start-column="11" selection-end-line="474" selection-end-column="11" />
+          <folding>
+            <element signature="e#19327#19328#0" expanded="true" />
+            <element signature="e#19410#19411#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/proto/build/userstory_pb.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/proto/build/userstory_grpc_web_pb.js" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/ClientChat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1105">
+          <caret line="65" column="2" selection-start-line="65" selection-start-column="2" selection-end-line="65" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/proto/chat.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/proto/myprofile.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="15" column="45" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#addNewUserStory#0;class#UserStoryImpl#0;class#UserStory#0" />
+            <element signature="method#updateUserStory#0;class#UserStoryImpl#0;class#UserStory#0" />
+            <element signature="method#deleteUserStory#0;class#UserStoryImpl#0;class#UserStory#0" />
+            <element signature="method#getAllUserStory#0;class#UserStoryImpl#0;class#UserStory#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/team/CoTeam.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="213" column="39" selection-start-line="213" selection-start-column="39" selection-end-line="213" selection-end-column="39" />
+        <state relative-caret-position="-2633">
+          <caret line="44" column="64" lean-forward="true" selection-start-line="44" selection-start-column="64" selection-end-line="44" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="29" column="19" selection-start-line="29" selection-start-column="15" selection-end-line="29" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="58" column="70" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -905,81 +984,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/userstory/UserStory.java">
+    <entry file="file://$PROJECT_DIR$/src/main/proto/userstory.proto">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="43" column="50" selection-start-line="43" selection-start-column="50" selection-end-line="43" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="476">
+          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/mytask.proto">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/userstory.proto">
+    <entry file="file://$PROJECT_DIR$/src/main/proto/myproject.proto">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+        <state relative-caret-position="187">
+          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1041">
-          <caret line="169" column="84" selection-start-line="169" selection-start-column="84" selection-end-line="169" selection-end-column="84" />
+        <state relative-caret-position="359">
+          <caret line="64" column="45" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/chat.proto">
+    <entry file="file://$PROJECT_DIR$/src/main/java/database/Mongod.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/main/gRPCMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
+        <state relative-caret-position="272">
+          <caret line="30" column="124" selection-start-line="30" selection-start-column="124" selection-end-line="30" selection-end-column="124" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java">
+    <entry file="file://$PROJECT_DIR$/src/main/proto/productbacklog.proto">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="58" column="70" lean-forward="true" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="70" />
+        <state relative-caret-position="199">
+          <caret line="77" column="4" selection-start-line="77" selection-start-column="4" selection-end-line="87" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="186" column="59" selection-start-line="186" selection-start-column="59" selection-end-line="186" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java">
+    <entry file="file://$PROJECT_DIR$/src/main/proto/sprintbacklog.proto">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="29" column="75" selection-start-line="29" selection-start-column="75" selection-end-line="29" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#994#995#0" expanded="true" />
-            <element signature="e#1039#1040#0" expanded="true" />
-            <element signature="e#1134#1135#0" expanded="true" />
-            <element signature="e#1179#1180#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="272">
+          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/ClientChat.java">
+    <entry file="file://$PROJECT_DIR$/src/main/proto/team.proto">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+        <state relative-caret-position="-187">
+          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="63" column="39" lean-forward="true" selection-start-line="63" selection-start-column="39" selection-end-line="63" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

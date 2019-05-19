@@ -61,7 +61,9 @@ public class MyProject {
                             .append("private", request.getPrivate())
                             .append("progress","10")
                             .append("tasks",new BsonArray(Arrays.asList())) //TODO: MOVE TO TEAM
-                            .append("teams",new BsonArray(Arrays.asList()));
+                            .append("teams",new BsonArray(Arrays.asList()))
+                            .append("backlogs",new BsonArray(Arrays.asList()))
+                            .append("stories",new BsonArray(Arrays.asList()));
 
 
                     coll.insertOne(document);

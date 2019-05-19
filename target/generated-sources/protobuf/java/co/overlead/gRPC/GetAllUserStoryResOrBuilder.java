@@ -46,4 +46,24 @@ public interface GetAllUserStoryResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getStatusBytes();
+
+  /**
+   * <code>string id = 5;</code>
+   */
+  java.lang.String getId();
+  /**
+   * <code>string id = 5;</code>
+   */
+  com.google.protobuf.ByteString
+      getIdBytes();
+
+  /**
+   * <code>string name = 6;</code>
+   */
+  java.lang.String getName();
+  /**
+   * <code>string name = 6;</code>
+   */
+  com.google.protobuf.ByteString
+      getNameBytes();
 }

@@ -56,4 +56,14 @@ public interface SendMsgResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getTimeBytes();
+
+  /**
+   * <code>string status = 6;</code>
+   */
+  java.lang.String getStatus();
+  /**
+   * <code>string status = 6;</code>
+   */
+  com.google.protobuf.ByteString
+      getStatusBytes();
 }
