@@ -72,7 +72,7 @@ proto.productbacklog.AddNewProductBacklogReq.toObject = function(includeInstance
     priority: msg.getPriority(),
     estimation: msg.getEstimation(),
     sprintid: msg.getSprintid(),
-    cookie: msg.getCookie(),
+    accesstoken: msg.getAccesstoken(),
     title: msg.getTitle()
   };
 
@@ -148,7 +148,7 @@ proto.productbacklog.AddNewProductBacklogReq.deserializeBinaryFromReader = funct
       break;
     case 10:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCookie(value);
+      msg.setAccesstoken(value);
       break;
     case 11:
       var value = /** @type {string} */ (reader.readString());
@@ -255,7 +255,7 @@ proto.productbacklog.AddNewProductBacklogReq.prototype.serializeBinaryToWriter =
       f
     );
   }
-  f = this.getCookie();
+  f = this.getAccesstoken();
   if (f.length > 0) {
     writer.writeString(
       10,
@@ -417,16 +417,16 @@ proto.productbacklog.AddNewProductBacklogReq.prototype.setSprintid = function(va
 
 
 /**
- * optional string cookie = 10;
+ * optional string accessToken = 10;
  * @return {string}
  */
-proto.productbacklog.AddNewProductBacklogReq.prototype.getCookie = function() {
+proto.productbacklog.AddNewProductBacklogReq.prototype.getAccesstoken = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 10, ""));
 };
 
 
 /** @param {string} value  */
-proto.productbacklog.AddNewProductBacklogReq.prototype.setCookie = function(value) {
+proto.productbacklog.AddNewProductBacklogReq.prototype.setAccesstoken = function(value) {
   jspb.Message.setField(this, 10, value);
 };
 
@@ -715,7 +715,7 @@ proto.productbacklog.UpdateProductBacklogReq.toObject = function(includeInstance
     priority: msg.getPriority(),
     estimation: msg.getEstimation(),
     sprint: msg.getSprint(),
-    cookie: msg.getCookie(),
+    accesstoken: msg.getAccesstoken(),
     title: msg.getTitle(),
     sprintid: msg.getSprintid()
   };
@@ -796,7 +796,7 @@ proto.productbacklog.UpdateProductBacklogReq.deserializeBinaryFromReader = funct
       break;
     case 11:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCookie(value);
+      msg.setAccesstoken(value);
       break;
     case 12:
       var value = /** @type {string} */ (reader.readString());
@@ -914,7 +914,7 @@ proto.productbacklog.UpdateProductBacklogReq.prototype.serializeBinaryToWriter =
       f
     );
   }
-  f = this.getCookie();
+  f = this.getAccesstoken();
   if (f.length > 0) {
     writer.writeString(
       11,
@@ -1098,16 +1098,16 @@ proto.productbacklog.UpdateProductBacklogReq.prototype.setSprint = function(valu
 
 
 /**
- * optional string cookie = 11;
+ * optional string accessToken = 11;
  * @return {string}
  */
-proto.productbacklog.UpdateProductBacklogReq.prototype.getCookie = function() {
+proto.productbacklog.UpdateProductBacklogReq.prototype.getAccesstoken = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 11, ""));
 };
 
 
 /** @param {string} value  */
-proto.productbacklog.UpdateProductBacklogReq.prototype.setCookie = function(value) {
+proto.productbacklog.UpdateProductBacklogReq.prototype.setAccesstoken = function(value) {
   jspb.Message.setField(this, 11, value);
 };
 
@@ -1191,7 +1191,7 @@ proto.productbacklog.DeleteProductBacklogReq.toObject = function(includeInstance
     requesterid: msg.getRequesterid(),
     projectid: msg.getProjectid(),
     productbacklogid: msg.getProductbacklogid(),
-    cookie: msg.getCookie()
+    accesstoken: msg.getAccesstoken()
   };
 
   if (includeInstance) {
@@ -1242,7 +1242,7 @@ proto.productbacklog.DeleteProductBacklogReq.deserializeBinaryFromReader = funct
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCookie(value);
+      msg.setAccesstoken(value);
       break;
     default:
       reader.skipField();
@@ -1303,7 +1303,7 @@ proto.productbacklog.DeleteProductBacklogReq.prototype.serializeBinaryToWriter =
       f
     );
   }
-  f = this.getCookie();
+  f = this.getAccesstoken();
   if (f.length > 0) {
     writer.writeString(
       4,
@@ -1368,16 +1368,16 @@ proto.productbacklog.DeleteProductBacklogReq.prototype.setProductbacklogid = fun
 
 
 /**
- * optional string cookie = 4;
+ * optional string accessToken = 4;
  * @return {string}
  */
-proto.productbacklog.DeleteProductBacklogReq.prototype.getCookie = function() {
+proto.productbacklog.DeleteProductBacklogReq.prototype.getAccesstoken = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
 };
 
 
 /** @param {string} value  */
-proto.productbacklog.DeleteProductBacklogReq.prototype.setCookie = function(value) {
+proto.productbacklog.DeleteProductBacklogReq.prototype.setAccesstoken = function(value) {
   jspb.Message.setField(this, 4, value);
 };
 
@@ -1433,7 +1433,7 @@ proto.productbacklog.SendToSprintBacklogReq.toObject = function(includeInstance,
     productbacklogid: msg.getProductbacklogid(),
     start: msg.getStart(),
     deadline: msg.getDeadline(),
-    cookie: msg.getCookie()
+    accesstoken: msg.getAccesstoken()
   };
 
   if (includeInstance) {
@@ -1492,7 +1492,7 @@ proto.productbacklog.SendToSprintBacklogReq.deserializeBinaryFromReader = functi
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCookie(value);
+      msg.setAccesstoken(value);
       break;
     default:
       reader.skipField();
@@ -1567,7 +1567,7 @@ proto.productbacklog.SendToSprintBacklogReq.prototype.serializeBinaryToWriter = 
       f
     );
   }
-  f = this.getCookie();
+  f = this.getAccesstoken();
   if (f.length > 0) {
     writer.writeString(
       6,
@@ -1662,16 +1662,16 @@ proto.productbacklog.SendToSprintBacklogReq.prototype.setDeadline = function(val
 
 
 /**
- * optional string cookie = 6;
+ * optional string accessToken = 6;
  * @return {string}
  */
-proto.productbacklog.SendToSprintBacklogReq.prototype.getCookie = function() {
+proto.productbacklog.SendToSprintBacklogReq.prototype.getAccesstoken = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 6, ""));
 };
 
 
 /** @param {string} value  */
-proto.productbacklog.SendToSprintBacklogReq.prototype.setCookie = function(value) {
+proto.productbacklog.SendToSprintBacklogReq.prototype.setAccesstoken = function(value) {
   jspb.Message.setField(this, 6, value);
 };
 
@@ -1724,7 +1724,7 @@ proto.productbacklog.GetAllProductBacklogReq.toObject = function(includeInstance
   var f, obj = {
     requesterid: msg.getRequesterid(),
     projectid: msg.getProjectid(),
-    cookie: msg.getCookie()
+    accesstoken: msg.getAccesstoken()
   };
 
   if (includeInstance) {
@@ -1771,7 +1771,7 @@ proto.productbacklog.GetAllProductBacklogReq.deserializeBinaryFromReader = funct
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCookie(value);
+      msg.setAccesstoken(value);
       break;
     default:
       reader.skipField();
@@ -1825,7 +1825,7 @@ proto.productbacklog.GetAllProductBacklogReq.prototype.serializeBinaryToWriter =
       f
     );
   }
-  f = this.getCookie();
+  f = this.getAccesstoken();
   if (f.length > 0) {
     writer.writeString(
       3,
@@ -1875,16 +1875,16 @@ proto.productbacklog.GetAllProductBacklogReq.prototype.setProjectid = function(v
 
 
 /**
- * optional string cookie = 3;
+ * optional string accessToken = 3;
  * @return {string}
  */
-proto.productbacklog.GetAllProductBacklogReq.prototype.getCookie = function() {
+proto.productbacklog.GetAllProductBacklogReq.prototype.getAccesstoken = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 3, ""));
 };
 
 
 /** @param {string} value  */
-proto.productbacklog.GetAllProductBacklogReq.prototype.setCookie = function(value) {
+proto.productbacklog.GetAllProductBacklogReq.prototype.setAccesstoken = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
@@ -1944,7 +1944,8 @@ proto.productbacklog.GetAllProductBacklogRes.toObject = function(includeInstance
     error: msg.getError(),
     priority: msg.getPriority(),
     estimation: msg.getEstimation(),
-    sprintid: msg.getSprintid()
+    sprintid: msg.getSprintid(),
+    title: msg.getTitle()
   };
 
   if (includeInstance) {
@@ -2020,6 +2021,10 @@ proto.productbacklog.GetAllProductBacklogRes.deserializeBinaryFromReader = funct
     case 8:
       var value = /** @type {string} */ (reader.readString());
       msg.setSprintid(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
       break;
     default:
       reader.skipField();
@@ -2126,6 +2131,13 @@ proto.productbacklog.GetAllProductBacklogRes.prototype.serializeBinaryToWriter =
   if (f.length > 0) {
     writer.writeString(
       8,
+      f
+    );
+  }
+  f = this.getTitle();
+  if (f.length > 0) {
+    writer.writeString(
+      10,
       f
     );
   }
@@ -2288,6 +2300,21 @@ proto.productbacklog.GetAllProductBacklogRes.prototype.getSprintid = function() 
 /** @param {string} value  */
 proto.productbacklog.GetAllProductBacklogRes.prototype.setSprintid = function(value) {
   jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * optional string title = 10;
+ * @return {string}
+ */
+proto.productbacklog.GetAllProductBacklogRes.prototype.getTitle = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 10, ""));
+};
+
+
+/** @param {string} value  */
+proto.productbacklog.GetAllProductBacklogRes.prototype.setTitle = function(value) {
+  jspb.Message.setField(this, 10, value);
 };
 
 
