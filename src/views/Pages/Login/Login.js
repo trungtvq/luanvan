@@ -92,7 +92,7 @@ class Login extends Component {
         } else { 
           if (response.getStatus()=="SUCCESS"){
             cookie.save('userId',response.getId())
-            cookie.save('tokenAccess',response.getSession())
+            cookie.save('accessToken',response.getSession())
             cookie.save('username',signInEmail)
             cookie.save('name',response.getName())
             cookie.save('avatar',response.getAvatar())
@@ -117,7 +117,7 @@ class Login extends Component {
           console.log("SUCCESS")
           if (response.getStatus()=="SUCCESS"){
             cookie.save('userId',response.getId())
-            cookie.save('tokenAccess',response.getSession())
+            cookie.save('accessToken',response.getSession())
             cookie.save('username',profileObj.email)
             cookie.save('name',response.getName())
             cookie.save('avatar',profileObj.imageUrl)

@@ -89,7 +89,7 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
           //get response
           if (response.getStatus()=="SUCCESS"){
             cookie.save('userId',response.getId())
-            cookie.save('tokenAccess',response.getSession())//id,token,email,name,avatar
+            cookie.save('accessToken',response.getSession())//id,token,email,name,avatar
             cookie.save('username',signUpEmail)
             cookie.save('name',signUpName)
             cookie.save('avatar',response.getAvatar())

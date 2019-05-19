@@ -62,13 +62,13 @@ proto.userstory.AddNewUserStoryReq.prototype.toObject = function(opt_includeInst
  */
 proto.userstory.AddNewUserStoryReq.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: msg.getName(),
-    adderid: msg.getAdderid(),
+    requesterid: msg.getRequesterid(),
     projectid: msg.getProjectid(),
     role: msg.getRole(),
     want: msg.getWant(),
     so: msg.getSo(),
-    cookie: msg.getCookie()
+    accesstoken: msg.getAccesstoken(),
+    name: msg.getName()
   };
 
   if (includeInstance) {
@@ -105,13 +105,9 @@ proto.userstory.AddNewUserStoryReq.deserializeBinaryFromReader = function(msg, r
     }
     var field = reader.getFieldNumber();
     switch (field) {
-    case 7:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
-      break;
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setAdderid(value);
+      msg.setRequesterid(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
@@ -131,7 +127,11 @@ proto.userstory.AddNewUserStoryReq.deserializeBinaryFromReader = function(msg, r
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCookie(value);
+      msg.setAccesstoken(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
       break;
     default:
       reader.skipField();
@@ -171,14 +171,7 @@ proto.userstory.AddNewUserStoryReq.prototype.serializeBinary = function() {
  */
 proto.userstory.AddNewUserStoryReq.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = this.getName();
-  if (f.length > 0) {
-    writer.writeString(
-      7,
-      f
-    );
-  }
-  f = this.getAdderid();
+  f = this.getRequesterid();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -213,10 +206,17 @@ proto.userstory.AddNewUserStoryReq.prototype.serializeBinaryToWriter = function 
       f
     );
   }
-  f = this.getCookie();
+  f = this.getAccesstoken();
   if (f.length > 0) {
     writer.writeString(
       6,
+      f
+    );
+  }
+  f = this.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
       f
     );
   }
@@ -233,31 +233,16 @@ proto.userstory.AddNewUserStoryReq.prototype.cloneMessage = function() {
 
 
 /**
- * optional string name = 7;
+ * optional string requesterId = 1;
  * @return {string}
  */
-proto.userstory.AddNewUserStoryReq.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 7, ""));
-};
-
-
-/** @param {string} value  */
-proto.userstory.AddNewUserStoryReq.prototype.setName = function(value) {
-  jspb.Message.setField(this, 7, value);
-};
-
-
-/**
- * optional string adderId = 1;
- * @return {string}
- */
-proto.userstory.AddNewUserStoryReq.prototype.getAdderid = function() {
+proto.userstory.AddNewUserStoryReq.prototype.getRequesterid = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 1, ""));
 };
 
 
 /** @param {string} value  */
-proto.userstory.AddNewUserStoryReq.prototype.setAdderid = function(value) {
+proto.userstory.AddNewUserStoryReq.prototype.setRequesterid = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
@@ -323,17 +308,32 @@ proto.userstory.AddNewUserStoryReq.prototype.setSo = function(value) {
 
 
 /**
- * optional string cookie = 6;
+ * optional string accessToken = 6;
  * @return {string}
  */
-proto.userstory.AddNewUserStoryReq.prototype.getCookie = function() {
+proto.userstory.AddNewUserStoryReq.prototype.getAccesstoken = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 6, ""));
 };
 
 
 /** @param {string} value  */
-proto.userstory.AddNewUserStoryReq.prototype.setCookie = function(value) {
+proto.userstory.AddNewUserStoryReq.prototype.setAccesstoken = function(value) {
   jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * optional string name = 7;
+ * @return {string}
+ */
+proto.userstory.AddNewUserStoryReq.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 7, ""));
+};
+
+
+/** @param {string} value  */
+proto.userstory.AddNewUserStoryReq.prototype.setName = function(value) {
+  jspb.Message.setField(this, 7, value);
 };
 
 
@@ -384,8 +384,7 @@ proto.userstory.UserStoryRes.prototype.toObject = function(opt_includeInstance) 
 proto.userstory.UserStoryRes.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: msg.getStatus(),
-    id: msg.getId(),
-    error: msg.getError()
+    id: msg.getId()
   };
 
   if (includeInstance) {
@@ -429,10 +428,6 @@ proto.userstory.UserStoryRes.deserializeBinaryFromReader = function(msg, reader)
     case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setId(value);
-      break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setError(value);
       break;
     default:
       reader.skipField();
@@ -486,13 +481,6 @@ proto.userstory.UserStoryRes.prototype.serializeBinaryToWriter = function (write
       f
     );
   }
-  f = this.getError();
-  if (f.length > 0) {
-    writer.writeString(
-      3,
-      f
-    );
-  }
 };
 
 
@@ -532,21 +520,6 @@ proto.userstory.UserStoryRes.prototype.getId = function() {
 /** @param {string} value  */
 proto.userstory.UserStoryRes.prototype.setId = function(value) {
   jspb.Message.setField(this, 2, value);
-};
-
-
-/**
- * optional string error = 3;
- * @return {string}
- */
-proto.userstory.UserStoryRes.prototype.getError = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 3, ""));
-};
-
-
-/** @param {string} value  */
-proto.userstory.UserStoryRes.prototype.setError = function(value) {
-  jspb.Message.setField(this, 3, value);
 };
 
 
@@ -596,13 +569,13 @@ proto.userstory.UpdateUserStoryReq.prototype.toObject = function(opt_includeInst
  */
 proto.userstory.UpdateUserStoryReq.toObject = function(includeInstance, msg) {
   var f, obj = {
-    updaterid: msg.getUpdaterid(),
+    requesterid: msg.getRequesterid(),
     projectid: msg.getProjectid(),
     userstoryid: msg.getUserstoryid(),
     role: msg.getRole(),
     want: msg.getWant(),
     so: msg.getSo(),
-    cookie: msg.getCookie()
+    accesstoken: msg.getAccesstoken()
   };
 
   if (includeInstance) {
@@ -641,7 +614,7 @@ proto.userstory.UpdateUserStoryReq.deserializeBinaryFromReader = function(msg, r
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setUpdaterid(value);
+      msg.setRequesterid(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
@@ -665,7 +638,7 @@ proto.userstory.UpdateUserStoryReq.deserializeBinaryFromReader = function(msg, r
       break;
     case 7:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCookie(value);
+      msg.setAccesstoken(value);
       break;
     default:
       reader.skipField();
@@ -705,7 +678,7 @@ proto.userstory.UpdateUserStoryReq.prototype.serializeBinary = function() {
  */
 proto.userstory.UpdateUserStoryReq.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = this.getUpdaterid();
+  f = this.getRequesterid();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -747,7 +720,7 @@ proto.userstory.UpdateUserStoryReq.prototype.serializeBinaryToWriter = function 
       f
     );
   }
-  f = this.getCookie();
+  f = this.getAccesstoken();
   if (f.length > 0) {
     writer.writeString(
       7,
@@ -767,16 +740,16 @@ proto.userstory.UpdateUserStoryReq.prototype.cloneMessage = function() {
 
 
 /**
- * optional string updaterId = 1;
+ * optional string requesterId = 1;
  * @return {string}
  */
-proto.userstory.UpdateUserStoryReq.prototype.getUpdaterid = function() {
+proto.userstory.UpdateUserStoryReq.prototype.getRequesterid = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 1, ""));
 };
 
 
 /** @param {string} value  */
-proto.userstory.UpdateUserStoryReq.prototype.setUpdaterid = function(value) {
+proto.userstory.UpdateUserStoryReq.prototype.setRequesterid = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
@@ -857,16 +830,16 @@ proto.userstory.UpdateUserStoryReq.prototype.setSo = function(value) {
 
 
 /**
- * optional string cookie = 7;
+ * optional string accessToken = 7;
  * @return {string}
  */
-proto.userstory.UpdateUserStoryReq.prototype.getCookie = function() {
+proto.userstory.UpdateUserStoryReq.prototype.getAccesstoken = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 7, ""));
 };
 
 
 /** @param {string} value  */
-proto.userstory.UpdateUserStoryReq.prototype.setCookie = function(value) {
+proto.userstory.UpdateUserStoryReq.prototype.setAccesstoken = function(value) {
   jspb.Message.setField(this, 7, value);
 };
 
@@ -917,10 +890,10 @@ proto.userstory.DeleteUserStoryReq.prototype.toObject = function(opt_includeInst
  */
 proto.userstory.DeleteUserStoryReq.toObject = function(includeInstance, msg) {
   var f, obj = {
-    deleterid: msg.getDeleterid(),
+    requesterid: msg.getRequesterid(),
     projectid: msg.getProjectid(),
     userstoryid: msg.getUserstoryid(),
-    cookie: msg.getCookie()
+    accesstoken: msg.getAccesstoken()
   };
 
   if (includeInstance) {
@@ -959,7 +932,7 @@ proto.userstory.DeleteUserStoryReq.deserializeBinaryFromReader = function(msg, r
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setDeleterid(value);
+      msg.setRequesterid(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
@@ -971,7 +944,7 @@ proto.userstory.DeleteUserStoryReq.deserializeBinaryFromReader = function(msg, r
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCookie(value);
+      msg.setAccesstoken(value);
       break;
     default:
       reader.skipField();
@@ -1011,7 +984,7 @@ proto.userstory.DeleteUserStoryReq.prototype.serializeBinary = function() {
  */
 proto.userstory.DeleteUserStoryReq.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = this.getDeleterid();
+  f = this.getRequesterid();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -1032,7 +1005,7 @@ proto.userstory.DeleteUserStoryReq.prototype.serializeBinaryToWriter = function 
       f
     );
   }
-  f = this.getCookie();
+  f = this.getAccesstoken();
   if (f.length > 0) {
     writer.writeString(
       4,
@@ -1052,16 +1025,16 @@ proto.userstory.DeleteUserStoryReq.prototype.cloneMessage = function() {
 
 
 /**
- * optional string deleterId = 1;
+ * optional string requesterId = 1;
  * @return {string}
  */
-proto.userstory.DeleteUserStoryReq.prototype.getDeleterid = function() {
+proto.userstory.DeleteUserStoryReq.prototype.getRequesterid = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 1, ""));
 };
 
 
 /** @param {string} value  */
-proto.userstory.DeleteUserStoryReq.prototype.setDeleterid = function(value) {
+proto.userstory.DeleteUserStoryReq.prototype.setRequesterid = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
@@ -1097,16 +1070,16 @@ proto.userstory.DeleteUserStoryReq.prototype.setUserstoryid = function(value) {
 
 
 /**
- * optional string cookie = 4;
+ * optional string accessToken = 4;
  * @return {string}
  */
-proto.userstory.DeleteUserStoryReq.prototype.getCookie = function() {
+proto.userstory.DeleteUserStoryReq.prototype.getAccesstoken = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
 };
 
 
 /** @param {string} value  */
-proto.userstory.DeleteUserStoryReq.prototype.setCookie = function(value) {
+proto.userstory.DeleteUserStoryReq.prototype.setAccesstoken = function(value) {
   jspb.Message.setField(this, 4, value);
 };
 
@@ -1157,9 +1130,9 @@ proto.userstory.GetAllUserStoryReq.prototype.toObject = function(opt_includeInst
  */
 proto.userstory.GetAllUserStoryReq.toObject = function(includeInstance, msg) {
   var f, obj = {
-    getterid: msg.getGetterid(),
+    requesterid: msg.getRequesterid(),
     projectid: msg.getProjectid(),
-    cookie: msg.getCookie()
+    accesstoken: msg.getAccesstoken()
   };
 
   if (includeInstance) {
@@ -1198,7 +1171,7 @@ proto.userstory.GetAllUserStoryReq.deserializeBinaryFromReader = function(msg, r
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setGetterid(value);
+      msg.setRequesterid(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
@@ -1206,7 +1179,7 @@ proto.userstory.GetAllUserStoryReq.deserializeBinaryFromReader = function(msg, r
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCookie(value);
+      msg.setAccesstoken(value);
       break;
     default:
       reader.skipField();
@@ -1246,7 +1219,7 @@ proto.userstory.GetAllUserStoryReq.prototype.serializeBinary = function() {
  */
 proto.userstory.GetAllUserStoryReq.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = this.getGetterid();
+  f = this.getRequesterid();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -1260,7 +1233,7 @@ proto.userstory.GetAllUserStoryReq.prototype.serializeBinaryToWriter = function 
       f
     );
   }
-  f = this.getCookie();
+  f = this.getAccesstoken();
   if (f.length > 0) {
     writer.writeString(
       3,
@@ -1280,16 +1253,16 @@ proto.userstory.GetAllUserStoryReq.prototype.cloneMessage = function() {
 
 
 /**
- * optional string getterId = 1;
+ * optional string requesterId = 1;
  * @return {string}
  */
-proto.userstory.GetAllUserStoryReq.prototype.getGetterid = function() {
+proto.userstory.GetAllUserStoryReq.prototype.getRequesterid = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 1, ""));
 };
 
 
 /** @param {string} value  */
-proto.userstory.GetAllUserStoryReq.prototype.setGetterid = function(value) {
+proto.userstory.GetAllUserStoryReq.prototype.setRequesterid = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
@@ -1310,16 +1283,16 @@ proto.userstory.GetAllUserStoryReq.prototype.setProjectid = function(value) {
 
 
 /**
- * optional string cookie = 3;
+ * optional string accessToken = 3;
  * @return {string}
  */
-proto.userstory.GetAllUserStoryReq.prototype.getCookie = function() {
+proto.userstory.GetAllUserStoryReq.prototype.getAccesstoken = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 3, ""));
 };
 
 
 /** @param {string} value  */
-proto.userstory.GetAllUserStoryReq.prototype.setCookie = function(value) {
+proto.userstory.GetAllUserStoryReq.prototype.setAccesstoken = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
@@ -1374,7 +1347,8 @@ proto.userstory.GetAllUserStoryRes.toObject = function(includeInstance, msg) {
     want: msg.getWant(),
     so: msg.getSo(),
     status: msg.getStatus(),
-    error: msg.getError()
+    id: msg.getId(),
+    name: msg.getName()
   };
 
   if (includeInstance) {
@@ -1429,7 +1403,11 @@ proto.userstory.GetAllUserStoryRes.deserializeBinaryFromReader = function(msg, r
       break;
     case 5:
       var value = /** @type {string} */ (reader.readString());
-      msg.setError(value);
+      msg.setId(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
       break;
     default:
       reader.skipField();
@@ -1497,10 +1475,17 @@ proto.userstory.GetAllUserStoryRes.prototype.serializeBinaryToWriter = function 
       f
     );
   }
-  f = this.getError();
+  f = this.getId();
   if (f.length > 0) {
     writer.writeString(
       5,
+      f
+    );
+  }
+  f = this.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
       f
     );
   }
@@ -1577,17 +1562,32 @@ proto.userstory.GetAllUserStoryRes.prototype.setStatus = function(value) {
 
 
 /**
- * optional string error = 5;
+ * optional string id = 5;
  * @return {string}
  */
-proto.userstory.GetAllUserStoryRes.prototype.getError = function() {
+proto.userstory.GetAllUserStoryRes.prototype.getId = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
 };
 
 
 /** @param {string} value  */
-proto.userstory.GetAllUserStoryRes.prototype.setError = function(value) {
+proto.userstory.GetAllUserStoryRes.prototype.setId = function(value) {
   jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * optional string name = 6;
+ * @return {string}
+ */
+proto.userstory.GetAllUserStoryRes.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 6, ""));
+};
+
+
+/** @param {string} value  */
+proto.userstory.GetAllUserStoryRes.prototype.setName = function(value) {
+  jspb.Message.setField(this, 6, value);
 };
 
 

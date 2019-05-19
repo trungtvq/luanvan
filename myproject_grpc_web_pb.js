@@ -254,12 +254,12 @@ proto.myproject.MyprojectPromiseClient.prototype.deleteProject =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.myproject.GetAllProjectReq,
+ *   !proto.myproject.GetmyprojectReq,
  *   !proto.myproject.ProjectRes>}
  */
-const methodInfo_Myproject_getAllProject = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Myproject_getmyproject = new grpc.web.AbstractClientBase.MethodInfo(
   proto.myproject.ProjectRes,
-  /** @param {!proto.myproject.GetAllProjectReq} request */
+  /** @param {!proto.myproject.GetmyprojectReq} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -268,36 +268,36 @@ const methodInfo_Myproject_getAllProject = new grpc.web.AbstractClientBase.Metho
 
 
 /**
- * @param {!proto.myproject.GetAllProjectReq} request The request proto
+ * @param {!proto.myproject.GetmyprojectReq} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.myproject.ProjectRes>}
  *     The XHR Node Readable Stream
  */
-proto.myproject.MyprojectClient.prototype.getAllProject =
+proto.myproject.MyprojectClient.prototype.getmyproject =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/myproject.Myproject/getAllProject',
+      '/myproject.Myproject/getmyproject',
       request,
       metadata || {},
-      methodInfo_Myproject_getAllProject);
+      methodInfo_Myproject_getmyproject);
 };
 
 
 /**
- * @param {!proto.myproject.GetAllProjectReq} request The request proto
+ * @param {!proto.myproject.GetmyprojectReq} request The request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!grpc.web.ClientReadableStream<!proto.myproject.ProjectRes>}
  *     The XHR Node Readable Stream
  */
-proto.myproject.MyprojectPromiseClient.prototype.getAllProject =
+proto.myproject.MyprojectPromiseClient.prototype.getmyproject =
     function(request, metadata) {
   return this.client_.serverStreaming(this.hostname_ +
-      '/myproject.Myproject/getAllProject',
+      '/myproject.Myproject/getmyproject',
       request,
       metadata || {},
-      methodInfo_Myproject_getAllProject);
+      methodInfo_Myproject_getmyproject);
 };
 
 

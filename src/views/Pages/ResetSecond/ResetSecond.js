@@ -110,7 +110,7 @@ class ResetSecond extends Component {
           console.log(response.getStatus())
           if (response.getStatus()=="SUCCESS"){
             cookie.save('userId',response.getId())
-            cookie.save('tokenAccess',response.getSession())//id,token,email,name,avatar
+            cookie.save('accessToken',response.getSession())//id,token,email,name,avatar
             cookie.save('username',cookie.load("resetUsername"))
             cookie.save('name',response.getName())
             cookie.save('avatar',response.getAvatar())

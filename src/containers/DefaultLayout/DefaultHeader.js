@@ -51,7 +51,7 @@ class DefaultHeader extends Component {
                 </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem href="/CreateProject">Create project</DropdownItem>
-                  <DropdownItem href="/AllProject">My projects</DropdownItem>
+                  <DropdownItem href="/myproject">My projects</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
           </NavItem>

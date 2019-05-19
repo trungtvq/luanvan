@@ -235,7 +235,7 @@ componentDidMount(){
         onClose={this.handleMenuClose}
       >
         <MenuItem onClick={this.handleMenuClose}><a href="/Profile/Detail">Profile</a></MenuItem>
-        <MenuItem onClick={this.handleMenuClose}><a href="/AllProject">My project</a></MenuItem>
+        <MenuItem onClick={this.handleMenuClose}><a href="/myproject">My project</a></MenuItem>
         <MenuItem onClick={this.handleMenuClose}><a href="/login">Log out</a></MenuItem>
       </Menu>
     );

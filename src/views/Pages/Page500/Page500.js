@@ -57,7 +57,7 @@ class Page500 extends Component {
   render() {
     this.props.dispatch(removeLogin())
     cookie.remove('userId')
-    cookie.remove('tokenAccess')
+    cookie.remove('accessToken')
     
     return (
       <div className="app flex-row align-items-center">

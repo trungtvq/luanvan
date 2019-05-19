@@ -91,8 +91,8 @@ const Demo = Loadable({
 });
 
 //PJ
-const AllProject = Loadable({
-    loader: () => import('./views/Personal/Project/AllProject'),
+const MyProject = Loadable({
+    loader: () => import('./views/Personal/Project/MyProject'),
     loading
 });
 const ProjectDone = Loadable({
@@ -131,7 +131,7 @@ class Client extends Component {
            const authService = new proto.auth.AuthClient('https://www.overlead.co');
            var metadata = {};
            var AuthSessionReq = new proto.auth.AuthSessionReq();
-           AuthSessionReq.setSession(cookie.load("tokenAccess"));
+           AuthSessionReq.setSession(cookie.load("accessToken"));
            AuthSessionReq.setId(cookie.load("userId"));
            console.log("authSession")
             authService.authSession(AuthSessionReq, metadata, (err, response) => {
@@ -140,10 +140,10 @@ class Client extends Component {
               } else { 
                 console.log("SUCCESS")
                 if (response.getStatus()=="SUCCESS")
-                    this.props.dispatch(saveLogin(cookie.load("userId"),cookie.load("tokenAccess"),cookie.load("username"),cookie.load("name"),cookie.load("avatar")))       
+                    this.props.dispatch(saveLogin(cookie.load("userId"),cookie.load("accessToken"),cookie.load("username"),cookie.load("name"),cookie.load("avatar")))       
                 else {
                     cookie.remove("userId")
-                    cookie.remove("tokenAccess")
+                    cookie.remove("accessToken")
                     cookie.remove("username")
                     cookie.remove("name")
                     cookie.remove("avatar")
@@ -166,7 +166,7 @@ class Client extends Component {
                                 <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
                                 <Route exact path="/Home/Final" name="HomeFinal" component={HomeFinal} />
 
-                                <Route exact path="/AllProject" name="AllProject" component={AllProject} />
+                                <Route exact path="/myproject" name="myproject" component={MyProject} />
                                 <Route exact path="/ProjectDone" name="ProjectDone" component={ProjectDone} />
                                 <Route exact path="/ProjectTodo" name="ProjectTodo" component={ProjectTodo} />
                                 <Route exact path="/CreateProject" name="CreateProject" component={CreateProject} />

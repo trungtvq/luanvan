@@ -1219,7 +1219,8 @@ proto.myproject.ProjectRes.toObject = function(includeInstance, msg) {
     end: msg.getEnd(),
     pb_private: msg.getPrivate(),
     detail: msg.getDetail(),
-    progress: msg.getProgress()
+    progress: msg.getProgress(),
+    members: msg.getMembers()
   };
 
   if (includeInstance) {
@@ -1295,6 +1296,10 @@ proto.myproject.ProjectRes.deserializeBinaryFromReader = function(msg, reader) {
     case 9:
       var value = /** @type {string} */ (reader.readString());
       msg.setProgress(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMembers(value);
       break;
     default:
       reader.skipField();
@@ -1401,6 +1406,13 @@ proto.myproject.ProjectRes.prototype.serializeBinaryToWriter = function (writer)
   if (f.length > 0) {
     writer.writeString(
       9,
+      f
+    );
+  }
+  f = this.getMembers();
+  if (f.length > 0) {
+    writer.writeString(
+      11,
       f
     );
   }
@@ -1563,6 +1575,21 @@ proto.myproject.ProjectRes.prototype.getProgress = function() {
 /** @param {string} value  */
 proto.myproject.ProjectRes.prototype.setProgress = function(value) {
   jspb.Message.setField(this, 9, value);
+};
+
+
+/**
+ * optional string members = 11;
+ * @return {string}
+ */
+proto.myproject.ProjectRes.prototype.getMembers = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 11, ""));
+};
+
+
+/** @param {string} value  */
+proto.myproject.ProjectRes.prototype.setMembers = function(value) {
+  jspb.Message.setField(this, 11, value);
 };
 
 

@@ -11,7 +11,7 @@ var global = Function('return this')();
 
 goog.exportSymbol('proto.myproject.AddNewProjectReq', null, global);
 goog.exportSymbol('proto.myproject.DeleteProjectReq', null, global);
-goog.exportSymbol('proto.myproject.GetAllProjectReq', null, global);
+goog.exportSymbol('proto.myproject.GetmyprojectReq', null, global);
 goog.exportSymbol('proto.myproject.ProjectRes', null, global);
 goog.exportSymbol('proto.myproject.UpdateProjectReq', null, global);
 
@@ -988,12 +988,12 @@ proto.myproject.DeleteProjectReq.prototype.setRequesterid = function(value) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.myproject.GetAllProjectReq = function(opt_data) {
+proto.myproject.GetmyprojectReq = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.myproject.GetAllProjectReq, jspb.Message);
+goog.inherits(proto.myproject.GetmyprojectReq, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-  proto.myproject.GetAllProjectReq.displayName = 'proto.myproject.GetAllProjectReq';
+  proto.myproject.GetmyprojectReq.displayName = 'proto.myproject.GetmyprojectReq';
 }
 
 
@@ -1008,8 +1008,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     for transitional soy proto support: http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.myproject.GetAllProjectReq.prototype.toObject = function(opt_includeInstance) {
-  return proto.myproject.GetAllProjectReq.toObject(opt_includeInstance, this);
+proto.myproject.GetmyprojectReq.prototype.toObject = function(opt_includeInstance) {
+  return proto.myproject.GetmyprojectReq.toObject(opt_includeInstance, this);
 };
 
 
@@ -1018,10 +1018,10 @@ proto.myproject.GetAllProjectReq.prototype.toObject = function(opt_includeInstan
  * @param {boolean|undefined} includeInstance Whether to include the JSPB
  *     instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.myproject.GetAllProjectReq} msg The msg instance to transform.
+ * @param {!proto.myproject.GetmyprojectReq} msg The msg instance to transform.
  * @return {!Object}
  */
-proto.myproject.GetAllProjectReq.toObject = function(includeInstance, msg) {
+proto.myproject.GetmyprojectReq.toObject = function(includeInstance, msg) {
   var f, obj = {
     requesterid: msg.getRequesterid(),
     cookie: msg.getCookie()
@@ -1038,23 +1038,23 @@ proto.myproject.GetAllProjectReq.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.myproject.GetAllProjectReq}
+ * @return {!proto.myproject.GetmyprojectReq}
  */
-proto.myproject.GetAllProjectReq.deserializeBinary = function(bytes) {
+proto.myproject.GetmyprojectReq.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.myproject.GetAllProjectReq;
-  return proto.myproject.GetAllProjectReq.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.myproject.GetmyprojectReq;
+  return proto.myproject.GetmyprojectReq.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.myproject.GetAllProjectReq} msg The message object to deserialize into.
+ * @param {!proto.myproject.GetmyprojectReq} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.myproject.GetAllProjectReq}
+ * @return {!proto.myproject.GetmyprojectReq}
  */
-proto.myproject.GetAllProjectReq.deserializeBinaryFromReader = function(msg, reader) {
+proto.myproject.GetmyprojectReq.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -1081,10 +1081,10 @@ proto.myproject.GetAllProjectReq.deserializeBinaryFromReader = function(msg, rea
 /**
  * Class method variant: serializes the given message to binary data
  * (in protobuf wire format), writing to the given BinaryWriter.
- * @param {!proto.myproject.GetAllProjectReq} message
+ * @param {!proto.myproject.GetmyprojectReq} message
  * @param {!jspb.BinaryWriter} writer
  */
-proto.myproject.GetAllProjectReq.serializeBinaryToWriter = function(message, writer) {
+proto.myproject.GetmyprojectReq.serializeBinaryToWriter = function(message, writer) {
   message.serializeBinaryToWriter(writer);
 };
 
@@ -1093,7 +1093,7 @@ proto.myproject.GetAllProjectReq.serializeBinaryToWriter = function(message, wri
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.myproject.GetAllProjectReq.prototype.serializeBinary = function() {
+proto.myproject.GetmyprojectReq.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
   this.serializeBinaryToWriter(writer);
   return writer.getResultBuffer();
@@ -1105,7 +1105,7 @@ proto.myproject.GetAllProjectReq.prototype.serializeBinary = function() {
  * writing to the given BinaryWriter.
  * @param {!jspb.BinaryWriter} writer
  */
-proto.myproject.GetAllProjectReq.prototype.serializeBinaryToWriter = function (writer) {
+proto.myproject.GetmyprojectReq.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
   f = this.getRequesterid();
   if (f.length > 0) {
@@ -1126,10 +1126,10 @@ proto.myproject.GetAllProjectReq.prototype.serializeBinaryToWriter = function (w
 
 /**
  * Creates a deep clone of this proto. No data is shared with the original.
- * @return {!proto.myproject.GetAllProjectReq} The clone.
+ * @return {!proto.myproject.GetmyprojectReq} The clone.
  */
-proto.myproject.GetAllProjectReq.prototype.cloneMessage = function() {
-  return /** @type {!proto.myproject.GetAllProjectReq} */ (jspb.Message.cloneMessage(this));
+proto.myproject.GetmyprojectReq.prototype.cloneMessage = function() {
+  return /** @type {!proto.myproject.GetmyprojectReq} */ (jspb.Message.cloneMessage(this));
 };
 
 
@@ -1137,13 +1137,13 @@ proto.myproject.GetAllProjectReq.prototype.cloneMessage = function() {
  * optional string requesterId = 3;
  * @return {string}
  */
-proto.myproject.GetAllProjectReq.prototype.getRequesterid = function() {
+proto.myproject.GetmyprojectReq.prototype.getRequesterid = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 3, ""));
 };
 
 
 /** @param {string} value  */
-proto.myproject.GetAllProjectReq.prototype.setRequesterid = function(value) {
+proto.myproject.GetmyprojectReq.prototype.setRequesterid = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
@@ -1152,13 +1152,13 @@ proto.myproject.GetAllProjectReq.prototype.setRequesterid = function(value) {
  * optional string cookie = 2;
  * @return {string}
  */
-proto.myproject.GetAllProjectReq.prototype.getCookie = function() {
+proto.myproject.GetmyprojectReq.prototype.getCookie = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 2, ""));
 };
 
 
 /** @param {string} value  */
-proto.myproject.GetAllProjectReq.prototype.setCookie = function(value) {
+proto.myproject.GetmyprojectReq.prototype.setCookie = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 

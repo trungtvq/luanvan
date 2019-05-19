@@ -125,7 +125,7 @@ export function updateProject(id,topic,name,start,end,isPrivate,progress  ){
     id,topic,name,start,end,isPrivate,progress
   }
 }
-export function fetchAllProject(id,ownerName,topic,name,start,end,isPrivate){
+export function fetchmyproject(id,ownerName,topic,name,start,end,isPrivate){
   return {
     type: ADD_PROJECT,
     id,ownerName,topic,name,start,end,isPrivate
