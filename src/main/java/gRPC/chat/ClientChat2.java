@@ -9,12 +9,12 @@ import io.grpc.stub.StreamObserver;
 
 import java.util.concurrent.TimeUnit;
 
-public class ClientChat {
+public class ClientChat2 {
 
     private final ManagedChannel channel;
     private final ChatGrpc.ChatBlockingStub blockingStub;
     /** Construct client connecting to HelloWorld server at {@code host:port}. */
-    public ClientChat(String host, int port) {
+    public ClientChat2(String host, int port) {
         this(ManagedChannelBuilder.forAddress(host, port)
                 // Channels are secure by default (via SSL/TLS). For the example we disable TLS to avoid
                 // needing certificates.
@@ -23,7 +23,7 @@ public class ClientChat {
     }
 
     /** Construct client for accessing HelloWorld server using the existing channel. */
-    ClientChat(ManagedChannel channel) {
+    ClientChat2(ManagedChannel channel) {
         this.channel = channel;
         blockingStub = ChatGrpc.newBlockingStub(channel).withDeadlineAfter(1000,TimeUnit.DAYS);
     }
@@ -32,16 +32,14 @@ public class ClientChat {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
 
-    public void connectChat(String userId,String accessToken,String projectId){
-        SendMsgReq req= SendMsgReq.newBuilder().setRequesterId(userId).setAccessToken("newSession").setChannelId(projectId).build();
+    public void sendMsg(String userId,String accessToken,String projectId,String userName,String msg){
+        SendMsgReq req= SendMsgReq.newBuilder().setRequesterId(userId).setChannelId(projectId).setAccessToken(accessToken).setName(userName).setMsg(msg).build();
         SendMsgRes response;
 
         try {
             System.out.println("start catch package");
-            blockingStub.connectChat(req).forEachRemaining(i->{
-                System.out.println(i.getSenderName()+" said: "+ i.getMsg());
-            });
-            connectChat("5cda7f108f39c41dfb476935","newSession","5ce16a8aef2aa3092c1ccecf");
+            SendMsgRes res= blockingStub.sendMsg(req);
+            System.out.println(res.getStatus());
         } catch (StatusRuntimeException e) {
             System.out.println(e);
             return;
@@ -49,12 +47,15 @@ public class ClientChat {
     }
     public static void main(String[] args) throws Exception {
         //  MyProjectClient client = new MyProjectClient("54.255.233.193", 8085);
-        ClientChat client = new ClientChat("localhost",9090);
+        ClientChat2 client = new ClientChat2("localhost",9090);
 
         // MyProjectClient client = new MyProjectClient("0.0.0.0", 8085);
         try {
 
-            client.connectChat("5cda7f108f39c41dfb476935","newSession","5ce16a8aef2aa3092c1ccecf");
+            client.sendMsg("5cda58cb5e97e15823118101","newSession","5ce16a8aef2aa3092c1ccecf","trung","hihi do n21goc");
+//            client.sendMsg("5cda58cb5e97e15823118101","newSession","123","2b");
+//            client.sendMsg("5cda58cb5e97e15823118101","newSession","123","3c");
+//            client.sendMsg("5cda58cb5e97e15823118101","newSession","123","4d");
 
         } finally {
             client.shutdown();

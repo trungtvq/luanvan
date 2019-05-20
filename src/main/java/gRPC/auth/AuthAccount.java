@@ -36,7 +36,6 @@ public class AuthAccount {
         public static boolean getSession(String id,String session){
 
             Long length=Redis.LIST_SESSION_SYNC_COMMAND.llen(id);
-            System.out.println("validate session"+length);
             List<String> list=Redis.LIST_SESSION_SYNC_COMMAND.lrange(id,0,length);
 
             for (int i=0;i<list.size();i++){
@@ -92,7 +91,7 @@ public class AuthAccount {
         }
         @Override
         public void authSession(AuthSessionReq request, StreamObserver<SignInRes> responseObserver) {
-            System.out.println(request.getId());
+            System.out.println("authSession");
 
             if (getSession(request.getId(),request.getSession())){
                 makeResponseForSignInSuccess(responseObserver,request.getId(),"","","");
@@ -103,11 +102,13 @@ public class AuthAccount {
 
         @Override
         public void signIn(SignInReq request, StreamObserver<SignInRes> responseObserver) {
+            System.out.println("signIn");
             Document user=getUserFromDB(request.getUsername());
             if (user!=null){
                 String pa=user.get("password").toString();
                 String pass=request.getPassword();
                 if (pa.equals(pass)){
+                    System.out.println("signIn success");
                     makeResponseForSignInSuccess(responseObserver,user.get("_id").toString(),user.get("username").toString(),user.get("name").toString(),user.get("avatar").toString());
                 }else{
                     makeResponseForSignInFailed(responseObserver,"WRONG_PASSWORD","TRUE");
@@ -147,7 +148,7 @@ public class AuthAccount {
         //OK
         @Override
         public void resetPasswordFinalStep(ResetPasswordFinalStepReq request, StreamObserver<SignInRes> responseObserver) {
-            System.out.println(request.getUsername());
+            System.out.println("resetPasswordFinalStep");
             Document user = getUserFromDB(request.getUsername()); //check username is exist
             if (user==null){ //NOT EXIST USERNAME
                 makeResponseForSignInFailed(responseObserver,"NOT_EXIST_USERNAME","TRUE");

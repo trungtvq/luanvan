@@ -1,15 +1,10 @@
 package main;
 
-import java.util.Date;
+import service.pubsub.Event;
+import service.pubsub.Message;
+import service.pubsub.Subscriber;
 
 public class Test {
     public static void main(String[] args){
-        Date a=new Date()
-                ;
-        for (int i=0;i<1000000;i++){
-            System.out.println(1);
-        }
-        System.out.println(System.currentTimeMillis()-a.getTime());
-
     }
 }
