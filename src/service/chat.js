@@ -9,50 +9,74 @@ const proto = {};
 
 proto.chat = require('./../gRPC/chat/chat_grpc_web_pb');
 class Chat extends Component {
-    componentDidMount() {
-      addResponseMessage("Welcome to this awesome chat!");
-      const chatService =new proto.chat.ChatClient('https://www.overlead.co');
-      var metadata = {};
+  componentDidMount() {
+    addResponseMessage("Welcome to this awesome chat!");
 
-     var SendMsgReq=new proto.chat.SendMsgReq();
-     SendMsgReq.setRequesterid(cookie.load("userId"));
-     SendMsgReq.setAccesstoken(cookie.load("accessToken"));
-     SendMsgReq.setChannelid(cookie.load("currentProject"));
-     SendMsgReq.setName(cookie.load("name"))
-    //  var responseChat = chatService.connectChat(SendMsgReq,metadata)
-  
-    //  responseChat.on('data',function(responseChat){
-    //       addResponseMessage(responseChat.getName()+" said: "+ responseChat.getMsg());
-    //   })
-  
-    //   responseChat.on('status',function(status){
-    //     console.log("client connect")
-    //   })
-  
-    //   responseChat.on('end',function(end){
-    //     console.log("client end")
-    //   })
-    }
-    addResponseMessage=(res)=>{
-      
-    }
-    handleNewUserMessage = (newMessage) => {
-      console.log(`New message incoming! ${newMessage}`);
-            // Now send the message throught the backend API    
-    }
-  
-    render() {
-      return (
-        <div className="App">
-          <Widget
-            handleNewUserMessage={this.handleNewUserMessage}
-            handleNewUserMessage={this.handleNewUserMessage}
-            profileAvatar={logo}
-            title="My new awesome title"
-            subtitle="And my cool subtitle"
-          />
-        </div>
-      );
-    } 
+    this.fetchChat()
   }
-  export default Chat;
+  fetchChat = () => {
+
+    const chatService = new proto.chat.ChatClient('https://www.overlead.co');
+    var metadata = {};
+
+    var SendMsgReq = new proto.chat.SendMsgReq();
+    SendMsgReq.setRequesterid(cookie.load("userId"));
+    SendMsgReq.setAccesstoken(cookie.load("accessToken"));
+    SendMsgReq.setChannelid("5ce16a8aef2aa3092c1ccecf");
+    //SendMsgReq.setChannelid(cookie.load("currentProject"));
+    SendMsgReq.setName(cookie.load("name"))
+    var response = chatService.connectChat(SendMsgReq, metadata)
+    let that = this
+    response.on('data', function (response) {
+      console.log(response.getStatus())
+      addResponseMessage(response.getSendername() + " said: " + response.getMsg());
+      console.log("response" + response.getMsg())
+      if (response.getStatus=="SUCCESS") that.fetchChat()
+    })
+
+    response.on('status', function (status) {
+      console.log(status.code)
+    })
+
+    response.on('end', function (end) {
+      console.log("end")
+    })
+  }
+  componentWillUnmount(){
+  }
+  handleNewUserMessage = (newMessage) => {
+    const chatService = new proto.chat.ChatClient('https://www.overlead.co');
+    var metadata = {};
+
+    var SendMsgReq = new proto.chat.SendMsgReq();
+    SendMsgReq.setRequesterid(cookie.load("userId"));
+    SendMsgReq.setAccesstoken(cookie.load("accessToken"));
+    SendMsgReq.setChannelid("5ce16a8aef2aa3092c1ccecf");
+    SendMsgReq.setName(cookie.load("name"))
+    SendMsgReq.setMsg(newMessage)
+    addResponseMessage("tests");
+
+    chatService.sendMsg(SendMsgReq, metadata, (err, response) => {
+      if (err) { //if error
+        console.log(err);
+        console.log("error")
+      } else {
+        console.log(response.getStatus())
+      }
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Widget
+          handleNewUserMessage={this.handleNewUserMessage}
+          profileAvatar={logo}
+          title="My new awesome title"
+          subtitle="And my cool subtitle"
+        />
+      </div>
+    );
+  }
+}
+export default Chat;

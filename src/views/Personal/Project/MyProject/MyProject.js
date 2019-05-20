@@ -112,7 +112,6 @@ class MyProject extends Component {
 
     response.on('data', function (response) {
       if (response.getStatus() == "SUCCESS") {
-
         dispatch(addProject(response.getProjectid(), response.getTopic(), response.getProjectname(), response.getStart(), response.getEnd(), response.getPrivate(), response.getProgress()))
 
       }
