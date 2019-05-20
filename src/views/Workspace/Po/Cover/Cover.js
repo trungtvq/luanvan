@@ -43,7 +43,7 @@ class Cover extends Component {
               },
               
             ],
-        dataProductBacklog: [ 
+      dataProductBacklog: [ 
               {
                 "as":"admin",
                 "want":"See a list of all members and visitors",
@@ -74,11 +74,52 @@ class Cover extends Component {
               },
             
             ],
-      }
+     
+      priorityUserstory:'',
+      estimationUserstory:'',
+      sprintUserstory:'',
+      
+      priorityProductBacklog:'',
+      estimationProductBacklog:'',
+      sprintProductBacklog:'',
+          }
     };
+    //userstory
+    onTextboxChangePriorityUserstory=(event)=> {
+      this.setState({
+        priorityUserstory: event.target.value,
+      });
+    }
+    onTextboxChangeEstimationUserstory=(event)=> {
+      this.setState({
+        estimationUserstory: event.target.value,
+      });
+    }
+    onTextboxChangeSprintUserstory=(event)=> {
+      this.setState({
+        sprintUserstory: event.target.value,
+      });
+    }
+    //ProductBacklog
+    onTextboxChangePriorityProductBacklog=(event)=> {
+      this.setState({
+        priorityProductBacklog: event.target.value,
+      });
+    }
+    onTextboxChangeEstimationProductBacklog=(event)=> {
+      this.setState({
+        estimationProductBacklog: event.target.value,
+      });
+    }
+    onTextboxChangeSprintProductBacklog=(event)=> {
+      this.setState({
+        sprintProductBacklog: event.target.value,
+      });
+    }
 
-
+    handleSave = () => {}
   render() {
+    let that=this;
     return (
       <Row>
           <Col>         
@@ -101,7 +142,7 @@ class Cover extends Component {
                                                   <Label htmlFor="text-input">Priority</Label>
                                                 </div>
                                                 <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                  <Input type="text" name="text-input" id="text-input" rows="9"/>
+                                                  <Input type="text" name="text-input" id="text-input" rows="9" onChange={that.onTextboxChangePriorityUserstory}/>
                                                 </div>
                                                
                                               
@@ -110,7 +151,7 @@ class Cover extends Component {
                                                   <Label htmlFor="text-input">Estimation</Label>
                                                 </div>
                                                 <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                  <Input type="text" name="text-input" id="text-input" rows="9"/>                            
+                                                  <Input type="text" name="text-input" id="text-input" rows="9" onChange={that.onTextboxChangeEstimationUserstory}/>                            
                                                 </div>
 
                                                  
@@ -119,7 +160,7 @@ class Cover extends Component {
                                                   <Label htmlFor="text-input">Sprint</Label>
                                                 </div>
                                                 <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                  <Input type="text" name="text-input" id="text-input" rows="9"/>                            
+                                                  <Input type="text" name="text-input" id="text-input" rows="9" onChange={that.onTextboxChangeSprintUserstory}/>                            
                                                 </div>
                                             </div>
                                             <Button type="submit" size="sm" color="success" align="center"><i class="fa fa-arrow-right"></i></Button>
@@ -137,7 +178,7 @@ class Cover extends Component {
                   <div class="card-header bg-primary">
                     PRODUCT BACKLOG_
 
-                    <Button type="submit" size="sm" color="primary"> save</Button>
+                    <Button type="submit" size="sm" color="primary" onClick={that.handleSave}> save</Button>
                   </div>
                     <div class="card-body">
                         {this.state.dataProductBacklog.map(function(item, key) {
@@ -156,7 +197,7 @@ class Cover extends Component {
                                                 <Label htmlFor="text-input">Priority</Label>
                                               </div>
                                               <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.priority}/>
+                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.priority} onChange={that.onTextboxChangePriorityProductBacklog}/>
                                               </div>
                                                 
                                                
@@ -164,7 +205,7 @@ class Cover extends Component {
                                                 <Label htmlFor="text-input">Estimation</Label>
                                               </div>
                                               <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.estimation}/>                            
+                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.estimation} onChange={that.onTextboxChangeEstimationProductBacklog}/>                            
                                               </div>
                                                
 
@@ -172,7 +213,7 @@ class Cover extends Component {
                                                 <Label htmlFor="text-input">Sprint</Label>
                                               </div>
                                               <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.sprint}/>                            
+                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.sprint} onChange={that.onTextboxChangeSprintProductBacklog}/>                            
                                               </div>
                                                
                                             </div>

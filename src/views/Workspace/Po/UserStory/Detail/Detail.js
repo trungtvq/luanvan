@@ -320,7 +320,7 @@ class Detail extends Component {
               <table class="table table-lg">
                 <thead class="thead">
                   <tr class="bg-primary">
-                    <th>Name<i class="fa fa-sort"></i></th>
+                    <th>Title<i class="fa fa-sort"></i></th>
                     <th>As a...<i class="fa fa-sort"></i></th>
                     <th>I want to be able to... <i class="fa fa-sort"></i></th>
                     <th>So that... <i class="fa fa-sort"></i></th>

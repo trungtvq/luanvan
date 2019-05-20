@@ -91,11 +91,45 @@ class Team extends Component {
     return (
           <div>
               <div class="card border-primary mb-3">
-                <div class="card-header border-primary">Team list</div>
+                  <div class="card-header border-primary">
+                  <div class="card-header ">
+                          <div class="row justify-content-md-center">
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                            <strong>List team</strong>
+                            </div>
+                            <div class="col-md-auto">
+                          
+                            </div>
+                            <div class="col col-lg-2">
+                            <Button color="primary" size="sm" className="mt-3" onClick={that.toggleAddTeam}><i class="fa fa-plus-square"></i>{this.props.buttonLabel}</Button>
+                           
+                            </div>
+                          </div>
+                          </div>
+                  </div>
                   <div class="card-body">
 
-                  <div class="card border-primary mb-3">
-                        <div class="card-header bg-primary">Team A</div>
+                  <div class="card border-primary  mb-3">
+                          <div class="card-header bg-success">
+                          <div class="row justify-content-md-center">
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                            <strong>Team A</strong>
+                            </div>
+                            <div class="col-md-auto">
+                          
+                            </div>
+                            <div class="col col-lg-2">
+                            <Button color="warning" size="sm" className="mt-3" onClick={that.toggleEditTeam}><i class="fa fa-edit"></i>{this.props.buttonLabel}</Button>
+                            <Button color="danger" size="sm" className="mt-3" onClick={that.handleDeleteTeam}><i class="fa fa-trash"></i>{this.props.buttonLabel}</Button>
+
+                            </div>
+                          </div>
+                                         
+                          </div>
                           <div class="card-body">
                           <Table hover bordered striped responsive size="sm">
                               <thead>
@@ -218,7 +252,7 @@ class Team extends Component {
              
 
 
-            <div class="card border-primary mb-3">
+            {/* <div class="card border-primary mb-3">
                 <div class="card-header bg-primary">
                   <strong>Find and add member</strong>
                       <Row>       
@@ -318,7 +352,7 @@ class Team extends Component {
                       </tbody>
                     </Table>
                 </div>
-            </div>
+            </div> */}
           </div>
            
     );
