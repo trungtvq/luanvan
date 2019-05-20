@@ -25,79 +25,197 @@ import {
   Label,
   Row,
   Table,
-  Progress
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Progress,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Demo from '../../../../homeNav'
 
 class Team extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [],
+      requesterId: '',
+      actionStatus: '',              //success or show error when action add delete update      
+      modalAddMember: false,
+      modalEditMember: false,
+      modalAddTeam: false,
+      modalEditTeam: false,
+      modalActionStatus: false,
+      updateName: '',
+      name: '',
+      as: '',
+      want: '',
+      updateId:'',
+      so: '',
+
+    }
+  };
+  //toggle member
+  toggleAddMember=()=> {
+    this.setState(prevState => ({
+      modalAddMember: !prevState.modalAddMember
+    }));
+  }
+  toggleEditMember=()=> {
+    this.setState(prevState => ({
+      modalEditMember: !prevState.modalEditMember
+    }));
+  }
+  //toggle team
+  toggleAddTeam=()=> {
+    this.setState(prevState => ({
+      modalAddTeam: !prevState.modalAddTeam
+    }));
+  }
+  toggleEditTeam=()=> {
+    this.setState(prevState => ({
+      modalEditTeam: !prevState.modalEditTeam
+    }));
+  }
+  //member
+  handleAddMember = () => {}
+  handleUpdateMember = () => {}
+  handleDeleteMember = () => {}
+  //team
+  handleAddTeam = () => {}
+  handleUpdateTeam = () => {}
+  handleDeleteTeam = () => {}
   render() {
+    let that = this;
     return (
           <div>
-             <div class="card border-primary mb-3">
-                <div class="card-header bg-primary">MEMBER</div>
+              <div class="card border-primary mb-3">
+                <div class="card-header border-primary">Team list</div>
                   <div class="card-body">
-                   <Table hover bordered striped responsive size="sm">
-                      <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Skill</th>
-                        <th>Point</th>
-                        <th>Current task</th>
-                        <th>Task completed</th>
-                        <th></th>
-  
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><center><Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button></center></td>
-                      </tr>
-                     
-                     
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><center><Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button></center></td>
-                      </tr>
-                     
-                     
-                     
-                       <tr>
-                        <td></td>
-                        <td></td>
-                       
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><center><Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button></center></td>
-                      </tr>
-                     
 
-                       <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><center><Button type="submit" size="sm" color="danger"><i class="fa fa-trash"></i></Button></center></td>
-                        </tr>
-                     
-                      
-                      </tbody>
-                   </Table>
+                  <div class="card border-primary mb-3">
+                        <div class="card-header bg-primary">Team A</div>
+                          <div class="card-body">
+                          <Table hover bordered striped responsive size="sm">
+                              <thead>
+                              <tr>
+                                <th>Name</th>                               
+                                <th>Point</th>
+                                <th>Current task</th>
+                                <th>Task completed</th>
+                                <th>
+                                  <div>
+                                    <center><Button color="primary" size="sm" className="mt-3" onClick={that.toggleAddMember}><i class="fa fa-plus-square"></i>{this.props.buttonLabel}</Button></center>
+                                    <Modal size="lg" isOpen={that.state.modalAddMember} toggle={that.toggleAddMember}>
+                                      <ModalHeader toggle={that.toggleAddMember}>Member</ModalHeader>
+                                      <ModalBody>
+                                        
+                                          <Form className="form-horizontal">               
+                                            <FormGroup row>
+                                              <Col md="3">
+                                                <Label htmlFor="text-input">User name</Label>
+                                              </Col>
+                                              <Col xs="5" md="5">
+                                                <Input type="text" id="text-input" name="text-input" placeholder="User name" />
+                                              </Col>
+                                            </FormGroup>
+                                                                  
+                                          </Form>
+                                      
+                                      </ModalBody>
+                                      {/* <div data-id={item.id} onClick={that.handleAddMember}> */}
+                                      <ModalFooter>                                   
+                                          <Button color="primary" >Submit</Button>
+                                      </ModalFooter>
+                                      {/* </div> */}
+                                    </Modal>
+                                  </div>
+                                </th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                <td></td>
+                                <td></td>                                
+                                <td></td>                               
+                                <td></td>
+                                <td>
+                                <center>
+                                {/* <div data-id={item.id} data-name={item.name} onClick={that.toggleEdit}> */}
+                                  <Button color="warning" size="sm">
+                                    <i class="fa fa-edit"></i>
+                                  </Button>
+                                {/* </div> */}
+                                  <Modal size="lg" isOpen={that.state.modalEditMember} toggle={that.toggleEditMember} >
+                                    <ModalHeader toggle={that.toggleEditMember}>Member</ModalHeader>
+                                    <ModalBody>
+                                      <Form className="form-horizontal">
+                                        <FormGroup row>
+                                          <Col md="3">
+                                            <Label htmlFor="text-input">Name</Label>
+                                          </Col>
+                                          <Col xs="12" md="9">
+                                            <Input type="text" id="name" name="name" placeholder="name" disabled={true} value={that.state.updateName} />
+
+                                          </Col>
+                                        </FormGroup>
+                                        <FormGroup row>
+                                          <Col md="3">
+                                            <Label htmlFor="text-input">As a...</Label>
+                                          </Col>
+                                          <Col xs="12" md="9">
+                                            <Input type="text" id="role" name="role" placeholder="As a..." value={that.state.role} onChange={that.onTextboxChangerole} />
+
+                                          </Col>
+                                        </FormGroup>
+                                        <FormGroup row>
+                                          <Col md="3">
+                                            <Label htmlFor="text-input">I want to be able to...</Label>
+                                          </Col>
+                                          <Col xs="12" md="9">
+                                            <Input type="text" id="want" name="want" placeholder="I want to be able to..." value={that.state.want} onChange={that.onTextboxChangewant} />
+
+                                          </Col>
+                                        </FormGroup>
+                                        <FormGroup row>
+                                          <Col md="3">
+                                            <Label htmlFor="textarea-input">So that...</Label>
+                                          </Col>
+                                          <Col xs="12" md="9">
+                                            <Input type="textarea" name="so" id="so" rows="9"
+                                              placeholder="Content..." value={that.state.so} onChange={that.onTextboxChangeso} />
+                                          </Col>
+                                        </FormGroup>
+                                      </Form>
+                                    </ModalBody>
+                                    {/* <div data-id={item.id} onClick={that.handleUpdateMember}> */}
+                                    <ModalFooter>                                   
+                                        <Button color="primary" >Submit</Button>
+                                    </ModalFooter>
+                                    {/* </div> */}
+                                  </Modal>
+
+                                  {/* <div data-id={item.id} onClick={that.handleDelete}>  */}
+                                  <Button type="submit" size="sm" color="danger">
+                                    <i class="fa fa-trash"></i></Button>
+                                  {/* </div> */}
+                                  </center>
+                                  </td>
+                              </tr>
+
+                            </tbody>
+                          </Table>
+                      </div>
+                    </div>
+                
+
+                  
+                
+                </div>
               </div>
-            </div>
+
+             
 
 
             <div class="card border-primary mb-3">
