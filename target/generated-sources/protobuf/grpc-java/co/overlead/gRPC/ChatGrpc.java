@@ -66,7 +66,7 @@ public final class ChatGrpc {
       fullMethodName = SERVICE_NAME + '/' + "ConnectChat",
       requestType = co.overlead.gRPC.SendMsgReq.class,
       responseType = co.overlead.gRPC.SendMsgRes.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<co.overlead.gRPC.SendMsgReq,
       co.overlead.gRPC.SendMsgRes> getConnectChatMethod() {
     io.grpc.MethodDescriptor<co.overlead.gRPC.SendMsgReq, co.overlead.gRPC.SendMsgRes> getConnectChatMethod;
@@ -75,7 +75,7 @@ public final class ChatGrpc {
         if ((getConnectChatMethod = ChatGrpc.getConnectChatMethod) == null) {
           ChatGrpc.getConnectChatMethod = getConnectChatMethod = 
               io.grpc.MethodDescriptor.<co.overlead.gRPC.SendMsgReq, co.overlead.gRPC.SendMsgRes>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "chat.Chat", "ConnectChat"))
               .setSampledToLocalTracing(true)
@@ -182,7 +182,7 @@ public final class ChatGrpc {
                   this, METHODID_CONNECT_RENEW)))
           .addMethod(
             getConnectChatMethod(),
-            asyncServerStreamingCall(
+            asyncUnaryCall(
               new MethodHandlers<
                 co.overlead.gRPC.SendMsgReq,
                 co.overlead.gRPC.SendMsgRes>(
@@ -228,7 +228,7 @@ public final class ChatGrpc {
      */
     public void connectChat(co.overlead.gRPC.SendMsgReq request,
         io.grpc.stub.StreamObserver<co.overlead.gRPC.SendMsgRes> responseObserver) {
-      asyncServerStreamingCall(
+      asyncUnaryCall(
           getChannel().newCall(getConnectChatMethod(), getCallOptions()), request, responseObserver);
     }
 
@@ -268,9 +268,8 @@ public final class ChatGrpc {
 
     /**
      */
-    public java.util.Iterator<co.overlead.gRPC.SendMsgRes> connectChat(
-        co.overlead.gRPC.SendMsgReq request) {
-      return blockingServerStreamingCall(
+    public co.overlead.gRPC.SendMsgRes connectChat(co.overlead.gRPC.SendMsgReq request) {
+      return blockingUnaryCall(
           getChannel(), getConnectChatMethod(), getCallOptions(), request);
     }
 
@@ -306,6 +305,14 @@ public final class ChatGrpc {
         co.overlead.gRPC.SendMsgReq request) {
       return futureUnaryCall(
           getChannel().newCall(getConnectRenewMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.SendMsgRes> connectChat(
+        co.overlead.gRPC.SendMsgReq request) {
+      return futureUnaryCall(
+          getChannel().newCall(getConnectChatMethod(), getCallOptions()), request);
     }
 
     /**

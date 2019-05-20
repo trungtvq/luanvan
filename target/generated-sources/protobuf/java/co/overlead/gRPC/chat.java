@@ -39,12 +39,12 @@ public final class chat {
       "\022\014\n\004type\030\005 \001(\t\"l\n\nSendMsgRes\022\021\n\tchannelI" +
       "d\030\001 \001(\t\022\013\n\003msg\030\002 \001(\t\022\014\n\004type\030\003 \001(\t\022\022\n\nse" +
       "nderName\030\004 \001(\t\022\014\n\004time\030\005 \001(\t\022\016\n\006status\030\006" +
-      " \001(\t2\244\001\n\004Chat\0224\n\014ConnectRenew\022\020.chat.Sen" +
-      "dMsgReq\032\020.chat.SendMsgRes\"\000\0225\n\013ConnectCh" +
+      " \001(\t2\242\001\n\004Chat\0224\n\014ConnectRenew\022\020.chat.Sen" +
+      "dMsgReq\032\020.chat.SendMsgRes\"\000\0223\n\013ConnectCh" +
       "at\022\020.chat.SendMsgReq\032\020.chat.SendMsgRes\"\000" +
-      "0\001\022/\n\007SendMsg\022\020.chat.SendMsgReq\032\020.chat.S" +
-      "endMsgRes\"\000B\036\n\020co.overlead.gRPCB\004chatP\001\242" +
-      "\002\001cb\006proto3"
+      "\022/\n\007SendMsg\022\020.chat.SendMsgReq\032\020.chat.Sen" +
+      "dMsgRes\"\000B\036\n\020co.overlead.gRPCB\004chatP\001\242\002\001" +
+      "cb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

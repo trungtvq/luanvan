@@ -3,19 +3,19 @@
 
 package co.overlead.gRPC;
 
-public interface ProfileResOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:profile.ProfileRes)
+public interface UpdateProfileReqOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:profile.UpdateProfileReq)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string status = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
-  java.lang.String getStatus();
+  java.lang.String getRequesterId();
   /**
-   * <code>string status = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
   com.google.protobuf.ByteString
-      getStatusBytes();
+      getRequesterIdBytes();
 
   /**
    * <code>string avatar = 2;</code>
@@ -26,16 +26,6 @@ public interface ProfileResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getAvatarBytes();
-
-  /**
-   * <code>string point = 11;</code>
-   */
-  java.lang.String getPoint();
-  /**
-   * <code>string point = 11;</code>
-   */
-  com.google.protobuf.ByteString
-      getPointBytes();
 
   /**
    * <code>string name = 3;</code>

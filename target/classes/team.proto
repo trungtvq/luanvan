@@ -21,6 +21,23 @@ service Team {
     }
     rpc getAllMember (GetAllMemberReq) returns (stream TeamRes) {
     }
+    rpc getAllTeam (GetAllTeamReq) returns (stream GetAllTeamRes) {
+    }
+
+}
+message GetAllTeamReq{
+    string requesterId=1;
+    string accessToken=2;
+    string projectId=3;
+    string option=4;
+}
+message GetAllTeamRes{
+    string teamId=1;
+    string status=2;
+    string numMember=3;
+    string name=4;
+    string department=6;
+    string description=7;
 }
 
 message TeamRes {

@@ -49,7 +49,6 @@ public class Chat {
                 responseObserver.onNext(SendMsgRes.newBuilder().setStatus("AUTH_INVALID").build());
                 responseObserver.onCompleted();
             } else {
-
                 if (projectSub.containsKey(request.getChannelId()) == false) {
                     System.out.println("Not contain project channel");
                     UserMessageQueue queue = new UserMessageQueue(request.getRequesterId(), request.getChannelId(), responseObserver);
@@ -71,8 +70,8 @@ public class Chat {
                     }
                 }
             }
-
         }
+
 
         @Override
         public void sendMsg(SendMsgReq request, StreamObserver<SendMsgRes> responseObserver) {

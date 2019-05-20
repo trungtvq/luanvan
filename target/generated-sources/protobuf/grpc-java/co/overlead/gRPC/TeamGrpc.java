@@ -251,6 +251,38 @@ public final class TeamGrpc {
      return getGetAllMemberMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllTeamReq,
+      co.overlead.gRPC.GetAllTeamRes> getGetAllTeamMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getAllTeam",
+      requestType = co.overlead.gRPC.GetAllTeamReq.class,
+      responseType = co.overlead.gRPC.GetAllTeamRes.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllTeamReq,
+      co.overlead.gRPC.GetAllTeamRes> getGetAllTeamMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllTeamReq, co.overlead.gRPC.GetAllTeamRes> getGetAllTeamMethod;
+    if ((getGetAllTeamMethod = TeamGrpc.getGetAllTeamMethod) == null) {
+      synchronized (TeamGrpc.class) {
+        if ((getGetAllTeamMethod = TeamGrpc.getGetAllTeamMethod) == null) {
+          TeamGrpc.getGetAllTeamMethod = getGetAllTeamMethod = 
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.GetAllTeamReq, co.overlead.gRPC.GetAllTeamRes>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "teamtask.Team", "getAllTeam"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.GetAllTeamReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.GetAllTeamRes.getDefaultInstance()))
+                  .setSchemaDescriptor(new TeamMethodDescriptorSupplier("getAllTeam"))
+                  .build();
+          }
+        }
+     }
+     return getGetAllTeamMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -327,6 +359,13 @@ public final class TeamGrpc {
       asyncUnimplementedUnaryCall(getGetAllMemberMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getAllTeam(co.overlead.gRPC.GetAllTeamReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllTeamRes> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetAllTeamMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -378,6 +417,13 @@ public final class TeamGrpc {
                 co.overlead.gRPC.GetAllMemberReq,
                 co.overlead.gRPC.TeamRes>(
                   this, METHODID_GET_ALL_MEMBER)))
+          .addMethod(
+            getGetAllTeamMethod(),
+            asyncServerStreamingCall(
+              new MethodHandlers<
+                co.overlead.gRPC.GetAllTeamReq,
+                co.overlead.gRPC.GetAllTeamRes>(
+                  this, METHODID_GET_ALL_TEAM)))
           .build();
     }
   }
@@ -455,6 +501,14 @@ public final class TeamGrpc {
       asyncServerStreamingCall(
           getChannel().newCall(getGetAllMemberMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getAllTeam(co.overlead.gRPC.GetAllTeamReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllTeamRes> responseObserver) {
+      asyncServerStreamingCall(
+          getChannel().newCall(getGetAllTeamMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -523,6 +577,14 @@ public final class TeamGrpc {
         co.overlead.gRPC.GetAllMemberReq request) {
       return blockingServerStreamingCall(
           getChannel(), getGetAllMemberMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<co.overlead.gRPC.GetAllTeamRes> getAllTeam(
+        co.overlead.gRPC.GetAllTeamReq request) {
+      return blockingServerStreamingCall(
+          getChannel(), getGetAllTeamMethod(), getCallOptions(), request);
     }
   }
 
@@ -600,6 +662,7 @@ public final class TeamGrpc {
   private static final int METHODID_REMOVE_MEMBER = 4;
   private static final int METHODID_UPDATE_MEMBER = 5;
   private static final int METHODID_GET_ALL_MEMBER = 6;
+  private static final int METHODID_GET_ALL_TEAM = 7;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -645,6 +708,10 @@ public final class TeamGrpc {
         case METHODID_GET_ALL_MEMBER:
           serviceImpl.getAllMember((co.overlead.gRPC.GetAllMemberReq) request,
               (io.grpc.stub.StreamObserver<co.overlead.gRPC.TeamRes>) responseObserver);
+          break;
+        case METHODID_GET_ALL_TEAM:
+          serviceImpl.getAllTeam((co.overlead.gRPC.GetAllTeamReq) request,
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllTeamRes>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -714,6 +781,7 @@ public final class TeamGrpc {
               .addMethod(getRemoveMemberMethod())
               .addMethod(getUpdateMemberMethod())
               .addMethod(getGetAllMemberMethod())
+              .addMethod(getGetAllTeamMethod())
               .build();
         }
       }

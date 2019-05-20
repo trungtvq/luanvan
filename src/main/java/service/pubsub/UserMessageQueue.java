@@ -28,7 +28,7 @@ public class UserMessageQueue{
         return list;
     }
     public void updateResponse(StreamObserver<SendMsgRes> responseObserver){
-        this.responseObserver.onCompleted();
+        //this.responseObserver.onCompleted();
         this.responseObserver=responseObserver;
     }
 

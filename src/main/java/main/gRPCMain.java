@@ -3,6 +3,7 @@ package main;
 import gRPC.auth.AuthAccount;
 import gRPC.chat.Chat;
 import gRPC.productbacklog.ProductBacklog;
+import gRPC.profile.MyProfile;
 import gRPC.project.MyProject;
 import gRPC.schedule.DailySchedule;
 import gRPC.sprintbacklog.SprintBacklog;
@@ -26,6 +27,7 @@ public class gRPCMain {
                 .addService(new DailySchedule.DailyScheduleImpl())
                 .addService(new SprintBacklog.SprintBacklogImpl())
                 .addService(new Chat.ChatImpl())
+                .addService(new MyProfile.MyProfileImpl())
                 .build()
                 .start();
 

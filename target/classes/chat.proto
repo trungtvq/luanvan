@@ -8,7 +8,7 @@ package chat;
 
 service Chat{
     rpc ConnectRenew(SendMsgReq) returns (SendMsgRes){}
-    rpc ConnectChat(SendMsgReq) returns (stream SendMsgRes){}
+    rpc ConnectChat(SendMsgReq) returns (SendMsgRes){}
     rpc SendMsg(SendMsgReq) returns (SendMsgRes){}
 }
 

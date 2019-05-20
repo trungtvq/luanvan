@@ -56,7 +56,7 @@ public class CoTeam {
                     if (foundDocument.size() != 1) {
                         makeResponseForFailed(responseObserver, "WRONG_SIZE", "FALSE");
                     } else {
-                        Mongod.collUser.findOneAndUpdate(
+                        Mongod.collAuth.findOneAndUpdate(
                                 new Document("_id", new ObjectId(request.getRequesterId())),
                                 new Document("$push", new Document("teamlist", foundDocument.get(0).get("_id"))));
 
@@ -115,7 +115,7 @@ public class CoTeam {
                     List<String> idList = (List<String>) user.get(0).get("members");
                     if (idList.size()>0){
                         idList.forEach(i->{
-                            Mongod.collUser.findOneAndUpdate(new Document("_id",new ObjectId(i)),new Document("$pull",new Document("teamlist",request.getTeamId())));
+                            Mongod.collAuth.findOneAndUpdate(new Document("_id",new ObjectId(i)),new Document("$pull",new Document("teamlist",request.getTeamId())));
                         });
                     }
                 }
@@ -131,7 +131,7 @@ public class CoTeam {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
                 //check user
-                List<Document> user = Mongod.collUser.find(new Document("username", request.getMemberEmail())).into(new ArrayList<>());
+                List<Document> user = Mongod.collAuth.find(new Document("username", request.getMemberEmail())).into(new ArrayList<>());
                 if (user.size() != 1) {
                     makeResponseForFailed(responseObserver, "WRONG_SIZE_USER_FOUND", "FALSE");
                 } else {
@@ -143,7 +143,7 @@ public class CoTeam {
                         //add member to list member of TEAM
                         Mongod.collTeam.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamId())), new Document("$push", new Document("members", id)));
                         //add team to list of team of MEMBER
-                        Mongod.collUser.findOneAndUpdate(new Document("_id", new ObjectId(id)), new Document("$push", new Document("teamlist", request.getTeamId())));
+                        Mongod.collAuth.findOneAndUpdate(new Document("_id", new ObjectId(id)), new Document("$push", new Document("teamlist", request.getTeamId())));
                         //add member to project
                         //TODO: IMPLEMENT MEMBER OF PROJECT
 
@@ -160,7 +160,7 @@ public class CoTeam {
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
-                List<Document> user = Mongod.collUser.find(new Document("username", request.getMemberEmail())).into(new ArrayList<>());
+                List<Document> user = Mongod.collAuth.find(new Document("username", request.getMemberEmail())).into(new ArrayList<>());
 
                 if (user.size() != 1) {
                     makeResponseForFailed(responseObserver, "WRONG_SIZE_USER_FOUND", "FALSE");
@@ -173,7 +173,7 @@ public class CoTeam {
                         //remove member to list member of TEAM
                         Mongod.collTeam.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamId())), new Document("$pull", new Document("members", id)));
                         //remove team to list of team of MEMBER
-                        Mongod.collUser.findOneAndUpdate(new Document("_id", new ObjectId(id)), new Document("$pull", new Document("teamlist", request.getTeamId())));
+                        Mongod.collAuth.findOneAndUpdate(new Document("_id", new ObjectId(id)), new Document("$pull", new Document("teamlist", request.getTeamId())));
                         makeResponseForUpdateSuccess(responseObserver, request.getTeamId());
                     }
                 }
@@ -185,7 +185,7 @@ public class CoTeam {
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
-                List<Document> user = Mongod.collUser.find(new Document("username", request.getMemberEmail())).into(new ArrayList<>());
+                List<Document> user = Mongod.collAuth.find(new Document("username", request.getMemberEmail())).into(new ArrayList<>());
                 if (user.size() != 1) {
                     makeResponseForFailed(responseObserver, "WRONG_SIZE_USER_FOUND", "FALSE");
                 } else {

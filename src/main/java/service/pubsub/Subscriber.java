@@ -42,6 +42,5 @@ public class Subscriber {
                 queue.getResponseObserver().onCompleted();
             }
         });
-        userQueue = new HashMap<>();
     }
 }

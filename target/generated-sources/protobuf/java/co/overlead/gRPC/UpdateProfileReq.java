@@ -4,21 +4,20 @@
 package co.overlead.gRPC;
 
 /**
- * Protobuf type {@code profile.ProfileRes}
+ * Protobuf type {@code profile.UpdateProfileReq}
  */
-public  final class ProfileRes extends
+public  final class UpdateProfileReq extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:profile.ProfileRes)
-    ProfileResOrBuilder {
+    // @@protoc_insertion_point(message_implements:profile.UpdateProfileReq)
+    UpdateProfileReqOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use ProfileRes.newBuilder() to construct.
-  private ProfileRes(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use UpdateProfileReq.newBuilder() to construct.
+  private UpdateProfileReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private ProfileRes() {
-    status_ = "";
+  private UpdateProfileReq() {
+    requesterId_ = "";
     avatar_ = "";
-    point_ = "";
     name_ = "";
     address_ = "";
     birthday_ = "";
@@ -34,7 +33,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private ProfileRes(
+  private UpdateProfileReq(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -56,7 +55,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            status_ = s;
+            requesterId_ = s;
             break;
           }
           case 18: {
@@ -113,12 +112,6 @@ private static final long serialVersionUID = 0L;
             accessToken_ = s;
             break;
           }
-          case 90: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            point_ = s;
-            break;
-          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -140,45 +133,45 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return co.overlead.gRPC.profile.internal_static_profile_ProfileRes_descriptor;
+    return co.overlead.gRPC.profile.internal_static_profile_UpdateProfileReq_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return co.overlead.gRPC.profile.internal_static_profile_ProfileRes_fieldAccessorTable
+    return co.overlead.gRPC.profile.internal_static_profile_UpdateProfileReq_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            co.overlead.gRPC.ProfileRes.class, co.overlead.gRPC.ProfileRes.Builder.class);
+            co.overlead.gRPC.UpdateProfileReq.class, co.overlead.gRPC.UpdateProfileReq.Builder.class);
   }
 
-  public static final int STATUS_FIELD_NUMBER = 1;
-  private volatile java.lang.Object status_;
+  public static final int REQUESTERID_FIELD_NUMBER = 1;
+  private volatile java.lang.Object requesterId_;
   /**
-   * <code>string status = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
-  public java.lang.String getStatus() {
-    java.lang.Object ref = status_;
+  public java.lang.String getRequesterId() {
+    java.lang.Object ref = requesterId_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      status_ = s;
+      requesterId_ = s;
       return s;
     }
   }
   /**
-   * <code>string status = 1;</code>
+   * <code>string requesterId = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getStatusBytes() {
-    java.lang.Object ref = status_;
+      getRequesterIdBytes() {
+    java.lang.Object ref = requesterId_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      status_ = b;
+      requesterId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -213,40 +206,6 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
       avatar_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int POINT_FIELD_NUMBER = 11;
-  private volatile java.lang.Object point_;
-  /**
-   * <code>string point = 11;</code>
-   */
-  public java.lang.String getPoint() {
-    java.lang.Object ref = point_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      point_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string point = 11;</code>
-   */
-  public com.google.protobuf.ByteString
-      getPointBytes() {
-    java.lang.Object ref = point_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      point_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -539,8 +498,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getStatusBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, status_);
+    if (!getRequesterIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, requesterId_);
     }
     if (!getAvatarBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, avatar_);
@@ -569,9 +528,6 @@ private static final long serialVersionUID = 0L;
     if (!getAccessTokenBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 10, accessToken_);
     }
-    if (!getPointBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, point_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -581,8 +537,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getStatusBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, status_);
+    if (!getRequesterIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, requesterId_);
     }
     if (!getAvatarBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, avatar_);
@@ -611,9 +567,6 @@ private static final long serialVersionUID = 0L;
     if (!getAccessTokenBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, accessToken_);
     }
-    if (!getPointBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, point_);
-    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -624,17 +577,15 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof co.overlead.gRPC.ProfileRes)) {
+    if (!(obj instanceof co.overlead.gRPC.UpdateProfileReq)) {
       return super.equals(obj);
     }
-    co.overlead.gRPC.ProfileRes other = (co.overlead.gRPC.ProfileRes) obj;
+    co.overlead.gRPC.UpdateProfileReq other = (co.overlead.gRPC.UpdateProfileReq) obj;
 
-    if (!getStatus()
-        .equals(other.getStatus())) return false;
+    if (!getRequesterId()
+        .equals(other.getRequesterId())) return false;
     if (!getAvatar()
         .equals(other.getAvatar())) return false;
-    if (!getPoint()
-        .equals(other.getPoint())) return false;
     if (!getName()
         .equals(other.getName())) return false;
     if (!getAddress()
@@ -662,12 +613,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + STATUS_FIELD_NUMBER;
-    hash = (53 * hash) + getStatus().hashCode();
+    hash = (37 * hash) + REQUESTERID_FIELD_NUMBER;
+    hash = (53 * hash) + getRequesterId().hashCode();
     hash = (37 * hash) + AVATAR_FIELD_NUMBER;
     hash = (53 * hash) + getAvatar().hashCode();
-    hash = (37 * hash) + POINT_FIELD_NUMBER;
-    hash = (53 * hash) + getPoint().hashCode();
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
@@ -689,69 +638,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static co.overlead.gRPC.ProfileRes parseFrom(
+  public static co.overlead.gRPC.UpdateProfileReq parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.ProfileRes parseFrom(
+  public static co.overlead.gRPC.UpdateProfileReq parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.ProfileRes parseFrom(
+  public static co.overlead.gRPC.UpdateProfileReq parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.ProfileRes parseFrom(
+  public static co.overlead.gRPC.UpdateProfileReq parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.ProfileRes parseFrom(byte[] data)
+  public static co.overlead.gRPC.UpdateProfileReq parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.ProfileRes parseFrom(
+  public static co.overlead.gRPC.UpdateProfileReq parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.ProfileRes parseFrom(java.io.InputStream input)
+  public static co.overlead.gRPC.UpdateProfileReq parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.ProfileRes parseFrom(
+  public static co.overlead.gRPC.UpdateProfileReq parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static co.overlead.gRPC.ProfileRes parseDelimitedFrom(java.io.InputStream input)
+  public static co.overlead.gRPC.UpdateProfileReq parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.ProfileRes parseDelimitedFrom(
+  public static co.overlead.gRPC.UpdateProfileReq parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static co.overlead.gRPC.ProfileRes parseFrom(
+  public static co.overlead.gRPC.UpdateProfileReq parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.ProfileRes parseFrom(
+  public static co.overlead.gRPC.UpdateProfileReq parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -764,7 +713,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(co.overlead.gRPC.ProfileRes prototype) {
+  public static Builder newBuilder(co.overlead.gRPC.UpdateProfileReq prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -780,26 +729,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code profile.ProfileRes}
+   * Protobuf type {@code profile.UpdateProfileReq}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:profile.ProfileRes)
-      co.overlead.gRPC.ProfileResOrBuilder {
+      // @@protoc_insertion_point(builder_implements:profile.UpdateProfileReq)
+      co.overlead.gRPC.UpdateProfileReqOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return co.overlead.gRPC.profile.internal_static_profile_ProfileRes_descriptor;
+      return co.overlead.gRPC.profile.internal_static_profile_UpdateProfileReq_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return co.overlead.gRPC.profile.internal_static_profile_ProfileRes_fieldAccessorTable
+      return co.overlead.gRPC.profile.internal_static_profile_UpdateProfileReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              co.overlead.gRPC.ProfileRes.class, co.overlead.gRPC.ProfileRes.Builder.class);
+              co.overlead.gRPC.UpdateProfileReq.class, co.overlead.gRPC.UpdateProfileReq.Builder.class);
     }
 
-    // Construct using co.overlead.gRPC.ProfileRes.newBuilder()
+    // Construct using co.overlead.gRPC.UpdateProfileReq.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -817,11 +766,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      status_ = "";
+      requesterId_ = "";
 
       avatar_ = "";
-
-      point_ = "";
 
       name_ = "";
 
@@ -845,17 +792,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return co.overlead.gRPC.profile.internal_static_profile_ProfileRes_descriptor;
+      return co.overlead.gRPC.profile.internal_static_profile_UpdateProfileReq_descriptor;
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.ProfileRes getDefaultInstanceForType() {
-      return co.overlead.gRPC.ProfileRes.getDefaultInstance();
+    public co.overlead.gRPC.UpdateProfileReq getDefaultInstanceForType() {
+      return co.overlead.gRPC.UpdateProfileReq.getDefaultInstance();
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.ProfileRes build() {
-      co.overlead.gRPC.ProfileRes result = buildPartial();
+    public co.overlead.gRPC.UpdateProfileReq build() {
+      co.overlead.gRPC.UpdateProfileReq result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -863,11 +810,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.ProfileRes buildPartial() {
-      co.overlead.gRPC.ProfileRes result = new co.overlead.gRPC.ProfileRes(this);
-      result.status_ = status_;
+    public co.overlead.gRPC.UpdateProfileReq buildPartial() {
+      co.overlead.gRPC.UpdateProfileReq result = new co.overlead.gRPC.UpdateProfileReq(this);
+      result.requesterId_ = requesterId_;
       result.avatar_ = avatar_;
-      result.point_ = point_;
       result.name_ = name_;
       result.address_ = address_;
       result.birthday_ = birthday_;
@@ -914,26 +860,22 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof co.overlead.gRPC.ProfileRes) {
-        return mergeFrom((co.overlead.gRPC.ProfileRes)other);
+      if (other instanceof co.overlead.gRPC.UpdateProfileReq) {
+        return mergeFrom((co.overlead.gRPC.UpdateProfileReq)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(co.overlead.gRPC.ProfileRes other) {
-      if (other == co.overlead.gRPC.ProfileRes.getDefaultInstance()) return this;
-      if (!other.getStatus().isEmpty()) {
-        status_ = other.status_;
+    public Builder mergeFrom(co.overlead.gRPC.UpdateProfileReq other) {
+      if (other == co.overlead.gRPC.UpdateProfileReq.getDefaultInstance()) return this;
+      if (!other.getRequesterId().isEmpty()) {
+        requesterId_ = other.requesterId_;
         onChanged();
       }
       if (!other.getAvatar().isEmpty()) {
         avatar_ = other.avatar_;
-        onChanged();
-      }
-      if (!other.getPoint().isEmpty()) {
-        point_ = other.point_;
         onChanged();
       }
       if (!other.getName().isEmpty()) {
@@ -983,11 +925,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      co.overlead.gRPC.ProfileRes parsedMessage = null;
+      co.overlead.gRPC.UpdateProfileReq parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (co.overlead.gRPC.ProfileRes) e.getUnfinishedMessage();
+        parsedMessage = (co.overlead.gRPC.UpdateProfileReq) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -997,71 +939,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object status_ = "";
+    private java.lang.Object requesterId_ = "";
     /**
-     * <code>string status = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public java.lang.String getStatus() {
-      java.lang.Object ref = status_;
+    public java.lang.String getRequesterId() {
+      java.lang.Object ref = requesterId_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        status_ = s;
+        requesterId_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string status = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getStatusBytes() {
-      java.lang.Object ref = status_;
+        getRequesterIdBytes() {
+      java.lang.Object ref = requesterId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        status_ = b;
+        requesterId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string status = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder setStatus(
+    public Builder setRequesterId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      status_ = value;
+      requesterId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string status = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder clearStatus() {
+    public Builder clearRequesterId() {
       
-      status_ = getDefaultInstance().getStatus();
+      requesterId_ = getDefaultInstance().getRequesterId();
       onChanged();
       return this;
     }
     /**
-     * <code>string status = 1;</code>
+     * <code>string requesterId = 1;</code>
      */
-    public Builder setStatusBytes(
+    public Builder setRequesterIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      status_ = value;
+      requesterId_ = value;
       onChanged();
       return this;
     }
@@ -1131,75 +1073,6 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       avatar_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object point_ = "";
-    /**
-     * <code>string point = 11;</code>
-     */
-    public java.lang.String getPoint() {
-      java.lang.Object ref = point_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        point_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string point = 11;</code>
-     */
-    public com.google.protobuf.ByteString
-        getPointBytes() {
-      java.lang.Object ref = point_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        point_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string point = 11;</code>
-     */
-    public Builder setPoint(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      point_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string point = 11;</code>
-     */
-    public Builder clearPoint() {
-      
-      point_ = getDefaultInstance().getPoint();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string point = 11;</code>
-     */
-    public Builder setPointBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      point_ = value;
       onChanged();
       return this;
     }
@@ -1768,41 +1641,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:profile.ProfileRes)
+    // @@protoc_insertion_point(builder_scope:profile.UpdateProfileReq)
   }
 
-  // @@protoc_insertion_point(class_scope:profile.ProfileRes)
-  private static final co.overlead.gRPC.ProfileRes DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:profile.UpdateProfileReq)
+  private static final co.overlead.gRPC.UpdateProfileReq DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new co.overlead.gRPC.ProfileRes();
+    DEFAULT_INSTANCE = new co.overlead.gRPC.UpdateProfileReq();
   }
 
-  public static co.overlead.gRPC.ProfileRes getDefaultInstance() {
+  public static co.overlead.gRPC.UpdateProfileReq getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ProfileRes>
-      PARSER = new com.google.protobuf.AbstractParser<ProfileRes>() {
+  private static final com.google.protobuf.Parser<UpdateProfileReq>
+      PARSER = new com.google.protobuf.AbstractParser<UpdateProfileReq>() {
     @java.lang.Override
-    public ProfileRes parsePartialFrom(
+    public UpdateProfileReq parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new ProfileRes(input, extensionRegistry);
+      return new UpdateProfileReq(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<ProfileRes> parser() {
+  public static com.google.protobuf.Parser<UpdateProfileReq> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<ProfileRes> getParserForType() {
+  public com.google.protobuf.Parser<UpdateProfileReq> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public co.overlead.gRPC.ProfileRes getDefaultInstanceForType() {
+  public co.overlead.gRPC.UpdateProfileReq getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

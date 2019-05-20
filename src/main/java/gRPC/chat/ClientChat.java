@@ -33,19 +33,19 @@ public class ClientChat {
     }
 
     public void connectChat(String userId,String accessToken,String projectId){
-        SendMsgReq req= SendMsgReq.newBuilder().setRequesterId(userId).setAccessToken("newSession").setChannelId(projectId).build();
-        SendMsgRes response;
-
-        try {
-            System.out.println("start catch package");
-            blockingStub.connectChat(req).forEachRemaining(i->{
-                System.out.println(i.getSenderName()+" said: "+ i.getMsg());
-            });
-            connectChat("5cda7f108f39c41dfb476935","newSession","5ce16a8aef2aa3092c1ccecf");
-        } catch (StatusRuntimeException e) {
-            System.out.println(e);
-            return;
-        }
+//        SendMsgReq req= SendMsgReq.newBuilder().setRequesterId(userId).setAccessToken("newSession").setChannelId(projectId).build();
+//        SendMsgRes response;
+//
+//        try {
+//            System.out.println("start catch package");
+//            blockingStub.connectChat(req).forEachRemaining(i->{
+//                System.out.println(i.getSenderName()+" said: "+ i.getMsg());
+//            });
+//            connectChat("5cda7f108f39c41dfb476935","newSession","5ce16a8aef2aa3092c1ccecf");
+//        } catch (StatusRuntimeException e) {
+//            System.out.println(e);
+//            return;
+//        }
     }
     public static void main(String[] args) throws Exception {
         //  MyProjectClient client = new MyProjectClient("54.255.233.193", 8085);

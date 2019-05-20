@@ -2,23 +2,42 @@ syntax = "proto3";
 
 option java_multiple_files = true;
 option java_package = "co.overlead.gRPC";
-option java_outer_classname = "myprofile";
-option objc_class_prefix = "myprofile";
+option java_outer_classname = "profile";
+option objc_class_prefix = "pf";
 package profile;
 
-
-service MyProfile{
-    rpc getProfile(ProfileReq) returns (stream ProfileRes){}
-    rpc getProfileSimple(ProfileReq) returns (ProfileRes){}
-
+service Profile{
+    rpc updateProfile(UpdateProfileReq) returns (ProfileRes){}
+    rpc getProfile(GetProfileReq) returns ( ProfileRes){}
 }
-
-message ProfileReq{
-    string username = 1;
+message GetProfileReq{
+    string requesterId=1;
+    string accessToken=2;
+    string username=3;
+}
+message UpdateProfileReq{
+    string requesterId = 1;
+    string avatar = 2;
+    string name = 3;
+    string address = 4;
+    string birthday = 5;
+    string email = 6;
+    string fb = 7;
+    string workplace = 8;
+    string skill = 9;
+    string accessToken = 10;
 }
 
 message ProfileRes{
-    string avatar=1;
-    string status=2;
-
+    string status = 1;
+    string avatar = 2;
+    string point = 11;
+    string name = 3;
+    string address = 4;
+    string birthday = 5;
+    string email = 6;
+    string fb = 7;
+    string workplace = 8;
+    string skill = 9;
+    string accessToken = 10;
 }
