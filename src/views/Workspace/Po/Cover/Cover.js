@@ -16,7 +16,9 @@ CardHeader,
 CardBody,
 Progress,
 Label,
- PaginationLink, } from 'reactstrap';
+Modal,
+ModalBody,
+PaginationLink, } from 'reactstrap';
 import { Link } from 'react-router-dom';
 class Cover extends Component {
   constructor(props) {
@@ -84,7 +86,9 @@ class Cover extends Component {
               },
             
             ],
-     
+      actionStatus: '',    //success or fail when action handleSave
+      modalActionStatus: false,
+
       priorityUserstory:'',
       estimationUserstory:'',
       sprintUserstory:'',
@@ -196,6 +200,11 @@ class Cover extends Component {
     let that=this;
     return (
       <Row>
+          <Modal size="sm" isOpen={that.state.modalActionStatus} toggle={that.toggleActionStatus} className={that.props.className}>
+          <ModalBody>
+            <center><h4>{that.state.actionStatus}</h4></center>
+          </ModalBody>
+          </Modal>
           <Col>         
             <Row>
               <Col>    

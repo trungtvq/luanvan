@@ -194,7 +194,6 @@ class Detail extends Component {
             actionStatus: 'FALSE',
           });
         }
-
       }
     });
 
