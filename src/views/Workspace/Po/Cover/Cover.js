@@ -192,10 +192,7 @@ class Cover extends Component {
       this.setState(prevState => ({ dataUserStory: [...prevState.dataUserStory, { title: titleProductbacklog, as: result.as, want: result.want, so: result.so, priority: '', estimation: '', sprint: '' }] }));
     }
 
-    handleSave = () => {
-      //viet hàm lấy toàn bộ dữ liệu trong mảng dataProductBacklog thêm vào collection productbacklog
-      //viet hàm xóa userstory có name==title (title này là title  của phần tử nằm trong dataProductBacklog) ra khỏi collection userstory
-    }
+    
 
   render() {
     let that=this;
@@ -260,9 +257,7 @@ class Cover extends Component {
                <Col>    
                  <div class="card border-primary mb-3">
                   <div class="card-header bg-primary">
-                    PRODUCT BACKLOG_
-
-                    <Button type="submit" size="sm" color="primary" onClick={that.handleSave}> save</Button>
+                    PRODUCT BACKLOG
                   </div>
                     <div class="card-body">
                         {this.state.dataProductBacklog.map(function(item, key) {
