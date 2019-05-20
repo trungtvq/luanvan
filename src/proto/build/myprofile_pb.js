@@ -271,8 +271,8 @@ proto.profile.UpdateProfileReq.prototype.toObject = function(opt_includeInstance
  */
 proto.profile.UpdateProfileReq.toObject = function(includeInstance, msg) {
   var f, obj = {
-    usermail: msg.getUsermail(),
-    img: msg.getImg(),
+    requesterid: msg.getRequesterid(),
+    avatar: msg.getAvatar(),
     name: msg.getName(),
     address: msg.getAddress(),
     birthday: msg.getBirthday(),
@@ -319,11 +319,11 @@ proto.profile.UpdateProfileReq.deserializeBinaryFromReader = function(msg, reade
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setUsermail(value);
+      msg.setRequesterid(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setImg(value);
+      msg.setAvatar(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
@@ -395,14 +395,14 @@ proto.profile.UpdateProfileReq.prototype.serializeBinary = function() {
  */
 proto.profile.UpdateProfileReq.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = this.getUsermail();
+  f = this.getRequesterid();
   if (f.length > 0) {
     writer.writeString(
       1,
       f
     );
   }
-  f = this.getImg();
+  f = this.getAvatar();
   if (f.length > 0) {
     writer.writeString(
       2,
@@ -478,31 +478,31 @@ proto.profile.UpdateProfileReq.prototype.cloneMessage = function() {
 
 
 /**
- * optional string userMail = 1;
+ * optional string requesterId = 1;
  * @return {string}
  */
-proto.profile.UpdateProfileReq.prototype.getUsermail = function() {
+proto.profile.UpdateProfileReq.prototype.getRequesterid = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 1, ""));
 };
 
 
 /** @param {string} value  */
-proto.profile.UpdateProfileReq.prototype.setUsermail = function(value) {
+proto.profile.UpdateProfileReq.prototype.setRequesterid = function(value) {
   jspb.Message.setField(this, 1, value);
 };
 
 
 /**
- * optional string img = 2;
+ * optional string avatar = 2;
  * @return {string}
  */
-proto.profile.UpdateProfileReq.prototype.getImg = function() {
+proto.profile.UpdateProfileReq.prototype.getAvatar = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 2, ""));
 };
 
 
 /** @param {string} value  */
-proto.profile.UpdateProfileReq.prototype.setImg = function(value) {
+proto.profile.UpdateProfileReq.prototype.setAvatar = function(value) {
   jspb.Message.setField(this, 2, value);
 };
 

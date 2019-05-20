@@ -16,8 +16,8 @@ message GetProfileReq{
     string username=3;
 }
 message UpdateProfileReq{
-    string userMail = 1;
-    string img = 2;
+    string requesterId = 1;
+    string avatar = 2;
     string name = 3;
     string address = 4;
     string birthday = 5;
