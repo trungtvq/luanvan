@@ -1,0 +1,6 @@
+{
+  "name": "CreateTeam",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./CreateTeam.js"
+}

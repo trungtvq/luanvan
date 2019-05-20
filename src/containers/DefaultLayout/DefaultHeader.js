@@ -55,6 +55,17 @@ class DefaultHeader extends Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
           </NavItem>
+          <NavItem className="px-3">
+              <UncontrolledDropdown color="light">
+                <DropdownToggle caret>
+                    Team
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem href="/CreateTeam">Create team</DropdownItem>
+                  <DropdownItem href="/AllTeam">All team</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+          </NavItem>
         </Nav>
         <Nav className="ml-auto" navbar>
           <NavItem className="d-md-down-none">
