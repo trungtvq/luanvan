@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {
-  Badge,
+
   Button,
-  ButtonDropdown,
+
   Card,
   Container,
   CardBody,
@@ -13,23 +13,21 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
-  Fade,
   Form,
   FormGroup,
-  FormText,
-  FormFeedback,
+  
   Input,
   InputGroup,
   InputGroupAddon,
   InputGroupText,
   Label,
-  Row,
+
   Table,
   Modal,
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Progress,
+ 
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Demo from '../../../../homeNav'
@@ -49,10 +47,9 @@ class AllTeam extends Component {
       modalActionStatus: false,
       updateName: '',
       name: '',
-      as: '',
-      want: '',
+     
       updateId:'',
-      so: '',
+    
 
     }
   };
@@ -90,28 +87,9 @@ class AllTeam extends Component {
     let that = this;
     return (
           <div>
-              <div class="card border-primary mb-3">
-                  <div class="card-header border-primary">
-                  <div class="card-header ">
-                          <div class="row justify-content-md-center">
-                          </div>
-                          <div class="row">
-                            <div class="col">
-                            <strong>List team</strong>
-                            </div>
-                            <div class="col-md-auto">
-                          
-                            </div>
-                            <div class="col col-lg-2">
-                            <Button color="primary" size="sm" className="mt-3" onClick={that.toggleAddTeam}><i class="fa fa-plus-square"></i>{this.props.buttonLabel}</Button>
-                           
-                            </div>
-                          </div>
-                          </div>
-                  </div>
-                  <div class="card-body">
-
-                  <div class="card border-primary  mb-3">
+              
+                  
+              <div class="card border-primary  mb-6">
                           <div class="card-header bg-success">
                           <div class="row justify-content-md-center">
                           </div>
@@ -119,14 +97,19 @@ class AllTeam extends Component {
                             <div class="col">
                             <strong>Team A</strong>
                             </div>
+
                             <div class="col-md-auto">
-                          
                             </div>
-                            <div class="col col-lg-2">
+
+                           
+                           
+                            <div class="col col-sm-2">
+                            <center>
                             <Button color="warning" size="sm" className="mt-3" onClick={that.toggleEditTeam}><i class="fa fa-edit"></i>{this.props.buttonLabel}</Button>
                             <Button color="danger" size="sm" className="mt-3" onClick={that.handleDeleteTeam}><i class="fa fa-trash"></i>{this.props.buttonLabel}</Button>
-
+                            </center>
                             </div>
+                          
                           </div>
                                          
                           </div>
@@ -160,7 +143,7 @@ class AllTeam extends Component {
                                       </ModalBody>
                                       {/* <div data-id={item.id} onClick={that.handleAddMember}> */}
                                       <ModalFooter>                                   
-                                          <Button color="primary" >Submit</Button>
+                                          <Button color="primary" onClick={that.handleAddMember}>Submit</Button>
                                       </ModalFooter>
                                       {/* </div> */}
                                     </Modal>
@@ -231,7 +214,7 @@ class AllTeam extends Component {
                                   </Modal>
 
                                   {/* <div data-id={item.id} onClick={that.handleDelete}>  */}
-                                  <Button type="submit" size="sm" color="danger">
+                                  <Button  size="sm" color="danger" onClick={that.handleDeleteMember}>
                                     <i class="fa fa-trash"></i></Button>
                                   {/* </div> */}
                                   </center>
@@ -246,8 +229,7 @@ class AllTeam extends Component {
 
                   
                 
-                </div>
-              </div>
+             
 
              
 
