@@ -22,7 +22,7 @@ proto.profile = require('./myprofile_pb.js');
  * @struct
  * @final
  */
-proto.profile.MyProfileClient =
+proto.profile.ProfileClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -58,7 +58,7 @@ proto.profile.MyProfileClient =
  * @struct
  * @final
  */
-proto.profile.MyProfilePromiseClient =
+proto.profile.ProfilePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options['format'] = 'text';
@@ -89,12 +89,12 @@ proto.profile.MyProfilePromiseClient =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.profile.ProfileReq,
+ *   !proto.profile.UpdateProfileReq,
  *   !proto.profile.ProfileRes>}
  */
-const methodInfo_MyProfile_getProfile = new grpc.web.AbstractClientBase.MethodInfo(
+const methodInfo_Profile_updateProfile = new grpc.web.AbstractClientBase.MethodInfo(
   proto.profile.ProfileRes,
-  /** @param {!proto.profile.ProfileReq} request */
+  /** @param {!proto.profile.UpdateProfileReq} request */
   function(request) {
     return request.serializeBinary();
   },
@@ -103,57 +103,7 @@ const methodInfo_MyProfile_getProfile = new grpc.web.AbstractClientBase.MethodIn
 
 
 /**
- * @param {!proto.profile.ProfileReq} request The request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.profile.ProfileRes>}
- *     The XHR Node Readable Stream
- */
-proto.profile.MyProfileClient.prototype.getProfile =
-    function(request, metadata) {
-  return this.client_.serverStreaming(this.hostname_ +
-      '/profile.MyProfile/getProfile',
-      request,
-      metadata || {},
-      methodInfo_MyProfile_getProfile);
-};
-
-
-/**
- * @param {!proto.profile.ProfileReq} request The request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!grpc.web.ClientReadableStream<!proto.profile.ProfileRes>}
- *     The XHR Node Readable Stream
- */
-proto.profile.MyProfilePromiseClient.prototype.getProfile =
-    function(request, metadata) {
-  return this.client_.serverStreaming(this.hostname_ +
-      '/profile.MyProfile/getProfile',
-      request,
-      metadata || {},
-      methodInfo_MyProfile_getProfile);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.profile.ProfileReq,
- *   !proto.profile.ProfileRes>}
- */
-const methodInfo_MyProfile_getProfileSimple = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.profile.ProfileRes,
-  /** @param {!proto.profile.ProfileReq} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.profile.ProfileRes.deserializeBinary
-);
-
-
-/**
- * @param {!proto.profile.ProfileReq} request The
+ * @param {!proto.profile.UpdateProfileReq} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
@@ -162,32 +112,87 @@ const methodInfo_MyProfile_getProfileSimple = new grpc.web.AbstractClientBase.Me
  * @return {!grpc.web.ClientReadableStream<!proto.profile.ProfileRes>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.profile.MyProfileClient.prototype.getProfileSimple =
+proto.profile.ProfileClient.prototype.updateProfile =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/profile.MyProfile/getProfileSimple',
+      '/profile.Profile/updateProfile',
       request,
       metadata || {},
-      methodInfo_MyProfile_getProfileSimple,
+      methodInfo_Profile_updateProfile,
       callback);
 };
 
 
 /**
- * @param {!proto.profile.ProfileReq} request The
+ * @param {!proto.profile.UpdateProfileReq} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.profile.ProfileRes>}
  *     A native promise that resolves to the response
  */
-proto.profile.MyProfilePromiseClient.prototype.getProfileSimple =
+proto.profile.ProfilePromiseClient.prototype.updateProfile =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/profile.MyProfile/getProfileSimple',
+      '/profile.Profile/updateProfile',
       request,
       metadata || {},
-      methodInfo_MyProfile_getProfileSimple);
+      methodInfo_Profile_updateProfile);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.profile.GetProfileReq,
+ *   !proto.profile.ProfileRes>}
+ */
+const methodInfo_Profile_getProfile = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.profile.ProfileRes,
+  /** @param {!proto.profile.GetProfileReq} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.profile.ProfileRes.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.profile.GetProfileReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.profile.ProfileRes)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.profile.ProfileRes>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.profile.ProfileClient.prototype.getProfile =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/profile.Profile/getProfile',
+      request,
+      metadata || {},
+      methodInfo_Profile_getProfile,
+      callback);
+};
+
+
+/**
+ * @param {!proto.profile.GetProfileReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.profile.ProfileRes>}
+ *     A native promise that resolves to the response
+ */
+proto.profile.ProfilePromiseClient.prototype.getProfile =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/profile.Profile/getProfile',
+      request,
+      metadata || {},
+      methodInfo_Profile_getProfile);
 };
 
 
