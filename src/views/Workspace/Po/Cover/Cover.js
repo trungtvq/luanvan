@@ -28,18 +28,27 @@ class Cover extends Component {
                 "as":"admin",
                 "want":"See a list of all members and visitors",
                 "so":"I can monitor site visits",
+                "priority":'',
+                "estimation":'',
+                "sprint":'',
               },
               {
                 "title":"See list 2",
                 "as":"admin",
                 "want":"Add new categories",
                 "so":"I can allow members to create engaging content",
+                "priority":'',
+                "estimation":'',
+                "sprint":'',
               },
               {
                 "title":"See list 3",
                 "as":"admin",
                 "want":"Add new security groups",
                 "so":"Security levels are approriate",
+                "priority":'',
+                "estimation":'',
+                "sprint":'',
               },
               
             ],
@@ -88,20 +97,41 @@ class Cover extends Component {
           }
     };
     //userstory
-    onTextboxChangePriorityUserstory=(event)=> {
-      this.setState({
-        priorityUserstory: event.target.value,
-      });
+    onTextboxChangePriorityUserstory=(event,title)=> {
+      const tmpdata = this.state.dataUserStory.map(p =>
+        p.title == title
+          ? {
+            ...p, priority:event.target.value
+          }
+          : p
+      );
+      this.setState(prevState => ({
+        dataUserStory: tmpdata,
+      }));
     }
-    onTextboxChangeEstimationUserstory=(event)=> {
-      this.setState({
-        estimationUserstory: event.target.value,
-      });
+    onTextboxChangeEstimationUserstory=(event,title)=> {
+      const tmpdata = this.state.dataUserStory.map(p =>
+        p.title == title
+          ? {
+            ...p, estimation:event.target.value
+          }
+          : p
+      );
+      this.setState(prevState => ({
+        dataUserStory: tmpdata,
+      }));
     }
-    onTextboxChangeSprintUserstory=(event)=> {
-      this.setState({
-        sprintUserstory: event.target.value,
-      });
+    onTextboxChangeSprintUserstory=(event,title)=> {
+      const tmpdata = this.state.dataUserStory.map(p =>
+        p.title == title
+          ? {
+            ...p, sprint:event.target.value
+          }
+          : p
+      );
+      this.setState(prevState => ({
+        dataUserStory: tmpdata,
+      }));
     }
     //ProductBacklog
     onTextboxChangePriorityProductBacklog=(event,title)=> {
@@ -143,16 +173,20 @@ class Cover extends Component {
 
       }));
     }
-
-    handleStoryToBacklog=(titleStory,priority,estimation,sprint)=>{
-      var result = this.state.dataUserStory.find(x => x.title === titleStory)
-      console.log("kt____"+result.title);
-      console.log("kt____"+titleStory);
-      this.setState(prevState => ({ dataUserStory: [...prevState.dataUserStory.filter(function (e) { return e.title !== titleStory; })] }));
-      this.setState(prevState => ({ dataProductBacklog: [...prevState.dataProductBacklog, { title: titleStory, as: result.as, want: result.want, so: result.so, priority: priority, estimation: estimation, sprint: sprint }] }));
-
+    componentDidMount() {
+      //viet hàm lấy toàn bộ dữ liệu trong collection userstory mà chưa bị chuyển thành productbacklog đổ vào array dataUserStory
     }
-    handleBacklogToStory=()=>{}
+
+    handleStoryToBacklog=(titleStory)=>{
+      var result = this.state.dataUserStory.find(x => x.title === titleStory)
+      this.setState(prevState => ({ dataUserStory: [...prevState.dataUserStory.filter(function (e) { return e.title !== titleStory; })] }));
+      this.setState(prevState => ({ dataProductBacklog: [...prevState.dataProductBacklog, { title: titleStory, as: result.as, want: result.want, so: result.so, priority: result.priority, estimation: result.estimation, sprint: result.sprint }] }));
+    }
+    handleBacklogToStory=(titleProductbacklog)=>{
+      var result = this.state.dataProductBacklog.find(x => x.title === titleProductbacklog)
+      this.setState(prevState => ({ dataProductBacklog: [...prevState.dataProductBacklog.filter(function (e) { return e.title !== titleProductbacklog; })] }));
+      this.setState(prevState => ({ dataUserStory: [...prevState.dataUserStory, { title: titleProductbacklog, as: result.as, want: result.want, so: result.so, priority: '', estimation: '', sprint: '' }] }));
+    }
 
     handleSave = () => {
       //viet hàm lấy toàn bộ dữ liệu trong mảng dataProductBacklog thêm vào collection productbacklog
@@ -182,7 +216,7 @@ class Cover extends Component {
                                                   <Label htmlFor="text-input">Priority</Label>
                                                 </div>
                                                 <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                  <Input type="text" name="text-input" id="text-input" rows="9" onChange={that.onTextboxChangePriorityUserstory}/>
+                                                  <Input type="text" name="text-input" id="text-input" rows="9" value={item.priority} onChange={e =>{that.onTextboxChangePriorityUserstory(e,item.title)}}/>
                                                 </div>
                                                
                                               
@@ -191,7 +225,7 @@ class Cover extends Component {
                                                   <Label htmlFor="text-input">Estimation</Label>
                                                 </div>
                                                 <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                  <Input type="text" name="text-input" id="text-input" rows="9" onChange={that.onTextboxChangeEstimationUserstory}/>                            
+                                                  <Input type="text" name="text-input" id="text-input" rows="9" value={item.estimation} onChange={e =>{that.onTextboxChangeEstimationUserstory(e,item.title)}}/>                            
                                                 </div>
 
                                                  
@@ -200,10 +234,10 @@ class Cover extends Component {
                                                   <Label htmlFor="text-input">Sprint</Label>
                                                 </div>
                                                 <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                  <Input type="text" name="text-input" id="text-input" rows="9" onChange={that.onTextboxChangeSprintUserstory}/>                            
+                                                  <Input type="text" name="text-input" id="text-input" rows="9" value={item.sprint} onChange={e =>{that.onTextboxChangeSprintUserstory(e,item.title)}}/>                            
                                                 </div>
                                             </div>
-                                            <Button  size="sm" color="success" align="center" onClick={() =>{that.handleStoryToBacklog(item.title, item.priority, item.estimation, item.sprint)}}><i class="fa fa-arrow-right"></i></Button>
+                                            <Button  size="sm" color="success" align="center" onClick={() =>{that.handleStoryToBacklog(item.title)}}><i class="fa fa-arrow-right"></i></Button>
                                           </CardBody>
                                     </Card> 
                                  )
@@ -257,7 +291,7 @@ class Cover extends Component {
                                               </div>
                                                
                                             </div>
-                                            <Button type="submit" size="sm" color="success" align="center"><i class="fa fa-arrow-left"></i></Button>
+                                            <Button  size="sm" color="success" align="center" onClick={() =>{that.handleBacklogToStory(item.title)}}><i class="fa fa-arrow-left"></i></Button>
                                           </CardBody>
                                     </Card> 
                                   )
