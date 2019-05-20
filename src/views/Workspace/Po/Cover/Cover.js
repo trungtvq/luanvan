@@ -178,7 +178,7 @@ class Cover extends Component {
       }));
     }
     componentDidMount() {
-      //viet hàm lấy toàn bộ dữ liệu trong collection userstory mà chưa bị chuyển thành productbacklog đổ vào array dataUserStory
+      //viet hàm lấy toàn bộ dữ liệu trong collection userstory đổ vào array dataUserStory
     }
 
     handleStoryToBacklog=(titleStory)=>{
@@ -194,6 +194,7 @@ class Cover extends Component {
 
     handleSave = () => {
       //viet hàm lấy toàn bộ dữ liệu trong mảng dataProductBacklog thêm vào collection productbacklog
+      //viet hàm xóa userstory có name==title (title này là title  của phần tử nằm trong dataProductBacklog) ra khỏi collection userstory
     }
 
   render() {
