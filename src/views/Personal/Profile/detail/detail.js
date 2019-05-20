@@ -28,31 +28,137 @@ import {
   Table,
   Pagination,
 PaginationItem,
-PaginationLink
+PaginationLink,
+ModalFooter,
+ModalBody,
+Modal,
+ModalHeader
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Demo from '../../../../homeNav'
+import ImageUploader from 'react-images-upload';
 
 class detail extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {
+        "img":'',
+        "point":"8/10",
+        "fullname":"Nguyễn Văn A",
+        "address":"13 Lí Thường Kiệt, p9, Q10",
+        "birthday":"26/5/1993",
+        "email":"NguyenA@gmail.com",
+        "fb":"https://www.facebook.com/NguyenA.9615",
+        "workplace":"freelancer",
+        "skill":"Databases etc: Oracle 8 to 10g, PL/SQL, MS SQL Server, My SQL • Programming Languages: C#, SharePoint, VB, ASP,  Java, Progress, XML,  X/HTML, JavaScript/VBScript, T-SQL, PL/SQL, C, C++ , Pascal • Programming Tools: Visual Studio 98, 2003, 2005, 2008, Eclipse, Microsoft Visio, Keil uVison • App server / Middleware: Microsoft IIS. • Framework: .NET, MDK-ARM • Configuration Management tools: VSS, Visual SVN • Browsers: IE 3-8, Firefox 1-3 • OOAD/OOP: Object Oriented Analysis (OOA), Object Oriented Design (OOD), Object Oriented Programming (OOP), Unified Modeling Language (UML) ",
+      },
+      modalEdit: false,
+      selectedFile:null,
+      pictures: [],
+      // img:'',
+      // point:"",
+      // fullname:"",
+      // address:"",
+      // birthday:"",
+      // email:"",
+      // fb:"",
+      // workplace:"",
+      // skill:'',
+    }
+  };
+  componentDidMount() {
+    //viet ham lay thong tin người dùng đổ vào biến data
+  }
+  toggleEdit=(event)=> {
+    this.setState(prevState => ({
+      modalEdit: !prevState.modalEdit,
+    }));
+  }
+  onTextboxChangeFullname=(event)=> {
+    var tmp=this.state.data;
+    tmp.fullname=event.target.value;
+    this.setState({
+      data: tmp,
+    });
+  }
+  onTextboxChangeAddress=(event)=> {
+    var tmp=this.state.data;
+    tmp.address=event.target.value;
+    this.setState({
+      data: tmp,
+    });
+  }
+  onTextboxChangeAddress=(event)=> {
+    var tmp=this.state.data;
+    tmp.address=event.target.value;
+    this.setState({
+      data: tmp,
+    });
+  }
+  onTextboxChangeBirthday=(event)=> {
+    var tmp=this.state.data;
+    tmp.birthday=event.target.value;
+    this.setState({
+      data: tmp,
+    });
+  }
+  onTextboxChangeEmail=(event)=> {
+    var tmp=this.state.data;
+    tmp.email=event.target.value;
+    this.setState({
+      data: tmp,
+    });
+  }
+  onTextboxChangeFb=(event)=> {
+    var tmp=this.state.data;
+    tmp.fb=event.target.value;
+    this.setState({
+      data: tmp,
+    });
+  }
+  onTextboxChangeWorkplace=(event)=> {
+    var tmp=this.state.data;
+    tmp.workplace=event.target.value;
+    this.setState({
+      data: tmp,
+    });
+  }
+  onTextboxChangeSkill=(event)=> {
+    var tmp=this.state.data;
+    tmp.skill=event.target.value;
+    this.setState({
+      data: tmp,
+    });
+  }
+  onDrop=(picture)=> {
+    this.setState({
+      pictures: this.state.pictures.concat(picture),
+  });
+  if(this.state.pictures[0])
+  console.log("hi______"+this.state.pictures[0].toString());
+}
   render() {
+    let that=this;
     return (
       <div>
       <div>
        <Demo />
       </div>
+      <div><br></br></div>
       <Container>
         <Row>
           <Col>      
             <Card>             
               <CardBody>
                 <img src={'../../assets/img/avatar/myavatar.png'} className="img-avatar" />
-                <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
+                <Form  className="form-horizontal">               
                   <FormGroup row>
                     <Col md="3">
                       <Label htmlFor="text-input">Point</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="text" id="text-input" name="text-input" placeholder="" value="8/10"/>    
+                      <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.point}/>    
                     </Col>
                   </FormGroup>
 
@@ -61,7 +167,7 @@ class detail extends Component {
                         <Label htmlFor="text-input">Full name</Label>
                       </Col>
                       <Col xs="12" md="9">
-                        <Input type="text" id="text-input" name="text-input" placeholder="" value="Nguyễn Văn A"/>    
+                        <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.fullname}/>    
                       </Col>
                   </FormGroup>
 
@@ -70,7 +176,7 @@ class detail extends Component {
                       <Label htmlFor="text-input">Address</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="text" id="text-input" name="text-input" placeholder="" value="13 Lí Thường Kiệt, p9, Q10"/>    
+                      <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.address}/>    
                     </Col>
                   </FormGroup>
 
@@ -79,7 +185,7 @@ class detail extends Component {
                       <Label htmlFor="text-input">Date of Birth </Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="text" id="text-input" name="text-input" placeholder="" value="26/5/1993"/>    
+                      <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.birthday}/>    
                     </Col>
                   </FormGroup>
 
@@ -88,7 +194,7 @@ class detail extends Component {
                       <Label htmlFor="text-input">Email</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="text" id="text-input" name="text-input" placeholder="" value="NguyenA@gmail.com"/>    
+                      <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.email}/>    
                     </Col>
                   </FormGroup>
 
@@ -97,7 +203,7 @@ class detail extends Component {
                       <Label htmlFor="text-input">Fb</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="text" id="text-input" name="text-input" placeholder="" value="https://www.facebook.com/NguyenA.9615"/>    
+                      <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.fb}/>    
                     </Col>
                   </FormGroup>
 
@@ -106,97 +212,133 @@ class detail extends Component {
                       <Label htmlFor="text-input">Workplace</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="text" id="text-input" name="text-input" placeholder="" value="freelancer"/>    
+                      <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.workplace}/>    
                     </Col>
                   </FormGroup>
 
-                  <FormGroup row>
-                    <Col md="3">
-                      <Label htmlFor="text-input">Project</Label>
-                    </Col>
-                    <Col xs="12" md="9">
-                        <Table hover bordered striped responsive size="sm">
-                          <thead>
-                          <tr>
-                            <th> Name of project</th>
-                            <th>Description</th>
-                            <th>Responsibilities</th>
-                            <th>Point</th>
-                            <th>Comments of master</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          <tr>
-                            <td>App sell product online </td>
-                            <td>Build an application on android to help users buy products online or sell their products</td>
-                            <td>Write the front end code and back end of sales, build firebase connection functions for other members to use.</td>
-                            <td>8/10</td>
-                            <td>positive, responsible, working ontime</td>
-                          </tr>
-                          <tr>
-                            <td>Web news </td>
-                            <td>Building news website using laravel framework</td>
-                            <td>Write code to build news website</td>
-                            <td>8/10</td>
-                            <td>positive, responsible, working ontime</td>
-                          </tr>
-                          <tr>
-                            <td>Library book </td>
-                            <td>Build book management software on the console</td>
-                            <td>Write code to edit and delete books to the library, create an account, divide account permissions, store data with text files</td>
-                            <td>9/10</td>
-                            <td>positive, responsible, working ontime</td>
-                          </tr>
-                          <tr>
-                            <td>Game plant and zombie </td>
-                            <td>Build data input processing software for plants and zombies to return results for each zombie attack</td>
-                            <td>Using link list structure, AVL tree, Queue, Stack, DFS, BFS algorithms to process and return results for each zombie attack in each turn.</td>
-                            <td>9/10</td>
-                            <td>positive, responsible, working ontime</td>
-                          </tr>
-                          
-                          
-                          </tbody>
-                        </Table>
-                        <nav>
-                          <Pagination>
-                            <PaginationItem><PaginationLink previous tag="button">Prev</PaginationLink></PaginationItem>
-                            <PaginationItem active>
-                              <PaginationLink tag="button">1</PaginationLink>
-                            </PaginationItem>
-                            <PaginationItem><PaginationLink tag="button">2</PaginationLink></PaginationItem>
-                            <PaginationItem><PaginationLink tag="button">3</PaginationLink></PaginationItem>
-                            <PaginationItem><PaginationLink tag="button">4</PaginationLink></PaginationItem>
-                            <PaginationItem><PaginationLink next tag="button">Next</PaginationLink></PaginationItem>
-                          </Pagination>
-                        </nav>           
-                    </Col>
-                  </FormGroup>
-                   
                    <FormGroup row>
                     <Col md="3">
                       <Label htmlFor="text-input">Skill</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="textarea" id="text-input" name="text-input" placeholder="" value="•  Databases etc: Oracle 8 to 10g, PL/SQL, MS SQL Server, My SQL
-                        • Programming Languages: C#, SharePoint, VB, ASP,  Java, Progress, XML,  X/HTML, JavaScript/VBScript, T-SQL, PL/SQL, C, C++ , Pascal
-                        • Programming Tools: Visual Studio 98, 2003, 2005, 2008, Eclipse, Microsoft Visio, Keil uVison
-                        • App server / Middleware: Microsoft IIS.
-                        • Framework: .NET, MDK-ARM
-                        • Configuration Management tools: VSS, Visual SVN
-                        • Browsers: IE 3-8, Firefox 1-3
-                        • OOAD/OOP: Object Oriented Analysis (OOA), Object Oriented Design (OOD), Object Oriented Programming (OOP), Unified Modeling Language (UML)
-                      "/>    
+                      <Input type="textarea" id="text-input" name="text-input" placeholder="" value={this.state.data.skill}/>   
+                       
                     </Col>
                   </FormGroup>
                  
                 </Form>
               </CardBody>
               <CardFooter>
-              <Link to="/Profile/Edit">
-                <Button type="submit" size="sm" color="primary"><i className="fa fa-dot-circle-o"></i> Edit</Button>
-              </Link> 
-              </CardFooter>
+              
+                <Button color="warning" size="sm" onClick={that.toggleEdit}>
+                  <i class="fa fa-edit"></i>
+                </Button>
+         
+              <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} >
+                              <ModalHeader toggle={that.toggleEdit}>Profile</ModalHeader>
+                              <ModalBody>
+                              <Form  className="form-horizontal">  
+                              <FormGroup row>
+                                  <Col md="3">
+                                    <Label htmlFor="text-input">Image</Label>
+                                  </Col>
+                                  <Col xs="12" md="9">
+                                  <ImageUploader
+                                      withIcon={true}
+                                      buttonText='Choose images'
+                                      onChange={this.onDrop}
+                                      imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                                      maxFileSize={5242880}
+                                  />
+                                  </Col>
+                                </FormGroup>
+
+                                <FormGroup row>
+                                  <Col md="3">
+                                    <Label htmlFor="text-input">Point</Label>
+                                  </Col>
+                                  <Col xs="12" md="9">
+                                    <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.point}/>    
+                                  </Col>
+                                </FormGroup>
+
+                                <FormGroup row>
+                                    <Col md="3">
+                                      <Label htmlFor="text-input">Full name</Label>
+                                    </Col>
+                                    <Col xs="12" md="9">
+                                      <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.fullname} onChange={that.onTextboxChangeFullname}/>    
+                                    </Col>
+                                </FormGroup>
+
+                                <FormGroup row>
+                                  <Col md="3">
+                                    <Label htmlFor="text-input">Address</Label>
+                                  </Col>
+                                  <Col xs="12" md="9">
+                                    <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.address} onChange={that.onTextboxChangeAddress}/>    
+                                  </Col>
+                                </FormGroup>
+
+                                <FormGroup row>
+                                  <Col md="3">
+                                    <Label htmlFor="text-input">Date of Birth </Label>
+                                  </Col>
+                                  <Col xs="12" md="9">
+                                    <Input type="date" id="text-input" name="text-input" placeholder="" value={this.state.data.birthday} onChange={that.onTextboxChangeBirthday}/>    
+                                  </Col>
+                                </FormGroup>
+
+                                <FormGroup row>
+                                  <Col md="3">
+                                    <Label htmlFor="text-input">Email</Label>
+                                  </Col>
+                                  <Col xs="12" md="9">
+                                    <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.email} onChange={that.onTextboxChangeEmail}/>    
+                                  </Col>
+                                </FormGroup>
+
+                                <FormGroup row>
+                                  <Col md="3">
+                                    <Label htmlFor="text-input">Fb</Label>
+                                  </Col>
+                                  <Col xs="12" md="9">
+                                    <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.fb} onChange={that.onTextboxChangeFb}/>    
+                                  </Col>
+                                </FormGroup>
+
+                                <FormGroup row>
+                                  <Col md="3">
+                                    <Label htmlFor="text-input">Workplace</Label>
+                                  </Col>
+                                  <Col xs="12" md="9">
+                                    <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.workplace} onChange={that.onTextboxChangeWorkplace}/>    
+                                  </Col>
+                                </FormGroup>
+
+                                <FormGroup row>
+                                  <Col md="3">
+                                    <Label htmlFor="text-input">Skill</Label>
+                                  </Col>
+                                  <Col xs="12" md="9">
+                                    <Input type="textarea" id="text-input" name="text-input" placeholder="" value={this.state.data.skill} onChange={that.onTextboxChangeSkill}/>   
+                                    
+                                  </Col>
+                                </FormGroup>
+                              
+                              </Form>
+                              </ModalBody>
+                              {/* <div data-id={item.id} onClick={that.handleUpdate}> */}
+                              <ModalFooter>
+                               
+
+                                  <Button color="primary" >Submit</Button>
+
+                              </ModalFooter>
+                              {/* </div> */}
+
+                            </Modal>
+              </CardFooter>       
             </Card>
           </Col>
         </Row>
