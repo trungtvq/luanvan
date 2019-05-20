@@ -24,19 +24,19 @@ class Cover extends Component {
     this.state = {
       dataUserStory: [ 
               {
-               
+                "title":"See list 1",
                 "as":"admin",
                 "want":"See a list of all members and visitors",
                 "so":"I can monitor site visits",
               },
               {
-                
+                "title":"See list 2",
                 "as":"admin",
                 "want":"Add new categories",
                 "so":"I can allow members to create engaging content",
               },
               {
-                
+                "title":"See list 3",
                 "as":"admin",
                 "want":"Add new security groups",
                 "so":"Security levels are approriate",
@@ -45,6 +45,7 @@ class Cover extends Component {
             ],
       dataProductBacklog: [ 
               {
+                "title":"See list 4",
                 "as":"admin",
                 "want":"See a list of all members and visitors",
                 "so":"I can monitor site visits",
@@ -53,7 +54,7 @@ class Cover extends Component {
                 "sprint":1,
               },
               {
-                
+                "title":"See list 5",
                 "as":"admin",
                 "want":"Add new categories",
                 "so":"I can allow members to create engaging content",
@@ -63,7 +64,7 @@ class Cover extends Component {
                
               },
               {
-               
+                "title":"See list 6",
                 "as":"admin",
                 "want":"Add new security groups",
                 "so":"Security levels are approriate",
@@ -82,6 +83,8 @@ class Cover extends Component {
       priorityProductBacklog:'',
       estimationProductBacklog:'',
       sprintProductBacklog:'',
+
+      title:'',
           }
     };
     //userstory
@@ -101,23 +104,60 @@ class Cover extends Component {
       });
     }
     //ProductBacklog
-    onTextboxChangePriorityProductBacklog=(event)=> {
-      this.setState({
-        priorityProductBacklog: event.target.value,
-      });
+    onTextboxChangePriorityProductBacklog=(event,title)=> {
+      const tmpdata = this.state.dataProductBacklog.map(p =>
+        p.title == title
+          ? {
+            ...p, priority:event.target.value
+          }
+          : p
+      );
+      this.setState(prevState => ({
+        dataProductBacklog: tmpdata,
+
+      }));
     }
-    onTextboxChangeEstimationProductBacklog=(event)=> {
-      this.setState({
-        estimationProductBacklog: event.target.value,
-      });
+    onTextboxChangeEstimationProductBacklog=(event,title)=> {
+      const tmpdata = this.state.dataProductBacklog.map(p =>
+        p.title == title
+          ? {
+            ...p, estimation:event.target.value
+          }
+          : p
+      );
+      this.setState(prevState => ({
+        dataProductBacklog: tmpdata,
+
+      }));
     }
-    onTextboxChangeSprintProductBacklog=(event)=> {
-      this.setState({
-        sprintProductBacklog: event.target.value,
-      });
+    onTextboxChangeSprintProductBacklog=(event,title)=> {
+      const tmpdata = this.state.dataProductBacklog.map(p =>
+        p.title == title
+          ? {
+            ...p, sprint:event.target.value
+          }
+          : p
+      );
+      this.setState(prevState => ({
+        dataProductBacklog: tmpdata,
+
+      }));
     }
 
-    handleSave = () => {}
+    handleStoryToBacklog=(titleStory,priority,estimation,sprint)=>{
+      var result = this.state.dataUserStory.find(x => x.title === titleStory)
+      console.log("kt____"+result.title);
+      console.log("kt____"+titleStory);
+      this.setState(prevState => ({ dataUserStory: [...prevState.dataUserStory.filter(function (e) { return e.title !== titleStory; })] }));
+      this.setState(prevState => ({ dataProductBacklog: [...prevState.dataProductBacklog, { title: titleStory, as: result.as, want: result.want, so: result.so, priority: priority, estimation: estimation, sprint: sprint }] }));
+
+    }
+    handleBacklogToStory=()=>{}
+
+    handleSave = () => {
+      //viet hàm lấy toàn bộ dữ liệu trong mảng dataProductBacklog thêm vào collection productbacklog
+    }
+
   render() {
     let that=this;
     return (
@@ -163,7 +203,7 @@ class Cover extends Component {
                                                   <Input type="text" name="text-input" id="text-input" rows="9" onChange={that.onTextboxChangeSprintUserstory}/>                            
                                                 </div>
                                             </div>
-                                            <Button type="submit" size="sm" color="success" align="center"><i class="fa fa-arrow-right"></i></Button>
+                                            <Button  size="sm" color="success" align="center" onClick={() =>{that.handleStoryToBacklog(item.title, item.priority, item.estimation, item.sprint)}}><i class="fa fa-arrow-right"></i></Button>
                                           </CardBody>
                                     </Card> 
                                  )
@@ -197,7 +237,7 @@ class Cover extends Component {
                                                 <Label htmlFor="text-input">Priority</Label>
                                               </div>
                                               <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.priority} onChange={that.onTextboxChangePriorityProductBacklog}/>
+                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.priority} onChange={e =>{that.onTextboxChangePriorityProductBacklog(e,item.title)}}/>
                                               </div>
                                                 
                                                
@@ -205,7 +245,7 @@ class Cover extends Component {
                                                 <Label htmlFor="text-input">Estimation</Label>
                                               </div>
                                               <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.estimation} onChange={that.onTextboxChangeEstimationProductBacklog}/>                            
+                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.estimation} onChange={e =>{that.onTextboxChangeEstimationProductBacklog(e,item.title)}}/>                            
                                               </div>
                                                
 
@@ -213,7 +253,7 @@ class Cover extends Component {
                                                 <Label htmlFor="text-input">Sprint</Label>
                                               </div>
                                               <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.sprint} onChange={that.onTextboxChangeSprintProductBacklog}/>                            
+                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.sprint} onChange={e =>{that.onTextboxChangeSprintProductBacklog(e,item.title)}}/>                            
                                               </div>
                                                
                                             </div>

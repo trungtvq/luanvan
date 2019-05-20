@@ -322,8 +322,8 @@ class Detail extends Component {
                   <tr class="bg-primary">
                     <th>Title<i class="fa fa-sort"></i></th>
                     <th>As a...<i class="fa fa-sort"></i></th>
-                    <th>I want to be able to... <i class="fa fa-sort"></i></th>
-                    <th>So that... <i class="fa fa-sort"></i></th>
+                    <th>I want to be able to... </th>
+                    <th>So that... </th>
                     <th>
                       <div>
                         <Button color="primary" size="sm" className="mt-3" onClick={that.toggleAdd}><i class="fa fa-plus-square"></i>{this.props.buttonLabel}</Button>
