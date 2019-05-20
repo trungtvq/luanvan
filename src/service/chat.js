@@ -3,6 +3,7 @@ import { Widget, addResponseMessage, addLinkSnippet, addUserMessage } from 'reac
 
 import 'react-chat-widget/lib/styles.css';
 import logo from '../assets/img/brand/logo.png';
+import cookie from 'react-cookies';
 
 const proto = {};
 
@@ -14,19 +15,23 @@ class Chat extends Component {
       var metadata = {};
 
      var SendMsgReq=new proto.chat.SendMsgReq();
-     var responseChat = chatService.connectChat(SendMsgReq,metadata)
+     SendMsgReq.setRequesterid(cookie.load("userId"));
+     SendMsgReq.setAccesstoken(cookie.load("accessToken"));
+     SendMsgReq.setChannelid(cookie.load("currentProject"));
+     SendMsgReq.setName(cookie.load("name"))
+    //  var responseChat = chatService.connectChat(SendMsgReq,metadata)
   
-     responseChat.on('data',function(responseChat){
-            addResponseMessage(responseChat.getMsg());
-      })
+    //  responseChat.on('data',function(responseChat){
+    //       addResponseMessage(responseChat.getName()+" said: "+ responseChat.getMsg());
+    //   })
   
-      responseChat.on('status',function(status){
-        console.log("client connect")
-      })
+    //   responseChat.on('status',function(status){
+    //     console.log("client connect")
+    //   })
   
-      responseChat.on('end',function(end){
-        console.log("client end")
-      })
+    //   responseChat.on('end',function(end){
+    //     console.log("client end")
+    //   })
     }
     addResponseMessage=(res)=>{
       
