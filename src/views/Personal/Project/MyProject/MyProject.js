@@ -117,10 +117,7 @@ class MyProject extends Component {
       }
     });
     response.on('status', function (status) {
-      console.log("status")
-      console.log(status.code);
-      console.log(status.details);
-      console.log(status.metadata);
+      console.log("status code myproject:"+status.code);
     });
     response.on('end', function (end) {
       console.log("end")

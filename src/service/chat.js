@@ -15,7 +15,7 @@ class Chat extends Component {
     this.fetchChat()
   }
   fetchChat = () => {
-
+    console.log("fetchChat")
     const chatService = new proto.chat.ChatClient('https://www.overlead.co');
     var metadata = {};
 
@@ -25,22 +25,27 @@ class Chat extends Component {
     SendMsgReq.setChannelid("5ce16a8aef2aa3092c1ccecf");
     //SendMsgReq.setChannelid(cookie.load("currentProject"));
     SendMsgReq.setName(cookie.load("name"))
-    var response = chatService.connectChat(SendMsgReq, metadata)
     let that = this
-    response.on('data', function (response) {
-      console.log(response.getStatus())
-      addResponseMessage(response.getSendername() + " said: " + response.getMsg());
-      console.log("response" + response.getMsg())
-      if (response.getStatus=="SUCCESS") that.fetchChat()
-    })
+    
 
-    response.on('status', function (status) {
-      console.log(status.code)
-    })
+    chatService.connectChat(SendMsgReq, metadata, (err, response) => {
+      if (err) { //if error
+        console.log(err);
+        console.log("error")
+        that.fetchChat()
+      } else { //if success
+        //get response
+        if (response.getStatus() == "SUCCESS") {
+          that.toggleWidget()
+          addResponseMessage(response.getSendername() + " said: " + response.getMsg());
+          that.fetchChat()
+          
+        } else {
+          that.fetchChat()
 
-    response.on('end', function (end) {
-      console.log("end")
-    })
+        }
+      }
+    });
   }
   componentWillUnmount(){
   }
@@ -54,7 +59,6 @@ class Chat extends Component {
     SendMsgReq.setChannelid("5ce16a8aef2aa3092c1ccecf");
     SendMsgReq.setName(cookie.load("name"))
     SendMsgReq.setMsg(newMessage)
-    addResponseMessage("tests");
 
     chatService.sendMsg(SendMsgReq, metadata, (err, response) => {
       if (err) { //if error
@@ -72,7 +76,7 @@ class Chat extends Component {
         <Widget
           handleNewUserMessage={this.handleNewUserMessage}
           profileAvatar={logo}
-          title="My new awesome title"
+          title={cookie.load("projectId")}
           subtitle="And my cool subtitle"
         />
       </div>
