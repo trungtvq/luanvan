@@ -54,15 +54,8 @@ class DefaultHeader extends Component {
             <NavLink href="#">Settings</NavLink>
           </NavItem>
            <NavItem className="px-3">
-              <UncontrolledDropdown color="light">
-                <DropdownToggle caret>
-                    Project
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem href="/CreateProject">Create project</DropdownItem>
-                  <DropdownItem href="/myproject">My projects</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+           <Button type="button" color="light" href="/myproject">All project</Button>
+
           </NavItem>
           <NavItem className="px-3">
               <UncontrolledDropdown color="light">
