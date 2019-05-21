@@ -9,7 +9,7 @@ import sygnet from '../../assets/img/brand/sygnet.svg'
 
 import authContext from "../../contexts/authContext";
 import cookie from 'react-cookies';
-import {saveLogin} from '../../actions'
+import {saveLogin,removeLogin} from '../../actions'
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 
@@ -20,6 +20,15 @@ const propTypes = {
 const defaultProps = {};
 
 class DefaultHeader extends Component {
+
+
+  onLogout=(e)=>{
+
+    console.log("logout")
+    this.props.dispatch(removeLogin())
+    cookie.remove('userId')
+    cookie.remove('accessToken')
+  }
   render() {
 
     // eslint-disable-next-line
@@ -108,7 +117,7 @@ class DefaultHeader extends Component {
               <DropdownItem><i className="fa fa-usd"></i> Payments<Badge color="secondary">42</Badge></DropdownItem>
               <DropdownItem><i className="fa fa-file"></i> Projects<Badge color="primary">42</Badge></DropdownItem>
               <DropdownItem divider />
-              <DropdownItem onClick={e => this.props.onLogout(e)}><i className="fa fa-lock"></i> Logout</DropdownItem>
+              <DropdownItem onClick={e => this.onLogout()}><i className="fa fa-lock"></i> Logout</DropdownItem>
             </DropdownMenu>
           </AppHeaderDropdown>
         </Nav>

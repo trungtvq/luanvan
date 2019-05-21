@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
-import { connect } from 'react-redux'
-import {removeLogin} from '../../../actions'
-import cookie from 'react-cookies';
 
 const proto = {};
 proto.myprofile = require('./../../../gRPC/myprofile/myprofile_grpc_web_pb');
@@ -12,52 +9,9 @@ class Page500 extends Component {
   this.state={
       av:''
   }}
-  
-  componentWillMount(){
-//vuc me cai firefox
-          //create service to request
-          const myprofileService = new proto.myprofile.MyProfileClient('overlead.co:8085');
-          //some data of request (get that from frontend)
-          const username = "useridoremail";
-
-          //create var for react
-          var ProfileReq = new proto.myprofile.ProfileReq();
-
-          //set data from frontend to this var
-          ProfileReq.setUsername(username);
-
-          //metadab will be config later
-          var metadata = {};
-          //make a request to server
-          var getTodo = myprofileService.getProfileSimple(ProfileReq, metadata, (err, response) => {
-            if (err) { //if error
-              console.log(err);
-            } else { //if success
-              //get response
-              console.log("response")
-              console.log(response);
-              console.log("get avatar")
-              console.log()
-
-              this.setState({
-                av: response.getAvatar()
-              });
-              
-
-              const ProfileRes = response[0];
-              if (ProfileRes == null) {// if response null => not found
-			
-                console.log(`Something was wrong ${username} wasn't found`);
-              } else {
-                console.log(`Fetched TODO with ID ${username}: ${ProfileRes}`);
-              }
-            }
-          });
-  }
+   
   render() {
-    this.props.dispatch(removeLogin())
-    cookie.remove('userId')
-    cookie.remove('accessToken')
+    
     
     return (
       <div className="app flex-row align-items-center">
@@ -88,11 +42,5 @@ class Page500 extends Component {
     );
   }
 }
-function mapStateToProps(state) {
-  const { changeStatusLogin } = state
-  const { isLogin, id, token } = changeStatusLogin
-  return {
-      isLogin, id, token
-  }
-}
-export default connect(mapStateToProps)(Page500);
+
+export default (Page500);
