@@ -11,7 +11,10 @@ service ProductBacklog{
     rpc updateProductBacklog(UpdateProductBacklogReq) returns (ProductBacklogRes){}
     rpc deleteProductBacklog(DeleteProductBacklogReq) returns (ProductBacklogRes){}
 	rpc sendToSprintBacklog(SendToSprintBacklogReq) returns (ProductBacklogRes){}
+	rpc sendToUserStory(SendToSprintBacklogReq) returns (ProductBacklogRes){}
+
 	rpc getAllProductBacklog(GetAllProductBacklogReq) returns (stream GetAllProductBacklogRes){}
+
 }
 
 message AddNewProductBacklogReq{

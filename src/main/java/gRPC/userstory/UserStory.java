@@ -10,6 +10,7 @@ import org.bson.Document;
 import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class UserStory {
@@ -18,7 +19,9 @@ public class UserStory {
             return true;
 
         }
-        public void makeResponseForUpdateSuccess(StreamObserver res,String id){
+
+
+        public void makeResponseForUpdateSuccess(StreamObserver res, String id){
 
             res.onNext(UserStoryRes.newBuilder().setStatus("SUCCESS").setId(id).build());
             res.onCompleted();
@@ -35,31 +38,60 @@ public class UserStory {
             } else {
 
 
-                List<Document> foundDocument = Mongod.collUserstory.find(new Document("name",request.getName()).append("projectId",request.getProjectId())).into(new ArrayList<>());
-                if (foundDocument.size()!=0){
-                    makeResponseForFailed(responseObserver,"EXIST_USERSTORY_NAME");
+                List<Document> foundDocument = Mongod.collBacklog.find(new Document("title",request.getName()).append("projectId",request.getProjectId())).into(new ArrayList<>());
 
-                } else{
                     Document document = new Document()
-                            .append("name",request.getName())
+                            .append("title",request.getName())
                             .append("ownerId", request.getRequesterId())
                             .append("projectId", request.getProjectId())
                             .append("role", new BsonString(request.getRole()))
                             .append("want", request.getWant())
-                            .append("so", request.getSo());
-                    Mongod.collUserstory.insertOne(document);
+                            .append("isUS","true")
+                            .append("so", request.getSo())
+                            .append("date", new Date())
+                            .append("isSprintBacklog","false");
+
+                    Mongod.collBacklog.insertOne(document);
 
 
-                    foundDocument = Mongod.collUserstory.find(document).into(new ArrayList<>());
+                    foundDocument = Mongod.collBacklog.find(document).into(new ArrayList<>());
                     //check size
                     if (foundDocument.size()!=1){
                         makeResponseForFailed(responseObserver,"WRONG_SIZE");
                     } else {
                         Mongod.collProject.findOneAndUpdate(new Document("_id",new ObjectId(request.getProjectId())),
                                 new Document("$push",
-                                        new Document("stories",foundDocument.get(0).get("_id").toString())));
+                                        new Document("backlogs",foundDocument.get(0).get("_id").toString())));
                         makeResponseForUpdateSuccess(responseObserver,foundDocument.get(0).get("_id").toString());
                     }
+
+            }
+        }
+
+        @Override
+        public void sendToProductBacklog(SendToProductBacklogReq request, StreamObserver<UserStoryRes> responseObserver) {
+            System.out.println("sendToProductBacklog");
+            if (!isValidAuth()) {
+                makeResponseForFailed(responseObserver,"AUTH_INVALID");
+
+            } else {
+                //Todos: check projectname is exist
+                List<Document> foundDocument = Mongod.collBacklog.find(new Document("_id",new ObjectId(request.getId())).append("isUS","true")).into(new ArrayList<>());
+                if (foundDocument.size()==1){
+                    Document needUpdate=new Document("_id",new ObjectId(request.getId())).append("isUS","true");
+                    Document u=new Document("isUS","false");
+
+
+                    if (!request.getStatusBacklog().equals(""))u.append("statusBacklog", request.getStatusBacklog());
+                    if (!request.getPriority().equals(""))u.append("priority", request.getPriority());
+                    if (!request.getEstimation().equals(""))u.append("estimation", request.getEstimation());
+                    if (!request.getSprint().equals(""))u.append("sprintId", request.getEstimation());
+
+                    Mongod.collBacklog.findOneAndUpdate(needUpdate,
+                            new Document("$set",u));
+                    makeResponseForUpdateSuccess(responseObserver,request.getId());
+                } else{
+                    makeResponseForFailed(responseObserver,"NOT_EXIST_USERSTORY_NAME");
                 }
             }
         }
@@ -75,9 +107,9 @@ public class UserStory {
 
             } else {
                 //Todos: check projectname is exist
-                List<Document> foundDocument = Mongod.collUserstory.find(new Document("_id",new ObjectId( request.getUserStoryId()))).into(new ArrayList<>());
+                List<Document> foundDocument = Mongod.collBacklog.find(new Document("_id",new ObjectId(request.getUserStoryId())).append("isUS","true")).into(new ArrayList<>());
                 if (foundDocument.size()==1){
-                    Document needUpdate=new Document("_id",new ObjectId(request.getUserStoryId()));
+                    Document needUpdate=new Document("_id",new ObjectId(request.getUserStoryId())).append("isUS","true");
                     Document listUpdate=new Document();
 
                     if (request.getRole()!=""){
@@ -90,7 +122,7 @@ public class UserStory {
                         listUpdate.append("so",request.getSo());
                     }
 
-                    Mongod.collUserstory.findOneAndUpdate(needUpdate,new Document("$set",listUpdate));
+                    Mongod.collBacklog.findOneAndUpdate(needUpdate,new Document("$set",listUpdate));
                     makeResponseForUpdateSuccess(responseObserver,request.getUserStoryId());
                 } else{
                     makeResponseForFailed(responseObserver,"NOT_EXIST_USERSTORY_NAME");
@@ -104,14 +136,14 @@ public class UserStory {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID");
 
             } else {
-                DeleteResult result = Mongod.collUserstory.deleteOne(new Document("_id",new ObjectId(request.getUserStoryId()) ));
+                DeleteResult result = Mongod.collBacklog.deleteOne(new Document("_id",new ObjectId(request.getUserStoryId())).append("isUS","true"));
 
                 if (result.getDeletedCount() != 1) {
                     makeResponseForFailed(responseObserver,"WRONG_SIZE");
                 }else{
                     Mongod.collProject.findOneAndUpdate(
-                            new Document("_id",new ObjectId(request.getProjectId())),
-                                    new Document("$pull",new Document("stories",request.getUserStoryId())));
+                            new Document("_id",new ObjectId(request.getProjectId())).append("isUS","true"),
+                                    new Document("$pull",new Document("backlogs",request.getUserStoryId()).append("isUS","true")));
                     makeResponseForUpdateSuccess(responseObserver,request.getUserStoryId());
                 }
             }
@@ -129,21 +161,26 @@ public class UserStory {
                     makeResponseForFailed(responseObserver,"EMPTY");
 
                 }  else {
-                    List<String> idList= (List<String>) foundDocument.get(0).get("stories");
-                    idList.forEach(i->{
-                        List<Document> story=Mongod.collUserstory.find(new Document("_id",new ObjectId(i.toString()))).into(new ArrayList<>());
-                        if (story.size()==1) {
-                            GetAllUserStoryRes reply=GetAllUserStoryRes.newBuilder()
-                                    .setId(story.get(0).get("_id").toString())
-                                    .setRole(story.get(0).get("role").toString())
-                                    .setWant(story.get(0).get("want").toString())
-                                    .setSo(story.get(0).get("so").toString())
-                                    .setName(story.get(0).get("name").toString())
-                                    .setStatus("SUCCESS").build();
-                            responseObserver.onNext(reply);
-                        }
-                    });
-                    responseObserver.onCompleted();
+                    List<String> idList= (List<String>) foundDocument.get(0).get("backlogs");
+                    if (idList.size()>0){
+                        idList.forEach(i->{
+                            List<Document> story=Mongod.collBacklog.find(new Document("_id",new ObjectId(i.toString())).append("isUS","true")).into(new ArrayList<>());
+                            if (story.size()==1) {
+                                GetAllUserStoryRes reply=GetAllUserStoryRes.newBuilder()
+                                        .setId(story.get(0).get("_id").toString())
+                                        .setRole(story.get(0).get("role").toString())
+                                        .setWant(story.get(0).get("want").toString())
+                                        .setSo(story.get(0).get("so").toString())
+                                        .setName(story.get(0).get("title").toString())
+                                        .setStatus("SUCCESS").build();
+                                responseObserver.onNext(reply);
+                            }
+                        });
+                        responseObserver.onCompleted();
+                    } else{
+                        makeResponseForFailed(responseObserver,"EMPTY_US");
+                    }
+
                 }
             }
         }

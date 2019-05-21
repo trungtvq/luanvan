@@ -27,7 +27,6 @@ public class Mongod {
     public static final MongoCollection<Document> collTeam = Mongod.getOverleadConnection().getCollection("team");
     public static final MongoCollection<Document> collAuth = Mongod.getOverleadConnection().getCollection("auth");
     public static final MongoCollection<Document> collTask = Mongod.getOverleadConnection().getCollection("task");
-    public static final MongoCollection<Document> collUserstory = Mongod.getOverleadConnection().getCollection("userstory");
     public static final MongoCollection<Document> collBacklog = Mongod.getOverleadConnection().getCollection("productbacklog");
 
 

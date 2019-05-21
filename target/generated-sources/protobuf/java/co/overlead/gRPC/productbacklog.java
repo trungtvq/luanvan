@@ -87,7 +87,7 @@ public final class productbacklog {
       "o\030\005 \001(\t\022\025\n\rstatusBacklog\030\013 \001(\t\022\016\n\006status" +
       "\030\t \001(\t\022\r\n\005error\030\001 \001(\t\022\020\n\010priority\030\006 \001(\t\022" +
       "\022\n\nestimation\030\007 \001(\t\022\020\n\010sprintId\030\010 \001(\t\022\r\n" +
-      "\005title\030\n \001(\t2\224\004\n\016ProductBacklog\022d\n\024addNe" +
+      "\005title\030\n \001(\t2\364\004\n\016ProductBacklog\022d\n\024addNe" +
       "wProductBacklog\022\'.productbacklog.AddNewP" +
       "roductBacklogReq\032!.productbacklog.Produc" +
       "tBacklogRes\"\000\022d\n\024updateProductBacklog\022\'." +
@@ -97,11 +97,14 @@ public final class productbacklog {
       "eteProductBacklogReq\032!.productbacklog.Pr" +
       "oductBacklogRes\"\000\022b\n\023sendToSprintBacklog" +
       "\022&.productbacklog.SendToSprintBacklogReq" +
-      "\032!.productbacklog.ProductBacklogRes\"\000\022l\n" +
-      "\024getAllProductBacklog\022\'.productbacklog.G" +
-      "etAllProductBacklogReq\032\'.productbacklog." +
-      "GetAllProductBacklogRes\"\0000\001B)\n\020co.overle" +
-      "ad.gRPCB\016productbacklogP\001\242\002\002pbb\006proto3"
+      "\032!.productbacklog.ProductBacklogRes\"\000\022^\n" +
+      "\017sendToUserStory\022&.productbacklog.SendTo" +
+      "SprintBacklogReq\032!.productbacklog.Produc" +
+      "tBacklogRes\"\000\022l\n\024getAllProductBacklog\022\'." +
+      "productbacklog.GetAllProductBacklogReq\032\'" +
+      ".productbacklog.GetAllProductBacklogRes\"" +
+      "\0000\001B)\n\020co.overlead.gRPCB\016productbacklogP" +
+      "\001\242\002\002pbb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

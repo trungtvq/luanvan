@@ -123,6 +123,38 @@ public final class UserStoryGrpc {
      return getDeleteUserStoryMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.SendToProductBacklogReq,
+      co.overlead.gRPC.UserStoryRes> getSendToProductBacklogMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "sendToProductBacklog",
+      requestType = co.overlead.gRPC.SendToProductBacklogReq.class,
+      responseType = co.overlead.gRPC.UserStoryRes.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<co.overlead.gRPC.SendToProductBacklogReq,
+      co.overlead.gRPC.UserStoryRes> getSendToProductBacklogMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.SendToProductBacklogReq, co.overlead.gRPC.UserStoryRes> getSendToProductBacklogMethod;
+    if ((getSendToProductBacklogMethod = UserStoryGrpc.getSendToProductBacklogMethod) == null) {
+      synchronized (UserStoryGrpc.class) {
+        if ((getSendToProductBacklogMethod = UserStoryGrpc.getSendToProductBacklogMethod) == null) {
+          UserStoryGrpc.getSendToProductBacklogMethod = getSendToProductBacklogMethod = 
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.SendToProductBacklogReq, co.overlead.gRPC.UserStoryRes>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "userstory.UserStory", "sendToProductBacklog"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.SendToProductBacklogReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.UserStoryRes.getDefaultInstance()))
+                  .setSchemaDescriptor(new UserStoryMethodDescriptorSupplier("sendToProductBacklog"))
+                  .build();
+          }
+        }
+     }
+     return getSendToProductBacklogMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllUserStoryReq,
       co.overlead.gRPC.GetAllUserStoryRes> getGetAllUserStoryMethod;
 
@@ -205,6 +237,13 @@ public final class UserStoryGrpc {
 
     /**
      */
+    public void sendToProductBacklog(co.overlead.gRPC.SendToProductBacklogReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.UserStoryRes> responseObserver) {
+      asyncUnimplementedUnaryCall(getSendToProductBacklogMethod(), responseObserver);
+    }
+
+    /**
+     */
     public void getAllUserStory(co.overlead.gRPC.GetAllUserStoryReq request,
         io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllUserStoryRes> responseObserver) {
       asyncUnimplementedUnaryCall(getGetAllUserStoryMethod(), responseObserver);
@@ -233,6 +272,13 @@ public final class UserStoryGrpc {
                 co.overlead.gRPC.DeleteUserStoryReq,
                 co.overlead.gRPC.UserStoryRes>(
                   this, METHODID_DELETE_USER_STORY)))
+          .addMethod(
+            getSendToProductBacklogMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                co.overlead.gRPC.SendToProductBacklogReq,
+                co.overlead.gRPC.UserStoryRes>(
+                  this, METHODID_SEND_TO_PRODUCT_BACKLOG)))
           .addMethod(
             getGetAllUserStoryMethod(),
             asyncServerStreamingCall(
@@ -288,6 +334,14 @@ public final class UserStoryGrpc {
 
     /**
      */
+    public void sendToProductBacklog(co.overlead.gRPC.SendToProductBacklogReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.UserStoryRes> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getSendToProductBacklogMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
     public void getAllUserStory(co.overlead.gRPC.GetAllUserStoryReq request,
         io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllUserStoryRes> responseObserver) {
       asyncServerStreamingCall(
@@ -332,6 +386,13 @@ public final class UserStoryGrpc {
     public co.overlead.gRPC.UserStoryRes deleteUserStory(co.overlead.gRPC.DeleteUserStoryReq request) {
       return blockingUnaryCall(
           getChannel(), getDeleteUserStoryMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public co.overlead.gRPC.UserStoryRes sendToProductBacklog(co.overlead.gRPC.SendToProductBacklogReq request) {
+      return blockingUnaryCall(
+          getChannel(), getSendToProductBacklogMethod(), getCallOptions(), request);
     }
 
     /**
@@ -384,12 +445,21 @@ public final class UserStoryGrpc {
       return futureUnaryCall(
           getChannel().newCall(getDeleteUserStoryMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.UserStoryRes> sendToProductBacklog(
+        co.overlead.gRPC.SendToProductBacklogReq request) {
+      return futureUnaryCall(
+          getChannel().newCall(getSendToProductBacklogMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_ADD_NEW_USER_STORY = 0;
   private static final int METHODID_UPDATE_USER_STORY = 1;
   private static final int METHODID_DELETE_USER_STORY = 2;
-  private static final int METHODID_GET_ALL_USER_STORY = 3;
+  private static final int METHODID_SEND_TO_PRODUCT_BACKLOG = 3;
+  private static final int METHODID_GET_ALL_USER_STORY = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -418,6 +488,10 @@ public final class UserStoryGrpc {
           break;
         case METHODID_DELETE_USER_STORY:
           serviceImpl.deleteUserStory((co.overlead.gRPC.DeleteUserStoryReq) request,
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.UserStoryRes>) responseObserver);
+          break;
+        case METHODID_SEND_TO_PRODUCT_BACKLOG:
+          serviceImpl.sendToProductBacklog((co.overlead.gRPC.SendToProductBacklogReq) request,
               (io.grpc.stub.StreamObserver<co.overlead.gRPC.UserStoryRes>) responseObserver);
           break;
         case METHODID_GET_ALL_USER_STORY:
@@ -488,6 +562,7 @@ public final class UserStoryGrpc {
               .addMethod(getAddNewUserStoryMethod())
               .addMethod(getUpdateUserStoryMethod())
               .addMethod(getDeleteUserStoryMethod())
+              .addMethod(getSendToProductBacklogMethod())
               .addMethod(getGetAllUserStoryMethod())
               .build();
         }
