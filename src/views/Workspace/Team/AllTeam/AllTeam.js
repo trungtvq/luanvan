@@ -39,19 +39,8 @@ class AllTeam extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataTeam: [{
-        members:[
-          {
-            id:'',
-            name:'',
-            role:'',
-            point:'',
-            currentTask:'',
-            numOfTaskDone:'',
-          }
-        ],
-      }],
-      
+      dataTeam: [],
+
       requesterId: '',
       actionStatus: '',              //success or show error when action add delete update      
       modalAddMember: false,
@@ -109,9 +98,9 @@ class AllTeam extends Component {
     }));
   }
   //toggle member
-  toggleAddMember = () => {
+  toggleAddMember = (event) => {
     this.setState(prevState => ({
-      modalAddMember: !prevState.modalAddMember
+      modalAddMember: !prevState.modalAddMember,
     }));
   }
   toggleEditMember = (event) => {
@@ -139,7 +128,10 @@ class AllTeam extends Component {
       updateTeamId: id
     }));
   }
-  loadAllTeam=()=>{
+  shouldComponentUpdate() {
+    return true;
+  }
+  loadAllTeam = () => {
     console.log("getAllTeam")
     const teamService = new proto.team.TeamClient('https://www.overlead.co');
     var metadata = {};
@@ -148,25 +140,26 @@ class AllTeam extends Component {
     GetAllTeamReq.setRequesterid(cookie.load("userId"));
     GetAllTeamReq.setProjectid(cookie.load("currentProject"));
     GetAllTeamReq.setAccesstoken(cookie.load("accessToken"));
-    let response=teamService.getAllTeam(GetAllTeamReq, metadata)    
+    let response = teamService.getAllTeam(GetAllTeamReq, metadata)
 
     let that = this
     response.on('data', function (response) {
       if (response.getStatus() == "SUCCESS") {
-        let newData=that.state.dataTeam
-        newData.push({          
-            id:response.getTeamid(),
-            name:response.getName(),
-            description:response.getDescription(),
-            department:response.getDepartment()              
+        let newData = that.state.dataTeam
+        newData.push({
+          id: response.getTeamid(),
+          name: response.getName(),
+          description: response.getDescription(),
+          department: response.getDepartment(),
+          members: []
         })
         console.log("newData")
         console.log(newData)
         that.setState({
-          dataTeam:newData
+          dataTeam: newData
         })
-
-      } 
+        that.loadAllMember(response.getTeamid())
+      }
     })
     response.on('status', function (status) {
       console.log("status")
@@ -180,54 +173,47 @@ class AllTeam extends Component {
     });
 
   }
-  loadAllMember=(id)=>{
+  loadAllMember = (id) => {
     console.log("loadAllMember")
     const teamService = new proto.team.TeamClient('https://www.overlead.co');
     var metadata = {};
 
-    var GetAllMemberReq = new proto.team.GetAllTeamReq();
+    var GetAllMemberReq = new proto.team.GetAllMemberReq();
     GetAllMemberReq.setRequesterid(cookie.load("userId"));
     GetAllMemberReq.setTeamid(id);
     GetAllMemberReq.setAccesstoken(cookie.load("accessToken"));
-    GetAllMemberReq.setAccesstoken(cookie.load("accessToken"));
-    let response=teamService.getAllMember(GetAllMemberReq, metadata)    
+    let response = teamService.getAllMember(GetAllMemberReq, metadata)
 
     let that = this
     response.on('data', function (response) {
       if (response.getStatus() == "SUCCESS") {
-        let newData=that.state.dataTeam
-        newData.map(p=>
-          p.id==id
-          ?{
-            ...p,members:Object.assign(p.members,p.members.push({
-              id:'',
-              name:'',
-              role:'',
-              point:'',
-              currentTask:'',
-              numOfTaskDone:'',
-            }))
-          }:
-          {
-            p
-          }
+        let newData = that.state.dataTeam
+        newData.map(p =>
+          p.id == id
+            ? {
+              ...p, members: Object.assign(p.members, p.members.push({
+                id: response.getId(),
+                name: response.getOption(),
+                role: 'member',
+                point: '0',
+                currentTask: '0',
+                numOfTaskDone: '0',
+              }))
+            } :
+            {
+              p
+            }
 
         )
-        newData.push({          
-            id:response.getTeamid(),
-            name:response.getName(),
-            description:response.getDescription(),
-            department:response.getDepartment()              
-        })
-        
+
         console.log("newData")
         console.log(newData)
         that.setState({
-          dataTeam:newData
+          dataTeam: newData
         })
-        that.loadAllMember(response.getTeamid())
 
-      } 
+
+      }
     })
     response.on('status', function (status) {
       console.log("status")
@@ -244,27 +230,114 @@ class AllTeam extends Component {
     //viet hàm lấy toàn bộ dữ liệu trong collection team đổ vào array dataTeam
 
     this.loadAllTeam()
-
+    this.state.dataTeam.forEach(i => {
+      this.loadAllMember(i.id)
+    })
   }
   //member
-  handleAddMember = (event) => {
-    let idteam = event.currentTarget.dataset.idteam;
+  handleAddMember = () => {
 
+    console.log("handleAddMember")
+    const teamService = new proto.team.TeamClient('https://www.overlead.co');
+    var metadata = {};
+
+    var AddMemberReq = new proto.team.AddMemberReq();
+    AddMemberReq.setRequesterid(cookie.load("userId"));
+    AddMemberReq.setAccesstoken(cookie.load("accessToken"));
+    AddMemberReq.setTeamid(this.state.updateTeamId)
+    AddMemberReq.setMemberemail(this.state.emailMember)
+    AddMemberReq.setRole(this.state.roleMember)
+    let that = this
+    teamService.addMember(AddMemberReq, metadata, (err, response) => {
+      if (err) { //if error
+        console.log(err);
+      } else {
+        if (response.getStatus() == "SUCCESS") {
+          let newData = that.state.dataTeam
+          newData.map(p =>
+            p.id == that.state.updateTeamId
+              ? {
+                ...p, members: Object.assign(p.members, p.members.push({
+                  id: response.getId(),
+                  name: response.getOption(),
+                  role: this.state.roleMember,
+                  point: '0',
+                  currentTask: '0',
+                  numOfTaskDone: '0',
+                }))
+              } :
+              {
+                p
+              }
+  
+          )
+  
+          console.log("newData")
+          console.log(newData)
+          that.setState({
+            dataTeam: newData
+          })
+
+        } else {
+
+        }
+      }
+    })
   }
   handleUpdateMember = (event) => {
     let idMember = event.currentTarget.dataset.idMember;
     let idteam = event.currentTarget.dataset.idteam;
   }
   handleDeleteMember = (event) => {
-    let idMember = event.currentTarget.dataset.idMember;
+    let idmember = event.currentTarget.dataset.idmember;
     let idteam = event.currentTarget.dataset.idteam;
+    console.log("handleDeleteMember")
+    const teamService = new proto.team.TeamClient('https://www.overlead.co');
+    var metadata = {};
+
+    var RemoveMemberReq = new proto.team.RemoveMemberReq();
+    RemoveMemberReq.setRequesterid(cookie.load("userId"));
+    RemoveMemberReq.setAccesstoken(cookie.load("accessToken"));
+    RemoveMemberReq.setTeamid(idteam)
+    RemoveMemberReq.setMemberemail(idmember);
+    let that = this
+    teamService.removeMember(RemoveMemberReq, metadata, (err, response) => {
+      if (err) { //if error
+        console.log(err);
+      } else {
+        if (response.getStatus() == "SUCCESS") {
+          console.log("SUCCESS")
+          let newData = that.state.dataTeam
+          newData.map(p =>
+            p.id == idteam
+              ? {
+                ...p, members: p.members.filter(i=>
+                  i.id==idmember?false:true)
+              } :
+              {
+                p
+              }
+  
+          )
+  
+          console.log("newData")
+          console.log(newData)
+          that.setState({
+            dataTeam: newData
+          })
+
+        } else {
+
+        }
+      }
+    })
+
+
   }
   //team
   handleAddTeam = () => { }
   handleUpdateTeam = (event) => {
-    console.log(this.state.updateTeamId)
-
-    console.log("getAllTeam")
+    console.log("handleUpdateTeam")
     const teamService = new proto.team.TeamClient('https://www.overlead.co');
     var metadata = {};
 
@@ -275,40 +348,71 @@ class AllTeam extends Component {
     UpdateTeamReq.setName(this.state.nameTeam);
     UpdateTeamReq.setDepartment(this.state.departmentTeam);
     UpdateTeamReq.setDescription(this.state.descriptionTeam);
-    let that=this
+    let that = this
     teamService.updateTeam(UpdateTeamReq, metadata, (err, response) => {
       if (err) { //if error
         console.log(err);
       } else {
         if (response.getStatus() == "SUCCESS") {
-         
-            let newData=this.state.dataTeam.map(p=>
-              p.id== that.state.updateTeamId
-              ?{
-                ...p,name:that.state.nameTeam,department:that.state.departmentTeam,description:that.state.descriptionTeam
+
+          let newData = this.state.dataTeam.map(p =>
+            p.id == that.state.updateTeamId
+              ? {
+                ...p, name: that.state.nameTeam, department: that.state.departmentTeam, description: that.state.descriptionTeam
               }
-              :p
-              )
-              that.setState(prevState => ({
-                modalEditTeam: !prevState.modalEditTeam,
-                dataTeam:newData
-              }))
-              
+              : p
+          )
+          that.setState(prevState => ({
+            modalEditTeam: !prevState.modalEditTeam,
+            dataTeam: newData
+          }))
+
         } else {
-         
-        } }})
+
+        }
+      }
+    })
 
 
   }
   handleDeleteTeam = (event) => {
     let id = event.currentTarget.dataset.id;
+    console.log(this.state.updateTeamId)
+
+    console.log("getAllTeam")
+    const teamService = new proto.team.TeamClient('https://www.overlead.co');
+    var metadata = {};
+
+    var DeleteTeamReq = new proto.team.DeleteTeamReq();
+    DeleteTeamReq.setRequesterid(cookie.load("userId"));
+    DeleteTeamReq.setAccesstoken(cookie.load("accessToken"));
+    DeleteTeamReq.setTeamid(id)
+    let that = this
+    teamService.deleteTeam(DeleteTeamReq, metadata, (err, response) => {
+      if (err) { //if error
+        console.log(err);
+      } else {
+        if (response.getStatus() == "SUCCESS") {
+
+          let newData = this.state.dataTeam.filter(p =>
+            p.id == id
+              ? false : true)
+          that.setState({
+            dataTeam: newData
+          })
+
+        } else {
+          //FAIL
+        }
+      }
+    })
 
 
   }
   render() {
     let that = this;
     console.log("render")
-    console.log(this.state.dataTeam)
+    console.log(this.state.dataTeam.members)
     return (
       <div>
         <Modal size="sm" isOpen={this.state.modalActionStatus} toggle={this.toggleActionStatus} className={this.props.className}>
@@ -387,111 +491,121 @@ class AllTeam extends Component {
 
               </div>
               <div class="card-body">
-                {that.state.dataTeam.members.map(function (item, key) {
-                  return (
-                    <Table hover bordered striped responsive size="sm">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                          <th>Role</th>
-                          <th>Point</th>
-                          <th>Current task</th>
-                          <th>Task completed</th>
-                          <th>
-                            <div>
-                              <center><Button color="primary" size="sm" className="mt-3" onClick={that.toggleAddMember}><i class="fa fa-plus-square"></i></Button></center>
-                              <Modal size="lg" isOpen={that.state.modalAddMember} toggle={that.toggleAddMember}>
-                                <ModalHeader toggle={that.toggleAddMember}>Member</ModalHeader>
-                                <ModalBody>
+                {item.members != undefined ?
+                  item.members.map(function (itemMem, key) {
+                    return (
+                      <Table hover bordered striped responsive size="sm">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>Point</th>
+                            <th>Current task</th>
+                            <th>Task completed</th>
+                            <th>
+                              <div>
+                                <center>
+                                  <div  onClick={()=>that.setState({updateTeamId:item.id})}>
+                                  <Button color="primary" size="sm" className="mt-3" onClick={that.toggleAddMember} >
+                                    <i class="fa fa-plus-square"></i>
+                                    </Button>
+                                    </div>
+                                    </center>
+                                <Modal size="lg" isOpen={that.state.modalAddMember} toggle={that.toggleAddMember}>
+                                  <ModalHeader  toggle={that.toggleAddMember}>Member</ModalHeader>
+                                  <ModalBody>
 
-                                  <Form className="form-horizontal">
-                                    <FormGroup row>
-                                      <Col md="3">
-                                        <Label htmlFor="text-input">User name</Label>
-                                      </Col>
-                                      <Col xs="5" md="5">
-                                        <Input type="text" id="text-input" name="text-input" placeholder="User name" value={that.state.emailMember} onChange={that.onTextboxChangeEmailMember} />
-                                      </Col>
-                                    </FormGroup>
-                                    <FormGroup row>
-                                      <Col md="3">
-                                        <Label htmlFor="text-input">Role</Label>
-                                      </Col>
-                                      <Col xs="5" md="5">
-                                        <Input type="text" id="Role" name="Role" placeholder="Role" value={that.state.roleMember} onChange={that.onTextboxChangeRoleMember} />
-                                      </Col>
-                                    </FormGroup>
+                                    <Form className="form-horizontal">
+                                      <FormGroup row>
+                                        <Col md="3">
+                                          <Label htmlFor="text-input">User name</Label>
+                                        </Col>
+                                        <Col xs="5" md="5">
+                                          <Input type="text" id="text-input" name="text-input" placeholder="User name" value={that.state.emailMember} onChange={that.onTextboxChangeEmailMember} />
+                                        </Col>
+                                      </FormGroup>
+                                      <FormGroup row>
+                                        <Col md="3">
+                                          <Label htmlFor="text-input">Role</Label>
+                                        </Col>
+                                        <Col xs="5" md="5">
+                                          <Input type="text" id="Role" name="Role" placeholder="Role" value={that.state.roleMember} onChange={that.onTextboxChangeRoleMember} />
+                                        </Col>
+                                      </FormGroup>
 
-                                  </Form>
+                                    </Form>
 
-                                </ModalBody>
-                                <div data-idTeam={itemTeam.id} onClick={that.handleAddMember}>
-                                  <ModalFooter>
-                                    <Button color="primary" >Submit</Button>
-                                  </ModalFooter>
-                                </div>
-                              </Modal>
-                            </div>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>{item.name}</td>
-                          <td>{item.role}</td>
-                          <td>{item.point}</td>
-                          <td>{item.currentTask}</td>
-                          <td>{item.numOfTaskDone}</td>
-                          <td>
-                            <center>
-                              <div data-idTeam={itemTeam.id} data-idMember={item.id} onClick={that.toggleEditMember}>
-                                <Button color="warning" size="sm">
-                                  <i class="fa fa-edit"></i>
-                                </Button>
+                                  </ModalBody>
+                                  <div data-idTeam={itemTeam.id} onClick={that.handleAddMember}>
+                                    <ModalFooter>
+                                      <Button color="primary" >Submit</Button>
+                                    </ModalFooter>
+                                  </div>
+                                </Modal>
                               </div>
-                              <Modal size="lg" isOpen={that.state.modalEditMember} toggle={that.toggleEditMember} >
-                                <ModalHeader toggle={that.toggleEditMember}>Member</ModalHeader>
-                                <ModalBody>
-                                  <Form className="form-horizontal">
-                                    <FormGroup row>
-                                      <Col md="3">
-                                        <Label htmlFor="text-input">User name</Label>
-                                      </Col>
-                                      <Col xs="5" md="5">
-                                        <Input type="text" id="text-input" name="text-input" placeholder="User name" />
-                                      </Col>
-                                    </FormGroup>
-                                    <FormGroup row>
-                                      <Col md="3">
-                                        <Label htmlFor="text-input">Role</Label>
-                                      </Col>
-                                      <Col xs="5" md="5">
-                                        <Input type="text" id="Role" name="Role" placeholder="Role" value={that.state.roleMember} onChange={that.onTextboxChangeRoleMember} />
-                                      </Col>
-                                    </FormGroup>
-
-                                  </Form>
-
-                                </ModalBody>
-                                <div data-idTeam={itemTeam.id} data-idMember={item.id} onClick={that.handleUpdateMember}>
-                                  <ModalFooter>
-                                    <Button color="primary" >Submit</Button>
-                                  </ModalFooter>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>{itemMem.name}</td>
+                            <td>{itemMem.role}</td>
+                            <td>{itemMem.point}</td>
+                            <td>{itemMem.currentTask}</td>
+                            <td>{itemMem.numOfTaskDone}</td>
+                            <td>
+                              <center>
+                                <div data-idTeam={itemTeam.id} data-idMember={itemMem.id} onClick={that.toggleEditMember}>
+                                  <Button color="warning" size="sm">
+                                    <i class="fa fa-edit"></i>
+                                  </Button>
                                 </div>
-                              </Modal>
+                                <Modal size="lg" isOpen={that.state.modalEditMember} toggle={that.toggleEditMember} >
+                                  <ModalHeader toggle={that.toggleEditMember}>Member</ModalHeader>
+                                  <ModalBody>
+                                    <Form className="form-horizontal">
+                                      <FormGroup row>
+                                        <Col md="3">
+                                          <Label htmlFor="text-input">User name</Label>
+                                        </Col>
+                                        <Col xs="5" md="5">
+                                          <Input type="text" id="text-input" name="text-input" placeholder="User name" />
+                                        </Col>
+                                      </FormGroup>
+                                      <FormGroup row>
+                                        <Col md="3">
+                                          <Label htmlFor="text-input">Role</Label>
+                                        </Col>
+                                        <Col xs="5" md="5">
+                                          <Input type="text" id="Role" name="Role" placeholder="Role" value={that.state.roleMember} onChange={that.onTextboxChangeRoleMember} />
+                                        </Col>
+                                      </FormGroup>
 
-                              <div data-idMember={item.id} data-idteam={itemTeam.id} onClick={that.handleDeleteMember}>
-                                <Button size="sm" color="danger" >
-                                  <i class="fa fa-trash"></i></Button>
-                              </div>
-                            </center>
-                          </td>
-                        </tr>
+                                    </Form>
 
-                      </tbody>
-                    </Table>
-                  )
-                })}
+                                  </ModalBody>
+                                  <div data-idTeam={itemTeam.id} data-idMember={itemMem.id} onClick={that.handleUpdateMember}>
+                                    <ModalFooter>
+                                      <Button color="primary" >Submit</Button>
+                                    </ModalFooter>
+                                  </div>
+                                </Modal>
+
+                                <div data-idmember={itemMem.id} data-idteam={itemTeam.id} onClick={that.handleDeleteMember}>
+                                  <Button size="sm" color="danger" >
+                                    <i class="fa fa-trash"></i></Button>
+                                </div>
+                              </center>
+                            </td>
+                          </tr>
+
+                        </tbody>
+                      </Table>
+                    )
+                  }) :
+                  <div>Empty Member</div>
+
+                }
 
               </div>
             </div>
