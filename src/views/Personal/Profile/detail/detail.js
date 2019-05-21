@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FileBase64 from 'react-file-base64';
 
 import {
   Badge,
@@ -45,28 +46,28 @@ class detail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {  },
+      data: {},
       modalEdit: false,
       selectedFile: null,
       pictures: [],
-      // img:'',
-      // point:"",
-      // fullname:"",
-      // address:"",
-      // birthday:"",
-      // email:"",
-      // fb:"",
-      // workplace:"",
-      // skill:'',
+      avatar: '',
+      point: "",
+      fullname: "",
+      address: "",
+      birthday: "",
+      email: "",
+      fb: "",
+      workplace: "",
+      skill: '',
     }
   };
-  componentDidMount() {
+  loadProfile=()=>{
     const myprofileService = new proto.profile.ProfileClient('https://www.overlead.co');
     var metadata = {};
     var GetProfileReq = new proto.profile.GetProfileReq();
     GetProfileReq.setRequesterid(cookie.load("userId"));
     GetProfileReq.setAccesstoken(cookie.load("accessToken"));
-    let that=this
+    let that = this
     myprofileService.getProfile(GetProfileReq, metadata, (err, response) => {
       if (err) { //if error
         console.log(err);
@@ -86,82 +87,111 @@ class detail extends Component {
               workplace: response.getWorkplace(),
               skill: response.getSkill()
             })
-            
-          })       
-      
-    };
+
+          })
+        };
+      }
+    })
   }
-})}
+  componentDidMount() {
+    this.loadProfile()
+  }
+  updateProfile = () => {
+    console.log("updateProfile")
+    const myprofileService = new proto.profile.ProfileClient('https://www.overlead.co');
+    var metadata = {};
+    var UpdateProfileReq = new proto.profile.UpdateProfileReq();
+    UpdateProfileReq.setRequesterid(cookie.load("userId"));
+    UpdateProfileReq.setAccesstoken(cookie.load("accessToken"));
+    UpdateProfileReq.setAvatar(this.state.avatar);
+    UpdateProfileReq.setName(this.state.name);
+    UpdateProfileReq.setAddress(this.state.address);
+    UpdateProfileReq.setBirthday(this.state.birthday);
+    UpdateProfileReq.setEmail(this.state.email);
+    UpdateProfileReq.setFb(this.state.fb);
+    UpdateProfileReq.setWorkplace(this.state.workplace);
+    UpdateProfileReq.setSkill(this.state.skill);
+    
+    let that = this
+    myprofileService.updateProfile(UpdateProfileReq, metadata, (err, response) => {
+      if (err) { //if error
+        console.log(err);
+        console.log("error getProfile")
+      } else { //if success
+        console.log(response.getStatus())
+        if (response.getStatus() == "SUCCESS") {
+          that.setState(prevState => ({
+            
+            modalEdit: !prevState.modalEdit,
+
+          }))
+          that.loadProfile()
+
+
+
+        };
+      }
+    })
+  }
+  getFiles(files){
+    console.log(files)
+    this.setState({ avatar: files.base64 })
+  }
   toggleEdit = (event) => {
     this.setState(prevState => ({
       modalEdit: !prevState.modalEdit,
+      avatar: this.state.data.img,
+      point: this.state.data.point,
+      fullname: this.state.data.fullname,
+      address: this.state.data.address,
+      birthday: this.state.data.birthday,
+      email: this.state.data.email,
+      fb: this.state.data.fb,
+      workplace: this.state.data.workplace,
+      skill: this.state.data.skill,
     }));
   }
   onTextboxChangeFullname = (event) => {
-    var tmp = this.state.data;
-    tmp.fullname = event.target.value;
     this.setState({
-      data: tmp,
+      fullname: event.target.value,
     });
   }
   onTextboxChangeAddress = (event) => {
-    var tmp = this.state.data;
-    tmp.address = event.target.value;
     this.setState({
-      data: tmp,
+      address: event.target.value,
     });
   }
-  onTextboxChangeAddress = (event) => {
-    var tmp = this.state.data;
-    tmp.address = event.target.value;
-    this.setState({
-      data: tmp,
-    });
-  }
+
   onTextboxChangeBirthday = (event) => {
-    var tmp = this.state.data;
-    tmp.birthday = event.target.value;
     this.setState({
-      data: tmp,
+      birthday: event.target.value,
     });
   }
   onTextboxChangeEmail = (event) => {
-    var tmp = this.state.data;
-    tmp.email = event.target.value;
     this.setState({
-      data: tmp,
+      email: event.target.value,
     });
   }
   onTextboxChangeFb = (event) => {
-    var tmp = this.state.data;
-    tmp.fb = event.target.value;
     this.setState({
-      data: tmp,
+      fb: event.target.value,
     });
   }
   onTextboxChangeWorkplace = (event) => {
-    var tmp = this.state.data;
-    tmp.workplace = event.target.value;
     this.setState({
-      data: tmp,
+      workplace: event.target.value,
     });
   }
   onTextboxChangeSkill = (event) => {
-    var tmp = this.state.data;
-    tmp.skill = event.target.value;
     this.setState({
-      data: tmp,
+      skill: event.target.value,
     });
   }
-  onDrop = (picture) => {
-    this.setState({
-      pictures: this.state.pictures.concat(picture),
-    });
-    if (this.state.pictures[0])
-      console.log("hi______" + this.state.pictures[0].toString());
-  }
+ 
   render() {
     let that = this;
+    console.log("state render")
+    console.log(this.state.data.img)
     return (
       <div>
         <div>
@@ -173,14 +203,16 @@ class detail extends Component {
             <Col>
               <Card>
                 <CardBody>
-                  <img src={'../../assets/img/avatar/myavatar.png'} className="img-avatar" />
+                <Col xs="3" md="3">
+                <img src={`${this.state.data.img}` } className="img-avatar"alt="Avatar" />
+                      </Col>
                   <Form className="form-horizontal">
                     <FormGroup row>
                       <Col md="3">
                         <Label htmlFor="text-input">Point</Label>
                       </Col>
                       <Col xs="12" md="9">
-                        <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.point} />
+                        <Input type="text" id="text-input" disabled={true} name="text-input" placeholder={that.state.point} value={that.state.point} />
                       </Col>
                     </FormGroup>
 
@@ -189,7 +221,7 @@ class detail extends Component {
                         <Label htmlFor="text-input">Full name</Label>
                       </Col>
                       <Col xs="12" md="9">
-                        <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.fullname} />
+                        <Input type="text" id="text-input" disabled={true} name="text-input" placeholder="" value={that.state.data.fullname} onchange={that.onTextboxChangeFullname} />
                       </Col>
                     </FormGroup>
 
@@ -198,7 +230,7 @@ class detail extends Component {
                         <Label htmlFor="text-input">Address</Label>
                       </Col>
                       <Col xs="12" md="9">
-                        <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.address} />
+                        <Input type="text" id="text-input" disabled={true} name="text-input" placeholder="" value={that.state.data.address} onchange={that.onTextboxChangeAddress} />
                       </Col>
                     </FormGroup>
 
@@ -207,7 +239,7 @@ class detail extends Component {
                         <Label htmlFor="text-input">Date of Birth </Label>
                       </Col>
                       <Col xs="12" md="9">
-                        <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.birthday} />
+                        <Input type="text" id="text-input" disabled={true} name="text-input" placeholder="" value={that.state.data.birthday} onchange={that.onTextboxChangeBirthday} />
                       </Col>
                     </FormGroup>
 
@@ -216,7 +248,7 @@ class detail extends Component {
                         <Label htmlFor="text-input">Email</Label>
                       </Col>
                       <Col xs="12" md="9">
-                        <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.email} />
+                        <Input type="text" id="text-input" disabled={true} name="text-input" placeholder="" value={that.state.data.email} onchange={that.onTextboxChangeEmail} />
                       </Col>
                     </FormGroup>
 
@@ -225,7 +257,7 @@ class detail extends Component {
                         <Label htmlFor="text-input">Fb</Label>
                       </Col>
                       <Col xs="12" md="9">
-                        <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.fb} />
+                        <Input type="text" id="text-input" disabled={true} name="text-input" placeholder="" value={that.state.data.fb} onchange={that.onTextboxChangeFb} />
                       </Col>
                     </FormGroup>
 
@@ -234,7 +266,7 @@ class detail extends Component {
                         <Label htmlFor="text-input">Workplace</Label>
                       </Col>
                       <Col xs="12" md="9">
-                        <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.workplace} />
+                        <Input type="text" id="text-input" disabled={true} name="text-input" placeholder="" value={that.state.data.workplace} onchange={that.onTextboxChangeWorkplace} />
                       </Col>
                     </FormGroup>
 
@@ -243,7 +275,7 @@ class detail extends Component {
                         <Label htmlFor="text-input">Skill</Label>
                       </Col>
                       <Col xs="12" md="9">
-                        <Input type="textarea" id="text-input" name="text-input" placeholder="" value={this.state.data.skill} />
+                        <Input type="textarea" id="text-input" disabled={true}  name="text-input" placeholder="" value={that.state.data.skill} onchange={that.onTextboxChangeSkill} />
 
                       </Col>
                     </FormGroup>
@@ -265,13 +297,9 @@ class detail extends Component {
                             <Label htmlFor="text-input">Image</Label>
                           </Col>
                           <Col xs="12" md="9">
-                            <ImageUploader
-                              withIcon={true}
-                              buttonText='Choose images'
-                              onChange={this.onDrop}
-                              imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                              maxFileSize={5242880}
-                            />
+                          <FileBase64
+                              multiple={ false }
+                               onDone={ this.getFiles.bind(this) } />
                           </Col>
                         </FormGroup>
 
@@ -280,7 +308,7 @@ class detail extends Component {
                             <Label htmlFor="text-input">Point</Label>
                           </Col>
                           <Col xs="12" md="9">
-                            <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.point} />
+                            <Input type="text" id="point" name="point" disabled={true} placeholder="" value={that.state.point} />
                           </Col>
                         </FormGroup>
 
@@ -289,7 +317,7 @@ class detail extends Component {
                             <Label htmlFor="text-input">Full name</Label>
                           </Col>
                           <Col xs="12" md="9">
-                            <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.fullname} onChange={that.onTextboxChangeFullname} />
+                            <Input type="text" id="text-input" name="text-input" placeholder="" value={that.state.fullname} onChange={that.onTextboxChangeFullname} />
                           </Col>
                         </FormGroup>
 
@@ -298,7 +326,7 @@ class detail extends Component {
                             <Label htmlFor="text-input">Address</Label>
                           </Col>
                           <Col xs="12" md="9">
-                            <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.address} onChange={that.onTextboxChangeAddress} />
+                            <Input type="text" id="text-input" name="text-input" placeholder="" value={that.state.address} onChange={that.onTextboxChangeAddress} />
                           </Col>
                         </FormGroup>
 
@@ -307,7 +335,7 @@ class detail extends Component {
                             <Label htmlFor="text-input">Date of Birth </Label>
                           </Col>
                           <Col xs="12" md="9">
-                            <Input type="date" id="text-input" name="text-input" placeholder="" value={this.state.data.birthday} onChange={that.onTextboxChangeBirthday} />
+                            <Input type="date" id="text-input" name="text-input" placeholder="" value={that.state.birthday} onChange={that.onTextboxChangeBirthday} />
                           </Col>
                         </FormGroup>
 
@@ -316,7 +344,7 @@ class detail extends Component {
                             <Label htmlFor="text-input">Email</Label>
                           </Col>
                           <Col xs="12" md="9">
-                            <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.email} onChange={that.onTextboxChangeEmail} />
+                            <Input type="text" id="text-input" name="text-input" placeholder="" value={that.state.email} onChange={that.onTextboxChangeEmail} />
                           </Col>
                         </FormGroup>
 
@@ -325,7 +353,7 @@ class detail extends Component {
                             <Label htmlFor="text-input">Fb</Label>
                           </Col>
                           <Col xs="12" md="9">
-                            <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.fb} onChange={that.onTextboxChangeFb} />
+                            <Input type="text" id="text-input" name="text-input" placeholder="" value={that.state.fb} onChange={that.onTextboxChangeFb} />
                           </Col>
                         </FormGroup>
 
@@ -334,7 +362,7 @@ class detail extends Component {
                             <Label htmlFor="text-input">Workplace</Label>
                           </Col>
                           <Col xs="12" md="9">
-                            <Input type="text" id="text-input" name="text-input" placeholder="" value={this.state.data.workplace} onChange={that.onTextboxChangeWorkplace} />
+                            <Input type="text" id="text-input" name="text-input" placeholder="" value={that.state.workplace} onChange={that.onTextboxChangeWorkplace} />
                           </Col>
                         </FormGroup>
 
@@ -343,7 +371,7 @@ class detail extends Component {
                             <Label htmlFor="text-input">Skill</Label>
                           </Col>
                           <Col xs="12" md="9">
-                            <Input type="textarea" id="text-input" name="text-input" placeholder="" value={this.state.data.skill} onChange={that.onTextboxChangeSkill} />
+                            <Input type="textarea" id="text-input" name="text-input" placeholder="" value={that.state.skill} onChange={that.onTextboxChangeSkill} />
 
                           </Col>
                         </FormGroup>
@@ -354,7 +382,7 @@ class detail extends Component {
                     <ModalFooter>
 
 
-                      <Button color="primary" >Submit</Button>
+                      <Button color="primary" onClick={that.updateProfile}>Submit</Button>
 
                     </ModalFooter>
                     {/* </div> */}
