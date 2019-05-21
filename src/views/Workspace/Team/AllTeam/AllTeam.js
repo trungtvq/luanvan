@@ -185,27 +185,47 @@ class AllTeam extends Component {
     const teamService = new proto.team.TeamClient('https://www.overlead.co');
     var metadata = {};
 
-    var GetAllTeamReq = new proto.team.GetAllTeamReq();
-    GetAllTeamReq.setRequesterid(cookie.load("userId"));
-    GetAllTeamReq.setProjectid(cookie.load("currentProject"));
-    GetAllTeamReq.setAccesstoken(cookie.load("accessToken"));
-    let response=teamService.getAllTeam(GetAllTeamReq, metadata)    
+    var GetAllMemberReq = new proto.team.GetAllTeamReq();
+    GetAllMemberReq.setRequesterid(cookie.load("userId"));
+    GetAllMemberReq.setTeamid(id);
+    GetAllMemberReq.setAccesstoken(cookie.load("accessToken"));
+    GetAllMemberReq.setAccesstoken(cookie.load("accessToken"));
+    let response=teamService.getAllMember(GetAllMemberReq, metadata)    
 
     let that = this
     response.on('data', function (response) {
       if (response.getStatus() == "SUCCESS") {
         let newData=that.state.dataTeam
+        newData.map(p=>
+          p.id==id
+          ?{
+            ...p,members:Object.assign(p.members,p.members.push({
+              id:'',
+              name:'',
+              role:'',
+              point:'',
+              currentTask:'',
+              numOfTaskDone:'',
+            }))
+          }:
+          {
+            p
+          }
+
+        )
         newData.push({          
             id:response.getTeamid(),
             name:response.getName(),
             description:response.getDescription(),
             department:response.getDepartment()              
         })
+        
         console.log("newData")
         console.log(newData)
         that.setState({
           dataTeam:newData
         })
+        that.loadAllMember(response.getTeamid())
 
       } 
     })
@@ -224,7 +244,6 @@ class AllTeam extends Component {
     //viet hàm lấy toàn bộ dữ liệu trong collection team đổ vào array dataTeam
 
     this.loadAllTeam()
-    this.loadAllMember()
 
   }
   //member
