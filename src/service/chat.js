@@ -36,7 +36,6 @@ class Chat extends Component {
       } else { //if success
         //get response
         if (response.getStatus() == "SUCCESS") {
-          that.toggleWidget()
           addResponseMessage(response.getSendername() + " said: " + response.getMsg());
           that.fetchChat()
           
