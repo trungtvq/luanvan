@@ -109,7 +109,11 @@ public class AuthAccount {
                 String pass=request.getPassword();
                 if (pa.equals(pass)){
                     System.out.println("signIn success");
-                    makeResponseForSignInSuccess(responseObserver,user.get("_id").toString(),user.get("username").toString(),user.get("name").toString(),user.get("avatar").toString());
+                    makeResponseForSignInSuccess(responseObserver,
+                            user.get("_id").toString(),
+                            user.get("username").toString(),
+                            user.get("name").toString(),
+                            user.get("avatar").toString());
                 }else{
                     makeResponseForSignInFailed(responseObserver,"WRONG_PASSWORD","TRUE");
                 }
@@ -160,7 +164,11 @@ public class AuthAccount {
                         makeResponseForSignInFailed(responseObserver,"WRONG_TOKEN","TRUE");
                     }else{
                         coll.findOneAndUpdate(new Document("username",request.getUsername()),new Document("$set", new Document("password",request.getPassword())));
-                        makeResponseForSignInSuccess(responseObserver,user.get("_id").toString(),user.get("username").toString(),user.get("name").toString(),user.get("avatar").toString());
+                        makeResponseForSignInSuccess(responseObserver,
+                                user.get("_id").toString(),
+                                user.get("username").toString(),
+                                user.get("name").toString(),
+                                user.get("avatar").toString());
                         Redis.TOKEN_SYNC_KEY_COMMAND.del(request.getUsername());
                     }
                 } else{
