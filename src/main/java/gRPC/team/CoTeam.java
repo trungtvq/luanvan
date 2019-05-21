@@ -32,6 +32,7 @@ public class CoTeam {
 
         @Override
         public void addNewTeam(AddNewTeamReq request, StreamObserver<TeamRes> responseObserver) {
+            System.out.println("addNewTeam");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {

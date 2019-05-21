@@ -7,6 +7,7 @@ import gRPC.profile.MyProfile;
 import gRPC.project.MyProject;
 import gRPC.schedule.DailySchedule;
 import gRPC.sprintbacklog.SprintBacklog;
+import gRPC.team.CoTeam;
 import gRPC.userstory.UserStory;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -28,6 +29,7 @@ public class gRPCMain {
                 .addService(new SprintBacklog.SprintBacklogImpl())
                 .addService(new Chat.ChatImpl())
                 .addService(new MyProfile.MyProfileImpl())
+                .addService(new CoTeam.CoTeamImpl())
                 .build()
                 .start();
 
