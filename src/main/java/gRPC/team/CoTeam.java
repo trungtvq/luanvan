@@ -163,23 +163,19 @@ public class CoTeam {
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
-                List<Document> user = Mongod.collAuth.find(new Document("username", request.getMemberEmail())).into(new ArrayList<>());
 
-                if (user.size() != 1) {
-                    makeResponseForFailed(responseObserver, "WRONG_SIZE_USER_FOUND", "FALSE");
-                } else {
                     List<Document> foundDocument = Mongod.collTeam.find(new Document("_id", new ObjectId(request.getTeamId()))).into(new ArrayList<>());
                     if (foundDocument.size() != 1) {
-                        makeResponseForFailed(responseObserver, "WRONG_SIZE_TEAM_FOUND", "FALSE");
+                        makeResponseForFailed(responseObserver, "NOT_FOUND_TEAM", "FALSE");
                     } else {
-                        String id = user.get(0).get("_id").toString();
+
                         //remove member to list member of TEAM
-                        Mongod.collTeam.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamId())), new Document("$pull", new Document("members", id)));
+                        Mongod.collTeam.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamId())), new Document("$pull", new Document("members", request.getMemberEmail())));
                         //remove team to list of team of MEMBER
-                        Mongod.collAuth.findOneAndUpdate(new Document("_id", new ObjectId(id)), new Document("$pull", new Document("teamlist", request.getTeamId())));
+                        Mongod.collAuth.findOneAndUpdate(new Document("_id", new ObjectId(request.getMemberEmail())), new Document("$pull", new Document("teamlist", request.getTeamId())));
                         makeResponseForUpdateSuccess(responseObserver, request.getTeamId());
                     }
-                }
+
             }
         }
 
@@ -255,7 +251,12 @@ public class CoTeam {
                         if (userList.size()>0) {
                             System.out.println("have member");
                             userList.forEach(i->{
-                                responseObserver.onNext(TeamRes.newBuilder().setId(i.toString()).setStatus("SUCCESS").setError("FALSE").build());
+                                String name=Mongod.collAuth.find(new Document("_id",new ObjectId(i))).into(new ArrayList<>()).get(0).get("name").toString();
+
+                                responseObserver.onNext(TeamRes.newBuilder()
+                                        .setId(i)
+                                        .setOption(name)
+                                        .setStatus("SUCCESS").setError("FALSE").build());
                             });
                         }else {
                             responseObserver.onNext(TeamRes.newBuilder().setStatus("EMPTY").setError("FALSE").build());
