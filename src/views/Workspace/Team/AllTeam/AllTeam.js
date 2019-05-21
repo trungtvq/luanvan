@@ -424,7 +424,7 @@ class AllTeam extends Component {
           let itemTeam = item;
           return (
             <div class="card border-primary  mb-6">
-              <div class="card-header bg-success">
+              <div class="card-header bg-primary">
                 <div class="row justify-content-md-center">
                 </div>
                 <div class="row">
@@ -435,66 +435,71 @@ class AllTeam extends Component {
                   <div class="col-md-auto">
                   </div>
 
-                  <div class="col col-sm-2">
-                    <center>
-                      <div data-id={itemTeam.id} data-name={itemTeam.name} onClick={that.toggleEditTeam}>
-                        <Button color="warning" size="sm" className="mt-3"><i class="fa fa-edit"></i></Button>
-                      </div>
-                      <Modal size="lg" isOpen={that.state.modalEditTeam} toggle={that.toggleEditTeam} >
-                        <ModalHeader toggle={that.toggleEditTeam}>Team</ModalHeader>
-                        <ModalBody>
-                          <Form className="form-horizontal">
-                            <FormGroup row>
-                              <Col md="3">
-                                <Label htmlFor="text-input">Name</Label>
-                              </Col>
-                              <Col xs="12" md="9">
-                                <Input type="text" id="Name" name="Name" placeholder="Name" value={that.state.nameTeam} onChange={that.onTextboxChangeNameTeam} />
+                  <div class="col col-sm-1">
+                  
+                    <div class="row ">
+                         
+                          <div class="col col-sm-1">
+                          <div data-id={itemTeam.id} data-name={itemTeam.name} onClick={that.toggleEditTeam}>
+                            <Button color="warning" size="sm" className="mt-3"><i class="fa fa-edit"></i></Button>
+                          </div>
+                          </div>
+                          <Modal size="lg" isOpen={that.state.modalEditTeam} toggle={that.toggleEditTeam} >
+                            <ModalHeader toggle={that.toggleEditTeam}>Team</ModalHeader>
+                            <ModalBody>
+                              <Form className="form-horizontal">
+                                <FormGroup row>
+                                  <Col md="3">
+                                    <Label htmlFor="text-input">Name</Label>
+                                  </Col>
+                                  <Col xs="12" md="9">
+                                    <Input type="text" id="Name" name="Name" placeholder="Name" value={that.state.nameTeam} onChange={that.onTextboxChangeNameTeam} />
 
-                              </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                              <Col md="3">
-                                <Label htmlFor="text-input">Description</Label>
-                              </Col>
-                              <Col xs="12" md="9">
-                                <Input type="text" id="Description" name="Description" placeholder="Description" value={that.state.descriptionTeam} onChange={that.onTextboxChangeDescriptionTeam} />
+                                  </Col>
+                                </FormGroup>
+                                <FormGroup row>
+                                  <Col md="3">
+                                    <Label htmlFor="text-input">Description</Label>
+                                  </Col>
+                                  <Col xs="12" md="9">
+                                    <Input type="text" id="Description" name="Description" placeholder="Description" value={that.state.descriptionTeam} onChange={that.onTextboxChangeDescriptionTeam} />
 
-                              </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                              <Col md="3">
-                                <Label htmlFor="text-input">Department</Label>
-                              </Col>
-                              <Col xs="12" md="9">
-                                <Input type="text" id="Department" name="Department" placeholder="Department" value={that.state.departmentTeam} onChange={that.onTextboxChangeDepartmentTeam} />
+                                  </Col>
+                                </FormGroup>
+                                <FormGroup row>
+                                  <Col md="3">
+                                    <Label htmlFor="text-input">Department</Label>
+                                  </Col>
+                                  <Col xs="12" md="9">
+                                    <Input type="text" id="Department" name="Department" placeholder="Department" value={that.state.departmentTeam} onChange={that.onTextboxChangeDepartmentTeam} />
 
-                              </Col>
-                            </FormGroup>
+                                  </Col>
+                                </FormGroup>
 
-                          </Form>
-                        </ModalBody>
-                        <div data-id={itemTeam.id} onClick={that.handleUpdateTeam}>
-                          <ModalFooter>
-                            <Button color="primary" >Submit</Button>
-                          </ModalFooter>
-                        </div>
+                              </Form>
+                            </ModalBody>
+                            <div data-id={itemTeam.id} onClick={that.handleUpdateTeam}>
+                              <ModalFooter>
+                                <Button color="primary" >Submit</Button>
+                              </ModalFooter>
+                            </div>
 
-                      </Modal>
-                      <div data-id={itemTeam.id} onClick={that.handleDeleteTeam}>
-                        <Button color="danger" size="sm" className="mt-3" ><i class="fa fa-trash"></i></Button>
-                      </div>
-                    </center>
+                          </Modal>
+                          
+                          <div class="col col-sm-1">
+                          <div data-id={itemTeam.id} onClick={that.handleDeleteTeam}>
+                            <Button color="danger" size="sm" className="mt-3" ><i class="fa fa-trash"></i></Button>
+                          </div>
+                          </div>
+                    </div>
                   </div>
 
                 </div>
 
               </div>
               <div class="card-body">
-                {item.members != undefined ?
-                  item.members.map(function (itemMem, key) {
-                    return (
-                      <Table hover bordered striped responsive size="sm">
+              {item.members != undefined ?
+                      <table class="table">
                         <thead>
                           <tr>
                             <th>Name</th>
@@ -546,7 +551,10 @@ class AllTeam extends Component {
                             </th>
                           </tr>
                         </thead>
-                        <tbody>
+                       
+                        {item.members.map(function (itemMem, key) {
+                        return (
+                          <tbody>
                           <tr>
                             <td>{itemMem.name}</td>
                             <td>{itemMem.role}</td>
@@ -600,12 +608,15 @@ class AllTeam extends Component {
                           </tr>
 
                         </tbody>
-                      </Table>
-                    )
-                  }) :
-                  <div>Empty Member</div>
 
-                }
+
+                        )})} </table> :
+                        <div>Empty Member</div> }
+                     
+                    
+                
+
+               
 
               </div>
             </div>

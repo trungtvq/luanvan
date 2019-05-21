@@ -6,13 +6,7 @@ import {
   Card,
   CardBody,
   CardFooter,
-  CardHeader,
   Col,
-  Collapse,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  Fade,
   Form,
   FormGroup,
   FormText,
@@ -29,6 +23,7 @@ ModalHeader,
 ModalBody,
 ModalFooter,
 } from 'reactstrap';
+import cookie from 'react-cookies';
 
 const proto = {};
 proto.dailyschedule = require('./../../../gRPC/dailyschedule/dailyschedule_grpc_web_pb');
@@ -55,7 +50,6 @@ class DailySchedule extends Component {
                 "task":"Login bằng fb1",
                 "timeStart":"02:20",
                 "dateStart":"2019-05-05",
-               
                 "status":"",
               },
               {
@@ -64,7 +58,6 @@ class DailySchedule extends Component {
                 "task":"Login bằng fb2",
                 "timeStart":"02:20",
                 "dateStart":"2019-05-05",
-                
                 "status":"",
               },
               {
@@ -101,12 +94,12 @@ class DailySchedule extends Component {
       dateStart:'',
       status:'',
       //update
-      scheduleIdUpdate:'',
-      titleUpdate:'',
-      taskUpdate:'',
-      timeStartUpdate:'',
-      dateStartUpdate:'',
-      statusUpdate:'',
+      // scheduleIdUpdate:'',
+      // titleUpdate:'',
+      // taskUpdate:'',
+      // timeStartUpdate:'',
+      // dateStartUpdate:'',
+      // statusUpdate:'',
       //delete
       scheduleIdDelete:'',
       }
@@ -193,8 +186,7 @@ class DailySchedule extends Component {
       dateStartUpdate:dateStartUpdate,
       statusUpdate:statusUpdate,
     });
-    console.log("idParam: -------"+scheduleIdUpdate);
-    console.log("id: -------"+this.state.scheduleIdUpdate);
+
   }
 //delete
   onTextboxChangeScheduleIdDelete=(id)=> {
@@ -212,23 +204,15 @@ class DailySchedule extends Component {
   }
   
   handleAdd = () => {
-    //console.log("handleadd");
-    const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('http://overlead.co:8084');
-    //some data of request (get that from frontend)
-    console.log(dailyscheduleService)
-    //console.log("vao daily");
-    var metadata = {};
-    //make a request to server
-  //   string requesterId = 1;
-  //   string projectId = 2;
   
-  //   string title=3; //uni
-  //   string task=4;
-  //   string time=5;
-  //   string scheduleStatus = 6;
-  // string cookie = 8;
+    const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('https://www.overlead.co');
+  
+    console.log(dailyscheduleService)
+  
+    var metadata = {};
+
     var AddNewDailyScheduleReq= new proto.dailyschedule.AddNewDailyScheduleReq();
-    AddNewDailyScheduleReq.setRequesterid(this.state.requesterId);
+    AddNewDailyScheduleReq.setRequesterid(cookie.load("userId"));
     AddNewDailyScheduleReq.setProjectid(this.state.projectId);
     AddNewDailyScheduleReq.setTitle(this.state.title);
     AddNewDailyScheduleReq.setTask(this.state.task);
@@ -236,16 +220,11 @@ class DailySchedule extends Component {
     AddNewDailyScheduleReq.setSchedulestatus("to do");
     AddNewDailyScheduleReq.setCookie(this.state.cookie);
 
-    var toto=dailyscheduleService.addNewDailySchedule(AddNewDailyScheduleReq, metadata, (err, response) => {
-      console.log("AddNewDailyScheduleReq----------connect")
-      if (err) { //if error
+    var toto=dailyscheduleService.addNewDailySchedule(AddNewDailyScheduleReq, metadata, (err, response) => {   
+      if (err) { 
          console.log(err);
          console.log("error")
-      } else { //if success
-              //get response
-              console.log("response--------------------------")
-              console.log(response);
-              console.log(response.getStatus())
+      } else { 
               if(response.getStatus()=="SUCCESS")
               {
                 this.setState(prevState=>({data:[...prevState.data,{id:response.getId(),title:this.state.title,task:this.state.task,timeStart:this.state.timeStart,dateStart:this.state.dateStart}]}));
@@ -270,8 +249,6 @@ class DailySchedule extends Component {
           console.log(toto)
           
   };
-
-  
   handleUpdate = () => {
     
     const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('https://trungcs.com');
@@ -279,15 +256,7 @@ class DailySchedule extends Component {
     console.log(dailyscheduleService)
     //console.log("vao daily");
     var metadata = {};
-    //make a request to server
-    // string requesterId = 1;
-    // string projectId = 2;
-    // string scheduleId = 3;
-    // string title=4;
-    // string task=5;
-    // string time=6;
-    // string scheduleStatus = 7;
-    // string cookie = 8;
+  
     var UpdateDailyScheduleReq= new proto.dailyschedule.UpdateDailyScheduleReq();
     UpdateDailyScheduleReq.setRequesterid(this.state.requesterId);
     UpdateDailyScheduleReq.setProjectid(this.state.projectId);
@@ -356,11 +325,7 @@ class DailySchedule extends Component {
     console.log(dailyscheduleService)
     console.log("vao daily");
     var metadata = {};
-    //make a request to server
-    // string requesterId = 1;
-	  // string projectId=2;
-	  // string scheduleId = 3;
-    // string cookie = 4;
+  
     var DeleteDailyScheduleReq= new proto.dailyschedule.DeleteDailyScheduleReq();
     DeleteDailyScheduleReq.setRequesterid(this.state.requesterId);
     DeleteDailyScheduleReq.setProjectid(this.state.projectId);
@@ -404,16 +369,6 @@ class DailySchedule extends Component {
    console.log('vào reset');
  }
   render() {
-    const {
-      data,
-      modalEdit,
-      title,
-      task,
-      status,
-      timeStart,
-      dateStart,
-      
-    } = this.state;
     let that=this;
 
    
@@ -521,7 +476,7 @@ class DailySchedule extends Component {
                       <Label htmlFor="text-input">Title</Label>
                     </Col>
                     <Col xs="12" md="9">
-                      <Input type="text" id="Title" name="Title" placeholder="Title"  value={title} onChange={that.onTextboxChangeTitle}/>
+                      <Input type="text" id="Title" name="Title" placeholder="Title"  value={this.state.title} onChange={that.onTextboxChangeTitle}/>
                       
                     </Col>
                   </FormGroup>
@@ -532,7 +487,7 @@ class DailySchedule extends Component {
                     </Col>
                     <Col xs="12" md="9">
                       <Input type="textarea" name="Task" id="Task" rows="9"
-                             placeholder="Task..." value={task} onChange={that.onTextboxChangeTask}/>
+                             placeholder="Task..." value={this.state.task} onChange={that.onTextboxChangeTask}/>
                     </Col>
                   </FormGroup>
                                   
@@ -541,10 +496,10 @@ class DailySchedule extends Component {
                       <Label htmlFor="date-input">Time </Label>
                     </Col>
                     <Col xs="3" md="3">
-                      <Input type="time" id="timeStart" name="timeStart" value={timeStart} onChange={that.onTextboxChangeTimeStart}/>
+                      <Input type="time" id="timeStart" name="timeStart" value={this.state.timeStart} onChange={that.onTextboxChangeTimeStart}/>
                     </Col>
                     <Col xs="3" md="3">
-                      <Input type="date" id="dateStart" name="dateStart" value={dateStart} onChange={that.onTextboxChangeDateStart}/>
+                      <Input type="date" id="dateStart" name="dateStart" value={this.state.dateStart} onChange={that.onTextboxChangeDateStart}/>
                     </Col>
                   </FormGroup>
 
