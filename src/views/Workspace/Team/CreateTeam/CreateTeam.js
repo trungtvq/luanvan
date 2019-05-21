@@ -31,9 +31,10 @@ import {
   ModalFooter,
   Progress,
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
-import Demo from '../../../../homeNav'
 
+import cookie from 'react-cookies';
+const proto = {};
+proto.team = require('../../../../gRPC/team/team_grpc_web_pb');
 class CreateTeam extends Component {
   constructor(props) {
     super(props);
@@ -71,22 +72,39 @@ class CreateTeam extends Component {
   
   //team
   handleAddTeam = () => {
-    //viết hàm add teeam
-    var response={};
-    if (response.getStatus() == "SUCCESS") {
-      this.setState({
-        name:'',
-        description:'',
-        department:'',
-        modalActionStatus: true,
-        actionStatus: 'SUCCESS'
-      });
-    } else {
-      this.setState({
-        modalActionStatus: true,
-        actionStatus: 'FALSE',
-      });
-    }
+    console.log("handleAddTeam")
+    const teamService = new proto.team.TeamClient('https://www.overlead.co');
+    var metadata = {};
+
+    var AddNewTeamReq = new proto.team.AddNewTeamReq();
+    AddNewTeamReq.setRequesterid(cookie.load("userId"));
+    AddNewTeamReq.setProjectid(cookie.load("currentProject"));
+    AddNewTeamReq.setName(this.state.name);
+    AddNewTeamReq.setDescription(this.state.description);
+    AddNewTeamReq.setDepartment(this.state.department);
+    AddNewTeamReq.setAccesstoken(cookie.load("accessToken"));
+
+    teamService.addNewTeam(AddNewTeamReq, metadata, (err, response) => {
+      if (err) { //if error
+        console.log(err);
+      } else {
+        if (response.getStatus() == "SUCCESS") {
+            this.setState({
+              name:'',
+              description:'',
+              department:'',
+              modalActionStatus: true,
+              actionStatus: 'SUCCESS'
+            });
+        
+        } else {
+          this.setState({
+            modalActionStatus: true,
+            actionStatus: 'FALSE',
+          });
+        }
+      }
+    });
   }
  
   render() {
