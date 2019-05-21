@@ -100,7 +100,7 @@ class CreateTeam extends Component {
         } else {
           this.setState({
             modalActionStatus: true,
-            actionStatus: 'FALSE',
+            actionStatus: 'FAIL',
           });
         }
       }

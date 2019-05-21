@@ -88,6 +88,17 @@ class AllTeam extends Component {
       descriptionTeam: event.target.value,
     });
   }
+  onTextboxChangeDepartmentTeam=(event)=> {
+    this.setState({
+      departmentTeam: event.target.value,
+    });
+  }
+  //action status
+  toggleActionStatus = () => {
+    this.setState(prevState => ({
+      modalActionStatus: !prevState.modalActionStatus
+    }));
+  }
   //toggle member
   toggleAddMember=()=> {
     this.setState(prevState => ({
@@ -127,7 +138,9 @@ class AllTeam extends Component {
   }
   //team
   handleAddTeam = () => {}
-  handleUpdateTeam = (event) => {}
+  handleUpdateTeam = (event) => {
+    let id = event.currentTarget.dataset.id;
+  }
   handleDeleteTeam = (event) => {
     let id = event.currentTarget.dataset.id;
     
@@ -137,7 +150,11 @@ class AllTeam extends Component {
     let that = this;
     return (
           <div>
-              
+                <Modal size="sm" isOpen={this.state.modalActionStatus} toggle={this.toggleActionStatus} className={this.props.className}>
+                  <ModalBody>
+                    <center><h4>{this.state.actionStatus}</h4></center>
+                  </ModalBody>
+                </Modal>
               {this.state.dataTeam.map(function(item, key) {
                                let itemTeam=item; 
                                return (
@@ -167,37 +184,29 @@ class AllTeam extends Component {
                                               <Label htmlFor="text-input">Name</Label>
                                             </Col>
                                             <Col xs="12" md="9">
-                                              <Input type="text" id="name" name="name" placeholder="name" disabled={true} value={that.state.updateName} />
+                                              <Input type="text" id="Name" name="Name" placeholder="Name" disabled={true} value={that.state.nameTeam} onChange={that.onTextboxChangeNameTeam}/>
 
                                             </Col>
                                           </FormGroup>
                                           <FormGroup row>
                                             <Col md="3">
-                                              <Label htmlFor="text-input">As a...</Label>
+                                              <Label htmlFor="text-input">Description</Label>
                                             </Col>
                                             <Col xs="12" md="9">
-                                              <Input type="text" id="role" name="role" placeholder="As a..." value={that.state.role} onChange={that.onTextboxChangerole} />
+                                              <Input type="text" id="Description" name="Description" placeholder="Description" value={that.state.descriptionTeam} onChange={that.onTextboxChangeDescriptionTeam} />
 
                                             </Col>
                                           </FormGroup>
                                           <FormGroup row>
                                             <Col md="3">
-                                              <Label htmlFor="text-input">I want to be able to...</Label>
+                                              <Label htmlFor="text-input">Department</Label>
                                             </Col>
                                             <Col xs="12" md="9">
-                                              <Input type="text" id="want" name="want" placeholder="I want to be able to..." value={that.state.want} onChange={that.onTextboxChangewant} />
+                                              <Input type="text" id="Department" name="Department" placeholder="Department" value={that.state.departmentTeam} onChange={that.onTextboxChangeDepartmentTeam} />
 
                                             </Col>
                                           </FormGroup>
-                                          <FormGroup row>
-                                            <Col md="3">
-                                              <Label htmlFor="textarea-input">So that...</Label>
-                                            </Col>
-                                            <Col xs="12" md="9">
-                                              <Input type="textarea" name="so" id="so" rows="9"
-                                                placeholder="Content..." value={that.state.so} onChange={that.onTextboxChangeso} />
-                                            </Col>
-                                          </FormGroup>
+                                         
                                         </Form>
                                       </ModalBody>
                                       <div data-id={item.id} onClick={that.handleUpdateTeam}>
