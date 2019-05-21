@@ -40,7 +40,15 @@ class AllTeam extends Component {
     super(props);
     this.state = {
       dataTeam: [],
-      dataMember: [],
+      dataMember: [
+        {
+          name:'',
+          role:'',
+          point:'',
+          currentTask:'',
+          numOfTaskDone:'',
+        }
+      ],
       requesterId: '',
       actionStatus: '',              //success or show error when action add delete update      
       modalAddMember: false,
