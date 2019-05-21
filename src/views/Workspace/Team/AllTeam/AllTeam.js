@@ -306,7 +306,7 @@ class AllTeam extends Component {
                 </div>
                 <div class="row">
                   <div class="col">
-                    <strong>{item.name}</strong>
+                    <strong>{itemTeam.name}</strong>
                   </div>
 
                   <div class="col-md-auto">
@@ -314,7 +314,7 @@ class AllTeam extends Component {
 
                   <div class="col col-sm-2">
                     <center>
-                      <div data-id={item.id} data-name={item.name} onClick={that.toggleEditTeam}>
+                      <div data-id={itemTeam.id} data-name={itemTeam.name} onClick={that.toggleEditTeam}>
                         <Button color="warning" size="sm" className="mt-3"><i class="fa fa-edit"></i></Button>
                       </div>
                       <Modal size="lg" isOpen={that.state.modalEditTeam} toggle={that.toggleEditTeam} >
@@ -351,14 +351,14 @@ class AllTeam extends Component {
 
                           </Form>
                         </ModalBody>
-                        <div data-id={item.id} onClick={that.handleUpdateTeam}>
+                        <div data-id={itemTeam.id} onClick={that.handleUpdateTeam}>
                           <ModalFooter>
                             <Button color="primary" >Submit</Button>
                           </ModalFooter>
                         </div>
 
                       </Modal>
-                      <div data-id={item.id} onClick={that.handleDeleteTeam}>
+                      <div data-id={itemTeam.id} onClick={that.handleDeleteTeam}>
                         <Button color="danger" size="sm" className="mt-3" ><i class="fa fa-trash"></i></Button>
                       </div>
                     </center>
