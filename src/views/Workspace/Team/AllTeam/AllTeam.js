@@ -39,16 +39,19 @@ class AllTeam extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataTeam: [],
-      dataMember: [
-        {
-          name:'',
-          role:'',
-          point:'',
-          currentTask:'',
-          numOfTaskDone:'',
-        }
-      ],
+      dataTeam: [{
+        members:[
+          {
+            id:'',
+            name:'',
+            role:'',
+            point:'',
+            currentTask:'',
+            numOfTaskDone:'',
+          }
+        ],
+      }],
+      
       requesterId: '',
       actionStatus: '',              //success or show error when action add delete update      
       modalAddMember: false,
@@ -65,7 +68,7 @@ class AllTeam extends Component {
       departmentTeam: '',
 
 
-      updateNameMember: '',
+      updateMemberId: '',
       emailMember: '',
       roleMember: '',
 
@@ -112,11 +115,11 @@ class AllTeam extends Component {
     }));
   }
   toggleEditMember = (event) => {
-    let nameMember = event.currentTarget.dataset.nameMember;
+    let idMember = event.currentTarget.dataset.idMember;
     let idTeam = event.currentTarget.dataset.idTeam;
     this.setState(prevState => ({
       modalEditMember: !prevState.modalEditMember,
-      updateNameMember: nameMember,
+      updateMemberId: idMember,
       updateTeamId: idTeam
     }));
   }
@@ -230,11 +233,11 @@ class AllTeam extends Component {
 
   }
   handleUpdateMember = (event) => {
-    let emailMember = event.currentTarget.dataset.emailMember;
+    let idMember = event.currentTarget.dataset.idMember;
     let idteam = event.currentTarget.dataset.idteam;
   }
   handleDeleteMember = (event) => {
-    let emailMember = event.currentTarget.dataset.emailMember;
+    let idMember = event.currentTarget.dataset.idMember;
     let idteam = event.currentTarget.dataset.idteam;
   }
   //team
@@ -365,12 +368,13 @@ class AllTeam extends Component {
 
               </div>
               <div class="card-body">
-                {that.state.dataMember.map(function (item, key) {
+                {that.state.dataTeam.members.map(function (item, key) {
                   return (
                     <Table hover bordered striped responsive size="sm">
                       <thead>
                         <tr>
                           <th>Name</th>
+                          <th>Role</th>
                           <th>Point</th>
                           <th>Current task</th>
                           <th>Task completed</th>
@@ -415,12 +419,13 @@ class AllTeam extends Component {
                       <tbody>
                         <tr>
                           <td>{item.name}</td>
+                          <td>{item.role}</td>
                           <td>{item.point}</td>
                           <td>{item.currentTask}</td>
                           <td>{item.numOfTaskDone}</td>
                           <td>
                             <center>
-                              <div data-idTeam={itemTeam.id} data-nameMember={item.name} onClick={that.toggleEditMember}>
+                              <div data-idTeam={itemTeam.id} data-idMember={item.id} onClick={that.toggleEditMember}>
                                 <Button color="warning" size="sm">
                                   <i class="fa fa-edit"></i>
                                 </Button>
@@ -449,14 +454,14 @@ class AllTeam extends Component {
                                   </Form>
 
                                 </ModalBody>
-                                <div data-idTeam={itemTeam.id} data-emailMember={item.name} onClick={that.handleUpdateMember}>
+                                <div data-idTeam={itemTeam.id} data-idMember={item.id} onClick={that.handleUpdateMember}>
                                   <ModalFooter>
                                     <Button color="primary" >Submit</Button>
                                   </ModalFooter>
                                 </div>
                               </Modal>
 
-                              <div data-emailMember={item.name} data-idteam={itemTeam.id} onClick={that.handleDeleteMember}>
+                              <div data-idMember={item.id} data-idteam={itemTeam.id} onClick={that.handleDeleteMember}>
                                 <Button size="sm" color="danger" >
                                   <i class="fa fa-trash"></i></Button>
                               </div>
