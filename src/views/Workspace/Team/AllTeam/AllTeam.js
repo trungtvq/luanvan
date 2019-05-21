@@ -71,12 +71,25 @@ class AllTeam extends Component {
       descriptionTeam:'',
       departmentTeam:'',
       
+     
+      updateNameMember: '',
       emailMember:'',
       roleMember:'',
     
 
     }
   };
+  //onchange member
+  onTextboxChangeEmailMember=(event)=> {
+    this.setState({
+      emailMember: event.target.value,
+    });
+  }
+  onTextboxChangeRoleMember=(event)=> {
+    this.setState({
+      roleMember: event.target.value,
+    });
+  }
   //onchange team
   onTextboxChangeNameTeam=(event)=> {
     this.setState({
@@ -106,8 +119,12 @@ class AllTeam extends Component {
     }));
   }
   toggleEditMember=(event)=> {
+    let nameMember = event.currentTarget.dataset.nameMember;
+    let idTeam = event.currentTarget.dataset.idTeam;
     this.setState(prevState => ({
-      modalEditMember: !prevState.modalEditMember
+      modalEditMember: !prevState.modalEditMember,
+      updateNameMember: nameMember,
+      updateTeamId: idTeam
     }));
   }
   //toggle team
@@ -117,8 +134,8 @@ class AllTeam extends Component {
     }));
   }
   toggleEditTeam=(event)=> {
-    let name = event.currentTarget.dataset.name
-    let id = event.currentTarget.dataset.id
+    let name = event.currentTarget.dataset.name;
+    let id = event.currentTarget.dataset.id;
 
     this.setState(prevState => ({
       modalEditTeam: !prevState.modalEditTeam,
@@ -130,10 +147,16 @@ class AllTeam extends Component {
     //viet hàm lấy toàn bộ dữ liệu trong collection team đổ vào array dataTeam
   }
   //member
-  handleAddMember = () => {}
-  handleUpdateMember = (event) => {}
+  handleAddMember = (event) => {
+    let idteam = event.currentTarget.dataset.idteam;
+
+  }
+  handleUpdateMember = (event) => {
+    let emailMember = event.currentTarget.dataset.emailMember;
+    let idteam = event.currentTarget.dataset.idteam;
+  }
   handleDeleteMember = (event) => {
-    let idmember = event.currentTarget.dataset.idmember;
+    let emailMember = event.currentTarget.dataset.emailMember;
     let idteam = event.currentTarget.dataset.idteam;
   }
   //team
@@ -176,7 +199,7 @@ class AllTeam extends Component {
                                     <Button color="warning" size="sm" className="mt-3"><i class="fa fa-edit"></i></Button>
                                   </div>
                                   <Modal size="lg" isOpen={that.state.modalEditTeam} toggle={that.toggleEditTeam} >
-                                      <ModalHeader toggle={that.toggleEditTeam}>{item.name}</ModalHeader>
+                                      <ModalHeader toggle={that.toggleEditTeam}>Team</ModalHeader>
                                       <ModalBody>
                                         <Form className="form-horizontal">
                                           <FormGroup row>
@@ -184,7 +207,7 @@ class AllTeam extends Component {
                                               <Label htmlFor="text-input">Name</Label>
                                             </Col>
                                             <Col xs="12" md="9">
-                                              <Input type="text" id="Name" name="Name" placeholder="Name" disabled={true} value={that.state.nameTeam} onChange={that.onTextboxChangeNameTeam}/>
+                                              <Input type="text" id="Name" name="Name" placeholder="Name" value={that.state.nameTeam} onChange={that.onTextboxChangeNameTeam}/>
 
                                             </Col>
                                           </FormGroup>
@@ -226,7 +249,7 @@ class AllTeam extends Component {
                                                
                                 </div>
                                 <div class="card-body">
-                                {that.state.dataTeam.map(function(item, key) {
+                                {that.state.dataMember.map(function(item, key) {
                                return (
                                 <Table hover bordered striped responsive size="sm">
                                 <thead>
@@ -248,18 +271,26 @@ class AllTeam extends Component {
                                                   <Label htmlFor="text-input">User name</Label>
                                                 </Col>
                                                 <Col xs="5" md="5">
-                                                  <Input type="text" id="text-input" name="text-input" placeholder="User name" />
+                                                  <Input type="text" id="text-input" name="text-input" placeholder="User name" value={that.state.emailMember} onChange={that.onTextboxChangeEmailMember}/>
+                                                </Col>
+                                              </FormGroup>
+                                              <FormGroup row>
+                                                <Col md="3">
+                                                  <Label htmlFor="text-input">Role</Label>
+                                                </Col>
+                                                <Col xs="5" md="5">
+                                                  <Input type="text" id="Role" name="Role" placeholder="Role" value={that.state.roleMember} onChange={that.onTextboxChangeRoleMember}/>
                                                 </Col>
                                               </FormGroup>
                                                                     
                                             </Form>
                                         
                                         </ModalBody>
-                                        {/* <div data-id={item.id} onClick={that.handleAddMember}> */}
+                                        <div data-idTeam={itemTeam.id} onClick={that.handleAddMember}> 
                                         <ModalFooter>                                   
-                                            <Button color="primary" onClick={that.handleAddMember}>Submit</Button>
+                                            <Button color="primary" >Submit</Button>
                                         </ModalFooter>
-                                        {/* </div> */}
+                                        </div> 
                                       </Modal>
                                     </div>
                                   </th>
@@ -273,7 +304,7 @@ class AllTeam extends Component {
                                   <td>{item.numOfTaskDone}</td>
                                   <td>
                                   <center>
-                                  <div data-id={item.id} data-name={item.name} onClick={that.toggleEdit}> 
+                                  <div data-idTeam={itemTeam.id} data-nameMember={item.name} onClick={that.toggleEditMember}> 
                                     <Button color="warning" size="sm">
                                       <i class="fa fa-edit"></i>
                                     </Button>
@@ -281,53 +312,35 @@ class AllTeam extends Component {
                                     <Modal size="lg" isOpen={that.state.modalEditMember} toggle={that.toggleEditMember} >
                                       <ModalHeader toggle={that.toggleEditMember}>Member</ModalHeader>
                                       <ModalBody>
-                                        <Form className="form-horizontal">
-                                          <FormGroup row>
-                                            <Col md="3">
-                                              <Label htmlFor="text-input">Name</Label>
-                                            </Col>
-                                            <Col xs="12" md="9">
-                                              <Input type="text" id="name" name="name" placeholder="name" disabled={true} value={that.state.updateName} />
-  
-                                            </Col>
-                                          </FormGroup>
-                                          <FormGroup row>
-                                            <Col md="3">
-                                              <Label htmlFor="text-input">As a...</Label>
-                                            </Col>
-                                            <Col xs="12" md="9">
-                                              <Input type="text" id="role" name="role" placeholder="As a..." value={that.state.role} onChange={that.onTextboxChangerole} />
-  
-                                            </Col>
-                                          </FormGroup>
-                                          <FormGroup row>
-                                            <Col md="3">
-                                              <Label htmlFor="text-input">I want to be able to...</Label>
-                                            </Col>
-                                            <Col xs="12" md="9">
-                                              <Input type="text" id="want" name="want" placeholder="I want to be able to..." value={that.state.want} onChange={that.onTextboxChangewant} />
-  
-                                            </Col>
-                                          </FormGroup>
-                                          <FormGroup row>
-                                            <Col md="3">
-                                              <Label htmlFor="textarea-input">So that...</Label>
-                                            </Col>
-                                            <Col xs="12" md="9">
-                                              <Input type="textarea" name="so" id="so" rows="9"
-                                                placeholder="Content..." value={that.state.so} onChange={that.onTextboxChangeso} />
-                                            </Col>
-                                          </FormGroup>
-                                        </Form>
+                                        <Form className="form-horizontal">               
+                                              <FormGroup row>
+                                                <Col md="3">
+                                                  <Label htmlFor="text-input">User name</Label>
+                                                </Col>
+                                                <Col xs="5" md="5">
+                                                  <Input type="text" id="text-input" name="text-input" placeholder="User name" />
+                                                </Col>
+                                              </FormGroup>
+                                              <FormGroup row>
+                                                <Col md="3">
+                                                  <Label htmlFor="text-input">Role</Label>
+                                                </Col>
+                                                <Col xs="5" md="5">
+                                                  <Input type="text" id="Role" name="Role" placeholder="Role" value={that.state.roleMember} onChange={that.onTextboxChangeRoleMember}/>
+                                                </Col>
+                                              </FormGroup>
+                                                                    
+                                            </Form>
+                                        
                                       </ModalBody>
-                                      {/* <div data-id={item.id} onClick={that.handleUpdateMember}> */}
-                                      <ModalFooter>                                   
-                                          <Button color="primary" >Submit</Button>
-                                      </ModalFooter>
-                                      {/* </div> */}
+                                      <div data-idTeam={itemTeam.id} data-emailMember={item.name} onClick={that.handleUpdateMember}>
+                                        <ModalFooter>                                   
+                                            <Button color="primary" >Submit</Button>
+                                        </ModalFooter>
+                                      </div>
                                     </Modal>
   
-                                    <div data-idmember={item.id} data-idteam={itemTeam.id} onClick={that.handleDelete}> 
+                                    <div data-emailMember={item.name} data-idteam={itemTeam.id} onClick={that.handleDeleteMember}> 
                                     <Button  size="sm" color="danger" >
                                       <i class="fa fa-trash"></i></Button>
                                     </div>
