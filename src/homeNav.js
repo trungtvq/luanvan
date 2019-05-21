@@ -295,6 +295,8 @@ componentDidMount(){
                 }}
               />
             </div>
+            <Button type="button" color="primary" href="/myproject">All project</Button>
+
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
 
