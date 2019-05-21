@@ -6,10 +6,17 @@ import co.overlead.gRPC.ProfileRes;
 import co.overlead.gRPC.UpdateProfileReq;
 import com.mongodb.client.MongoCollection;
 import database.Mongod;
+import helper.ImageResizer;
 import io.grpc.stub.StreamObserver;
 import org.bson.Document;
+import org.bson.internal.Base64;
 import org.bson.types.ObjectId;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,31 +39,52 @@ public class MyProfile {
         @Override
         public void updateProfile(UpdateProfileReq request, StreamObserver<ProfileRes> responseObserver) {
             System.out.println("updateProfile");
+
+
+
+
+
             if (!isValidAuth(request.getRequesterId(),request.getAccessToken())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID");
             } else {
+                System.out.println(request.getAddress());
+                System.out.println(request.getAvatar());
+                System.out.println(request.getBirthday());
+                System.out.println(request.getEmail());
+                System.out.println(request.getFb());
+                System.out.println(request.getSkill());
+                System.out.println(request.getWorkplace());
+
+
+
+
+
                 Document updateList=new Document();
-                if (request.getAddress().equals("")){
+                if (!request.getAddress().equals("")){
                     updateList.append("address",request.getAddress());
                 }
-                if (request.getAvatar().equals("")){
-                    updateList.append("avatar",request.getAvatar());
+                if (!request.getAvatar().equals("")){
+
+
+                        updateList.append("avatar",request.getAvatar());
+
                 }
-                if (request.getBirthday().equals("")){
+                if (!request.getBirthday().equals("")){
                     updateList.append("birthday",request.getBirthday());
                 }
-                if (request.getFb().equals("")){
+                if (!request.getFb().equals("")){
                     updateList.append("fb",request.getFb());
                 }
-                if (request.getWorkplace().equals("")){
+                if (!request.getWorkplace().equals("")){
                     updateList.append("workplace",request.getWorkplace());
                 }
-                if (request.getSkill().equals("")){
+                if (!request.getSkill().equals("")){
                     updateList.append("skill",request.getSkill());
                 }
-                if (request.getEmail().equals("")){
+                if (!request.getEmail().equals("")){
                     updateList.append("email",request.getEmail());
                 }
+                System.out.println(updateList);
                 Mongod.collAuth.findOneAndUpdate(new Document("_id",
                         new ObjectId(request.getRequesterId())),
                         new Document("$set", updateList));
