@@ -1,315 +1,412 @@
 import React, { Component } from 'react';
-import { Badge, 
+import {
+  Badge,
   Button,
- Col, 
- Container, 
- Input, 
- InputGroup, 
- InputGroupAddon, 
- InputGroupText, 
- Row, 
- Table, 
- Pagination, 
- PaginationItem,
- Card,
-CardHeader,
-CardBody,
-Progress,
-Label,
-Modal,
-ModalBody,
-PaginationLink, } from 'reactstrap';
+  Col,
+  Container,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  Row,
+  Table,
+  Pagination,
+  PaginationItem,
+  Card,
+  CardHeader,
+  CardBody,
+  Progress,
+  Label,
+  Modal,
+  ModalBody,
+  PaginationLink,
+} from 'reactstrap';
 import { Link } from 'react-router-dom';
+import cookie from 'react-cookies';
+const proto = {};
+proto.userstory = require('../../../../gRPC/userstory/userstory_grpc_web_pb');
+proto.productbacklog = require('../../../../gRPC/productbacklog/productbacklog_grpc_web_pb');
+
 class Cover extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataUserStory: [ 
-              {
-                "title":"See list 1",
-                "as":"admin",
-                "want":"See a list of all members and visitors",
-                "so":"I can monitor site visits",
-                "priority":'',
-                "estimation":'',
-                "sprint":'',
-              },
-              {
-                "title":"See list 2",
-                "as":"admin",
-                "want":"Add new categories",
-                "so":"I can allow members to create engaging content",
-                "priority":'',
-                "estimation":'',
-                "sprint":'',
-              },
-              {
-                "title":"See list 3",
-                "as":"admin",
-                "want":"Add new security groups",
-                "so":"Security levels are approriate",
-                "priority":'',
-                "estimation":'',
-                "sprint":'',
-              },
-              
-            ],
-      dataProductBacklog: [ 
-              {
-                "title":"See list 4",
-                "as":"admin",
-                "want":"See a list of all members and visitors",
-                "so":"I can monitor site visits",
-                "priority":1,
-                "estimation":3,
-                "sprint":1,
-              },
-              {
-                "title":"See list 5",
-                "as":"admin",
-                "want":"Add new categories",
-                "so":"I can allow members to create engaging content",
-                 "priority":2,
-                "estimation":1,
-                "sprint":1,
-               
-              },
-              {
-                "title":"See list 6",
-                "as":"admin",
-                "want":"Add new security groups",
-                "so":"Security levels are approriate",
-                 "priority":3,
-                "estimation":4,
-                "sprint":1,
-               
-              },
-            
-            ],
+      dataUserStory: [],
+      dataProductBacklog: [],
       actionStatus: '',    //success or fail when action handleSave
       modalActionStatus: false,
 
-      priorityUserstory:'',
-      estimationUserstory:'',
-      sprintUserstory:'',
-      
-      priorityProductBacklog:'',
-      estimationProductBacklog:'',
-      sprintProductBacklog:'',
+      priorityUserstory: '',
+      estimationUserstory: '',
+      sprintUserstory: '',
 
-      title:'',
-          }
-    };
-    //userstory
-    onTextboxChangePriorityUserstory=(event,title)=> {
-      const tmpdata = this.state.dataUserStory.map(p =>
-        p.title == title
-          ? {
-            ...p, priority:event.target.value
-          }
-          : p
-      );
-      this.setState(prevState => ({
-        dataUserStory: tmpdata,
-      }));
-    }
-    onTextboxChangeEstimationUserstory=(event,title)=> {
-      const tmpdata = this.state.dataUserStory.map(p =>
-        p.title == title
-          ? {
-            ...p, estimation:event.target.value
-          }
-          : p
-      );
-      this.setState(prevState => ({
-        dataUserStory: tmpdata,
-      }));
-    }
-    onTextboxChangeSprintUserstory=(event,title)=> {
-      const tmpdata = this.state.dataUserStory.map(p =>
-        p.title == title
-          ? {
-            ...p, sprint:event.target.value
-          }
-          : p
-      );
-      this.setState(prevState => ({
-        dataUserStory: tmpdata,
-      }));
-    }
-    //ProductBacklog
-    onTextboxChangePriorityProductBacklog=(event,title)=> {
-      const tmpdata = this.state.dataProductBacklog.map(p =>
-        p.title == title
-          ? {
-            ...p, priority:event.target.value
-          }
-          : p
-      );
-      this.setState(prevState => ({
-        dataProductBacklog: tmpdata,
+      priorityProductBacklog: '',
+      estimationProductBacklog: '',
+      sprintProductBacklog: '',
 
-      }));
+      title: '',
     }
-    onTextboxChangeEstimationProductBacklog=(event,title)=> {
-      const tmpdata = this.state.dataProductBacklog.map(p =>
-        p.title == title
-          ? {
-            ...p, estimation:event.target.value
-          }
-          : p
-      );
-      this.setState(prevState => ({
-        dataProductBacklog: tmpdata,
+  };
+  //userstory
+  onTextboxChangePriorityUserstory = (event, title) => {
+    const tmpdata = this.state.dataUserStory.map(p =>
+      p.title == title
+        ? {
+          ...p, priority: event.target.value
+        }
+        : p
+    );
+    this.setState(prevState => ({
+      dataUserStory: tmpdata,
+    }));
+  }
+  onTextboxChangeEstimationUserstory = (event, title) => {
+    const tmpdata = this.state.dataUserStory.map(p =>
+      p.title == title
+        ? {
+          ...p, estimation: event.target.value
+        }
+        : p
+    );
+    this.setState(prevState => ({
+      dataUserStory: tmpdata,
+    }));
+  }
+  onTextboxChangeSprintUserstory = (event, title) => {
+    const tmpdata = this.state.dataUserStory.map(p =>
+      p.title == title
+        ? {
+          ...p, sprint: event.target.value
+        }
+        : p
+    );
+    this.setState(prevState => ({
+      dataUserStory: tmpdata,
+    }));
+  }
+  //ProductBacklog
+  onTextboxChangePriorityProductBacklog = (event, title) => {
+    const tmpdata = this.state.dataProductBacklog.map(p =>
+      p.title == title
+        ? {
+          ...p, priority: event.target.value
+        }
+        : p
+    );
+    this.setState(prevState => ({
+      dataProductBacklog: tmpdata,
 
-      }));
-    }
-    onTextboxChangeSprintProductBacklog=(event,title)=> {
-      const tmpdata = this.state.dataProductBacklog.map(p =>
-        p.title == title
-          ? {
-            ...p, sprint:event.target.value
-          }
-          : p
-      );
-      this.setState(prevState => ({
-        dataProductBacklog: tmpdata,
+    }));
+  }
+  onTextboxChangeEstimationProductBacklog = (event, title) => {
+    const tmpdata = this.state.dataProductBacklog.map(p =>
+      p.title == title
+        ? {
+          ...p, estimation: event.target.value
+        }
+        : p
+    );
+    this.setState(prevState => ({
+      dataProductBacklog: tmpdata,
 
-      }));
-    }
-    componentDidMount() {
-      //viet hàm lấy toàn bộ dữ liệu trong collection userstory đổ vào array dataUserStory
-    }
+    }));
+  }
+  onTextboxChangeSprintProductBacklog = (event, title) => {
+    const tmpdata = this.state.dataProductBacklog.map(p =>
+      p.title == title
+        ? {
+          ...p, sprint: event.target.value
+        }
+        : p
+    );
+    this.setState(prevState => ({
+      dataProductBacklog: tmpdata,
 
-    handleStoryToBacklog=(titleStory)=>{
-      var result = this.state.dataUserStory.find(x => x.title === titleStory)
-      this.setState(prevState => ({ dataUserStory: [...prevState.dataUserStory.filter(function (e) { return e.title !== titleStory; })] }));
-      this.setState(prevState => ({ dataProductBacklog: [...prevState.dataProductBacklog, { title: titleStory, as: result.as, want: result.want, so: result.so, priority: result.priority, estimation: result.estimation, sprint: result.sprint }] }));
-    }
-    handleBacklogToStory=(titleProductbacklog)=>{
-      var result = this.state.dataProductBacklog.find(x => x.title === titleProductbacklog)
-      this.setState(prevState => ({ dataProductBacklog: [...prevState.dataProductBacklog.filter(function (e) { return e.title !== titleProductbacklog; })] }));
-      this.setState(prevState => ({ dataUserStory: [...prevState.dataUserStory, { title: titleProductbacklog, as: result.as, want: result.want, so: result.so, priority: '', estimation: '', sprint: '' }] }));
-    }
+    }));
+  }
+  loadUserstory = () => {
+    const userstoryService = new proto.userstory.UserStoryClient('https://www.overlead.co');
+    var metadata = {};
+    var GetAllUserStoryReq = new proto.userstory.GetAllUserStoryReq();
+    GetAllUserStoryReq.setRequesterid(cookie.load("userId"));
+    GetAllUserStoryReq.setAccesstoken(cookie.load("accessToken"));
+    GetAllUserStoryReq.setProjectid(cookie.load("currentProject"));
 
-    
+    var response = userstoryService.getAllUserStory(GetAllUserStoryReq, metadata)
+    let that = this
+    response.on('data', function (response) {
+      if (response.getStatus() == "SUCCESS") {
+        that.setState(prevState => ({
+          dataUserStory: [...prevState.dataUserStory,
+          {
+            id: response.getId(),
+            title: response.getName(),
+            as: response.getRole(),
+            want: response.getWant(),
+            so: response.getSo()
+          }]
+        }));
+
+      }
+    })
+    response.on('status', function (status) {
+      console.log("status")
+      console.log(status.code);
+      console.log(status.details);
+      console.log(status.metadata);
+    });
+    response.on('end', function (end) {
+      console.log("end")
+      console.log(end)
+    });
+  }
+  loadProductbacklog = () => {
+    //load productbacklog
+    const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
+    var GetAllProductBacklogReq = new proto.productbacklog.GetAllProductBacklogReq();
+    GetAllProductBacklogReq.setRequesterid(cookie.load("userId"));
+    GetAllProductBacklogReq.setAccesstoken(cookie.load("accessToken"));
+    GetAllProductBacklogReq.setProjectid(cookie.load("currentProject"));
+    let metadata = {}
+    var response = productbacklogService.getAllProductBacklog(GetAllProductBacklogReq, metadata)
+    let that = this
+    response.on('data', function (response) {
+      if (response.getStatus() == "SUCCESS") {
+        that.setState(prevState => ({
+          dataProductBacklog: [...prevState.dataProductBacklog,
+          {
+            id: response.getProductbacklogid(),
+            title: response.getTitle(),
+            as: response.getRole(),
+            want: response.getWant(),
+            so: response.getSo(),
+            priority: response.getPriority(),
+            estimation: response.getEstimation(),
+            sprint: response.getSprintid(),
+            status: response.getStatusbacklog()
+          }]
+        }));
+
+      }
+    })
+    response.on('status', function (status) {
+      console.log("status")
+      console.log(status.code);
+      console.log(status.details);
+      console.log(status.metadata);
+    });
+    response.on('end', function (end) {
+      console.log("end")
+      console.log(end)
+    });
+  }
+  componentDidMount() {
+    this.loadUserstory();
+    this.loadProductbacklog();
+
+
+
+
+  }
+
+  handleStoryToBacklog = (item) => {
+
+    //query 
+
+
+    console.log("handleUpdate")
+    const userstoryService = new proto.userstory.UserStoryClient('https://www.overlead.co');
+    var metadata = {};
+
+    var SendToProductBacklogReq = new proto.userstory.SendToProductBacklogReq();
+    SendToProductBacklogReq.setRequesterid(cookie.load("userId"));
+    SendToProductBacklogReq.setProjectid(cookie.load("currentProject"));
+    SendToProductBacklogReq.setId(item.id);
+    SendToProductBacklogReq.setPriority(item.priority);
+    SendToProductBacklogReq.setEstimation(item.estimation);
+    SendToProductBacklogReq.setStatusbacklog(item.status);
+    SendToProductBacklogReq.setAccesstoken(cookie.load("accessToken"));
+    SendToProductBacklogReq.setSprint(item.sprint);
+
+    userstoryService.sendToProductBacklog(SendToProductBacklogReq, metadata, (err, response) => {
+      if (err) { //if error
+        console.log(err);
+      } else {
+        if (response.getStatus() == "SUCCESS") {
+
+          this.setState(prevState => ({
+            dataUserStory: [...prevState.dataUserStory.filter(function (e) { return e.id != item.id; })],
+            dataProductBacklog: [...prevState.dataProductBacklog, { id: item.id, title: item.title, as: item.as, want: item.want, so: item.so, priority: item.priority, estimation: item.estimation, sprint: item.sprint }]
+          }));
+        } else {
+
+        }
+      }
+    });
+
+
+  }
+  handleBacklogToStory = (item) => {
+
+
+
+    //query
+
+    const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
+    var metadata = {};
+    console.log("so" + this.state.so)
+    var SendToSprintBacklogReq = new proto.productbacklog.SendToSprintBacklogReq();
+    SendToSprintBacklogReq.setRequesterid(cookie.load("userId"));
+    SendToSprintBacklogReq.setAccesstoken(cookie.load("accessToken"));
+    SendToSprintBacklogReq.setProjectid(cookie.load("currentProject"));
+    SendToSprintBacklogReq.setProductbacklogid(item.id);
+    productbacklogService.sendToUserStory(SendToSprintBacklogReq, metadata, (err, response) => {
+      if (err) { //if error
+        console.log(err);
+      } else {
+        if (response.getStatus() == "SUCCESS") {
+
+          this.setState(prevState => ({
+            dataProductBacklog:
+              [...prevState.dataProductBacklog.filter(function (e) { return e.id != item.id; })],
+            dataUserStory:
+              [...prevState.dataUserStory,
+              {
+                id: item.id,
+                title: item.title,
+                as: item.as,
+                want: item.want,
+                so: item.so,
+                priority: '',
+                estimation: '', sprint: ''
+              }]
+          }));
+        } else {
+
+        }
+      }
+    });
+  };
+
+
+
 
   render() {
-    let that=this;
+    let that = this;
     return (
       <Row>
-          <Modal size="sm" isOpen={that.state.modalActionStatus} toggle={that.toggleActionStatus} className={that.props.className}>
+        <Modal size="sm" isOpen={that.state.modalActionStatus} toggle={that.toggleActionStatus} className={that.props.className}>
           <ModalBody>
             <center><h4>{that.state.actionStatus}</h4></center>
           </ModalBody>
-          </Modal>
-          <Col>         
-            <Row>
-              <Col>    
-                <div class="card border-primary mb-3">
-                  <div class="card-header bg-primary">USER STORY</div>
-                    <div class="card-body">
-                                {this.state.dataUserStory.map(function(item, key) {
-                               return (
-                                    <Card>
-                                          <CardHeader>
-                                            <i className=""></i><strong>As: {item.as}</strong>
-                                          </CardHeader>
-                                          <CardBody>        
-                                            <h6>I want: {item.want}</h6>
-                                            <h6>So that:  {item.so}</h6>
-                                            <div class="row">
-                                                <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                  <Label htmlFor="text-input">Priority</Label>
-                                                </div>
-                                                <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                  <Input type="text" name="text-input" id="text-input" rows="9" value={item.priority} onChange={e =>{that.onTextboxChangePriorityUserstory(e,item.title)}}/>
-                                                </div>
-                                               
-                                              
+        </Modal>
+        <Col>
+          <Row>
+            <Col>
+              <div class="card border-primary mb-3">
+                <div class="card-header bg-primary">USER STORY</div>
+                <div class="card-body">
+                  {this.state.dataUserStory.map(function (item, key) {
+                    return (
+                      <Card>
+                        <CardHeader>
+                          <i className=""></i><strong>As: {item.as}</strong>
+                        </CardHeader>
+                        <CardBody>
+                          <h6>I want: {item.want}</h6>
+                          <h6>So that:  {item.so}</h6>
+                          <div class="row">
+                            <div class="col col-lg-2 col-md-2 col-sm-2">
+                              <Label htmlFor="text-input">Priority</Label>
+                            </div>
+                            <div class="col col-lg-2 col-md-2 col-sm-2">
+                              <Input type="text" name="text-input" id="text-input" rows="9" value={item.priority} onChange={e => { that.onTextboxChangePriorityUserstory(e, item.title) }} />
+                            </div>
 
-                                                 <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                  <Label htmlFor="text-input">Estimation</Label>
-                                                </div>
-                                                <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                  <Input type="text" name="text-input" id="text-input" rows="9" value={item.estimation} onChange={e =>{that.onTextboxChangeEstimationUserstory(e,item.title)}}/>                            
-                                                </div>
 
-                                                 
 
-                                                <div class="col col-lg-1 col-md-1 col-sm-1">
-                                                  <Label htmlFor="text-input">Sprint</Label>
-                                                </div>
-                                                <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                  <Input type="text" name="text-input" id="text-input" rows="9" value={item.sprint} onChange={e =>{that.onTextboxChangeSprintUserstory(e,item.title)}}/>                            
-                                                </div>
-                                            </div>
-                                            <Button  size="sm" color="success" align="center" onClick={() =>{that.handleStoryToBacklog(item.title)}}><i class="fa fa-arrow-right"></i></Button>
-                                          </CardBody>
-                                    </Card> 
-                                 )
-                              })}
+                            <div class="col col-lg-2 col-md-2 col-sm-2">
+                              <Label htmlFor="text-input">Estimation</Label>
+                            </div>
+                            <div class="col col-lg-2 col-md-2 col-sm-2">
+                              <Input type="text" name="text-input" id="text-input" rows="9" value={item.estimation} onChange={e => { that.onTextboxChangeEstimationUserstory(e, item.title) }} />
+                            </div>
 
-                      </div>
-                </div> 
-              </Col>
-               
-               <Col>    
-                 <div class="card border-primary mb-3">
-                  <div class="card-header bg-primary">
-                    PRODUCT BACKLOG
+
+
+                            <div class="col col-lg-1 col-md-1 col-sm-1">
+                              <Label htmlFor="text-input">Sprint</Label>
+                            </div>
+                            <div class="col col-lg-2 col-md-2 col-sm-2">
+                              <Input type="text" name="text-input" id="text-input" rows="9" value={item.sprint} onChange={e => { that.onTextboxChangeSprintUserstory(e, item.title) }} />
+                            </div>
+                          </div>
+                          <Button size="sm" color="success" align="center" onClick={() => { that.handleStoryToBacklog(item) }}><i class="fa fa-arrow-right"></i></Button>
+                        </CardBody>
+                      </Card>
+                    )
+                  })}
+
+                </div>
+              </div>
+            </Col>
+
+            <Col>
+              <div class="card border-primary mb-3">
+                <div class="card-header bg-primary">
+                  PRODUCT BACKLOG
                   </div>
-                    <div class="card-body">
-                        {this.state.dataProductBacklog.map(function(item, key) {
-                          return (
-                                    <Card>
-                                          <CardHeader>
-                                            <i className=""></i><strong>As {item.as}</strong>
-                                          </CardHeader>
-                                          <CardBody>        
-                                            <h6>I want :  {item.want}</h6>
-                                            <h6> So that:   {item.so}</h6>
-                                             
-                                            <div class="row">
+                <div class="card-body">
+                  {this.state.dataProductBacklog.map(function (item, key) {
+                    return (
+                      <Card>
+                        <CardHeader>
+                          <i className=""></i><strong>As {item.as}</strong>
+                        </CardHeader>
+                        <CardBody>
+                          <h6>I want :  {item.want}</h6>
+                          <h6> So that:   {item.so}</h6>
 
-                                              <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                <Label htmlFor="text-input">Priority</Label>
-                                              </div>
-                                              <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.priority} onChange={e =>{that.onTextboxChangePriorityProductBacklog(e,item.title)}}/>
-                                              </div>
-                                                
-                                               
-                                              <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                <Label htmlFor="text-input">Estimation</Label>
-                                              </div>
-                                              <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.estimation} onChange={e =>{that.onTextboxChangeEstimationProductBacklog(e,item.title)}}/>                            
-                                              </div>
-                                               
+                          <div class="row">
 
-                                              <div class="col col-lg-1 col-md-1 col-sm-1">
-                                                <Label htmlFor="text-input">Sprint</Label>
-                                              </div>
-                                              <div class="col col-lg-2 col-md-2 col-sm-2">
-                                                <Input type="text" name="text-input" id="text-input" rows="9" value={item.sprint} onChange={e =>{that.onTextboxChangeSprintProductBacklog(e,item.title)}}/>                            
-                                              </div>
-                                               
-                                            </div>
-                                            <Button  size="sm" color="success" align="center" onClick={() =>{that.handleBacklogToStory(item.title)}}><i class="fa fa-arrow-left"></i></Button>
-                                          </CardBody>
-                                    </Card> 
-                                  )
-                        })} 
-                              
+                            <div class="col col-lg-2 col-md-2 col-sm-2">
+                              <Label htmlFor="text-input">Priority</Label>
+                            </div>
+                            <div class="col col-lg-2 col-md-2 col-sm-2">
+                              <Input type="text" name="text-input" id="text-input" rows="9" value={item.priority} onChange={e => { that.onTextboxChangePriorityProductBacklog(e, item.title) }} />
+                            </div>
 
-                      </div>
-                </div> 
-              </Col>
-            
-            </Row> 
-          </Col>
-        </Row>
+
+                            <div class="col col-lg-2 col-md-2 col-sm-2">
+                              <Label htmlFor="text-input">Estimation</Label>
+                            </div>
+                            <div class="col col-lg-2 col-md-2 col-sm-2">
+                              <Input type="text" name="text-input" id="text-input" rows="9" value={item.estimation} onChange={e => { that.onTextboxChangeEstimationProductBacklog(e, item.title) }} />
+                            </div>
+
+
+                            <div class="col col-lg-1 col-md-1 col-sm-1">
+                              <Label htmlFor="text-input">Sprint</Label>
+                            </div>
+                            <div class="col col-lg-2 col-md-2 col-sm-2">
+                              <Input type="text" name="text-input" id="text-input" rows="9" value={item.sprint} onChange={e => { that.onTextboxChangeSprintProductBacklog(e, item.title) }} />
+                            </div>
+
+                          </div>
+                          <Button size="sm" color="success" align="center" onClick={() => { that.handleBacklogToStory(item) }}><i class="fa fa-arrow-left"></i></Button>
+                        </CardBody>
+                      </Card>
+                    )
+                  })}
+
+
+                </div>
+              </div>
+            </Col>
+
+          </Row>
+        </Col>
+      </Row>
     );
   }
 }

@@ -436,14 +436,14 @@ class Detail extends Component {
                                   </FormGroup>
                                 </Form>
                               </ModalBody>
-                              <div data-id={item.id} onClick={that.handleUpdate}>
                               <ModalFooter>
                                
+                              <div data-id={item.id} onClick={that.handleUpdate}>
 
                                   <Button color="primary" >Submit</Button>
+                                  </div>
 
                               </ModalFooter>
-                              </div>
 
                             </Modal>
 

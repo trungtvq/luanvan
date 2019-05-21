@@ -254,6 +254,61 @@ proto.userstory.UserStoryPromiseClient.prototype.deleteUserStory =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.userstory.SendToProductBacklogReq,
+ *   !proto.userstory.UserStoryRes>}
+ */
+const methodInfo_UserStory_sendToProductBacklog = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.userstory.UserStoryRes,
+  /** @param {!proto.userstory.SendToProductBacklogReq} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.userstory.UserStoryRes.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.userstory.SendToProductBacklogReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.userstory.UserStoryRes)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.userstory.UserStoryRes>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.userstory.UserStoryClient.prototype.sendToProductBacklog =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/userstory.UserStory/sendToProductBacklog',
+      request,
+      metadata || {},
+      methodInfo_UserStory_sendToProductBacklog,
+      callback);
+};
+
+
+/**
+ * @param {!proto.userstory.SendToProductBacklogReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.userstory.UserStoryRes>}
+ *     A native promise that resolves to the response
+ */
+proto.userstory.UserStoryPromiseClient.prototype.sendToProductBacklog =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/userstory.UserStory/sendToProductBacklog',
+      request,
+      metadata || {},
+      methodInfo_UserStory_sendToProductBacklog);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.userstory.GetAllUserStoryReq,
  *   !proto.userstory.GetAllUserStoryRes>}
  */

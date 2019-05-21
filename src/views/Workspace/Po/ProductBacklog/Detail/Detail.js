@@ -82,9 +82,12 @@ class Detail extends Component {
       modalAdd: !prevState.modalAdd
     }));
   }
-  toggleEdit = () => {
+  toggleEdit = (event) => {
+    let id = event.currentTarget.dataset.id
+
     this.setState(prevState => ({
-      modalEdit: !prevState.modalEdit
+      modalEdit: !prevState.modalEdit,
+      updateId:id
     }));
   }
   toggleSend = () => {
@@ -246,27 +249,29 @@ class Detail extends Component {
 
   handleUpdate = (event) => {
     console.log("handleUpdate")
+    let id = event.currentTarget.dataset.id
+
     const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
     var metadata = {};
-
+    console.log("so"+this.state.so)
     var UpdateProductBacklogReq = new proto.productbacklog.UpdateProductBacklogReq();
     UpdateProductBacklogReq.setRequesterid(cookie.load("userId"));
     UpdateProductBacklogReq.setAccesstoken(cookie.load("accessToken"));
     UpdateProductBacklogReq.setProjectid(cookie.load("currentProject"));
-    UpdateProductBacklogReq.setUserstoryid(this.state.updateId);
+    UpdateProductBacklogReq.setProductbacklogid(this.state.updateId);
     UpdateProductBacklogReq.setRole(this.state.role);
     UpdateProductBacklogReq.setWant(this.state.want);
     UpdateProductBacklogReq.setSo(this.state.so);
-    UpdateProductBacklogReq.setPriority();
-    UpdateProductBacklogReq.setEstimation();
-    UpdateProductBacklogReq.setSprintId();
-    UpdateProductBacklogReq.setStatusbacklog();
+    UpdateProductBacklogReq.setPriority(this.state.priority);
+    UpdateProductBacklogReq.setEstimation(this.state.estimation);
+    UpdateProductBacklogReq.setSprintid(this.state.sprint);
+    UpdateProductBacklogReq.setStatusbacklog(this.state.status);
     productbacklogService.updateProductBacklog(UpdateProductBacklogReq, metadata, (err, response) => {
       if (err) { //if error
         console.log(err);
       } else {
         if (response.getStatus() == "SUCCESS") {
-
+          console.log(response)
           const tmpdata = this.state.data.map(p =>
             p.id == this.state.updateId
               ? {
@@ -276,10 +281,9 @@ class Detail extends Component {
                 priority: this.state.priority,
                 estimation: this.state.estimation,
                 status: this.state.status,
-                sprintId: this.state.sprintId,
-                title: this.state.title,
+                sprint: this.state.sprint,
                 so: this.state.so,
-
+                
               }
               : p
           );
@@ -491,7 +495,7 @@ class Detail extends Component {
                             <Button color="secondary" onClick={that.toggleSend}>Cancel</Button>
                           </ModalFooter>
                         </Modal>
-                        <Button color="warning" size="sm" onClick={that.toggleEdit}><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
+                        <div data-id={item.id} onClick={that.toggleEdit}><Button color="warning" size="sm"><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button></div>
                         <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
                           <ModalHeader toggle={that.toggleEdit}>ProductBacklog</ModalHeader>
                           <ModalBody>
@@ -528,10 +532,8 @@ class Detail extends Component {
                                   <Label htmlFor="date-input">Status</Label>
                                 </Col>
                                 <Col xs="12" md="2">
-                                  <Input type="select" name="status" id="status" onChange={that.onTextboxChangeStatus} size="sm">
-                                    <option value="0">done</option>
-                                    <option value="1">to do</option>
-                                    <option value="2">inprogress</option>
+                                  <Input type="textarea" name="status" id="status" value={that.state.status} onChange={that.onTextboxChangeStatus} size="sm">
+                                   
                                   </Input>
                                 </Col>
                               </FormGroup>
@@ -566,7 +568,7 @@ class Detail extends Component {
                             </Form>
                           </ModalBody>
                           <ModalFooter>
-                            <Button color="primary" onClick={that.handleUpdate}>Submit</Button>{' '}
+                          <div data-id={item.id} onClick={that.handleUpdate}><Button color="primary">Submit</Button></div>{' '}
                             <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
                           </ModalFooter>
                         </Modal>

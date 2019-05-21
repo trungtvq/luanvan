@@ -10,9 +10,20 @@ service UserStory{
     rpc addNewUserStory(AddNewUserStoryReq) returns (UserStoryRes) {}
     rpc updateUserStory(UpdateUserStoryReq) returns (UserStoryRes){}
     rpc deleteUserStory(DeleteUserStoryReq) returns (UserStoryRes){}
+	rpc sendToProductBacklog(SendToProductBacklogReq) returns (UserStoryRes){}
+
 	rpc getAllUserStory(GetAllUserStoryReq) returns (stream GetAllUserStoryRes){}
 }
-
+message SendToProductBacklogReq{
+	string requesterId = 1;
+	string projectId = 2;
+	string id=3;
+	string priority=4;
+	string estimation=5;
+	string statusBacklog=6;
+	string accessToken=7;
+	string sprint=8;
+}
 message AddNewUserStoryReq{
 
     string requesterId = 1;
