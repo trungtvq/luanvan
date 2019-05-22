@@ -2,6 +2,7 @@ package gRPC.team;
 
 import co.overlead.gRPC.*;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.DeleteResult;
 import database.Mongod;
 import helper.auth.RequestAuth;
@@ -106,34 +107,48 @@ public class CoTeam {
         @Override
         public void deleteTeam(DeleteTeamReq request, StreamObserver<TeamRes> responseObserver) {
             System.out.println("deleteTeam");
+            //1 Check if requester IS owner
+            //2 delete team id in PROJECT
+            //3 delete team id in USER (team can have multi user)
+            //4 delete instance team... ok
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
-                //delete ref item team in collection PROJECT
-                Mongod.collProject.findOneAndUpdate(new Document("_id", request.getProjectId()), new Document("$pull", new Document("teams", request.getTeamId())));
+                if (request.getRequesterId()!=Mongod.collTeam.find(new Document("_id",new ObjectId(request.getTeamId()))).into(new ArrayList<>()).get(0).get("ownerId").toString()){
+                    //delete ref item team in collection PROJECT
+                    Mongod.collProject.findOneAndUpdate(new Document("_id", request.getProjectId()), new Document("$pull", new Document("teams", request.getTeamId())));
 
-                //delete ref item team in collection USER
-                List<Document> user=Mongod.collTeam.find(new Document("_id",new ObjectId(request.getTeamId()))).into(new ArrayList<>());
-                if (user.size()>0){
-                    List<String> idList = (List<String>) user.get(0).get("members");
-                    if (idList.size()>0){
-                        idList.forEach(i->{
-                            Mongod.collAuth.findOneAndUpdate(new Document("_id",new ObjectId(i)),new Document("$pull",new Document("teamlist",request.getTeamId())));
-                        });
+                    //delete ref item team in collection USER
+                    List<Document> user=Mongod.collTeam.find(new Document("_id",new ObjectId(request.getTeamId()))).into(new ArrayList<>());
+                    if (user.size()>0){
+                        List<String> idList = (List<String>) user.get(0).get("members");
+                        if (idList.size()>0){
+                            idList.forEach(i->{
+                                Mongod.collAuth.findOneAndUpdate(new Document("_id",new ObjectId(i)),new Document("$pull",new Document("teamlist",request.getTeamId())));
+                            });
+                        }
                     }
+                    //delete instance team
+                    Mongod.collTeam.deleteOne(new Document("_id", new ObjectId(request.getTeamId())));
+                    makeResponseForUpdateSuccess(responseObserver, request.getProjectId());
+                }else{
+                    makeResponseForFailed(responseObserver,"NO_PERMISION","FALSE");
                 }
-                //delete instance team
-                Mongod.collTeam.deleteOne(new Document("_id", new ObjectId(request.getTeamId())));
-                makeResponseForUpdateSuccess(responseObserver, request.getProjectId());
+
             }
         }
 
         @Override
         public void addMember(AddMemberReq request, StreamObserver<TeamRes> responseObserver) {
+            //check if username is exist
+            //check if team is exist
+            //check member is exist in team
+            //add member id to TEAM
+            //add team id to USER
+            //
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
-                //check user
                 List<Document> user = Mongod.collAuth.find(new Document("username", request.getMemberEmail())).into(new ArrayList<>());
                 if (user.size() != 1) {
                     makeResponseForFailed(responseObserver, "WRONG_SIZE_USER_FOUND", "FALSE");
@@ -142,15 +157,23 @@ public class CoTeam {
                     if (team.size() != 1) {
                         makeResponseForFailed(responseObserver, "WRONG_SIZE_TEAM_FOUND", "FALSE");
                     } else {
-                        String id = user.get(0).get("_id").toString();
-                        //add member to list member of TEAM
-                        Mongod.collTeam.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamId())), new Document("$push", new Document("members", id)));
-                        //add team to list of team of MEMBER
-                        Mongod.collAuth.findOneAndUpdate(new Document("_id", new ObjectId(id)), new Document("$push", new Document("teamlist", request.getTeamId())));
-                        //add member to project
-                        //TODO: IMPLEMENT MEMBER OF PROJECT
 
-                        makeResponseForUpdateSuccess(responseObserver, request.getTeamId());
+                        String id = user.get(0).get("_id").toString();
+
+                        List<String> mems= (List<String>) team.get(0).get("members");
+
+                        if (mems.indexOf(id)==-1){
+                            //add member to list member of TEAM
+                            Mongod.collTeam.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamId())), new Document("$push", new Document("members", id)));
+                            //add team to list of team of MEMBER
+                            Mongod.collAuth.findOneAndUpdate(new Document("_id", new ObjectId(id)), new Document("$push", new Document("teamlist", request.getTeamId())));
+
+                            String name=Mongod.collAuth.find(new Document("username",request.getMemberEmail())).into(new ArrayList<>()).get(0).get("name").toString();
+                            responseObserver.onNext(TeamRes.newBuilder().setId(request.getTeamId()).setStatus("SUCCESS")
+                                    .setOption(name).build());
+                            makeResponseForUpdateSuccess(responseObserver, request.getTeamId());
+                        } else makeResponseForFailed(responseObserver,"EXIST_MEM","FALSE");
+
                     }
                 }
             }
@@ -160,6 +183,11 @@ public class CoTeam {
 
         @Override
         public void removeMember(RemoveMemberReq request, StreamObserver<TeamRes> responseObserver) {
+            //1. remove member if team exist...OK
+            //   only owner can remove owner team
+            //2. remove member id from TEAM...OK
+            //3. remove team id from MEMBER... OK
+
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
@@ -168,12 +196,20 @@ public class CoTeam {
                     if (foundDocument.size() != 1) {
                         makeResponseForFailed(responseObserver, "NOT_FOUND_TEAM", "FALSE");
                     } else {
+                        String projectId=Mongod.collTeam.find(new Document("_id",new ObjectId(request.getTeamId()))).into(new ArrayList<>()).get(0).get("projectId").toString();
+                        //1
+                        String ownerId=Mongod.collProject.find(new Document("_id",new ObjectId(projectId))).into(new ArrayList<>()).get(0).get("ownerId").toString();
+                        if (ownerId==request.getRequesterId() || request.getMemberEmail()!=ownerId)
+                            {
+                                Mongod.collTeam.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamId())),
+                                        new Document("$pull", new Document("members", request.getMemberEmail())));
+                                //remove team from list of team of MEMBER
+                                Mongod.collAuth.findOneAndUpdate(new Document("_id", new ObjectId(request.getMemberEmail())), new Document("$pull", new Document("teamlist", request.getTeamId())));
+                                makeResponseForUpdateSuccess(responseObserver, request.getTeamId());
+                            }else{
+                                makeResponseForFailed(responseObserver,"NO_PERMISION","FALSE");
+                            }
 
-                        //remove member to list member of TEAM
-                        Mongod.collTeam.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamId())), new Document("$pull", new Document("members", request.getMemberEmail())));
-                        //remove team to list of team of MEMBER
-                        Mongod.collAuth.findOneAndUpdate(new Document("_id", new ObjectId(request.getMemberEmail())), new Document("$pull", new Document("teamlist", request.getTeamId())));
-                        makeResponseForUpdateSuccess(responseObserver, request.getTeamId());
                     }
 
             }
@@ -207,6 +243,7 @@ public class CoTeam {
                 List<Document> foundDocument = Mongod.collProject.find(new Document("_id", new ObjectId(request.getProjectId()))).into(new ArrayList<>());
                 if (foundDocument.size() != 1) {
                     makeResponseForFailed(responseObserver, "PROJECT_NOT_FOUND", "FALSE");
+                    return;
                 } else {
                     System.out.println("have project");
                     List<String> teamList= (List<String>) foundDocument.get(0).get("teams");
