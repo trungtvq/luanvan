@@ -12,7 +12,9 @@ import cookie from 'react-cookies';
 import {saveLogin,removeLogin} from '../../actions'
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
-
+import {
+  getFromStorage
+} from '../../service/storage'
 const propTypes = {
   children: PropTypes.node,
 };
@@ -31,7 +33,7 @@ class DefaultHeader extends Component {
   }
   render() {
     console.log("avatar")
-    console.log(this.props.avatar)
+    console.log(getFromStorage('avatar'))
     // eslint-disable-next-line
     const { children, ...attributes } = this.props;
 
@@ -82,7 +84,7 @@ class DefaultHeader extends Component {
           </NavItem>
           <AppHeaderDropdown direction="down">
             <DropdownToggle nav>
-              <img src={this.props.avatar} className="img-avatar" alt="" />
+              <img src={getFromStorage('avatar')} className="img-avatar" alt="" />
             </DropdownToggle>
             <DropdownMenu right style={{ right: 'auto' }}>
               

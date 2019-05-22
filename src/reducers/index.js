@@ -13,6 +13,10 @@ import {
   DELETE_PROJECT,
   ADD_PROJECT,
 } from '../actions'
+import {
+  getFromStorage,
+  setInStorage
+} from '../service/storage'
 const proto = {};
 proto.myproject = require('../gRPC/myproject/myproject_grpc_web_pb');
 
@@ -72,6 +76,8 @@ function changeStatusLogin(state = {isLogin:false}, action) {
   console.log(action)
   switch (action.type) {
     case DO_LOGIN:    
+      if (action.avatar!=undefined && action.avatar!="")
+      setInStorage('avatar',action.avatar)
       return Object.assign({}, {
                 id:action.id,
                 token:action.token,
@@ -80,6 +86,7 @@ function changeStatusLogin(state = {isLogin:false}, action) {
                 name:action.name,
                 avatar:action.avatar})      
     case DO_LOGOUT:
+      setInStorage('avatar',"")
       return Object.assign({},{isLogin:false})
     default:
       return state

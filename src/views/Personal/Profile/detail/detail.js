@@ -36,7 +36,10 @@ import {
   ModalHeader
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-
+import {
+  getFromStorage,
+  setInStorage
+} from '../../../../service/storage'
 import Demo from '../../../../homeNav'
 import ImageUploader from 'react-images-upload';
 import cookie from 'react-cookies';
@@ -120,10 +123,9 @@ class detail extends Component {
       } else { //if success
         console.log(response.getStatus())
         if (response.getStatus() == "SUCCESS") {
-          that.setState(prevState => ({
-            
+          setInStorage('avatar',that.state.avatar)
+          that.setState(prevState => ({            
             modalEdit: !prevState.modalEdit,
-
           }))
           that.loadProfile()
 
@@ -136,6 +138,7 @@ class detail extends Component {
   getFiles(files){
     console.log(files)
     this.setState({ avatar: files.base64 })
+
   }
   toggleEdit = (event) => {
     this.setState(prevState => ({
