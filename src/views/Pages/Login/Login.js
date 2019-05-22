@@ -11,6 +11,7 @@ import { GoogleLogout } from 'react-google-login';
 import { GoogleLogin } from 'react-google-login';
 import cookie from 'react-cookies';
 import ReactList from 'react-list';
+const image2base64 = require('image-to-base64')
 const proto = {};
 proto.auth = require('./../../../gRPC/auth/auth_grpc_web_pb');
 
@@ -120,8 +121,9 @@ class Login extends Component {
             cookie.save('accessToken',response.getSession())
             cookie.save('username',profileObj.email)
             cookie.save('name',response.getName())
-            cookie.save('avatar',profileObj.imageUrl)
-            this.props.dispatch(saveLogin(response.getId(),response.getSession(),profileObj.email,response.getName(),profileObj.imageUrl))
+           
+            cookie.save('avatar',response.getAvatar())
+            this.props.dispatch(saveLogin(response.getId(),response.getSession(),profileObj.email,response.getName(),response.getAvatar()))
           }
         }
       });
