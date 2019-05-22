@@ -5,10 +5,16 @@ import com.mongodb.client.MongoCollection;
 import database.Mongod;
 import database.Redis;
 import io.grpc.stub.StreamObserver;
+import org.apache.commons.codec.binary.Base64;
 import org.bson.Document;
 import service.email.EmailService;
+import sun.misc.IOUtils;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,7 +81,21 @@ public class AuthAccount {
                     makeResponseAfterUpdate(responseObserver,request.getUsername());
                 }
         }
+        public String getBase64EncodedImage(String imageURL) {
 
+            try {
+                java.net.URL url = new java.net.URL(imageURL);
+                InputStream is = null;
+                is = url.openStream();
+                byte[] bytes = org.apache.commons.io.IOUtils.toByteArray(is);
+                return Base64.encodeBase64String(bytes);
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                return "avatarError";
+            }
+        }
         @Override
         public void signInGoogle(SignInGoogleReq request, StreamObserver<SignInRes> responseObserver) {
             Document user = getUserFromDB(request.getUsername()); //check username is exist
@@ -84,7 +104,7 @@ public class AuthAccount {
             } else{ //CREATE NEW ACCOUNT
                 Document document = new Document("username", request.getUsername())
                         .append("name", request.getName())
-                        .append("avatar", request.getAvatar());
+                        .append("avatar",getBase64EncodedImage(request.getAvatar()));
                 coll.insertOne(document);
                 makeResponseAfterUpdate(responseObserver,request.getUsername());
             }
