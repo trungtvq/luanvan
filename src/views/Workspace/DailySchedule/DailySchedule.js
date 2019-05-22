@@ -213,12 +213,12 @@ class DailySchedule extends Component {
 
     var AddNewDailyScheduleReq= new proto.dailyschedule.AddNewDailyScheduleReq();
     AddNewDailyScheduleReq.setRequesterid(cookie.load("userId"));
-    AddNewDailyScheduleReq.setProjectid(this.state.projectId);
+    AddNewDailyScheduleReq.setProjectid(cookie.load("currentProject"));
     AddNewDailyScheduleReq.setTitle(this.state.title);
     AddNewDailyScheduleReq.setTask(this.state.task);
     AddNewDailyScheduleReq.setTime(this.state.timeStart+" "+this.state.dateStart);
     AddNewDailyScheduleReq.setSchedulestatus("to do");
-    AddNewDailyScheduleReq.setCookie(this.state.cookie);
+    AddNewDailyScheduleReq.setAccesstoken(cookie.load("accessToken"));
 
     var toto=dailyscheduleService.addNewDailySchedule(AddNewDailyScheduleReq, metadata, (err, response) => {   
       if (err) { 

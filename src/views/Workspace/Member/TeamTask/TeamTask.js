@@ -293,7 +293,7 @@ class TeamTask extends Component {
                                         <Input type="date" id="dateDeadline" name="dateDeadline" value={dateDeadline} onChange={that.onTextboxChangeDateDeadline}/>
                                       </Col>
                                     </FormGroup>
-                                     <FormGroup row>
+                                     {/* <FormGroup row>
                                       <Col md="3">
                                         <Label htmlFor="text-input">Assignee</Label>
                                       </Col>
@@ -305,7 +305,7 @@ class TeamTask extends Component {
                                           <option value="Tâm">Tâm</option>
                                         </Input>
                                       </Col>
-                                    </FormGroup>                                          
+                                    </FormGroup>                                           */}
                                   </Form>                      
                               </ModalBody>
                               <ModalFooter>
@@ -359,19 +359,13 @@ class TeamTask extends Component {
                                       <Col md="3">
                                         <Label>Priority</Label>
                                       </Col>
-                                      <Col md="9">
-                                        <FormGroup check inline>
-                                          <Input className="form-check-input" type="radio" id="inline-radio1" name="inline-radios" value="option1" />
-                                          <Label className="form-check-label" check htmlFor="inline-radio1">High</Label>
-                                        </FormGroup>
-                                        <FormGroup check inline>
-                                          <Input className="form-check-input" type="radio" id="inline-radio2" name="inline-radios" value="option2" />
-                                          <Label className="form-check-label" check htmlFor="inline-radio2">Medium</Label>
-                                        </FormGroup>
-                                        <FormGroup check inline>
-                                          <Input className="form-check-input" type="radio" id="inline-radio3" name="inline-radios" value="option3" />
-                                          <Label className="form-check-label" check htmlFor="inline-radio3">Low</Label>
-                                        </FormGroup>
+                                      <Col md="3">
+                                      <Input type="select" name="select" id="select" onChange={that.onTextboxChangePriority}>
+                                          <option value="0">Please select</option>
+                                          <option value="High">High</option>
+                                          <option value="Medium">Medium</option>
+                                          <option value="Low">Low</option>
+                                        </Input>
                                       </Col>
                                     </FormGroup>                     
                                     <FormGroup row>
@@ -390,11 +384,11 @@ class TeamTask extends Component {
                                         <Input type="date" id="date-input" name="date-input" placeholder="date" value="24/4/2019"/>
                                       </Col>
                                     </FormGroup>
-                                     <FormGroup row>
+                                     {/* <FormGroup row>
                                       <Col md="3">
                                         <Label htmlFor="text-input">Assignee</Label>
                                       </Col>
-                                     <Col xs="12" md="2">
+                                     <Col xs="12" md="3">
                                         <Input type="select" name="select" id="select" >
                                           <option value="0">Please select</option>
                                           <option value="1">Hùng</option>
@@ -402,12 +396,12 @@ class TeamTask extends Component {
                                           <option value="3">Tâm</option>
                                         </Input>
                                       </Col>
-                                    </FormGroup>   
+                                    </FormGroup>    */}
                                     <FormGroup row>
                                       <Col md="3">
                                         <Label htmlFor="text-input">Status</Label>
                                       </Col>
-                                      <Col xs="12" md="2">
+                                      <Col xs="12" md="3">
                                         <Input type="select" name="select" id="select">
                                           <option value="0">Please select</option>
                                           <option value="1">done</option>
