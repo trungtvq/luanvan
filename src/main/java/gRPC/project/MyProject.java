@@ -41,10 +41,6 @@ public class MyProject {
         @Override
         public void addNewProject(AddNewProjectReq request, StreamObserver<ProjectRes> responseObserver) {
             System.out.println("addNewProject");
-            System.out.println(request.getStart());
-            System.out.println(request.getEnd());
-            System.out.println(request.getPrivate());
-            System.out.println(request.getProjectName());
             if (!isValidAuth(request.getRequesterId(),request.getCookie())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID","TRUE");
             } else {
@@ -74,6 +70,33 @@ public class MyProject {
                     } else {
                         String id= foundDocument.get(0).get("_id").toString();
                         makeResponseForUpdateSuccess(responseObserver,id);
+
+                        //add default team
+
+                        Document team = new Document()
+                                .append("name", "default")
+                                .append("projectId",id)
+                                .append("ownerId", request.getRequesterId())
+                                .append("description", "default")
+                                .append("department", "default")
+                                .append("tasks", new BsonArray(Arrays.asList()))
+                                .append("conversations", new BsonArray(Arrays.asList()))
+                                .append("members", new BsonArray(Arrays.asList(new BsonString(request.getRequesterId()))));
+                        Mongod.collTeam.insertOne(team);
+
+                        foundDocument = Mongod.collTeam.find(team).into(new ArrayList<>());
+                        //check size
+                        if (foundDocument.size() != 1) {
+                            makeResponseForFailed(responseObserver, "WRONG_SIZE", "FALSE");
+                        } else {
+                            Mongod.collAuth.findOneAndUpdate(
+                                    new Document("_id", new ObjectId(request.getRequesterId())),
+                                    new Document("$push", new Document("teamlist", new BsonString(foundDocument.get(0).get("_id").toString()))));
+
+                            Mongod.collProject.findOneAndUpdate(new Document("_id",
+                                            new ObjectId(id)),
+                                    new Document("$push", new Document("teams",new BsonString(foundDocument.get(0).get("_id").toString()))));
+                        }
                     }
                 }
             }
