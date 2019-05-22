@@ -57,7 +57,10 @@ class SprintBacklog extends Component {
   
   
     }
-    handleDelete = () => {
+    handleBackToProductbacklog = () => {
+      
+    };
+    handleComplete = () => {
       
     };
   render() {
@@ -79,6 +82,7 @@ class SprintBacklog extends Component {
                     <th>Sprint <i class="fa fa-sort"></i></th>
                     <th>Start <i class="fa fa-sort"></i></th>
                     <th>Deadline <i class="fa fa-sort"></i></th>
+                    <th>Status <i class="fa fa-sort"></i></th>
                     <th></th>
                   </tr>
                   </thead>
@@ -95,7 +99,8 @@ class SprintBacklog extends Component {
                       <td><center>{item.start}</center></td>
                       <td><center>{item.deadline}</center></td>
                       <td>                        
-                      <Button type="submit" size="sm" color="danger" onClick={that.handleDelete}><i class="fa fa-trash"></i></Button>
+                      <Button size="sm" color="danger" onClick={that.handleBackToProductbacklog}><i class="fa fa-trash"></i></Button>
+                      <Button size="sm" color="success" onClick={that.handleComplete}><i class="fa fa-check"></i></Button>
                       </td>
                   </tr>
                 )

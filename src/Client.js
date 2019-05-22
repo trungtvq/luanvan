@@ -60,22 +60,9 @@ const ResetFirst = Loadable({
 
 
 //Home
-const HomeMain = Loadable({
-    loader: () => import('./views/General/Home/Main'),
-    loading
-});
-const HomeContact = Loadable({
-    loader: () => import('./views/General/Home/Contact'),
-    loading
-});
-const HomeService = Loadable({
-    loader: () => import('./views/General/Home/Service'),
-    loading
-});
-const HomeSolve = Loadable({
-    loader: () => import('./views/General/Home/Solve'),
-    loading
-});
+
+
+
 const HomePayment = Loadable({
     loader: () => import('./views/General/Home/Payment'),
     loading
@@ -159,10 +146,8 @@ class Client extends Component {
                         {
                             this.props.isLogin ?<div>  <Switch>
                                 <Route exact path="/homeNav" name="HomeNav" component={Demo} />
-                                <Route exact path="/Home/Main" name="HomeMain" component={HomeMain} />
-                                <Route exact path="/Home/Contact" name="HomeContact" component={HomeContact} />
-                                <Route exact path="/Home/Service" name="HomeService" component={HomeService} />
-                                <Route exact path="/Home/Solve" name="HomeSolve" component={HomeSolve} />
+                              
+                               
                                 <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
                                 <Route exact path="/Home/Final" name="HomeFinal" component={HomeFinal} />
 
