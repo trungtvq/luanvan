@@ -15,9 +15,7 @@ import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static helper.auth.RequestAuth.isValidAuth;
 
@@ -41,11 +39,11 @@ public class MyProject {
         @Override
         public void addNewProject(AddNewProjectReq request, StreamObserver<ProjectRes> responseObserver) {
             System.out.println("addNewProject");
+
             if (!isValidAuth(request.getRequesterId(),request.getCookie())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID","TRUE");
             } else {
-                MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("project");
-                List<Document> foundDocument = coll.find(new Document("projectName",request.getProjectName()).append("ownerId",request.getRequesterId())).into(new ArrayList<>());
+                List<Document> foundDocument = Mongod.collProject.find(new Document("projectName",request.getProjectName()).append("ownerId",request.getRequesterId())).into(new ArrayList<>());
                 if (foundDocument.size()!=0){
                     makeResponseForFailed(responseObserver,"EXIST_PROJECT_NAME","TRUE");
                 } else{
@@ -62,9 +60,9 @@ public class MyProject {
                             .append("stories",new BsonArray(Arrays.asList()));
 
 
-                    coll.insertOne(document);
+                    Mongod.collProject.insertOne(document);
 
-                    foundDocument = coll.find(document).into(new ArrayList<>());
+                    foundDocument = Mongod.collProject.find(document).into(new ArrayList<>());
                     if (foundDocument.size()!=1){
                         makeResponseForFailed(responseObserver,"WRONG_SIZE","TRUE");
                     } else {
@@ -171,19 +169,22 @@ public class MyProject {
         @Override
         public void getAllProject(GetAllProjectReq request, StreamObserver<ProjectRes> responseObserver) {
             System.out.println("getAll");
+            //
             if (!isValidAuth(request.getRequesterId(),request.getCookie())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID","TRUE");
             } else{
-                MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("project");
                 //TODO: GET NOT OWN PROJECT
-                List<Document> foundDocument = coll.find(new Document("ownerId",request.getRequesterId())).into(new ArrayList<Document>());
-                System.out.println(foundDocument.size());
+                Set<String> setProject = new HashSet<String>();
+                List<String> team= (List<String>) Mongod.collAuth.find(new Document("_id",new ObjectId(request.getRequesterId()))).into(new ArrayList<>()).get(0).get("teamlist");
 
-                if (foundDocument.size()==0){
-                    makeResponseForFailed(responseObserver,"EMPTY","FALSE");
-                }  else {
-                    foundDocument.forEach(i->{
-                        if (i!=null){
+                if (team.size()>0){
+                    team.forEach(i->{
+
+                        setProject.add(Mongod.collTeam.find(new Document("_id",new ObjectId(i))).into(new ArrayList<>()).get(0).get("projectId").toString());
+                    });
+                    setProject.forEach(item->{
+                        if (item!=null){
+                            Document i = Mongod.collProject.find(new Document("_id",new ObjectId(item))).into(new ArrayList<Document>()).get(0);
 
                             ProjectRes reply=ProjectRes.newBuilder()
                                     .setProjectId(i.get("_id").toString())
@@ -197,10 +198,11 @@ public class MyProject {
 
                         }
                     });
+                }
                     responseObserver.onCompleted();
                 }
             }
         }
-    }
+
 
 }
