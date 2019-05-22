@@ -197,7 +197,7 @@ toggleActionStatus = () => {
               }else {
               this.setState({
                 modalActionStatus: true,
-                actionStatus: 'FALSE',
+                actionStatus: 'FAIL',
               });
             }
     

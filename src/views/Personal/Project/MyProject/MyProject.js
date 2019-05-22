@@ -58,6 +58,9 @@ class MyProject extends Component {
       modalTranferOwner: false,
       startDate: new Date(),
       endDate: new Date(),
+      actionStatus: '',      
+      modalActionStatus: false,        //success or show error when action add delete update    
+
 
       topic: '',
       ProjectName: '',
@@ -70,25 +73,15 @@ class MyProject extends Component {
       items: 10,
       loadingState: false,
       data: [
-        {
-          "projectName": "Web bán giày",
-          "idOwner": "tam@gmail.com",
-          "status": "public",
-          "start": " 9:00 3/01/2019",
-          "end": "9:00 23/05/2019",
-          "progress": 20,
-        },
-        {
-          "projectName": "Web bán giày",
-          "idOwner": "lam@gmail.com",
-          "status": "public",
-          "start": " 9:00 3/01/2019",
-          "end": "9:00 23/05/2019",
-          "progress": 50,
-        },
       ],
     }
   };
+  toggleActionStatus = () => {
+    this.setState(prevState => ({
+      modalActionStatus: !prevState.modalActionStatus
+    }));
+  }
+
   forceUpdateHandler = () => {
     this.forceUpdate();
   };
@@ -123,13 +116,7 @@ class MyProject extends Component {
       console.log("end")
       console.log(end)
     });
-
-
-
   }
-
-
-
 
 
   toggleAdd = () => {
@@ -143,8 +130,11 @@ class MyProject extends Component {
     }));
   }
   setProjectUpdateId = (event) => {
+    {console.log("i________"+ event.currentTarget.dataset.projectName)}
     this.setState({
-      updateId: event.currentTarget.dataset.id
+      updateId: event.currentTarget.dataset.id,
+      topic : event.currentTarget.dataset.topic,
+      ProjectName : event.currentTarget.dataset.projectName,
     });
   }
   toggleTranferOwner = () => {
@@ -218,9 +208,24 @@ class MyProject extends Component {
         console.log("error updateProject")
       } else { //if success
         console.log(response.getStatus())
-        if (response.getStatus() == "SUCCESS")
+        if (response.getStatus() == "SUCCESS"){
           dispatch(updateProject(this.state.updateId, this.state.topic, this.state.ProjectName, start, end, this.state.isPrivate, this.state.progress))
-        this.toggleEdit()
+          this.toggleEdit()
+          this.setState(prevState => ({
+            modalActionStatus: !prevState.modalActionStatus,
+            actionStatus: "SUCCESS",
+          }));
+         
+        }else {
+          this.setState({
+            actionStatus: "FAIL",
+          });
+          this.setState(prevState => ({
+            modalActionStatus: !prevState.modalActionStatus,
+          }));
+        }
+         
+
       }
     });
   }
@@ -247,11 +252,19 @@ class MyProject extends Component {
         console.log(response.getStatus())
         if (response.getStatus() == "SUCCESS") {
           dispatch(deleteProject(id))
+          this.setState({
+            actionStatus: "SUCCESS",
+            modalActionStatus: true,
+          });
+        }else {
+          this.setState({
+            actionStatus: "FAIL",
+          });
+          this.setState(prevState => ({
+            modalActionStatus: !prevState.modalActionStatus,
+          }));
         }
-        // this.setState({
-        //   av: response.getAvatar()
-        // });
-
+       
       }
     });
   };
@@ -276,6 +289,11 @@ class MyProject extends Component {
     console.log("render")
     return (
       <div>
+        <Modal size="sm" isOpen={that.state.modalActionStatus} toggle={that.toggleActionStatus} className={that.props.className}>
+          <ModalBody>
+            <center><h4>{that.state.actionStatus}</h4></center>
+          </ModalBody>
+        </Modal>
         <Demo />
         <Chat />
         <div><br /></div>
@@ -283,7 +301,9 @@ class MyProject extends Component {
           <Row>
             <Col>
               <Row>
+              
                 {
+                
                   this.props.project.map(function (i, key) {
                     let item = i;
 
@@ -316,7 +336,8 @@ class MyProject extends Component {
                               </Link>
                               <div className="card-header-actions">
                                 <div className="card-header-action btn btn-setting" data-id={item.id} onClick={that.handleDelete}><i className="icon-trash"></i>{that.props.buttonLabel}</div>
-                                <div data-id={item.id} onClick={that.setProjectUpdateId}><div className="card-header-action btn btn-setting" onClick={that.toggleEdit}><i className="icon-settings"></i>{that.props.buttonLabel}</div></div>
+                                <div data-projectName={item.projectName} data-id={item.id} data-topic={item.topic}  onClick={that.setProjectUpdateId}><div className="card-header-action btn btn-setting" onClick={that.toggleEdit}><i className="icon-settings"></i>{that.props.buttonLabel}</div></div>
+                                
                                 <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
                                   <ModalHeader toggle={that.toggleEdit}>Project</ModalHeader>
                                   <ModalBody>

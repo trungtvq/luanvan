@@ -33,10 +33,11 @@ class Detail extends Component {
     this.state = {
       data: [],
       requesterId: '',
-      actionStatus: '',              //success or show error when action add delete update      
+      actionStatus: '',      
+      modalActionStatus: false,        //success or show error when action add delete update      
       modalAdd: false,
       modalEdit: false,
-      modalActionStatus: false,
+
       updateName: '',
       name: '',
       as: '',
@@ -67,11 +68,15 @@ class Detail extends Component {
   toggleEdit(event) {
     let name = event.currentTarget.dataset.name
     let id = event.currentTarget.dataset.id
+    let want =event.currentTarget.dataset.want
+    let so =event.currentTarget.dataset.so
 
     this.setState(prevState => ({
       modalEdit: !prevState.modalEdit,
       updateName: name,
-      updateId: id
+      updateId: id,
+      want:want,
+      so:so,
     }));
   }
 
@@ -191,7 +196,7 @@ class Detail extends Component {
         } else {
           this.setState({
             modalActionStatus: true,
-            actionStatus: 'FALSE',
+            actionStatus: 'FAIL',
           });
         }
       }
@@ -226,7 +231,7 @@ class Detail extends Component {
           this.setState(prevState => ({ data: [...prevState.data.filter(function (e) { return e.id !== id; })] }));
         } else {
           this.setState({
-            actionStatus: "FALSE",
+            actionStatus: "FAIL",
           });
           this.setState(prevState => ({
             modalActionStatus: !prevState.modalActionStatus,
@@ -280,7 +285,7 @@ class Detail extends Component {
 
         } else {
           this.setState({
-            actionStatus: "FALSE",
+            actionStatus: "FAIL",
           });
           this.setState(prevState => ({
             modalEdit: !prevState.modalEdit,
@@ -386,7 +391,7 @@ class Detail extends Component {
                           <td>{item.want}</td>
                           <td>{item.so}</td>
                           <td>
-                            <div data-id={item.id} data-name={item.name} onClick={that.toggleEdit}>
+                            <div data-id={item.id} data-name={item.name} data-want={item.want} data-so={item.so} onClick={that.toggleEdit}>
                               <Button color="warning" size="sm">
                                 <i class="fa fa-edit"></i>
                               </Button>

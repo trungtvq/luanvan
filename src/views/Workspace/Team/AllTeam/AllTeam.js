@@ -275,10 +275,17 @@ class AllTeam extends Component {
           console.log("newData")
           console.log(newData)
           that.setState({
-            dataTeam: newData
+            modalAddMember:false,
+            dataTeam: newData,
+            modalActionStatus: true,
+            actionStatus: 'SUCCESS'
           })
 
         } else {
+          this.setState({
+            modalActionStatus: true,
+            actionStatus: 'FAIL',
+          });
 
         }
       }
@@ -323,10 +330,16 @@ class AllTeam extends Component {
           console.log("newData")
           console.log(newData)
           that.setState({
-            dataTeam: newData
+            dataTeam: newData,
+            modalActionStatus: true,
+            actionStatus: 'SUCCESS',
           })
 
         } else {
+          this.setState({
+            modalActionStatus: true,
+            actionStatus: 'FAIL',
+          });
 
         }
       }
@@ -353,7 +366,7 @@ class AllTeam extends Component {
       if (err) { //if error
         console.log(err);
       } else {
-        if (response.getStatus() == "SUCCESS") {
+        if (response.getStatus() == "C") {
 
           let newData = this.state.dataTeam.map(p =>
             p.id == that.state.updateTeamId
@@ -364,10 +377,17 @@ class AllTeam extends Component {
           )
           that.setState(prevState => ({
             modalEditTeam: !prevState.modalEditTeam,
-            dataTeam: newData
+            dataTeam: newData,
           }))
-
+          this.setState({
+            modalActionStatus: true,
+            actionStatus: 'SUCCESS',           
+          });
         } else {
+          this.setState({
+            modalActionStatus: true,
+            actionStatus: 'FAIL',           
+          });
 
         }
       }
@@ -398,11 +418,17 @@ class AllTeam extends Component {
             p.id == id
               ? false : true)
           that.setState({
-            dataTeam: newData
+            dataTeam: newData,
+            modalActionStatus: true,
+            actionStatus: 'SUCCESS',
           })
 
         } else {
-          //FAIL
+          this.setState({
+            modalActionStatus: true,
+            actionStatus: 'FAIL',
+          });
+
         }
       }
     })

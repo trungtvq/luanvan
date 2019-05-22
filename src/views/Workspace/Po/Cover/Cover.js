@@ -203,11 +203,13 @@ class Cover extends Component {
   componentDidMount() {
     this.loadUserstory();
     this.loadProductbacklog();
-
-
-
-
   }
+  toggleActionStatus = () => {
+    this.setState(prevState => ({
+      modalActionStatus: !prevState.modalActionStatus
+    }));
+  }
+
 
   handleStoryToBacklog = (item) => {
 
@@ -238,7 +240,16 @@ class Cover extends Component {
             dataUserStory: [...prevState.dataUserStory.filter(function (e) { return e.id != item.id; })],
             dataProductBacklog: [...prevState.dataProductBacklog, { id: item.id, title: item.title, as: item.as, want: item.want, so: item.so, priority: item.priority, estimation: item.estimation, sprint: item.sprint }]
           }));
+          this.setState({
+            modalActionStatus: true,
+            actionStatus: 'TRUE',
+          });
+        
         } else {
+          this.setState({
+            modalActionStatus: true,
+            actionStatus: 'FAIL',
+          });
 
         }
       }
@@ -280,8 +291,17 @@ class Cover extends Component {
                 priority: '',
                 estimation: '', sprint: ''
               }]
-          }));
+          })); 
+          this.setState({
+            modalActionStatus: true,
+            actionStatus: 'TRUE',
+          });
+        
         } else {
+          this.setState({
+            modalActionStatus: true,
+            actionStatus: 'FAIL',
+          });
 
         }
       }

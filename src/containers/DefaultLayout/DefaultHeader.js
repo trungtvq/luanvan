@@ -22,7 +22,12 @@ const propTypes = {
 const defaultProps = {};
 
 class DefaultHeader extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      dataTeamJoin: [],
+    }
+  };
 
   onLogout=(e)=>{
 
@@ -68,6 +73,22 @@ class DefaultHeader extends Component {
                 <DropdownMenu>
                   <DropdownItem href="/CreateTeam">Create team</DropdownItem>
                   <DropdownItem href="/AllTeam">All team</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+          </NavItem>
+          <NavItem className="px-3">
+              <UncontrolledDropdown color="light">
+                <DropdownToggle caret>
+                    Team A
+                </DropdownToggle>
+                <DropdownMenu>
+                {this.state.dataTeamJoin.map(function (item, key) {
+                  let itemTeam = item;
+                  return (
+                    <DropdownItem >{item.Name}</DropdownItem>
+                   
+                  )})}
+                 
                 </DropdownMenu>
               </UncontrolledDropdown>
           </NavItem>
