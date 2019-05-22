@@ -30,7 +30,8 @@ class DefaultHeader extends Component {
     cookie.remove('accessToken')
   }
   render() {
-
+    console.log("avatar")
+    console.log(this.props.avatar)
     // eslint-disable-next-line
     const { children, ...attributes } = this.props;
 
@@ -81,7 +82,7 @@ class DefaultHeader extends Component {
           </NavItem>
           <AppHeaderDropdown direction="down">
             <DropdownToggle nav>
-              <img src={''} className="img-avatar" alt="" />
+              <img src={this.props.avatar} className="img-avatar" alt="" />
             </DropdownToggle>
             <DropdownMenu right style={{ right: 'auto' }}>
               
@@ -127,9 +128,9 @@ DefaultHeader.defaultProps = defaultProps;
 
 function mapStateToProps(state) {
   const { changeStatusLogin } = state
-  const { isLogin, id, token,email } = changeStatusLogin
+  const { isLogin, id, token,email,avatar } = changeStatusLogin
   return {
-      isLogin, id, token,email
+      isLogin, id, token,email,avatar
   }
 }
 export default connect(mapStateToProps)(DefaultHeader);
