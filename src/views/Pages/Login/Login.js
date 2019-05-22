@@ -42,6 +42,7 @@ class Login extends Component {
       signInPassword: '',
       signUpEmail: '',
       signUpPassword: '',
+      clientId:"1044290572211-9tqo456g2kknsaj3tpi72lmcjnp18rms.apps.googleusercontent.com"
     };    
   } 
 
@@ -128,11 +129,17 @@ class Login extends Component {
         }
       });
   }
-
+  onInitState=()=>{
+    this.setState({
+      clientId:"1044290572211-9tqo456g2kknsaj3tpi72lmcjnp18rms.apps.googleusercontent.com"
+    })
+  }
  
   render() {
     const responseGoogle = (response) => {
       this.onSignInGoogle(response.profileObj);
+      console.log("responseGoogle")
+      console.log(response)
     }
     let renderProps={}
     renderProps.disabled=false;
@@ -194,15 +201,9 @@ class Login extends Component {
                       </Link>
                       <GoogleLogin
                         clientId="1044290572211-9tqo456g2kknsaj3tpi72lmcjnp18rms.apps.googleusercontent.com"
-                        
                         buttonText="Login"
                         onSuccess={responseGoogle}
-                      //  {...this.onSignInGoogle(this.onSuccess.gapi.auth2.BasicProfileogle.getBasicProfile())}
                         onFailure={responseGoogle}
-                        cookiePolicy={'single_host_origin'}
-                        render={renderProps => {
-                          return (<button onClick={renderProps.onClick } >Login with Google</button>)
-                        }}
                       />,
    
     <GoogleLogout
