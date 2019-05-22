@@ -414,7 +414,7 @@ class DailySchedule extends Component {
                                     <Label htmlFor="text-input">Title</Label>
                                   </Col>
                                   <Col xs="12" md="9">
-                                    <Input type="text" id="Title" name="Title" placeholder="Title" value={that.state.titleUpdate} onChange={that.onTextboxChangeTitleUpdate}/>
+                                    <Input type="text" id="Title" name="Title" placeholder="Title" value={that.state.title} onChange={that.onTextboxChangeTitle}/>
                                     
                                   </Col>
                                 </FormGroup>
@@ -425,7 +425,7 @@ class DailySchedule extends Component {
                                   </Col>
                                   <Col xs="12" md="9">
                                     <Input type="textarea" name="Task" id="Task" rows="9"
-                                          placeholder="Task..." value={that.state.taskUpdate} onChange={that.onTextboxChangeTaskUpdate}/>
+                                          placeholder="Task..." value={that.state.task} onChange={that.onTextboxChangeTask}/>
                                   </Col>
                                 </FormGroup>
                                                 
@@ -435,10 +435,10 @@ class DailySchedule extends Component {
                                   </Col>
                                   <Col xs="3" md="3">
                                   
-                                    <Input type="time" id="timeStart" name="timeStart" value={that.state.timeStartUpdate} onChange={that.onTextboxChangeTimeStartUpdate}/>
+                                    <Input type="time" id="timeStart" name="timeStart" value={that.state.timeStart} onChange={that.onTextboxChangeTimeStart}/>
                                   </Col>
                                   <Col xs="3" md="3">
-                                    <Input type="date" id="dateStart" name="dateStart" value={that.state.dateStartUpdate} onChange={that.onTextboxChangeDateStartUpdate}/>
+                                    <Input type="date" id="dateStart" name="dateStart" value={that.state.dateStart} onChange={that.onTextboxChangeDateStart}/>
                                   </Col>
                                 </FormGroup>
                                 
@@ -448,8 +448,13 @@ class DailySchedule extends Component {
                                   <Col md="3">
                                     <Label>Status</Label>
                                   </Col>
-                                  <Col xs="12" md="9">
-                                  <Input type="text" id="status" name="status" value={that.state.statusUpdate} onChange={that.onTextboxChangeStatusUpdate}/>
+                                  <Col xs="12" md="3">
+                                  <Input type="select" name="select" id="select" onChange={that.onTextboxChangePriority}>
+                                          <option value="0">Please select</option>
+                                          <option value="High">High</option>
+                                          <option value="Medium">Medium</option>
+                                          <option value="Low">Low</option>
+                                  </Input>                                  
                                   </Col>
                                 </FormGroup>                                       
                               </Form>                  

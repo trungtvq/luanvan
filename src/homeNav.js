@@ -121,6 +121,8 @@ class PrimarySearchAppBar extends React.Component {
         startDate:new Date(),
         endDate:new Date(),    
         isPrivate:"false",
+        actionStatus: '',      
+        modalActionStatus: false,        //success or show error when action add delete update    
       };
     };
 componentDidMount(){
@@ -130,6 +132,12 @@ componentDidMount(){
     endDate:end
   })
 }
+toggleActionStatus = () => {
+  this.setState(prevState => ({
+    modalActionStatus: !prevState.modalActionStatus
+  }));
+}
+
   toggleCreatePj=()=>{
     this.setState(prevState => ({
       modalCreatePj: !prevState.modalCreatePj,
@@ -179,9 +187,20 @@ componentDidMount(){
         console.log(response.getStatus())
               if (response.getStatus()=="SUCCESS"){
                 this.props.dispatch(addProject(response.getProjectid(),this.state.Topic,this.state.ProjectName,start,end,this.state.isPrivate,"0")) 
-                console.log(this.props.project) 
-                this.toggleCreatePj()   
-              }
+                this.toggleCreatePj();
+                this.setState({
+                  Topic:'',
+                  ProjectName:'',       
+                  modalActionStatus: true,
+                  actionStatus: 'SUCCESS'
+                });
+              }else {
+              this.setState({
+                modalActionStatus: true,
+                actionStatus: 'FALSE',
+              });
+            }
+    
              
               
             }
@@ -275,6 +294,11 @@ componentDidMount(){
 
     return (
       <div className={classes.root}>
+        <Modal size="sm" isOpen={that.state.modalActionStatus} toggle={that.toggleActionStatus} className={that.props.className}>
+          <ModalBody>
+            <center><h4>{that.state.actionStatus}</h4></center>
+          </ModalBody>
+        </Modal>
         <AppBar position="static">
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">

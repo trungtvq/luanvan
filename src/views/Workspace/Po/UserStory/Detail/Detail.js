@@ -291,9 +291,6 @@ class Detail extends Component {
     });
   };
 
-  // componentDidMount(){
-  //   this.resetAddForm();
-  // }
   render() {
     let that = this;
     return (

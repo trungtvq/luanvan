@@ -82,23 +82,8 @@ const MyProject = Loadable({
     loader: () => import('./views/Personal/Project/MyProject'),
     loading
 });
-const ProjectDone = Loadable({
-    loader: () => import('./views/Personal/Project/ProjectDone'),
-    loading
-});
-const ProjectTodo = Loadable({
-    loader: () => import('./views/Personal/Project/ProjectTodo'),
-    loading
-});
-const CreateProject = Loadable({
-    loader: () => import('./views/Personal/Project/CreateProject'),
-    loading
-});
-const NoProject = Loadable({
-    loader: () => import('./views/Personal/Project/NoProject'),
-    loading
-});
-//
+
+
 
 
 //profile
@@ -146,17 +131,12 @@ class Client extends Component {
                         {
                             this.props.isLogin ?<div>  <Switch>
                                 <Route exact path="/homeNav" name="HomeNav" component={Demo} />
-                              
-                               
+                                                           
                                 <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
                                 <Route exact path="/Home/Final" name="HomeFinal" component={HomeFinal} />
 
                                 <Route exact path="/myproject" name="myproject" component={MyProject} />
-                                <Route exact path="/ProjectDone" name="ProjectDone" component={ProjectDone} />
-                                <Route exact path="/ProjectTodo" name="ProjectTodo" component={ProjectTodo} />
-                                <Route exact path="/CreateProject" name="CreateProject" component={CreateProject} />
-                                <Route exact path="/NoProject" name="NoProject" component={NoProject} />
-
+                               
                                 <Route exact path="/Profile/Detail" name="ProfileDetail" component={ProfileDetail} />
                                 <Route exact path="/Profile/Edit" name="ProjectTodo" component={ProfileEdit} />
 
