@@ -15,6 +15,7 @@ import { connect } from 'react-redux'
 import {
   getFromStorage
 } from '../../service/storage'
+import {Input} from 'reactstrap';
 const propTypes = {
   children: PropTypes.node,
 };
@@ -25,7 +26,11 @@ class DefaultHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataTeamJoin: [],
+      dataTeamJoin: [
+        {name:1},
+        {name:2},
+        {name:3},
+      ],
     }
   };
 
@@ -77,7 +82,7 @@ class DefaultHeader extends Component {
               </UncontrolledDropdown>
           </NavItem>
           <NavItem className="px-3">
-              <UncontrolledDropdown color="light">
+              {/* <UncontrolledDropdown color="light">
                 <DropdownToggle caret>
                     Team A
                 </DropdownToggle>
@@ -85,12 +90,21 @@ class DefaultHeader extends Component {
                 {this.state.dataTeamJoin.map(function (item, key) {
                   let itemTeam = item;
                   return (
-                    <DropdownItem >{item.Name}</DropdownItem>
+                    <DropdownItem >{item.name}</DropdownItem>
                    
                   )})}
                  
                 </DropdownMenu>
-              </UncontrolledDropdown>
+              </UncontrolledDropdown> */}
+              <Input type="select" name="select" id="select" >
+              {this.state.dataTeamJoin.map(function (item, key) {
+                  let itemTeam = item;
+                  return (
+                                          <option value={item.name}>{item.name}</option>
+                                          
+                          )})}
+                 
+                                  </Input>            
           </NavItem>
         </Nav>
         <Nav className="ml-auto" navbar>
