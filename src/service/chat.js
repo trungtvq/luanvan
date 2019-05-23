@@ -22,7 +22,7 @@ class Chat extends Component {
     var SendMsgReq = new proto.chat.SendMsgReq();
     SendMsgReq.setRequesterid(cookie.load("userId"));
     SendMsgReq.setAccesstoken(cookie.load("accessToken"));
-    SendMsgReq.setChannelid("5ce16a8aef2aa3092c1ccecf");
+    SendMsgReq.setChannelid(cookie.load("projectId"));
     //SendMsgReq.setChannelid(cookie.load("currentProject"));
     SendMsgReq.setName(cookie.load("name"))
     let that = this

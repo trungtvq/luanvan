@@ -366,7 +366,7 @@ class AllTeam extends Component {
       if (err) { //if error
         console.log(err);
       } else {
-        if (response.getStatus() == "C") {
+        if (response.getStatus() == "SUCCESS") {
 
           let newData = this.state.dataTeam.map(p =>
             p.id == that.state.updateTeamId
