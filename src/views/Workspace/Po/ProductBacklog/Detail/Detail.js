@@ -77,6 +77,11 @@ class Detail extends Component {
 
 
   }
+  toggleActionStatus = () => {
+    this.setState(prevState => ({
+      modalActionStatus: !prevState.modalActionStatus
+    }));
+  }
   toggleAdd = () => {
     this.setState(prevState => ({
       modalAdd: !prevState.modalAdd
@@ -320,6 +325,11 @@ class Detail extends Component {
     let that = this;
     return (
       <Row>
+        <Modal size="sm" isOpen={that.state.modalActionStatus} toggle={that.toggleActionStatus} className={that.props.className}>
+          <ModalBody>
+            <center><h4>{that.state.actionStatus}</h4></center>
+          </ModalBody>
+        </Modal>
         <Col>
 
           <Row>

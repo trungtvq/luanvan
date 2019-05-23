@@ -242,7 +242,7 @@ class Cover extends Component {
           }));
           this.setState({
             modalActionStatus: true,
-            actionStatus: 'TRUE',
+            actionStatus: 'SUCCESS',
           });
         
         } else {
@@ -294,7 +294,7 @@ class Cover extends Component {
           })); 
           this.setState({
             modalActionStatus: true,
-            actionStatus: 'TRUE',
+            actionStatus: 'SUCCESS',
           });
         
         } else {
