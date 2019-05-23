@@ -23,21 +23,10 @@ public class Chat {
             Event.operation.publish(projectId, message);
         }
 
-        public void timeoutConnect(String projectId, String userId, StreamObserver<SendMsgRes> responseObserver) {
-
-            Event.operation.unsubscribe(projectId, userId);
-            responseObserver.onCompleted();
-
-            try {
-                responseObserver.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
 
         @Override
         public void connectRenew(SendMsgReq request, StreamObserver<SendMsgRes> responseObserver) {
-            responseObserver.onNext(SendMsgRes.newBuilder().setMsg("haha").build());
+            responseObserver.onNext(SendMsgRes.newBuilder().setMsg("renew").build());
             responseObserver.onCompleted();
 
         }
@@ -49,6 +38,7 @@ public class Chat {
                 responseObserver.onNext(SendMsgRes.newBuilder().setStatus("AUTH_INVALID").build());
                 responseObserver.onCompleted();
             } else {
+                System.out.println(projectSub.containsKey(request.getChannelId()));
                 if (projectSub.containsKey(request.getChannelId()) == false) {
                     System.out.println("Not contain project channel");
                     UserMessageQueue queue = new UserMessageQueue(request.getRequesterId(), request.getChannelId(), responseObserver);
@@ -62,6 +52,7 @@ public class Chat {
                     if (!projectSub.get(request.getChannelId()).userQueue.containsKey(request.getRequesterId())) {
                         System.out.println("but not UserId in channel");
                         UserMessageQueue queue = new UserMessageQueue(request.getRequesterId(), request.getChannelId(), responseObserver);
+
                         projectSub.get(request.getChannelId()).addUserSubToProject(request.getRequesterId(), queue);
 
                     } else {//reset time

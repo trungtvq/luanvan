@@ -9,6 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Operation extends Event {
     public void subscribe(String channelName, Subscriber subscriber) {
         if (!channels.containsKey(channelName)) {
+
             channels.put(channelName, new ConcurrentHashMap<>());
         }
         channels.get(channelName).put(subscriber.getProjectId(), new WeakReference<>(subscriber));
@@ -25,7 +26,12 @@ public class Operation extends Event {
     }
 
     public void publish(String channelName, Post message) {
-        if (channels.get(channelName).size()==0) return;
+        System.out.println(channels.size());
+        System.out.println(channels.get((Object)channelName));
+        System.out.println(channels.get(channelName));
+        System.out.println(channelName);
+        if (!channels.containsKey(channelName)) return;
+        System.out.println("channelName");
         for(Map.Entry<String, WeakReference<Object>> subs : channels.get(channelName).entrySet()) {
             WeakReference<Object> subscriberRef = subs.getValue();
 

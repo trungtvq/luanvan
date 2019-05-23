@@ -50,12 +50,6 @@ public class UserMessageQueue{
     public int getSize(){
         return list.size();
     }
-    public boolean isValid(){
-        return new Date().getTime()-time>60000000;
-    }
-    public void resetTime(){
-        this.time=new Date().getTime();
-    }
     public void pushMessage(Message newMessage){
         list.add(newMessage);
     }
