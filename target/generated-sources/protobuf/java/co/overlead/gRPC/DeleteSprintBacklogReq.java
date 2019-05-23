@@ -20,6 +20,7 @@ private static final long serialVersionUID = 0L;
     projectId_ = "";
     backlogId_ = "";
     accessToken_ = "";
+    teamId_ = "";
   }
 
   @java.lang.Override
@@ -68,6 +69,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             accessToken_ = s;
+            break;
+          }
+          case 42: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            teamId_ = s;
             break;
           }
           default: {
@@ -238,6 +245,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int TEAMID_FIELD_NUMBER = 5;
+  private volatile java.lang.Object teamId_;
+  /**
+   * <code>string teamId = 5;</code>
+   */
+  public java.lang.String getTeamId() {
+    java.lang.Object ref = teamId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      teamId_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string teamId = 5;</code>
+   */
+  public com.google.protobuf.ByteString
+      getTeamIdBytes() {
+    java.lang.Object ref = teamId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      teamId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -264,6 +305,9 @@ private static final long serialVersionUID = 0L;
     if (!getAccessTokenBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, accessToken_);
     }
+    if (!getTeamIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, teamId_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -284,6 +328,9 @@ private static final long serialVersionUID = 0L;
     }
     if (!getAccessTokenBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, accessToken_);
+    }
+    if (!getTeamIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, teamId_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -308,6 +355,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getBacklogId())) return false;
     if (!getAccessToken()
         .equals(other.getAccessToken())) return false;
+    if (!getTeamId()
+        .equals(other.getTeamId())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -327,6 +376,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getBacklogId().hashCode();
     hash = (37 * hash) + ACCESSTOKEN_FIELD_NUMBER;
     hash = (53 * hash) + getAccessToken().hashCode();
+    hash = (37 * hash) + TEAMID_FIELD_NUMBER;
+    hash = (53 * hash) + getTeamId().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -468,6 +519,8 @@ private static final long serialVersionUID = 0L;
 
       accessToken_ = "";
 
+      teamId_ = "";
+
       return this;
     }
 
@@ -498,6 +551,7 @@ private static final long serialVersionUID = 0L;
       result.projectId_ = projectId_;
       result.backlogId_ = backlogId_;
       result.accessToken_ = accessToken_;
+      result.teamId_ = teamId_;
       onBuilt();
       return result;
     }
@@ -560,6 +614,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getAccessToken().isEmpty()) {
         accessToken_ = other.accessToken_;
+        onChanged();
+      }
+      if (!other.getTeamId().isEmpty()) {
+        teamId_ = other.teamId_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -863,6 +921,75 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       accessToken_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object teamId_ = "";
+    /**
+     * <code>string teamId = 5;</code>
+     */
+    public java.lang.String getTeamId() {
+      java.lang.Object ref = teamId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        teamId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string teamId = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTeamIdBytes() {
+      java.lang.Object ref = teamId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        teamId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string teamId = 5;</code>
+     */
+    public Builder setTeamId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      teamId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string teamId = 5;</code>
+     */
+    public Builder clearTeamId() {
+      
+      teamId_ = getDefaultInstance().getTeamId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string teamId = 5;</code>
+     */
+    public Builder setTeamIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      teamId_ = value;
       onChanged();
       return this;
     }

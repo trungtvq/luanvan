@@ -59,6 +59,70 @@ public final class MytaskGrpc {
      return getGetAllMyTaskMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.CommentMyTaskReq,
+      co.overlead.gRPC.MyTaskRes> getCommentMyTaskMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "commentMyTask",
+      requestType = co.overlead.gRPC.CommentMyTaskReq.class,
+      responseType = co.overlead.gRPC.MyTaskRes.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<co.overlead.gRPC.CommentMyTaskReq,
+      co.overlead.gRPC.MyTaskRes> getCommentMyTaskMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.CommentMyTaskReq, co.overlead.gRPC.MyTaskRes> getCommentMyTaskMethod;
+    if ((getCommentMyTaskMethod = MytaskGrpc.getCommentMyTaskMethod) == null) {
+      synchronized (MytaskGrpc.class) {
+        if ((getCommentMyTaskMethod = MytaskGrpc.getCommentMyTaskMethod) == null) {
+          MytaskGrpc.getCommentMyTaskMethod = getCommentMyTaskMethod = 
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.CommentMyTaskReq, co.overlead.gRPC.MyTaskRes>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "mytask.Mytask", "commentMyTask"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.CommentMyTaskReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.MyTaskRes.getDefaultInstance()))
+                  .setSchemaDescriptor(new MytaskMethodDescriptorSupplier("commentMyTask"))
+                  .build();
+          }
+        }
+     }
+     return getCommentMyTaskMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateMyTaskReq,
+      co.overlead.gRPC.MyTaskRes> getUpdateMyTaskMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "updateMyTask",
+      requestType = co.overlead.gRPC.UpdateMyTaskReq.class,
+      responseType = co.overlead.gRPC.MyTaskRes.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateMyTaskReq,
+      co.overlead.gRPC.MyTaskRes> getUpdateMyTaskMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateMyTaskReq, co.overlead.gRPC.MyTaskRes> getUpdateMyTaskMethod;
+    if ((getUpdateMyTaskMethod = MytaskGrpc.getUpdateMyTaskMethod) == null) {
+      synchronized (MytaskGrpc.class) {
+        if ((getUpdateMyTaskMethod = MytaskGrpc.getUpdateMyTaskMethod) == null) {
+          MytaskGrpc.getUpdateMyTaskMethod = getUpdateMyTaskMethod = 
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.UpdateMyTaskReq, co.overlead.gRPC.MyTaskRes>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "mytask.Mytask", "updateMyTask"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.UpdateMyTaskReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.MyTaskRes.getDefaultInstance()))
+                  .setSchemaDescriptor(new MytaskMethodDescriptorSupplier("updateMyTask"))
+                  .build();
+          }
+        }
+     }
+     return getUpdateMyTaskMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -93,6 +157,20 @@ public final class MytaskGrpc {
       asyncUnimplementedUnaryCall(getGetAllMyTaskMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void commentMyTask(co.overlead.gRPC.CommentMyTaskReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.MyTaskRes> responseObserver) {
+      asyncUnimplementedUnaryCall(getCommentMyTaskMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void updateMyTask(co.overlead.gRPC.UpdateMyTaskReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.MyTaskRes> responseObserver) {
+      asyncUnimplementedUnaryCall(getUpdateMyTaskMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -102,6 +180,20 @@ public final class MytaskGrpc {
                 co.overlead.gRPC.GetAllMyTaskReq,
                 co.overlead.gRPC.GetAllMyTaskRes>(
                   this, METHODID_GET_ALL_MY_TASK)))
+          .addMethod(
+            getCommentMyTaskMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                co.overlead.gRPC.CommentMyTaskReq,
+                co.overlead.gRPC.MyTaskRes>(
+                  this, METHODID_COMMENT_MY_TASK)))
+          .addMethod(
+            getUpdateMyTaskMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                co.overlead.gRPC.UpdateMyTaskReq,
+                co.overlead.gRPC.MyTaskRes>(
+                  this, METHODID_UPDATE_MY_TASK)))
           .build();
     }
   }
@@ -131,6 +223,22 @@ public final class MytaskGrpc {
       asyncServerStreamingCall(
           getChannel().newCall(getGetAllMyTaskMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void commentMyTask(co.overlead.gRPC.CommentMyTaskReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.MyTaskRes> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getCommentMyTaskMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void updateMyTask(co.overlead.gRPC.UpdateMyTaskReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.MyTaskRes> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getUpdateMyTaskMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -158,6 +266,20 @@ public final class MytaskGrpc {
       return blockingServerStreamingCall(
           getChannel(), getGetAllMyTaskMethod(), getCallOptions(), request);
     }
+
+    /**
+     */
+    public co.overlead.gRPC.MyTaskRes commentMyTask(co.overlead.gRPC.CommentMyTaskReq request) {
+      return blockingUnaryCall(
+          getChannel(), getCommentMyTaskMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public co.overlead.gRPC.MyTaskRes updateMyTask(co.overlead.gRPC.UpdateMyTaskReq request) {
+      return blockingUnaryCall(
+          getChannel(), getUpdateMyTaskMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -177,9 +299,27 @@ public final class MytaskGrpc {
         io.grpc.CallOptions callOptions) {
       return new MytaskFutureStub(channel, callOptions);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.MyTaskRes> commentMyTask(
+        co.overlead.gRPC.CommentMyTaskReq request) {
+      return futureUnaryCall(
+          getChannel().newCall(getCommentMyTaskMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.MyTaskRes> updateMyTask(
+        co.overlead.gRPC.UpdateMyTaskReq request) {
+      return futureUnaryCall(
+          getChannel().newCall(getUpdateMyTaskMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_ALL_MY_TASK = 0;
+  private static final int METHODID_COMMENT_MY_TASK = 1;
+  private static final int METHODID_UPDATE_MY_TASK = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -201,6 +341,14 @@ public final class MytaskGrpc {
         case METHODID_GET_ALL_MY_TASK:
           serviceImpl.getAllMyTask((co.overlead.gRPC.GetAllMyTaskReq) request,
               (io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllMyTaskRes>) responseObserver);
+          break;
+        case METHODID_COMMENT_MY_TASK:
+          serviceImpl.commentMyTask((co.overlead.gRPC.CommentMyTaskReq) request,
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.MyTaskRes>) responseObserver);
+          break;
+        case METHODID_UPDATE_MY_TASK:
+          serviceImpl.updateMyTask((co.overlead.gRPC.UpdateMyTaskReq) request,
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.MyTaskRes>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -264,6 +412,8 @@ public final class MytaskGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new MytaskFileDescriptorSupplier())
               .addMethod(getGetAllMyTaskMethod())
+              .addMethod(getCommentMyTaskMethod())
+              .addMethod(getUpdateMyTaskMethod())
               .build();
         }
       }

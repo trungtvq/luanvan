@@ -56,18 +56,10 @@ public interface SendToSprintBacklogReqOrBuilder extends
       getStartBytes();
 
   /**
-   * <pre>
-   *return in form mm/hh/dd/mm/yyyy 	
-   * </pre>
-   *
    * <code>string deadline = 5;</code>
    */
   java.lang.String getDeadline();
   /**
-   * <pre>
-   *return in form mm/hh/dd/mm/yyyy 	
-   * </pre>
-   *
    * <code>string deadline = 5;</code>
    */
   com.google.protobuf.ByteString
@@ -82,4 +74,14 @@ public interface SendToSprintBacklogReqOrBuilder extends
    */
   com.google.protobuf.ByteString
       getAccessTokenBytes();
+
+  /**
+   * <code>string teamId = 7;</code>
+   */
+  java.lang.String getTeamId();
+  /**
+   * <code>string teamId = 7;</code>
+   */
+  com.google.protobuf.ByteString
+      getTeamIdBytes();
 }

@@ -8,6 +8,7 @@ import database.Mongod;
 import gRPC.auth.AuthAccount;
 import io.grpc.stub.StreamObserver;
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,29 +18,39 @@ public class Velocity {
     public static class VelocityImpl extends VelocityGrpc.VelocityImplBase{
         @Override
         public void getVelocity(GetVelocityReq request, StreamObserver<GetVelocityRes> responseObserver) {
+            //get team
+            //get list task
+            //get task in sprint
+            //get task of user
             if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getCookie())){//VALID AUTH
-                MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("task"); //get connect
-                List<Document> listAllTask= coll.find(new Document("projectId",request.getProjectId())
-                        .append("teamId",request.getTeamId())
-                        .append("springId",request.getSprintId())).into(new ArrayList<>());
-                if (listAllTask.size()==0){
-                    responseObserver.onNext(GetVelocityRes.newBuilder().setError("FALSE").setStatus("EMPTY").build());
-                }else{
-                    listAllTask.forEach(i->{
-                        responseObserver.onNext(GetVelocityRes.newBuilder()
-                                .setType(i.get("type").toString())
-                                .setType(i.get("task").toString())
-                                .setNote(i.get("note").toString())
-                                .setStatus(i.get("status").toString())
-                                .setError(i.get("error").toString())
+                List<Document> team= Mongod.collTeam.find(new Document("_id",new ObjectId(request.getTeamId()))).into(new ArrayList<>());
+                if (team.size()>0){
+                    List<String> task= (List<String>) team.get(0).get("tasks");
+                    if (task.size()>0){
+                        task.forEach(t->{
+                            List<Document> curTask=Mongod.collTask.find(new Document("_id",new ObjectId(t))).into(new ArrayList<>());
+                            if (curTask.size()>0){
+                                if (curTask.get(0).get("sprintId").equals(request.getSprintId())){
+                                    List<String> assignList= (List<String>) curTask.get(0).get("assignedList");
+                                    if (assignList.indexOf(request.getRequesterId())!=-1){
 
-                                .build());
-                    });
+                                        responseObserver.onNext(GetVelocityRes.newBuilder()
+                                                .setType(curTask.get(0).get("type").toString())
+                                                .setTitle(curTask.get(0).get("task").toString())
+                                                .setNote(curTask.get(0).get("note").toString())
+                                                .setStatusTask(curTask.get(0).get("status").toString())
+                                                .setStatus("SUCCESS")
+                                                .build());
+                                    }
+                                }
+                            }
+                        });
+                    }
                 }
-                responseObserver.onCompleted();
+
             }
             else{
-                responseObserver.onNext(GetVelocityRes.newBuilder().setStatus("INVALID_SESSION").setError("TRUE").build());
+                responseObserver.onNext(GetVelocityRes.newBuilder().setStatus("INVALID_SESSION").build());
                 responseObserver.onCompleted();
             }
         }

@@ -2,6 +2,7 @@ package gRPC.productbacklog;
 
 import co.overlead.gRPC.*;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.DeleteResult;
 import database.Mongod;
 import io.grpc.stub.StreamObserver;
@@ -190,21 +191,28 @@ public class ProductBacklog {
 
         @Override
         public void sendToSprintBacklog(SendToSprintBacklogReq request, StreamObserver<ProductBacklogRes> responseObserver) {
+            //check if team exist
+            //update backlog to sprint backlog
+            //add id of backlog to backlog list of TEAM
             System.out.println("sendToSprintBacklog");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
-                MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("productbacklog");
-                MongoCollection<Document> collProject = Mongod.getOverleadConnection().getCollection("project");
-                List<Document> get=collProject.find(new Document("_id",new ObjectId(request.getProjectId()))).into(new ArrayList<>());
+                List<Document> get=Mongod.collTeam.find(new Document("_id",new ObjectId(request.getTeamId()))).into(new ArrayList<>());
                 if (get.size()==0){
                     makeResponseForFailed(responseObserver,"NOT_EXIST_PROJECT","FALSE");
                 }else{
-                    collProject.findOneAndUpdate(new Document("_id",new ObjectId(request.getProjectId())),
+
+                    Mongod.collBacklog.findOneAndUpdate(new Document("_id",new ObjectId(request.getProductBacklogId())),
                             new Document("$set",
                                     new Document("isSprintBacklog","true")
                                             .append("start",request.getStart())
                                             .append("deadline",request.getDeadline())));
+
+                    Mongod.collTeam.findOneAndUpdate(new Document("_id",new ObjectId(request.getTeamId())),
+                            new Document("push",
+                                    new Document("sprintbacklogs",request.getProductBacklogId())));
+
                     makeResponseForUpdateSuccess(responseObserver,request.getProductBacklogId());
                 }
             }

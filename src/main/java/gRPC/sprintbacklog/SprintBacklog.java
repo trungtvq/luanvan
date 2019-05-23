@@ -28,17 +28,25 @@ public class SprintBacklog {
 
         @Override
         public void deleteSprintBacklog(DeleteSprintBacklogReq request, StreamObserver<SprintBacklogRes> responseObserver) {
+            //check of backlog is Exist
+            //update sprintbacklog to productbacklog
+            //remove from team
             System.out.println("deleteSprintBacklog");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
-                List<Document> project= Mongod.collProject.find(new Document("_id", new ObjectId(request.getProjectId()))).into(new ArrayList<>());
-                if (project.size() == 0) {
-                    makeResponseForFailed(responseObserver, "NOT_EXIST_PROJECT", "FALSE");
+                List<Document> backlog= Mongod.collBacklog.find(new Document("_id", new ObjectId(request.getBacklogId()))).into(new ArrayList<>());
+                if (backlog.size() == 0) {
+                    makeResponseForFailed(responseObserver, "NOT_EXIST_BACKLOG", "FALSE");
                 } else {
                     Mongod.collBacklog.findOneAndUpdate(new Document("_id", new ObjectId(request.getBacklogId())),
                             new Document("$set",
                                     new Document("isSprintBacklog", "false")));
+
+                    Mongod.collTeam.findOneAndUpdate(new Document("_id",new ObjectId(request.getTeamId())),
+                            new Document("$pull",
+                                    new Document("sprintbacklogs",request.getBacklogId())));
+
                     makeResponseForUpdateSuccess(responseObserver, request.getBacklogId());
                 }
             }
@@ -46,21 +54,26 @@ public class SprintBacklog {
 
         @Override
         public void getAllSprintBacklog(GetAllSprintBacklogReq request, StreamObserver<GetAllSprintBacklogRes> responseObserver) {
+
+            //check if team is exist
+            //get list of sprintbacklogs in TEAM
+            //get BACKLOG from id of list in previous step
             System.out.println("getAllSprintBacklog");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
-                List<Document> listId = Mongod.collProject.find(new Document("_id", new ObjectId(request.getProjectId()))).into(new ArrayList<>());
-                if (listId.size() == 0) {
-                    makeResponseForFailed(responseObserver, "NOT_FOUND_PROJECT", "FALSE");
+                List<Document> team = Mongod.collTeam.find(new Document("_id", new ObjectId(request.getTeamId()))).into(new ArrayList<>());
+                if (team.size() == 0) {
+                    makeResponseForFailed(responseObserver, "TEAM_NOT_FOUND", "FALSE");
                 } else {
-                    List<String> re = (List<String>) listId.get(0).get("backlogs");
-                    if (re.size() == 0) {
+                    List<String> backlogList = (List<String>) team.get(0).get("sprintbacklogs");
+                    if (backlogList.size() == 0) {
                         makeResponseForFailed(responseObserver, "EMPTY", "FALSE");
                     } else {
-                        re.forEach(i -> {
-                           List<Document>  result = Mongod.collBacklog.find(new Document("_id", new ObjectId(i)).append("isSprintBacklog", "true")).into(new ArrayList<>());
-                           System.out.println(result.size());
+                        backlogList.forEach(i -> {
+                           List<Document>  result = Mongod.collBacklog.find(
+                                   new Document("_id", new ObjectId(i)).append("isSprintBacklog", "true"))
+                                            .into(new ArrayList<>());
                             if (result.size()>0){
                                 Document r=result.get(0);
                                 responseObserver.onNext(GetAllSprintBacklogRes.newBuilder()

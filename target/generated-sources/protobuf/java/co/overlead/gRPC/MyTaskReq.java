@@ -4,22 +4,23 @@
 package co.overlead.gRPC;
 
 /**
- * Protobuf type {@code mytask.GetAllMyTaskReq}
+ * Protobuf type {@code mytask.MyTaskReq}
  */
-public  final class GetAllMyTaskReq extends
+public  final class MyTaskReq extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:mytask.GetAllMyTaskReq)
-    GetAllMyTaskReqOrBuilder {
+    // @@protoc_insertion_point(message_implements:mytask.MyTaskReq)
+    MyTaskReqOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use GetAllMyTaskReq.newBuilder() to construct.
-  private GetAllMyTaskReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use MyTaskReq.newBuilder() to construct.
+  private MyTaskReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private GetAllMyTaskReq() {
+  private MyTaskReq() {
     requesterId_ = "";
     projectId_ = "";
     teamId_ = "";
     accessToken_ = "";
+    taskId_ = "";
   }
 
   @java.lang.Override
@@ -27,7 +28,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private GetAllMyTaskReq(
+  private MyTaskReq(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -70,6 +71,12 @@ private static final long serialVersionUID = 0L;
             teamId_ = s;
             break;
           }
+          case 42: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            taskId_ = s;
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -91,15 +98,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return co.overlead.gRPC.mytask.internal_static_mytask_GetAllMyTaskReq_descriptor;
+    return co.overlead.gRPC.mytask.internal_static_mytask_MyTaskReq_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return co.overlead.gRPC.mytask.internal_static_mytask_GetAllMyTaskReq_fieldAccessorTable
+    return co.overlead.gRPC.mytask.internal_static_mytask_MyTaskReq_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            co.overlead.gRPC.GetAllMyTaskReq.class, co.overlead.gRPC.GetAllMyTaskReq.Builder.class);
+            co.overlead.gRPC.MyTaskReq.class, co.overlead.gRPC.MyTaskReq.Builder.class);
   }
 
   public static final int REQUESTERID_FIELD_NUMBER = 1;
@@ -238,6 +245,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int TASKID_FIELD_NUMBER = 5;
+  private volatile java.lang.Object taskId_;
+  /**
+   * <code>string taskId = 5;</code>
+   */
+  public java.lang.String getTaskId() {
+    java.lang.Object ref = taskId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      taskId_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string taskId = 5;</code>
+   */
+  public com.google.protobuf.ByteString
+      getTaskIdBytes() {
+    java.lang.Object ref = taskId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      taskId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -264,6 +305,9 @@ private static final long serialVersionUID = 0L;
     if (!getTeamIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, teamId_);
     }
+    if (!getTaskIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, taskId_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -285,6 +329,9 @@ private static final long serialVersionUID = 0L;
     if (!getTeamIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, teamId_);
     }
+    if (!getTaskIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, taskId_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -295,10 +342,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof co.overlead.gRPC.GetAllMyTaskReq)) {
+    if (!(obj instanceof co.overlead.gRPC.MyTaskReq)) {
       return super.equals(obj);
     }
-    co.overlead.gRPC.GetAllMyTaskReq other = (co.overlead.gRPC.GetAllMyTaskReq) obj;
+    co.overlead.gRPC.MyTaskReq other = (co.overlead.gRPC.MyTaskReq) obj;
 
     if (!getRequesterId()
         .equals(other.getRequesterId())) return false;
@@ -308,6 +355,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getTeamId())) return false;
     if (!getAccessToken()
         .equals(other.getAccessToken())) return false;
+    if (!getTaskId()
+        .equals(other.getTaskId())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -327,74 +376,76 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getTeamId().hashCode();
     hash = (37 * hash) + ACCESSTOKEN_FIELD_NUMBER;
     hash = (53 * hash) + getAccessToken().hashCode();
+    hash = (37 * hash) + TASKID_FIELD_NUMBER;
+    hash = (53 * hash) + getTaskId().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static co.overlead.gRPC.GetAllMyTaskReq parseFrom(
+  public static co.overlead.gRPC.MyTaskReq parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.GetAllMyTaskReq parseFrom(
+  public static co.overlead.gRPC.MyTaskReq parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.GetAllMyTaskReq parseFrom(
+  public static co.overlead.gRPC.MyTaskReq parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.GetAllMyTaskReq parseFrom(
+  public static co.overlead.gRPC.MyTaskReq parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.GetAllMyTaskReq parseFrom(byte[] data)
+  public static co.overlead.gRPC.MyTaskReq parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static co.overlead.gRPC.GetAllMyTaskReq parseFrom(
+  public static co.overlead.gRPC.MyTaskReq parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static co.overlead.gRPC.GetAllMyTaskReq parseFrom(java.io.InputStream input)
+  public static co.overlead.gRPC.MyTaskReq parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.GetAllMyTaskReq parseFrom(
+  public static co.overlead.gRPC.MyTaskReq parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static co.overlead.gRPC.GetAllMyTaskReq parseDelimitedFrom(java.io.InputStream input)
+  public static co.overlead.gRPC.MyTaskReq parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.GetAllMyTaskReq parseDelimitedFrom(
+  public static co.overlead.gRPC.MyTaskReq parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static co.overlead.gRPC.GetAllMyTaskReq parseFrom(
+  public static co.overlead.gRPC.MyTaskReq parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static co.overlead.gRPC.GetAllMyTaskReq parseFrom(
+  public static co.overlead.gRPC.MyTaskReq parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -407,7 +458,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(co.overlead.gRPC.GetAllMyTaskReq prototype) {
+  public static Builder newBuilder(co.overlead.gRPC.MyTaskReq prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -423,26 +474,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code mytask.GetAllMyTaskReq}
+   * Protobuf type {@code mytask.MyTaskReq}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:mytask.GetAllMyTaskReq)
-      co.overlead.gRPC.GetAllMyTaskReqOrBuilder {
+      // @@protoc_insertion_point(builder_implements:mytask.MyTaskReq)
+      co.overlead.gRPC.MyTaskReqOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return co.overlead.gRPC.mytask.internal_static_mytask_GetAllMyTaskReq_descriptor;
+      return co.overlead.gRPC.mytask.internal_static_mytask_MyTaskReq_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return co.overlead.gRPC.mytask.internal_static_mytask_GetAllMyTaskReq_fieldAccessorTable
+      return co.overlead.gRPC.mytask.internal_static_mytask_MyTaskReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              co.overlead.gRPC.GetAllMyTaskReq.class, co.overlead.gRPC.GetAllMyTaskReq.Builder.class);
+              co.overlead.gRPC.MyTaskReq.class, co.overlead.gRPC.MyTaskReq.Builder.class);
     }
 
-    // Construct using co.overlead.gRPC.GetAllMyTaskReq.newBuilder()
+    // Construct using co.overlead.gRPC.MyTaskReq.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -468,23 +519,25 @@ private static final long serialVersionUID = 0L;
 
       accessToken_ = "";
 
+      taskId_ = "";
+
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return co.overlead.gRPC.mytask.internal_static_mytask_GetAllMyTaskReq_descriptor;
+      return co.overlead.gRPC.mytask.internal_static_mytask_MyTaskReq_descriptor;
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.GetAllMyTaskReq getDefaultInstanceForType() {
-      return co.overlead.gRPC.GetAllMyTaskReq.getDefaultInstance();
+    public co.overlead.gRPC.MyTaskReq getDefaultInstanceForType() {
+      return co.overlead.gRPC.MyTaskReq.getDefaultInstance();
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.GetAllMyTaskReq build() {
-      co.overlead.gRPC.GetAllMyTaskReq result = buildPartial();
+    public co.overlead.gRPC.MyTaskReq build() {
+      co.overlead.gRPC.MyTaskReq result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -492,12 +545,13 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public co.overlead.gRPC.GetAllMyTaskReq buildPartial() {
-      co.overlead.gRPC.GetAllMyTaskReq result = new co.overlead.gRPC.GetAllMyTaskReq(this);
+    public co.overlead.gRPC.MyTaskReq buildPartial() {
+      co.overlead.gRPC.MyTaskReq result = new co.overlead.gRPC.MyTaskReq(this);
       result.requesterId_ = requesterId_;
       result.projectId_ = projectId_;
       result.teamId_ = teamId_;
       result.accessToken_ = accessToken_;
+      result.taskId_ = taskId_;
       onBuilt();
       return result;
     }
@@ -536,16 +590,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof co.overlead.gRPC.GetAllMyTaskReq) {
-        return mergeFrom((co.overlead.gRPC.GetAllMyTaskReq)other);
+      if (other instanceof co.overlead.gRPC.MyTaskReq) {
+        return mergeFrom((co.overlead.gRPC.MyTaskReq)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(co.overlead.gRPC.GetAllMyTaskReq other) {
-      if (other == co.overlead.gRPC.GetAllMyTaskReq.getDefaultInstance()) return this;
+    public Builder mergeFrom(co.overlead.gRPC.MyTaskReq other) {
+      if (other == co.overlead.gRPC.MyTaskReq.getDefaultInstance()) return this;
       if (!other.getRequesterId().isEmpty()) {
         requesterId_ = other.requesterId_;
         onChanged();
@@ -560,6 +614,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getAccessToken().isEmpty()) {
         accessToken_ = other.accessToken_;
+        onChanged();
+      }
+      if (!other.getTaskId().isEmpty()) {
+        taskId_ = other.taskId_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -577,11 +635,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      co.overlead.gRPC.GetAllMyTaskReq parsedMessage = null;
+      co.overlead.gRPC.MyTaskReq parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (co.overlead.gRPC.GetAllMyTaskReq) e.getUnfinishedMessage();
+        parsedMessage = (co.overlead.gRPC.MyTaskReq) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -866,6 +924,75 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
+    private java.lang.Object taskId_ = "";
+    /**
+     * <code>string taskId = 5;</code>
+     */
+    public java.lang.String getTaskId() {
+      java.lang.Object ref = taskId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        taskId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string taskId = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTaskIdBytes() {
+      java.lang.Object ref = taskId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        taskId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string taskId = 5;</code>
+     */
+    public Builder setTaskId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      taskId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string taskId = 5;</code>
+     */
+    public Builder clearTaskId() {
+      
+      taskId_ = getDefaultInstance().getTaskId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string taskId = 5;</code>
+     */
+    public Builder setTaskIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      taskId_ = value;
+      onChanged();
+      return this;
+    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -879,41 +1006,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:mytask.GetAllMyTaskReq)
+    // @@protoc_insertion_point(builder_scope:mytask.MyTaskReq)
   }
 
-  // @@protoc_insertion_point(class_scope:mytask.GetAllMyTaskReq)
-  private static final co.overlead.gRPC.GetAllMyTaskReq DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:mytask.MyTaskReq)
+  private static final co.overlead.gRPC.MyTaskReq DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new co.overlead.gRPC.GetAllMyTaskReq();
+    DEFAULT_INSTANCE = new co.overlead.gRPC.MyTaskReq();
   }
 
-  public static co.overlead.gRPC.GetAllMyTaskReq getDefaultInstance() {
+  public static co.overlead.gRPC.MyTaskReq getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<GetAllMyTaskReq>
-      PARSER = new com.google.protobuf.AbstractParser<GetAllMyTaskReq>() {
+  private static final com.google.protobuf.Parser<MyTaskReq>
+      PARSER = new com.google.protobuf.AbstractParser<MyTaskReq>() {
     @java.lang.Override
-    public GetAllMyTaskReq parsePartialFrom(
+    public MyTaskReq parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new GetAllMyTaskReq(input, extensionRegistry);
+      return new MyTaskReq(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<GetAllMyTaskReq> parser() {
+  public static com.google.protobuf.Parser<MyTaskReq> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<GetAllMyTaskReq> getParserForType() {
+  public com.google.protobuf.Parser<MyTaskReq> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public co.overlead.gRPC.GetAllMyTaskReq getDefaultInstanceForType() {
+  public co.overlead.gRPC.MyTaskReq getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

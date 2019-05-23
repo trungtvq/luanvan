@@ -15,6 +15,26 @@ public final class mytask {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_mytask_MyTaskReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_mytask_MyTaskReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_mytask_CommentMyTaskReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_mytask_CommentMyTaskReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_mytask_UpdateMyTaskReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_mytask_UpdateMyTaskReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_mytask_MyTaskRes_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_mytask_MyTaskRes_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_mytask_GetAllMyTaskReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -33,16 +53,28 @@ public final class mytask {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014mytask.proto\022\006mytask\"I\n\017GetAllMyTaskRe" +
-      "q\022\023\n\013requesterId\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(" +
-      "\t\022\016\n\006cookie\030\003 \001(\t\"\230\001\n\017GetAllMyTaskRes\022\r\n" +
-      "\005title\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022\020\n\010pri" +
-      "ority\030\003 \001(\t\022\r\n\005start\030\004 \001(\t\022\020\n\010deadline\030\005" +
-      " \001(\t\022\017\n\007comment\030\006 \001(\t\022\016\n\006status\030\007 \001(\t\022\r\n" +
-      "\005error\030\010 \001(\t2N\n\006Mytask\022D\n\014getAllMyTask\022\027" +
-      ".mytask.GetAllMyTaskReq\032\027.mytask.GetAllM" +
-      "yTaskRes\"\0000\001B!\n\020co.overlead.gRPCB\006mytask" +
-      "P\001\242\002\002mtb\006proto3"
+      "\n\014mytask.proto\022\006mytask\"h\n\tMyTaskReq\022\023\n\013r" +
+      "equesterId\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\016\n\006t" +
+      "eamId\030\004 \001(\t\022\023\n\013accessToken\030\003 \001(\t\022\016\n\006task" +
+      "Id\030\005 \001(\t\"F\n\020CommentMyTaskReq\022!\n\006mytask\030\001" +
+      " \001(\0132\021.mytask.MyTaskReq\022\017\n\007comment\030\002 \001(\t" +
+      "\"r\n\017UpdateMyTaskReq\022\023\n\013requesterId\030\001 \001(\t" +
+      "\022\021\n\tprojectId\030\002 \001(\t\022\016\n\006teamId\030\004 \001(\t\022\023\n\013a" +
+      "ccessToken\030\003 \001(\t\022\022\n\nstatusTask\030\005 \001(\t\"\033\n\t" +
+      "MyTaskRes\022\016\n\006status\030\001 \001(\t\"^\n\017GetAllMyTas" +
+      "kReq\022\023\n\013requesterId\030\001 \001(\t\022\021\n\tprojectId\030\002" +
+      " \001(\t\022\016\n\006teamId\030\004 \001(\t\022\023\n\013accessToken\030\003 \001(" +
+      "\t\"\230\001\n\017GetAllMyTaskRes\022\r\n\005title\030\001 \001(\t\022\023\n\013" +
+      "description\030\002 \001(\t\022\020\n\010priority\030\003 \001(\t\022\r\n\005s" +
+      "tart\030\004 \001(\t\022\020\n\010deadline\030\005 \001(\t\022\017\n\007comment\030" +
+      "\006 \001(\t\022\016\n\006status\030\007 \001(\t\022\r\n\005error\030\010 \001(\t2\314\001\n" +
+      "\006Mytask\022D\n\014getAllMyTask\022\027.mytask.GetAllM" +
+      "yTaskReq\032\027.mytask.GetAllMyTaskRes\"\0000\001\022>\n" +
+      "\rcommentMyTask\022\030.mytask.CommentMyTaskReq" +
+      "\032\021.mytask.MyTaskRes\"\000\022<\n\014updateMyTask\022\027." +
+      "mytask.UpdateMyTaskReq\032\021.mytask.MyTaskRe" +
+      "s\"\000B!\n\020co.overlead.gRPCB\006mytaskP\001\242\002\002mtb\006" +
+      "proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -56,14 +88,38 @@ public final class mytask {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_mytask_GetAllMyTaskReq_descriptor =
+    internal_static_mytask_MyTaskReq_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_mytask_MyTaskReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_mytask_MyTaskReq_descriptor,
+        new java.lang.String[] { "RequesterId", "ProjectId", "TeamId", "AccessToken", "TaskId", });
+    internal_static_mytask_CommentMyTaskReq_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_mytask_CommentMyTaskReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_mytask_CommentMyTaskReq_descriptor,
+        new java.lang.String[] { "Mytask", "Comment", });
+    internal_static_mytask_UpdateMyTaskReq_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_mytask_UpdateMyTaskReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_mytask_UpdateMyTaskReq_descriptor,
+        new java.lang.String[] { "RequesterId", "ProjectId", "TeamId", "AccessToken", "StatusTask", });
+    internal_static_mytask_MyTaskRes_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_mytask_MyTaskRes_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_mytask_MyTaskRes_descriptor,
+        new java.lang.String[] { "Status", });
+    internal_static_mytask_GetAllMyTaskReq_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_mytask_GetAllMyTaskReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mytask_GetAllMyTaskReq_descriptor,
-        new java.lang.String[] { "RequesterId", "ProjectId", "Cookie", });
+        new java.lang.String[] { "RequesterId", "ProjectId", "TeamId", "AccessToken", });
     internal_static_mytask_GetAllMyTaskRes_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_mytask_GetAllMyTaskRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mytask_GetAllMyTaskRes_descriptor,

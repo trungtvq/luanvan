@@ -152,6 +152,16 @@ public interface AddNewTeamTaskReqOrBuilder extends
       getTokenAccessBytes();
 
   /**
+   * <code>string sprintId = 14;</code>
+   */
+  java.lang.String getSprintId();
+  /**
+   * <code>string sprintId = 14;</code>
+   */
+  com.google.protobuf.ByteString
+      getSprintIdBytes();
+
+  /**
    * <code>string teamId = 13;</code>
    */
   java.lang.String getTeamId();

@@ -36,12 +36,13 @@ public final class velocity {
       "\n\016velocity.proto\022\010velocity\"j\n\016GetVelocit" +
       "yReq\022\016\n\006cookie\030\001 \001(\t\022\023\n\013requesterId\030\002 \001(" +
       "\t\022\021\n\tprojectId\030\003 \001(\t\022\016\n\006teamId\030\004 \001(\t\022\020\n\010" +
-      "sprintId\030\005 \001(\t\"Y\n\016GetVelocityRes\022\r\n\005erro" +
-      "r\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\022\014\n\004task\030\003 \001(\t\022\014\n" +
-      "\004type\030\004 \001(\t\022\014\n\004note\030\005 \001(\t2Q\n\010Velocity\022E\n" +
-      "\013getVelocity\022\030.velocity.GetVelocityReq\032\030" +
-      ".velocity.GetVelocityRes\"\0000\001B\"\n\020co.overl" +
-      "ead.gRPCB\010velocityP\001\242\002\001vb\006proto3"
+      "sprintId\030\005 \001(\t\"m\n\016GetVelocityRes\022\016\n\006stat" +
+      "us\030\002 \001(\t\022\014\n\004task\030\003 \001(\t\022\014\n\004type\030\004 \001(\t\022\014\n\004" +
+      "note\030\005 \001(\t\022\r\n\005title\030\006 \001(\t\022\022\n\nstatusTask\030" +
+      "\007 \001(\t2Q\n\010Velocity\022E\n\013getVelocity\022\030.veloc" +
+      "ity.GetVelocityReq\032\030.velocity.GetVelocit" +
+      "yRes\"\0000\001B\"\n\020co.overlead.gRPCB\010velocityP\001" +
+      "\242\002\001vb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -66,7 +67,7 @@ public final class velocity {
     internal_static_velocity_GetVelocityRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_velocity_GetVelocityRes_descriptor,
-        new java.lang.String[] { "Error", "Status", "Task", "Type", "Note", });
+        new java.lang.String[] { "Status", "Task", "Type", "Note", "Title", "StatusTask", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

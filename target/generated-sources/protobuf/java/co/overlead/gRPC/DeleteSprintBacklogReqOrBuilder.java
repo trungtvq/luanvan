@@ -46,4 +46,14 @@ public interface DeleteSprintBacklogReqOrBuilder extends
    */
   com.google.protobuf.ByteString
       getAccessTokenBytes();
+
+  /**
+   * <code>string teamId = 5;</code>
+   */
+  java.lang.String getTeamId();
+  /**
+   * <code>string teamId = 5;</code>
+   */
+  com.google.protobuf.ByteString
+      getTeamIdBytes();
 }

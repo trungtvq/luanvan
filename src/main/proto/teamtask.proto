@@ -28,6 +28,7 @@ message AddNewTeamTaskReq{
 	string status = 10;				// khi add mac dinh status = "todo"
 	string review = 11;	
 	string tokenAccess = 12;
+	string sprintId=14;
 	string teamId=13;
 }
 

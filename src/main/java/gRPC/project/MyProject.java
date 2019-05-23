@@ -177,13 +177,14 @@ public class MyProject {
                 Set<String> setProject = new HashSet<String>();
                 List<String> team= (List<String>) Mongod.collAuth.find(new Document("_id",new ObjectId(request.getRequesterId()))).into(new ArrayList<>()).get(0).get("teamlist");
 
-                if (team.size()>0){
+                if (team.size()==0){
                     team.forEach(i->{
 
                         setProject.add(Mongod.collTeam.find(new Document("_id",new ObjectId(i))).into(new ArrayList<>()).get(0).get("projectId").toString());
                     });
                     setProject.forEach(item->{
-                        if (item!=null){
+                        if (item!=null&& item !=""){
+
                             Document i = Mongod.collProject.find(new Document("_id",new ObjectId(item))).into(new ArrayList<Document>()).get(0);
 
                             ProjectRes reply=ProjectRes.newBuilder()

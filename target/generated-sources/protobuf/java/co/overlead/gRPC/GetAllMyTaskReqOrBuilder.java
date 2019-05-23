@@ -28,12 +28,22 @@ public interface GetAllMyTaskReqOrBuilder extends
       getProjectIdBytes();
 
   /**
-   * <code>string cookie = 3;</code>
+   * <code>string teamId = 4;</code>
    */
-  java.lang.String getCookie();
+  java.lang.String getTeamId();
   /**
-   * <code>string cookie = 3;</code>
+   * <code>string teamId = 4;</code>
    */
   com.google.protobuf.ByteString
-      getCookieBytes();
+      getTeamIdBytes();
+
+  /**
+   * <code>string accessToken = 3;</code>
+   */
+  java.lang.String getAccessToken();
+  /**
+   * <code>string accessToken = 3;</code>
+   */
+  com.google.protobuf.ByteString
+      getAccessTokenBytes();
 }
