@@ -44,6 +44,7 @@ public class Chat {
                     UserMessageQueue queue = new UserMessageQueue(request.getRequesterId(), request.getChannelId(), responseObserver);
                     Subscriber subscriber = new Subscriber(request.getChannelId(), request.getRequesterId(), queue);
                     projectSub.put(request.getChannelId(), subscriber);
+                    System.out.println("cc:"+request.getChannelId());
                     Event.operation.subscribe(request.getChannelId(), subscriber);
 
 

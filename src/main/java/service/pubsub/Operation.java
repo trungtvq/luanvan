@@ -7,10 +7,15 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Operation extends Event {
-    public void subscribe(String channelName, Subscriber subscriber) {
+    public synchronized void subscribe(String channelName, Subscriber subscriber) {
+        if (channelName==""){
+            System.out.println("chanel invalid");
+            return;
+        }
         if (!channels.containsKey(channelName)) {
-
             channels.put(channelName, new ConcurrentHashMap<>());
+            System.out.println("put new channel:"+channelName);
+            System.out.println("error?"+channels.get(channelName)==null);
         }
         channels.get(channelName).put(subscriber.getProjectId(), new WeakReference<>(subscriber));
     }
@@ -25,13 +30,11 @@ public class Operation extends Event {
         }
     }
 
-    public void publish(String channelName, Post message) {
-        System.out.println(channels.size());
-        System.out.println(channels.get((Object)channelName));
+    synchronized public void publish(String channelName, Post message) {
+        System.out.println("publish channnel");
         System.out.println(channels.get(channelName));
-        System.out.println(channelName);
-        if (!channels.containsKey(channelName)) return;
-        System.out.println("channelName");
+        if (channels.get(channelName)==null) return;
+        System.out.println("publish and have channnel");
         for(Map.Entry<String, WeakReference<Object>> subs : channels.get(channelName).entrySet()) {
             WeakReference<Object> subscriberRef = subs.getValue();
 
@@ -47,7 +50,7 @@ public class Operation extends Event {
 
     }
 
-    <T, P extends Post> boolean deliverMessage(T subscriber, Method method, Post message) {
+    synchronized <T, P extends Post> boolean deliverMessage(T subscriber, Method method, Post message) {
         try {
             boolean methodFound = false;
             for (final Class paramClass : method.getParameterTypes()) {
