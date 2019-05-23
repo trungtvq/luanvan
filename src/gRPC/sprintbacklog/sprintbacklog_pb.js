@@ -63,7 +63,8 @@ proto.sprintbacklog.DeleteSprintBacklogReq.toObject = function(includeInstance, 
     requesterid: msg.getRequesterid(),
     projectid: msg.getProjectid(),
     backlogid: msg.getBacklogid(),
-    accesstoken: msg.getAccesstoken()
+    accesstoken: msg.getAccesstoken(),
+    teamid: msg.getTeamid()
   };
 
   if (includeInstance) {
@@ -115,6 +116,10 @@ proto.sprintbacklog.DeleteSprintBacklogReq.deserializeBinaryFromReader = functio
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setAccesstoken(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTeamid(value);
       break;
     default:
       reader.skipField();
@@ -179,6 +184,13 @@ proto.sprintbacklog.DeleteSprintBacklogReq.prototype.serializeBinaryToWriter = f
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = this.getTeamid();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -251,6 +263,21 @@ proto.sprintbacklog.DeleteSprintBacklogReq.prototype.getAccesstoken = function()
 /** @param {string} value  */
 proto.sprintbacklog.DeleteSprintBacklogReq.prototype.setAccesstoken = function(value) {
   jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional string teamId = 5;
+ * @return {string}
+ */
+proto.sprintbacklog.DeleteSprintBacklogReq.prototype.getTeamid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
+};
+
+
+/** @param {string} value  */
+proto.sprintbacklog.DeleteSprintBacklogReq.prototype.setTeamid = function(value) {
+  jspb.Message.setField(this, 5, value);
 };
 
 
@@ -488,7 +515,8 @@ proto.sprintbacklog.GetAllSprintBacklogReq.toObject = function(includeInstance, 
   var f, obj = {
     requesterid: msg.getRequesterid(),
     projectid: msg.getProjectid(),
-    accesstoken: msg.getAccesstoken()
+    accesstoken: msg.getAccesstoken(),
+    teamid: msg.getTeamid()
   };
 
   if (includeInstance) {
@@ -536,6 +564,10 @@ proto.sprintbacklog.GetAllSprintBacklogReq.deserializeBinaryFromReader = functio
     case 3:
       var value = /** @type {string} */ (reader.readString());
       msg.setAccesstoken(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTeamid(value);
       break;
     default:
       reader.skipField();
@@ -596,6 +628,13 @@ proto.sprintbacklog.GetAllSprintBacklogReq.prototype.serializeBinaryToWriter = f
       f
     );
   }
+  f = this.getTeamid();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
 };
 
 
@@ -650,6 +689,21 @@ proto.sprintbacklog.GetAllSprintBacklogReq.prototype.getAccesstoken = function()
 /** @param {string} value  */
 proto.sprintbacklog.GetAllSprintBacklogReq.prototype.setAccesstoken = function(value) {
   jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional string teamId = 4;
+ * @return {string}
+ */
+proto.sprintbacklog.GetAllSprintBacklogReq.prototype.getTeamid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
+};
+
+
+/** @param {string} value  */
+proto.sprintbacklog.GetAllSprintBacklogReq.prototype.setTeamid = function(value) {
+  jspb.Message.setField(this, 4, value);
 };
 
 

@@ -5,6 +5,7 @@
  */
 // GENERATED CODE -- DO NOT EDIT!
 /* eslint-disable */
+
 var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
@@ -61,7 +62,7 @@ proto.velocity.GetVelocityReq.toObject = function(includeInstance, msg) {
     requesterid: msg.getRequesterid(),
     projectid: msg.getProjectid(),
     teamid: msg.getTeamid(),
-    springid: msg.getSpringid()
+    sprintid: msg.getSprintid()
   };
 
   if (includeInstance) {
@@ -116,7 +117,7 @@ proto.velocity.GetVelocityReq.deserializeBinaryFromReader = function(msg, reader
       break;
     case 5:
       var value = /** @type {string} */ (reader.readString());
-      msg.setSpringid(value);
+      msg.setSprintid(value);
       break;
     default:
       reader.skipField();
@@ -184,7 +185,7 @@ proto.velocity.GetVelocityReq.prototype.serializeBinaryToWriter = function (writ
       f
     );
   }
-  f = this.getSpringid();
+  f = this.getSprintid();
   if (f.length > 0) {
     writer.writeString(
       5,
@@ -264,16 +265,16 @@ proto.velocity.GetVelocityReq.prototype.setTeamid = function(value) {
 
 
 /**
- * optional string springId = 5;
+ * optional string sprintId = 5;
  * @return {string}
  */
-proto.velocity.GetVelocityReq.prototype.getSpringid = function() {
+proto.velocity.GetVelocityReq.prototype.getSprintid = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
 };
 
 
 /** @param {string} value  */
-proto.velocity.GetVelocityReq.prototype.setSpringid = function(value) {
+proto.velocity.GetVelocityReq.prototype.setSprintid = function(value) {
   jspb.Message.setField(this, 5, value);
 };
 
@@ -324,11 +325,12 @@ proto.velocity.GetVelocityRes.prototype.toObject = function(opt_includeInstance)
  */
 proto.velocity.GetVelocityRes.toObject = function(includeInstance, msg) {
   var f, obj = {
-    error: msg.getError(),
     status: msg.getStatus(),
     task: msg.getTask(),
     type: msg.getType(),
-    note: msg.getNote()
+    note: msg.getNote(),
+    title: msg.getTitle(),
+    statustask: msg.getStatustask()
   };
 
   if (includeInstance) {
@@ -365,10 +367,6 @@ proto.velocity.GetVelocityRes.deserializeBinaryFromReader = function(msg, reader
     }
     var field = reader.getFieldNumber();
     switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setError(value);
-      break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setStatus(value);
@@ -384,6 +382,14 @@ proto.velocity.GetVelocityRes.deserializeBinaryFromReader = function(msg, reader
     case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setNote(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTitle(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setStatustask(value);
       break;
     default:
       reader.skipField();
@@ -423,13 +429,6 @@ proto.velocity.GetVelocityRes.prototype.serializeBinary = function() {
  */
 proto.velocity.GetVelocityRes.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = this.getError();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
   f = this.getStatus();
   if (f.length > 0) {
     writer.writeString(
@@ -458,6 +457,20 @@ proto.velocity.GetVelocityRes.prototype.serializeBinaryToWriter = function (writ
       f
     );
   }
+  f = this.getTitle();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
+      f
+    );
+  }
+  f = this.getStatustask();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
 };
 
 
@@ -467,21 +480,6 @@ proto.velocity.GetVelocityRes.prototype.serializeBinaryToWriter = function (writ
  */
 proto.velocity.GetVelocityRes.prototype.cloneMessage = function() {
   return /** @type {!proto.velocity.GetVelocityRes} */ (jspb.Message.cloneMessage(this));
-};
-
-
-/**
- * optional string error = 1;
- * @return {string}
- */
-proto.velocity.GetVelocityRes.prototype.getError = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 1, ""));
-};
-
-
-/** @param {string} value  */
-proto.velocity.GetVelocityRes.prototype.setError = function(value) {
-  jspb.Message.setField(this, 1, value);
 };
 
 
@@ -542,6 +540,36 @@ proto.velocity.GetVelocityRes.prototype.getNote = function() {
 /** @param {string} value  */
 proto.velocity.GetVelocityRes.prototype.setNote = function(value) {
   jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * optional string title = 6;
+ * @return {string}
+ */
+proto.velocity.GetVelocityRes.prototype.getTitle = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 6, ""));
+};
+
+
+/** @param {string} value  */
+proto.velocity.GetVelocityRes.prototype.setTitle = function(value) {
+  jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * optional string statusTask = 7;
+ * @return {string}
+ */
+proto.velocity.GetVelocityRes.prototype.getStatustask = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 7, ""));
+};
+
+
+/** @param {string} value  */
+proto.velocity.GetVelocityRes.prototype.setStatustask = function(value) {
+  jspb.Message.setField(this, 7, value);
 };
 
 

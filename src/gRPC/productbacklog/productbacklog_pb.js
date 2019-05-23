@@ -1433,7 +1433,8 @@ proto.productbacklog.SendToSprintBacklogReq.toObject = function(includeInstance,
     productbacklogid: msg.getProductbacklogid(),
     start: msg.getStart(),
     deadline: msg.getDeadline(),
-    accesstoken: msg.getAccesstoken()
+    accesstoken: msg.getAccesstoken(),
+    teamid: msg.getTeamid()
   };
 
   if (includeInstance) {
@@ -1493,6 +1494,10 @@ proto.productbacklog.SendToSprintBacklogReq.deserializeBinaryFromReader = functi
     case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.setAccesstoken(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTeamid(value);
       break;
     default:
       reader.skipField();
@@ -1571,6 +1576,13 @@ proto.productbacklog.SendToSprintBacklogReq.prototype.serializeBinaryToWriter = 
   if (f.length > 0) {
     writer.writeString(
       6,
+      f
+    );
+  }
+  f = this.getTeamid();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
       f
     );
   }
@@ -1673,6 +1685,21 @@ proto.productbacklog.SendToSprintBacklogReq.prototype.getAccesstoken = function(
 /** @param {string} value  */
 proto.productbacklog.SendToSprintBacklogReq.prototype.setAccesstoken = function(value) {
   jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * optional string teamId = 7;
+ * @return {string}
+ */
+proto.productbacklog.SendToSprintBacklogReq.prototype.getTeamid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 7, ""));
+};
+
+
+/** @param {string} value  */
+proto.productbacklog.SendToSprintBacklogReq.prototype.setTeamid = function(value) {
+  jspb.Message.setField(this, 7, value);
 };
 
 
