@@ -30,36 +30,18 @@ import { Badge,
   Breadcrumb
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-
+import AppAppBar from './modules/views/AppAppBar';
+import AppFooter from './modules/views/AppFooter';
 
 class Payment extends Component {
   render() {
     return (
+      <div>  
+      <AppAppBar/>
+      <div><br></br></div>
       <Container>
       <Row>
-          <Col>         
-                 <Nav tabs>
-              <NavItem>
-                <NavLink href="/Home/Main" active>Về chúng tôi</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/Home/Service" active>Dịch vụ</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/Home/Solve" active>Giải pháp</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/Home/Contact" active>Liên hệ</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/login" active>Sign in</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/register" active>Sign up</NavLink>
-              </NavItem>
-            </Nav>
-
-
+          <Col>                      
             <Card> 
               <CardHeader>
                    <strong>
@@ -67,8 +49,6 @@ class Payment extends Component {
                    </strong>     
               </CardHeader>
               <CardBody>
-                
-
                    <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
                   <FormGroup row>
                   <Col md="3">
@@ -135,6 +115,8 @@ class Payment extends Component {
           </Col>
         </Row>
         </Container>
+        <AppFooter />
+        </div>
     );
   }
 }

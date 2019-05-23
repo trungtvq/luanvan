@@ -287,6 +287,7 @@ class MyProject extends Component {
 
     console.log("render")
     return (
+     
       <div>
         <Modal size="sm" isOpen={that.state.modalActionStatus} toggle={that.toggleActionStatus} className={that.props.className}>
           <ModalBody>
@@ -300,7 +301,7 @@ class MyProject extends Component {
           <Row>
             <Col>
               <Row>
-              
+              {console.log("a___"+this.props.project.length)}
                 {
                 
                   this.props.project.map(function (i, key) {
