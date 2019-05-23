@@ -378,11 +378,10 @@ class AllTeam extends Component {
           that.setState(prevState => ({
             modalEditTeam: !prevState.modalEditTeam,
             dataTeam: newData,
-          }))
-          this.setState({
             modalActionStatus: true,
-            actionStatus: 'SUCCESS',           
-          });
+            actionStatus: 'SUCCESS', 
+          }))
+        
         } else {
           this.setState({
             modalActionStatus: true,
