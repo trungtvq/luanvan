@@ -79,15 +79,11 @@ class DefaultHeader extends Component {
 
           </NavItem>
           <NavItem className="px-3">
-              <UncontrolledDropdown color="light">
-                <DropdownToggle caret>
-                    Team
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem href="/CreateTeam">Create team</DropdownItem>
-                  <DropdownItem href="/AllTeam">All team</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+          <Button type="button" color="light" href="/AllTeam">All team</Button>  
+          </NavItem>
+         
+          <NavItem className="px-3">
+          <Button type="button" color="light" href="/CreateTeam">Creat team</Button>  
           </NavItem>
           <NavItem className="px-3">
               {/* <UncontrolledDropdown color="light">
@@ -131,7 +127,7 @@ class DefaultHeader extends Component {
 
               <DropdownItem><i className="fa fa-envelope-o"></i> Messages</DropdownItem>
               <Link to="/Member/Task/MyTask">
-              <DropdownItem><i className="fa fa-tasks"></i> Tasks</DropdownItem> 
+              <DropdownItem><i className="fa fa-tasks"></i> Notify</DropdownItem> 
               </Link>            
               <Link to="/Profile/Detail">
               <DropdownItem><i className="fa fa-user"></i> 
@@ -140,7 +136,7 @@ class DefaultHeader extends Component {
               </Link>  
 
               {/* <DropdownItem><i className="fa fa-wrench"></i> Settings</DropdownItem> */}
-              <DropdownItem><i className="fa fa-usd"></i> Payments</DropdownItem>
+              <DropdownItem><i className="fa fa-usd"></i> Upgrade</DropdownItem>
               <Link to="/myproject">
               <DropdownItem><i className="fa fa-file"></i> Projects</DropdownItem>
               </Link>

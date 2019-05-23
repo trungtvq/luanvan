@@ -106,10 +106,14 @@ class AllTeam extends Component {
   toggleEditMember = (event) => {
     let idMember = event.currentTarget.dataset.idMember;
     let idTeam = event.currentTarget.dataset.idTeam;
+    let role = event.currentTarget.dataset.role;
+    let name= event.currentTarget.dataset.name;
     this.setState(prevState => ({
       modalEditMember: !prevState.modalEditMember,
       updateMemberId: idMember,
-      updateTeamId: idTeam
+      updateTeamId: idTeam,
+      roleMember: role,
+      emailMember:name,
     }));
   }
   //toggle team
@@ -121,11 +125,17 @@ class AllTeam extends Component {
   toggleEditTeam = (event) => {
     let name = event.currentTarget.dataset.name;
     let id = event.currentTarget.dataset.id;
+    let description = event.currentTarget.dataset.des;
+    let department = event.currentTarget.dataset.department;
+
 
     this.setState(prevState => ({
       modalEditTeam: !prevState.modalEditTeam,
       updateNameTeam: name,
-      updateTeamId: id
+      updateTeamId: id,
+      departmentTeam:department,
+      descriptionTeam:description,
+      nameTeam:name,
     }));
   }
   shouldComponentUpdate() {
@@ -278,7 +288,10 @@ class AllTeam extends Component {
             modalAddMember:false,
             dataTeam: newData,
             modalActionStatus: true,
-            actionStatus: 'SUCCESS'
+            actionStatus: 'SUCCESS',
+            emailMember: '',
+            roleMember: '',
+      
           })
 
         } else {
@@ -465,7 +478,7 @@ class AllTeam extends Component {
                     <div class="row ">
                          
                           <div class="col col-sm-1">
-                          <div data-id={itemTeam.id} data-name={itemTeam.name} onClick={that.toggleEditTeam}>
+                          <div data-id={itemTeam.id} data-name={itemTeam.name} data-des={itemTeam.description} data-department={itemTeam.department}onClick={that.toggleEditTeam}>
                             <Button color="warning" size="sm" className="mt-3"><i class="fa fa-edit"></i></Button>
                           </div>
                           </div>
@@ -588,7 +601,7 @@ class AllTeam extends Component {
                             <td>{itemMem.numOfTaskDone}</td>
                             <td>
                               <center>
-                                <div data-idTeam={itemTeam.id} data-idMember={itemMem.id} onClick={that.toggleEditMember}>
+                                <div data-idTeam={itemTeam.id} data-idMember={itemMem.id} data-name={itemMem.name} data-role={itemMem.role}onClick={that.toggleEditMember}>
                                   <Button color="warning" size="sm">
                                     <i class="fa fa-edit"></i>
                                   </Button>
@@ -602,7 +615,7 @@ class AllTeam extends Component {
                                           <Label htmlFor="text-input">User name</Label>
                                         </Col>
                                         <Col xs="5" md="5">
-                                          <Input type="text" id="text-input" name="text-input" placeholder="User name" />
+                                          <Input type="text" id="text-input" name="text-input" value={that.state.emailMember}  placeholder="User name" onChange={that.onTextboxChangeEmailMember}/>
                                         </Col>
                                       </FormGroup>
                                       <FormGroup row>

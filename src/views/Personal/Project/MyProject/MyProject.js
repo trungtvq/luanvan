@@ -130,11 +130,10 @@ class MyProject extends Component {
     }));
   }
   setProjectUpdateId = (event) => {
-    {console.log("i________"+ event.currentTarget.dataset.projectName)}
     this.setState({
       updateId: event.currentTarget.dataset.id,
       topic : event.currentTarget.dataset.topic,
-      ProjectName : event.currentTarget.dataset.projectName,
+      ProjectName : event.currentTarget.dataset.projectname,
     });
   }
   toggleTranferOwner = () => {
@@ -336,7 +335,7 @@ class MyProject extends Component {
                               </Link>
                               <div className="card-header-actions">
                                 <div className="card-header-action btn btn-setting" data-id={item.id} onClick={that.handleDelete}><i className="icon-trash"></i>{that.props.buttonLabel}</div>
-                                <div data-projectName={item.projectName} data-id={item.id} data-topic={item.topic}  onClick={that.setProjectUpdateId}><div className="card-header-action btn btn-setting" onClick={that.toggleEdit}><i className="icon-settings"></i>{that.props.buttonLabel}</div></div>
+                                <div data-projectname={item.projectName} data-id={item.id} data-topic={item.topic}  onClick={that.setProjectUpdateId}><div className="card-header-action btn btn-setting" onClick={that.toggleEdit}><i className="icon-settings"></i>{that.props.buttonLabel}</div></div>
                                 
                                 <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
                                   <ModalHeader toggle={that.toggleEdit}>Project</ModalHeader>
