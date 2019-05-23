@@ -55,7 +55,7 @@ class Chat extends Component {
     var SendMsgReq = new proto.chat.SendMsgReq();
     SendMsgReq.setRequesterid(cookie.load("userId"));
     SendMsgReq.setAccesstoken(cookie.load("accessToken"));
-    SendMsgReq.setChannelid("5ce16a8aef2aa3092c1ccecf");
+    SendMsgReq.setChannelid(cookie.load("currentProject"));
     SendMsgReq.setName(cookie.load("name"))
     SendMsgReq.setMsg(newMessage)
 
@@ -75,7 +75,7 @@ class Chat extends Component {
         <Widget
           handleNewUserMessage={this.handleNewUserMessage}
           profileAvatar={logo}
-          title={cookie.load("projectId")}
+          title={cookie.load("currentProject")}
           subtitle="And my cool subtitle"
         />
       </div>
