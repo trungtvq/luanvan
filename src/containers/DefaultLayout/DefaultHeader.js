@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button,Badge, UncontrolledDropdown, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink } from 'reactstrap';
+import { Input,Button,Badge, UncontrolledDropdown, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 import { AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
@@ -15,7 +15,6 @@ import { connect } from 'react-redux'
 import {
   getFromStorage
 } from '../../service/storage'
-import {Input} from 'reactstrap';
 const propTypes = {
   children: PropTypes.node,
 };
@@ -27,10 +26,12 @@ class DefaultHeader extends Component {
     super(props);
     this.state = {
       dataTeamJoin: [
-        {name:1},
-        {name:2},
-        {name:3},
+        {name:"team 1"},
+        {name:"team 2"},
+        {name:"team now"},
+        {name:"team 3"},
       ],
+      currentTeam:'team now'
     }
   };
 
@@ -41,12 +42,19 @@ class DefaultHeader extends Component {
     cookie.remove('userId')
     cookie.remove('accessToken')
   }
+  setOutTeamCurrent=()=>{
+    let currentTeam=this.state.currentTeam
+    {this.setState(prevState=>({dataTeamJoin:[...prevState.dataTeamJoin.filter(function(e) { return e.name !==currentTeam ; })]}))}
+  }
+  componentWillMount(){
+    {this.setOutTeamCurrent()};
+  }
   render() {
     console.log("avatar")
     console.log(getFromStorage('avatar'))
     // eslint-disable-next-line
     const { children, ...attributes } = this.props;
-
+    let that=this;
     return (
       <React.Fragment>
         <AppSidebarToggler className="d-lg-none" display="md" mobile />
@@ -96,15 +104,13 @@ class DefaultHeader extends Component {
                  
                 </DropdownMenu>
               </UncontrolledDropdown> */}
-              <Input type="select" name="select" id="select" >
-              {this.state.dataTeamJoin.map(function (item, key) {
-                  let itemTeam = item;
-                  return (
-                                          <option value={item.name}>{item.name}</option>
-                                          
-                          )})}
-                 
-                                  </Input>            
+              <Input type="select" name="select" id="select">
+              <option value={that.state.currentTeam} >{that.state.currentTeam}</option>
+              {this.state.dataTeamJoin.map(function (item, key) {               
+                  return (                          
+                             <option value={item.name}>{item.name} </option>                           
+                          )})}               
+              </Input>            
           </NavItem>
         </Nav>
         <Nav className="ml-auto" navbar>
