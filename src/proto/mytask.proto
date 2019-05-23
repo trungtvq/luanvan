@@ -8,12 +8,37 @@ package mytask;
 
 service Mytask{
 	rpc getAllMyTask(GetAllMyTaskReq) returns (stream GetAllMyTaskRes){}
+	rpc commentMyTask(CommentMyTaskReq) returns (MyTaskRes){}
+	rpc updateMyTask(UpdateMyTaskReq) returns (MyTaskRes){}
 }
+message MyTaskReq{
+	string requesterId = 1;
+	string projectId = 2;
+	string teamId=4;
+	string accessToken = 3;
+	string taskId=5;
+}
+message CommentMyTaskReq{
+	MyTaskReq mytask=1;
+	string comment=2;
+}
+message UpdateMyTaskReq{
+	string requesterId = 1;
+	string projectId = 2;
+	string teamId=4;
+	string accessToken = 3;
 
+
+	string statusTask=5;
+}
+message MyTaskRes{
+	string status=1;
+}
 message GetAllMyTaskReq{
     string requesterId = 1;
 	string projectId = 2;
-	string cookie = 3;
+	string teamId=4;
+	string accessToken = 3;
 }
 message GetAllMyTaskRes{
 	string title = 1;		

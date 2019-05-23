@@ -16,6 +16,7 @@ message DeleteSprintBacklogReq{
     string projectId = 2;
 	string backlogId = 3;
 	string accessToken = 4;
+	string teamId=5;
 }
 message SprintBacklogRes{
     string status = 1;
@@ -26,6 +27,7 @@ message GetAllSprintBacklogReq{
     string requesterId = 1;
 	string projectId = 2;
 	string accessToken = 3;
+	string teamId=4;
 }
 message GetAllSprintBacklogRes{
 	string title=1;

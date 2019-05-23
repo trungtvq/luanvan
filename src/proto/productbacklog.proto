@@ -61,14 +61,14 @@ message DeleteProductBacklogReq{
 	string accessToken = 4;
 }
 
-
 message SendToSprintBacklogReq{	//lay tat ca gia tri cua productbacklog dc chon gan qua sprint backlog dong thoi gan status cua no thanh inprogress
     string requesterId = 1;
     string projectId = 2;
 	string productBacklogId = 3;
 	string start = 4;		 //return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
-	string deadline = 5;			//return in form mm/hh/dd/mm/yyyy 	
+	string deadline = 5;
 	string accessToken = 6;
+	string teamId=7;
 }
 
 
