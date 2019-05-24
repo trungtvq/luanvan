@@ -136,6 +136,7 @@ class DailySchedule extends Component {
       status: event.target.value,
     });
   }
+  
   onTextboxChangeTimeStart(event) {
     this.setState({
       timeStart: event.target.value,
@@ -449,11 +450,11 @@ class DailySchedule extends Component {
                                     <Label>Status</Label>
                                   </Col>
                                   <Col xs="12" md="3">
-                                  <Input type="select" name="select" id="select" onChange={that.onTextboxChangePriority}>
+                                  <Input type="select" name="select" id="select" onChange={that.onTextboxChangeStatus}>
                                           <option value="0">Please select</option>
-                                          <option value="High">High</option>
-                                          <option value="Medium">Medium</option>
-                                          <option value="Low">Low</option>
+                                          <option value="Todo">Todo</option>
+                                          <option value="Inprogress">Inprogress</option>
+                                          <option value="Done">Done</option>
                                   </Input>                                  
                                   </Col>
                                 </FormGroup>                                       

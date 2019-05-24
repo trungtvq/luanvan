@@ -243,6 +243,9 @@ class Cover extends Component {
           this.setState({
             modalActionStatus: true,
             actionStatus: 'SUCCESS',
+            priorityUserstory: '',
+            estimationUserstory: '',
+            sprintUserstory: '',
           });
         
         } else {

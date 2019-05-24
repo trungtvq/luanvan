@@ -22,6 +22,7 @@ class Detail extends Component {
       data: [],
       modalAdd: false,
       modalEdit: false,
+      modalDetail: false,
       modalSend: false,
       id: '',
       role: "",
@@ -87,12 +88,52 @@ class Detail extends Component {
       modalAdd: !prevState.modalAdd
     }));
   }
+  toggleDetail = (event) => {
+
+    let title = event.currentTarget.dataset.title
+    let role = event.currentTarget.dataset.role
+    let want = event.currentTarget.dataset.want
+    let so = event.currentTarget.dataset.so
+    let priority = event.currentTarget.dataset.priority
+    let estimation = event.currentTarget.dataset.estimation
+    let sprint = event.currentTarget.dataset.sprint
+    let status = event.currentTarget.dataset.status
+
+    this.setState(prevState => ({
+      modalDetail: !prevState.modalDetail,
+      title:title,
+      role: role,
+      want: want,
+      so: so,
+      priority: priority,
+      estimation: estimation,
+      sprint: sprint,
+      status: status,   
+    }));
+  }
   toggleEdit = (event) => {
     let id = event.currentTarget.dataset.id
 
+    let title = event.currentTarget.dataset.title
+    let role = event.currentTarget.dataset.role
+    let want = event.currentTarget.dataset.want
+    let so = event.currentTarget.dataset.so
+    let priority = event.currentTarget.dataset.priority
+    let estimation = event.currentTarget.dataset.estimation
+    let sprint = event.currentTarget.dataset.sprint
+    let status = event.currentTarget.dataset.status
+
     this.setState(prevState => ({
       modalEdit: !prevState.modalEdit,
-      updateId:id
+      updateId:id,
+      title:title,
+      role: role,
+      want: want,
+      so: so,
+      priority: priority,
+      estimation: estimation,
+      sprint: sprint,
+      status: status,   
     }));
   }
   toggleSend = () => {
@@ -105,7 +146,6 @@ class Detail extends Component {
     this.setState({
       role: event.target.value,
     });
-
   }
   onTextboxChangeWant = (event) => {
     this.setState({
@@ -405,8 +445,12 @@ class Detail extends Component {
                                   <Label htmlFor="date-input">Status </Label>
                                 </Col>
                                 <Col xs="12" md="2">
-                                  <Input type="text" id="status" name="status" placeholder="text" value={that.state.status} onChange={that.onTextboxChangeStatus} />
-                                </Col>
+                                  <Input type="select" name="select" id="select" onChange={that.onTextboxChangeStatus}>
+                                          <option value="0">Please select</option>
+                                          <option value="Todo">Todo</option>
+                                          <option value="Inprogress">Inprogress</option>
+                                          <option value="Done">Done</option>
+                                  </Input>                                                  </Col>
                               </FormGroup>
 
                               <FormGroup row>
@@ -452,14 +496,90 @@ class Detail extends Component {
 
                   return (
                     <tr key={key}>
-                      <td>{item.title}</td>
+                      <td data-id={item.id} data-title={item.title} data-role={item.role} data-want={item.want} 
+                           data-so={item.so} data-priority={item.priority} data-estimation={item.estimation} 
+                           data-sprint={item.sprint} data-status={item.status}
+                           onClick={that.toggleDetail}>
+                      <u>{item.title}</u>
+                      </td>
+                      <Modal size="lg" isOpen={that.state.modalDetail} toggle={that.toggleDetail} className={that.props.className}>
+                          <ModalHeader toggle={that.toggleDetail}>ProductBacklog</ModalHeader>
+                          <ModalBody>
+                            <Form className="form-horizontal">
+                              <FormGroup row>
+                                <Col md="3">
+                                  <Label htmlFor="text-input">As a...</Label>
+                                </Col>
+                                <Col xs="12" md="9">
+                                  <Input type="text" id="text-input" name="text-input" placeholder="As a......" value={that.state.role} />
+
+                                </Col>
+                              </FormGroup>
+                              <FormGroup row>
+                                <Col md="3">
+                                  <Label htmlFor="text-input">I want to be able to...</Label>
+                                </Col>
+                                <Col xs="12" md="9">
+                                  <Input type="text" id="text-input" name="text-input" value={that.state.want} />
+
+                                </Col>
+                              </FormGroup>
+                              <FormGroup row>
+                                <Col md="3">
+                                  <Label htmlFor="textarea-input">So that...</Label>
+                                </Col>
+                                <Col xs="12" md="9">
+                                  <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
+                                    value={that.state.so}/>
+                                </Col>
+                              </FormGroup>
+                              <FormGroup row>
+                                <Col md="3">
+                                  <Label htmlFor="date-input">Status</Label>
+                                </Col>
+                                <Col xs="12" md="2">
+                                <Input type="text" id="text-input" name="text-input" value={that.state.status} />               
+                                </Col>
+                              </FormGroup>
+                              <FormGroup row>
+                                <Col md="1">
+                                  <Label htmlFor="text-input">Priority</Label>
+                                </Col>
+                                <Col xs="12" md="1">
+                                  <Input type="text" name="text-input" id="text-input" rows="9" value={that.state.priority} />
+                                </Col>
+
+                                <Col md="2">
+                                </Col>
+
+                                <Col md="1">
+                                  <Label htmlFor="text-input">Estimation</Label>
+                                </Col>
+                                <Col xs="12" md="1">
+                                  <Input type="text" name="text-input" id="text-input" rows="9" value={that.state.estimation}/>
+                                </Col>
+
+                                <Col md="2">
+                                </Col>
+
+                                <Col md="1">
+                                  <Label htmlFor="text-input">Sprint</Label>
+                                </Col>
+                                <Col xs="12" md="1">
+                                  <Input type="text" name="text-input" id="text-input" rows="9" value={that.state.sprint}/>
+                                </Col>
+                              </FormGroup>
+                            </Form>
+                          </ModalBody>
+                          
+                        </Modal>
                       <td>{item.role}</td>
                       <td>{item.want}</td>
-                      <td>{item.so}</td>
-                      <td><center>{item.priority}</center></td>
-                      <td><center>{item.estimation}</center></td>
-                      <td><center>{item.sprint}</center></td>
-                      <td><center>{item.status}</center></td>
+                      {/* <td>{item.so}</td> */}
+                      <td>{item.priority}</td>
+                      <td>{item.estimation}</td>
+                      <td>{item.sprint}</td>
+                      <td>{item.status}</td>
                       <td>
                         <Button type="submit" size="sm" color="success" onClick={that.toggleSend}><i class="fa fa-share-square"></i></Button>
                         <Modal size="lg" isOpen={that.state.modalSend} toggle={that.toggleSend} className={that.props.className}>
@@ -505,7 +625,13 @@ class Detail extends Component {
                             <Button color="secondary" onClick={that.toggleSend}>Cancel</Button>
                           </ModalFooter>
                         </Modal>
-                        <div data-id={item.id} onClick={that.toggleEdit}><Button color="warning" size="sm"><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button></div>
+                        <div data-id={item.id} data-title={item.title} data-role={item.role} data-want={item.want} 
+                             data-so={item.so} data-priority={item.priority} data-estimation={item.estimation} 
+                             data-sprint={item.sprint} data-status={item.status}
+                        onClick={that.toggleEdit}>
+                          <Button color="warning" size="sm"><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
+                        </div>
+                        
                         <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
                           <ModalHeader toggle={that.toggleEdit}>ProductBacklog</ModalHeader>
                           <ModalBody>
@@ -542,9 +668,12 @@ class Detail extends Component {
                                   <Label htmlFor="date-input">Status</Label>
                                 </Col>
                                 <Col xs="12" md="2">
-                                  <Input type="textarea" name="status" id="status" value={that.state.status} onChange={that.onTextboxChangeStatus} size="sm">
-                                   
-                                  </Input>
+                                <Input type="select" name="select" id="select" onChange={that.onTextboxChangeStatus}>
+                                          <option value="0">Please select</option>
+                                          <option value="Todo">Todo</option>
+                                          <option value="Inprogress">Inprogress</option>
+                                          <option value="Done">Done</option>
+                                  </Input>                                                     
                                 </Col>
                               </FormGroup>
                               <FormGroup row>

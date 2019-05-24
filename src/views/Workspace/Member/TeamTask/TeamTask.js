@@ -132,8 +132,7 @@ class TeamTask extends Component {
     this.setState({
       Priority: event.target.value,
     });
-    console.log("vào");
-    console.log(this.state.Priority);
+   
   }
   
   onTextboxChangeTimeStart=(event)=> {
