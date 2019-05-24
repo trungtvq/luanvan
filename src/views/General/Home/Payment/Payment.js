@@ -33,7 +33,7 @@ import { Badge,
 import { Link } from 'react-router-dom';
 import AppAppBar from './modules/views/AppAppBar';
 import AppFooter from './modules/views/AppFooter';
-
+import PaypalExpressBtn from 'react-paypal-express-checkout';
 class Payment extends Component {
   constructor(props) {
     super(props);
@@ -56,6 +56,34 @@ class Payment extends Component {
     });
   } 
   render() {
+    const onSuccess = (payment) => {
+      // Congratulation, it came here means everything's fine!
+          console.log("The payment was succeeded!", payment);
+          // You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
+  }
+
+  const onCancel = (data) => {
+      // User pressed "cancel" or close Paypal's popup!
+      console.log('The payment was cancelled!', data);
+      // You can bind the "data" object's value to your state or props or whatever here, please see below for sample returned data
+  }
+
+  const onError = (err) => {
+      // The main Paypal's script cannot be loaded or somethings block the loading of that script!
+      console.log("Error!", err);
+      // Because the Paypal's main script is loaded asynchronously from "https://www.paypalobjects.com/api/checkout.js"
+      // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
+  }
+
+  let env = 'production'; // you can set here to 'production' or 'sandbox' for production
+  let currency = 'USD'; // or you can set this value from your props or state
+  let total = 1; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
+  // Document on Paypal's currency code: https://developer.paypal.com/docs/classic/api/currency_codes/
+
+  const client = {
+      sandbox:    'AQKhnQG0l9ZwRFNMSS6hF13HEZLjhv2RyyBw2zvR1JPOlmf9z_XAWn32hHOcVqHNAXZjq6-k6COcsxcr',
+      production: 'AWcRHOMyUYPKN8weIIQnzA6KNwZg-xKYkns1NHAIWqpntVB_K5ri4NF2czIth54wW9KxnMtXuYv-7Wb_',
+  }
     return (
       <div>  
       <AppAppBar/>
@@ -198,8 +226,12 @@ class Payment extends Component {
                         <center><h5 className="m-0 p-0">PayPal</h5></center>
                       </Button>
                     </CardHeader>
-                    <Collapse isOpen={this.state.accordion[2]} data-parent="#accordion" id="collapseThree">
+                    <div className="app flex-row align-items-center">
+            <PaypalExpressBtn env={env} client={client} currency={currency} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />
+          </div>
+                    {/* <Collapse isOpen={this.state.accordion[2]} data-parent="#accordion" id="collapseThree">
                       <CardBody>
+                    
                       <Form  className="form-horizontal">   
                           <center><h5><b><font color="green">PAYPAL</font></b></h5></center>  
                           <center><h6>Already Have A PayPal Account?</h6></center> 
@@ -237,7 +269,7 @@ class Payment extends Component {
                           </Form>       
 
                       </CardBody>
-                    </Collapse>
+                    </Collapse> */}
                   </Card>
                   <Card className="mb-0" className="card-accent-primary">
                     <CardHeader id="headingThree">
