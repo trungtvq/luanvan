@@ -136,7 +136,9 @@ class DefaultHeader extends Component {
               </Link>  
 
               {/* <DropdownItem><i className="fa fa-wrench"></i> Settings</DropdownItem> */}
+              <Link to="/Home/Payment">
               <DropdownItem><i className="fa fa-usd"></i> Upgrade</DropdownItem>
+              </Link>
               <Link to="/myproject">
               <DropdownItem><i className="fa fa-file"></i> Projects</DropdownItem>
               </Link>

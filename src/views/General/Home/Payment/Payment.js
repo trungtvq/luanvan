@@ -64,19 +64,18 @@ class Payment extends Component {
       <Container>
       <Row>
           <Col>                      
-          <Card>
-              <CardHeader>
-                <i className="fa fa-align-justify"></i> Collapse <small>accordion</small>
-                <div className="card-header-actions">
-                  <Badge>NEW</Badge>
-                </div>
-              </CardHeader>
-              <CardBody>
+          <div class="card border-primary mb-3">
+              <div class="card-header text-white bg-primary">
+                <center>
+                  <h4><b>Select Payment Method </b></h4>
+                </center>              
+              </div>
+              <div class="card-body">
                 <div id="accordion">
-                  <Card className="mb-0">
+                  <Card className="mb-0" className="card-accent-primary">
                     <CardHeader id="headingOne">
                       <Button block color="link" className="text-left m-0 p-0" onClick={() => this.toggleAccordion(0)} aria-expanded={this.state.accordion[0]} aria-controls="collapseOne">
-                        <h5 className="m-0 p-0">Credit Card</h5>
+                        <center><h5 className="m-0 p-0">Credit Card</h5></center>
                       </Button>
                     </CardHeader>
                     <Collapse isOpen={this.state.accordion[0]} data-parent="#accordion" id="collapseOne" aria-labelledby="headingOne">
@@ -132,11 +131,11 @@ class Payment extends Component {
                             <Input type="text" id="text-input" name="text-input" placeholder="xxxx" />           
                           </Col>
                         </FormGroup>        
-                        <FormGroup row>
-                          <Col md="3">
-                          <button type="button" class="btn btn-success btn-lg">Submit</button>          
-                          </Col>                         
-                        </FormGroup> 
+                     
+                         
+                          <center><button type="button" class="btn btn-success btn-lg">Submit</button></center>           
+                                            
+                      
                         <FormGroup row>
                           <Col md="1">
                             <input type="checkbox"></input>
@@ -149,10 +148,10 @@ class Payment extends Component {
                       </CardBody>
                     </Collapse>
                   </Card>
-                  <Card className="mb-0">
+                  <Card className="mb-0" className="card-accent-primary">
                     <CardHeader id="headingTwo">
                       <Button block color="link" className="text-left m-0 p-0" onClick={() => this.toggleAccordion(1)} aria-expanded={this.state.accordion[1]} aria-controls="collapseTwo">
-                        <h5 className="m-0 p-0">Net Banking</h5>
+                        <center><h5 className="m-0 p-0">Net Banking</h5></center>
                       </Button>
                     </CardHeader>
                     <Collapse isOpen={this.state.accordion[1]} data-parent="#accordion" id="collapseTwo">
@@ -185,19 +184,18 @@ class Payment extends Component {
                         </Col>
 
                         </FormGroup> 
-                          <FormGroup row>
-                          <Col xs="12" md="5">
-                           <button type="button" class="btn btn-success btn-lg">CONTINUE</button>
-                          </Col>
-                          </FormGroup> 
+                          
+                          <center><button type="button" class="btn btn-success btn-lg">CONTINUE</button></center> 
+                         
+                         
                         </Form>
                       </CardBody>
                     </Collapse>
                   </Card>
-                  <Card className="mb-0">
+                  <Card className="mb-0" className="card-accent-primary">
                     <CardHeader id="headingThree">
                       <Button block color="link" className="text-left m-0 p-0" onClick={() => this.toggleAccordion(2)} aria-expanded={this.state.accordion[2]} aria-controls="collapseThree">
-                        <h5 className="m-0 p-0">PayPal</h5>
+                        <center><h5 className="m-0 p-0">PayPal</h5></center>
                       </Button>
                     </CardHeader>
                     <Collapse isOpen={this.state.accordion[2]} data-parent="#accordion" id="collapseThree">
@@ -241,10 +239,10 @@ class Payment extends Component {
                       </CardBody>
                     </Collapse>
                   </Card>
-                  <Card className="mb-0">
+                  <Card className="mb-0" className="card-accent-primary">
                     <CardHeader id="headingThree">
                       <Button block color="link" className="text-left m-0 p-0" onClick={() => this.toggleAccordion(3)} aria-expanded={this.state.accordion[3]} aria-controls="collapseThree">
-                        <h5 className="m-0 p-0">Debit Card</h5>
+                        <center><h5 className="m-0 p-0">Debit Card</h5></center>
                       </Button>
                     </CardHeader>
                     <Collapse isOpen={this.state.accordion[3]} data-parent="#accordion" id="collapseThree">
@@ -284,11 +282,11 @@ class Payment extends Component {
                                 <Input type="text" id="text-input" name="text-input" placeholder="xxxx" />           
                               </Col>
                             </FormGroup>        
-                            <FormGroup row>
-                              <Col md="3">
-                              <button type="button" class="btn btn-success btn-lg">Submit</button>          
-                              </Col>                         
-                            </FormGroup> 
+                           
+                             
+                             <center><button type="button" class="btn btn-success btn-lg">Submit</button></center>           
+                                                   
+                         
                             <FormGroup row>
                               <Col md="1">
                                 <input type="checkbox"></input>
@@ -302,8 +300,8 @@ class Payment extends Component {
                     </Collapse>
                   </Card>
                 </div>
-              </CardBody>
-            </Card>
+              </div>
+            </div>
             
           </Col>
         </Row>
