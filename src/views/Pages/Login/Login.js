@@ -2,7 +2,7 @@ import {saveLogin} from '../../../actions'
 import { connect } from 'react-redux'
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
+import { CardFooter,Label,FormGroup,Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 import authContext from "../../../contexts/authContext";
 
 import AppFooter from './modules/views/AppFooter';
@@ -11,6 +11,7 @@ import { GoogleLogout } from 'react-google-login';
 import { GoogleLogin } from 'react-google-login';
 import cookie from 'react-cookies';
 import ReactList from 'react-list';
+import { CardHeader } from '@material-ui/core';
 const image2base64 = require('image-to-base64')
 const proto = {};
 proto.auth = require('./../../../gRPC/auth/auth_grpc_web_pb');
@@ -149,72 +150,77 @@ class Login extends Component {
     return (
       <div>
          <AppAppBar />
+         <div><br></br></div>
       <div className="app flex-row align-items-center">
         
         <Container>
                <Row className="justify-content-center">
             <Col md="8">
-              <CardGroup>
-                <Card className="p-4">
+         
+                <Card className=" border-primary" >
                   <CardBody>
-                    <Form>
-                      <h1>Login</h1>
-                      <p className="text-muted">Sign In to your account</p>
-                      <InputGroup className="mb-3">
-                        <InputGroupAddon addonType="prepend">
-                          <InputGroupText>
-                            <i className="icon-user"></i>
-                          </InputGroupText>
-                        </InputGroupAddon>
-                        <Input type="email" placeholder="Username/ Email" autoComplete="email" value={this.state.signInEmail}
-              onChange={this.onTextboxChangeSignInEmail} />
-                      </InputGroup>
-                      <InputGroup className="mb-4">
-                        <InputGroupAddon addonType="prepend">
-                          <InputGroupText>
-                            <i className="icon-lock"></i>
-                          </InputGroupText>
-                        </InputGroupAddon>
-                        <Input type="password" placeholder="Password" autoComplete="current-password" value={this.state.signInPassword}
-              onChange={this.onTextboxChangeSignInPassword}/>
-                      </InputGroup>
-                      <Row>
-                        <Col xs="6">
-                          <Button color="primary" className="px-4" onClick={this.onSignIn}>Login</Button>
-                        </Col>
-                        <Col xs="6" className="text-right">
-                          <Link to="/ResetFirst">
-                            <Button color="link" className="px-0">Forgot password, reset now?</Button>
-                          </Link>
-                        </Col>
-                      </Row>
-                    </Form>
-                  </CardBody>
-                </Card>
-                <Card className="text-white bg-primary py-5 d-md-down-none" style={{ width: '44%' }}>
-                  <CardBody className="text-center">
-                    <div>
-                      <h2>Sign up</h2>
+                  <Form  className="form-horizontal">   
+                          <center><h6>Already Have A Account?</h6></center> 
+                          <center><h5><b><font color="green">Login</font></b></h5></center>           
+                            <FormGroup row>
+                            <Col md="3">
+                                <Label htmlFor="text-input">Email</Label>
+                              </Col>
+                              <Col xs="12" md="6">
+                                <Input type="text-input" id="text-input" name="text-input" placeholder=" name@email.com" value={this.state.signInEmail}
+              onChange={this.onTextboxChangeSignInEmail}/>           
+                              </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                            <Col md="3">
+                                <Label htmlFor="text-input">Password</Label>
+                              </Col>
+                              <Col xs="12" md="6">
+                                <Input type="password" id="Password" name="Password" placeholder="Password" value={this.state.signInPassword}
+              onChange={this.onTextboxChangeSignInPassword}/>           
+                              </Col>
+                            </FormGroup>
+                           
+                            <FormGroup row>
+                            
+                              <Col md="3">
+                                <input type="checkbox"></input>
+                              </Col>
+                              <Col xs="12" md="3">
+                              <h6><font color="green">Remember me?</font></h6>
+                              </Col>
+                              
+                            </FormGroup> 
+                        
+                              <center><Button  color="success" onClick={this.onSignIn}>Login</Button></center>
+                           
+                              <FormGroup row>
+                                <div><br></br></div>
+                               <div><Link to="/register"><h6>Register </h6></Link></div>
+                               <div><h6>|</h6></div>
+                               <div> <Link to="/ResetFirst"><h6> Lost your password</h6></Link></div>
+                                
+                              </FormGroup> 
                       
-                      <Link to="/register">
-                        <Button color="primary" className="mt-3" active tabIndex={-1}>Register Now!</Button>
-                      </Link>
-                      <GoogleLogin
+                          </Form>       
+                          
+                  </CardBody>
+                  <CardFooter  className="border-warning">
+                  <GoogleLogin
                         clientId="1044290572211-9tqo456g2kknsaj3tpi72lmcjnp18rms.apps.googleusercontent.com"
                         buttonText="Login"
                         onSuccess={responseGoogle}
                         onFailure={responseGoogle}
-                      />,
-   
-    <GoogleLogout
-      buttonText="Logout"
-      onLogoutSuccess={this.logout}
-    >
-    </GoogleLogout>
-                    </div>
-                  </CardBody>
+                      />
+                       {/* <GoogleLogout
+                          buttonText="Logout"
+                          onLogoutSuccess={this.logout}
+                        >
+                        </GoogleLogout> */}
+                  </CardFooter>
                 </Card>
-              </CardGroup>
+                
+             
             </Col>
           </Row>
         </Container>

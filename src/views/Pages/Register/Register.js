@@ -161,7 +161,7 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
                     <Button color="success" block onClick={this.onSignUp}>Create Account</Button>
                   </Form>
                 </CardBody>
-                <CardFooter className="p-4">
+                {/* <CardFooter className="p-4">
                   <Row>
                     <Col xs="12" sm="6">
                       <Button className="btn-facebook mb-1" block><span>facebook</span></Button>
@@ -170,7 +170,7 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
                       <Button className="btn-twitter mb-1" block><span>twitter</span></Button>
                     </Col>
                   </Row>
-                </CardFooter>
+                </CardFooter> */}
               </Card>
             </Col>
           </Row>

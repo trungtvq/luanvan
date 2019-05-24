@@ -87,7 +87,9 @@ class ResetFirst extends Component {
     return (
       <div>
         <AppAppBar />
+        <div className="app flex-row align-items-center">
         <div><br></br></div>
+       
         <Container>
             <Row className="justify-content-center">
               <Col md="9" lg="7" xl="6">
@@ -122,7 +124,7 @@ class ResetFirst extends Component {
               </Col>
             </Row>
           </Container>
-        
+      </div>
         <AppFooter />
       </div>   
     );

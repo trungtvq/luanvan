@@ -88,7 +88,7 @@ class Payment extends Component {
       <div>  
       <AppAppBar/>
       <div><br></br></div>
-     
+      <div className="app flex-row align-items-center">
       <Container>
       <Row>
           <Col>                      
@@ -345,6 +345,7 @@ class Payment extends Component {
         
 
         </Container>
+        </div>
         <AppFooter />
         </div>
     );

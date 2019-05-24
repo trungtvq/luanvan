@@ -25,7 +25,7 @@ import React, { Component } from 'react';
 // ListGroupItem,
 // PaginationLink, } from 'reactstrap';
 import { Link } from 'react-router-dom';
-
+import Board from 'react-trello';
 class Velocity extends Component {
    constructor(props) {
     super(props);
@@ -35,7 +35,25 @@ class Velocity extends Component {
     this.state = {
       collapse: true,
       fadeIn: true,
-      
+       data : {
+        lanes: [
+          {
+            id: 'lane1',
+            title: 'Planned Tasks',
+            label: '2/2',
+            cards: [
+              {id: 'Card1', title: 'Write Blog', description: 'Can AI make memes', label: '30 mins'},
+              {id: 'Card2', title: 'Pay Rent', description: 'Transfer via NEFT', label: '5 mins', metadata: {sha: 'be312a1'}}
+            ]
+          },
+          {
+            id: 'lane2',
+            title: 'Completed',
+            label: '0/0',
+            cards: []
+          }
+        ]
+      }
     };
   }
 
@@ -111,6 +129,36 @@ class Velocity extends Component {
                 </div>
             </div>
         </div>
+        {/* <Board data={this.state.data} /> */}
+        {/* <Board
+  data={{lanes: [
+      {
+        id: 'PLANNED',
+        title: 'Planned Tasks',
+        label: '20/70',
+     
+      },
+      {
+        id: 'WIP',
+        title: 'Work In Progress',
+        label: '10/20',
+  
+      },
+      {
+        id: 'BLOCKED',
+        title: 'Blocked',
+        label: '0/0',
+    
+      },
+  
+    ]}}
+  draggable
+  onDataChange={onDataChange}
+  handleDragStart={handleDragStart}
+  handleDragEnd={handleDragEnd}
+  handleLaneDragStart={handleLaneDragStart}
+  handleLaneDragEnd={handleLaneDragEnd}
+/> */}
       </div>
     
     );
