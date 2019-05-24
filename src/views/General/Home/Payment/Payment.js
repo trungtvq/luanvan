@@ -39,7 +39,7 @@ class Payment extends Component {
     super(props);
     this.state = {
       collapse: false,
-      accordion: [true, false, false,false],
+      accordion: [false, false, false,false],
       custom: [true, false],
       status: 'Closed',
       fadeIn: true,
@@ -226,11 +226,16 @@ class Payment extends Component {
                         <center><h5 className="m-0 p-0">PayPal</h5></center>
                       </Button>
                     </CardHeader>
-                    <div className="app flex-row align-items-center">
-            <PaypalExpressBtn env={env} client={client} currency={currency} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />
-          </div>
-                    {/* <Collapse isOpen={this.state.accordion[2]} data-parent="#accordion" id="collapseThree">
-                      <CardBody>
+                    <Collapse isOpen={this.state.accordion[2]} data-parent="#accordion" id="collapseThree">
+                    <CardBody>
+                    <center>
+                    <div>
+                      <PaypalExpressBtn env={env} client={client} currency={currency} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />
+                    </div>
+                    </center>
+                    </CardBody>
+                      
+                    {/* <CardBody>
                     
                       <Form  className="form-horizontal">   
                           <center><h5><b><font color="green">PAYPAL</font></b></h5></center>  
@@ -267,9 +272,8 @@ class Payment extends Component {
                               <center><button type="button" class="btn btn-success btn-lg">Login</button></center>
                            
                           </Form>       
-
-                      </CardBody>
-                    </Collapse> */}
+                      </CardBody>*/}
+                    </Collapse> 
                   </Card>
                   <Card className="mb-0" className="card-accent-primary">
                     <CardHeader id="headingThree">

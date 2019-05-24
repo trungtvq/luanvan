@@ -85,37 +85,14 @@ export default {
       icon: 'icon-calendar',
     },
     {
-      name: 'Pages',
-      url: '/pages',
-      icon: 'icon-star',
-      children: [
-        {
-          name: 'Login',
-          url: '/login',
-          icon: 'icon-star',
-        },
-        {
-          name: 'Register',
-          url: '/register',
-          icon: 'icon-star',
-        },
-        {
-          name: 'Error 404',
-          url: '/404',
-          icon: 'icon-star',
-        },
-        {
-          name: 'Error 500',
-          url: '/500',
-          icon: 'icon-star',
-        },
-        {
-          name: 'Chat',
-          url: '/Chat',
-          icon: 'icon-star',
-        },
-      ],
+      name: 'Project teams',
+      url: '/AllTeam',
+      icon: 'icon-people',
     },
-    
+    {
+      name: 'Create teams',
+      url: '/CreateTeam',
+      icon: 'icon-pencil',
+    },
   ],
 };

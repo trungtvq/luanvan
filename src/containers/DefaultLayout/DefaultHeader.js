@@ -31,7 +31,14 @@ class DefaultHeader extends Component {
         {name:"team now"},
         {name:"team 3"},
       ],
-      currentTeam:'team now'
+      dataProjectJoin: [
+        {name:"pj 1"},
+        {name:"pj 2"},
+        {name:"project now"},
+        {name:"pj 3"},
+      ],
+      currentTeam:'team now',
+      currentProject:'project now'
     }
   };
 
@@ -46,8 +53,13 @@ class DefaultHeader extends Component {
     let currentTeam=this.state.currentTeam
     {this.setState(prevState=>({dataTeamJoin:[...prevState.dataTeamJoin.filter(function(e) { return e.name !==currentTeam ; })]}))}
   }
+  setOutProjectCurrent=()=>{
+    let currentProject=this.state.currentProject
+    {this.setState(prevState=>({dataProjectJoin:[...prevState.dataProjectJoin.filter(function(e) { return e.name !==currentProject ; })]}))}
+  }
   componentWillMount(){
     {this.setOutTeamCurrent()};
+    {this.setOutProjectCurrent()};
   }
   render() {
     console.log("avatar")
@@ -74,32 +86,19 @@ class DefaultHeader extends Component {
           <NavItem className="px-3">
             <NavLink href="#">Settings</NavLink>
           </NavItem>
-           <NavItem className="px-3">
-           <Button type="button" color="light" href="/myproject">All project</Button>
-
-          </NavItem>
-          <NavItem className="px-3">
-          <Button type="button" color="light" href="/AllTeam">All team</Button>  
-          </NavItem>
+         
+         
          
           <NavItem className="px-3">
-          <Button type="button" color="light" href="/CreateTeam">Creat team</Button>  
+              <Input type="select" name="select" id="select">
+              <option value={that.state.currentProject} >{that.state.currentProject}</option>
+              {this.state.dataProjectJoin.map(function (item, key) {               
+                  return (                          
+                             <option value={item.name}>{item.name} </option>                           
+                          )})}               
+              </Input>            
           </NavItem>
           <NavItem className="px-3">
-              {/* <UncontrolledDropdown color="light">
-                <DropdownToggle caret>
-                    Team A
-                </DropdownToggle>
-                <DropdownMenu>
-                {this.state.dataTeamJoin.map(function (item, key) {
-                  let itemTeam = item;
-                  return (
-                    <DropdownItem >{item.name}</DropdownItem>
-                   
-                  )})}
-                 
-                </DropdownMenu>
-              </UncontrolledDropdown> */}
               <Input type="select" name="select" id="select">
               <option value={that.state.currentTeam} >{that.state.currentTeam}</option>
               {this.state.dataTeamJoin.map(function (item, key) {               
