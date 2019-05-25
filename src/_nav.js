@@ -45,7 +45,7 @@ export default {
     },
     
      {
-      name: 'Velocity',
+      name: 'Board planning',
       url: '/Member/Velocity',
       icon: 'icon-rocket',
     },

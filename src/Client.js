@@ -245,16 +245,6 @@ class Client extends Component {
         console.log('hasProject' + this.props.hasProject)
         console.log('hasTeam' + this.props.hasTeam)
         return (
-<<<<<<< HEAD
-                <authContext.Provider>
-                    <BrowserRouter>
-                        {
-                           this.props.isLogin ?<div>  <Switch>
-                                <Route exact path="/homeNav" name="HomeNav" component={Demo} />
-                                                           
-                                <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
-                                <Route exact path="/Home/Final" name="HomeFinal" component={HomeFinal} />
-=======
             <authContext.Provider>
                 <BrowserRouter>
                     {
@@ -285,7 +275,6 @@ class Client extends Component {
 
 
                                             <Route path="/" name="Home" component={DefaultLayout} />
->>>>>>> 51be2d2984aef89fb55626853493f726f5d54a27
 
 
                                         </Switch>
