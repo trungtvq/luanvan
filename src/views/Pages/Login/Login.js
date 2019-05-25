@@ -153,6 +153,8 @@ class Login extends Component {
     });
     response.on('status', function (status) {
         let flat = false
+        console.log("allProject")
+        console.log(that.props.currentProject)
         let cp = getFromStorage("currentProject")
         let lastCreated = ''
         let lastName=''
@@ -490,10 +492,11 @@ class Examples extends Component {
   }
 }
 function mapStateToProps(state) {
-  const { changeStatusLogin } = state
+  const { changeStatusLogin,updateProjectLoaded } = state
   const { isLogin, id, token } = changeStatusLogin
+  const currentProject = updateProjectLoaded.project
   return {
-      isLogin, id, token
+      isLogin, id, token,currentProject
   }
 }
 export default connect(mapStateToProps)(Login);
