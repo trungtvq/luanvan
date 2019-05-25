@@ -224,7 +224,7 @@ class Detail extends Component {
     AddNewProductBacklogReq.setPriority(this.state.priority)
     AddNewProductBacklogReq.setEstimation(this.state.estimation)
     AddNewProductBacklogReq.setSprintid(this.state.sprint)
-    AddNewProductBacklogReq.setStatusbacklog(this.state.status)
+    AddNewProductBacklogReq.setStatusbacklog("to do")
 
 
     productbacklogService.addNewProductBacklog(AddNewProductBacklogReq, metadata, (err, response) => {
@@ -329,7 +329,7 @@ class Detail extends Component {
     UpdateProductBacklogReq.setPriority(this.state.priority);
     UpdateProductBacklogReq.setEstimation(this.state.estimation);
     UpdateProductBacklogReq.setSprintid(this.state.sprint);
-    UpdateProductBacklogReq.setStatusbacklog(this.state.status);
+    UpdateProductBacklogReq.setStatusbacklog("to do");
     productbacklogService.updateProductBacklog(UpdateProductBacklogReq, metadata, (err, response) => {
       if (err) { //if error
         console.log(err);
@@ -464,7 +464,7 @@ class Detail extends Component {
                     <th>Priority <i class="fa fa-sort"></i></th>
                     <th>Estimation <i class="fa fa-sort"></i></th>
                     <th>Sprint <i class="fa fa-sort"></i> </th>
-                    <th>Status < i class="fa fa-sort"></i></th>
+                   
                     <th>
                       <div>
                         <Button color="primary" size="sm" className="mt-3" onClick={that.toggleAdd}><i class="fa fa-plus-square"></i>{this.props.buttonLabel}</Button>
@@ -510,18 +510,15 @@ class Detail extends Component {
                                 </Col>
                               </FormGroup>
 
-                              <FormGroup row>
+                              {/* <FormGroup row>
                                 <Col md="3">
                                   <Label htmlFor="date-input">Status </Label>
                                 </Col>
                                 <Col xs="12" md="2">
-                                  <Input type="select" name="select" id="select" onChange={that.onTextboxChangeStatus}>
-                                          <option value="0">Please select</option>
-                                          <option value="Todo">Todo</option>
-                                          <option value="Inprogress">Inprogress</option>
-                                          <option value="Done">Done</option>
-                                  </Input>                                                  </Col>
-                              </FormGroup>
+                                <Input type="text" name="priority" id="priority" rows="9" value="To do" />
+                                     
+                                </Col>
+                              </FormGroup> */}
 
                               <FormGroup row>
                                 <Col md="1">
@@ -603,14 +600,7 @@ class Detail extends Component {
                                     value={that.state.so}/>
                                 </Col>
                               </FormGroup>
-                              <FormGroup row>
-                                <Col md="3">
-                                  <Label htmlFor="date-input">Status</Label>
-                                </Col>
-                                <Col xs="12" md="2">
-                                <Input type="text" id="text-input" name="text-input" value={that.state.status} />               
-                                </Col>
-                              </FormGroup>
+                             
                               <FormGroup row>
                                 <Col md="1">
                                   <Label htmlFor="text-input">Priority</Label>
@@ -649,7 +639,7 @@ class Detail extends Component {
                       <td>{item.priority}</td>
                       <td>{item.estimation}</td>
                       <td>{item.sprint}</td>
-                      <td>{item.status}</td>
+                      {/* <td>{item.status}</td> */}
                       <td>
                         <div data-id={item.id}  onClick={that.toggleSendOpen}>
                         <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
@@ -748,7 +738,7 @@ class Detail extends Component {
                                     placeholder="Content..." value={that.state.so}  onChange={that.onTextboxChangeSo}/>
                                 </Col>
                               </FormGroup>
-                              <FormGroup row>
+                              {/* <FormGroup row>
                                 <Col md="3">
                                   <Label htmlFor="date-input">Status</Label>
                                 </Col>
@@ -760,7 +750,7 @@ class Detail extends Component {
                                           <option value="Done">Done</option>
                                   </Input>                                                     
                                 </Col>
-                              </FormGroup>
+                              </FormGroup> */}
                               <FormGroup row>
                                 <Col md="1">
                                   <Label htmlFor="text-input">Priority</Label>
