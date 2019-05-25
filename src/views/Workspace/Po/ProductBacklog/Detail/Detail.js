@@ -224,7 +224,7 @@ class Detail extends Component {
     AddNewProductBacklogReq.setPriority(this.state.priority)
     AddNewProductBacklogReq.setEstimation(this.state.estimation)
     AddNewProductBacklogReq.setSprintid(this.state.sprint)
-    AddNewProductBacklogReq.setStatusbacklog("to do")
+    AddNewProductBacklogReq.setStatusbacklog("To do")
 
 
     productbacklogService.addNewProductBacklog(AddNewProductBacklogReq, metadata, (err, response) => {
@@ -329,7 +329,7 @@ class Detail extends Component {
     UpdateProductBacklogReq.setPriority(this.state.priority);
     UpdateProductBacklogReq.setEstimation(this.state.estimation);
     UpdateProductBacklogReq.setSprintid(this.state.sprint);
-    UpdateProductBacklogReq.setStatusbacklog("to do");
+    UpdateProductBacklogReq.setStatusbacklog("To do");
     productbacklogService.updateProductBacklog(UpdateProductBacklogReq, metadata, (err, response) => {
       if (err) { //if error
         console.log(err);

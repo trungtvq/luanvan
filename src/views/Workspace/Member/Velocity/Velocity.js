@@ -41,7 +41,7 @@ class Velocity extends Component {
         {
           id: "To do",             //chứa các task to do
           title: "Planned Tasks",
-          label: "3/7",             //số task todo chia cho tổng số task
+          label: "1",             //số task todo 
           style: {"width": 350,"color":"blue",},
           cards: [
             {
@@ -56,7 +56,7 @@ class Velocity extends Component {
         {
           id: "InProgress",             //chứa các task InProgress
           title: "Work In Progress",
-          label: "10/20",
+          label: "1",                    //số task InProgress 
           style: {"width": 350,"color":"orange  "},
           cards: [
             {
@@ -73,7 +73,7 @@ class Velocity extends Component {
           id: "Done",                    //chứa các task done
           title: "DONE",
           style: {"width": 350,"color":"green" },
-          label: "2/5",
+          label: "1",                         //số task done 
           cards: [
             {
               id: "3",
