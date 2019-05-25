@@ -29,6 +29,10 @@ import {
   ModalFooter,
 
 } from 'reactstrap';
+import {
+  getFromStorage,
+  setInStorage
+} from '../../../../service/storage'
 import { Link } from 'react-router-dom';
 import Demo from '../../../../homeNav'
 
@@ -147,9 +151,9 @@ class AllTeam extends Component {
     var metadata = {};
 
     var GetAllTeamReq = new proto.team.GetAllTeamReq();
-    GetAllTeamReq.setRequesterid(cookie.load("userId"));
-    GetAllTeamReq.setProjectid(cookie.load("currentProject"));
-    GetAllTeamReq.setAccesstoken(cookie.load("accessToken"));
+    GetAllTeamReq.setRequesterid(getFromStorage("userId"));
+    GetAllTeamReq.setProjectid(getFromStorage("currentProject"));
+    GetAllTeamReq.setAccesstoken(getFromStorage("accessToken"));
     let response = teamService.getAllTeam(GetAllTeamReq, metadata)
 
     let that = this
@@ -189,9 +193,9 @@ class AllTeam extends Component {
     var metadata = {};
 
     var GetAllMemberReq = new proto.team.GetAllMemberReq();
-    GetAllMemberReq.setRequesterid(cookie.load("userId"));
+    GetAllMemberReq.setRequesterid(getFromStorage("userId"));
     GetAllMemberReq.setTeamid(id);
-    GetAllMemberReq.setAccesstoken(cookie.load("accessToken"));
+    GetAllMemberReq.setAccesstoken(getFromStorage("accessToken"));
     let response = teamService.getAllMember(GetAllMemberReq, metadata)
 
     let that = this
@@ -252,8 +256,8 @@ class AllTeam extends Component {
     var metadata = {};
 
     var AddMemberReq = new proto.team.AddMemberReq();
-    AddMemberReq.setRequesterid(cookie.load("userId"));
-    AddMemberReq.setAccesstoken(cookie.load("accessToken"));
+    AddMemberReq.setRequesterid(getFromStorage("userId"));
+    AddMemberReq.setAccesstoken(getFromStorage("accessToken"));
     AddMemberReq.setTeamid(this.state.updateTeamId)
     AddMemberReq.setMemberemail(this.state.emailMember)
     AddMemberReq.setRole(this.state.roleMember)
@@ -316,8 +320,8 @@ class AllTeam extends Component {
     var metadata = {};
 
     var RemoveMemberReq = new proto.team.RemoveMemberReq();
-    RemoveMemberReq.setRequesterid(cookie.load("userId"));
-    RemoveMemberReq.setAccesstoken(cookie.load("accessToken"));
+    RemoveMemberReq.setRequesterid(getFromStorage("userId"));
+    RemoveMemberReq.setAccesstoken(getFromStorage("accessToken"));
     RemoveMemberReq.setTeamid(idteam)
     RemoveMemberReq.setMemberemail(idmember);
     let that = this
@@ -368,8 +372,8 @@ class AllTeam extends Component {
     var metadata = {};
 
     var UpdateTeamReq = new proto.team.UpdateTeamReq();
-    UpdateTeamReq.setRequesterid(cookie.load("userId"));
-    UpdateTeamReq.setAccesstoken(cookie.load("accessToken"));
+    UpdateTeamReq.setRequesterid(getFromStorage("userId"));
+    UpdateTeamReq.setAccesstoken(getFromStorage("accessToken"));
     UpdateTeamReq.setTeamid(this.state.updateTeamId)
     UpdateTeamReq.setName(this.state.nameTeam);
     UpdateTeamReq.setDepartment(this.state.departmentTeam);
@@ -416,8 +420,8 @@ class AllTeam extends Component {
     var metadata = {};
 
     var DeleteTeamReq = new proto.team.DeleteTeamReq();
-    DeleteTeamReq.setRequesterid(cookie.load("userId"));
-    DeleteTeamReq.setAccesstoken(cookie.load("accessToken"));
+    DeleteTeamReq.setRequesterid(getFromStorage("userId"));
+    DeleteTeamReq.setAccesstoken(getFromStorage("accessToken"));
     DeleteTeamReq.setTeamid(id)
     let that = this
     teamService.deleteTeam(DeleteTeamReq, metadata, (err, response) => {

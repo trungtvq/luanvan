@@ -1,4 +1,4 @@
-import {saveLogin} from '../../../actions'
+import {saveLogin,setTeam,setProject,addProject} from '../../../actions'
 import { connect } from 'react-redux'
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
@@ -12,22 +12,16 @@ import { GoogleLogin } from 'react-google-login';
 import cookie from 'react-cookies';
 import ReactList from 'react-list';
 import { CardHeader } from '@material-ui/core';
+import {
+  getFromStorage,
+  setInStorage
+} from '../../../service/storage'
 const image2base64 = require('image-to-base64')
+
 const proto = {};
 proto.auth = require('./../../../gRPC/auth/auth_grpc_web_pb');
-
-const styles = theme => ({
-  form: {
-    marginTop: theme.spacing.unit * 6,
-  },
-  button: {
-    marginTop: theme.spacing.unit * 3,
-    marginBottom: theme.spacing.unit * 2,
-  },
-  feedback: {
-    marginTop: theme.spacing.unit * 2,
-  },
-});
+proto.myproject = require('./../../../gRPC/myproject/myproject_grpc_web_pb');
+proto.team = require('./../../../gRPC/team/team_grpc_web_pb');
 
 class Login extends Component {
     static contextType =  authContext; 
@@ -89,17 +83,19 @@ class Login extends Component {
      SignInReq.setPassword(signInPassword);
      
      console.log("signIn")
+     let that=this
       authService.signIn(SignInReq, metadata, (err, response) => {
         if (err) { 
           console.log(err);
         } else { 
           if (response.getStatus()=="SUCCESS"){
-            cookie.save('userId',response.getId())
-            cookie.save('accessToken',response.getSession())
-            cookie.save('username',signInEmail)
-            cookie.save('name',response.getName())
-            cookie.save('avatar',response.getAvatar())
+            setInStorage('userId',response.getId())
+            setInStorage('accessToken',response.getSession())
+            setInStorage('username',signInEmail)
+            setInStorage('name',response.getName())
+            setInStorage('avatar',response.getAvatar())
             this.props.dispatch(saveLogin(response.getId(),response.getSession(),signInEmail,response.getName(),response.getAvatar()))
+            that.getAllProject();
           }
         }
       });
@@ -113,19 +109,22 @@ class Login extends Component {
      SignInGoogleReq.setUsername(profileObj.email);
      SignInGoogleReq.setName(profileObj.givenName+" "+profileObj.givenName);
      SignInGoogleReq.setAvatar(profileObj.imageUrl);
+     let that=this
+
      authService.signInGoogle(SignInGoogleReq, metadata, (err, response) => {
         if (err) { 
           console.log(err);
         } else { 
           console.log("SUCCESS")
           if (response.getStatus()=="SUCCESS"){
-            cookie.save('userId',response.getId())
-            cookie.save('accessToken',response.getSession())
-            cookie.save('username',profileObj.email)
-            cookie.save('name',response.getName())
+            setInStorage('userId',response.getId())
+            setInStorage('accessToken',response.getSession())
+            setInStorage('username',profileObj.email)
+            setInStorage('name',response.getName())
            
-            cookie.save('avatar',response.getAvatar())
+            setInStorage('avatar',response.getAvatar())
             this.props.dispatch(saveLogin(response.getId(),response.getSession(),profileObj.email,response.getName(),response.getAvatar()))
+            that.getAllProject();
           }
         }
       });
@@ -136,6 +135,101 @@ class Login extends Component {
     })
   }
  
+  getAllProject = () => {
+    let dispatch = this.props.dispatch
+    const myprojectService = new proto.myproject.MyprojectClient('https://www.overlead.co');
+    var metadata = {};
+    var GetAllProjectReq = new proto.myproject.GetAllProjectReq();
+    GetAllProjectReq.setRequesterid(getFromStorage("userId"));
+    GetAllProjectReq.setCookie(getFromStorage("accessToken"));
+    let that = this
+    var response = myprojectService.getAllProject(GetAllProjectReq, metadata)
+
+    response.on('data', function (response) {
+        if (response.getStatus() == "SUCCESS") {
+            dispatch(addProject(response.getProjectid(), response.getTopic(), response.getProjectname(), response.getStart(), response.getEnd(), response.getPrivate(), response.getProgress()))
+            console.log("receipt")
+        }
+    });
+    response.on('status', function (status) {
+        let flat = false
+        let cp = getFromStorage("currentProject")
+        let lastCreated = ''
+        let lastName=''
+        console.log("currentProject:")
+        console.log(that.props.currentProject)
+        that.props.currentProject.map(p => {
+            if (p.id == cp) flat = true
+            lastCreated = p.id
+            lastName=p.projectName
+            return p
+        })
+
+        if (flat == false)
+            setInStorage('currentProject', lastCreated)
+
+        if (getFromStorage('currentProject') != null && getFromStorage('currentProject') != '') {
+            that.loadAllTeam()
+            that.props.dispatch(setProject(lastCreated,lastName))
+        }
+
+
+    });
+    response.on('end', function (end) {
+        console.log("edddddddddddddd")
+        console.log(end)
+
+    });
+
+
+
+}
+
+loadAllTeam = () => {
+    console.log("getAllTeam")
+    const teamService = new proto.team.TeamClient('https://www.overlead.co');
+    var metadata = {};
+
+    var GetAllTeamReq = new proto.team.GetAllTeamReq();
+    GetAllTeamReq.setRequesterid(getFromStorage("userId"));
+    GetAllTeamReq.setProjectid(getFromStorage("currentProject"));
+    GetAllTeamReq.setAccesstoken(getFromStorage("accessToken"));
+    let response = teamService.getAllTeam(GetAllTeamReq, metadata)
+    console.log("currenProject"+getFromStorage("currentProject"))
+    let that = this
+    let lastTeam = ''
+    let lastName=''
+    let validTeam = false
+    response.on('data', function (response) {
+        if (response.getStatus() == "SUCCESS") {
+            console.log("hasTeam"+response.getTeamid())
+
+            if (getFromStorage('teamId') == response.getTeamid())
+                validTeam = true
+            else {
+                lastTeam = response.getTeamid()
+                lastName= response.getName()
+            }
+
+        }
+    })
+    response.on('status', function (status) {
+        console.log("status"+status.code)
+        if (validTeam == false) {
+            if (lastTeam != '') {
+                setInStorage('teamId', lastTeam)
+                that.props.dispatch(setTeam(lastTeam,lastName))
+            }    
+        }
+        else {
+            that.props.dispatch(setTeam(getFromStorage('teamId'),getFromStorage('teamName')))
+        }
+    });
+    response.on('end', function (end) {
+
+    });
+    
+}
   render() {
     const responseGoogle = (response) => {
       this.onSignInGoogle(response.profileObj);
@@ -192,8 +286,11 @@ class Login extends Component {
                               
                             </FormGroup> 
                         
-                              <center><Button  color="success" onClick={this.onSignIn}>Login</Button></center>
-                           
+                              <center>
+                              <Link to="/DashBoard">
+                                <Button  color="success" onClick={this.onSignIn}>Login</Button>
+                              </Link>
+                              </center>
                               <FormGroup row>
                                 <div><br></br></div>
                                <div><Link to="/register"><h6>Register </h6></Link></div>

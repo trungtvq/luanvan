@@ -68,8 +68,8 @@ class detail extends Component {
     const myprofileService = new proto.profile.ProfileClient('https://www.overlead.co');
     var metadata = {};
     var GetProfileReq = new proto.profile.GetProfileReq();
-    GetProfileReq.setRequesterid(cookie.load("userId"));
-    GetProfileReq.setAccesstoken(cookie.load("accessToken"));
+    GetProfileReq.setRequesterid(getFromStorage("userId"));
+    GetProfileReq.setAccesstoken(getFromStorage("accessToken"));
     let that = this
     myprofileService.getProfile(GetProfileReq, metadata, (err, response) => {
       if (err) { //if error
@@ -104,8 +104,8 @@ class detail extends Component {
     const myprofileService = new proto.profile.ProfileClient('https://www.overlead.co');
     var metadata = {};
     var UpdateProfileReq = new proto.profile.UpdateProfileReq();
-    UpdateProfileReq.setRequesterid(cookie.load("userId"));
-    UpdateProfileReq.setAccesstoken(cookie.load("accessToken"));
+    UpdateProfileReq.setRequesterid(getFromStorage("userId"));
+    UpdateProfileReq.setAccesstoken(getFromStorage("accessToken"));
     UpdateProfileReq.setAvatar(this.state.avatar);
     UpdateProfileReq.setName(this.state.name);
     UpdateProfileReq.setAddress(this.state.address);

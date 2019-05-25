@@ -36,6 +36,10 @@ FormGroup,
 Label,
 ModalFooter
 } from 'reactstrap';
+import {
+  getFromStorage,
+  setInStorage
+} from './service/storage'
 const proto = {};
 proto.myproject = require('./gRPC/myproject/myproject_grpc_web_pb');
 const styles = theme => ({
@@ -172,13 +176,13 @@ toggleActionStatus = () => {
 
     var AddNewProjectReq= new proto.myproject.AddNewProjectReq();
     AddNewProjectReq.setTopic(this.state.Topic);
-    AddNewProjectReq.setRequesterid(cookie.load("userId"));
+    AddNewProjectReq.setRequesterid(getFromStorage("userId"));
     AddNewProjectReq.setProjectname(this.state.ProjectName);
 
     AddNewProjectReq.setStart(start);
     AddNewProjectReq.setEnd(end);
     AddNewProjectReq.setPrivate(this.state.isPrivate);
-    AddNewProjectReq.setCookie(cookie.load("accessToken"));
+    AddNewProjectReq.setCookie(getFromStorage("accessToken"));
     myprojectService.addNewProject(AddNewProjectReq, metadata, (err, response) => {
       if (err) { //if error
          console.log(err);

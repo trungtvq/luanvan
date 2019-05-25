@@ -4,13 +4,14 @@ import cookie from 'react-cookies';
 import {saveLogin} from '../../../actions'
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
-import {
-  getFromStorage,
-  } from '../../../service/storage';
 import Logout from './../../../components/Logout'
 
 import AppFooter from './modules/views/AppFooter';
 import AppAppBar from './modules/views/AppAppBar';
+import {
+  getFromStorage,
+  setInStorage
+} from '../../../service/storage'
 const proto = {};
 proto.auth = require('./../../../gRPC/auth/auth_grpc_web_pb');
 
@@ -98,8 +99,8 @@ class ResetSecond extends Component {
     //create var for react
     var ResetPasswordFinalStepReq = new proto.auth.ResetPasswordFinalStepReq();
     //set data from frontend to this var
-    console.log(cookie.load("resetUsername"))
-    ResetPasswordFinalStepReq.setUsername(cookie.load("resetUsername"));
+    console.log(getFromStorage("resetUsername"))
+    ResetPasswordFinalStepReq.setUsername(getFromStorage("resetUsername"));
     ResetPasswordFinalStepReq.setToken(Code);
     ResetPasswordFinalStepReq.setPassword(NewPassword);
       //make a request to server
@@ -109,12 +110,12 @@ class ResetSecond extends Component {
         } else { //if success
           console.log(response.getStatus())
           if (response.getStatus()=="SUCCESS"){
-            cookie.save('userId',response.getId())
-            cookie.save('accessToken',response.getSession())//id,token,email,name,avatar
-            cookie.save('username',cookie.load("resetUsername"))
-            cookie.save('name',response.getName())
-            cookie.save('avatar',response.getAvatar())
-            this.props.dispatch(saveLogin(response.getId(),response.getSession(),cookie.load("resetUsername"),response.getName(),response.getAvatar()))
+            setInStorage('userId',response.getId())
+            setInStorage('accessToken',response.getSession())//id,token,email,name,avatar
+            setInStorage('username',getFromStorage("resetUsername"))
+            setInStorage('name',response.getName())
+            setInStorage('avatar',response.getAvatar())
+            this.props.dispatch(saveLogin(response.getId(),response.getSession(),getFromStorage("resetUsername"),response.getName(),response.getAvatar()))
           
           }
           

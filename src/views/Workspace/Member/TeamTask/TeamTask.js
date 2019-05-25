@@ -4,31 +4,14 @@ Form,
 FormGroup,
 Label,
 Card,
-CardBody, 
-CardFooter,
-CardHeader,
-Collapse,
-Progress, 
-Badge, 
 Button, 
 Col, 
-Container, 
 Input, 
-InputGroup, 
-InputGroupAddon, 
-InputGroupText, 
 Row, 
-Table, 
-Pagination, 
-PaginationItem,
-ListGroup,
-ListGroupItem,
-PaginationLink,
 Modal,
 ModalHeader,
 ModalBody,
 ModalFooter, } from 'reactstrap';
-import { Link } from 'react-router-dom';
 
 
 class TeamTask extends Component {
@@ -207,9 +190,7 @@ class TeamTask extends Component {
     let that=this;
     return (
       <Row>
-          <Col>        
-
-                
+          <Col>                        
                 <Row>       
                     <Col xs="2" md="2">
                       <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 

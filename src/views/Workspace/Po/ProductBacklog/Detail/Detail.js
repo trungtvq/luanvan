@@ -11,7 +11,11 @@ import {
   ModalFooter
 } from 'reactstrap';
 import cookie from 'react-cookies';
-
+import {
+  getFromStorage,
+  setInStorage
+} from '../../../../../service/storage'
+import DatePicker from "react-datepicker";
 const proto = {};
 proto.productbacklog = require('./../../../../../gRPC/productbacklog/productbacklog_grpc_web_pb');
 
@@ -33,15 +37,24 @@ class Detail extends Component {
       sprint: '',
       status: "",
       title: "",
+      startDate: new Date(),
+      endDate: new Date(),
+      backlogSendId:""
     }
   };
   componentDidMount() {
+    let end = this.state.endDate;
+    end.setDate(end.getDate() + 15);
+    this.setState({
+      endDate: end
+    })
+
     const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
     var metadata = {};
     var GetAllProductBacklogReq = new proto.productbacklog.GetAllProductBacklogReq();
-    GetAllProductBacklogReq.setRequesterid(cookie.load("userId"));
-    GetAllProductBacklogReq.setAccesstoken(cookie.load("accessToken"));
-    GetAllProductBacklogReq.setProjectid(cookie.load("currentProject"));
+    GetAllProductBacklogReq.setRequesterid(getFromStorage("userId"));
+    GetAllProductBacklogReq.setAccesstoken(getFromStorage("accessToken"));
+    GetAllProductBacklogReq.setProjectid(getFromStorage("currentProject"));
 
     var response = productbacklogService.getAllProductBacklog(GetAllProductBacklogReq, metadata)
     let that = this
@@ -88,6 +101,7 @@ class Detail extends Component {
       modalAdd: !prevState.modalAdd
     }));
   }
+ 
   toggleDetail = (event) => {
 
     let title = event.currentTarget.dataset.title
@@ -141,7 +155,13 @@ class Detail extends Component {
       modalSend: !prevState.modalSend
     }));
   }
-
+  toggleSendOpen = (event) => {
+    let id=event.currentTarget.dataset.id
+    this.setState(prevState => ({
+      modalSend: !prevState.modalSend,
+      backlogSendId: id
+    }));
+  }
   onTextboxChangeRole = (event) => {
     this.setState({
       role: event.target.value,
@@ -195,12 +215,12 @@ class Detail extends Component {
 
     var AddNewProductBacklogReq = new proto.productbacklog.AddNewProductBacklogReq();
     AddNewProductBacklogReq.setTitle(this.state.title);
-    AddNewProductBacklogReq.setRequesterid(cookie.load("userId"));
-    AddNewProductBacklogReq.setProjectid(cookie.load("currentProject"));
+    AddNewProductBacklogReq.setRequesterid(getFromStorage("userId"));
+    AddNewProductBacklogReq.setProjectid(getFromStorage("currentProject"));
     AddNewProductBacklogReq.setRole(this.state.role);
     AddNewProductBacklogReq.setWant(this.state.want);
     AddNewProductBacklogReq.setSo(this.state.so);
-    AddNewProductBacklogReq.setAccesstoken(cookie.load("accessToken"));
+    AddNewProductBacklogReq.setAccesstoken(getFromStorage("accessToken"));
     AddNewProductBacklogReq.setPriority(this.state.priority)
     AddNewProductBacklogReq.setEstimation(this.state.estimation)
     AddNewProductBacklogReq.setSprintid(this.state.sprint)
@@ -263,10 +283,10 @@ class Detail extends Component {
     //make a request to server
 
     var DeleteProductBacklogReq = new proto.productbacklog.DeleteProductBacklogReq();
-    DeleteProductBacklogReq.setRequesterid(cookie.load("userId"));
-    DeleteProductBacklogReq.setProjectid(cookie.load("currentProject"));
+    DeleteProductBacklogReq.setRequesterid(getFromStorage("userId"));
+    DeleteProductBacklogReq.setProjectid(getFromStorage("currentProject"));
     DeleteProductBacklogReq.setProductbacklogid(id);
-    DeleteProductBacklogReq.setAccesstoken(cookie.load("accessToken"));
+    DeleteProductBacklogReq.setAccesstoken(getFromStorage("accessToken"));
 
     productbacklogService.deleteProductBacklog(DeleteProductBacklogReq, metadata, (err, response) => {
       if (err) { //if error
@@ -294,15 +314,14 @@ class Detail extends Component {
 
   handleUpdate = (event) => {
     console.log("handleUpdate")
-    let id = event.currentTarget.dataset.id
 
     const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
     var metadata = {};
     console.log("so"+this.state.so)
     var UpdateProductBacklogReq = new proto.productbacklog.UpdateProductBacklogReq();
-    UpdateProductBacklogReq.setRequesterid(cookie.load("userId"));
-    UpdateProductBacklogReq.setAccesstoken(cookie.load("accessToken"));
-    UpdateProductBacklogReq.setProjectid(cookie.load("currentProject"));
+    UpdateProductBacklogReq.setRequesterid(getFromStorage("userId"));
+    UpdateProductBacklogReq.setAccesstoken(getFromStorage("accessToken"));
+    UpdateProductBacklogReq.setProjectid(getFromStorage("currentProject"));
     UpdateProductBacklogReq.setProductbacklogid(this.state.updateId);
     UpdateProductBacklogReq.setRole(this.state.role);
     UpdateProductBacklogReq.setWant(this.state.want);
@@ -358,8 +377,59 @@ class Detail extends Component {
     });
   };
   handleSend = () => {
+    console.log(this.state.backlogSendId)
+    const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
 
+    var metadata = {};
+    //make a request to server
+
+
+    let d = this.state.startDate;
+    let start = d.getMinutes() + "-" + d.getHours() + "-" + d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
+    d = this.state.endDate;
+    let end = d.getMinutes() + "-" + d.getHours() + "-" + d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
+    var SendToSprintBacklogReq = new proto.productbacklog.SendToSprintBacklogReq();
+    SendToSprintBacklogReq.setRequesterid(getFromStorage("userId"));
+    SendToSprintBacklogReq.setProjectid(getFromStorage("currentProject"));
+    SendToSprintBacklogReq.setProductbacklogid(this.state.backlogSendId);
+    SendToSprintBacklogReq.setStart(start);
+    SendToSprintBacklogReq.setDeadline(end);
+    SendToSprintBacklogReq.setTeamid(getFromStorage('teamId'));
+    SendToSprintBacklogReq.setAccesstoken(getFromStorage("accessToken"));
+    let that=this
+    productbacklogService.sendToSprintBacklog(SendToSprintBacklogReq, metadata, (err, response) => {
+      if (err) { //if error
+        console.log(err);
+      } else {
+        if (response.getStatus() == "SUCCESS") {
+
+          that.setState({
+            actionStatus: "SUCCESS",
+            modalActionStatus: true,
+          });
+          that.setState(prevState => ({ data: [...prevState.data.filter(function (e) { return e.id !== that.state.backlogSendId; })] }));
+        } else {
+          that.setState({
+            actionStatus: "FALSE",
+          });
+          that.setState(prevState => ({
+            modalActionStatus: !prevState.modalActionStatus,
+          }));
+        }
+      }
+
+    });
   };
+  onChangeStartDate = (date) => {
+    this.setState({
+      startDate: date
+    });
+  }
+  onChangeEndDate = (date) => {
+    this.setState({
+      endDate: date
+    });
+  }
   render() {
 
     let that = this;
@@ -581,7 +651,9 @@ class Detail extends Component {
                       <td>{item.sprint}</td>
                       <td>{item.status}</td>
                       <td>
-                        <Button type="submit" size="sm" color="success" onClick={that.toggleSend}><i class="fa fa-share-square"></i></Button>
+                        <div data-id={item.id}  onClick={that.toggleSendOpen}>
+                        <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
+                        </div>
                         <Modal size="lg" isOpen={that.state.modalSend} toggle={that.toggleSend} className={that.props.className}>
                           <ModalHeader toggle={that.toggleSend}>ProductBacklog</ModalHeader>
                           <ModalBody>
@@ -595,10 +667,17 @@ class Detail extends Component {
                                       <Label htmlFor="date-input">Start </Label>
                                     </Col>
                                     <Col xs="3" md="3">
-                                      <Input type="time" id="timeStart" name="timeStart" />
-                                    </Col>
-                                    <Col xs="3" md="3">
-                                      <Input type="date" id="dateStart" name="dateStart" />
+                                    <DatePicker
+
+                                      selected={that.state.startDate}
+                                      timeInputLabel="Time:"
+                                      onChange={that.onChangeStartDate}
+                                      dateFormat="dd/MM/yyyy h:mm aa"
+                                      showTimeInput
+                                      />
+
+                                
+
                                     </Col>
                                   </FormGroup>
 
@@ -606,12 +685,17 @@ class Detail extends Component {
                                     <Col md="3">
                                       <Label htmlFor="date-input">End </Label>
                                     </Col>
+
                                     <Col xs="3" md="3">
-                                      <Input type="time" id="timeEnd" name="timeEnd" />
+                                    <DatePicker
+                                      selected={that.state.endDate}
+                                      timeInputLabel="Time:"
+                                      onChange={that.onChangeEndDate}
+                                      dateFormat="dd/MM/yyyy h:mm aa"
+                                      showTimeInput
+                                      />
                                     </Col>
-                                    <Col xs="3" md="3">
-                                      <Input type="date" id="dateEnd" name="dateEnd" />
-                                    </Col>
+
                                   </FormGroup>
 
 
@@ -625,13 +709,14 @@ class Detail extends Component {
                             <Button color="secondary" onClick={that.toggleSend}>Cancel</Button>
                           </ModalFooter>
                         </Modal>
+
+                        {/* update */}
                         <div data-id={item.id} data-title={item.title} data-role={item.role} data-want={item.want} 
                              data-so={item.so} data-priority={item.priority} data-estimation={item.estimation} 
                              data-sprint={item.sprint} data-status={item.status}
                         onClick={that.toggleEdit}>
                           <Button color="warning" size="sm"><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
-                        </div>
-                        
+                        </div>                        
                         <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
                           <ModalHeader toggle={that.toggleEdit}>ProductBacklog</ModalHeader>
                           <ModalBody>
@@ -711,6 +796,9 @@ class Detail extends Component {
                             <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
                           </ModalFooter>
                         </Modal>
+                        
+
+                        {/* delete */}
                         <div data-id={item.id} onClick={that.handleDelete}><Button size="sm" color="danger" ><i class="fa fa-trash"></i></Button></div>
                       </td>
                     </tr>

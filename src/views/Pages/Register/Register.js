@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 
-import {
-  getFromStorage,
-  } from '../../../service/storage';
 import Logout from './../../../components/Logout'
 import cookie from 'react-cookies';
 import {saveLogin} from '../../../actions'
@@ -12,6 +9,10 @@ import { connect } from 'react-redux'
 
 import AppFooter from './modules/views/AppFooter';
 import AppAppBar from './modules/views/AppAppBar';
+import {
+  getFromStorage,
+  setInStorage
+} from '../../../service/storage'
 const proto = {};
 proto.auth = require('./../../../gRPC/auth/auth_grpc_web_pb');
 
@@ -88,11 +89,12 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
         } else { //if success
           //get response
           if (response.getStatus()=="SUCCESS"){
-            cookie.save('userId',response.getId())
-            cookie.save('accessToken',response.getSession())//id,token,email,name,avatar
-            cookie.save('username',signUpEmail)
-            cookie.save('name',signUpName)
-            cookie.save('avatar',response.getAvatar())
+            console.log("SUCCESS")
+            setInStorage('userId',response.getId())
+            setInStorage('accessToken',response.getSession())//id,token,email,name,avatar
+            setInStorage('username',signUpEmail)
+            setInStorage('name',signUpName)
+            setInStorage('avatar',response.getAvatar())
             this.props.dispatch(saveLogin(response.getId(),response.getSession(),signUpEmail,signUpName,response.getAvatar()))
 
           }

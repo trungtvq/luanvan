@@ -2,27 +2,20 @@ import React, { Component } from 'react';
 import cookie from 'react-cookies';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchmyproject } from '../../../../actions'
+import { setTeam,setProject } from '../../../../actions'
 import { addProject, deleteProject, updateProject } from '../../../../actions'
+
 import {
   Badge,
   Button,
   Col,
   Container,
   Input,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
   Row,
-  Table,
-  Pagination,
-  PaginationItem,
-  PaginationLink,
   Card,
   CardBody,
   CardHeader,
   CardFooter,
-  Jumbotron,
   Progress,
   Modal,
   ModalHeader,
@@ -40,9 +33,13 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from 'react-router-dom';
 import Demo from '../../../../homeNav'
-
+import {
+  getFromStorage,
+  setInStorage
+} from '../../../../service/storage'
 const proto = {};
 proto.myproject = require('../../../../gRPC/myproject/myproject_grpc_web_pb');
+proto.team = require('../../../../gRPC/team/team_grpc_web_pb');
 
 proto.chat = require('../../../../gRPC/chat/chat_grpc_web_pb');
 
@@ -85,37 +82,36 @@ class MyProject extends Component {
   forceUpdateHandler = () => {
     this.forceUpdate();
   };
-  componentWillMount() {
-    console.log("willmount")
-  }
+ 
   componentDidMount() {
-    console.log("didmount")
+    console.log("getAllProjectPagePj")
     let end = this.state.endDate;
     end.setDate(end.getDate() + 15);
     this.setState({
       endDate: end
     })
-    let dispatch = this.props.dispatch
-    const myprojectService = new proto.myproject.MyprojectClient('https://www.overlead.co');
-    var metadata = {};
-    var AddNewProjectReq = new proto.myproject.GetAllProjectReq();
-    AddNewProjectReq.setRequesterid(cookie.load("userId"));
-    AddNewProjectReq.setCookie(cookie.load("accessToken"));
-    var response = myprojectService.getAllProject(AddNewProjectReq, metadata)
 
-    response.on('data', function (response) {
-      if (response.getStatus() == "SUCCESS") {
-        dispatch(addProject(response.getProjectid(), response.getTopic(), response.getProjectname(), response.getStart(), response.getEnd(), response.getPrivate(), response.getProgress()))
+    // let dispatch = this.props.dispatch
+    // const myprojectService = new proto.myproject.MyprojectClient('https://www.overlead.co');
+    // var metadata = {};
+    // var GetAllProjectReq = new proto.myproject.GetAllProjectReq();
+    // GetAllProjectReq.setRequesterid(getFromStorage("userId"));
+    // GetAllProjectReq.setCookie(getFromStorage("accessToken"));
+    // var response = myprojectService.getAllProject(GetAllProjectReq, metadata)
 
-      }
-    });
-    response.on('status', function (status) {
-      console.log("status code myproject:"+status.code);
-    });
-    response.on('end', function (end) {
-      console.log("end")
-      console.log(end)
-    });
+    // response.on('data', function (response) {
+    //   if (response.getStatus() == "SUCCESS") {
+    //     dispatch(addProject(response.getProjectid(), response.getTopic(), response.getProjectname(), response.getStart(), response.getEnd(), response.getPrivate(), response.getProgress()))
+
+    //   }
+    // });
+    // response.on('status', function (status) {
+    //   console.log("status code myproject:"+status.code);
+    // });
+    // response.on('end', function (end) {
+    //   console.log("end")
+    //   console.log(end)
+    // });
   }
 
 
@@ -189,7 +185,7 @@ class MyProject extends Component {
     let end = d.getMinutes() + "-" + d.getHours() + "-" + d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
     var metadata = {};
     var UpdateProjectReq = new proto.myproject.UpdateProjectReq();
-    UpdateProjectReq.setRequesterid(cookie.load("userId"));
+    UpdateProjectReq.setRequesterid(getFromStorage("userId"));
     UpdateProjectReq.setProjectid(this.state.updateId);
     UpdateProjectReq.setTopic(this.state.topic);
 
@@ -197,7 +193,7 @@ class MyProject extends Component {
     UpdateProjectReq.setStart(start);
     UpdateProjectReq.setEnd(end);
     UpdateProjectReq.setPrivate(this.state.isPrivate);
-    UpdateProjectReq.setCookie(cookie.load("accessToken"));
+    UpdateProjectReq.setCookie(getFromStorage("accessToken"));
     let dispatch = this.props.dispatch
     //    id,topic,name,start,end,isPrivate,progress
 
@@ -238,9 +234,9 @@ class MyProject extends Component {
     var metadata = {};
     var DeleteProjectReq = new proto.myproject.DeleteProjectReq();
     //AddNewProjectReq.setIdOwner("tienbede");
-    DeleteProjectReq.setRequesterid(cookie.load("userId"));
+    DeleteProjectReq.setRequesterid(getFromStorage("userId"));
     DeleteProjectReq.setProjectid(id);
-    DeleteProjectReq.setCookie(cookie.load("accessToken"));
+    DeleteProjectReq.setCookie(getFromStorage("accessToken"));
     let dispatch = this.props.dispatch
     myprojectService.deleteProject(DeleteProjectReq, metadata, (err, response) => {
       if (err) { //if error
@@ -269,7 +265,9 @@ class MyProject extends Component {
   };
   setCurrentProject = (event) => {
     let idp = event.currentTarget.dataset.id
-    cookie.save('currentProject', idp)
+    setInStorage('currentProject', idp)
+    this.props.dispatch(setProject(idp,event.currentTarget.dataset.name))
+    this.loadAllTeam()
   }
   onChangeStartDate = (date) => {
     this.setState({
@@ -281,11 +279,58 @@ class MyProject extends Component {
       endDate: date
     });
   }
+  loadAllTeam = () => {
+    console.log("getAllTeam")
+    const teamService = new proto.team.TeamClient('https://www.overlead.co');
+    var metadata = {};
+
+    var GetAllTeamReq = new proto.team.GetAllTeamReq();
+    GetAllTeamReq.setRequesterid(getFromStorage("userId"));
+    GetAllTeamReq.setProjectid(getFromStorage("currentProject"));
+    GetAllTeamReq.setAccesstoken(getFromStorage("accessToken"));
+    let response = teamService.getAllTeam(GetAllTeamReq, metadata)
+    console.log("currenProject"+getFromStorage("currentProject"))
+    let that = this
+    let lastTeam = ''
+    let lastName=''
+    let validTeam = false
+    response.on('data', function (response) {
+        if (response.getStatus() == "SUCCESS") {
+            console.log("hasTeam"+response.getTeamid())
+
+            if (getFromStorage('teamId') == response.getTeamid())
+                validTeam = true
+            else {
+                lastTeam = response.getTeamid()
+                lastName= response.getName()
+            }
+
+        }
+    })
+    response.on('status', function (status) {
+        console.log("status"+status.code)
+        if (validTeam == false) {
+            if (lastTeam != '') {
+                setInStorage('teamId', lastTeam)
+                that.props.dispatch(setTeam(lastTeam,lastName))
+            }    
+        }
+        else {
+            that.props.dispatch(setTeam(getFromStorage('teamId'),getFromStorage('teamName')))
+        }
+    });
+    response.on('end', function (end) {
+
+    });
+    
+}
   render() {
     let that = this;
 
 
     console.log("render")
+
+
     return (
      
       <div>
@@ -301,7 +346,6 @@ class MyProject extends Component {
           <Row>
             <Col>
               <Row>
-              {console.log("a___"+this.props.project.length)}
                 {
                 
                   this.props.project.map(function (i, key) {
@@ -332,7 +376,7 @@ class MyProject extends Component {
                           <Card>
                             <CardHeader>
                               <Link to="/DashBoard">
-                                <i className=""></i><strong data-id={item.id} onClick={that.setCurrentProject}>{item.projectName}</strong>
+                                <i className=""></i><strong data-id={item.id} data-name={item.projectName} onClick={that.setCurrentProject}>{item.projectName}</strong>
                               </Link>
                               <div className="card-header-actions">
                                 <div className="card-header-action btn btn-setting" data-id={item.id} onClick={that.handleDelete}><i className="icon-trash"></i>{that.props.buttonLabel}</div>
