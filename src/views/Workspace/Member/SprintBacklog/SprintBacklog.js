@@ -128,6 +128,7 @@ class SprintBacklog extends Component {
                       <td><center>{item.sprint}</center></td>
                       <td><center>{item.start}</center></td>
                       <td><center>{item.deadline}</center></td>
+                      <td></td>
                       <td>                        
                       <Button size="sm" color="danger" onClick={that.handleBackToProductbacklog}><i class="fa fa-trash"></i></Button>
                       <Button size="sm" color="success" onClick={that.handleComplete}><i class="fa fa-check"></i></Button>
