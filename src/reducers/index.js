@@ -6,17 +6,20 @@ import {
   RECEIVE_POSTS,
   DO_LOGOUT,
   DO_LOGIN,
-  GET_PROJECT_SELECTED,
-  SET_PROJECT_SELETED,
-  FETCH_ALL_PROJECT,
+  GET_CURENT_PROJECT,
+  SET_PROJECT,
   UPDATE_PROJECT,
   DELETE_PROJECT,
   ADD_PROJECT,
+  SET_TEAM,
+  LOAD_TEAM
 } from '../actions'
 import {
   getFromStorage,
   setInStorage
 } from '../service/storage'
+import cookie from 'react-cookies';
+
 const proto = {};
 proto.myproject = require('../gRPC/myproject/myproject_grpc_web_pb');
 
@@ -71,13 +74,17 @@ function postsBySubreddit(state = {}, action) {
       return state
   }
 }
+
+//update state login
 function changeStatusLogin(state = {isLogin:false}, action) {
-  console.log("changeStatusLogin")
+  console.log("changeStatusLogin"+action.type)
   console.log(action)
   switch (action.type) {
     case DO_LOGIN:    
       if (action.avatar!=undefined && action.avatar!="")
       setInStorage('avatar',action.avatar)
+      setInStorage('accessToken',action.token)
+      setInStorage('userId',action.id)
       return Object.assign({}, {
                 id:action.id,
                 token:action.token,
@@ -87,34 +94,47 @@ function changeStatusLogin(state = {isLogin:false}, action) {
                 avatar:action.avatar})      
     case DO_LOGOUT:
       setInStorage('avatar',"")
+      setInStorage('accessToken',"")
+      setInStorage('userId',"")
+      setInStorage('teamId',"")
+      setInStorage('currentProject',"")
       return Object.assign({},{isLogin:false})
     default:
       return state
   }
 }
+
+//state of current project
 function changeStatusProject(state={projectId:"noid"},action){
   console.log("changeStatusProject")
   switch (action.type) {    
-    case SET_PROJECT_SELETED:
-      return Object.assign({},{
+    case SET_PROJECT:
+      return Object.assign({},state,{
         projectId:action.id,
-        projectName:action.name
+        projectName:action.name,
+        hasProject:true,
+        random:Math.random()
       })
-    case GET_PROJECT_SELECTED:    
+    case GET_CURENT_PROJECT:    
+    case SET_TEAM:
+        console.log(state)
+        return Object.assign({},state,{
+          teamId:action.id,
+          teamName:action.name,
+          hasTeam:true,
+          random:Math.random()
+        })
+    case LOAD_TEAM:
     default:
       return state
   }
 }
 
+//load all project to cache
 function updateProjectLoaded(state={project:[],needUpdate:false},action){
   console.log("updateProjectLoaded")
   let newProject
   switch (action.type) {    
-    case FETCH_ALL_PROJECT:
-      return Object.assign({},{
-        projectId:action.id,
-        projectName:action.name
-      })
     case ADD_PROJECT:
         state.project.push(Object.assign({},{
             id:action.id,

@@ -4,7 +4,10 @@ import { Widget, addResponseMessage, addLinkSnippet, addUserMessage } from 'reac
 import 'react-chat-widget/lib/styles.css';
 import logo from '../assets/img/brand/logo.png';
 import cookie from 'react-cookies';
-
+import {
+  getFromStorage,
+  setInStorage
+} from '../service/storage'
 const proto = {};
 
 proto.chat = require('./../gRPC/chat/chat_grpc_web_pb');
@@ -20,11 +23,11 @@ class Chat extends Component {
     var metadata = {};
 
     var SendMsgReq = new proto.chat.SendMsgReq();
-    SendMsgReq.setRequesterid(cookie.load("userId"));
-    SendMsgReq.setAccesstoken(cookie.load("accessToken"));
-    SendMsgReq.setChannelid(cookie.load("currentProject"));
-    //SendMsgReq.setChannelid(cookie.load("currentProject"));
-    SendMsgReq.setName(cookie.load("name"))
+    SendMsgReq.setRequesterid(getFromStorage("userId"));
+    SendMsgReq.setAccesstoken(getFromStorage("accessToken"));
+    SendMsgReq.setChannelid(getFromStorage("currentProject"));
+    //SendMsgReq.setChannelid(getFromStorage("currentProject"));
+    SendMsgReq.setName(getFromStorage("name"))
     let that = this
     
 
@@ -53,10 +56,10 @@ class Chat extends Component {
     var metadata = {};
 
     var SendMsgReq = new proto.chat.SendMsgReq();
-    SendMsgReq.setRequesterid(cookie.load("userId"));
-    SendMsgReq.setAccesstoken(cookie.load("accessToken"));
-    SendMsgReq.setChannelid(cookie.load("currentProject"));
-    SendMsgReq.setName(cookie.load("name"))
+    SendMsgReq.setRequesterid(getFromStorage("userId"));
+    SendMsgReq.setAccesstoken(getFromStorage("accessToken"));
+    SendMsgReq.setChannelid(getFromStorage("currentProject"));
+    SendMsgReq.setName(getFromStorage("name"))
     SendMsgReq.setMsg(newMessage)
 
     chatService.sendMsg(SendMsgReq, metadata, (err, response) => {
@@ -75,7 +78,7 @@ class Chat extends Component {
         <Widget
           handleNewUserMessage={this.handleNewUserMessage}
           profileAvatar={logo}
-          title={cookie.load("currentProject")}
+          title={getFromStorage("currentProject")}
           subtitle="And my cool subtitle"
         />
       </div>

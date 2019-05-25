@@ -13,7 +13,8 @@ import {saveLogin,removeLogin} from '../../actions'
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import {
-  getFromStorage
+  getFromStorage,
+  setInStorage
 } from '../../service/storage'
 const propTypes = {
   children: PropTypes.node,
@@ -42,12 +43,15 @@ class DefaultHeader extends Component {
     }
   };
 
-  onLogout=(e)=>{
-
+  onLogout=(e)=>{    
     console.log("logout")
     this.props.dispatch(removeLogin())
-    cookie.remove('userId')
-    cookie.remove('accessToken')
+    setInStorage("userId","")
+    setInStorage("accessToken","")
+    setInStorage("avatar","")
+    setInStorage("name","")
+    setInStorage("username","")
+
   }
   setOutTeamCurrent=()=>{
     let currentTeam=this.state.currentTeam
@@ -62,8 +66,6 @@ class DefaultHeader extends Component {
     {this.setOutProjectCurrent()};
   }
   render() {
-    console.log("avatar")
-    console.log(getFromStorage('avatar'))
     // eslint-disable-next-line
     const { children, ...attributes } = this.props;
     let that=this;
@@ -163,7 +165,7 @@ function mapStateToProps(state) {
   const { changeStatusLogin } = state
   const { isLogin, id, token,email,avatar } = changeStatusLogin
   return {
-      isLogin, id, token,email,avatar
+      isLogin, id, token,email,avatar,
   }
 }
 export default connect(mapStateToProps)(DefaultHeader);

@@ -11,6 +11,10 @@ import {
   ModalFooter,
 
 } from 'reactstrap';
+import {
+  getFromStorage,
+  setInStorage
+} from '../../../../../service/storage'
 import cookie from 'react-cookies';
 import { getProject } from '../../../../../actions'
 import { Redirect } from 'react-router-dom';
@@ -121,9 +125,9 @@ class Detail extends Component {
     const userstoryService = new proto.userstory.UserStoryClient('https://www.overlead.co');
     var metadata = {};
     var GetAllUserStoryReq = new proto.userstory.GetAllUserStoryReq();
-    GetAllUserStoryReq.setRequesterid(cookie.load("userId"));
-    GetAllUserStoryReq.setAccesstoken(cookie.load("accessToken"));
-    GetAllUserStoryReq.setProjectid(cookie.load("currentProject"));
+    GetAllUserStoryReq.setRequesterid(getFromStorage("userId"));
+    GetAllUserStoryReq.setAccesstoken(getFromStorage("accessToken"));
+    GetAllUserStoryReq.setProjectid(getFromStorage("currentProject"));
 
     var response = userstoryService.getAllUserStory(GetAllUserStoryReq, metadata)
     let that = this
@@ -166,12 +170,12 @@ class Detail extends Component {
 
     var AddNewUserStoryReq = new proto.userstory.AddNewUserStoryReq();
     AddNewUserStoryReq.setName(this.state.name);
-    AddNewUserStoryReq.setRequesterid(cookie.load("userId"));
-    AddNewUserStoryReq.setProjectid(cookie.load("currentProject"));
+    AddNewUserStoryReq.setRequesterid(getFromStorage("userId"));
+    AddNewUserStoryReq.setProjectid(getFromStorage("currentProject"));
     AddNewUserStoryReq.setRole(this.state.role);
     AddNewUserStoryReq.setWant(this.state.want);
     AddNewUserStoryReq.setSo(this.state.so);
-    AddNewUserStoryReq.setAccesstoken(cookie.load("accessToken"));
+    AddNewUserStoryReq.setAccesstoken(getFromStorage("accessToken"));
 
     userstoryService.addNewUserStory(AddNewUserStoryReq, metadata, (err, response) => {
       if (err) { //if error
@@ -214,10 +218,10 @@ class Detail extends Component {
     //make a request to server
 
     var DeleteUserStoryReq = new proto.userstory.DeleteUserStoryReq();
-    DeleteUserStoryReq.setRequesterid(cookie.load("userId"));
-    DeleteUserStoryReq.setProjectid(cookie.load("currentProject"));
+    DeleteUserStoryReq.setRequesterid(getFromStorage("userId"));
+    DeleteUserStoryReq.setProjectid(getFromStorage("currentProject"));
     DeleteUserStoryReq.setUserstoryid(id);
-    DeleteUserStoryReq.setAccesstoken(cookie.load("accessToken"));
+    DeleteUserStoryReq.setAccesstoken(getFromStorage("accessToken"));
 
     userstoryService.deleteUserStory(DeleteUserStoryReq, metadata, (err, response) => {
       if (err) { //if error
@@ -248,13 +252,13 @@ class Detail extends Component {
     var metadata = {};
 
     var UpdateUserStoryReq = new proto.userstory.UpdateUserStoryReq();
-    UpdateUserStoryReq.setRequesterid(cookie.load("userId"));
-    UpdateUserStoryReq.setProjectid(cookie.load("currentProject"));
+    UpdateUserStoryReq.setRequesterid(getFromStorage("userId"));
+    UpdateUserStoryReq.setProjectid(getFromStorage("currentProject"));
     UpdateUserStoryReq.setUserstoryid(this.state.updateId);
     UpdateUserStoryReq.setRole(this.state.role);
     UpdateUserStoryReq.setWant(this.state.want);
     UpdateUserStoryReq.setSo(this.state.so);
-    UpdateUserStoryReq.setAccesstoken(cookie.load("accessToken"));
+    UpdateUserStoryReq.setAccesstoken(getFromStorage("accessToken"));
 
     userstoryService.updateUserStory(UpdateUserStoryReq, metadata, (err, response) => {
       if (err) { //if error

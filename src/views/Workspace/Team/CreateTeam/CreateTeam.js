@@ -33,6 +33,10 @@ import {
 } from 'reactstrap';
 
 import cookie from 'react-cookies';
+import {
+  getFromStorage,
+  setInStorage
+} from '../../../../service/storage'
 const proto = {};
 proto.team = require('../../../../gRPC/team/team_grpc_web_pb');
 class CreateTeam extends Component {
@@ -77,12 +81,12 @@ class CreateTeam extends Component {
     var metadata = {};
 
     var AddNewTeamReq = new proto.team.AddNewTeamReq();
-    AddNewTeamReq.setRequesterid(cookie.load("userId"));
-    AddNewTeamReq.setProjectid(cookie.load("currentProject"));
+    AddNewTeamReq.setRequesterid(getFromStorage("userId"));
+    AddNewTeamReq.setProjectid(getFromStorage("currentProject"));
     AddNewTeamReq.setName(this.state.name);
     AddNewTeamReq.setDescription(this.state.description);
     AddNewTeamReq.setDepartment(this.state.department);
-    AddNewTeamReq.setAccesstoken(cookie.load("accessToken"));
+    AddNewTeamReq.setAccesstoken(getFromStorage("accessToken"));
 
     teamService.addNewTeam(AddNewTeamReq, metadata, (err, response) => {
       if (err) { //if error

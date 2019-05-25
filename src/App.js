@@ -6,9 +6,6 @@ import React, { Component } from 'react';
 //context
 import Client from "./Client"
 
-
-import PropTypes from 'prop-types'
-
 //redux
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'

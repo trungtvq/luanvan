@@ -1,3 +1,7 @@
+import {
+  getFromStorage,
+  setInStorage
+} from '../../../../service/storage'
 import React, { Component } from 'react';
 import {
   Badge,
@@ -21,6 +25,8 @@ import {
   ModalBody,
   PaginationLink,
 } from 'reactstrap';
+import DatePicker from "react-datepicker";
+
 import { Link } from 'react-router-dom';
 import cookie from 'react-cookies';
 const proto = {};
@@ -128,9 +134,9 @@ class Cover extends Component {
     const userstoryService = new proto.userstory.UserStoryClient('https://www.overlead.co');
     var metadata = {};
     var GetAllUserStoryReq = new proto.userstory.GetAllUserStoryReq();
-    GetAllUserStoryReq.setRequesterid(cookie.load("userId"));
-    GetAllUserStoryReq.setAccesstoken(cookie.load("accessToken"));
-    GetAllUserStoryReq.setProjectid(cookie.load("currentProject"));
+    GetAllUserStoryReq.setRequesterid(getFromStorage("userId"));
+    GetAllUserStoryReq.setAccesstoken(getFromStorage("accessToken"));
+    GetAllUserStoryReq.setProjectid(getFromStorage("currentProject"));
 
     var response = userstoryService.getAllUserStory(GetAllUserStoryReq, metadata)
     let that = this
@@ -164,9 +170,9 @@ class Cover extends Component {
     //load productbacklog
     const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
     var GetAllProductBacklogReq = new proto.productbacklog.GetAllProductBacklogReq();
-    GetAllProductBacklogReq.setRequesterid(cookie.load("userId"));
-    GetAllProductBacklogReq.setAccesstoken(cookie.load("accessToken"));
-    GetAllProductBacklogReq.setProjectid(cookie.load("currentProject"));
+    GetAllProductBacklogReq.setRequesterid(getFromStorage("userId"));
+    GetAllProductBacklogReq.setAccesstoken(getFromStorage("accessToken"));
+    GetAllProductBacklogReq.setProjectid(getFromStorage("currentProject"));
     let metadata = {}
     var response = productbacklogService.getAllProductBacklog(GetAllProductBacklogReq, metadata)
     let that = this
@@ -221,13 +227,13 @@ class Cover extends Component {
     var metadata = {};
 
     var SendToProductBacklogReq = new proto.userstory.SendToProductBacklogReq();
-    SendToProductBacklogReq.setRequesterid(cookie.load("userId"));
-    SendToProductBacklogReq.setProjectid(cookie.load("currentProject"));
+    SendToProductBacklogReq.setRequesterid(getFromStorage("userId"));
+    SendToProductBacklogReq.setProjectid(getFromStorage("currentProject"));
     SendToProductBacklogReq.setId(item.id);
     SendToProductBacklogReq.setPriority(item.priority);
     SendToProductBacklogReq.setEstimation(item.estimation);
     SendToProductBacklogReq.setStatusbacklog(item.status);
-    SendToProductBacklogReq.setAccesstoken(cookie.load("accessToken"));
+    SendToProductBacklogReq.setAccesstoken(getFromStorage("accessToken"));
     SendToProductBacklogReq.setSprint(item.sprint);
 
     userstoryService.sendToProductBacklog(SendToProductBacklogReq, metadata, (err, response) => {
@@ -270,9 +276,9 @@ class Cover extends Component {
     var metadata = {};
     console.log("so" + this.state.so)
     var SendToSprintBacklogReq = new proto.productbacklog.SendToSprintBacklogReq();
-    SendToSprintBacklogReq.setRequesterid(cookie.load("userId"));
-    SendToSprintBacklogReq.setAccesstoken(cookie.load("accessToken"));
-    SendToSprintBacklogReq.setProjectid(cookie.load("currentProject"));
+    SendToSprintBacklogReq.setRequesterid(getFromStorage("userId"));
+    SendToSprintBacklogReq.setAccesstoken(getFromStorage("accessToken"));
+    SendToSprintBacklogReq.setProjectid(getFromStorage("currentProject"));
     SendToSprintBacklogReq.setProductbacklogid(item.id);
     productbacklogService.sendToUserStory(SendToSprintBacklogReq, metadata, (err, response) => {
       if (err) { //if error

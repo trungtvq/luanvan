@@ -5,15 +5,16 @@ export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
 export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
 export const DO_LOGIN = 'DO_LOGIN'
 export const DO_LOGOUT = 'DO_LOGOUT'
-export const GET_PROJECT_SELECTED = 'GET_PROJECT_SELECTED'
-export const SET_PROJECT_SELETED = 'SET_PROJECT_SELETED'
-export const FETCH_ALL_PROJECT = 'FETCH_ALL_PROJECT'
+export const GET_CURENT_PROJECT = 'GET_CURENT_PROJECT'
+export const SET_PROJECT = 'SET_PROJECT'
 
 
 //hook
 export const NEW_PROJECT_COME = 'NEW_PROJECT_COME'
 export const UPDATE_PROJECT_COME = 'UPDATE_PROJECT_COME'
 export const REMOVE_PROJECT_COME = 'REMOVE_PROJECT_COMEs'
+export const SET_TEAM = 'SET_TEAM'
+export const LOAD_TEAM = 'LOAD_TEAM'
 
 export function selectSubreddit(subreddit) {
   return {
@@ -97,16 +98,32 @@ export function removeLogin() {
 }
 export function getProject(){
   return {
-    type: GET_PROJECT_SELECTED
+    type: GET_CURENT_PROJECT
   }
 }
 export function setProject(id,name){
   return {
-    type: SET_PROJECT_SELETED,
+    type: SET_PROJECT,
     id,
     name
   }
 }
+
+export function setTeam(id,name){
+  return {
+    type: SET_TEAM,
+    id,
+    name
+  }
+}
+export function loadTeam(id,name){
+  return {
+    type: SET_TEAM,
+    id,
+    name
+  }
+}
+
 export function addProject(id,topic,name,start,end,isPrivate,progress){
   return {
     type: ADD_PROJECT,

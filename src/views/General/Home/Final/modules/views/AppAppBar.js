@@ -7,6 +7,10 @@ import AppBar from '../components/AppBar';
 import Toolbar, { styles as toolbarStyles } from '../components/Toolbar';
 import cookie from 'react-cookies';
 import { Button } from '@material-ui/core';
+import {
+  getFromStorage,
+  setInStorage
+} from '../../../../../../service/storage'
 const proto = {};
 proto.auth = require('./../../../../../../gRPC/auth/auth_grpc_web_pb');
 
@@ -80,8 +84,8 @@ function AppAppBar(props) {
   date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
 
   const { classes } = props;
-  let userId=cookie.load('userId');
-  let userSession=cookie.load('userSession');
+  let userId=getFromStorage('userId');
+  let userSession=getFromStorage('userSession');
   let time=date;
   console.log("kt "+userId);
   return (

@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 import cookie from 'react-cookies';
 
-import {
-  getFromStorage,
-  } from '../../../service/storage';
-import Logout from './../../../components/Logout'
 import { Link } from 'react-router-dom';
 import AppFooter from './modules/views/AppFooter';
 import AppAppBar from './modules/views/AppAppBar';
+import {
+  getFromStorage,
+  setInStorage
+} from '../../../service/storage'
 const proto = {};
 proto.auth = require('./../../../gRPC/auth/auth_grpc_web_pb');
 
@@ -66,7 +66,7 @@ class ResetFirst extends Component {
     ResetReq.setType(Type);
       //make a request to server
       var getTodo = authService.resetPassword(ResetReq, metadata, (err, response) => {
-        cookie.save("resetUsername",Username)
+        setInStorage("resetUsername",Username)
         if (err) { //if error
           console.log(err);
         } else { //if success
