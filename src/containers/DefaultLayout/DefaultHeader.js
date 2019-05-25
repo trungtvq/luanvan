@@ -140,9 +140,9 @@ class DefaultHeader extends Component {
               <Link to="/Home/Payment">
               <DropdownItem><i className="fa fa-usd"></i> Upgrade</DropdownItem>
               </Link>
-              <Link to="/myproject">
-              <DropdownItem><i className="fa fa-file"></i> Projects</DropdownItem>
-              </Link>
+              {/* <Link to="/myproject">
+              <DropdownItem><i className="fa fa-file"></i> Myrojects</DropdownItem>
+              </Link> */}
               <DropdownItem divider />
               <DropdownItem onClick={e => this.onLogout()}><i className="fa fa-lock"></i> Logout</DropdownItem>
             </DropdownMenu>
