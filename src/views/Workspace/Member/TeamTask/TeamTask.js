@@ -112,7 +112,6 @@ class TeamTask extends Component {
     this.setState({
       title: event.target.value,
     });
-    console.log(this.state.title);
   }
   onTextboxChangeDescription = (event) => {
     this.setState({
@@ -169,10 +168,7 @@ class TeamTask extends Component {
     var response = teamtaskService.getAllTeamTask(GetAllTeamTaskReq, metadata)
     let that = this
     response.on('data', function (response) {
-      console.log(response.getStatus())
       if (response.getStatus() == "SUCCESS") {
-        console.log(response.getStart())
-        console.log(response.getDeadline())
         let arr = response.getStart().split('-');
         if (arr[1] > 12) {
           arr[1] = arr[1] - 12
@@ -196,7 +192,10 @@ class TeamTask extends Component {
           str=str.slice(1,-1)
           arr=str.split(', ')
 
-          let mem=cookie.load('members')
+          let mem=getFromStorage('members')
+          console.log("MEM")
+          console.log(mem)
+
           mem.map(p=>{
             if (arr.indexOf(p.id)!=-1){
               console.log("exist")
@@ -237,7 +236,6 @@ class TeamTask extends Component {
       console.log("end")
       console.log(end)
     });
-
 
   }
   handleAdd = () => {
@@ -494,14 +492,23 @@ class TeamTask extends Component {
     });
 
   };
-
-  render() {
-    console.log(this.state.data)
-    
+  checkSto=()=>{
+    console.log(getFromStorage('members'))
+  }
+  componentDidUpdate(){
+    let mem=getFromStorage('members')
+    let arr=this.state.data
+    mem.map(p=>{
+      if (arr.indexOf(p.id)!=-1){
+        console.log("exist")
+        arr[arr.indexOf(p.id)]=p.username
+      }
+      return p
+    })
+  }
+  render() {    
     let that = this;
-    let mem=cookie.load('members')
-    console.log("check mem")
-    console.log(mem)
+    let mem=getFromStorage('members')
     return (
       <Row>
         <Col>
@@ -527,7 +534,7 @@ class TeamTask extends Component {
                     <th>Assignee</th>
                     <th>Comment</th>
                     <th>Status</th>
-                    <th>Review</th>
+                    <th onClick={this.checkSto}>Review</th>
                     <th>
                       <div>
                         <Button color="primary" size="sm" className="mt-3" onClick={that.toggleAdd}><i class="fa fa-plus-square"></i>{this.props.buttonLabel}</Button>
@@ -726,10 +733,16 @@ class TeamTask extends Component {
                                       </Col>
                                      <Col xs="12" md="3">
                                         <Input type="select" name="select" id="select" onChange={that.onTextboxChangeAssignee}>
-                                          <option value={that.state.assignee}>{that.state.assignee}</option>
-                                          <option value="Hùng">Hùng</option>
-                                          <option value="Nhân">Nhân</option>
-                                          <option value="Tâm">Tâm</option>
+                                        <option value="0">Please select</option>
+                                    { (mem!=undefined)?
+                                      mem.map(p=>{
+                                        return(
+                                          <option value={p.id}>{p.username}</option>
+                                        )
+                                      }):{
+                                        
+                                      }
+                                    }
                                         </Input>
                                       </Col>
                                     </FormGroup>   

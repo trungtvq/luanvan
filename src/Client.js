@@ -207,14 +207,14 @@ class Client extends Component {
         GetAllMemberReq.setAccesstoken(getFromStorage("accessToken"));
 
         let that = this
-        cookie.save('members', [],{ path: '/' })
+        setInStorage('members', [])
         let response = teamService.getAllMember(GetAllMemberReq, metadata)
 
         response.on('data', function (response) {
             if (response.getStatus() == "SUCCESS") {
-                let mem = cookie.load('members')
+                let mem = getFromStorage('members')
                 mem.push({ id: response.getId(), name: response.getName(),username:response.getUsername() })
-                cookie.save('members', mem,{ path: '/' })
+                setInStorage('members', mem)
             }
         })
         response.on('status', function (status) {
