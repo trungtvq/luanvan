@@ -16,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private GetAllMyTaskRes() {
+    teamTaskId_ = "";
     title_ = "";
     description_ = "";
     priority_ = "";
@@ -23,7 +24,9 @@ private static final long serialVersionUID = 0L;
     deadline_ = "";
     comment_ = "";
     status_ = "";
-    error_ = "";
+    review_ = "";
+    point_ = "";
+    statusTask_ = "";
   }
 
   @java.lang.Override
@@ -95,7 +98,25 @@ private static final long serialVersionUID = 0L;
           case 66: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            error_ = s;
+            statusTask_ = s;
+            break;
+          }
+          case 74: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            teamTaskId_ = s;
+            break;
+          }
+          case 82: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            review_ = s;
+            break;
+          }
+          case 90: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            point_ = s;
             break;
           }
           default: {
@@ -128,6 +149,40 @@ private static final long serialVersionUID = 0L;
     return co.overlead.gRPC.mytask.internal_static_mytask_GetAllMyTaskRes_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             co.overlead.gRPC.GetAllMyTaskRes.class, co.overlead.gRPC.GetAllMyTaskRes.Builder.class);
+  }
+
+  public static final int TEAMTASKID_FIELD_NUMBER = 9;
+  private volatile java.lang.Object teamTaskId_;
+  /**
+   * <code>string teamTaskId = 9;</code>
+   */
+  public java.lang.String getTeamTaskId() {
+    java.lang.Object ref = teamTaskId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      teamTaskId_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string teamTaskId = 9;</code>
+   */
+  public com.google.protobuf.ByteString
+      getTeamTaskIdBytes() {
+    java.lang.Object ref = teamTaskId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      teamTaskId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int TITLE_FIELD_NUMBER = 1;
@@ -384,34 +439,102 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int ERROR_FIELD_NUMBER = 8;
-  private volatile java.lang.Object error_;
+  public static final int REVIEW_FIELD_NUMBER = 10;
+  private volatile java.lang.Object review_;
   /**
-   * <code>string error = 8;</code>
+   * <code>string review = 10;</code>
    */
-  public java.lang.String getError() {
-    java.lang.Object ref = error_;
+  public java.lang.String getReview() {
+    java.lang.Object ref = review_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      error_ = s;
+      review_ = s;
       return s;
     }
   }
   /**
-   * <code>string error = 8;</code>
+   * <code>string review = 10;</code>
    */
   public com.google.protobuf.ByteString
-      getErrorBytes() {
-    java.lang.Object ref = error_;
+      getReviewBytes() {
+    java.lang.Object ref = review_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      error_ = b;
+      review_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int POINT_FIELD_NUMBER = 11;
+  private volatile java.lang.Object point_;
+  /**
+   * <code>string point = 11;</code>
+   */
+  public java.lang.String getPoint() {
+    java.lang.Object ref = point_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      point_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string point = 11;</code>
+   */
+  public com.google.protobuf.ByteString
+      getPointBytes() {
+    java.lang.Object ref = point_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      point_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int STATUSTASK_FIELD_NUMBER = 8;
+  private volatile java.lang.Object statusTask_;
+  /**
+   * <code>string statusTask = 8;</code>
+   */
+  public java.lang.String getStatusTask() {
+    java.lang.Object ref = statusTask_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      statusTask_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string statusTask = 8;</code>
+   */
+  public com.google.protobuf.ByteString
+      getStatusTaskBytes() {
+    java.lang.Object ref = statusTask_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      statusTask_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -453,8 +576,17 @@ private static final long serialVersionUID = 0L;
     if (!getStatusBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 7, status_);
     }
-    if (!getErrorBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, error_);
+    if (!getStatusTaskBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, statusTask_);
+    }
+    if (!getTeamTaskIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, teamTaskId_);
+    }
+    if (!getReviewBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, review_);
+    }
+    if (!getPointBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, point_);
     }
     unknownFields.writeTo(output);
   }
@@ -486,8 +618,17 @@ private static final long serialVersionUID = 0L;
     if (!getStatusBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, status_);
     }
-    if (!getErrorBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, error_);
+    if (!getStatusTaskBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, statusTask_);
+    }
+    if (!getTeamTaskIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, teamTaskId_);
+    }
+    if (!getReviewBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, review_);
+    }
+    if (!getPointBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, point_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -504,6 +645,8 @@ private static final long serialVersionUID = 0L;
     }
     co.overlead.gRPC.GetAllMyTaskRes other = (co.overlead.gRPC.GetAllMyTaskRes) obj;
 
+    if (!getTeamTaskId()
+        .equals(other.getTeamTaskId())) return false;
     if (!getTitle()
         .equals(other.getTitle())) return false;
     if (!getDescription()
@@ -518,8 +661,12 @@ private static final long serialVersionUID = 0L;
         .equals(other.getComment())) return false;
     if (!getStatus()
         .equals(other.getStatus())) return false;
-    if (!getError()
-        .equals(other.getError())) return false;
+    if (!getReview()
+        .equals(other.getReview())) return false;
+    if (!getPoint()
+        .equals(other.getPoint())) return false;
+    if (!getStatusTask()
+        .equals(other.getStatusTask())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -531,6 +678,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + TEAMTASKID_FIELD_NUMBER;
+    hash = (53 * hash) + getTeamTaskId().hashCode();
     hash = (37 * hash) + TITLE_FIELD_NUMBER;
     hash = (53 * hash) + getTitle().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
@@ -545,8 +694,12 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getComment().hashCode();
     hash = (37 * hash) + STATUS_FIELD_NUMBER;
     hash = (53 * hash) + getStatus().hashCode();
-    hash = (37 * hash) + ERROR_FIELD_NUMBER;
-    hash = (53 * hash) + getError().hashCode();
+    hash = (37 * hash) + REVIEW_FIELD_NUMBER;
+    hash = (53 * hash) + getReview().hashCode();
+    hash = (37 * hash) + POINT_FIELD_NUMBER;
+    hash = (53 * hash) + getPoint().hashCode();
+    hash = (37 * hash) + STATUSTASK_FIELD_NUMBER;
+    hash = (53 * hash) + getStatusTask().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -680,6 +833,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      teamTaskId_ = "";
+
       title_ = "";
 
       description_ = "";
@@ -694,7 +849,11 @@ private static final long serialVersionUID = 0L;
 
       status_ = "";
 
-      error_ = "";
+      review_ = "";
+
+      point_ = "";
+
+      statusTask_ = "";
 
       return this;
     }
@@ -722,6 +881,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public co.overlead.gRPC.GetAllMyTaskRes buildPartial() {
       co.overlead.gRPC.GetAllMyTaskRes result = new co.overlead.gRPC.GetAllMyTaskRes(this);
+      result.teamTaskId_ = teamTaskId_;
       result.title_ = title_;
       result.description_ = description_;
       result.priority_ = priority_;
@@ -729,7 +889,9 @@ private static final long serialVersionUID = 0L;
       result.deadline_ = deadline_;
       result.comment_ = comment_;
       result.status_ = status_;
-      result.error_ = error_;
+      result.review_ = review_;
+      result.point_ = point_;
+      result.statusTask_ = statusTask_;
       onBuilt();
       return result;
     }
@@ -778,6 +940,10 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(co.overlead.gRPC.GetAllMyTaskRes other) {
       if (other == co.overlead.gRPC.GetAllMyTaskRes.getDefaultInstance()) return this;
+      if (!other.getTeamTaskId().isEmpty()) {
+        teamTaskId_ = other.teamTaskId_;
+        onChanged();
+      }
       if (!other.getTitle().isEmpty()) {
         title_ = other.title_;
         onChanged();
@@ -806,8 +972,16 @@ private static final long serialVersionUID = 0L;
         status_ = other.status_;
         onChanged();
       }
-      if (!other.getError().isEmpty()) {
-        error_ = other.error_;
+      if (!other.getReview().isEmpty()) {
+        review_ = other.review_;
+        onChanged();
+      }
+      if (!other.getPoint().isEmpty()) {
+        point_ = other.point_;
+        onChanged();
+      }
+      if (!other.getStatusTask().isEmpty()) {
+        statusTask_ = other.statusTask_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -836,6 +1010,75 @@ private static final long serialVersionUID = 0L;
           mergeFrom(parsedMessage);
         }
       }
+      return this;
+    }
+
+    private java.lang.Object teamTaskId_ = "";
+    /**
+     * <code>string teamTaskId = 9;</code>
+     */
+    public java.lang.String getTeamTaskId() {
+      java.lang.Object ref = teamTaskId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        teamTaskId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string teamTaskId = 9;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTeamTaskIdBytes() {
+      java.lang.Object ref = teamTaskId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        teamTaskId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string teamTaskId = 9;</code>
+     */
+    public Builder setTeamTaskId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      teamTaskId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string teamTaskId = 9;</code>
+     */
+    public Builder clearTeamTaskId() {
+      
+      teamTaskId_ = getDefaultInstance().getTeamTaskId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string teamTaskId = 9;</code>
+     */
+    public Builder setTeamTaskIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      teamTaskId_ = value;
+      onChanged();
       return this;
     }
 
@@ -1362,71 +1605,209 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object error_ = "";
+    private java.lang.Object review_ = "";
     /**
-     * <code>string error = 8;</code>
+     * <code>string review = 10;</code>
      */
-    public java.lang.String getError() {
-      java.lang.Object ref = error_;
+    public java.lang.String getReview() {
+      java.lang.Object ref = review_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        error_ = s;
+        review_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string error = 8;</code>
+     * <code>string review = 10;</code>
      */
     public com.google.protobuf.ByteString
-        getErrorBytes() {
-      java.lang.Object ref = error_;
+        getReviewBytes() {
+      java.lang.Object ref = review_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        error_ = b;
+        review_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string error = 8;</code>
+     * <code>string review = 10;</code>
      */
-    public Builder setError(
+    public Builder setReview(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      error_ = value;
+      review_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string error = 8;</code>
+     * <code>string review = 10;</code>
      */
-    public Builder clearError() {
+    public Builder clearReview() {
       
-      error_ = getDefaultInstance().getError();
+      review_ = getDefaultInstance().getReview();
       onChanged();
       return this;
     }
     /**
-     * <code>string error = 8;</code>
+     * <code>string review = 10;</code>
      */
-    public Builder setErrorBytes(
+    public Builder setReviewBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      error_ = value;
+      review_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object point_ = "";
+    /**
+     * <code>string point = 11;</code>
+     */
+    public java.lang.String getPoint() {
+      java.lang.Object ref = point_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        point_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string point = 11;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPointBytes() {
+      java.lang.Object ref = point_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        point_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string point = 11;</code>
+     */
+    public Builder setPoint(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      point_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string point = 11;</code>
+     */
+    public Builder clearPoint() {
+      
+      point_ = getDefaultInstance().getPoint();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string point = 11;</code>
+     */
+    public Builder setPointBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      point_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object statusTask_ = "";
+    /**
+     * <code>string statusTask = 8;</code>
+     */
+    public java.lang.String getStatusTask() {
+      java.lang.Object ref = statusTask_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        statusTask_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string statusTask = 8;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStatusTaskBytes() {
+      java.lang.Object ref = statusTask_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        statusTask_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string statusTask = 8;</code>
+     */
+    public Builder setStatusTask(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      statusTask_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string statusTask = 8;</code>
+     */
+    public Builder clearStatusTask() {
+      
+      statusTask_ = getDefaultInstance().getStatusTask();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string statusTask = 8;</code>
+     */
+    public Builder setStatusTaskBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      statusTask_ = value;
       onChanged();
       return this;
     }

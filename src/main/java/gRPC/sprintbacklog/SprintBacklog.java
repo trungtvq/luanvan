@@ -63,11 +63,11 @@ public class SprintBacklog {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
                 List<Document> team = Mongod.collTeam.find(new Document("_id", new ObjectId(request.getTeamId()))).into(new ArrayList<>());
-                if (team== null) {
+                if (team.size()==0) {
                     makeResponseForFailed(responseObserver, "TEAM_NOT_FOUND", "FALSE");
                 } else {
                     List<String> backlogList = (List<String>) team.get(0).get("sprintbacklogs");
-                    if (backlogList.size() == 0) {
+                    if (backlogList== null) {
                         makeResponseForFailed(responseObserver, "EMPTY", "FALSE");
                     } else {
                         backlogList.forEach(i -> {
@@ -78,17 +78,17 @@ public class SprintBacklog {
                                 Document r=result.get(0);
                                 responseObserver.onNext(GetAllSprintBacklogRes.newBuilder()
                                         .setBacklogId(i)
-                                        .setRole(r.get("role").toString())
-                                        .setWant(r.get("want").toString())
-                                        .setSo(r.get("so").toString())
-                                        .setStatusBacklog(r.get("statusBacklog").toString())
-                                        .setPriority(r.get("priority").toString())
-                                        .setEstimation(r.get("estimation").toString())
-                                        .setSprintId(r.get("sprintId").toString())
+                                        .setRole(r.get("role")==null?"":r.get("role").toString())
+                                        .setWant(r.get("want")==null?"":r.get("want").toString())
+                                        .setSo(r.get("so")==null?"":r.get("so").toString())
+                                        .setStatusBacklog(r.get("statusBacklog")==null?"":r.get("statusBacklog").toString())
+                                        .setPriority(r.get("priority")==null?"":r.get("priority").toString())
+                                        .setEstimation(r.get("estimation")==null?"":r.get("estimation").toString())
+                                        .setSprintId(r.get("sprintId")==null?"":r.get("sprintId").toString())
                                         .setStatus("SUCCESS")
-                                        .setTitle(r.get("title").toString())
-                                        .setStart(r.get("start").toString())
-                                        .setDeadline(r.get("deadline").toString())
+                                        .setTitle(r.get("title")==null?"":r.get("title").toString())
+                                        .setStart(r.get("start")==null?"":r.get("start").toString())
+                                        .setDeadline(r.get("deadline")==null?"":r.get("deadline").toString())
                                         .build());
                             }
 

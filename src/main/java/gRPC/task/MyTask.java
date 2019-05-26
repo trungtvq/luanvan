@@ -57,35 +57,43 @@ public class MyTask {
         @Override
         public void getAllMyTask(GetAllMyTaskReq request, StreamObserver<GetAllMyTaskRes> responseObserver) {
             //check if team is exist
-            //get all task have assign== userid in TEAM
+            //get all task have assign== username in TEAM
             //
             if (!isValidAuth(request.getRequesterId(),request.getAccessToken())) {
-                GetAllMyTaskRes reply=GetAllMyTaskRes.newBuilder().setStatus("AUTH_INVALID").setError("TRUE").build();
+                GetAllMyTaskRes reply=GetAllMyTaskRes.newBuilder().setStatus("AUTH_INVALID").build();
                 responseObserver.onNext(reply);
                 responseObserver.onCompleted();
             } else {
-                List<Document> foundDocument = Mongod.collTeam.find(new Document("_id",new ObjectId( request.getTeamId()))).into(new ArrayList<>());
+                List<Document> teams = Mongod.collTeam.find(new Document("_id",new ObjectId( request.getTeamId()))).into(new ArrayList<>());
 
-                if (foundDocument.size()==0){
-                    GetAllMyTaskRes reply=GetAllMyTaskRes.newBuilder().setStatus("EMPTY").setError("FALSE").build();
-                    responseObserver.onNext(reply);
-                    responseObserver.onCompleted();
+                if (teams.size()==0){
+                    responseObserver.onNext(GetAllMyTaskRes.newBuilder().setStatus("EMPTY").build());
                 }  else {
-                    List<String> taskList= (List<String>) foundDocument.get(0).get("tasks");
-                    if (taskList.size()>0){
+                    List<String> taskList= (List<String>) teams.get(0).get("tasks");
+                    if (taskList!=null){
                         taskList.forEach(task->{
                             List<Document> t=Mongod.collTask.find(new Document("_id",new ObjectId(task))).into(new ArrayList<>());
                             if (t.size()>0){
+                                List<String> ass= (List<String>) t.get(0).get("assigneeArray");
+                                if (ass!=null){
+                                    if (ass.indexOf(request.getUsername())!=-1){
+                                        Document i=t.get(0);
+                                        GetAllMyTaskRes reply=GetAllMyTaskRes.newBuilder()
+                                                .setTeamTaskId(i.get("_id").toString())
+                                                .setTitle(i.get("title").toString())
+                                                .setPriority(i.get("priority").toString())
+                                                .setStart(i.get("start").toString())
+                                                .setDeadline(i.get("deadline").toString())
+                                                .setComment(i.get("comment").toString())
+                                                .setDescription(i.get("description").toString())
+                                                .setStatusTask(i.get("status").toString())
+                                                .setReview(i.get("review").toString())
+                                                .setStatus("SUCCESS").build();
+                                        responseObserver.onNext(reply);
+                                    }
+                                }
                                 if (t.indexOf(request.getRequesterId())!=-1){
-                                    Document i=t.get(0);
-                                    GetAllMyTaskRes reply=GetAllMyTaskRes.newBuilder()
-                                            .setTitle(i.get("title").toString())
-                                            .setPriority(i.get("priority").toString())
-                                            .setStart(i.get("start").toString())
-                                            .setDeadline(i.get("deadline").toString())
-                                            .setComment(i.get("comment").toString())
-                                            .setStatus("SUCCESS").setError("FALSE").build();
-                                    responseObserver.onNext(reply);
+
                                 }
                             }
                         });
@@ -93,6 +101,8 @@ public class MyTask {
                 }
                 //TODOS: add userstory not own
             }
+            responseObserver.onCompleted();
+
         }
     }
 }

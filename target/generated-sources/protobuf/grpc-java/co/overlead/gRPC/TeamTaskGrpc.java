@@ -155,38 +155,6 @@ public final class TeamTaskGrpc {
      return getCancelTeamTaskMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.SendTeamTaskToMyTaskReq,
-      co.overlead.gRPC.TeamTaskRes> getSendTeamTaskToMyTaskMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "sendTeamTaskToMyTask",
-      requestType = co.overlead.gRPC.SendTeamTaskToMyTaskReq.class,
-      responseType = co.overlead.gRPC.TeamTaskRes.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<co.overlead.gRPC.SendTeamTaskToMyTaskReq,
-      co.overlead.gRPC.TeamTaskRes> getSendTeamTaskToMyTaskMethod() {
-    io.grpc.MethodDescriptor<co.overlead.gRPC.SendTeamTaskToMyTaskReq, co.overlead.gRPC.TeamTaskRes> getSendTeamTaskToMyTaskMethod;
-    if ((getSendTeamTaskToMyTaskMethod = TeamTaskGrpc.getSendTeamTaskToMyTaskMethod) == null) {
-      synchronized (TeamTaskGrpc.class) {
-        if ((getSendTeamTaskToMyTaskMethod = TeamTaskGrpc.getSendTeamTaskToMyTaskMethod) == null) {
-          TeamTaskGrpc.getSendTeamTaskToMyTaskMethod = getSendTeamTaskToMyTaskMethod = 
-              io.grpc.MethodDescriptor.<co.overlead.gRPC.SendTeamTaskToMyTaskReq, co.overlead.gRPC.TeamTaskRes>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(
-                  "teamtask.TeamTask", "sendTeamTaskToMyTask"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.SendTeamTaskToMyTaskReq.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  co.overlead.gRPC.TeamTaskRes.getDefaultInstance()))
-                  .setSchemaDescriptor(new TeamTaskMethodDescriptorSupplier("sendTeamTaskToMyTask"))
-                  .build();
-          }
-        }
-     }
-     return getSendTeamTaskToMyTaskMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.GetAllTeamTaskReq,
       co.overlead.gRPC.GetAllTeamTaskRes> getGetAllTeamTaskMethod;
 
@@ -276,13 +244,6 @@ public final class TeamTaskGrpc {
 
     /**
      */
-    public void sendTeamTaskToMyTask(co.overlead.gRPC.SendTeamTaskToMyTaskReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.TeamTaskRes> responseObserver) {
-      asyncUnimplementedUnaryCall(getSendTeamTaskToMyTaskMethod(), responseObserver);
-    }
-
-    /**
-     */
     public void getAllTeamTask(co.overlead.gRPC.GetAllTeamTaskReq request,
         io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllTeamTaskRes> responseObserver) {
       asyncUnimplementedUnaryCall(getGetAllTeamTaskMethod(), responseObserver);
@@ -318,13 +279,6 @@ public final class TeamTaskGrpc {
                 co.overlead.gRPC.CancelTeamTaskReq,
                 co.overlead.gRPC.TeamTaskRes>(
                   this, METHODID_CANCEL_TEAM_TASK)))
-          .addMethod(
-            getSendTeamTaskToMyTaskMethod(),
-            asyncUnaryCall(
-              new MethodHandlers<
-                co.overlead.gRPC.SendTeamTaskToMyTaskReq,
-                co.overlead.gRPC.TeamTaskRes>(
-                  this, METHODID_SEND_TEAM_TASK_TO_MY_TASK)))
           .addMethod(
             getGetAllTeamTaskMethod(),
             asyncServerStreamingCall(
@@ -388,14 +342,6 @@ public final class TeamTaskGrpc {
 
     /**
      */
-    public void sendTeamTaskToMyTask(co.overlead.gRPC.SendTeamTaskToMyTaskReq request,
-        io.grpc.stub.StreamObserver<co.overlead.gRPC.TeamTaskRes> responseObserver) {
-      asyncUnaryCall(
-          getChannel().newCall(getSendTeamTaskToMyTaskMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
     public void getAllTeamTask(co.overlead.gRPC.GetAllTeamTaskReq request,
         io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllTeamTaskRes> responseObserver) {
       asyncServerStreamingCall(
@@ -447,13 +393,6 @@ public final class TeamTaskGrpc {
     public co.overlead.gRPC.TeamTaskRes cancelTeamTask(co.overlead.gRPC.CancelTeamTaskReq request) {
       return blockingUnaryCall(
           getChannel(), getCancelTeamTaskMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public co.overlead.gRPC.TeamTaskRes sendTeamTaskToMyTask(co.overlead.gRPC.SendTeamTaskToMyTaskReq request) {
-      return blockingUnaryCall(
-          getChannel(), getSendTeamTaskToMyTaskMethod(), getCallOptions(), request);
     }
 
     /**
@@ -514,22 +453,13 @@ public final class TeamTaskGrpc {
       return futureUnaryCall(
           getChannel().newCall(getCancelTeamTaskMethod(), getCallOptions()), request);
     }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.TeamTaskRes> sendTeamTaskToMyTask(
-        co.overlead.gRPC.SendTeamTaskToMyTaskReq request) {
-      return futureUnaryCall(
-          getChannel().newCall(getSendTeamTaskToMyTaskMethod(), getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_ADD_NEW_TEAM_TASK = 0;
   private static final int METHODID_UPDATE_TEAM_TASK = 1;
   private static final int METHODID_REGISTER_TEAM_TASK = 2;
   private static final int METHODID_CANCEL_TEAM_TASK = 3;
-  private static final int METHODID_SEND_TEAM_TASK_TO_MY_TASK = 4;
-  private static final int METHODID_GET_ALL_TEAM_TASK = 5;
+  private static final int METHODID_GET_ALL_TEAM_TASK = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -562,10 +492,6 @@ public final class TeamTaskGrpc {
           break;
         case METHODID_CANCEL_TEAM_TASK:
           serviceImpl.cancelTeamTask((co.overlead.gRPC.CancelTeamTaskReq) request,
-              (io.grpc.stub.StreamObserver<co.overlead.gRPC.TeamTaskRes>) responseObserver);
-          break;
-        case METHODID_SEND_TEAM_TASK_TO_MY_TASK:
-          serviceImpl.sendTeamTaskToMyTask((co.overlead.gRPC.SendTeamTaskToMyTaskReq) request,
               (io.grpc.stub.StreamObserver<co.overlead.gRPC.TeamTaskRes>) responseObserver);
           break;
         case METHODID_GET_ALL_TEAM_TASK:
@@ -637,7 +563,6 @@ public final class TeamTaskGrpc {
               .addMethod(getUpdateTeamTaskMethod())
               .addMethod(getRegisterTeamTaskMethod())
               .addMethod(getCancelTeamTaskMethod())
-              .addMethod(getSendTeamTaskToMyTaskMethod())
               .addMethod(getGetAllTeamTaskMethod())
               .build();
         }

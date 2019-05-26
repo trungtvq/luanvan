@@ -23,7 +23,7 @@ public class TeamTask {
             res.onCompleted();
         }
 
-        public void makeResponseForFailed(StreamObserver res, String status, String error) {
+        public void makeResponseForFailed(StreamObserver res, String status) {
             res.onNext(TeamTaskRes.newBuilder().setStatus(status).build());
             res.onCompleted();
         }
@@ -35,7 +35,7 @@ public class TeamTask {
             //add task id to TEAM
             System.out.println("addNewTeamTask");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
-                makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
+                makeResponseForFailed(responseObserver, "AUTH_INVALID");
             } else {
                 List<Document> teams = Mongod.collTeam.find(new Document("_id",new ObjectId(request.getTeamId()))).into(new ArrayList<>());
                 if (teams.size() > 0) {
@@ -46,7 +46,7 @@ public class TeamTask {
                             .append("description", request.getDescription())
                             .append("priority", request.getPriority())
                             .append("deadline", request.getDeadline())
-                            .append("assigneeArray", new BsonArray(Arrays.asList(new BsonString(request.getAssigneeArray()))))
+                            .append("assigneeArray", request.getAssigneeArray()!=""?(new BsonArray(Arrays.asList((new BsonString(request.getAssigneeArray()))))):(new BsonArray(Arrays.asList())))
                             .append("comment", request.getComment())
                             .append("status", request.getStatus())
                             .append("review", request.getReview())
@@ -62,7 +62,7 @@ public class TeamTask {
                                     new Document("tasks", getBack.get("_id").toString())));
                     makeResponseForUpdateSuccess(responseObserver, getBack.get("_id").toString());
                 } else {
-                    makeResponseForFailed(responseObserver, "TEAM_NOT_FOUND", "FALSE");
+                    makeResponseForFailed(responseObserver, "TEAM_NOT_FOUND");
 
                 }
 
@@ -75,7 +75,7 @@ public class TeamTask {
             //update task
             System.out.println("updateTeamTask");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
-                makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
+                makeResponseForFailed(responseObserver, "AUTH_INVALID");
             } else {
                 List<Document> teams = Mongod.collTeam.find(new Document("_id",new ObjectId(request.getTeamId()))).into(new ArrayList<>());
                 if (teams.size() > 0) {
@@ -92,9 +92,9 @@ public class TeamTask {
                             .append("review", request.getReview());
                     Mongod.collTask.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamTaskId())),
                             new Document("$set",document));
-                    makeResponseForUpdateSuccess(responseObserver, request.getTeamId());
+                    makeResponseForUpdateSuccess(responseObserver, request.getTeamTaskId());
                 }else{
-                    makeResponseForFailed(responseObserver,"EMPTY","");
+                    makeResponseForFailed(responseObserver,"EMPTY");
                 }
             }
         }
@@ -107,12 +107,22 @@ public class TeamTask {
             //check if task is exist: TODO note importance
             //check if task is exist in team: TODO note importance
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
-                makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
+                makeResponseForFailed(responseObserver, "AUTH_INVALID");
             } else {
-                Mongod.collTask.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamTaskId())),
-                        new Document("$push",
-                                new Document("assigneeArray", request.getRequesterId())));
-                makeResponseForUpdateSuccess(responseObserver, request.getTeamTaskId());
+                List<Document> list=Mongod.collTask.find(new Document("_id", new ObjectId(request.getTeamTaskId()))).into(new ArrayList<>());
+                if (list.size()>0){
+                    List<String> mems= (List<String>) list.get(0).get("assigneeArray");
+                    if (mems.indexOf(request.getAssigner())==-1){
+                        Mongod.collTask.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamTaskId())),
+                                new Document("$push",
+                                        new Document("assigneeArray", request.getAssigner())));
+                        makeResponseForUpdateSuccess(responseObserver, request.getTeamTaskId());
+                    } else makeResponseForFailed(responseObserver,"You already assigned this task");
+
+                }else{
+                    makeResponseForFailed(responseObserver,"Not exist team");
+                }
+
             }
         }
 
@@ -131,39 +141,13 @@ public class TeamTask {
             //remove task from TEAM
             System.out.println("delete teamtask");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
-                makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
+                makeResponseForFailed(responseObserver, "AUTH_INVALID");
             } else {
                 Mongod.collTeam.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamId())),
                         new Document("$pull", new Document("tasks", request.getTeamTaskId())));
+
                 Mongod.collTask.deleteOne(new Document("_id",new ObjectId(request.getTeamTaskId())));
-                makeResponseForUpdateSuccess(responseObserver, request.getProjectId());
-            }
-        }
-
-        @Override
-        public void sendTeamTaskToMyTask(SendTeamTaskToMyTaskReq request, StreamObserver<TeamTaskRes> responseObserver) {
-            System.out.println("registerTeamTask");
-            //check if team exist: TODO note importance
-            //check if user in team: TODO note importance
-            //check if task is exist: TODO note importance
-            //check if task is exist in team: TODO note importance
-            if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
-                makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
-            } else {
-                List<Document> list=Mongod.collTask.find(new Document("_id",new ObjectId((request.getTeamTaskId())))).into(new ArrayList<>());
-                if (list.size()>0){
-                    List<String> l= (List<String>) list.get(0).get("assigneeArray");
-                    if (l.indexOf(request.getRequesterId())==-1){
-                        Mongod.collTask.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamTaskId())),
-                                new Document("$push",
-                                        new Document("assigneeArray", request.getRequesterId())));
-                        makeResponseForUpdateSuccess(responseObserver, request.getTeamTaskId());
-
-                    } else{
-                        makeResponseForFailed(responseObserver,"EXIST_TASK","");
-                    }
-                }else makeResponseForFailed(responseObserver,"EMPTY","");
-
+                makeResponseForUpdateSuccess(responseObserver, request.getTeamTaskId());
             }
         }
 
@@ -174,7 +158,7 @@ public class TeamTask {
 
             System.out.println("addNewTeamTask");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
-                makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
+                makeResponseForFailed(responseObserver, "AUTH_INVALID");
             } else {
 
                 List<Document> listDoc =  Mongod.collTeam.find(new Document("_id", new ObjectId(request.getTeamId()))).into(new ArrayList<>());

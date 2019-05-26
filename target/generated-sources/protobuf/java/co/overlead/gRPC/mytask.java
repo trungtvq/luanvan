@@ -61,20 +61,21 @@ public final class mytask {
       "\"r\n\017UpdateMyTaskReq\022\023\n\013requesterId\030\001 \001(\t" +
       "\022\021\n\tprojectId\030\002 \001(\t\022\016\n\006teamId\030\004 \001(\t\022\023\n\013a" +
       "ccessToken\030\003 \001(\t\022\022\n\nstatusTask\030\005 \001(\t\"\033\n\t" +
-      "MyTaskRes\022\016\n\006status\030\001 \001(\t\"^\n\017GetAllMyTas" +
+      "MyTaskRes\022\016\n\006status\030\001 \001(\t\"p\n\017GetAllMyTas" +
       "kReq\022\023\n\013requesterId\030\001 \001(\t\022\021\n\tprojectId\030\002" +
       " \001(\t\022\016\n\006teamId\030\004 \001(\t\022\023\n\013accessToken\030\003 \001(" +
-      "\t\"\230\001\n\017GetAllMyTaskRes\022\r\n\005title\030\001 \001(\t\022\023\n\013" +
-      "description\030\002 \001(\t\022\020\n\010priority\030\003 \001(\t\022\r\n\005s" +
-      "tart\030\004 \001(\t\022\020\n\010deadline\030\005 \001(\t\022\017\n\007comment\030" +
-      "\006 \001(\t\022\016\n\006status\030\007 \001(\t\022\r\n\005error\030\010 \001(\t2\314\001\n" +
-      "\006Mytask\022D\n\014getAllMyTask\022\027.mytask.GetAllM" +
-      "yTaskReq\032\027.mytask.GetAllMyTaskRes\"\0000\001\022>\n" +
-      "\rcommentMyTask\022\030.mytask.CommentMyTaskReq" +
-      "\032\021.mytask.MyTaskRes\"\000\022<\n\014updateMyTask\022\027." +
-      "mytask.UpdateMyTaskReq\032\021.mytask.MyTaskRe" +
-      "s\"\000B!\n\020co.overlead.gRPCB\006mytaskP\001\242\002\002mtb\006" +
-      "proto3"
+      "\t\022\020\n\010username\030\005 \001(\t\"\320\001\n\017GetAllMyTaskRes\022" +
+      "\022\n\nteamTaskId\030\t \001(\t\022\r\n\005title\030\001 \001(\t\022\023\n\013de" +
+      "scription\030\002 \001(\t\022\020\n\010priority\030\003 \001(\t\022\r\n\005sta" +
+      "rt\030\004 \001(\t\022\020\n\010deadline\030\005 \001(\t\022\017\n\007comment\030\006 " +
+      "\001(\t\022\016\n\006status\030\007 \001(\t\022\016\n\006review\030\n \001(\t\022\r\n\005p" +
+      "oint\030\013 \001(\t\022\022\n\nstatusTask\030\010 \001(\t2\314\001\n\006Mytas" +
+      "k\022D\n\014getAllMyTask\022\027.mytask.GetAllMyTaskR" +
+      "eq\032\027.mytask.GetAllMyTaskRes\"\0000\001\022>\n\rcomme" +
+      "ntMyTask\022\030.mytask.CommentMyTaskReq\032\021.myt" +
+      "ask.MyTaskRes\"\000\022<\n\014updateMyTask\022\027.mytask" +
+      ".UpdateMyTaskReq\032\021.mytask.MyTaskRes\"\000B!\n" +
+      "\020co.overlead.gRPCB\006mytaskP\001\242\002\002mtb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -117,13 +118,13 @@ public final class mytask {
     internal_static_mytask_GetAllMyTaskReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mytask_GetAllMyTaskReq_descriptor,
-        new java.lang.String[] { "RequesterId", "ProjectId", "TeamId", "AccessToken", });
+        new java.lang.String[] { "RequesterId", "ProjectId", "TeamId", "AccessToken", "Username", });
     internal_static_mytask_GetAllMyTaskRes_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_mytask_GetAllMyTaskRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mytask_GetAllMyTaskRes_descriptor,
-        new java.lang.String[] { "Title", "Description", "Priority", "Start", "Deadline", "Comment", "Status", "Error", });
+        new java.lang.String[] { "TeamTaskId", "Title", "Description", "Priority", "Start", "Deadline", "Comment", "Status", "Review", "Point", "StatusTask", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -8,6 +8,16 @@ public interface GetAllMyTaskResOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>string teamTaskId = 9;</code>
+   */
+  java.lang.String getTeamTaskId();
+  /**
+   * <code>string teamTaskId = 9;</code>
+   */
+  com.google.protobuf.ByteString
+      getTeamTaskIdBytes();
+
+  /**
    * <code>string title = 1;</code>
    */
   java.lang.String getTitle();
@@ -94,12 +104,32 @@ public interface GetAllMyTaskResOrBuilder extends
       getStatusBytes();
 
   /**
-   * <code>string error = 8;</code>
+   * <code>string review = 10;</code>
    */
-  java.lang.String getError();
+  java.lang.String getReview();
   /**
-   * <code>string error = 8;</code>
+   * <code>string review = 10;</code>
    */
   com.google.protobuf.ByteString
-      getErrorBytes();
+      getReviewBytes();
+
+  /**
+   * <code>string point = 11;</code>
+   */
+  java.lang.String getPoint();
+  /**
+   * <code>string point = 11;</code>
+   */
+  com.google.protobuf.ByteString
+      getPointBytes();
+
+  /**
+   * <code>string statusTask = 8;</code>
+   */
+  java.lang.String getStatusTask();
+  /**
+   * <code>string statusTask = 8;</code>
+   */
+  com.google.protobuf.ByteString
+      getStatusTaskBytes();
 }

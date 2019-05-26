@@ -39,8 +39,10 @@ message GetAllMyTaskReq{
 	string projectId = 2;
 	string teamId=4;
 	string accessToken = 3;
+	string username=5;
 }
 message GetAllMyTaskRes{
+	string teamTaskId=9;
 	string title = 1;		
 	string description = 2;		   
 	string priority = 3;
@@ -48,5 +50,7 @@ message GetAllMyTaskRes{
 	string deadline = 5;			// form mm/hh/dd/mm/yyyy
 	string comment = 6;
 	string status = 7;
-	string error=8;
+	string review=10;
+	string point=11;
+	string statusTask=8;
 }

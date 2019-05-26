@@ -46,4 +46,14 @@ public interface GetAllMyTaskReqOrBuilder extends
    */
   com.google.protobuf.ByteString
       getAccessTokenBytes();
+
+  /**
+   * <code>string username = 5;</code>
+   */
+  java.lang.String getUsername();
+  /**
+   * <code>string username = 5;</code>
+   */
+  com.google.protobuf.ByteString
+      getUsernameBytes();
 }

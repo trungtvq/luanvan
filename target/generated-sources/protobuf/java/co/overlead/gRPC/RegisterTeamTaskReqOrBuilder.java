@@ -64,4 +64,14 @@ public interface RegisterTeamTaskReqOrBuilder extends
    */
   com.google.protobuf.ByteString
       getTeamIdBytes();
+
+  /**
+   * <code>string assigner = 5;</code>
+   */
+  java.lang.String getAssigner();
+  /**
+   * <code>string assigner = 5;</code>
+   */
+  com.google.protobuf.ByteString
+      getAssignerBytes();
 }

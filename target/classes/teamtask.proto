@@ -11,7 +11,6 @@ service TeamTask{
     rpc updateTeamTask(UpdateTeamTaskReq) returns (TeamTaskRes){}
     rpc registerTeamTask(RegisterTeamTaskReq) returns (TeamTaskRes){}
 	rpc cancelTeamTask(CancelTeamTaskReq) returns (TeamTaskRes){}
-	rpc sendTeamTaskToMyTask(SendTeamTaskToMyTaskReq) returns (TeamTaskRes){}
 	rpc getAllTeamTask(GetAllTeamTaskReq) returns (stream GetAllTeamTaskRes){}
 }
 
@@ -61,6 +60,7 @@ message RegisterTeamTaskReq{
 	string teamTaskId = 3;          // them username vao assignee cua teamtaskId dc chon
 	string accessToken = 4;
 	string teamId=13;
+	string assigner=5;
 
 }
 
@@ -73,14 +73,7 @@ message CancelTeamTaskReq{
 
 }
 
-message SendTeamTaskToMyTaskReq{		//them task trong teamtask vao mytask
-	string requesterId = 1;
-	string projectId = 2;
-	string teamTaskId=11;
-	string accessToken = 10;
-	string teamId=13;
 
-}
 
 message GetAllTeamTaskReq{
     string requesterId = 1;

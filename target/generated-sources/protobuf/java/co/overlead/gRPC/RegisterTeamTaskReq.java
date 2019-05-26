@@ -21,6 +21,7 @@ private static final long serialVersionUID = 0L;
     teamTaskId_ = "";
     accessToken_ = "";
     teamId_ = "";
+    assigner_ = "";
   }
 
   @java.lang.Override
@@ -69,6 +70,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             accessToken_ = s;
+            break;
+          }
+          case 42: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            assigner_ = s;
             break;
           }
           case 106: {
@@ -287,6 +294,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int ASSIGNER_FIELD_NUMBER = 5;
+  private volatile java.lang.Object assigner_;
+  /**
+   * <code>string assigner = 5;</code>
+   */
+  public java.lang.String getAssigner() {
+    java.lang.Object ref = assigner_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      assigner_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string assigner = 5;</code>
+   */
+  public com.google.protobuf.ByteString
+      getAssignerBytes() {
+    java.lang.Object ref = assigner_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      assigner_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -313,6 +354,9 @@ private static final long serialVersionUID = 0L;
     if (!getAccessTokenBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, accessToken_);
     }
+    if (!getAssignerBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, assigner_);
+    }
     if (!getTeamIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 13, teamId_);
     }
@@ -336,6 +380,9 @@ private static final long serialVersionUID = 0L;
     }
     if (!getAccessTokenBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, accessToken_);
+    }
+    if (!getAssignerBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, assigner_);
     }
     if (!getTeamIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, teamId_);
@@ -365,6 +412,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getAccessToken())) return false;
     if (!getTeamId()
         .equals(other.getTeamId())) return false;
+    if (!getAssigner()
+        .equals(other.getAssigner())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -386,6 +435,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getAccessToken().hashCode();
     hash = (37 * hash) + TEAMID_FIELD_NUMBER;
     hash = (53 * hash) + getTeamId().hashCode();
+    hash = (37 * hash) + ASSIGNER_FIELD_NUMBER;
+    hash = (53 * hash) + getAssigner().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -529,6 +580,8 @@ private static final long serialVersionUID = 0L;
 
       teamId_ = "";
 
+      assigner_ = "";
+
       return this;
     }
 
@@ -560,6 +613,7 @@ private static final long serialVersionUID = 0L;
       result.teamTaskId_ = teamTaskId_;
       result.accessToken_ = accessToken_;
       result.teamId_ = teamId_;
+      result.assigner_ = assigner_;
       onBuilt();
       return result;
     }
@@ -626,6 +680,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getTeamId().isEmpty()) {
         teamId_ = other.teamId_;
+        onChanged();
+      }
+      if (!other.getAssigner().isEmpty()) {
+        assigner_ = other.assigner_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -1018,6 +1076,75 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       teamId_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object assigner_ = "";
+    /**
+     * <code>string assigner = 5;</code>
+     */
+    public java.lang.String getAssigner() {
+      java.lang.Object ref = assigner_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        assigner_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string assigner = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getAssignerBytes() {
+      java.lang.Object ref = assigner_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        assigner_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string assigner = 5;</code>
+     */
+    public Builder setAssigner(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      assigner_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string assigner = 5;</code>
+     */
+    public Builder clearAssigner() {
+      
+      assigner_ = getDefaultInstance().getAssigner();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string assigner = 5;</code>
+     */
+    public Builder setAssignerBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      assigner_ = value;
       onChanged();
       return this;
     }
