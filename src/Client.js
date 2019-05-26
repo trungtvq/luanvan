@@ -10,8 +10,11 @@ import {
     getFromStorage,
     setInStorage
 } from './service/storage'
+import { toast } from 'react-toastify';
 
 import { setIn } from 'immutable';
+toast.configure()
+
 const proto = {};
 proto.auth = require('./gRPC/auth/auth_grpc_web_pb');
 proto.myproject = require('./gRPC/myproject/myproject_grpc_web_pb');

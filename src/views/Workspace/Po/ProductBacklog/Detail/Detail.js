@@ -388,6 +388,7 @@ class Detail extends Component {
     let start = d.getMinutes() + "-" + d.getHours() + "-" + d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
     d = this.state.endDate;
     let end = d.getMinutes() + "-" + d.getHours() + "-" + d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
+    
     var SendToSprintBacklogReq = new proto.productbacklog.SendToSprintBacklogReq();
     SendToSprintBacklogReq.setRequesterid(getFromStorage("userId"));
     SendToSprintBacklogReq.setProjectid(getFromStorage("currentProject"));
