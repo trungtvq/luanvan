@@ -142,14 +142,14 @@ public interface AddNewTeamTaskReqOrBuilder extends
       getReviewBytes();
 
   /**
-   * <code>string tokenAccess = 12;</code>
+   * <code>string accessToken = 12;</code>
    */
-  java.lang.String getTokenAccess();
+  java.lang.String getAccessToken();
   /**
-   * <code>string tokenAccess = 12;</code>
+   * <code>string accessToken = 12;</code>
    */
   com.google.protobuf.ByteString
-      getTokenAccessBytes();
+      getAccessTokenBytes();
 
   /**
    * <code>string sprintId = 14;</code>

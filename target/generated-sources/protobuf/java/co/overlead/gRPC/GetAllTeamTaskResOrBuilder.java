@@ -134,16 +134,6 @@ public interface GetAllTeamTaskResOrBuilder extends
       getReviewBytes();
 
   /**
-   * <code>string error = 11;</code>
-   */
-  java.lang.String getError();
-  /**
-   * <code>string error = 11;</code>
-   */
-  com.google.protobuf.ByteString
-      getErrorBytes();
-
-  /**
    * <code>string teamId = 13;</code>
    */
   java.lang.String getTeamId();

@@ -24,7 +24,7 @@ public class TeamTask {
         }
 
         public void makeResponseForFailed(StreamObserver res, String status, String error) {
-            res.onNext(TeamTaskRes.newBuilder().setStatus(status).setError(error).build());
+            res.onNext(TeamTaskRes.newBuilder().setStatus(status).build());
             res.onCompleted();
         }
 
@@ -34,10 +34,10 @@ public class TeamTask {
             //add new TASK
             //add task id to TEAM
             System.out.println("addNewTeamTask");
-            if (!isValidAuth(request.getRequesterId(), request.getTokenAccess())) {
+            if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
-                List<Document> teams = Mongod.collTeam.find(new Document("_id", request.getTeamId())).into(new ArrayList<>());
+                List<Document> teams = Mongod.collTeam.find(new Document("_id",new ObjectId(request.getTeamId()))).into(new ArrayList<>());
                 if (teams.size() > 0) {
                     Document document = new Document()
                             .append("ownerId", request.getRequesterId())
@@ -46,9 +46,9 @@ public class TeamTask {
                             .append("description", request.getDescription())
                             .append("priority", request.getPriority())
                             .append("deadline", request.getDeadline())
-                            .append("assigneeArray", new BsonArray(Arrays.asList()))
+                            .append("assigneeArray", new BsonArray(Arrays.asList(new BsonString(request.getAssigneeArray()))))
                             .append("comment", request.getComment())
-                            .append("status", request.getComment())
+                            .append("status", request.getStatus())
                             .append("review", request.getReview())
                             .append("teamId", request.getTeamId())
                             .append("sprintId",request.getSprintId())
@@ -59,7 +59,7 @@ public class TeamTask {
 
                     Mongod.collTeam.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamId())),
                             new Document("$push",
-                                    new Document("tasks", getBack.get("_id"))));
+                                    new Document("tasks", getBack.get("_id").toString())));
                     makeResponseForUpdateSuccess(responseObserver, getBack.get("_id").toString());
                 } else {
                     makeResponseForFailed(responseObserver, "TEAM_NOT_FOUND", "FALSE");
@@ -74,10 +74,10 @@ public class TeamTask {
             //check if task is exist
             //update task
             System.out.println("updateTeamTask");
-            if (!isValidAuth(request.getRequesterId(), request.getTokenAccess())) {
+            if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
-                List<Document> teams = Mongod.collTeam.find(new Document("_id", request.getTeamId())).into(new ArrayList<>());
+                List<Document> teams = Mongod.collTeam.find(new Document("_id",new ObjectId(request.getTeamId()))).into(new ArrayList<>());
                 if (teams.size() > 0) {
                     Document document = new Document()
                             .append("title", request.getTitle())
@@ -86,13 +86,15 @@ public class TeamTask {
                             .append("description", request.getDescription())
                             .append("priority", request.getPriority())
                             .append("deadline", request.getDeadline())
-                            .append("assigneeArray", new BsonArray(Arrays.asList()))
+                            .append("assigneeArray", new BsonArray(Arrays.asList(new BsonString(request.getAssigneeArray()))))
                             .append("comment", request.getComment())
-                            .append("status", request.getComment())
+                            .append("status", request.getStatus())
                             .append("review", request.getReview());
-                    Mongod.collTask.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamId())),
+                    Mongod.collTask.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamTaskId())),
                             new Document("$set",document));
                     makeResponseForUpdateSuccess(responseObserver, request.getTeamId());
+                }else{
+                    makeResponseForFailed(responseObserver,"EMPTY","");
                 }
             }
         }
@@ -104,7 +106,7 @@ public class TeamTask {
             //check if user in team: TODO note importance
             //check if task is exist: TODO note importance
             //check if task is exist in team: TODO note importance
-            if (!isValidAuth(request.getRequesterId(), request.getTokenAccess())) {
+            if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
                 Mongod.collTask.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamTaskId())),
@@ -114,19 +116,26 @@ public class TeamTask {
             }
         }
 
+        //HOW TO REMOVE USER OUT OF TASK
+        //check if team exist: TODO note importance
+        //check if user in team: TODO note importance
+        //check if task is exist: TODO note importance
+        //check if task is exist in team: TODO note importance
+        //check if task was registed by USER: TODO note importance
+
+
         @Override
         public void cancelTeamTask(CancelTeamTaskReq request, StreamObserver<TeamTaskRes> responseObserver) {
-            //check if team exist: TODO note importance
-            //check if user in team: TODO note importance
-            //check if task is exist: TODO note importance
-            //check if task is exist in team: TODO note importance
-            //check if task was registed by USER: TODO note importance
-            System.out.println("cancelTeamTask");
-            if (!isValidAuth(request.getRequesterId(), request.getTokenAccess())) {
+            //delete teamTask
+            //delete instance task
+            //remove task from TEAM
+            System.out.println("delete teamtask");
+            if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
-                Mongod.collTask.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamTaskId())),
-                        new Document("$pull", new Document("assigneeArray", request.getRequesterId())));
+                Mongod.collTeam.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamId())),
+                        new Document("$pull", new Document("tasks", request.getTeamTaskId())));
+                Mongod.collTask.deleteOne(new Document("_id",new ObjectId(request.getTeamTaskId())));
                 makeResponseForUpdateSuccess(responseObserver, request.getProjectId());
             }
         }
@@ -138,13 +147,23 @@ public class TeamTask {
             //check if user in team: TODO note importance
             //check if task is exist: TODO note importance
             //check if task is exist in team: TODO note importance
-            if (!isValidAuth(request.getRequesterId(), request.getTokenAccess())) {
+            if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
-                Mongod.collTask.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamTaskId())),
-                        new Document("$push",
-                                new Document("assigneeArray", request.getRequesterId())));
-                makeResponseForUpdateSuccess(responseObserver, request.getTeamTaskId());
+                List<Document> list=Mongod.collTask.find(new Document("_id",new ObjectId((request.getTeamTaskId())))).into(new ArrayList<>());
+                if (list.size()>0){
+                    List<String> l= (List<String>) list.get(0).get("assigneeArray");
+                    if (l.indexOf(request.getRequesterId())==-1){
+                        Mongod.collTask.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamTaskId())),
+                                new Document("$push",
+                                        new Document("assigneeArray", request.getRequesterId())));
+                        makeResponseForUpdateSuccess(responseObserver, request.getTeamTaskId());
+
+                    } else{
+                        makeResponseForFailed(responseObserver,"EXIST_TASK","");
+                    }
+                }else makeResponseForFailed(responseObserver,"EMPTY","");
+
             }
         }
 
@@ -154,31 +173,33 @@ public class TeamTask {
             //send task
 
             System.out.println("addNewTeamTask");
-            if (!isValidAuth(request.getRequesterId(), request.getTokenAccess())) {
+            if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
 
-                List<String> listId = (List<String>) Mongod.collTeam.find(new Document("_id", new ObjectId(request.getTeamId()))).into(new ArrayList<>()).get(0);
-                if (listId.size() > 0) {
+                List<Document> listDoc =  Mongod.collTeam.find(new Document("_id", new ObjectId(request.getTeamId()))).into(new ArrayList<>());
+                if (listDoc.size() > 0) {
+                    List<String > listId=(List<String>) listDoc.get(0).get("tasks");
                     listId.forEach(i -> {
                         Document re = Mongod.collTask.find(new Document("_id", new ObjectId(i))).into(new ArrayList<>()).get(0);
+                        System.out.println(re);
                         responseObserver.onNext(GetAllTeamTaskRes.newBuilder()
                                 .setTitle(re.get("title").toString())
-                                .setTitle(re.get("description").toString())
-                                .setTitle(re.get("priority").toString())
-                                .setTitle(re.get("start").toString())
-                                .setTitle(re.get("deadline").toString())
-                                .setTitle(re.get("assigneeArray").toString())
-                                .setTitle(re.get("comment").toString())
-                                .setTitle(re.get("statusTeamTask").toString())
-                                .setTitle(re.get("review").toString())
+                                .setDescription(re.get("description").toString())
+                                .setPriority(re.get("priority").toString())
+                                .setStart(re.get("start").toString())
+                                .setDeadline(re.get("deadline").toString())
+                                .setAssigneeArray(re.get("assigneeArray").toString())
+                                .setComment(re.get("comment").toString())
+                                .setStatusTeamTask(re.get("status").toString())
+                                .setReview(re.get("review").toString())
                                 .setStatus("SUCCESS")
-                                .setError("FALSE")
+                                .setTeamTaskId(re.get("_id").toString())
                                 .build());
                     });
 
                 } else {
-                    responseObserver.onNext(GetAllTeamTaskRes.newBuilder().setError("FALSE").setStatus("EMPTY").build());
+                    responseObserver.onNext(GetAllTeamTaskRes.newBuilder().setStatus("EMPTY").build());
                 }
                 responseObserver.onCompleted();
             }

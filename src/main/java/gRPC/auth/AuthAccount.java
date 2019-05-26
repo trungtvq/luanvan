@@ -68,6 +68,7 @@ public class AuthAccount {
 
         @Override
         public void signUp(SignUpReq request, StreamObserver<SignInRes> responseObserver) {
+
                 Document user = getUserFromDB(request.getUsername()); //check username is exist
                 if (user!=null){ //EXIST USERNAME
                     makeResponseForSignInFailed(responseObserver,"EXISTED_USERNAME","TRUE");

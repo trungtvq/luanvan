@@ -19,7 +19,7 @@ private static final long serialVersionUID = 0L;
     requesterId_ = "";
     projectId_ = "";
     teamTaskId_ = "";
-    tokenAccess_ = "";
+    accessToken_ = "";
     teamId_ = "";
   }
 
@@ -68,7 +68,7 @@ private static final long serialVersionUID = 0L;
           case 34: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            tokenAccess_ = s;
+            accessToken_ = s;
             break;
           }
           case 106: {
@@ -219,34 +219,34 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int TOKENACCESS_FIELD_NUMBER = 4;
-  private volatile java.lang.Object tokenAccess_;
+  public static final int ACCESSTOKEN_FIELD_NUMBER = 4;
+  private volatile java.lang.Object accessToken_;
   /**
-   * <code>string tokenAccess = 4;</code>
+   * <code>string accessToken = 4;</code>
    */
-  public java.lang.String getTokenAccess() {
-    java.lang.Object ref = tokenAccess_;
+  public java.lang.String getAccessToken() {
+    java.lang.Object ref = accessToken_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      tokenAccess_ = s;
+      accessToken_ = s;
       return s;
     }
   }
   /**
-   * <code>string tokenAccess = 4;</code>
+   * <code>string accessToken = 4;</code>
    */
   public com.google.protobuf.ByteString
-      getTokenAccessBytes() {
-    java.lang.Object ref = tokenAccess_;
+      getAccessTokenBytes() {
+    java.lang.Object ref = accessToken_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      tokenAccess_ = b;
+      accessToken_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -310,8 +310,8 @@ private static final long serialVersionUID = 0L;
     if (!getTeamTaskIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, teamTaskId_);
     }
-    if (!getTokenAccessBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, tokenAccess_);
+    if (!getAccessTokenBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, accessToken_);
     }
     if (!getTeamIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 13, teamId_);
@@ -334,8 +334,8 @@ private static final long serialVersionUID = 0L;
     if (!getTeamTaskIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, teamTaskId_);
     }
-    if (!getTokenAccessBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, tokenAccess_);
+    if (!getAccessTokenBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, accessToken_);
     }
     if (!getTeamIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, teamId_);
@@ -361,8 +361,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getProjectId())) return false;
     if (!getTeamTaskId()
         .equals(other.getTeamTaskId())) return false;
-    if (!getTokenAccess()
-        .equals(other.getTokenAccess())) return false;
+    if (!getAccessToken()
+        .equals(other.getAccessToken())) return false;
     if (!getTeamId()
         .equals(other.getTeamId())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -382,8 +382,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getProjectId().hashCode();
     hash = (37 * hash) + TEAMTASKID_FIELD_NUMBER;
     hash = (53 * hash) + getTeamTaskId().hashCode();
-    hash = (37 * hash) + TOKENACCESS_FIELD_NUMBER;
-    hash = (53 * hash) + getTokenAccess().hashCode();
+    hash = (37 * hash) + ACCESSTOKEN_FIELD_NUMBER;
+    hash = (53 * hash) + getAccessToken().hashCode();
     hash = (37 * hash) + TEAMID_FIELD_NUMBER;
     hash = (53 * hash) + getTeamId().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -525,7 +525,7 @@ private static final long serialVersionUID = 0L;
 
       teamTaskId_ = "";
 
-      tokenAccess_ = "";
+      accessToken_ = "";
 
       teamId_ = "";
 
@@ -558,7 +558,7 @@ private static final long serialVersionUID = 0L;
       result.requesterId_ = requesterId_;
       result.projectId_ = projectId_;
       result.teamTaskId_ = teamTaskId_;
-      result.tokenAccess_ = tokenAccess_;
+      result.accessToken_ = accessToken_;
       result.teamId_ = teamId_;
       onBuilt();
       return result;
@@ -620,8 +620,8 @@ private static final long serialVersionUID = 0L;
         teamTaskId_ = other.teamTaskId_;
         onChanged();
       }
-      if (!other.getTokenAccess().isEmpty()) {
-        tokenAccess_ = other.tokenAccess_;
+      if (!other.getAccessToken().isEmpty()) {
+        accessToken_ = other.accessToken_;
         onChanged();
       }
       if (!other.getTeamId().isEmpty()) {
@@ -884,71 +884,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object tokenAccess_ = "";
+    private java.lang.Object accessToken_ = "";
     /**
-     * <code>string tokenAccess = 4;</code>
+     * <code>string accessToken = 4;</code>
      */
-    public java.lang.String getTokenAccess() {
-      java.lang.Object ref = tokenAccess_;
+    public java.lang.String getAccessToken() {
+      java.lang.Object ref = accessToken_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        tokenAccess_ = s;
+        accessToken_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string tokenAccess = 4;</code>
+     * <code>string accessToken = 4;</code>
      */
     public com.google.protobuf.ByteString
-        getTokenAccessBytes() {
-      java.lang.Object ref = tokenAccess_;
+        getAccessTokenBytes() {
+      java.lang.Object ref = accessToken_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        tokenAccess_ = b;
+        accessToken_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string tokenAccess = 4;</code>
+     * <code>string accessToken = 4;</code>
      */
-    public Builder setTokenAccess(
+    public Builder setAccessToken(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      tokenAccess_ = value;
+      accessToken_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string tokenAccess = 4;</code>
+     * <code>string accessToken = 4;</code>
      */
-    public Builder clearTokenAccess() {
+    public Builder clearAccessToken() {
       
-      tokenAccess_ = getDefaultInstance().getTokenAccess();
+      accessToken_ = getDefaultInstance().getAccessToken();
       onChanged();
       return this;
     }
     /**
-     * <code>string tokenAccess = 4;</code>
+     * <code>string accessToken = 4;</code>
      */
-    public Builder setTokenAccessBytes(
+    public Builder setAccessTokenBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      tokenAccess_ = value;
+      accessToken_ = value;
       onChanged();
       return this;
     }

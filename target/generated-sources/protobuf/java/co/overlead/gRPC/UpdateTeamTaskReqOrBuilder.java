@@ -8,60 +8,96 @@ public interface UpdateTeamTaskReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string requesterId = 1;</code>
    */
   java.lang.String getRequesterId();
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string requesterId = 1;</code>
    */
   com.google.protobuf.ByteString
       getRequesterIdBytes();
 
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string projectId = 2;</code>
    */
   java.lang.String getProjectId();
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string projectId = 2;</code>
    */
   com.google.protobuf.ByteString
       getProjectIdBytes();
 
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string teamTaskId = 3;</code>
    */
   java.lang.String getTeamTaskId();
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string teamTaskId = 3;</code>
    */
   com.google.protobuf.ByteString
       getTeamTaskIdBytes();
 
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string title = 4;</code>
    */
   java.lang.String getTitle();
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string title = 4;</code>
    */
   com.google.protobuf.ByteString
       getTitleBytes();
 
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string description = 5;</code>
    */
   java.lang.String getDescription();
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string description = 5;</code>
    */
   com.google.protobuf.ByteString
       getDescriptionBytes();
 
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string priority = 6;</code>
    */
   java.lang.String getPriority();
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string priority = 6;</code>
    */
   com.google.protobuf.ByteString
@@ -69,7 +105,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
 
   /**
    * <pre>
-   * form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+   *	 		 // form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
    * </pre>
    *
    * <code>string start = 7;</code>
@@ -77,7 +113,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
   java.lang.String getStart();
   /**
    * <pre>
-   * form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+   *	 		 // form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
    * </pre>
    *
    * <code>string start = 7;</code>
@@ -87,7 +123,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
 
   /**
    * <pre>
-   * form mm/hh/dd/mm/yyyy
+   *		// form mm/hh/dd/mm/yyyy
    * </pre>
    *
    * <code>string deadline = 8;</code>
@@ -95,7 +131,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
   java.lang.String getDeadline();
   /**
    * <pre>
-   * form mm/hh/dd/mm/yyyy
+   *		// form mm/hh/dd/mm/yyyy
    * </pre>
    *
    * <code>string deadline = 8;</code>
@@ -104,62 +140,114 @@ public interface UpdateTeamTaskReqOrBuilder extends
       getDeadlineBytes();
 
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string assigneeArray = 9;</code>
    */
   java.lang.String getAssigneeArray();
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string assigneeArray = 9;</code>
    */
   com.google.protobuf.ByteString
       getAssigneeArrayBytes();
 
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string comment = 10;</code>
    */
   java.lang.String getComment();
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string comment = 10;</code>
    */
   com.google.protobuf.ByteString
       getCommentBytes();
 
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string status = 11;</code>
    */
   java.lang.String getStatus();
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string status = 11;</code>
    */
   com.google.protobuf.ByteString
       getStatusBytes();
 
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string review = 12;</code>
    */
   java.lang.String getReview();
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string review = 12;</code>
    */
   com.google.protobuf.ByteString
       getReviewBytes();
 
   /**
-   * <code>string tokenAccess = 13;</code>
+   * <pre>
+   * </pre>
+   *
+   * <code>string accessToken = 13;</code>
    */
-  java.lang.String getTokenAccess();
+  java.lang.String getAccessToken();
   /**
-   * <code>string tokenAccess = 13;</code>
+   * <pre>
+   * </pre>
+   *
+   * <code>string accessToken = 13;</code>
    */
   com.google.protobuf.ByteString
-      getTokenAccessBytes();
+      getAccessTokenBytes();
 
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string teamId = 14;</code>
    */
   java.lang.String getTeamId();
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string teamId = 14;</code>
    */
   com.google.protobuf.ByteString
       getTeamIdBytes();
+
+  /**
+   * <pre>
+   * </pre>
+   *
+   * <code>string sprintId = 15;</code>
+   */
+  java.lang.String getSprintId();
+  /**
+   * <pre>
+   * </pre>
+   *
+   * <code>string sprintId = 15;</code>
+   */
+  com.google.protobuf.ByteString
+      getSprintIdBytes();
 }

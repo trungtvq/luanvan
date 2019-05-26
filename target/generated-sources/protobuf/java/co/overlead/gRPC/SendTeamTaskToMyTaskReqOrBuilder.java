@@ -28,92 +28,6 @@ public interface SendTeamTaskToMyTaskReqOrBuilder extends
       getProjectIdBytes();
 
   /**
-   * <code>string title = 3;</code>
-   */
-  java.lang.String getTitle();
-  /**
-   * <code>string title = 3;</code>
-   */
-  com.google.protobuf.ByteString
-      getTitleBytes();
-
-  /**
-   * <code>string description = 4;</code>
-   */
-  java.lang.String getDescription();
-  /**
-   * <code>string description = 4;</code>
-   */
-  com.google.protobuf.ByteString
-      getDescriptionBytes();
-
-  /**
-   * <code>string priority = 5;</code>
-   */
-  java.lang.String getPriority();
-  /**
-   * <code>string priority = 5;</code>
-   */
-  com.google.protobuf.ByteString
-      getPriorityBytes();
-
-  /**
-   * <pre>
-   * form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
-   * </pre>
-   *
-   * <code>string start = 6;</code>
-   */
-  java.lang.String getStart();
-  /**
-   * <pre>
-   * form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
-   * </pre>
-   *
-   * <code>string start = 6;</code>
-   */
-  com.google.protobuf.ByteString
-      getStartBytes();
-
-  /**
-   * <pre>
-   * form mm/hh/dd/mm/yyyy
-   * </pre>
-   *
-   * <code>string deadline = 7;</code>
-   */
-  java.lang.String getDeadline();
-  /**
-   * <pre>
-   * form mm/hh/dd/mm/yyyy
-   * </pre>
-   *
-   * <code>string deadline = 7;</code>
-   */
-  com.google.protobuf.ByteString
-      getDeadlineBytes();
-
-  /**
-   * <code>string comment = 8;</code>
-   */
-  java.lang.String getComment();
-  /**
-   * <code>string comment = 8;</code>
-   */
-  com.google.protobuf.ByteString
-      getCommentBytes();
-
-  /**
-   * <code>string status = 9;</code>
-   */
-  java.lang.String getStatus();
-  /**
-   * <code>string status = 9;</code>
-   */
-  com.google.protobuf.ByteString
-      getStatusBytes();
-
-  /**
    * <code>string teamTaskId = 11;</code>
    */
   java.lang.String getTeamTaskId();
@@ -124,14 +38,14 @@ public interface SendTeamTaskToMyTaskReqOrBuilder extends
       getTeamTaskIdBytes();
 
   /**
-   * <code>string tokenAccess = 10;</code>
+   * <code>string accessToken = 10;</code>
    */
-  java.lang.String getTokenAccess();
+  java.lang.String getAccessToken();
   /**
-   * <code>string tokenAccess = 10;</code>
+   * <code>string accessToken = 10;</code>
    */
   com.google.protobuf.ByteString
-      getTokenAccessBytes();
+      getAccessTokenBytes();
 
   /**
    * <code>string teamId = 13;</code>

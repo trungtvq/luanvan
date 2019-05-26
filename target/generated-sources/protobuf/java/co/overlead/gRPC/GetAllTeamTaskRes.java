@@ -27,7 +27,6 @@ private static final long serialVersionUID = 0L;
     statusTeamTask_ = "";
     status_ = "";
     review_ = "";
-    error_ = "";
     teamId_ = "";
   }
 
@@ -113,12 +112,6 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             review_ = s;
-            break;
-          }
-          case 90: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            error_ = s;
             break;
           }
           case 98: {
@@ -555,40 +548,6 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int ERROR_FIELD_NUMBER = 11;
-  private volatile java.lang.Object error_;
-  /**
-   * <code>string error = 11;</code>
-   */
-  public java.lang.String getError() {
-    java.lang.Object ref = error_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      error_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string error = 11;</code>
-   */
-  public com.google.protobuf.ByteString
-      getErrorBytes() {
-    java.lang.Object ref = error_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      error_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   public static final int TEAMID_FIELD_NUMBER = 13;
   private volatile java.lang.Object teamId_;
   /**
@@ -667,9 +626,6 @@ private static final long serialVersionUID = 0L;
     if (!getReviewBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 10, review_);
     }
-    if (!getErrorBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, error_);
-    }
     if (!getStatusTeamTaskBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 12, statusTeamTask_);
     }
@@ -715,9 +671,6 @@ private static final long serialVersionUID = 0L;
     if (!getReviewBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, review_);
     }
-    if (!getErrorBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, error_);
-    }
     if (!getStatusTeamTaskBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, statusTeamTask_);
     }
@@ -761,8 +714,6 @@ private static final long serialVersionUID = 0L;
         .equals(other.getStatus())) return false;
     if (!getReview()
         .equals(other.getReview())) return false;
-    if (!getError()
-        .equals(other.getError())) return false;
     if (!getTeamId()
         .equals(other.getTeamId())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -798,8 +749,6 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getStatus().hashCode();
     hash = (37 * hash) + REVIEW_FIELD_NUMBER;
     hash = (53 * hash) + getReview().hashCode();
-    hash = (37 * hash) + ERROR_FIELD_NUMBER;
-    hash = (53 * hash) + getError().hashCode();
     hash = (37 * hash) + TEAMID_FIELD_NUMBER;
     hash = (53 * hash) + getTeamId().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -957,8 +906,6 @@ private static final long serialVersionUID = 0L;
 
       review_ = "";
 
-      error_ = "";
-
       teamId_ = "";
 
       return this;
@@ -998,7 +945,6 @@ private static final long serialVersionUID = 0L;
       result.statusTeamTask_ = statusTeamTask_;
       result.status_ = status_;
       result.review_ = review_;
-      result.error_ = error_;
       result.teamId_ = teamId_;
       onBuilt();
       return result;
@@ -1090,10 +1036,6 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getReview().isEmpty()) {
         review_ = other.review_;
-        onChanged();
-      }
-      if (!other.getError().isEmpty()) {
-        error_ = other.error_;
         onChanged();
       }
       if (!other.getTeamId().isEmpty()) {
@@ -1924,75 +1866,6 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       review_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object error_ = "";
-    /**
-     * <code>string error = 11;</code>
-     */
-    public java.lang.String getError() {
-      java.lang.Object ref = error_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        error_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string error = 11;</code>
-     */
-    public com.google.protobuf.ByteString
-        getErrorBytes() {
-      java.lang.Object ref = error_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        error_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string error = 11;</code>
-     */
-    public Builder setError(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      error_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string error = 11;</code>
-     */
-    public Builder clearError() {
-      
-      error_ = getDefaultInstance().getError();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string error = 11;</code>
-     */
-    public Builder setErrorBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      error_ = value;
       onChanged();
       return this;
     }

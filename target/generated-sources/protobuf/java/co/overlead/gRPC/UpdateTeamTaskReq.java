@@ -28,8 +28,9 @@ private static final long serialVersionUID = 0L;
     comment_ = "";
     status_ = "";
     review_ = "";
-    tokenAccess_ = "";
+    accessToken_ = "";
     teamId_ = "";
+    sprintId_ = "";
   }
 
   @java.lang.Override
@@ -131,13 +132,19 @@ private static final long serialVersionUID = 0L;
           case 106: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            tokenAccess_ = s;
+            accessToken_ = s;
             break;
           }
           case 114: {
             java.lang.String s = input.readStringRequireUtf8();
 
             teamId_ = s;
+            break;
+          }
+          case 122: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            sprintId_ = s;
             break;
           }
           default: {
@@ -175,6 +182,9 @@ private static final long serialVersionUID = 0L;
   public static final int REQUESTERID_FIELD_NUMBER = 1;
   private volatile java.lang.Object requesterId_;
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string requesterId = 1;</code>
    */
   public java.lang.String getRequesterId() {
@@ -190,6 +200,9 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string requesterId = 1;</code>
    */
   public com.google.protobuf.ByteString
@@ -209,6 +222,9 @@ private static final long serialVersionUID = 0L;
   public static final int PROJECTID_FIELD_NUMBER = 2;
   private volatile java.lang.Object projectId_;
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string projectId = 2;</code>
    */
   public java.lang.String getProjectId() {
@@ -224,6 +240,9 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string projectId = 2;</code>
    */
   public com.google.protobuf.ByteString
@@ -243,6 +262,9 @@ private static final long serialVersionUID = 0L;
   public static final int TEAMTASKID_FIELD_NUMBER = 3;
   private volatile java.lang.Object teamTaskId_;
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string teamTaskId = 3;</code>
    */
   public java.lang.String getTeamTaskId() {
@@ -258,6 +280,9 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string teamTaskId = 3;</code>
    */
   public com.google.protobuf.ByteString
@@ -277,6 +302,9 @@ private static final long serialVersionUID = 0L;
   public static final int TITLE_FIELD_NUMBER = 4;
   private volatile java.lang.Object title_;
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string title = 4;</code>
    */
   public java.lang.String getTitle() {
@@ -292,6 +320,9 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string title = 4;</code>
    */
   public com.google.protobuf.ByteString
@@ -311,6 +342,9 @@ private static final long serialVersionUID = 0L;
   public static final int DESCRIPTION_FIELD_NUMBER = 5;
   private volatile java.lang.Object description_;
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string description = 5;</code>
    */
   public java.lang.String getDescription() {
@@ -326,6 +360,9 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string description = 5;</code>
    */
   public com.google.protobuf.ByteString
@@ -345,6 +382,9 @@ private static final long serialVersionUID = 0L;
   public static final int PRIORITY_FIELD_NUMBER = 6;
   private volatile java.lang.Object priority_;
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string priority = 6;</code>
    */
   public java.lang.String getPriority() {
@@ -360,6 +400,9 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string priority = 6;</code>
    */
   public com.google.protobuf.ByteString
@@ -380,7 +423,7 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object start_;
   /**
    * <pre>
-   * form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+   *	 		 // form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
    * </pre>
    *
    * <code>string start = 7;</code>
@@ -399,7 +442,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+   *	 		 // form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
    * </pre>
    *
    * <code>string start = 7;</code>
@@ -422,7 +465,7 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object deadline_;
   /**
    * <pre>
-   * form mm/hh/dd/mm/yyyy
+   *		// form mm/hh/dd/mm/yyyy
    * </pre>
    *
    * <code>string deadline = 8;</code>
@@ -441,7 +484,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * form mm/hh/dd/mm/yyyy
+   *		// form mm/hh/dd/mm/yyyy
    * </pre>
    *
    * <code>string deadline = 8;</code>
@@ -463,6 +506,9 @@ private static final long serialVersionUID = 0L;
   public static final int ASSIGNEEARRAY_FIELD_NUMBER = 9;
   private volatile java.lang.Object assigneeArray_;
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string assigneeArray = 9;</code>
    */
   public java.lang.String getAssigneeArray() {
@@ -478,6 +524,9 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string assigneeArray = 9;</code>
    */
   public com.google.protobuf.ByteString
@@ -497,6 +546,9 @@ private static final long serialVersionUID = 0L;
   public static final int COMMENT_FIELD_NUMBER = 10;
   private volatile java.lang.Object comment_;
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string comment = 10;</code>
    */
   public java.lang.String getComment() {
@@ -512,6 +564,9 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string comment = 10;</code>
    */
   public com.google.protobuf.ByteString
@@ -531,6 +586,9 @@ private static final long serialVersionUID = 0L;
   public static final int STATUS_FIELD_NUMBER = 11;
   private volatile java.lang.Object status_;
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string status = 11;</code>
    */
   public java.lang.String getStatus() {
@@ -546,6 +604,9 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string status = 11;</code>
    */
   public com.google.protobuf.ByteString
@@ -565,6 +626,9 @@ private static final long serialVersionUID = 0L;
   public static final int REVIEW_FIELD_NUMBER = 12;
   private volatile java.lang.Object review_;
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string review = 12;</code>
    */
   public java.lang.String getReview() {
@@ -580,6 +644,9 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string review = 12;</code>
    */
   public com.google.protobuf.ByteString
@@ -596,34 +663,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int TOKENACCESS_FIELD_NUMBER = 13;
-  private volatile java.lang.Object tokenAccess_;
+  public static final int ACCESSTOKEN_FIELD_NUMBER = 13;
+  private volatile java.lang.Object accessToken_;
   /**
-   * <code>string tokenAccess = 13;</code>
+   * <pre>
+   * </pre>
+   *
+   * <code>string accessToken = 13;</code>
    */
-  public java.lang.String getTokenAccess() {
-    java.lang.Object ref = tokenAccess_;
+  public java.lang.String getAccessToken() {
+    java.lang.Object ref = accessToken_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      tokenAccess_ = s;
+      accessToken_ = s;
       return s;
     }
   }
   /**
-   * <code>string tokenAccess = 13;</code>
+   * <pre>
+   * </pre>
+   *
+   * <code>string accessToken = 13;</code>
    */
   public com.google.protobuf.ByteString
-      getTokenAccessBytes() {
-    java.lang.Object ref = tokenAccess_;
+      getAccessTokenBytes() {
+    java.lang.Object ref = accessToken_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      tokenAccess_ = b;
+      accessToken_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -633,6 +706,9 @@ private static final long serialVersionUID = 0L;
   public static final int TEAMID_FIELD_NUMBER = 14;
   private volatile java.lang.Object teamId_;
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string teamId = 14;</code>
    */
   public java.lang.String getTeamId() {
@@ -648,6 +724,9 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   * </pre>
+   *
    * <code>string teamId = 14;</code>
    */
   public com.google.protobuf.ByteString
@@ -658,6 +737,46 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
       teamId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int SPRINTID_FIELD_NUMBER = 15;
+  private volatile java.lang.Object sprintId_;
+  /**
+   * <pre>
+   * </pre>
+   *
+   * <code>string sprintId = 15;</code>
+   */
+  public java.lang.String getSprintId() {
+    java.lang.Object ref = sprintId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      sprintId_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   * </pre>
+   *
+   * <code>string sprintId = 15;</code>
+   */
+  public com.google.protobuf.ByteString
+      getSprintIdBytes() {
+    java.lang.Object ref = sprintId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      sprintId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -714,11 +833,14 @@ private static final long serialVersionUID = 0L;
     if (!getReviewBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 12, review_);
     }
-    if (!getTokenAccessBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 13, tokenAccess_);
+    if (!getAccessTokenBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 13, accessToken_);
     }
     if (!getTeamIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 14, teamId_);
+    }
+    if (!getSprintIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 15, sprintId_);
     }
     unknownFields.writeTo(output);
   }
@@ -765,11 +887,14 @@ private static final long serialVersionUID = 0L;
     if (!getReviewBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, review_);
     }
-    if (!getTokenAccessBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, tokenAccess_);
+    if (!getAccessTokenBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, accessToken_);
     }
     if (!getTeamIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(14, teamId_);
+    }
+    if (!getSprintIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(15, sprintId_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -810,10 +935,12 @@ private static final long serialVersionUID = 0L;
         .equals(other.getStatus())) return false;
     if (!getReview()
         .equals(other.getReview())) return false;
-    if (!getTokenAccess()
-        .equals(other.getTokenAccess())) return false;
+    if (!getAccessToken()
+        .equals(other.getAccessToken())) return false;
     if (!getTeamId()
         .equals(other.getTeamId())) return false;
+    if (!getSprintId()
+        .equals(other.getSprintId())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -849,10 +976,12 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getStatus().hashCode();
     hash = (37 * hash) + REVIEW_FIELD_NUMBER;
     hash = (53 * hash) + getReview().hashCode();
-    hash = (37 * hash) + TOKENACCESS_FIELD_NUMBER;
-    hash = (53 * hash) + getTokenAccess().hashCode();
+    hash = (37 * hash) + ACCESSTOKEN_FIELD_NUMBER;
+    hash = (53 * hash) + getAccessToken().hashCode();
     hash = (37 * hash) + TEAMID_FIELD_NUMBER;
     hash = (53 * hash) + getTeamId().hashCode();
+    hash = (37 * hash) + SPRINTID_FIELD_NUMBER;
+    hash = (53 * hash) + getSprintId().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -1010,9 +1139,11 @@ private static final long serialVersionUID = 0L;
 
       review_ = "";
 
-      tokenAccess_ = "";
+      accessToken_ = "";
 
       teamId_ = "";
+
+      sprintId_ = "";
 
       return this;
     }
@@ -1052,8 +1183,9 @@ private static final long serialVersionUID = 0L;
       result.comment_ = comment_;
       result.status_ = status_;
       result.review_ = review_;
-      result.tokenAccess_ = tokenAccess_;
+      result.accessToken_ = accessToken_;
       result.teamId_ = teamId_;
+      result.sprintId_ = sprintId_;
       onBuilt();
       return result;
     }
@@ -1150,12 +1282,16 @@ private static final long serialVersionUID = 0L;
         review_ = other.review_;
         onChanged();
       }
-      if (!other.getTokenAccess().isEmpty()) {
-        tokenAccess_ = other.tokenAccess_;
+      if (!other.getAccessToken().isEmpty()) {
+        accessToken_ = other.accessToken_;
         onChanged();
       }
       if (!other.getTeamId().isEmpty()) {
         teamId_ = other.teamId_;
+        onChanged();
+      }
+      if (!other.getSprintId().isEmpty()) {
+        sprintId_ = other.sprintId_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -1189,6 +1325,9 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object requesterId_ = "";
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string requesterId = 1;</code>
      */
     public java.lang.String getRequesterId() {
@@ -1204,6 +1343,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string requesterId = 1;</code>
      */
     public com.google.protobuf.ByteString
@@ -1220,6 +1362,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string requesterId = 1;</code>
      */
     public Builder setRequesterId(
@@ -1233,6 +1378,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string requesterId = 1;</code>
      */
     public Builder clearRequesterId() {
@@ -1242,6 +1390,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string requesterId = 1;</code>
      */
     public Builder setRequesterIdBytes(
@@ -1258,6 +1409,9 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object projectId_ = "";
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string projectId = 2;</code>
      */
     public java.lang.String getProjectId() {
@@ -1273,6 +1427,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string projectId = 2;</code>
      */
     public com.google.protobuf.ByteString
@@ -1289,6 +1446,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string projectId = 2;</code>
      */
     public Builder setProjectId(
@@ -1302,6 +1462,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string projectId = 2;</code>
      */
     public Builder clearProjectId() {
@@ -1311,6 +1474,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string projectId = 2;</code>
      */
     public Builder setProjectIdBytes(
@@ -1327,6 +1493,9 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object teamTaskId_ = "";
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string teamTaskId = 3;</code>
      */
     public java.lang.String getTeamTaskId() {
@@ -1342,6 +1511,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string teamTaskId = 3;</code>
      */
     public com.google.protobuf.ByteString
@@ -1358,6 +1530,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string teamTaskId = 3;</code>
      */
     public Builder setTeamTaskId(
@@ -1371,6 +1546,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string teamTaskId = 3;</code>
      */
     public Builder clearTeamTaskId() {
@@ -1380,6 +1558,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string teamTaskId = 3;</code>
      */
     public Builder setTeamTaskIdBytes(
@@ -1396,6 +1577,9 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object title_ = "";
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string title = 4;</code>
      */
     public java.lang.String getTitle() {
@@ -1411,6 +1595,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string title = 4;</code>
      */
     public com.google.protobuf.ByteString
@@ -1427,6 +1614,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string title = 4;</code>
      */
     public Builder setTitle(
@@ -1440,6 +1630,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string title = 4;</code>
      */
     public Builder clearTitle() {
@@ -1449,6 +1642,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string title = 4;</code>
      */
     public Builder setTitleBytes(
@@ -1465,6 +1661,9 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object description_ = "";
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string description = 5;</code>
      */
     public java.lang.String getDescription() {
@@ -1480,6 +1679,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string description = 5;</code>
      */
     public com.google.protobuf.ByteString
@@ -1496,6 +1698,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string description = 5;</code>
      */
     public Builder setDescription(
@@ -1509,6 +1714,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string description = 5;</code>
      */
     public Builder clearDescription() {
@@ -1518,6 +1726,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string description = 5;</code>
      */
     public Builder setDescriptionBytes(
@@ -1534,6 +1745,9 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object priority_ = "";
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string priority = 6;</code>
      */
     public java.lang.String getPriority() {
@@ -1549,6 +1763,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string priority = 6;</code>
      */
     public com.google.protobuf.ByteString
@@ -1565,6 +1782,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string priority = 6;</code>
      */
     public Builder setPriority(
@@ -1578,6 +1798,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string priority = 6;</code>
      */
     public Builder clearPriority() {
@@ -1587,6 +1810,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string priority = 6;</code>
      */
     public Builder setPriorityBytes(
@@ -1604,7 +1830,7 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object start_ = "";
     /**
      * <pre>
-     * form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+     *	 		 // form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
      * </pre>
      *
      * <code>string start = 7;</code>
@@ -1623,7 +1849,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+     *	 		 // form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
      * </pre>
      *
      * <code>string start = 7;</code>
@@ -1643,7 +1869,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+     *	 		 // form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
      * </pre>
      *
      * <code>string start = 7;</code>
@@ -1660,7 +1886,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+     *	 		 // form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
      * </pre>
      *
      * <code>string start = 7;</code>
@@ -1673,7 +1899,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
+     *	 		 // form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
      * </pre>
      *
      * <code>string start = 7;</code>
@@ -1693,7 +1919,7 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object deadline_ = "";
     /**
      * <pre>
-     * form mm/hh/dd/mm/yyyy
+     *		// form mm/hh/dd/mm/yyyy
      * </pre>
      *
      * <code>string deadline = 8;</code>
@@ -1712,7 +1938,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * form mm/hh/dd/mm/yyyy
+     *		// form mm/hh/dd/mm/yyyy
      * </pre>
      *
      * <code>string deadline = 8;</code>
@@ -1732,7 +1958,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * form mm/hh/dd/mm/yyyy
+     *		// form mm/hh/dd/mm/yyyy
      * </pre>
      *
      * <code>string deadline = 8;</code>
@@ -1749,7 +1975,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * form mm/hh/dd/mm/yyyy
+     *		// form mm/hh/dd/mm/yyyy
      * </pre>
      *
      * <code>string deadline = 8;</code>
@@ -1762,7 +1988,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * form mm/hh/dd/mm/yyyy
+     *		// form mm/hh/dd/mm/yyyy
      * </pre>
      *
      * <code>string deadline = 8;</code>
@@ -1781,6 +2007,9 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object assigneeArray_ = "";
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string assigneeArray = 9;</code>
      */
     public java.lang.String getAssigneeArray() {
@@ -1796,6 +2025,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string assigneeArray = 9;</code>
      */
     public com.google.protobuf.ByteString
@@ -1812,6 +2044,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string assigneeArray = 9;</code>
      */
     public Builder setAssigneeArray(
@@ -1825,6 +2060,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string assigneeArray = 9;</code>
      */
     public Builder clearAssigneeArray() {
@@ -1834,6 +2072,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string assigneeArray = 9;</code>
      */
     public Builder setAssigneeArrayBytes(
@@ -1850,6 +2091,9 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object comment_ = "";
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string comment = 10;</code>
      */
     public java.lang.String getComment() {
@@ -1865,6 +2109,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string comment = 10;</code>
      */
     public com.google.protobuf.ByteString
@@ -1881,6 +2128,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string comment = 10;</code>
      */
     public Builder setComment(
@@ -1894,6 +2144,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string comment = 10;</code>
      */
     public Builder clearComment() {
@@ -1903,6 +2156,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string comment = 10;</code>
      */
     public Builder setCommentBytes(
@@ -1919,6 +2175,9 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object status_ = "";
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string status = 11;</code>
      */
     public java.lang.String getStatus() {
@@ -1934,6 +2193,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string status = 11;</code>
      */
     public com.google.protobuf.ByteString
@@ -1950,6 +2212,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string status = 11;</code>
      */
     public Builder setStatus(
@@ -1963,6 +2228,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string status = 11;</code>
      */
     public Builder clearStatus() {
@@ -1972,6 +2240,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string status = 11;</code>
      */
     public Builder setStatusBytes(
@@ -1988,6 +2259,9 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object review_ = "";
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string review = 12;</code>
      */
     public java.lang.String getReview() {
@@ -2003,6 +2277,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string review = 12;</code>
      */
     public com.google.protobuf.ByteString
@@ -2019,6 +2296,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string review = 12;</code>
      */
     public Builder setReview(
@@ -2032,6 +2312,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string review = 12;</code>
      */
     public Builder clearReview() {
@@ -2041,6 +2324,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string review = 12;</code>
      */
     public Builder setReviewBytes(
@@ -2055,77 +2341,95 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object tokenAccess_ = "";
+    private java.lang.Object accessToken_ = "";
     /**
-     * <code>string tokenAccess = 13;</code>
+     * <pre>
+     * </pre>
+     *
+     * <code>string accessToken = 13;</code>
      */
-    public java.lang.String getTokenAccess() {
-      java.lang.Object ref = tokenAccess_;
+    public java.lang.String getAccessToken() {
+      java.lang.Object ref = accessToken_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        tokenAccess_ = s;
+        accessToken_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string tokenAccess = 13;</code>
+     * <pre>
+     * </pre>
+     *
+     * <code>string accessToken = 13;</code>
      */
     public com.google.protobuf.ByteString
-        getTokenAccessBytes() {
-      java.lang.Object ref = tokenAccess_;
+        getAccessTokenBytes() {
+      java.lang.Object ref = accessToken_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        tokenAccess_ = b;
+        accessToken_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string tokenAccess = 13;</code>
+     * <pre>
+     * </pre>
+     *
+     * <code>string accessToken = 13;</code>
      */
-    public Builder setTokenAccess(
+    public Builder setAccessToken(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      tokenAccess_ = value;
+      accessToken_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string tokenAccess = 13;</code>
+     * <pre>
+     * </pre>
+     *
+     * <code>string accessToken = 13;</code>
      */
-    public Builder clearTokenAccess() {
+    public Builder clearAccessToken() {
       
-      tokenAccess_ = getDefaultInstance().getTokenAccess();
+      accessToken_ = getDefaultInstance().getAccessToken();
       onChanged();
       return this;
     }
     /**
-     * <code>string tokenAccess = 13;</code>
+     * <pre>
+     * </pre>
+     *
+     * <code>string accessToken = 13;</code>
      */
-    public Builder setTokenAccessBytes(
+    public Builder setAccessTokenBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      tokenAccess_ = value;
+      accessToken_ = value;
       onChanged();
       return this;
     }
 
     private java.lang.Object teamId_ = "";
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string teamId = 14;</code>
      */
     public java.lang.String getTeamId() {
@@ -2141,6 +2445,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string teamId = 14;</code>
      */
     public com.google.protobuf.ByteString
@@ -2157,6 +2464,9 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string teamId = 14;</code>
      */
     public Builder setTeamId(
@@ -2170,6 +2480,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string teamId = 14;</code>
      */
     public Builder clearTeamId() {
@@ -2179,6 +2492,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * </pre>
+     *
      * <code>string teamId = 14;</code>
      */
     public Builder setTeamIdBytes(
@@ -2189,6 +2505,90 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       teamId_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object sprintId_ = "";
+    /**
+     * <pre>
+     * </pre>
+     *
+     * <code>string sprintId = 15;</code>
+     */
+    public java.lang.String getSprintId() {
+      java.lang.Object ref = sprintId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sprintId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     * </pre>
+     *
+     * <code>string sprintId = 15;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSprintIdBytes() {
+      java.lang.Object ref = sprintId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sprintId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     * </pre>
+     *
+     * <code>string sprintId = 15;</code>
+     */
+    public Builder setSprintId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      sprintId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * </pre>
+     *
+     * <code>string sprintId = 15;</code>
+     */
+    public Builder clearSprintId() {
+      
+      sprintId_ = getDefaultInstance().getSprintId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * </pre>
+     *
+     * <code>string sprintId = 15;</code>
+     */
+    public Builder setSprintIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      sprintId_ = value;
       onChanged();
       return this;
     }

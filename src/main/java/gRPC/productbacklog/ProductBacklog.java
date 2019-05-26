@@ -210,7 +210,7 @@ public class ProductBacklog {
                                             .append("deadline",request.getDeadline())));
 
                     Mongod.collTeam.findOneAndUpdate(new Document("_id",new ObjectId(request.getTeamId())),
-                            new Document("push",
+                            new Document("$push",
                                     new Document("sprintbacklogs",request.getProductBacklogId())));
 
                     makeResponseForUpdateSuccess(responseObserver,request.getProductBacklogId());

@@ -79,7 +79,8 @@ public class MyProject {
                                 .append("department", "default")
                                 .append("tasks", new BsonArray(Arrays.asList()))
                                 .append("conversations", new BsonArray(Arrays.asList()))
-                                .append("members", new BsonArray(Arrays.asList(new BsonString(request.getRequesterId()))));
+                                .append("members", new BsonArray(Arrays.asList(new BsonString(request.getRequesterId()))))
+                                .append("sprintbacklogs", new BsonArray(Arrays.asList()));
                         Mongod.collTeam.insertOne(team);
 
                         foundDocument = Mongod.collTeam.find(team).into(new ArrayList<>());
@@ -177,28 +178,38 @@ public class MyProject {
                 Set<String> setProject = new HashSet<String>();
                 List<String> team= (List<String>) Mongod.collAuth.find(new Document("_id",new ObjectId(request.getRequesterId()))).into(new ArrayList<>()).get(0).get("teamlist");
 
-                if (team.size()==0){
+                if (team!=null){
                     team.forEach(i->{
 
                         setProject.add(Mongod.collTeam.find(new Document("_id",new ObjectId(i))).into(new ArrayList<>()).get(0).get("projectId").toString());
                     });
-                    setProject.forEach(item->{
-                        if (item!=null&& item !=""){
+                    if (setProject.size()>0){
+                        setProject.forEach(item->{
+                            if (item!=null&& item !=""){
 
-                            Document i = Mongod.collProject.find(new Document("_id",new ObjectId(item))).into(new ArrayList<Document>()).get(0);
+                                List<Document> iList = Mongod.collProject.find(new Document("_id",new ObjectId(item))).into(new ArrayList<Document>());
+                                if (iList.size()>0){
+                                    Document i=iList.get(0);
+                                    ProjectRes reply=ProjectRes.newBuilder()
+                                            .setProjectId(i.get("_id").toString())
+                                            .setProjectName(i.get("projectName").toString())
+                                            .setStart(i.get("start").toString())
+                                            .setEnd(i.get("end").toString())
+                                            .setPrivate(i.get("private").toString())
+                                            .setProgress(i.get("progress").toString())
+                                            .setStatus("SUCCESS").setError("FALSE").build();
+                                    responseObserver.onNext(reply);
+                                }else{
+                                    responseObserver.onNext(ProjectRes.newBuilder().setStatus("EMPTY").build());
+                                }
 
-                            ProjectRes reply=ProjectRes.newBuilder()
-                                    .setProjectId(i.get("_id").toString())
-                                    .setProjectName(i.get("projectName").toString())
-                                    .setStart(i.get("start").toString())
-                                    .setEnd(i.get("end").toString())
-                                    .setPrivate(i.get("private").toString())
-                                    .setProgress(i.get("progress").toString())
-                                    .setStatus("SUCCESS").setError("FALSE").build();
-                            responseObserver.onNext(reply);
 
-                        }
-                    });
+                            }
+                        });
+                    }else{
+                        responseObserver.onNext(ProjectRes.newBuilder().setStatus("EMPTY").build());
+                    }
+
                 }
                     responseObserver.onCompleted();
                 }

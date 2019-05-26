@@ -63,7 +63,7 @@ public class SprintBacklog {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
             } else {
                 List<Document> team = Mongod.collTeam.find(new Document("_id", new ObjectId(request.getTeamId()))).into(new ArrayList<>());
-                if (team.size() == 0) {
+                if (team== null) {
                     makeResponseForFailed(responseObserver, "TEAM_NOT_FOUND", "FALSE");
                 } else {
                     List<String> backlogList = (List<String>) team.get(0).get("sprintbacklogs");
@@ -87,6 +87,8 @@ public class SprintBacklog {
                                         .setSprintId(r.get("sprintId").toString())
                                         .setStatus("SUCCESS")
                                         .setTitle(r.get("title").toString())
+                                        .setStart(r.get("start").toString())
+                                        .setDeadline(r.get("deadline").toString())
                                         .build());
                             }
 

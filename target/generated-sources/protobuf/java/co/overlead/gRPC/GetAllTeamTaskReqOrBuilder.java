@@ -28,14 +28,14 @@ public interface GetAllTeamTaskReqOrBuilder extends
       getProjectIdBytes();
 
   /**
-   * <code>string tokenAccess = 3;</code>
+   * <code>string accessToken = 3;</code>
    */
-  java.lang.String getTokenAccess();
+  java.lang.String getAccessToken();
   /**
-   * <code>string tokenAccess = 3;</code>
+   * <code>string accessToken = 3;</code>
    */
   com.google.protobuf.ByteString
-      getTokenAccessBytes();
+      getAccessTokenBytes();
 
   /**
    * <code>string teamId = 13;</code>
@@ -46,4 +46,14 @@ public interface GetAllTeamTaskReqOrBuilder extends
    */
   com.google.protobuf.ByteString
       getTeamIdBytes();
+
+  /**
+   * <code>string sprintId = 4;</code>
+   */
+  java.lang.String getSprintId();
+  /**
+   * <code>string sprintId = 4;</code>
+   */
+  com.google.protobuf.ByteString
+      getSprintIdBytes();
 }
