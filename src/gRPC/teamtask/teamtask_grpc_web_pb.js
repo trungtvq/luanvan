@@ -309,61 +309,6 @@ proto.teamtask.TeamTaskPromiseClient.prototype.cancelTeamTask =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
- *   !proto.teamtask.SendTeamTaskToMyTaskReq,
- *   !proto.teamtask.TeamTaskRes>}
- */
-const methodInfo_TeamTask_sendTeamTaskToMyTask = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.teamtask.TeamTaskRes,
-  /** @param {!proto.teamtask.SendTeamTaskToMyTaskReq} request */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.teamtask.TeamTaskRes.deserializeBinary
-);
-
-
-/**
- * @param {!proto.teamtask.SendTeamTaskToMyTaskReq} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.Error, ?proto.teamtask.TeamTaskRes)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.teamtask.TeamTaskRes>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.teamtask.TeamTaskClient.prototype.sendTeamTaskToMyTask =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/teamtask.TeamTask/sendTeamTaskToMyTask',
-      request,
-      metadata || {},
-      methodInfo_TeamTask_sendTeamTaskToMyTask,
-      callback);
-};
-
-
-/**
- * @param {!proto.teamtask.SendTeamTaskToMyTaskReq} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.teamtask.TeamTaskRes>}
- *     A native promise that resolves to the response
- */
-proto.teamtask.TeamTaskPromiseClient.prototype.sendTeamTaskToMyTask =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/teamtask.TeamTask/sendTeamTaskToMyTask',
-      request,
-      metadata || {},
-      methodInfo_TeamTask_sendTeamTaskToMyTask);
-};
-
-
-/**
- * @const
- * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.teamtask.GetAllTeamTaskReq,
  *   !proto.teamtask.GetAllTeamTaskRes>}
  */

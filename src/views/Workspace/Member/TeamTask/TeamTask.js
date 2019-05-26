@@ -41,17 +41,14 @@ class TeamTask extends Component {
       modalEdit: false,
       title: '',
       description: '',
-      priority: "",
-      timeStart: "",
-      dateStart: "",
-      timeDeadline: "",
-      dateDeadline: "",
+      priority: "",      
       assignee: "",
       comment: '',
       status: "",
       review: "",
       updateId:"",
-      status:""
+      status:"",
+      mem:getFromStorage('members')
 
     };
   }
@@ -79,6 +76,20 @@ class TeamTask extends Component {
   toggleAdd = () => {
     this.setState(prevState => ({
       modalAdd: !prevState.modalAdd
+    }));
+  }
+  toggleAddOpen = () => {
+    this.setState(prevState => ({
+      modalAdd: !prevState.modalAdd,
+      title: '',
+      description: '',
+      priority: "",      
+      assignee: "",
+      comment: '',
+      status: "",
+      review: "",
+      updateId:"",
+      status:"",
     }));
   }
   toggleEdit = () => {
@@ -177,8 +188,6 @@ class TeamTask extends Component {
           start = (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
         }
 
-
-
         arr = response.getDeadline().split('-')
         if (arr[1] > 12) {
           arr[1] = arr[1] - 12
@@ -192,17 +201,15 @@ class TeamTask extends Component {
           str=str.slice(1,-1)
           arr=str.split(', ')
 
-          let mem=getFromStorage('members')
-          console.log("MEM")
-          console.log(mem)
+      
 
-          mem.map(p=>{
-            if (arr.indexOf(p.id)!=-1){
-              console.log("exist")
-              arr[arr.indexOf(p.id)]=p.username
-            }
-            return p
-          })
+          // that.state.mem.map(p=>{
+          //   if (arr.indexOf(p.id)!=-1){
+          //     console.log("exist")
+          //     arr[arr.indexOf(p.id)]=p.username
+          //   }
+          //   return p
+          // })
 
         that.setState(prevState => ({
           data: [...prevState.data,
@@ -363,14 +370,15 @@ class TeamTask extends Component {
     const teamtaskService = new proto.teamtask.TeamTaskClient('https://www.overlead.co');
     this.notify()
     var metadata = {};
-    var SendTeamTaskToMyTaskReq = new proto.teamtask.SendTeamTaskToMyTaskReq();
-    SendTeamTaskToMyTaskReq.setRequesterid(getFromStorage("userId"));
-    SendTeamTaskToMyTaskReq.setProjectid(getFromStorage("currentProject"));
-    SendTeamTaskToMyTaskReq.setAccesstoken(getFromStorage("accessToken"));
-    SendTeamTaskToMyTaskReq.setTeamtaskid(id)
-    SendTeamTaskToMyTaskReq.setTeamid(getFromStorage("teamId"))
+    var RegisterTeamTaskReq = new proto.teamtask.RegisterTeamTaskReq();
+    RegisterTeamTaskReq.setRequesterid(getFromStorage("userId"));
+    RegisterTeamTaskReq.setProjectid(getFromStorage("currentProject"));
+    RegisterTeamTaskReq.setAccesstoken(getFromStorage("accessToken"));
+    RegisterTeamTaskReq.setTeamtaskid(id)
+    RegisterTeamTaskReq.setTeamid(getFromStorage("teamId"))
+    RegisterTeamTaskReq.setAssigner(getFromStorage("username"))
     let that=this
-    teamtaskService.sendTeamTaskToMyTask(SendTeamTaskToMyTaskReq, metadata, (err, response) => {
+    teamtaskService.registerTeamTask(RegisterTeamTaskReq, metadata, (err, response) => {
       if (err) { //if error
         console.log(err);
         console.log("error")
@@ -382,7 +390,7 @@ class TeamTask extends Component {
             that.setState({
               data:newData.map(p=>{
                 if (p.id==id){
-                  return Object.assign(p,{assignee:getFromStorage("userId")})
+                  return Object.assign(p,{assignee:getFromStorage("username")})
                 } 
                 return p
               })
@@ -394,6 +402,7 @@ class TeamTask extends Component {
       }
     });
   }
+  
   //TODO: update at assign
   handleUpdate = () => {
     this.notify()
@@ -422,7 +431,6 @@ class TeamTask extends Component {
     UpdateTeamTaskReq.setTitle(this.state.title);
     UpdateTeamTaskReq.setDescription(this.state.description);
     UpdateTeamTaskReq.setSprintid("this.state.sprintId");
-    console.log(this.state.title)
     
     var response = teamtaskService.updateTeamTask(UpdateTeamTaskReq, metadata)
     let that = this
@@ -456,8 +464,6 @@ class TeamTask extends Component {
         that.setState({
           data:newData.map(p=>{
             if (p.id==that.state.updateId)    {
-              console.log("match")
-              console.log(that.state.title)
               return {
                 id: that.state.updateId,
                 title: that.state.title,
@@ -492,23 +498,20 @@ class TeamTask extends Component {
     });
 
   };
-  checkSto=()=>{
-    console.log(getFromStorage('members'))
-  }
-  componentDidUpdate(){
-    let mem=getFromStorage('members')
-    let arr=this.state.data
-    mem.map(p=>{
-      if (arr.indexOf(p.id)!=-1){
-        console.log("exist")
-        arr[arr.indexOf(p.id)]=p.username
-      }
-      return p
-    })
-  }
+ 
+  // componentDidUpdate(){
+  //   let mem=getFromStorage('members')
+  //   let arr=this.state.data
+  //   mem.map(p=>{
+  //     if (arr.indexOf(p.id)!=-1){
+  //       console.log("exist")
+  //       arr[arr.indexOf(p.id)]=p.username
+  //     }
+  //     return p
+  //   })
+  // }
   render() {    
     let that = this;
-    let mem=getFromStorage('members')
     return (
       <Row>
         <Col>
@@ -534,10 +537,11 @@ class TeamTask extends Component {
                     <th>Assignee</th>
                     <th>Comment</th>
                     <th>Status</th>
-                    <th onClick={this.checkSto}>Review</th>
+                    <th>Review</th>
                     <th>
                       <div>
-                        <Button color="primary" size="sm" className="mt-3" onClick={that.toggleAdd}><i class="fa fa-plus-square"></i>{this.props.buttonLabel}</Button>
+                        <Button color="primary" size="sm" className="mt-3" onClick={that.toggleAddOpen}><i class="fa fa-plus-square"></i>{this.props.buttonLabel}</Button>
+                       
                         <Modal size="lg" isOpen={that.state.modalAdd} toggle={that.toggleAdd} className={that.props.className}>
                           <ModalHeader toggle={that.toggleAdd}>Team Task</ModalHeader>
                           <ModalBody>
@@ -612,10 +616,10 @@ class TeamTask extends Component {
                                 <Col xs="12" md="3">
                                   <Input type="select" name="select" id="select" onChange={that.onTextboxChangeAssignee}>
                                   <option value="0">Please select</option>
-                                    { (mem!=undefined)?
-                                      mem.map(p=>{
+                                    { (that.state.mem!=undefined)?
+                                      that.state.mem.map(p=>{
                                         return(
-                                          <option value={p.id}>{p.username}</option>
+                                          <option value={p.username}>{p.username}</option>
                                         )
                                       }):{
                                         
@@ -733,11 +737,11 @@ class TeamTask extends Component {
                                       </Col>
                                      <Col xs="12" md="3">
                                         <Input type="select" name="select" id="select" onChange={that.onTextboxChangeAssignee}>
-                                        <option value="0">Please select</option>
-                                    { (mem!=undefined)?
-                                      mem.map(p=>{
+                                        <option value={that.state.assignee}>{that.state.assignee}</option>
+                                    { (that.state.mem!=undefined)?
+                                      that.state.mem.map(p=>{
                                         return(
-                                          <option value={p.id}>{p.username}</option>
+                                          <option value={p.username}>{p.username}</option>
                                         )
                                       }):{
                                         
