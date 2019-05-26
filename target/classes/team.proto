@@ -43,8 +43,9 @@ message GetAllTeamRes{
 message TeamRes {
     string status = 1;
     string id = 2;
-    string error = 3;
-    string option = 4;
+    string username = 3;
+    string name = 4;
+    string option=5;
 }
 message AddNewTeamReq {
     string requesterId = 1;

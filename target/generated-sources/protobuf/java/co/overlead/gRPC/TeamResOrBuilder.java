@@ -28,21 +28,31 @@ public interface TeamResOrBuilder extends
       getIdBytes();
 
   /**
-   * <code>string error = 3;</code>
+   * <code>string username = 3;</code>
    */
-  java.lang.String getError();
+  java.lang.String getUsername();
   /**
-   * <code>string error = 3;</code>
+   * <code>string username = 3;</code>
    */
   com.google.protobuf.ByteString
-      getErrorBytes();
+      getUsernameBytes();
 
   /**
-   * <code>string option = 4;</code>
+   * <code>string name = 4;</code>
+   */
+  java.lang.String getName();
+  /**
+   * <code>string name = 4;</code>
+   */
+  com.google.protobuf.ByteString
+      getNameBytes();
+
+  /**
+   * <code>string option = 5;</code>
    */
   java.lang.String getOption();
   /**
-   * <code>string option = 4;</code>
+   * <code>string option = 5;</code>
    */
   com.google.protobuf.ByteString
       getOptionBytes();

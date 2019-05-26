@@ -79,41 +79,41 @@ public final class team {
       "GetAllTeamRes\022\016\n\006teamId\030\001 \001(\t\022\016\n\006status\030" +
       "\002 \001(\t\022\021\n\tnumMember\030\003 \001(\t\022\014\n\004name\030\004 \001(\t\022\022" +
       "\n\ndepartment\030\006 \001(\t\022\023\n\013description\030\007 \001(\t\"" +
-      "D\n\007TeamRes\022\016\n\006status\030\001 \001(\t\022\n\n\002id\030\002 \001(\t\022\r" +
-      "\n\005error\030\003 \001(\t\022\016\n\006option\030\004 \001(\t\"\203\001\n\rAddNew" +
-      "TeamReq\022\023\n\013requesterId\030\001 \001(\t\022\021\n\tprojectI" +
-      "d\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\023\n\013description\030\004 \001" +
-      "(\t\022\022\n\ndepartment\030\005 \001(\t\022\023\n\013accessToken\030\006 " +
-      "\001(\t\"\200\001\n\rUpdateTeamReq\022\023\n\013requesterId\030\001 \001" +
-      "(\t\022\016\n\006teamId\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\023\n\013desc" +
-      "ription\030\004 \001(\t\022\022\n\ndepartment\030\005 \001(\t\022\023\n\013acc" +
-      "essToken\030\006 \001(\t\"\\\n\rDeleteTeamReq\022\023\n\013reque" +
-      "sterId\030\001 \001(\t\022\016\n\006teamId\030\002 \001(\t\022\021\n\tprojectI" +
-      "d\030\003 \001(\t\022\023\n\013accessToken\030\004 \001(\t\"k\n\014AddMembe" +
-      "rReq\022\023\n\013requesterId\030\001 \001(\t\022\016\n\006teamId\030\003 \001(" +
-      "\t\022\014\n\004role\030\002 \001(\t\022\023\n\013memberEmail\030\005 \001(\t\022\023\n\013" +
-      "accessToken\030\004 \001(\t\"`\n\017RemoveMemberReq\022\023\n\013" +
-      "requesterId\030\001 \001(\t\022\016\n\006teamId\030\003 \001(\t\022\023\n\013acc" +
-      "essToken\030\004 \001(\t\022\023\n\013memberEmail\030\005 \001(\t\"n\n\017U" +
-      "pdateMemberReq\022\023\n\013requesterId\030\001 \001(\t\022\016\n\006t" +
-      "eamId\030\003 \001(\t\022\023\n\013accessToken\030\004 \001(\t\022\023\n\013memb" +
-      "erEmail\030\005 \001(\t\022\014\n\004role\030\002 \001(\t\"K\n\017GetAllMem" +
-      "berReq\022\023\n\013requesterId\030\001 \001(\t\022\016\n\006teamId\030\003 " +
-      "\001(\t\022\023\n\013accessToken\030\004 \001(\t2\372\003\n\004Team\022:\n\nadd" +
-      "NewTeam\022\027.teamtask.AddNewTeamReq\032\021.teamt" +
-      "ask.TeamRes\"\000\022:\n\nupdateTeam\022\027.teamtask.U" +
-      "pdateTeamReq\032\021.teamtask.TeamRes\"\000\022:\n\ndel" +
-      "eteTeam\022\027.teamtask.DeleteTeamReq\032\021.teamt" +
-      "ask.TeamRes\"\000\0228\n\taddMember\022\026.teamtask.Ad" +
-      "dMemberReq\032\021.teamtask.TeamRes\"\000\022>\n\014remov" +
-      "eMember\022\031.teamtask.RemoveMemberReq\032\021.tea" +
-      "mtask.TeamRes\"\000\022>\n\014updateMember\022\031.teamta" +
-      "sk.UpdateMemberReq\032\021.teamtask.TeamRes\"\000\022" +
-      "@\n\014getAllMember\022\031.teamtask.GetAllMemberR" +
-      "eq\032\021.teamtask.TeamRes\"\0000\001\022B\n\ngetAllTeam\022" +
-      "\027.teamtask.GetAllTeamReq\032\027.teamtask.GetA" +
-      "llTeamRes\"\0000\001B\036\n\020co.overlead.gRPCB\004teamP" +
-      "\001\242\002\001tb\006proto3"
+      "U\n\007TeamRes\022\016\n\006status\030\001 \001(\t\022\n\n\002id\030\002 \001(\t\022\020" +
+      "\n\010username\030\003 \001(\t\022\014\n\004name\030\004 \001(\t\022\016\n\006option" +
+      "\030\005 \001(\t\"\203\001\n\rAddNewTeamReq\022\023\n\013requesterId\030" +
+      "\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\023" +
+      "\n\013description\030\004 \001(\t\022\022\n\ndepartment\030\005 \001(\t\022" +
+      "\023\n\013accessToken\030\006 \001(\t\"\200\001\n\rUpdateTeamReq\022\023" +
+      "\n\013requesterId\030\001 \001(\t\022\016\n\006teamId\030\002 \001(\t\022\014\n\004n" +
+      "ame\030\003 \001(\t\022\023\n\013description\030\004 \001(\t\022\022\n\ndepart" +
+      "ment\030\005 \001(\t\022\023\n\013accessToken\030\006 \001(\t\"\\\n\rDelet" +
+      "eTeamReq\022\023\n\013requesterId\030\001 \001(\t\022\016\n\006teamId\030" +
+      "\002 \001(\t\022\021\n\tprojectId\030\003 \001(\t\022\023\n\013accessToken\030" +
+      "\004 \001(\t\"k\n\014AddMemberReq\022\023\n\013requesterId\030\001 \001" +
+      "(\t\022\016\n\006teamId\030\003 \001(\t\022\014\n\004role\030\002 \001(\t\022\023\n\013memb" +
+      "erEmail\030\005 \001(\t\022\023\n\013accessToken\030\004 \001(\t\"`\n\017Re" +
+      "moveMemberReq\022\023\n\013requesterId\030\001 \001(\t\022\016\n\006te" +
+      "amId\030\003 \001(\t\022\023\n\013accessToken\030\004 \001(\t\022\023\n\013membe" +
+      "rEmail\030\005 \001(\t\"n\n\017UpdateMemberReq\022\023\n\013reque" +
+      "sterId\030\001 \001(\t\022\016\n\006teamId\030\003 \001(\t\022\023\n\013accessTo" +
+      "ken\030\004 \001(\t\022\023\n\013memberEmail\030\005 \001(\t\022\014\n\004role\030\002" +
+      " \001(\t\"K\n\017GetAllMemberReq\022\023\n\013requesterId\030\001" +
+      " \001(\t\022\016\n\006teamId\030\003 \001(\t\022\023\n\013accessToken\030\004 \001(" +
+      "\t2\372\003\n\004Team\022:\n\naddNewTeam\022\027.teamtask.AddN" +
+      "ewTeamReq\032\021.teamtask.TeamRes\"\000\022:\n\nupdate" +
+      "Team\022\027.teamtask.UpdateTeamReq\032\021.teamtask" +
+      ".TeamRes\"\000\022:\n\ndeleteTeam\022\027.teamtask.Dele" +
+      "teTeamReq\032\021.teamtask.TeamRes\"\000\0228\n\taddMem" +
+      "ber\022\026.teamtask.AddMemberReq\032\021.teamtask.T" +
+      "eamRes\"\000\022>\n\014removeMember\022\031.teamtask.Remo" +
+      "veMemberReq\032\021.teamtask.TeamRes\"\000\022>\n\014upda" +
+      "teMember\022\031.teamtask.UpdateMemberReq\032\021.te" +
+      "amtask.TeamRes\"\000\022@\n\014getAllMember\022\031.teamt" +
+      "ask.GetAllMemberReq\032\021.teamtask.TeamRes\"\000" +
+      "0\001\022B\n\ngetAllTeam\022\027.teamtask.GetAllTeamRe" +
+      "q\032\027.teamtask.GetAllTeamRes\"\0000\001B\036\n\020co.ove" +
+      "rlead.gRPCB\004teamP\001\242\002\001tb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -144,7 +144,7 @@ public final class team {
     internal_static_teamtask_TeamRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_teamtask_TeamRes_descriptor,
-        new java.lang.String[] { "Status", "Id", "Error", "Option", });
+        new java.lang.String[] { "Status", "Id", "Username", "Name", "Option", });
     internal_static_teamtask_AddNewTeamReq_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_teamtask_AddNewTeamReq_fieldAccessorTable = new

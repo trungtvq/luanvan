@@ -22,14 +22,14 @@ import static helper.auth.RequestAuth.isValidAuth;
 public class CoTeam {
     public static class CoTeamImpl extends TeamGrpc.TeamImplBase {
         public void makeResponseForUpdateSuccess(StreamObserver res, String id) {
-            res.onNext(TeamRes.newBuilder().setStatus("SUCCESS").setError("FALSE").setId(id).build());
+            res.onNext(TeamRes.newBuilder().setStatus("SUCCESS").setId(id).build());
             res.onCompleted();
         }
 
 
 
         public void makeResponseForFailed(StreamObserver res, String status, String error) {
-            res.onNext(TeamRes.newBuilder().setStatus(status).setError(error).build());
+            res.onNext(TeamRes.newBuilder().setStatus(status).build());
             res.onCompleted();
         }
 
@@ -172,7 +172,7 @@ public class CoTeam {
 
                             String name=Mongod.collAuth.find(new Document("username",request.getMemberEmail())).into(new ArrayList<>()).get(0).get("name").toString();
                             responseObserver.onNext(TeamRes.newBuilder().setId(request.getTeamId()).setStatus("SUCCESS")
-                                    .setOption(name).build());
+                                    .setName(name).build());
                             makeResponseForUpdateSuccess(responseObserver, request.getTeamId());
                         } else makeResponseForFailed(responseObserver,"EXIST_MEM","FALSE");
 
@@ -290,15 +290,17 @@ public class CoTeam {
                         if (userList.size()>0) {
                             System.out.println("have member");
                             userList.forEach(i->{
-                                String name=Mongod.collAuth.find(new Document("_id",new ObjectId(i))).into(new ArrayList<>()).get(0).get("name").toString();
+
+                                Document user=Mongod.collAuth.find(new Document("_id",new ObjectId(i))).into(new ArrayList<>()).get(0);
 
                                 responseObserver.onNext(TeamRes.newBuilder()
                                         .setId(i)
-                                        .setOption(name)
-                                        .setStatus("SUCCESS").setError("FALSE").build());
+                                        .setName(user.get("name").toString())
+                                        .setUsername(user.get("username").toString())
+                                        .setStatus("SUCCESS").build());
                             });
                         }else {
-                            responseObserver.onNext(TeamRes.newBuilder().setStatus("EMPTY").setError("FALSE").build());
+                            responseObserver.onNext(TeamRes.newBuilder().setStatus("EMPTY").build());
                         }
                         responseObserver.onCompleted();
                     }
