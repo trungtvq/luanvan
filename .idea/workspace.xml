@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f9a08dc-0c6d-4d3c-a6b5-dcc619cb45e0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/team/CoTeam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/team/CoTeam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/team_pb.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/build/team_pb.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/team.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/team.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -85,8 +83,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/team/CoTeam.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="285" column="92" lean-forward="true" selection-start-line="285" selection-start-column="92" selection-end-line="285" selection-end-column="92" />
+            <state relative-caret-position="155">
+              <caret line="279" column="25" lean-forward="true" selection-start-line="279" selection-start-column="25" selection-end-line="279" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#makeResponseForUpdateSuccess#0;class#CoTeamImpl#0;class#CoTeam#0" />
@@ -352,12 +350,12 @@
       <workItem from="1558570517946" duration="3182000" />
       <workItem from="1558701206525" duration="655000" />
       <workItem from="1558763363440" duration="14276000" />
-      <workItem from="1558831983679" duration="17557000" />
+      <workItem from="1558831983679" duration="18636000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52272000" />
+    <option name="totallyTimeSpent" value="53351000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1388" height="1057" extended-state="0" />
@@ -709,8 +707,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/team/CoTeam.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="285" column="92" lean-forward="true" selection-start-line="285" selection-start-column="92" selection-end-line="285" selection-end-column="92" />
+        <state relative-caret-position="155">
+          <caret line="279" column="25" lean-forward="true" selection-start-line="279" selection-start-column="25" selection-end-line="279" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#makeResponseForUpdateSuccess#0;class#CoTeamImpl#0;class#CoTeam#0" />
