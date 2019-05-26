@@ -28,6 +28,8 @@ class SprintBacklog extends Component {
       var response = sprintbacklogService.getAllSprintBacklog(GetAllSprintBacklogReq, metadata)
       let that = this
       response.on('data', function (response) {
+        console.log("response sprint")
+        console.log(response.getStatus())
         if (response.getStatus() == "SUCCESS") {
           console.log("checking")
           console.log(response.getStart())
@@ -74,8 +76,9 @@ class SprintBacklog extends Component {
         }
       })
       response.on('status', function (status) {
-        console.log("status")
-        console.log(status.code);
+        console.log("status sprint backlog")
+
+        console.log(status);
         console.log(status.details);
         console.log(status.metadata);
       });

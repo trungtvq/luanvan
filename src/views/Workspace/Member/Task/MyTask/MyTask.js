@@ -26,10 +26,13 @@ PaginationItem,
 ListGroup,
 ListGroupItem,
 PaginationLink, } from 'reactstrap';
-const options = [
-    { value: 'one', label: 'Login bằng Fb' },
-    { value: 'two', label: 'Đổi mật khẩu' },
-    ]
+import {
+  getFromStorage,
+  setInStorage
+} from '../../../../../service/storage'
+const proto = {};
+proto.mytask = require('../../../../../gRPC/mytask/mytask_grpc_web_pb');
+
     
 class MyTask extends Component {
    constructor(props) {
@@ -41,45 +44,7 @@ class MyTask extends Component {
       collapse: true,
       fadeIn: true,
       selected: ['one'],
-       data: [ 
-              {
-                "Title":"Login bằng Fb",
-                "Description":"Người dùng không cần tạo tài khoản mà sử dụng tài khoản fb để đăng nhập",
-                "Priority":"High",
-                "Start":"20/4/2019",
-                "Deadline":"24/4/2019",
-                "Comment":"",
-                "status":"done",
-              },
-              {
-                "Title":"Đổi mật khẩu",
-                "Description":"Người dùng đổi mật khẩu của tài khoản mà mình tạo",
-                "Priority":"Low",
-                "Start":"20/4/2019",
-                "Deadline":"24/4/2019",
-                "Comment":"Có cần gửi mà tới email liên kết để xác nhận không?",
-                "status":"done",
-              },
-              {
-                "Title":"Thay đổi avatar",
-                "Description":"Người dùng thay đổi avatar hiển thị ở giao diện chính",
-                "Priority":"Low",
-                "Start":"20/4/2019",
-                "Deadline":"24/4/2019",
-                "Comment":"",
-                "status":"done",
-              },
-              {
-                "Title":"Thanh toán bằng paypal",
-                "Description":"Người dùng sử dụng paypal để trả phí",
-                "Priority":"Low",
-                "Start":"20/4/2019",
-                "Deadline":"24/4/2019",
-                "Comment":"",
-                "status":"done",
-              },
-              
-            ],
+       data: [],
     };
   }
 
@@ -87,7 +52,80 @@ class MyTask extends Component {
     this.setState({ collapse: !this.state.collapse });
   }
 
+  componentDidMount(){
+    
+//this.notify()
+
+const mytaskService = new proto.mytask.MytaskClient('https://www.overlead.co');
+var metadata = {};
+
+var GetAllMyTaskReq = new proto.mytask.GetAllMyTaskReq();
+GetAllMyTaskReq.setRequesterid(getFromStorage("userId"));
+GetAllMyTaskReq.setAccesstoken(getFromStorage("accessToken"));
+GetAllMyTaskReq.setProjectid(getFromStorage("currentProject"));
+GetAllMyTaskReq.setTeamid(getFromStorage("teamId"));
+GetAllMyTaskReq.setUsername(getFromStorage("username"));
+
+
+var response = mytaskService.getAllMyTask(GetAllMyTaskReq, metadata)
+let that = this
+let start=""
+let end=""
+response.on('data', function (response) {
+  if (response.getStatus() == "SUCCESS") {
+    let arr = response.getStart().split('-');
+    if (arr[1] > 12) {
+      arr[1] = arr[1] - 12
+      start = (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "PM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
+    } else {
+      start = (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
+    }
+
+    arr = response.getDeadline().split('-')
+    if (arr[1] > 12) {
+      arr[1] = arr[1] - 12
+      end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "PM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
+    } else {
+      end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
+    }
+
+   
   
+
+  
+
+    that.setState(prevState => ({
+      data: [...prevState.data,
+      {
+        id: response.getTeamtaskid(),
+        title: response.getTitle(),
+        description: response.getDescription(),
+        priority: response.getPriority(),
+        review: response.getReview(),
+        comment: response.getComment(),
+        status: response.getStatustask(),
+        start: start,
+        deadline: end
+      }]
+    }));
+
+  }
+})
+response.on('status', function (status) {
+  console.log("status")
+  if (status.code==0){
+   // that.success()
+
+  }
+  else
+{      //  that.failed(status)
+}      
+});
+response.on('end', function (end) {
+  console.log("end")
+  console.log(end)
+});
+  }
 
   render() {
 
@@ -125,12 +163,12 @@ class MyTask extends Component {
              
                return (
                   <tr key = {key}>
-                      <td>{item.Title}</td>
-                      <td>{item.Description}</td>
-                      <td>{item.Priority}</td>
-                      <td>{item.Start}</td>
-                      <td>{item.Deadline}</td>
-                      <td>{item.Comment}</td>
+                      <td>{item.title}</td>
+                      <td>{item.description}</td>
+                      <td>{item.priority}</td>
+                      <td>{item.start}</td>
+                      <td>{item.deadline}</td>
+                      <td>{item.comment}</td>
                       <td>{item.status}</td> 
                      
                   </tr>
