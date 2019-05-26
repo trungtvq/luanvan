@@ -117,7 +117,8 @@ function changeStatusProject(state={projectId:"noid"},action){
       })
     case GET_CURENT_PROJECT:    
     case SET_TEAM:
-        console.log(state)
+        setInStorage('teamId',action.id)
+        setInStorage('teamName',action.name)
         return Object.assign({},state,{
           teamId:action.id,
           teamName:action.name,

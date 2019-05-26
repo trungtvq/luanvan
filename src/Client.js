@@ -168,8 +168,6 @@ class Client extends Component {
             let cp = getFromStorage("currentProject")
             let lastCreated = ''
             let lastName = ''
-            console.log("currentProject:")
-            console.log(that.props.currentProject)
             that.props.currentProject.map(p => {
                 if (p.id == cp) flat = true
                 lastCreated = p.id
@@ -177,11 +175,12 @@ class Client extends Component {
                 return p
             })
 
-            if (flat == false)
+            if (flat == false){
                 setInStorage('currentProject', lastCreated)
-
+                setInStorage('currentProjectName',lastName)
+            }
             if (getFromStorage('currentProject') != null && getFromStorage('currentProject') != '') {
-                that.loadAllTeam()
+                that.loadAllTeam()                
                 that.props.dispatch(setProject(lastCreated, lastName))
             }
 

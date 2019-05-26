@@ -169,6 +169,7 @@ class Login extends Component {
 
         if (flat == false)
             setInStorage('currentProject', lastCreated)
+            setInStorage('currentProjectName',lastName)
 
         if (getFromStorage('currentProject') != null && getFromStorage('currentProject') != '') {
             that.loadAllTeam()

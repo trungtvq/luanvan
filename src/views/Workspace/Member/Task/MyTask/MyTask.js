@@ -131,8 +131,7 @@ response.on('end', function (end) {
 
         return (
            <Row>
-          <Col>  
-         
+          <Col>         
          
             
             <Row>       

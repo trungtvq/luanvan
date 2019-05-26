@@ -265,7 +265,11 @@ class MyProject extends Component {
   };
   setCurrentProject = (event) => {
     let idp = event.currentTarget.dataset.id
+    let pn = event.currentTarget.dataset.name
+
     setInStorage('currentProject', idp)
+    setInStorage('currentProjectName', pn)
+
     this.props.dispatch(setProject(idp,event.currentTarget.dataset.name))
     this.loadAllTeam()
   }
