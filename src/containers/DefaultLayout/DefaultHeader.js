@@ -40,6 +40,11 @@ class DefaultHeader extends Component {
     setInStorage("avatar", "")
     setInStorage("name", "")
     setInStorage("username", "")
+    setInStorage("teamId", "")
+    setInStorage("teamName", "")
+    setInStorage("teams", "")
+    setInStorage("currentProjectName", "")
+    setInStorage("members", "")
 
   }
 
@@ -171,7 +176,8 @@ class DefaultHeader extends Component {
         if (p.id==teamId) return false
         return true
       })
-    console.log(teams)
+      console.log(currentProjectId)
+    console.log(allProject)
     console.log("allproject")
     let teamId = getFromStorage("teamId")
     let teamName = getFromStorage("teamName")
@@ -221,7 +227,9 @@ class DefaultHeader extends Component {
                  <Input type="select" name="select" id="select" onChange={that.changeTeam}>
                 <option value={teamId} >{teamName}</option>
                 {
+                  
                   teams.map(function (item, key) {
+                    if (item.id!=teamId)
                     return (
                       <option value={item.id}>{item.name} </option>
                     )

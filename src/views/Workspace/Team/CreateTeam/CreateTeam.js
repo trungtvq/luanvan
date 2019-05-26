@@ -31,6 +31,8 @@ import {
   ModalFooter,
   Progress,
 } from 'reactstrap';
+import { setTeam, removeLogin, setProject } from '../../../../actions'
+import { connect } from 'react-redux'
 
 import cookie from 'react-cookies';
 import {
@@ -39,6 +41,7 @@ import {
 } from '../../../../service/storage'
 const proto = {};
 proto.team = require('../../../../gRPC/team/team_grpc_web_pb');
+
 class CreateTeam extends Component {
   constructor(props) {
     super(props);
@@ -74,6 +77,91 @@ class CreateTeam extends Component {
     }));
   }
   
+  loadAllMember = (id) => {
+    console.log("loadAllMember")
+    const teamService = new proto.team.TeamClient('https://www.overlead.co');
+    var metadata = {};
+
+    var GetAllMemberReq = new proto.team.GetAllMemberReq();
+    GetAllMemberReq.setRequesterid(getFromStorage("userId"));
+    GetAllMemberReq.setTeamid(id);
+    GetAllMemberReq.setAccesstoken(getFromStorage("accessToken"));
+
+    let that = this
+    setInStorage('members', [])
+    let response = teamService.getAllMember(GetAllMemberReq, metadata)
+
+    response.on('data', function (response) {
+      if (response.getStatus() == "SUCCESS") {
+        let mem = getFromStorage('members')
+        mem.push({ id: response.getId(), name: response.getName(), username: response.getUsername() })
+        setInStorage('members', mem)
+      }
+    })
+    response.on('status', function (status) {
+      console.log("status")
+      console.log(status.code);
+      console.log(status.details);
+      console.log(status.metadata);
+      console.log(getFromStorage('members'))
+    });
+    response.on('end', function (end) {
+      console.log("end")
+      console.log(end)
+    });
+  }
+  loadAllTeam = () => {
+    console.log("getAllTeam")
+    const teamService = new proto.team.TeamClient('https://www.overlead.co');
+    var metadata = {};
+
+    let teams = []
+
+    var GetAllTeamReq = new proto.team.GetAllTeamReq();
+    GetAllTeamReq.setRequesterid(getFromStorage("userId"));
+    GetAllTeamReq.setProjectid(getFromStorage("currentProject"));
+    GetAllTeamReq.setAccesstoken(getFromStorage("accessToken"));
+    let response = teamService.getAllTeam(GetAllTeamReq, metadata)
+    console.log("currenProject" + getFromStorage("currentProject"))
+    let that = this
+    let lastTeam = ''
+    let lastName = ''
+    let validTeam = false
+    response.on('data', function (response) {
+      if (response.getStatus() == "SUCCESS") {
+        teams.push({
+          id: response.getTeamid(),
+          name: response.getName()
+        })
+        if (getFromStorage('teamId') == response.getTeamid())
+          validTeam = true
+        else {
+          lastTeam = response.getTeamid()
+          lastName = response.getName()
+        }
+
+      }
+    })
+    response.on('status', function (status) {
+      setInStorage('teams', teams)
+      if (validTeam == false) {
+        if (lastTeam != '') {
+          setInStorage('teamId', lastTeam)
+          that.props.dispatch(setTeam(lastTeam, lastName))
+          that.loadAllMember(lastTeam)
+        }
+      }
+      else {
+        that.props.dispatch(setTeam(getFromStorage('teamId'), getFromStorage('teamName')))
+        that.loadAllMember(getFromStorage('teamId'))
+
+      }
+    });
+    response.on('end', function (end) {
+
+    });
+
+  }
   //team
   handleAddTeam = () => {
     console.log("handleAddTeam")
@@ -87,7 +175,7 @@ class CreateTeam extends Component {
     AddNewTeamReq.setDescription(this.state.description);
     AddNewTeamReq.setDepartment(this.state.department);
     AddNewTeamReq.setAccesstoken(getFromStorage("accessToken"));
-
+    let that=this
     teamService.addNewTeam(AddNewTeamReq, metadata, (err, response) => {
       if (err) { //if error
         console.log(err);
@@ -100,7 +188,7 @@ class CreateTeam extends Component {
               modalActionStatus: true,
               actionStatus: 'SUCCESS'
             });
-        
+            that.loadAllTeam()
         } else {
           this.setState({
             modalActionStatus: true,
@@ -163,4 +251,13 @@ class CreateTeam extends Component {
   }
 }
 
-export default CreateTeam;
+function mapStateToProps(state) {
+  const {  updateProjectLoaded, changeStatusProject } = state
+ 
+  const { project } = updateProjectLoaded
+  const { projectId, teamId, teamName } = changeStatusProject
+  return {
+    project, projectId, teamId, teamName
+  }
+}
+export default connect(mapStateToProps)(CreateTeam);
