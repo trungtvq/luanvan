@@ -207,7 +207,7 @@ class AllTeam extends Component {
             ? {
               ...p, members: Object.assign(p.members, p.members.push({
                 id: response.getId(),
-                name: response.getOption(),
+                name: response.getName(),
                 role: 'member',
                 point: '0',
                 currentTask: '0',
@@ -273,7 +273,7 @@ class AllTeam extends Component {
               ? {
                 ...p, members: Object.assign(p.members, p.members.push({
                   id: response.getId(),
-                  name: response.getOption(),
+                  name: response.getName(),
                   role: this.state.roleMember,
                   point: '0',
                   currentTask: '0',

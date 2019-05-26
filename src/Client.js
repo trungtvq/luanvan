@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import cookie from 'react-cookies';
-import { saveLogin,setTeam,addProject,setProject } from './actions'
+import { saveLogin, setTeam, addProject, setProject } from './actions'
 import { connect } from 'react-redux'
 import authContext from "./contexts/authContext";///////
 import { HashRouter, BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
@@ -138,7 +138,6 @@ class Client extends Component {
                     setInStorage("avatar", "")
                     setInStorage("name", "")
                     setInStorage("username", "")
-
                 }
             }
         });
@@ -168,13 +167,13 @@ class Client extends Component {
             let flat = false
             let cp = getFromStorage("currentProject")
             let lastCreated = ''
-            let lastName=''
+            let lastName = ''
             console.log("currentProject:")
             console.log(that.props.currentProject)
             that.props.currentProject.map(p => {
                 if (p.id == cp) flat = true
                 lastCreated = p.id
-                lastName=p.projectName
+                lastName = p.projectName
                 return p
             })
 
@@ -183,7 +182,7 @@ class Client extends Component {
 
             if (getFromStorage('currentProject') != null && getFromStorage('currentProject') != '') {
                 that.loadAllTeam()
-                that.props.dispatch(setProject(lastCreated,lastName))
+                that.props.dispatch(setProject(lastCreated, lastName))
             }
 
 
@@ -197,7 +196,39 @@ class Client extends Component {
 
 
     }
+    loadAllMember = (id) => {
+        console.log("loadAllMember")
+        const teamService = new proto.team.TeamClient('https://www.overlead.co');
+        var metadata = {};
 
+        var GetAllMemberReq = new proto.team.GetAllMemberReq();
+        GetAllMemberReq.setRequesterid(getFromStorage("userId"));
+        GetAllMemberReq.setTeamid(id);
+        GetAllMemberReq.setAccesstoken(getFromStorage("accessToken"));
+
+        let that = this
+        cookie.save('members', [],{ path: '/' })
+        let response = teamService.getAllMember(GetAllMemberReq, metadata)
+
+        response.on('data', function (response) {
+            if (response.getStatus() == "SUCCESS") {
+                let mem = cookie.load('members')
+                mem.push({ id: response.getId(), name: response.getName(),username:response.getUsername() })
+                cookie.save('members', mem,{ path: '/' })
+            }
+        })
+        response.on('status', function (status) {
+            console.log("status")
+            console.log(status.code);
+            console.log(status.details);
+            console.log(status.metadata);
+            console.log(getFromStorage('members'))
+        });
+        response.on('end', function (end) {
+            console.log("end")
+            console.log(end)
+        });
+    }
     loadAllTeam = () => {
         console.log("getAllTeam")
         const teamService = new proto.team.TeamClient('https://www.overlead.co');
@@ -208,41 +239,45 @@ class Client extends Component {
         GetAllTeamReq.setProjectid(getFromStorage("currentProject"));
         GetAllTeamReq.setAccesstoken(getFromStorage("accessToken"));
         let response = teamService.getAllTeam(GetAllTeamReq, metadata)
-        console.log("currenProject"+getFromStorage("currentProject"))
+        console.log("currenProject" + getFromStorage("currentProject"))
         let that = this
         let lastTeam = ''
-        let lastName=''
+        let lastName = ''
         let validTeam = false
         response.on('data', function (response) {
             if (response.getStatus() == "SUCCESS") {
-                console.log("hasTeam"+response.getTeamid())
+                console.log("hasTeam" + response.getTeamid())
 
                 if (getFromStorage('teamId') == response.getTeamid())
                     validTeam = true
                 else {
                     lastTeam = response.getTeamid()
-                    lastName= response.getName()
+                    lastName = response.getName()
                 }
 
             }
         })
         response.on('status', function (status) {
-            console.log("status"+status.code)
+            console.log("status" + status.code)
             if (validTeam == false) {
                 if (lastTeam != '') {
                     setInStorage('teamId', lastTeam)
-                    that.props.dispatch(setTeam(lastTeam,lastName))
-                }    
+                    that.props.dispatch(setTeam(lastTeam, lastName))
+                    that.loadAllMember(lastTeam)
+                }
             }
             else {
-                that.props.dispatch(setTeam(getFromStorage('teamId'),getFromStorage('teamName')))
+                that.props.dispatch(setTeam(getFromStorage('teamId'), getFromStorage('teamName')))
+                that.loadAllMember(getFromStorage('teamId'))
+
             }
         });
         response.on('end', function (end) {
 
         });
-        
+
     }
+
     render() {
         console.log("isLogin:" + this.props.isLogin)
         console.log('hasProject' + this.props.hasProject)
@@ -330,7 +365,7 @@ class Client extends Component {
                                             <Route exact path="/500" name="Page 500" component={Page500} />
                                             <Route exact path="/pay" name="Page Pay" component={PagePay} />
                                             <Route exact path="/async" name="page test" component={AsyncApp} />
-                                          
+
 
                                             <Route path="/" name="Home" component={MyProject} />
 
@@ -355,7 +390,7 @@ class Client extends Component {
                                             <Route exact path="/404" name="Page 404" component={Page404} />
                                             <Route exact path="/500" name="Page 500" component={Page500} />
                                             <Route exact path="/pay" name="Page Pay" component={PagePay} />
-                                         
+
                                             <Route path="/" name="Home" component={MyProject} />
 
 
@@ -367,16 +402,16 @@ class Client extends Component {
 
                             : <div>
                                 <Switch>
-                                <Route exact path="/Home/Final" name="HomeFinal" component={HomeFinal} />
-                                <Route exact path="/register" name="Register Page" component={Register} />
-                                <Route exact path="/ResetFirst" name="ResetSecond Page" component={ResetFirst} />
-                                <Route exact path="/ResetSecond" name="ResetSecond Page" component={ResetSecond} />
-                                <Route exact path="/login" name="Login Page" component={Login} />
-                                <Route exact path="/async" name="page test" component={AsyncApp} />
+                                    <Route exact path="/Home/Final" name="HomeFinal" component={HomeFinal} />
+                                    <Route exact path="/register" name="Register Page" component={Register} />
+                                    <Route exact path="/ResetFirst" name="ResetSecond Page" component={ResetFirst} />
+                                    <Route exact path="/ResetSecond" name="ResetSecond Page" component={ResetSecond} />
+                                    <Route exact path="/login" name="Login Page" component={Login} />
+                                    <Route exact path="/async" name="page test" component={AsyncApp} />
 
-                                <Route path="/" name="Home" component={HomeFinal} />
+                                    <Route path="/" name="Home" component={HomeFinal} />
 
-                            </Switch>
+                                </Switch>
 
                             </div>
                     }
@@ -387,12 +422,12 @@ class Client extends Component {
 }
 
 function mapStateToProps(state) {
-    const { changeStatusLogin, updateProjectLoaded,changeStatusProject } = state
+    const { changeStatusLogin, updateProjectLoaded, changeStatusProject } = state
     const { isLogin, } = changeStatusLogin
     const currentProject = updateProjectLoaded.project
-    const {hasProject,hasTeam,random} =changeStatusProject
+    const { hasProject, hasTeam, random } = changeStatusProject
     return {
-        isLogin, currentProject,hasProject,hasTeam,random
+        isLogin, currentProject, hasProject, hasTeam, random
     }
 }
 export default connect(mapStateToProps)(Client);

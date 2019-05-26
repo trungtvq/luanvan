@@ -602,7 +602,8 @@ proto.teamtask.TeamRes.toObject = function(includeInstance, msg) {
   var f, obj = {
     status: msg.getStatus(),
     id: msg.getId(),
-    error: msg.getError(),
+    username: msg.getUsername(),
+    name: msg.getName(),
     option: msg.getOption()
   };
 
@@ -650,9 +651,13 @@ proto.teamtask.TeamRes.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setError(value);
+      msg.setUsername(value);
       break;
     case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setOption(value);
       break;
@@ -708,17 +713,24 @@ proto.teamtask.TeamRes.prototype.serializeBinaryToWriter = function (writer) {
       f
     );
   }
-  f = this.getError();
+  f = this.getUsername();
   if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
-  f = this.getOption();
+  f = this.getName();
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = this.getOption();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -765,32 +777,47 @@ proto.teamtask.TeamRes.prototype.setId = function(value) {
 
 
 /**
- * optional string error = 3;
+ * optional string username = 3;
  * @return {string}
  */
-proto.teamtask.TeamRes.prototype.getError = function() {
+proto.teamtask.TeamRes.prototype.getUsername = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 3, ""));
 };
 
 
 /** @param {string} value  */
-proto.teamtask.TeamRes.prototype.setError = function(value) {
+proto.teamtask.TeamRes.prototype.setUsername = function(value) {
   jspb.Message.setField(this, 3, value);
 };
 
 
 /**
- * optional string option = 4;
+ * optional string name = 4;
  * @return {string}
  */
-proto.teamtask.TeamRes.prototype.getOption = function() {
+proto.teamtask.TeamRes.prototype.getName = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
 };
 
 
 /** @param {string} value  */
-proto.teamtask.TeamRes.prototype.setOption = function(value) {
+proto.teamtask.TeamRes.prototype.setName = function(value) {
   jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional string option = 5;
+ * @return {string}
+ */
+proto.teamtask.TeamRes.prototype.getOption = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
+};
+
+
+/** @param {string} value  */
+proto.teamtask.TeamRes.prototype.setOption = function(value) {
+  jspb.Message.setField(this, 5, value);
 };
 
 

@@ -13,6 +13,7 @@ import {
   ModalBody,
   ModalFooter,
 } from 'reactstrap';
+import cookie from 'react-cookies';
 
 import DatePicker from "react-datepicker";
 import {
@@ -190,13 +191,27 @@ class TeamTask extends Component {
           end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
         }
 
+        //processing assign array
+          let str=response.getAssigneearray()
+          str=str.slice(1,-1)
+          arr=str.split(', ')
+
+          let mem=cookie.load('members')
+          mem.map(p=>{
+            if (arr.indexOf(p.id)!=-1){
+              console.log("exist")
+              arr[arr.indexOf(p.id)]=p.username
+            }
+            return p
+          })
+
         that.setState(prevState => ({
           data: [...prevState.data,
           {
             id: response.getTeamtaskid(),
             title: response.getTitle(),
             description: response.getDescription(),
-            assignee: response.getAssigneearray(),
+            assignee: arr,
             priority: response.getPriority(),
             review: response.getReview(),
             comment: response.getComment(),
@@ -381,6 +396,7 @@ class TeamTask extends Component {
       }
     });
   }
+  //TODO: update at assign
   handleUpdate = () => {
     this.notify()
     let d = this.state.startDate;
@@ -434,6 +450,10 @@ class TeamTask extends Component {
         } else {
           end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
         }
+
+
+
+        
         let newData=that.state.data        
         that.setState({
           data:newData.map(p=>{
@@ -474,10 +494,14 @@ class TeamTask extends Component {
     });
 
   };
+
   render() {
     console.log(this.state.data)
     
     let that = this;
+    let mem=cookie.load('members')
+    console.log("check mem")
+    console.log(mem)
     return (
       <Row>
         <Col>
@@ -576,14 +600,20 @@ class TeamTask extends Component {
 
                               <FormGroup row>
                                 <Col md="3">
-                                  <Label htmlFor="text-input">assignee</Label>
+                                  <Label htmlFor="text-input">Assignee</Label>
                                 </Col>
                                 <Col xs="12" md="3">
                                   <Input type="select" name="select" id="select" onChange={that.onTextboxChangeAssignee}>
-                                    <option value="0">Please select</option>
-                                    <option value="Hùng">Hùng</option>
-                                    <option value="Nhân">Nhân</option>
-                                    <option value="Tâm">Tâm</option>
+                                  <option value="0">Please select</option>
+                                    { (mem!=undefined)?
+                                      mem.map(p=>{
+                                        return(
+                                          <option value={p.id}>{p.username}</option>
+                                        )
+                                      }):{
+                                        
+                                      }
+                                    }
                                   </Input>
                                 </Col>
                               </FormGroup>
@@ -649,7 +679,7 @@ class TeamTask extends Component {
                                 </FormGroup>
                                 <FormGroup row>
                                   <Col md="3">
-                                    <Label>priority</Label>
+                                    <Label>Priority</Label>
                                   </Col>
                                   <Col md="3">
                                     <Input type="select" name="select" id="select" onChange={that.onTextboxChangePriority}>
