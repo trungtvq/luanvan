@@ -35,75 +35,10 @@ class Admin extends Component {
    constructor(props) {
     super(props);
     this.state = {
-      data:[
-        {
-        }
-      ],
+      data:[],
       }
     };
-  onTextboxChangeTitle(event) {
-    this.setState({
-      title: event.target.value,
-    });
-  }
-  onTextboxChangeTask(event) {
-    this.setState({
-      task: event.target.value,
-    });
-  }
-  onTextboxChangeTime(event) {
-    this.setState({
-      time: event.target.value,
-    });
-  }
-  onTextboxChangeStatus(event) {
-    this.setState({
-      status: event.target.value,
-    });
-  }
-  
-  onTextboxChangeTimeStart(event) {
-    this.setState({
-      timeStart: event.target.value,
-    });
-  }
-  onTextboxChangeDateStart(event) {
-    this.setState({
-      dateStart: event.target.value,
-    });
-  }
-//update
-  onTextboxChangeScheduleIdUpdate=(event)=> {
-    this.setState({
-      scheduleIdUpdate: event.target.value,
-    });
-  }
-  onTextboxChangeTitleUpdate=(event)=> {
-    this.setState({
-      titleUpdate: event.target.value,
-    });
-  }
-  onTextboxChangeTaskUpdate=(event)=> {
-    this.setState({
-      taskUpdate: event.target.value,
-    });
-  }
-  onTextboxChangeTimeStartUpdate=(event)=> {
-    this.setState({
-      timeStartUpdate: event.target.value,
-    });
-  }
-  onTextboxChangeDateStartUpdate=(event)=> {
-    this.setState({
-      dateStartUpdate: event.target.value,
-    });
-  }
-  onTextboxChangeStatusUpdate=(event)=> {
-    this.setState({
-      statusUpdate: event.target.value,
-    });
-  }
-  
+
 
   render() {
     let that=this;
@@ -117,7 +52,17 @@ class Admin extends Component {
       <div className="app flex-row align-items-center">
       <Container>
       <Row>
-          <Col>                   
+          <Col>      
+          <Row>
+            <Col xs="2" md="2">
+              <Input type="text" id="text-input" name="text-input" placeholder="Search" />
+            </Col>
+
+            <Col xs="0" md="0">
+              <Button type="submit" size="sm" color="success">
+                <i class="fa fa-search"></i></Button>
+            </Col>
+          </Row>             
             <Card>           
                 <table class="table table-lg">
                   <thead class="thead">
