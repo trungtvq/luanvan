@@ -100,12 +100,13 @@ public class AuthAccount {
         @Override
         public void signInGoogle(SignInGoogleReq request, StreamObserver<SignInRes> responseObserver) {
             Document user = getUserFromDB(request.getUsername()); //check username is exist
+
             if (user!=null){ //EXIST USERNAME => LOGIN
-                makeResponseForSignInSuccess(responseObserver,user.get("_id").toString(),request.getUsername(),request.getName(),request.getAvatar());
+                makeResponseForSignInSuccess(responseObserver,user.get("_id").toString(),request.getUsername(),request.getName(),user.get("avatar").toString());
             } else{ //CREATE NEW ACCOUNT
                 Document document = new Document("username", request.getUsername())
                         .append("name", request.getName())
-                        .append("avatar",getBase64EncodedImage(request.getAvatar()));
+                        .append("avatar",request.getAvatar());
                 coll.insertOne(document);
                 makeResponseAfterUpdate(responseObserver,request.getUsername());
             }

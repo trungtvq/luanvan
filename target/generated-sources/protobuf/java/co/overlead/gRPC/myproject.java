@@ -60,21 +60,21 @@ public final class myproject {
       "\022\r\n\005topic\030\013 \001(\t\"J\n\020DeleteProjectReq\022\021\n\tp" +
       "rojectId\030\002 \001(\t\022\016\n\006cookie\030\003 \001(\t\022\023\n\013reques" +
       "terId\030\001 \001(\t\"7\n\020GetAllProjectReq\022\023\n\013reque" +
-      "sterId\030\003 \001(\t\022\016\n\006cookie\030\002 \001(\t\"\302\001\n\nProject" +
+      "sterId\030\003 \001(\t\022\016\n\006cookie\030\002 \001(\t\"\333\001\n\nProject" +
       "Res\022\r\n\005topic\030\n \001(\t\022\r\n\005error\030\001 \001(\t\022\016\n\006sta" +
       "tus\030\002 \001(\t\022\021\n\tprojectId\030\003 \001(\t\022\023\n\013projectN" +
       "ame\030\004 \001(\t\022\r\n\005start\030\005 \001(\t\022\013\n\003end\030\006 \001(\t\022\017\n" +
       "\007private\030\007 \001(\t\022\016\n\006detail\030\010 \001(\t\022\020\n\010progre" +
-      "ss\030\t \001(\t\022\017\n\007members\030\013 \001(\t2\251\002\n\tMyproject\022" +
-      "E\n\raddNewProject\022\033.myproject.AddNewProje" +
-      "ctReq\032\025.myproject.ProjectRes\"\000\022E\n\rupdate" +
-      "Project\022\033.myproject.UpdateProjectReq\032\025.m" +
-      "yproject.ProjectRes\"\000\022E\n\rdeleteProject\022\033" +
-      ".myproject.DeleteProjectReq\032\025.myproject." +
-      "ProjectRes\"\000\022G\n\rgetAllProject\022\033.myprojec" +
-      "t.GetAllProjectReq\032\025.myproject.ProjectRe" +
-      "s\"\0000\001B$\n\020co.overlead.gRPCB\tmyprojectP\001\242\002" +
-      "\002mpb\006proto3"
+      "ss\030\t \001(\t\022\017\n\007members\030\013 \001(\t\022\027\n\017currentSpri" +
+      "ntId\030\014 \001(\t2\251\002\n\tMyproject\022E\n\raddNewProjec" +
+      "t\022\033.myproject.AddNewProjectReq\032\025.myproje" +
+      "ct.ProjectRes\"\000\022E\n\rupdateProject\022\033.mypro" +
+      "ject.UpdateProjectReq\032\025.myproject.Projec" +
+      "tRes\"\000\022E\n\rdeleteProject\022\033.myproject.Dele" +
+      "teProjectReq\032\025.myproject.ProjectRes\"\000\022G\n" +
+      "\rgetAllProject\022\033.myproject.GetAllProject" +
+      "Req\032\025.myproject.ProjectRes\"\0000\001B$\n\020co.ove" +
+      "rlead.gRPCB\tmyprojectP\001\242\002\002mpb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -117,7 +117,7 @@ public final class myproject {
     internal_static_myproject_ProjectRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_myproject_ProjectRes_descriptor,
-        new java.lang.String[] { "Topic", "Error", "Status", "ProjectId", "ProjectName", "Start", "End", "Private", "Detail", "Progress", "Members", });
+        new java.lang.String[] { "Topic", "Error", "Status", "ProjectId", "ProjectName", "Start", "End", "Private", "Detail", "Progress", "Members", "CurrentSprintId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

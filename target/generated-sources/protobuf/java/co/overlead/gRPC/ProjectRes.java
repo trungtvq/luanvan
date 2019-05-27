@@ -27,6 +27,7 @@ private static final long serialVersionUID = 0L;
     detail_ = "";
     progress_ = "";
     members_ = "";
+    currentSprintId_ = "";
   }
 
   @java.lang.Override
@@ -117,6 +118,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             members_ = s;
+            break;
+          }
+          case 98: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            currentSprintId_ = s;
             break;
           }
           default: {
@@ -541,6 +548,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int CURRENTSPRINTID_FIELD_NUMBER = 12;
+  private volatile java.lang.Object currentSprintId_;
+  /**
+   * <code>string currentSprintId = 12;</code>
+   */
+  public java.lang.String getCurrentSprintId() {
+    java.lang.Object ref = currentSprintId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      currentSprintId_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string currentSprintId = 12;</code>
+   */
+  public com.google.protobuf.ByteString
+      getCurrentSprintIdBytes() {
+    java.lang.Object ref = currentSprintId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      currentSprintId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -588,6 +629,9 @@ private static final long serialVersionUID = 0L;
     if (!getMembersBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 11, members_);
     }
+    if (!getCurrentSprintIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 12, currentSprintId_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -630,6 +674,9 @@ private static final long serialVersionUID = 0L;
     if (!getMembersBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, members_);
     }
+    if (!getCurrentSprintIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, currentSprintId_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -667,6 +714,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getProgress())) return false;
     if (!getMembers()
         .equals(other.getMembers())) return false;
+    if (!getCurrentSprintId()
+        .equals(other.getCurrentSprintId())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -700,6 +749,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getProgress().hashCode();
     hash = (37 * hash) + MEMBERS_FIELD_NUMBER;
     hash = (53 * hash) + getMembers().hashCode();
+    hash = (37 * hash) + CURRENTSPRINTID_FIELD_NUMBER;
+    hash = (53 * hash) + getCurrentSprintId().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -855,6 +906,8 @@ private static final long serialVersionUID = 0L;
 
       members_ = "";
 
+      currentSprintId_ = "";
+
       return this;
     }
 
@@ -892,6 +945,7 @@ private static final long serialVersionUID = 0L;
       result.detail_ = detail_;
       result.progress_ = progress_;
       result.members_ = members_;
+      result.currentSprintId_ = currentSprintId_;
       onBuilt();
       return result;
     }
@@ -982,6 +1036,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getMembers().isEmpty()) {
         members_ = other.members_;
+        onChanged();
+      }
+      if (!other.getCurrentSprintId().isEmpty()) {
+        currentSprintId_ = other.currentSprintId_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -1808,6 +1866,75 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       members_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object currentSprintId_ = "";
+    /**
+     * <code>string currentSprintId = 12;</code>
+     */
+    public java.lang.String getCurrentSprintId() {
+      java.lang.Object ref = currentSprintId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        currentSprintId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string currentSprintId = 12;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCurrentSprintIdBytes() {
+      java.lang.Object ref = currentSprintId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        currentSprintId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string currentSprintId = 12;</code>
+     */
+    public Builder setCurrentSprintId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      currentSprintId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string currentSprintId = 12;</code>
+     */
+    public Builder clearCurrentSprintId() {
+      
+      currentSprintId_ = getDefaultInstance().getCurrentSprintId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string currentSprintId = 12;</code>
+     */
+    public Builder setCurrentSprintIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      currentSprintId_ = value;
       onChanged();
       return this;
     }

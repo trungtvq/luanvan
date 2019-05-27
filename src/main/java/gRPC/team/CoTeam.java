@@ -238,6 +238,8 @@ public class CoTeam {
         }
         @Override
         public void getAllTeam(GetAllTeamReq request, StreamObserver<GetAllTeamRes> responseObserver) {
+            //find project
+            //get all team of this project
             System.out.println("getAllTeam");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 responseObserver.onNext(GetAllTeamRes.newBuilder().setStatus("AUTH_INVALID").build());
@@ -247,23 +249,26 @@ public class CoTeam {
                     makeResponseForFailed(responseObserver, "PROJECT_NOT_FOUND", "FALSE");
                     return;
                 } else {
-                    System.out.println("have project");
                     List<String> teamList= (List<String>) foundDocument.get(0).get("teams");
 
-                    if (teamList.size()>0) {
-                        System.out.println("have team");
+                    if (teamList!=null) {
                         teamList.forEach(i->{
                             List<Document> team=Mongod.collTeam.find(new Document("_id",new ObjectId(i.toString()))).into(new ArrayList<>());
                             if (team.size()>0){
+                                List<String> mems= (List<String>) team.get(0).get("members");
+                                if (mems!=null){
+                                    if (mems.indexOf(request.getRequesterId())!=-1){
+                                        Document t= team.get(0);
+                                        responseObserver.onNext(GetAllTeamRes.newBuilder()
+                                                .setTeamId(t.get("_id").toString())
+                                                .setName(t.get("name").toString())
+                                                .setDepartment(t.get("department").toString())
+                                                .setDescription(t.get("description").toString())
+                                                .setStatus("SUCCESS").build());
+                                    }
 
-                                Document t= team.get(0);
-                                System.out.println(t);
-                                responseObserver.onNext(GetAllTeamRes.newBuilder()
-                                        .setTeamId(t.get("_id").toString())
-                                        .setName(t.get("name").toString())
-                                        .setDepartment(t.get("department").toString())
-                                        .setDescription(t.get("description").toString())
-                                        .setStatus("SUCCESS").build());
+                                }
+
 
                         }});
                     }else {
@@ -271,7 +276,6 @@ public class CoTeam {
                     }
                 }
             }
-            System.out.println("complete");
             responseObserver.onCompleted();
 
         }
@@ -285,10 +289,8 @@ public class CoTeam {
                     if (foundDocument.size() != 1) {
                         makeResponseForFailed(responseObserver, "WRONG_SIZE_TEAM_FOUND", "FALSE");
                     } else {
-                        System.out.println("have team");
                         List<String> userList= (List<String>) foundDocument.get(0).get("members");
                         if (userList.size()>0) {
-                            System.out.println("have member");
                             userList.forEach(i->{
 
                                 Document user=Mongod.collAuth.find(new Document("_id",new ObjectId(i))).into(new ArrayList<>()).get(0);

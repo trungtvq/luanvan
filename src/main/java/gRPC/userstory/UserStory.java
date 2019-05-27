@@ -13,12 +13,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static helper.auth.RequestAuth.isValidAuth;
+
 public class UserStory {
     public static class UserStoryImpl extends UserStoryGrpc.UserStoryImplBase{
-        public static boolean isValidAuth(){
-            return true;
 
-        }
 
 
         public void makeResponseForUpdateSuccess(StreamObserver res, String id){
@@ -33,7 +32,7 @@ public class UserStory {
         }
         @Override
         public void addNewUserStory(AddNewUserStoryReq request, StreamObserver<UserStoryRes> responseObserver) {
-            if (!isValidAuth()) {
+            if (!isValidAuth(request.getRequesterId(),request.getAccessToken())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID");
             } else {
 
@@ -71,7 +70,7 @@ public class UserStory {
         @Override
         public void sendToProductBacklog(SendToProductBacklogReq request, StreamObserver<UserStoryRes> responseObserver) {
             System.out.println("sendToProductBacklog");
-            if (!isValidAuth()) {
+            if (!isValidAuth(request.getRequesterId(),request.getAccessToken())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID");
 
             } else {
@@ -99,10 +98,7 @@ public class UserStory {
         @Override
         public void updateUserStory(UpdateUserStoryReq request, StreamObserver<UserStoryRes> responseObserver) {
             System.out.println("updateUserStory");
-            System.out.println(request.getRole());
-            System.out.println(request.getWant());
-            System.out.println(request.getSo());
-            if (!isValidAuth()) {
+            if (!isValidAuth(request.getRequesterId(),request.getAccessToken())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID");
 
             } else {
@@ -132,7 +128,7 @@ public class UserStory {
 
         @Override
         public void deleteUserStory(DeleteUserStoryReq request, StreamObserver<UserStoryRes> responseObserver) {
-            if (!isValidAuth()) {
+            if (!isValidAuth(request.getRequesterId(),request.getAccessToken())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID");
 
             } else {
@@ -151,7 +147,7 @@ public class UserStory {
 
         @Override
         public void getAllUserStory(GetAllUserStoryReq request, StreamObserver<GetAllUserStoryRes> responseObserver) {
-            if (!isValidAuth()) {
+            if (!isValidAuth(request.getRequesterId(),request.getAccessToken())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID");
 
             } else {

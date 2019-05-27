@@ -47,16 +47,6 @@ public class MyProfile {
             if (!isValidAuth(request.getRequesterId(),request.getAccessToken())) {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID");
             } else {
-                System.out.println(request.getAddress());
-                System.out.println(request.getAvatar());
-                System.out.println(request.getBirthday());
-                System.out.println(request.getEmail());
-                System.out.println(request.getFb());
-                System.out.println(request.getSkill());
-                System.out.println(request.getWorkplace());
-
-
-
 
 
                 Document updateList=new Document();

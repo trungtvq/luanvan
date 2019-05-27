@@ -197,6 +197,7 @@ public class MyProject {
                                             .setEnd(i.get("end").toString())
                                             .setPrivate(i.get("private").toString())
                                             .setProgress(i.get("progress").toString())
+                                            .setCurrentSprintId(i.get("currentSprintId")==null?"":i.get("currentSprintId").toString())
                                             .setStatus("SUCCESS").setError("FALSE").build();
                                     responseObserver.onNext(reply);
                                 }else{

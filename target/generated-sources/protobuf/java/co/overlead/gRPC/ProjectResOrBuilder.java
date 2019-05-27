@@ -132,4 +132,14 @@ public interface ProjectResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getMembersBytes();
+
+  /**
+   * <code>string currentSprintId = 12;</code>
+   */
+  java.lang.String getCurrentSprintId();
+  /**
+   * <code>string currentSprintId = 12;</code>
+   */
+  com.google.protobuf.ByteString
+      getCurrentSprintIdBytes();
 }

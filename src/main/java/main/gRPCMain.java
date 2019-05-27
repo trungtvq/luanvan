@@ -6,6 +6,7 @@ import gRPC.productbacklog.ProductBacklog;
 import gRPC.profile.MyProfile;
 import gRPC.project.MyProject;
 import gRPC.schedule.DailySchedule;
+import gRPC.sprint.Sprint;
 import gRPC.sprintbacklog.SprintBacklog;
 import gRPC.task.MyTask;
 import gRPC.task.TeamTask;
@@ -36,6 +37,7 @@ public class gRPCMain {
                 .addService(new Velocity.VelocityImpl())
                 .addService(new MyTask.TaskImpl())
                 .addService(new TeamTask.TeamTaskImpl())
+                .addService(new Sprint.SprintImpl())
                 .build()
                 .start();
 

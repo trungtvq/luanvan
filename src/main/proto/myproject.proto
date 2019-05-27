@@ -60,4 +60,5 @@ message ProjectRes{
 	string detail=8;
 	string progress=9;
 	string members=11;
+	string currentSprintId=12;
 }
