@@ -54,6 +54,16 @@ export default {
       url: '/Member/SprintBacklog',
       icon: 'icon-book-open',
     },
+    {
+      name: 'Create Sprint',
+      url: '/Member/CreateSprint',
+      icon: 'icon-book-open',
+    },
+    {
+      name: 'Project Sprints',
+      url: '/Member/AllSprint',
+      icon: 'icon-book-open',
+    },
      {
       name: 'Evaluate',
       url: '/Member/Evaluate',
