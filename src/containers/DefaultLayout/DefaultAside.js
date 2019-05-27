@@ -62,7 +62,7 @@ class DefaultAside extends Component {
             </NavLink>
           </NavItem>
         </Nav>
-        <TabContent activeTab={this.state.activeTab}>
+        {/* <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="1">
             <ListGroup className="list-group-accent" tag={'div'}>
               <ListGroupItem className="list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">Today</ListGroupItem>
@@ -304,8 +304,8 @@ class DefaultAside extends Component {
             </div>
             <Progress className="progress-xs" color="success" value="10" />
             <small className="text-muted">25GB/256GB</small>
-          </TabPane>
-        </TabContent>
+          </TabPane> 
+        </TabContent>*/}
       </React.Fragment>
     );
   }

@@ -94,7 +94,7 @@ this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
             setInStorage('accessToken',response.getSession())//id,token,email,name,avatar
             setInStorage('username',signUpEmail)
             setInStorage('name',signUpName)
-            setInStorage('avatar',response.getAvatar())
+            setInStorage('avatar','')
             this.props.dispatch(saveLogin(response.getId(),response.getSession(),signUpEmail,signUpName,response.getAvatar()))
 
           }

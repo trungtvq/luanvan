@@ -14,31 +14,31 @@ class Buttons extends Component {
               <Col col="12" xl className="mb-3 mb-xl-0">
                 Normal
               </Col>
-              <Col col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
+              <Col col="6" small="4" md="2" xl className="mb-3 mb-xl-0">
                 <Button block color="primary">Primary</Button>
               </Col>
-              <Col col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
+              <Col col="6" small="4" md="2" xl className="mb-3 mb-xl-0">
                 <Button block color="secondary">Secondary</Button>
               </Col>
-              <Col col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
+              <Col col="6" small="4" md="2" xl className="mb-3 mb-xl-0">
                 <Button block color="success">Success</Button>
               </Col>
-              <Col col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
+              <Col col="6" small="4" md="2" xl className="mb-3 mb-xl-0">
                 <Button block color="warning">Warning</Button>
               </Col>
-              <Col col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
+              <Col col="6" small="4" md="2" xl className="mb-3 mb-xl-0">
                 <Button block color="danger">Danger</Button>
               </Col>
-              <Col col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
+              <Col col="6" small="4" md="2" xl className="mb-3 mb-xl-0">
                 <Button block color="info">Info</Button>
               </Col>
-              <Col col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
+              <Col col="6" small="4" md="2" xl className="mb-3 mb-xl-0">
                 <Button block color="light">Light</Button>
               </Col>
-              <Col col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
+              <Col col="6" small="4" md="2" xl className="mb-3 mb-xl-0">
                 <Button block color="dark">Dark</Button>
               </Col>
-              <Col col="6" sm="4" md="2" xl className="mb-3 mb-xl-0">
+              <Col col="6" small="4" md="2" xl className="mb-3 mb-xl-0">
                 <Button block color="link">Link</Button>
               </Col>
             </Row>

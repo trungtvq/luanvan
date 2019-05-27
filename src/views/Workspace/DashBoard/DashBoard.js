@@ -136,11 +136,11 @@ class DashBoard extends Component {
           <Col>    
               <div>
 
-                <div class="card border-danger mb-3" >
-                  <div class="card-header text-white bg-danger  mb-3">
+                <div className="card border-danger mb-3" >
+                  <div className="card-header text-white bg-danger  mb-3">
                      <strong>Problem</strong>
                     </div>
-                    <div class="card-body"> 
+                    <div className="card-body"> 
                       <Row>       
                           <Col xs="2" md="2">
                             <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 

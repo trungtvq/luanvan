@@ -153,13 +153,11 @@ class Login extends Component {
     });
     response.on('status', function (status) {
         let flat = false
-        console.log("allProject")
-        console.log(that.props.currentProject)
+        if (status.code!=0) console.log(status)
+
         let cp = getFromStorage("currentProject")
         let lastCreated = ''
         let lastName=''
-        console.log("currentProject:")
-        console.log(that.props.currentProject)
         that.props.currentProject.map(p => {
             if (p.id == cp) flat = true
             lastCreated = p.id
@@ -217,10 +215,12 @@ loadAllTeam = () => {
         }
     })
     response.on('status', function (status) {
-        console.log("status"+status.code)
+      if (status.code!=0) console.log(status)
+
         if (validTeam == false) {
             if (lastTeam != '') {
                 setInStorage('teamId', lastTeam)
+                setInStorage('teamName',lastName)
                 that.props.dispatch(setTeam(lastTeam,lastName))
             }    
         }

@@ -56,7 +56,7 @@ function AppFooter(props) {
   return (
     <Typography component="footer" className={classes.root}>
       <LayoutBody className={classes.layoutBody} width="large">
-        <Grid container spacing={10}>
+        <Grid container spacing={8}>
           <Grid item xs={6} sm={4} md={2}>
             <Grid
               container
@@ -102,10 +102,6 @@ function AppFooter(props) {
     </Typography>
   );
 }
-
-AppFooter.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default compose(
   pure,

@@ -131,10 +131,7 @@ class CreateSprint extends Component {
                                       onChange={that.onChangeStartDate}
                                       dateFormat="dd/MM/yyyy h:mm aa"
                                       showTimeInput
-                                      />
-
-                                
-
+                                    />     
                                     </Col>
                                   </FormGroup>
 

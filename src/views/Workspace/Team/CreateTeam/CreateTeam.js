@@ -99,11 +99,7 @@ class CreateTeam extends Component {
       }
     })
     response.on('status', function (status) {
-      console.log("status")
-      console.log(status.code);
-      console.log(status.details);
-      console.log(status.metadata);
-      console.log(getFromStorage('members'))
+      if (status.code!=0) console.log(status)
     });
     response.on('end', function (end) {
       console.log("end")
@@ -122,7 +118,6 @@ class CreateTeam extends Component {
     GetAllTeamReq.setProjectid(getFromStorage("currentProject"));
     GetAllTeamReq.setAccesstoken(getFromStorage("accessToken"));
     let response = teamService.getAllTeam(GetAllTeamReq, metadata)
-    console.log("currenProject" + getFromStorage("currentProject"))
     let that = this
     let lastTeam = ''
     let lastName = ''
@@ -143,10 +138,12 @@ class CreateTeam extends Component {
       }
     })
     response.on('status', function (status) {
+      if (status.code!=0) console.log(status)
       setInStorage('teams', teams)
       if (validTeam == false) {
         if (lastTeam != '') {
           setInStorage('teamId', lastTeam)
+          setInStorage('teamName',lastName)
           that.props.dispatch(setTeam(lastTeam, lastName))
           that.loadAllMember(lastTeam)
         }
@@ -154,13 +151,11 @@ class CreateTeam extends Component {
       else {
         that.props.dispatch(setTeam(getFromStorage('teamId'), getFromStorage('teamName')))
         that.loadAllMember(getFromStorage('teamId'))
-
       }
     });
     response.on('end', function (end) {
 
     });
-
   }
   //team
   handleAddTeam = () => {

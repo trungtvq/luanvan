@@ -105,8 +105,8 @@ class ProductCTA extends React.Component {
                     Any questions about Overlead, please leave a message in the form below or call directly to  082.580.6606                   
                   </strong>     
               </div>
-              <div class="card-body">
-                <div class="card-body">
+              <div className="card-body">
+                <div className="card-body">
                 <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
                   <FormGroup row>
                     <Col md="3">

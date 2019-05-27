@@ -123,7 +123,6 @@ class Client extends Component {
             if (err) {
                 console.log(err);
             } else {
-                console.log("SUCCESS")
                 if (response.getStatus() == "SUCCESS") {
 
                     dispatch(saveLogin(getFromStorage("userId"), getFromStorage("accessToken"), getFromStorage("username"), getFromStorage("name"), getFromStorage("avatar")))
@@ -164,6 +163,7 @@ class Client extends Component {
             }
         });
         response.on('status', function (status) {
+            if (status.code!=0) console.log(status)
             let flat = false
             let cp = getFromStorage("currentProject")
             let lastCreated = ''
@@ -217,11 +217,8 @@ class Client extends Component {
             }
         })
         response.on('status', function (status) {
-            console.log("status")
-            console.log(status.code);
-            console.log(status.details);
-            console.log(status.metadata);
-            console.log(getFromStorage('members'))
+            if (status.code!=0) console.log(status)
+
         });
         response.on('end', function (end) {
             console.log("end")
@@ -238,15 +235,12 @@ class Client extends Component {
         GetAllTeamReq.setProjectid(getFromStorage("currentProject"));
         GetAllTeamReq.setAccesstoken(getFromStorage("accessToken"));
         let response = teamService.getAllTeam(GetAllTeamReq, metadata)
-        console.log("currenProject" + getFromStorage("currentProject"))
         let that = this
         let lastTeam = ''
         let lastName = ''
         let validTeam = false
         response.on('data', function (response) {
             if (response.getStatus() == "SUCCESS") {
-                console.log("hasTeam" + response.getTeamid())
-
                 if (getFromStorage('teamId') == response.getTeamid())
                     validTeam = true
                 else {
@@ -257,7 +251,8 @@ class Client extends Component {
             }
         })
         response.on('status', function (status) {
-            console.log("status" + status.code)
+            if (status.code!=0) console.log(status)
+
             if (validTeam == false) {
                 if (lastTeam != '') {
                     setInStorage('teamId', lastTeam)
@@ -278,9 +273,6 @@ class Client extends Component {
     }
 
     render() {
-        console.log("isLogin:" + this.props.isLogin)
-        console.log('hasProject' + this.props.hasProject)
-        console.log('hasTeam' + this.props.hasTeam)
         return (
             <authContext.Provider>
                 <BrowserRouter>

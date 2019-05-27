@@ -104,7 +104,6 @@ function AppAppBar(props) {
           </Link>
           <div className={classes.right}>
           <Button 
-              variant="h6"
               underline="none"
               className={classNames(classes.rightLink, classes.linkSecondary)}
               href="/login"
@@ -112,7 +111,6 @@ function AppAppBar(props) {
               {'Sign In'}
             </Button>
             <Button 
-              variant="h6"
               underline="none"
               className={classNames(classes.rightLink, classes.linkSecondary)}
               href="/register"

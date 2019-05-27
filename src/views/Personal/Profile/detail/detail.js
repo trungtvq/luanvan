@@ -124,6 +124,7 @@ class detail extends Component {
         console.log(response.getStatus())
         if (response.getStatus() == "SUCCESS") {
           setInStorage('avatar',that.state.avatar)
+          setInStorage('name',that.state.name)
           that.setState(prevState => ({            
             modalEdit: !prevState.modalEdit,
           }))

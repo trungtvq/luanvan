@@ -78,10 +78,8 @@ class Detail extends Component {
       }
     })
     response.on('status', function (status) {
-      console.log("status")
-      console.log(status.code);
-      console.log(status.details);
-      console.log(status.metadata);
+      if (status.code!=0) console.log(status)
+
     });
     response.on('end', function (end) {
       console.log("end")

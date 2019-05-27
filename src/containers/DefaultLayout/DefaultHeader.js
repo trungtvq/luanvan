@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Input, Button, Badge, UncontrolledDropdown, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink } from 'reactstrap';
 import PropTypes from 'prop-types';
+import avatardefault from '../../assets/img/avatar/avatardefault.png'; // Tell Webpack this JS file uses this image
 
 import { AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
 import logo from '../../assets/img/brand/logo.png'
@@ -19,6 +20,8 @@ import {
 const propTypes = {
   children: PropTypes.node,
 };
+let Img = require('react-image')
+
 const proto = {};
 proto.team = require('../../gRPC/team/team_grpc_web_pb');
 
@@ -42,10 +45,11 @@ class DefaultHeader extends Component {
     setInStorage("username", "")
     setInStorage("teamId", "")
     setInStorage("teamName", "")
-    setInStorage("teams", "")
+    setInStorage("teams", [])
     setInStorage("currentProjectName", "")
-    setInStorage("members", "")
-
+    setInStorage("members", [])
+    setInStorage("currentSprintId","")
+    setInStorage("currentSprintName","")
   }
 
 
@@ -73,11 +77,8 @@ class DefaultHeader extends Component {
       }
     })
     response.on('status', function (status) {
-      console.log("status")
-      console.log(status.code);
-      console.log(status.details);
-      console.log(status.metadata);
-      console.log(getFromStorage('members'))
+      if (status.code!=0) console.log(status)
+
     });
     response.on('end', function (end) {
       console.log("end")
@@ -117,6 +118,8 @@ class DefaultHeader extends Component {
       }
     })
     response.on('status', function (status) {
+      if (status.code!=0) console.log(status)
+
       setInStorage('teams', teams)
       if (validTeam == false) {
         if (lastTeam != '') {
@@ -193,6 +196,7 @@ class DefaultHeader extends Component {
             full={{ src: logo, width: 89, height: 25, alt: 'Overlead Logo' }}
             minimized={{ src: sygnet, width: 30, height: 30, alt: 'Overlead Logo' }}
           />
+          {/* <Img src={logo} height={35} width={100}/> */}
         </Link>
 
         <AppSidebarToggler className="d-md-down-none" display="lg" />
@@ -250,7 +254,12 @@ class DefaultHeader extends Component {
         <Nav className="ml-auto" navbar>
           <AppHeaderDropdown direction="down">
             <DropdownToggle nav>
-              <img src={getFromStorage('avatar')} className="img-avatar" alt="" />
+              {
+                (getFromStorage('avatar')=="" || getFromStorage('avatar')==null)?
+                <img src={avatardefault} className="img-avatar" alt="" />:
+                <img src={getFromStorage('avatar')} className="img-avatar" alt="" />
+
+              }
             </DropdownToggle>
             <DropdownMenu right style={{ right: 'auto' }}>
 
@@ -292,8 +301,8 @@ class DefaultHeader extends Component {
   }
 }
 
-DefaultHeader.propTypes = propTypes;
-DefaultHeader.defaultProps = defaultProps;
+// DefaultHeader.propTypes = propTypes;
+// DefaultHeader.defaultProps = defaultProps;
 
 
 function mapStateToProps(state) {

@@ -1,495 +1,636 @@
 import React, { Component } from 'react';
 import {
-
-  Button,
-
-  Card,
-  Container,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Col,
-  Collapse,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  Form,
-  FormGroup,
-
-  Input,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
-  Label,
-
-  Table,
+  Card, CardHeader, Badge, Button, Col,
+  Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Table, Pagination, PaginationItem, PaginationLink,
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
-
+  Form,
+  FormGroup,
+  Label,
+  ModalFooter
 } from 'reactstrap';
-
-import { Link } from 'react-router-dom';
-
 import cookie from 'react-cookies';
+import {
+  getFromStorage,
+  setInStorage
+} from '../../../../../service/storage'
+import DatePicker from "react-datepicker";
+import { toast } from 'react-toastify';
+
 const proto = {};
-// proto.team = require('../../../../gRPC/team/team_grpc_web_pb');
+proto.sprint = require('./../../../../../gRPC/sprint/sprint_grpc_web_pb');
+
 class AllSprint extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataTeam: [],
-
-      requesterId: '',
-      actionStatus: '',              //success or show error when action add delete update      
-      modalAddMember: false,
-      modalEditMember: false,
-      modalAddTeam: false,
-      modalEditTeam: false,
-      modalActionStatus: false,
-
-      updateTeamId: '',
-      updateNameTeam: '',
-
-      nameTeam: '',
-      descriptionTeam: '',
-      departmentTeam: '',
+      data: [],
+      modalAdd: false,
+      modalEdit: false,
+      modalDetail: false,
+      modalSend: false,
 
 
-      updateMemberId: '',
-      emailMember: '',
-      roleMember: '',
-
-
+      title: '',
+      num: "",
+      goal: "",
+      status: "",
+      updateId: "",
+      startDate: new Date(),
+      endDate: new Date(),
+      currentSprintId: "",
+      currentSprintName:"",
     }
   };
-  //onchange member
-  onTextboxChangeEmailMember = (event) => {
+  componentDidMount() {
+    let end = this.state.endDate;
+    end.setDate(end.getDate() + 15);
     this.setState({
-      emailMember: event.target.value,
+      endDate: end
+    })
+    this.loadAllSprint()
+  }
+  loadAllSprint = () => {
+    console.log("loadAllSprint")
+    const sprintService = new proto.sprint.SprintClient('https://www.overlead.co');
+    var metadata = {};
+    var GetAllSprintReq = new proto.sprint.GetAllSprintReq();
+    GetAllSprintReq.setRequesterid(getFromStorage("userId"));
+    GetAllSprintReq.setAccesstoken(getFromStorage("accessToken"));
+    GetAllSprintReq.setProjectid(getFromStorage("currentProject"));
+
+    var response = sprintService.getAllSprint(GetAllSprintReq, metadata)
+    let that = this
+    response.on('data', function (response) {
+      if (response.getStatus() == "SUCCESS") {
+        let arr = response.getStart().split('-');
+        let start = ""
+        let end = ""
+        if (arr[1] > 12) {
+          arr[1] = arr[1] - 12
+          start = (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "PM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
+        } else {
+          start = (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
+        }
+        arr = response.getEnd().split('-')
+        if (arr[1] > 12) {
+          arr[1] = arr[1] - 12
+          end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "PM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
+        } else {
+          end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
+        }
+
+
+        that.setState(prevState => ({
+          data: [...prevState.data,
+          {
+            id: response.getId(),
+            title: response.getTitle(),
+            num: response.getNum(),
+            goal: response.getGoal(),
+            status: response.getStatussprint(),
+            start,
+            end,
+          }]
+        }));
+      }
+    })
+    response.on('status', function (status) {
+      if (status.code!=0) console.log(status)
+
+    });
+    response.on('end', function (end) {
+      console.log("end")
+      console.log(end)
     });
   }
-  onTextboxChangeRoleMember = (event) => {
-    this.setState({
-      roleMember: event.target.value,
-    });
-  }
-  //onchange team
-  onTextboxChangeNameTeam = (event) => {
-    this.setState({
-      nameTeam: event.target.value,
-    });
-  }
-  onTextboxChangeDescriptionTeam = (event) => {
-    this.setState({
-      descriptionTeam: event.target.value,
-    });
-  }
-  onTextboxChangeDepartmentTeam = (event) => {
-    this.setState({
-      departmentTeam: event.target.value,
-    });
-  }
-  //action status
   toggleActionStatus = () => {
     this.setState(prevState => ({
       modalActionStatus: !prevState.modalActionStatus
     }));
   }
-  //toggle member
-  toggleAddMember = (event) => {
+  toggleAdd = () => {
     this.setState(prevState => ({
-      modalAddMember: !prevState.modalAddMember,
+      modalAdd: !prevState.modalAdd
     }));
   }
-  toggleEditMember = (event) => {
-    let idMember = event.currentTarget.dataset.idMember;
-    let idTeam = event.currentTarget.dataset.idTeam;
-    let role = event.currentTarget.dataset.role;
-    let name= event.currentTarget.dataset.name;
-    this.setState(prevState => ({
-      modalEditMember: !prevState.modalEditMember,
-      updateMemberId: idMember,
-      updateTeamId: idTeam,
-      roleMember: role,
-      emailMember:name,
-    }));
-  }
-  //toggle team
-  toggleAddTeam = () => {
-    this.setState(prevState => ({
-      modalAddTeam: !prevState.modalAddTeam
-    }));
-  }
-  toggleEditTeam = (event) => {
-    let name = event.currentTarget.dataset.name;
-    let id = event.currentTarget.dataset.id;
-    let description = event.currentTarget.dataset.des;
-    let department = event.currentTarget.dataset.department;
 
+
+  toggleEdit = (event) => {
+    let id = event.currentTarget.dataset.id
+
+    let title = event.currentTarget.dataset.title
+    let role = event.currentTarget.dataset.role
+    let want = event.currentTarget.dataset.want
+    let so = event.currentTarget.dataset.so
+    let priority = event.currentTarget.dataset.priority
+    let estimation = event.currentTarget.dataset.estimation
+    let sprint = event.currentTarget.dataset.sprint
+    let status = event.currentTarget.dataset.status
 
     this.setState(prevState => ({
-      modalEditTeam: !prevState.modalEditTeam,
-      updateNameTeam: name,
-      updateTeamId: id,
-      departmentTeam:department,
-      descriptionTeam:description,
-      nameTeam:name,
+      modalEdit: !prevState.modalEdit,
+      updateId: id,
+      title: title,
+      role: role,
+      want: want,
+      so: so,
+      priority: priority,
+      estimation: estimation,
+      sprint: sprint,
+      status: status,
     }));
   }
-  shouldComponentUpdate() {
-    return true;
+  notify = () => this.toastId = toast("Processing... please wait...", { autoClose: false });
+
+  success = () => toast.update(this.toastId, { render: "Success", type: toast.TYPE.SUCCESS, autoClose: 3000 });
+  failed = () => toast.update(this.toastId, { render: "Failed", type: toast.TYPE.ERROR, autoClose: 3000 });
+
+  onActiveSprint = (event) => {
+    console.log("onActiveSprint")
+    this.notify()
+    let id = event.currentTarget.dataset.id
+    let name= event.currentTarget.dataset.name
+    //active sprint by query to server
+    const sprintService = new proto.sprint.SprintClient('https://www.overlead.co');
+ 
+    var metadata = {};
+    var DeleteSprintReq = new proto.sprint.DeleteSprintReq();
+    DeleteSprintReq.setRequesterid(getFromStorage("userId"));
+    DeleteSprintReq.setProjectid(getFromStorage("currentProject"));
+    DeleteSprintReq.setAccesstoken(getFromStorage("accessToken"));
+
+    DeleteSprintReq.setSprintid(id);
+    
+
+    let that = this
+    sprintService.setCurrentSprint(DeleteSprintReq, metadata, (err, response) => {
+      if (err) { 
+        console.log(err);
+      } else { 
+        console.log(response)
+        if (response.getStatus() == "SUCCESS") {
+            that.success()
+            setInStorage('currentSprintId',id)
+            setInStorage('currentSprintName',name)
+            that.setState({
+              currentSprintName:name,
+              currentSprintId:id,   
+          });
+
+        } else {
+          console.log(response.getStatus())
+          that.failed()
+        }
+      }
+    });
   }
 
-  componentDidMount() {
-    //viet hàm lấy toàn bộ dữ liệu trong collection team đổ vào array dataTeam
+  onTextboxChangeNum = (event) => {
+    this.setState({
+      num: event.target.value,
+    });
+  }
+  onTextboxChangeTitle = (event) => {
+    this.setState({
+      title: event.target.value,
+    });
+  }
 
-    this.loadAllTeam()
-    this.state.dataTeam.forEach(i => {
-      this.loadAllMember(i.id)
+
+
+  onTextboxChangeStatus = (event) => {
+    this.setState({
+      status: event.target.value,
+    });
+  }
+  onTextboxChangeGoal = (event) => {
+    this.setState({
+      goal: event.target.value
     })
   }
-  //member
+  handleAdd = () => {
+    console.log("handleAdd")
+    const sprintService = new proto.sprint.SprintClient('https://www.overlead.co');
+    //some data of request (get that from frontend)
+
+    var metadata = {};
+    let d = this.state.startDate;
+    let start = d.getMinutes() + "-" + d.getHours() + "-" + d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
+    d = this.state.endDate;
+    let end = d.getMinutes() + "-" + d.getHours() + "-" + d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
+    var AddNewSprintReq = new proto.sprint.AddNewSprintReq();
+    AddNewSprintReq.setRequesterid(getFromStorage("userId"));
+    AddNewSprintReq.setProjectid(getFromStorage("currentProject"));
+    AddNewSprintReq.setAccesstoken(getFromStorage("accessToken"));
+
+    AddNewSprintReq.setTitle(this.state.title);
+    AddNewSprintReq.setNum(this.state.num)
+    AddNewSprintReq.setGoal(this.state.goal)
+    AddNewSprintReq.setStart(start)
+    AddNewSprintReq.setEnd(end)
+
+    let that = this
+    sprintService.addNewSprint(AddNewSprintReq, metadata, (err, response) => {
+      if (err) { //if error
+        console.log(err);
+        console.log("error")
+      } else { //if success
+        //get response
+        if (response.getStatus() == "SUCCESS") {
+          let arr = start.split('-');
+          if (arr[1] > 12) {
+            arr[1] = arr[1] - 12
+            start = (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "PM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10) + 1) + "/" + arr[4]
+          } else {
+            start = (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10) + 1) + "/" + arr[4]
+          }
+
+
+
+          arr = end.split('-')
+          if (arr[1] > 12) {
+            arr[1] = arr[1] - 12
+            end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "PM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10) + 1) + "/" + arr[4]
+          } else {
+            end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10) + 1) + "/" + arr[4]
+          }
+          that.setState(prevState => ({
+            modalAdd: !prevState.modalAdd,
+            data: [...prevState.data,
+            {
+              id: response.getId(),
+              title: that.state.title,
+              num: that.state.num,
+              goal: that.state.goal,
+              start: start,
+              end: end,
+            }],
+
+            title: '',
+            num: '',
+            goal: '',
+            modalActionStatus: true,
+            actionStatus: 'SUCCESS'
+          }));
+
+        } else {
+          that.setState({
+            modalActionStatus: true,
+            actionStatus: 'FALSE',
+          });
+        }
+      }
+    });
+  };
+  handleDelete = (event) => {
+    let id = event.currentTarget.dataset.id
+
+    console.log("handleDelete")
+
+    const sprintService = new proto.sprint.sprintClient('https://www.overlead.co');
+
+    var metadata = {};
+    //make a request to server
+
+    var DeletesprintReq = new proto.sprint.DeletesprintReq();
+    DeletesprintReq.setRequesterid(getFromStorage("userId"));
+    DeletesprintReq.setProjectid(getFromStorage("currentProject"));
+    DeletesprintReq.setsprintid(id);
+    DeletesprintReq.setAccesstoken(getFromStorage("accessToken"));
+
+    sprintService.deletesprint(DeletesprintReq, metadata, (err, response) => {
+      if (err) { //if error
+        console.log(err);
+      } else {
+        if (response.getStatus() == "SUCCESS") {
+
+          this.setState({
+            actionStatus: "SUCCESS",
+            modalActionStatus: true,
+          });
+          this.setState(prevState => ({ data: [...prevState.data.filter(function (e) { return e.id !== id; })] }));
+        } else {
+          this.setState({
+            actionStatus: "FALSE",
+          });
+          this.setState(prevState => ({
+            modalActionStatus: !prevState.modalActionStatus,
+          }));
+        }
+      }
+
+    });
+  };
+
+  handleUpdate = (event) => {
+    console.log("handleUpdate")
+
+    const sprintService = new proto.sprint.sprintClient('https://www.overlead.co');
+    var metadata = {};
+    console.log("so" + this.state.so)
+    var UpdatesprintReq = new proto.sprint.UpdatesprintReq();
+    UpdatesprintReq.setRequesterid(getFromStorage("userId"));
+    UpdatesprintReq.setAccesstoken(getFromStorage("accessToken"));
+    UpdatesprintReq.setProjectid(getFromStorage("currentProject"));
+    UpdatesprintReq.setsprintid(this.state.updateId);
+    UpdatesprintReq.setRole(this.state.role);
+    UpdatesprintReq.setWant(this.state.want);
+    UpdatesprintReq.setSo(this.state.so);
+    UpdatesprintReq.setPriority(this.state.priority);
+    UpdatesprintReq.setEstimation(this.state.estimation);
+    UpdatesprintReq.setSprintid(this.state.sprint);
+    UpdatesprintReq.setStatusbacklog("To do");
+    sprintService.updatesprint(UpdatesprintReq, metadata, (err, response) => {
+      if (err) { //if error
+        console.log(err);
+      } else {
+        if (response.getStatus() == "SUCCESS") {
+          console.log(response)
+          const tmpdata = this.state.data.map(p =>
+            p.id == this.state.updateId
+              ? {
+                ...p,
+                role: this.state.role,
+                want: this.state.want,
+                priority: this.state.priority,
+                estimation: this.state.estimation,
+                status: this.state.status,
+                sprint: this.state.sprint,
+                so: this.state.so,
+
+              }
+              : p
+          );
+          this.setState(prevState => ({
+            modalEdit: !prevState.modalEdit,
+            modalActionStatus: !prevState.modalActionStatus,
+            actionStatus: "SUCCESS",
+            data: tmpdata,
+
+          }));
+
+
+          this.setState({
+          });
+
+
+        } else {
+          this.setState({
+            actionStatus: "FALSE",
+          });
+          this.setState(prevState => ({
+            modalEdit: !prevState.modalEdit,
+            modalActionStatus: !prevState.modalActionStatus,
+          }));
+        }
+      }
+    });
+  };
   
-  //team
-  handleAddTeam = () => { }
-  handleUpdateTeam = (event) => {
+  onChangeStartDate = (date) => {
+    this.setState({
+      startDate: date
+    });
   }
-  handleDeleteTeam = (event) => {
+  onChangeEndDate = (date) => {
+    this.setState({
+      endDate: date
+    });
   }
   render() {
+
     let that = this;
-    console.log("render")
-    console.log(this.state.dataTeam.members)
     return (
-      <div>
-        <Modal size="sm" isOpen={this.state.modalActionStatus} toggle={this.toggleActionStatus} className={this.props.className}>
+      <Row>
+        <Modal size="sm" isOpen={that.state.modalActionStatus} toggle={that.toggleActionStatus} className={that.props.className}>
           <ModalBody>
-            <center><h4>{this.state.actionStatus}</h4></center>
+            <center><h4>{that.state.actionStatus}</h4></center>
           </ModalBody>
         </Modal>
-        {that.state.dataTeam.map(function (item, key) {
-          let itemTeam = item;
-          return (
-            <div class="card border-primary  mb-6">
-              <div class="card-header bg-primary">
-                <div class="row justify-content-md-center">
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <strong>{itemTeam.name}</strong>
-                  </div>
+        <Col>
 
-                  <div class="col-md-auto">
-                  </div>
+          <Row>
+            <Col xs="2" md="2">
+              <Input type="text" id="text-input" name="text-input" placeholder="Search" />
+            </Col>
 
-                  <div class="col col-sm-1">
-                  
-                    <div class="row ">
-                         
-                          <div class="col col-sm-1">
-                          <div data-id={itemTeam.id} data-name={itemTeam.name} data-des={itemTeam.description} data-department={itemTeam.department}onClick={that.toggleEditTeam}>
-                            <Button color="warning" size="sm" className="mt-3"><i class="fa fa-edit"></i></Button>
-                          </div>
-                          </div>
-                          <Modal size="lg" isOpen={that.state.modalEditTeam} toggle={that.toggleEditTeam} >
-                            <ModalHeader toggle={that.toggleEditTeam}>Team</ModalHeader>
-                            <ModalBody>
-                              <Form className="form-horizontal">
-                                <FormGroup row>
-                                  <Col md="3">
-                                    <Label htmlFor="text-input">Name</Label>
-                                  </Col>
-                                  <Col xs="12" md="9">
-                                    <Input type="text" id="Name" name="Name" placeholder="Name" value={that.state.nameTeam} onChange={that.onTextboxChangeNameTeam} />
+            <Col xs="0" md="0">
+              <Button type="submit" size="sm" color="success">
+                <i class="fa fa-search"></i></Button>
+            </Col>
+          </Row>
+          <Card>
+            <div class="table-responsive">
+              <table class="table table-lg">
+                <thead class="thead">
+                  <tr class="bg-primary">
+                    <th>Sprint ID <i class="fa fa-sort"></i></th>
+                    <th>Title <i class="fa fa-sort"></i></th>
+                    <th>Start at <i class="fa fa-sort"></i></th>
+                    {/* <th>So that...  <i class="fa fa-sort"></i></th> */}
+                    <th>End at <i class="fa fa-sort"></i></th>
+                    <th>Goal <i class="fa fa-sort"></i></th>
+                    <th>Status <i class="fa fa-sort"></i> </th>
 
-                                  </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                  <Col md="3">
-                                    <Label htmlFor="text-input">Description</Label>
-                                  </Col>
-                                  <Col xs="12" md="9">
-                                    <Input type="text" id="Description" name="Description" placeholder="Description" value={that.state.descriptionTeam} onChange={that.onTextboxChangeDescriptionTeam} />
+                    <th>
+                      <div>
+                        <Button color="primary" size="sm" className="mt-3" onClick={that.toggleAdd}><i class="fa fa-plus-square"></i>{this.props.buttonLabel}</Button>
+                        <Modal size="lg" isOpen={that.state.modalAdd} toggle={that.toggleAdd} className={that.props.className}>
+                          <ModalHeader toggle={that.toggleAdd}>sprint</ModalHeader>
+                          <ModalBody>
+                            <Form className="form-horizontal">
 
-                                  </Col>
-                                </FormGroup>
-                                <FormGroup row>
-                                  <Col md="3">
-                                    <Label htmlFor="text-input">Department</Label>
-                                  </Col>
-                                  <Col xs="12" md="9">
-                                    <Input type="text" id="Department" name="Department" placeholder="Department" value={that.state.departmentTeam} onChange={that.onTextboxChangeDepartmentTeam} />
+                              <FormGroup row>
+                                <Col md="3">
+                                  <Label htmlFor="text-input">Sprint ID</Label>
+                                </Col>
+                                <Col xs="12" md="9">
+                                  <Input type="text" id="as" name="as" placeholder="Unique id in project" value={that.state.num} onChange={that.onTextboxChangeNum} />
+                                </Col>
+                              </FormGroup>
 
-                                  </Col>
-                                </FormGroup>
+                              <FormGroup row>
+                                <Col md="3">
+                                  <Label htmlFor="text-input">Title...</Label>
+                                </Col>
+                                <Col xs="12" md="9">
+                                  <Input type="text" id="title" name="title" placeholder="Let's it remember you" value={that.state.title} onChange={that.onTextboxChangeTitle} />
+                                </Col>
+                              </FormGroup>
+                              <FormGroup row>
+                                <Col md="3">
+                                  <Label htmlFor="text-input">Start at:</Label>
+                                </Col>
+                                <Col xs="12" md="9">
+                                  <DatePicker
 
-                              </Form>
-                            </ModalBody>
-                            <div data-id={itemTeam.id} onClick={that.handleUpdateTeam}>
-                              <ModalFooter>
-                                <Button color="primary" >Submit</Button>
-                              </ModalFooter>
-                            </div>
+                                    selected={that.state.startDate}
+                                    timeInputLabel="Time:"
+                                    onChange={that.onChangeStartDate}
+                                    dateFormat="dd/MM/yyyy h:mm aa"
+                                    showTimeInput
+                                  />
+                                </Col>
+                              </FormGroup>
 
-                          </Modal>
-                          
-                          <div class="col col-sm-1">
-                          <div data-id={itemTeam.id} onClick={that.handleDeleteTeam}>
-                            <Button color="danger" size="sm" className="mt-3" ><i class="fa fa-trash"></i></Button>
-                          </div>
-                          </div>
-                    </div>
-                  </div>
+                              <FormGroup row>
+                                <Col md="3">
+                                  <Label htmlFor="text-input">End at:</Label>
+                                </Col>
+                                <Col xs="12" md="9">
+                                  <DatePicker
 
-                </div>
-
-              </div>
-              <div class="card-body">
-              {item.members != undefined ?
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th>Name</th>
-                            <th>Role</th>
-                            <th>Point</th>
-                            <th>Current task</th>
-                            <th>Task completed</th>
-                            <th>
-                              <div>
-                                <center>
-                                  <div  onClick={()=>that.setState({updateTeamId:item.id})}>
-                                  <Button color="primary" size="sm" className="mt-3" onClick={that.toggleAddMember} >
-                                    <i class="fa fa-plus-square"></i>
-                                    </Button>
-                                    </div>
-                                    </center>
-                                <Modal size="lg" isOpen={that.state.modalAddMember} toggle={that.toggleAddMember}>
-                                  <ModalHeader  toggle={that.toggleAddMember}>Member</ModalHeader>
-                                  <ModalBody>
-
-                                    <Form className="form-horizontal">
-                                      <FormGroup row>
-                                        <Col md="3">
-                                          <Label htmlFor="text-input">User name</Label>
-                                        </Col>
-                                        <Col xs="5" md="5">
-                                          <Input type="text" id="text-input" name="text-input" placeholder="User name" value={that.state.emailMember} onChange={that.onTextboxChangeEmailMember} />
-                                        </Col>
-                                      </FormGroup>
-                                      <FormGroup row>
-                                        <Col md="3">
-                                          <Label htmlFor="text-input">Role</Label>
-                                        </Col>
-                                        <Col xs="5" md="5">
-                                          <Input type="text" id="Role" name="Role" placeholder="Role" value={that.state.roleMember} onChange={that.onTextboxChangeRoleMember} />
-                                        </Col>
-                                      </FormGroup>
-
-                                    </Form>
-
-                                  </ModalBody>
-                                  <div data-idTeam={itemTeam.id} onClick={that.handleAddMember}>
-                                    <ModalFooter>
-                                      <Button color="primary" >Submit</Button>
-                                    </ModalFooter>
-                                  </div>
-                                </Modal>
-                              </div>
-                            </th>
-                          </tr>
-                        </thead>
-                       
-                        {item.members.map(function (itemMem, key) {
-                        return (
-                          <tbody>
-                          <tr>
-                            <td>{itemMem.name}</td>
-                            <td>{itemMem.role}</td>
-                            <td>{itemMem.point}</td>
-                            <td>{itemMem.currentTask}</td>
-                            <td>{itemMem.numOfTaskDone}</td>
-                            <td>
-                              <center>
-                                <div data-idTeam={itemTeam.id} data-idMember={itemMem.id} data-name={itemMem.name} data-role={itemMem.role}onClick={that.toggleEditMember}>
-                                  <Button color="warning" size="sm">
-                                    <i class="fa fa-edit"></i>
-                                  </Button>
-                                </div>
-                                <Modal size="lg" isOpen={that.state.modalEditMember} toggle={that.toggleEditMember} >
-                                  <ModalHeader toggle={that.toggleEditMember}>Member</ModalHeader>
-                                  <ModalBody>
-                                    <Form className="form-horizontal">
-                                      <FormGroup row>
-                                        <Col md="3">
-                                          <Label htmlFor="text-input">User name</Label>
-                                        </Col>
-                                        <Col xs="5" md="5">
-                                          <Input type="text" id="text-input" name="text-input" value={that.state.emailMember}  placeholder="User name" onChange={that.onTextboxChangeEmailMember}/>
-                                        </Col>
-                                      </FormGroup>
-                                      <FormGroup row>
-                                        <Col md="3">
-                                          <Label htmlFor="text-input">Role</Label>
-                                        </Col>
-                                        <Col xs="5" md="5">
-                                          <Input type="text" id="Role" name="Role" placeholder="Role" value={that.state.roleMember} onChange={that.onTextboxChangeRoleMember} />
-                                        </Col>
-                                      </FormGroup>
-
-                                    </Form>
-
-                                  </ModalBody>
-                                  <div data-idTeam={itemTeam.id} data-idMember={itemMem.id} onClick={that.handleUpdateMember}>
-                                    <ModalFooter>
-                                      <Button color="primary" >Submit</Button>
-                                    </ModalFooter>
-                                  </div>
-                                </Modal>
-
-                                <div data-idmember={itemMem.id} data-idteam={itemTeam.id} onClick={that.handleDeleteMember}>
-                                  <Button size="sm" color="danger" >
-                                    <i class="fa fa-trash"></i></Button>
-                                </div>
-                              </center>
-                            </td>
-                          </tr>
-
-                        </tbody>
+                                    selected={that.state.endDate}
+                                    timeInputLabel="Time:"
+                                    onChange={that.onChangeEndDate}
+                                    dateFormat="dd/MM/yyyy h:mm aa"
+                                    showTimeInput
+                                  />
+                                </Col>
+                              </FormGroup>
+                              <FormGroup row>
+                                <Col md="3">
+                                  <Label htmlFor="textarea-input">Goal</Label>
+                                </Col>
+                                <Col xs="12" md="9">
+                                  <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
+                                    placeholder="Which you want when end this sprint" value={that.state.goal} onChange={that.onTextboxChangeGoal} />
+                                </Col>
+                              </FormGroup>
 
 
-                        )})} </table> :
-                        <div>Empty Member</div> }
-                     
-                    
-                
 
-               
 
-              </div>
+                            </Form>
+                          </ModalBody>
+                          <ModalFooter>
+                            <Button color="primary" onClick={that.handleAdd}>Submit</Button>{' '}
+                            <Button color="secondary" onClick={that.toggleAdd}>Cancel</Button>
+                          </ModalFooter>
+                        </Modal>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>{this.state.data.map(function (item, key) {
+
+                  return (
+                    <tr key={key}>
+                      <td>{item.num}</td>
+                      <td>{item.title}</td>
+                      <td>{item.start}</td>
+                      <td>{item.end}</td>
+                      <td>{item.goal}</td>
+                      <td>{item.id == getFromStorage('currentSprintId')? "Actived" : "not active"}</td>
+                      <td>
+                        <div data-id={item.id} data-name={item.num} onClick={that.onActiveSprint}>
+                          <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
+                        </div>
+
+
+                        {/* update */}
+                        <div data-id={item.id} data-title={item.title} data-role={item.role} data-want={item.want}
+                          data-so={item.so} data-priority={item.priority} data-estimation={item.estimation}
+                          data-sprint={item.sprint} data-status={item.status}
+                          onClick={that.toggleEdit}>
+                          <Button color="warning" size="sm"><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
+                        </div>
+                        <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
+                          <ModalHeader toggle={that.toggleEdit}>sprint</ModalHeader>
+                          <ModalBody>
+                            <Form className="form-horizontal">
+                              <FormGroup row>
+                                <Col md="3">
+                                  <Label htmlFor="text-input">As a...</Label>
+                                </Col>
+                                <Col xs="12" md="9">
+                                  <Input type="text" id="text-input" name="text-input" placeholder="As a......" value={that.state.role} onChange={that.onTextboxChangeRole} />
+
+                                </Col>
+                              </FormGroup>
+                              <FormGroup row>
+                                <Col md="3">
+                                  <Label htmlFor="text-input">I want to be able to...</Label>
+                                </Col>
+                                <Col xs="12" md="9">
+                                  <Input type="text" id="text-input" name="text-input" placeholder="I want to be able to..." value={that.state.want} onChange={that.onTextboxChangeWant} />
+
+                                </Col>
+                              </FormGroup>
+                              <FormGroup row>
+                                <Col md="3">
+                                  <Label htmlFor="textarea-input">So that...</Label>
+                                </Col>
+                                <Col xs="12" md="9">
+                                  <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
+                                    placeholder="Content..." value={that.state.so} onChange={that.onTextboxChangeSo} />
+                                </Col>
+                              </FormGroup>
+                              {/* <FormGroup row>
+                                <Col md="3">
+                                  <Label htmlFor="date-input">Status</Label>
+                                </Col>
+                                <Col xs="12" md="2">
+                                <Input type="select" name="select" id="select" onChange={that.onTextboxChangeStatus}>
+                                          <option value="0">Please select</option>
+                                          <option value="Todo">Todo</option>
+                                          <option value="Inprogress">Inprogress</option>
+                                          <option value="Done">Done</option>
+                                  </Input>                                                     
+                                </Col>
+                              </FormGroup> */}
+                              <FormGroup row>
+                                <Col md="1">
+                                  <Label htmlFor="text-input">Priority</Label>
+                                </Col>
+                                <Col xs="12" md="1">
+                                  <Input type="text" name="text-input" id="text-input" rows="9" value={that.state.priority} onChange={that.onTextboxChangePriority} />
+                                </Col>
+
+                                <Col md="2">
+                                </Col>
+
+                                <Col md="1">
+                                  <Label htmlFor="text-input">Estimation</Label>
+                                </Col>
+                                <Col xs="12" md="1">
+                                  <Input type="text" name="text-input" id="text-input" rows="9" value={that.state.estimation} onChange={that.onTextboxChangeEstimation} />
+                                </Col>
+
+                                <Col md="2">
+                                </Col>
+
+                                <Col md="1">
+                                  <Label htmlFor="text-input">Sprint</Label>
+                                </Col>
+                                <Col xs="12" md="1">
+                                  <Input type="text" name="text-input" id="text-input" rows="9" value={that.state.sprint} onChange={that.onTextboxChangeSprint} />
+                                </Col>
+                              </FormGroup>
+                            </Form>
+                          </ModalBody>
+                          <ModalFooter>
+                            <div data-id={item.id} onClick={that.handleUpdate}><Button color="primary">Submit</Button></div>{' '}
+                            <Button color="secondary" onClick={that.toggleEdit}>Cancel</Button>
+                          </ModalFooter>
+                        </Modal>
+
+
+                        {/* delete */}
+                        <div data-id={item.id} onClick={that.handleDelete}><Button size="sm" color="danger" ><i class="fa fa-trash"></i></Button></div>
+                      </td>
+                    </tr>
+                  )
+
+                })}</tbody>
+              </table>
             </div>
+          </Card>
 
-          )
-        })}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {/* <div class="card border-primary mb-3">
-                <div class="card-header bg-primary">
-                  <strong>Find and add member</strong>
-                      <Row>       
-                        <Col xs="2" md="2">
-                          <Input type="text" id="text-input" name="text-input" placeholder="Search" /> 
-                        </Col> 
-                        <Col xs="0" md="0">
-                          <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
-                        </Col> 
-                      </Row>     
-
-                      <Form action="" method="post" encType="multipart/form-data" className="form-horizontal">               
-                        <FormGroup row>
-                          <Col md="3">
-                            <Label htmlFor="text-input">Skill</Label>
-                          </Col>
-                          <Col xs="5" md="5">
-                            <Input type="text" id="text-input" name="text-input" placeholder="skill" />
-                          </Col>
-                        </FormGroup>
-                        <FormGroup row>
-                          <Col md="3">
-                            <Label htmlFor="text-input">Point</Label>
-                          </Col>
-                          <Col xs="2" md="2">
-                            <Input type="text" id="text-input" name="text-input" placeholder="Point min" />
-                            <Input type="text" id="text-input" name="text-input" placeholder="Point max" />  
-                          </Col>
-                        </FormGroup>   
-                        <FormGroup row>
-                          <Col md="3">
-                            <Label htmlFor="text-input">Freelancer</Label>
-                          </Col>
-                          <Col xs="2" md="2">
-                            <Input type="checkbox" id="text-input" name="text-input"  />  
-                          </Col>
-                        </FormGroup>                                          
-                      </Form>
-                </div>           
-                <div class="card-body">
-                    <Table hover bordered striped responsive size="sm">
-                      <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Skill</th>
-                        <th>Point</th>
-                        <th>Number Project</th>
-                        <th></th>
-          
-                       
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr>
-                        <td></td>
-                       
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                          <Button type="submit" size="sm" color="primary"><i class="fa fa-user-plus"></i></Button>
-                        </td>
-                      </tr>
-                     
-                     
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                          <Button type="submit" size="sm" color="primary"><i class="fa fa-user-plus"></i></Button>
-                        </td>
-                      </tr>
-                     
-                     
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                          <Button type="submit" size="sm" color="primary"><i class="fa fa-user-plus"></i></Button>
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                          <Button type="submit" size="sm" color="primary"><i class="fa fa-user-plus"></i></Button>
-                        </td>
-                      </tr>
-                      
-                      </tbody>
-                    </Table>
-                </div>
-            </div> */}
-      </div>
-
+        </Col>
+      </Row>
     );
   }
 }
