@@ -267,7 +267,7 @@ class TeamTask extends Component {
     AddNewTeamTaskReq.setReview("");
     AddNewTeamTaskReq.setTitle(this.state.title);
     AddNewTeamTaskReq.setDescription(this.state.description);
-    AddNewTeamTaskReq.setSprintid("this.state.sprintId");
+    AddNewTeamTaskReq.setSprintid(getFromStorage('currentSprintId'));
 
     
     var response = teamtaskService.addNewTeamTask(AddNewTeamTaskReq, metadata)

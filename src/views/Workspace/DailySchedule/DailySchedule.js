@@ -77,34 +77,22 @@ class DailySchedule extends Component {
                 "title":"Login",
                 "task":"Login bằng fb4",
                 "timeStart":"02:20",
-                "dateStart":"2019-05-05",
-               
+                "dateStart":"2019-05-05",               
                 "status":"",
               },
             
             ],
       modalEdit: false,
-      modalActionStatus: false,     
-      requesterId:'',
-      projectId:'',
-      cookie:'',
+      modalActionStatus: false,  
       actionStatus:'',              //success or show error when action add delete update
       
       //add
       title:'',
-      task:'',
-      timeStart:'',
-      dateStart:'',
+      description:'',
+      startDate:'',
+      endDate:'',
       status:'',
-      //update
-      // scheduleIdUpdate:'',
-      // titleUpdate:'',
-      // taskUpdate:'',
-      // timeStartUpdate:'',
-      // dateStartUpdate:'',
-      // statusUpdate:'',
-      //delete
-      scheduleIdDelete:'',
+      updateId:'',
       }
     };
 
