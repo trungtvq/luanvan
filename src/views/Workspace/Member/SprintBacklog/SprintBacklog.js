@@ -15,8 +15,8 @@ class SprintBacklog extends Component {
       data: [],
       }
     };
-    componentDidMount() {
-  
+
+    componentDidMount() {  
       const sprintbacklogService = new proto.sprintbacklog.SprintBacklogClient('https://www.overlead.co');
       var metadata = {};
       var GetAllSprintBacklogReq = new proto.sprintbacklog.GetAllSprintBacklogReq();
@@ -28,13 +28,7 @@ class SprintBacklog extends Component {
       var response = sprintbacklogService.getAllSprintBacklog(GetAllSprintBacklogReq, metadata)
       let that = this
       response.on('data', function (response) {
-        console.log("response sprint")
-        console.log(response.getStatus())
         if (response.getStatus() == "SUCCESS") {
-          console.log("checking")
-          console.log(response.getStart())
-          console.log(response.getDeadline())
-
           let arr = response.getStart().split('-');
           let start = ""
           let end = ""
@@ -77,6 +71,7 @@ class SprintBacklog extends Component {
       })
       response.on('status', function (status) {
         if (status.code!=0) console.log(status)
+        setInStorage("sprints",that.state.data)
 
       });
       response.on('end', function (end) {
