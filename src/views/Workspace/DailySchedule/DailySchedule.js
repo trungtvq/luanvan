@@ -169,17 +169,7 @@ class DailySchedule extends Component {
       statusUpdate: event.target.value,
     });
   }
-  onGetUpdate=(scheduleIdUpdate,titleUpdate,taskUpdate,timeStartUpdate,dateStartUpdate,statusUpdate)=>{
-    this.setState({
-      scheduleIdUpdate:scheduleIdUpdate,
-      titleUpdate:titleUpdate,
-      taskUpdate:taskUpdate,
-      timeStartUpdate:timeStartUpdate,
-      dateStartUpdate:dateStartUpdate,
-      statusUpdate:statusUpdate,
-    });
-
-  }
+  
 //delete
   onTextboxChangeScheduleIdDelete=(id)=> {
     this.setState({
@@ -199,7 +189,6 @@ class DailySchedule extends Component {
   
     const dailyscheduleService = new proto.dailyschedule.DailyscheduleClient('https://www.overlead.co');
   
-    console.log(dailyscheduleService)
   
     var metadata = {};
 

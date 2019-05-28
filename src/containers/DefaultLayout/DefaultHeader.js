@@ -209,7 +209,7 @@ class DefaultHeader extends Component {
             <NavLink href="#">Settings</NavLink>
           </NavItem>
           <NavItem className="px-3">
-            <NavLink href="/myproject">Myprojects</NavLink>
+            <Link to="/myproject">Myprojects</Link>
           </NavItem>
 
 
@@ -265,7 +265,7 @@ class DefaultHeader extends Component {
 
 
               <DropdownItem header tag="div" className="text-center"><strong>
-                {this.props.email}
+               {"Hi "+this.props.email+"!"}
               </strong></DropdownItem>
 
 

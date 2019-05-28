@@ -26,6 +26,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const proto = {};
 proto.teamtask = require('./../../../../gRPC/teamtask/teamtask_grpc_web_pb');
+proto.sprintbacklog = require('./../../../../gRPC/sprintbacklog/sprintbacklog_grpc_web_pb');
+
 class TeamTask extends Component {
   constructor(props) {
     super(props);
@@ -48,7 +50,8 @@ class TeamTask extends Component {
       review: "",
       updateId:"",
       status:"",
-      mem:getFromStorage('members')
+      mem:getFromStorage('members'),
+      sprintBacklog:""
 
     };
   }
@@ -106,6 +109,7 @@ class TeamTask extends Component {
     let   priority=event.currentTarget.dataset.priority
     let   status=event.currentTarget.dataset.status
     let   assignee=event.currentTarget.dataset.assignee
+    let sprintBacklog=event.currentTarget.dataset.sprintbacklog
     this.setState(prevState => ({
       modalEdit: !prevState.modalEdit,
       updateId,
@@ -115,7 +119,8 @@ class TeamTask extends Component {
       deadline,
       priority,
       status,
-      assignee
+      assignee,
+      sprintBacklog
     }));
   }
 
@@ -132,6 +137,12 @@ class TeamTask extends Component {
   onTextboxChangePriority = (event) => {
     this.setState({
       priority: event.target.value,
+    });
+
+  }
+  onTextboxChangeSprintBacklog = (event) => {
+    this.setState({
+      sprintBacklog: event.target.value,
     });
 
   }
@@ -157,7 +168,68 @@ class TeamTask extends Component {
       status: event.target.value,
     });
   }
-  componentDidMount() {   
+  loadAllSprint=()=>{
+    const sprintbacklogService = new proto.sprintbacklog.SprintBacklogClient('https://www.overlead.co');
+    var metadata = {};
+    var GetAllSprintBacklogReq = new proto.sprintbacklog.GetAllSprintBacklogReq();
+    GetAllSprintBacklogReq.setRequesterid(getFromStorage("userId"));
+    GetAllSprintBacklogReq.setAccesstoken(getFromStorage("accessToken"));
+    GetAllSprintBacklogReq.setProjectid(getFromStorage("currentProject"));
+    GetAllSprintBacklogReq.setTeamid(getFromStorage("teamId"));
+    let sprints=[]
+    var response = sprintbacklogService.getAllSprintBacklog(GetAllSprintBacklogReq, metadata)
+    let that = this
+    
+    response.on('data', function (response) {
+      if (response.getStatus() == "SUCCESS") {
+        let arr = response.getStart().split('-');
+        let start = ""
+        let end = ""
+        if (arr[1] > 12) {
+          arr[1] = arr[1] - 12
+          start = (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "PM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10)+1) + "/" + arr[4]
+        } else {
+          start = (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10)+1) + "/" + arr[4]
+        }
+
+
+
+        arr = response.getDeadline().split('-')
+        if (arr[1] > 12) {
+          arr[1] = arr[1] - 12
+          end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "PM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10)+1) + "/" + arr[4]
+        } else {
+          end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10)+1) + "/" + arr[4]
+        }
+
+        sprints.push({
+          id: response.getBacklogid(),
+          title: response.getTitle(),
+          role: response.getRole(),
+          want: response.getWant(),
+          so: response.getSo(),
+          priority: response.getPriority(),
+          estimation: response.getEstimation(),
+          sprint: response.getSprintid(),
+          status: response.getStatusbacklog(),
+          start: start,
+          deadline: end,
+        })      
+      }
+    })
+    response.on('status', function (status) {
+      if (status.code!=0) console.log(status)
+      setInStorage("sprints",sprints)
+
+    });
+    response.on('end', function (end) {
+      console.log("end")
+      console.log(end)
+    });
+
+  }
+  loadAllTask=()=>{
+    
     let end = this.state.endDate;
     end.setDate(end.getDate() + 15);
     this.setState({
@@ -178,7 +250,6 @@ class TeamTask extends Component {
     GetAllTeamTaskReq.setProjectid(getFromStorage("currentProject"));
     GetAllTeamTaskReq.setTeamid(getFromStorage("teamId"));
     GetAllTeamTaskReq.setSprintid("this.state.sprintId");
-
     
     var response = teamtaskService.getAllTeamTask(GetAllTeamTaskReq, metadata)
     let that = this
@@ -227,7 +298,8 @@ class TeamTask extends Component {
             comment: response.getComment(),
             status: response.getStatusteamtask(),
             start: start,
-            deadline: end
+            deadline: end,
+            sprintBacklog: response.getSprintbacklogid()
           }]
         }));
 
@@ -241,9 +313,21 @@ class TeamTask extends Component {
       console.log("end")
       console.log(end)
     });
+  }
+  componentDidMount() {   
+    this.loadAllSprint()
+    this.loadAllTask()
 
   }
   handleAdd = () => {
+    console.log("handle add")
+    let sprint=this.state.sprintBacklog
+    console.log(getFromStorage("sprints").length>0)
+    console.log(sprint=="")
+    console.log(getFromStorage('sprints')[0])
+    if (sprint=="" && getFromStorage("sprints").length>0){
+      sprint=getFromStorage('sprints')[0].title
+    }
     this.notify()
     let d = this.state.startDate;
     let start = d.getMinutes() + "-" + d.getHours() + "-" + d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
@@ -268,6 +352,7 @@ class TeamTask extends Component {
     AddNewTeamTaskReq.setTitle(this.state.title);
     AddNewTeamTaskReq.setDescription(this.state.description);
     AddNewTeamTaskReq.setSprintid(getFromStorage('currentSprintId'));
+    AddNewTeamTaskReq.setSprintbacklogid(sprint);
 
     
     var response = teamtaskService.addNewTeamTask(AddNewTeamTaskReq, metadata)
@@ -307,7 +392,8 @@ class TeamTask extends Component {
             comment: "",
             status: "todos",
             start: start,
-            deadline: end
+            deadline: end,
+            sprintBacklog:sprint,
           }]
         }));
 
@@ -426,8 +512,8 @@ class TeamTask extends Component {
     UpdateTeamTaskReq.setReview(this.state.review);
     UpdateTeamTaskReq.setTitle(this.state.title);
     UpdateTeamTaskReq.setDescription(this.state.description);
-    UpdateTeamTaskReq.setSprintid("this.state.sprintId");
-    
+    UpdateTeamTaskReq.setSprintid(getFromStorage("currentSprintId"));
+    UpdateTeamTaskReq.setSprintbacklogid(this.state.sprintBacklog)
     var response = teamtaskService.updateTeamTask(UpdateTeamTaskReq, metadata)
     let that = this
     response.on('data', function (response) {
@@ -470,7 +556,8 @@ class TeamTask extends Component {
                 comment: "",
                 status: that.state.status,
                 start: start,
-                deadline: end
+                deadline: end,
+                sprintBacklog:that.state.sprintBacklog
               }
             }                 
             
@@ -506,6 +593,9 @@ class TeamTask extends Component {
   // }
   render() {    
     let that = this;
+    let sprints=getFromStorage('sprints')
+    console.log("sprints")
+    console.log(sprints)
     return (
       <Row>
         <Col>
@@ -525,6 +615,8 @@ class TeamTask extends Component {
                   <tr class="bg-primary">
                     <th>Title <i class="fa fa-sort"></i></th>
                     <th>Description <i class="fa fa-sort"></i></th>
+                    <th>Sprint <i class="fa fa-sort"></i></th>
+
                     <th>Priority <i class="fa fa-sort"></i></th>
                     <th>Start day <i class="fa fa-sort"></i></th>
                     <th>Deadline <i class="fa fa-sort"></i></th>
@@ -558,12 +650,35 @@ class TeamTask extends Component {
                                     placeholder="Content..." value={that.state.description} onChange={that.onTextboxChangeDescription} />
                                 </Col>
                               </FormGroup>
+
+                              <FormGroup row>
+                                <Col md="3">
+                                  <Label htmlFor="text-input">Sprint backlog</Label>
+                                </Col>
+                                <Col xs="12" md="3">
+                                  <Input type="select" name="select" id="select"  onChange={that.onTextboxChangeSprintBacklog}>                                    
+                                    { 
+                                      (sprints!=undefined)?
+                                      sprints.map(p=>{
+                                        return(
+                                          <option value={p.title}>{p.title}</option>
+                                        )
+                                      }):
+                                      
+                                        <option disable={true} value="">not have any sprint backlog</option>
+                                      
+                                    }
+                                  </Input>
+                                </Col>
+                              </FormGroup>
+
+
                               <FormGroup row>
                                 <Col md="3">
                                   <Label htmlFor="text-input">priority</Label>
                                 </Col>
                                 <Col xs="12" md="3">
-                                  <Input type="select" name="select" id="select" onChange={that.onTextboxChangePriority}>
+                                  <Input type="select" name="select" id="select"  onChange={that.onTextboxChangePriority}>
                                     <option value="0">Please select</option>
                                     <option value="High">High</option>
                                     <option value="Medium">Medium</option>
@@ -644,6 +759,7 @@ class TeamTask extends Component {
                     <tr key={key}>
                       <td>{item.title}</td>
                       <td>{item.description}</td>
+                      <td>{item.sprintBacklog}</td>
                       <td>{item.priority}</td>
                       <td>{item.start}</td>
                       <td>{item.deadline}</td>
@@ -657,7 +773,7 @@ class TeamTask extends Component {
                            data-title={item.title} data-description={item.description}
                             data-priority={item.priority} data-start={item.start} data-deadline={item.deadline}
                              data-assignee={item.assignee}  data-comment={item.comment}
-                              data-status={item.status} data-review={item.review} onClick={that.toggleEditOpen}>
+                              data-status={item.status} data-review={item.review} data-sprintbacklog={item.sprintBacklog} onClick={that.toggleEditOpen}>
                           <Button color="warning" size="sm" S ><i class="fa fa-edit"></i>{that.props.buttonLabel}</Button>
                           </div>
                           <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
@@ -682,6 +798,29 @@ class TeamTask extends Component {
                                       placeholder="Content..." value={that.state.description} onChange={that.onTextboxChangeDescription} />
                                   </Col>
                                 </FormGroup>
+
+                                <FormGroup row>
+                                <Col md="3">
+                                  <Label htmlFor="text-input">Sprint backlog</Label>
+                                </Col>
+                                <Col xs="12" md="3">
+                                  <Input type="select" name="select" id="select" onChange={that.onTextboxChangeSprintBacklog}>
+                                  <option value={that.state.sprintBacklog}>{that.state.sprintBacklog}</option>
+             
+                                    { (sprints!=undefined)?
+                                      sprints.map(p=>{
+                                        return(
+                                          <option value={p.title}>{p.title}</option>
+                                        )
+                                      }):
+                                      
+                                        <option disable={true} value="">not have any sprint backlog</option>
+                                      
+                                    }
+                                  </Input>
+                                </Col>
+                              </FormGroup>
+
                                 <FormGroup row>
                                   <Col md="3">
                                     <Label>Priority</Label>

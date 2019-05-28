@@ -76,7 +76,8 @@ proto.teamtask.AddNewTeamTaskReq.toObject = function(includeInstance, msg) {
     review: msg.getReview(),
     accesstoken: msg.getAccesstoken(),
     sprintid: msg.getSprintid(),
-    teamid: msg.getTeamid()
+    teamid: msg.getTeamid(),
+    sprintbacklogid: msg.getSprintbacklogid()
   };
 
   if (includeInstance) {
@@ -168,6 +169,10 @@ proto.teamtask.AddNewTeamTaskReq.deserializeBinaryFromReader = function(msg, rea
     case 13:
       var value = /** @type {string} */ (reader.readString());
       msg.setTeamid(value);
+      break;
+    case 15:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSprintbacklogid(value);
       break;
     default:
       reader.skipField();
@@ -302,6 +307,13 @@ proto.teamtask.AddNewTeamTaskReq.prototype.serializeBinaryToWriter = function (w
   if (f.length > 0) {
     writer.writeString(
       13,
+      f
+    );
+  }
+  f = this.getSprintbacklogid();
+  if (f.length > 0) {
+    writer.writeString(
+      15,
       f
     );
   }
@@ -524,6 +536,21 @@ proto.teamtask.AddNewTeamTaskReq.prototype.getTeamid = function() {
 /** @param {string} value  */
 proto.teamtask.AddNewTeamTaskReq.prototype.setTeamid = function(value) {
   jspb.Message.setField(this, 13, value);
+};
+
+
+/**
+ * optional string sprintBacklogId = 15;
+ * @return {string}
+ */
+proto.teamtask.AddNewTeamTaskReq.prototype.getSprintbacklogid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 15, ""));
+};
+
+
+/** @param {string} value  */
+proto.teamtask.AddNewTeamTaskReq.prototype.setSprintbacklogid = function(value) {
+  jspb.Message.setField(this, 15, value);
 };
 
 
@@ -773,7 +800,8 @@ proto.teamtask.UpdateTeamTaskReq.toObject = function(includeInstance, msg) {
     review: msg.getReview(),
     accesstoken: msg.getAccesstoken(),
     teamid: msg.getTeamid(),
-    sprintid: msg.getSprintid()
+    sprintid: msg.getSprintid(),
+    sprintbacklogid: msg.getSprintbacklogid()
   };
 
   if (includeInstance) {
@@ -869,6 +897,10 @@ proto.teamtask.UpdateTeamTaskReq.deserializeBinaryFromReader = function(msg, rea
     case 15:
       var value = /** @type {string} */ (reader.readString());
       msg.setSprintid(value);
+      break;
+    case 16:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSprintbacklogid(value);
       break;
     default:
       reader.skipField();
@@ -1010,6 +1042,13 @@ proto.teamtask.UpdateTeamTaskReq.prototype.serializeBinaryToWriter = function (w
   if (f.length > 0) {
     writer.writeString(
       15,
+      f
+    );
+  }
+  f = this.getSprintbacklogid();
+  if (f.length > 0) {
+    writer.writeString(
+      16,
       f
     );
   }
@@ -1247,6 +1286,21 @@ proto.teamtask.UpdateTeamTaskReq.prototype.getSprintid = function() {
 /** @param {string} value  */
 proto.teamtask.UpdateTeamTaskReq.prototype.setSprintid = function(value) {
   jspb.Message.setField(this, 15, value);
+};
+
+
+/**
+ * optional string sprintBacklogId = 16;
+ * @return {string}
+ */
+proto.teamtask.UpdateTeamTaskReq.prototype.getSprintbacklogid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 16, ""));
+};
+
+
+/** @param {string} value  */
+proto.teamtask.UpdateTeamTaskReq.prototype.setSprintbacklogid = function(value) {
+  jspb.Message.setField(this, 16, value);
 };
 
 
@@ -2135,7 +2189,8 @@ proto.teamtask.GetAllTeamTaskRes.toObject = function(includeInstance, msg) {
     statusteamtask: msg.getStatusteamtask(),
     status: msg.getStatus(),
     review: msg.getReview(),
-    teamid: msg.getTeamid()
+    teamid: msg.getTeamid(),
+    sprintbacklogid: msg.getSprintbacklogid()
   };
 
   if (includeInstance) {
@@ -2219,6 +2274,10 @@ proto.teamtask.GetAllTeamTaskRes.deserializeBinaryFromReader = function(msg, rea
     case 13:
       var value = /** @type {string} */ (reader.readString());
       msg.setTeamid(value);
+      break;
+    case 14:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSprintbacklogid(value);
       break;
     default:
       reader.skipField();
@@ -2339,6 +2398,13 @@ proto.teamtask.GetAllTeamTaskRes.prototype.serializeBinaryToWriter = function (w
   if (f.length > 0) {
     writer.writeString(
       13,
+      f
+    );
+  }
+  f = this.getSprintbacklogid();
+  if (f.length > 0) {
+    writer.writeString(
+      14,
       f
     );
   }
@@ -2531,6 +2597,21 @@ proto.teamtask.GetAllTeamTaskRes.prototype.getTeamid = function() {
 /** @param {string} value  */
 proto.teamtask.GetAllTeamTaskRes.prototype.setTeamid = function(value) {
   jspb.Message.setField(this, 13, value);
+};
+
+
+/**
+ * optional string sprintBacklogId = 14;
+ * @return {string}
+ */
+proto.teamtask.GetAllTeamTaskRes.prototype.getSprintbacklogid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 14, ""));
+};
+
+
+/** @param {string} value  */
+proto.teamtask.GetAllTeamTaskRes.prototype.setSprintbacklogid = function(value) {
+  jspb.Message.setField(this, 14, value);
 };
 
 

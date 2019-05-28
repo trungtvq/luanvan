@@ -22,7 +22,11 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 import {addProject} from './actions'
 import DatePicker from "react-datepicker";
- 
+import { AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
+import { Link } from 'react-router-dom';
+import avatardefault from './assets/img/avatar/avatardefault.png'; // Tell Webpack this JS file uses this image
+
+
 import "react-datepicker/dist/react-datepicker.css";
 import {  
 Button, 
@@ -34,12 +38,14 @@ ModalBody,
 Form,
 FormGroup,
 Label,
-ModalFooter
+ModalFooter,  UncontrolledDropdown, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink
 } from 'reactstrap';
 import {
   getFromStorage,
   setInStorage
 } from './service/storage'
+let Img = require('react-image')
+
 const proto = {};
 proto.myproject = require('./gRPC/myproject/myproject_grpc_web_pb');
 const styles = theme => ({
@@ -410,7 +416,7 @@ toggleActionStatus = () => {
                                     </ModalFooter>
               </Modal>
               
-              <IconButton color="inherit">
+              {/* <IconButton color="inherit">
                 <Badge badgeContent={4} color="secondary">
                   <MailIcon />
                 </Badge>
@@ -419,15 +425,58 @@ toggleActionStatus = () => {
                 <Badge badgeContent={17} color="secondary">
                   <NotificationsIcon />
                 </Badge>
-              </IconButton>
-              <IconButton
+              </IconButton> */}
+              {/* <IconButton
                 aria-owns={isMenuOpen ? 'material-appbar' : undefined}
                 aria-haspopup="true"
                 onClick={this.handleProfileMenuOpen}
                 color="inherit"
               >
                 <AccountCircle />
-              </IconButton>
+              </IconButton> */}
+
+
+              <AppHeaderDropdown direction="down" >
+            <DropdownToggle nav >
+              {
+                (getFromStorage('avatar')=="" || getFromStorage('avatar')==null)?
+                <img src={avatardefault} className="img-avatar" alt="" width="25px" height="25px"/>:
+                <img src={getFromStorage('avatar')} className="img-avatar" alt="" />
+
+              }
+            </DropdownToggle>
+            <DropdownMenu right style={{ right: 'auto' }}>
+
+
+              <DropdownItem header tag="div" className="text-center"><strong>
+                {this.props.email}
+              </strong></DropdownItem>
+
+
+
+
+
+              <DropdownItem><i className="fa fa-envelope-o"></i> Messages</DropdownItem>
+              <Link to="/Member/Task/MyTask">
+                <DropdownItem><i className="fa fa-tasks"></i> Notify</DropdownItem>
+              </Link>
+              <Link to="/Profile/Detail">
+                <DropdownItem><i className="fa fa-user"></i>
+                  Profile
+              </DropdownItem>
+              </Link>
+
+              {/* <DropdownItem><i className="fa fa-wrench"></i> Settings</DropdownItem> */}
+              <Link to="/Home/Payment">
+                <DropdownItem><i className="fa fa-usd"></i> Upgrade</DropdownItem>
+              </Link>
+              {/* <Link to="/myproject">
+              <DropdownItem><i className="fa fa-file"></i> Myrojects</DropdownItem>
+              </Link> */}
+              <DropdownItem divider />
+              <DropdownItem onClick={e => this.onLogout()}><i className="fa fa-lock"></i> Logout</DropdownItem>
+            </DropdownMenu>
+          </AppHeaderDropdown>
             </div>
             <div className={classes.sectionMobile}>
               <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
