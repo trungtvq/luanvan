@@ -16,6 +16,10 @@ import {
   setInStorage
 } from '../../../../../service/storage'
 import DatePicker from "react-datepicker";
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const proto = {};
 proto.productbacklog = require('./../../../../../gRPC/productbacklog/productbacklog_grpc_web_pb');
 
@@ -123,6 +127,12 @@ class Detail extends Component {
       status: status,   
     }));
   }
+
+  toastId = null;
+  notify = () => this.toastId = toast("Processing... please wait...", { autoClose: false });
+  success = () => toast.update(this.toastId, { render: "Success", type: toast.TYPE.SUCCESS, autoClose: 3000 });
+  failed = () => toast.update(this.toastId, { render: "Failed", type: toast.TYPE.ERROR, autoClose: 3000 });
+
   toggleEdit = (event) => {
     let id = event.currentTarget.dataset.id
 
@@ -207,7 +217,7 @@ class Detail extends Component {
     console.log("handleAdd")
     const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
     //some data of request (get that from frontend)
-
+    this.notify()
     var metadata = {};
     //make a request to server
 
@@ -224,6 +234,7 @@ class Detail extends Component {
     AddNewProductBacklogReq.setSprintid(this.state.sprint)
     AddNewProductBacklogReq.setStatusbacklog("To do")
 
+    let that = this
 
     productbacklogService.addNewProductBacklog(AddNewProductBacklogReq, metadata, (err, response) => {
       if (err) { //if error
@@ -232,9 +243,8 @@ class Detail extends Component {
       } else { //if success
         //get response
         if (response.getStatus() == "SUCCESS") {
-          this.setState(prevState => ({
-            modalAdd: !prevState.modalAdd,
-          }));
+          this.toggleAdd()
+          that.success()
           this.setState(prevState => ({
             data: [...prevState.data,
             {
@@ -248,31 +258,23 @@ class Detail extends Component {
               id: response.getProductbacklogid(),
               sprint: this.state.sprint,
               status: this.state.status
-            }]
+            }],
+              title: '',
+              role: '',
+              want: '',
+              so: '',
+              priority: '',
+              estimation: '',
           }));
-
-          this.setState({
-            title: '',
-            role: '',
-            want: '',
-            so: '',
-            priority: '',
-            estimation: '',
-            modalActionStatus: true,
-            actionStatus: 'SUCCESS'
-          });
         } else {
-          this.setState({
-            modalActionStatus: true,
-            actionStatus: 'FALSE',
-          });
+          that.failed()
         }
       }
     });
   };
   handleDelete = (event) => {
     let id = event.currentTarget.dataset.id
-
+    this.notify()
     console.log("handleDelete")
 
     const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
@@ -285,25 +287,16 @@ class Detail extends Component {
     DeleteProductBacklogReq.setProjectid(getFromStorage("currentProject"));
     DeleteProductBacklogReq.setProductbacklogid(id);
     DeleteProductBacklogReq.setAccesstoken(getFromStorage("accessToken"));
-
+    let that = this
     productbacklogService.deleteProductBacklog(DeleteProductBacklogReq, metadata, (err, response) => {
       if (err) { //if error
         console.log(err);
       } else {
         if (response.getStatus() == "SUCCESS") {
-
-          this.setState({
-            actionStatus: "SUCCESS",
-            modalActionStatus: true,
-          });
+          that.success()
           this.setState(prevState => ({ data: [...prevState.data.filter(function (e) { return e.id !== id; })] }));
         } else {
-          this.setState({
-            actionStatus: "FALSE",
-          });
-          this.setState(prevState => ({
-            modalActionStatus: !prevState.modalActionStatus,
-          }));
+          that.failed()
         }
       }
 
@@ -312,7 +305,7 @@ class Detail extends Component {
 
   handleUpdate = (event) => {
     console.log("handleUpdate")
-
+    this.notify()
     const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
     var metadata = {};
     console.log("so"+this.state.so)
@@ -328,12 +321,13 @@ class Detail extends Component {
     UpdateProductBacklogReq.setEstimation(this.state.estimation);
     UpdateProductBacklogReq.setSprintid(this.state.sprint);
     UpdateProductBacklogReq.setStatusbacklog("To do");
+    let that = this
     productbacklogService.updateProductBacklog(UpdateProductBacklogReq, metadata, (err, response) => {
       if (err) { //if error
         console.log(err);
       } else {
         if (response.getStatus() == "SUCCESS") {
-          console.log(response)
+          that.success()
           const tmpdata = this.state.data.map(p =>
             p.id == this.state.updateId
               ? {
@@ -349,27 +343,13 @@ class Detail extends Component {
               }
               : p
           );
-          this.setState(prevState => ({
-            modalEdit: !prevState.modalEdit,
-            modalActionStatus: !prevState.modalActionStatus,
-            actionStatus: "SUCCESS",
+          this.setState(prevState => ({ 
             data: tmpdata,
-
+            modalEdit:false,
           }));
-
-
-          this.setState({
-          });
-
 
         } else {
-          this.setState({
-            actionStatus: "FALSE",
-          });
-          this.setState(prevState => ({
-            modalEdit: !prevState.modalEdit,
-            modalActionStatus: !prevState.modalActionStatus,
-          }));
+          that.failed()
         }
       }
     });
