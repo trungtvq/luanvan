@@ -357,7 +357,7 @@ class Detail extends Component {
   handleSend = () => {
     console.log(this.state.backlogSendId)
     const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
-
+    this.notify()
     var metadata = {};
     //make a request to server
 
@@ -381,19 +381,10 @@ class Detail extends Component {
         console.log(err);
       } else {
         if (response.getStatus() == "SUCCESS") {
-
-          that.setState({
-            actionStatus: "SUCCESS",
-            modalActionStatus: true,
-          });
+          that.success()
           that.setState(prevState => ({ data: [...prevState.data.filter(function (e) { return e.id !== that.state.backlogSendId; })] }));
         } else {
-          that.setState({
-            actionStatus: "FALSE",
-          });
-          that.setState(prevState => ({
-            modalActionStatus: !prevState.modalActionStatus,
-          }));
+         that.failed()
         }
       }
 

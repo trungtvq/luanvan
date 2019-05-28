@@ -30,11 +30,6 @@ export default {
       icon: 'icon-pencil',
     },
      {
-      name: 'Evaluate',
-      url: '/Evaluate',
-      icon: 'icon-layers',
-    },
-     {
       title: true,
       name: 'Team member',
       wrapper: {            // optional wrapper object
@@ -55,19 +50,9 @@ export default {
       icon: 'icon-book-open',
     },
     {
-      name: 'Create Sprint',
-      url: '/Member/CreateSprint',
-      icon: 'icon-book-open',
-    },
-    {
       name: 'Project Sprints',
       url: '/Member/AllSprint',
       icon: 'icon-book-open',
-    },
-     {
-      name: 'Evaluate',
-      url: '/Member/Evaluate',
-      icon: 'icon-layers',
     },
    
         {
