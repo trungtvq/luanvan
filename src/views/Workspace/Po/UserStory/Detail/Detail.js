@@ -19,10 +19,14 @@ import cookie from 'react-cookies';
 import { getProject } from '../../../../../actions'
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
-
+import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+
 const proto = {};
 proto.userstory = require('./../../../../../gRPC/userstory/userstory_grpc_web_pb');
+
+
 class Detail extends Component {
   constructor(props) {
     super(props);
@@ -37,8 +41,7 @@ class Detail extends Component {
     this.state = {
       data: [],
       requesterId: '',
-      actionStatus: '',      
-      modalActionStatus: false,        //success or show error when action add delete update      
+
       modalAdd: false,
       modalEdit: false,
 
@@ -53,7 +56,10 @@ class Detail extends Component {
   };
 
 
-
+  toastId = null;
+  notify = () => this.toastId = toast("Processing... please wait...", { autoClose: false });
+  success = () => toast.update(this.toastId, { render: "Success", type: toast.TYPE.SUCCESS, autoClose: 3000 });
+  failed = () => toast.update(this.toastId, { render: "Failed", type: toast.TYPE.ERROR, autoClose: 3000 });
   resetAddForm = () => {
     this.setState({
       ...this.state,
@@ -159,6 +165,7 @@ class Detail extends Component {
 
   }
   handleAdd = () => {
+    this.notify()
     console.log("handleAdd")
     const userstoryService = new proto.userstory.UserStoryClient('https://www.overlead.co');
     //some data of request (get that from frontend)
@@ -174,7 +181,7 @@ class Detail extends Component {
     AddNewUserStoryReq.setWant(this.state.want);
     AddNewUserStoryReq.setSo(this.state.so);
     AddNewUserStoryReq.setAccesstoken(getFromStorage("accessToken"));
-
+    let that=this
     userstoryService.addNewUserStory(AddNewUserStoryReq, metadata, (err, response) => {
       if (err) { //if error
         console.log(err);
@@ -182,24 +189,21 @@ class Detail extends Component {
       } else { //if success
         //get response
         if (response.getStatus() == "SUCCESS") {
+          that.success()
+
           this.setState(prevState => ({
             modalAdd: !prevState.modalAdd,
-          }));
-          this.setState(prevState => ({ data: [...prevState.data, { id: response.getId(), name: this.state.name, role: this.state.role, want: this.state.want, so: this.state.so }] }));
-
-          this.setState({
+            data: [...prevState.data, { id: response.getId(), 
+              name: this.state.name, role: this.state.role, want: this.state.want, so: this.state.so }] ,
             name: '',
             as: '',
             want: '',
             so: '',
-            modalActionStatus: true,
-            actionStatus: 'SUCCESS'
-          });
+          }));
+   
+        
         } else {
-          this.setState({
-            modalActionStatus: true,
-            actionStatus: 'FAIL',
-          });
+         that.failed()
         }
       }
     });
@@ -211,7 +215,7 @@ class Detail extends Component {
     console.log("handleDelete")
 
     const userstoryService = new proto.userstory.UserStoryClient('https://www.overlead.co');
-
+    this.notify()
     var metadata = {};
     //make a request to server
 
@@ -220,24 +224,16 @@ class Detail extends Component {
     DeleteUserStoryReq.setProjectid(getFromStorage("currentProject"));
     DeleteUserStoryReq.setUserstoryid(id);
     DeleteUserStoryReq.setAccesstoken(getFromStorage("accessToken"));
-
+    let that=this
     userstoryService.deleteUserStory(DeleteUserStoryReq, metadata, (err, response) => {
       if (err) { //if error
         console.log(err);
       } else {
         if (response.getStatus() == "SUCCESS") {
-          this.setState({
-            actionStatus: "SUCCESS",
-            modalActionStatus: true,
-          });
+          that.success()
           this.setState(prevState => ({ data: [...prevState.data.filter(function (e) { return e.id !== id; })] }));
         } else {
-          this.setState({
-            actionStatus: "FAIL",
-          });
-          this.setState(prevState => ({
-            modalActionStatus: !prevState.modalActionStatus,
-          }));
+          that.failed()
         }
       }
 
@@ -248,7 +244,7 @@ class Detail extends Component {
     console.log("handleUpdate")
     const userstoryService = new proto.userstory.UserStoryClient('https://www.overlead.co');
     var metadata = {};
-
+    this.notify()
     var UpdateUserStoryReq = new proto.userstory.UpdateUserStoryReq();
     UpdateUserStoryReq.setRequesterid(getFromStorage("userId"));
     UpdateUserStoryReq.setProjectid(getFromStorage("currentProject"));
@@ -257,13 +253,13 @@ class Detail extends Component {
     UpdateUserStoryReq.setWant(this.state.want);
     UpdateUserStoryReq.setSo(this.state.so);
     UpdateUserStoryReq.setAccesstoken(getFromStorage("accessToken"));
-
+    let that=this
     userstoryService.updateUserStory(UpdateUserStoryReq, metadata, (err, response) => {
       if (err) { //if error
         console.log(err);
       } else {
         if (response.getStatus() == "SUCCESS") {
-         
+         that.success()
           const tmpdata = this.state.data.map(p =>
             p.id == this.state.updateId
               ? {
@@ -274,25 +270,11 @@ class Detail extends Component {
           );
           this.setState(prevState => ({
             modalEdit: !prevState.modalEdit,
-            modalActionStatus: !prevState.modalActionStatus,
-            actionStatus: "SUCCESS",
             data: tmpdata,
 
           }));
-          
-
-          this.setState({
-          });
-
-
         } else {
-          this.setState({
-            actionStatus: "FAIL",
-          });
-          this.setState(prevState => ({
-            modalEdit: !prevState.modalEdit,
-            modalActionStatus: !prevState.modalActionStatus,
-          }));
+          that.failed()
         }
       }
     });
@@ -302,11 +284,6 @@ class Detail extends Component {
     let that = this;
     return (
       <Row>
-        <Modal size="sm" isOpen={that.state.modalActionStatus} toggle={that.toggleActionStatus} className={that.props.className}>
-          <ModalBody>
-            <center><h4>{that.state.actionStatus}</h4></center>
-          </ModalBody>
-        </Modal>
         <Col>
           <Row>
             <Col xs="2" md="2">

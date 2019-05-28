@@ -17,10 +17,10 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import cookie from 'react-cookies';
-import {saveLogin} from './actions'
+import { saveLogin } from './actions'
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
-import {addProject} from './actions'
+import { addProject } from './actions'
 import DatePicker from "react-datepicker";
 import { AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
 import { Link } from 'react-router-dom';
@@ -28,17 +28,17 @@ import avatardefault from './assets/img/avatar/avatardefault.png'; // Tell Webpa
 
 
 import "react-datepicker/dist/react-datepicker.css";
-import {  
-Button, 
-Col, 
-Input,
-Modal,
-ModalHeader,
-ModalBody,
-Form,
-FormGroup,
-Label,
-ModalFooter,  UncontrolledDropdown, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink
+import {
+  Button,
+  Col,
+  Input,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Form,
+  FormGroup,
+  Label,
+  ModalFooter, UncontrolledDropdown, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink
 } from 'reactstrap';
 import {
   getFromStorage,
@@ -121,39 +121,39 @@ const styles = theme => ({
 class PrimarySearchAppBar extends React.Component {
   constructor(props) {
     super(props);
-         
-      this.state = {
-        anchorEl: null,
-        mobileMoreAnchorEl: null,
-        modalCreatePj: false,        
-        Topic:'',
-        ProjectName:'',       
-        startDate:new Date(),
-        endDate:new Date(),    
-        isPrivate:"false",
-        actionStatus: '',      
-        modalActionStatus: false,        //success or show error when action add delete update    
-      };
-    };
-componentDidMount(){
-  let end=this.state.endDate
-  end.setDate(end.getDate()+15)
-  this.setState({
-    endDate:end
-  })
-}
-toggleActionStatus = () => {
-  this.setState(prevState => ({
-    modalActionStatus: !prevState.modalActionStatus
-  }));
-}
 
-  toggleCreatePj=()=>{
+    this.state = {
+      anchorEl: null,
+      mobileMoreAnchorEl: null,
+      modalCreatePj: false,
+      Topic: '',
+      ProjectName: '',
+      startDate: new Date(),
+      endDate: new Date(),
+      isPrivate: "false",
+      actionStatus: '',
+      modalActionStatus: false,        //success or show error when action add delete update    
+    };
+  };
+  componentDidMount() {
+    let end = this.state.endDate
+    end.setDate(end.getDate() + 15)
+    this.setState({
+      endDate: end
+    })
+  }
+  toggleActionStatus = () => {
+    this.setState(prevState => ({
+      modalActionStatus: !prevState.modalActionStatus
+    }));
+  }
+
+  toggleCreatePj = () => {
     this.setState(prevState => ({
       modalCreatePj: !prevState.modalCreatePj,
       mobileMoreAnchorEl: null,
     }));
-    
+
   }
   handleProfileMenuOpen = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -171,16 +171,16 @@ toggleActionStatus = () => {
   handleMobileMenuClose = () => {
     this.setState({ mobileMoreAnchorEl: null });
   };
- 
-  handleCreatePj=()=> {
-    const myprojectService = new proto.myproject.MyprojectClient('https://www.overlead.co');    
-    var metadata = {};   
-    let d=this.state.startDate;
-    let start=d.getMinutes()+"-"+d.getHours()+"-"+d.getDate()+"-"+d.getMonth()+"-"+d.getFullYear();
-    d=this.state.endDate;
-    let end=d.getMinutes()+"-"+d.getHours()+"-"+d.getDate()+"-"+d.getMonth()+"-"+d.getFullYear();
 
-    var AddNewProjectReq= new proto.myproject.AddNewProjectReq();
+  handleCreatePj = () => {
+    const myprojectService = new proto.myproject.MyprojectClient('https://www.overlead.co');
+    var metadata = {};
+    let d = this.state.startDate;
+    let start = d.getMinutes() + "-" + d.getHours() + "-" + d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
+    d = this.state.endDate;
+    let end = d.getMinutes() + "-" + d.getHours() + "-" + d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
+
+    var AddNewProjectReq = new proto.myproject.AddNewProjectReq();
     AddNewProjectReq.setTopic(this.state.Topic);
     AddNewProjectReq.setRequesterid(getFromStorage("userId"));
     AddNewProjectReq.setProjectname(this.state.ProjectName);
@@ -191,67 +191,67 @@ toggleActionStatus = () => {
     AddNewProjectReq.setCookie(getFromStorage("accessToken"));
     myprojectService.addNewProject(AddNewProjectReq, metadata, (err, response) => {
       if (err) { //if error
-         console.log(err);
-         console.log("error AddNewProjectReq")
-      } else { 
+        console.log(err);
+        console.log("error AddNewProjectReq")
+      } else {
         console.log(response.getStatus())
-              if (response.getStatus()=="SUCCESS"){
-                this.props.dispatch(addProject(response.getProjectid(),this.state.Topic,this.state.ProjectName,start,end,this.state.isPrivate,"0")) 
-                this.toggleCreatePj();
-                this.setState({
-                  Topic:'',
-                  ProjectName:'',       
-                  modalActionStatus: true,
-                  actionStatus: 'SUCCESS'
-                });
-              }else {
-              this.setState({
-                modalActionStatus: true,
-                actionStatus: 'FAIL',
-              });
-            }
-    
-             
-              
-            }
+        if (response.getStatus() == "SUCCESS") {
+          this.props.dispatch(addProject(response.getProjectid(), this.state.Topic, this.state.ProjectName, start, end, this.state.isPrivate, "0"))
+          this.toggleCreatePj();
+          this.setState({
+            Topic: '',
+            ProjectName: '',
+            modalActionStatus: true,
+            actionStatus: 'SUCCESS'
           });
+        } else {
+          this.setState({
+            modalActionStatus: true,
+            actionStatus: 'FAIL',
+          });
+        }
+
+
+
+      }
+    });
   }
 
-  onTextboxChangeTopic=(event)=> {
+  onTextboxChangeTopic = (event) => {
     this.setState({
       Topic: event.target.value,
     });
   }
-  onTextboxChangeProjectName=(event)=> {
+  onTextboxChangeProjectName = (event) => {
     this.setState({
       ProjectName: event.target.value,
     });
   }
-  onChangeStartDate=(date)=> {
+  onChangeStartDate = (date) => {
     this.setState({
       startDate: date
     });
   }
-  onChangeEndDate=(date)=> {
+  onChangeEndDate = (date) => {
     this.setState({
       endDate: date
     });
   }
-  
- 
-  onTextboxChangePrivate=event=> {    
+
+
+  onTextboxChangePrivate = event => {
     this.setState({
-      isPrivate: this.state.isPrivate=="false"?"true":"false",
-    });    
+      isPrivate: this.state.isPrivate == "false" ? "true" : "false",
+    });
   }
 
-  
-  render() {    
+
+  render() {
     const { classes } = this.props;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-    let that=this;
-    const {      
+    let that = this;
+    const {
       anchorEl,
       mobileMoreAnchorEl,
     } = this.state;
@@ -336,86 +336,86 @@ toggleActionStatus = () => {
 
               <Button variant="outlined" color="primary" size="sm" onClick={that.toggleCreatePj}><b>Create Project</b></Button>
               <Modal size="lg" isOpen={that.state.modalCreatePj} toggle={that.toggleCreatePj} className={that.props.className}>
-                                    <ModalHeader toggle={that.toggleCreatePj}>Project</ModalHeader>
-                                    <ModalBody>
-                                      <div class="card  bg-primary mb-3">
-                                        <div class="card-body">
-                                        <Form  className="form-horizontal">               
-                                            
-                                            <FormGroup row>
-                                                <Col md="3">
-                                                  <Label htmlFor="text-input">Topic Name</Label>
-                                                </Col>
-                                                <Col xs="5" md="5">
-                                                  <Input type="text" id="Topic" name="Topic" placeholder="Topic" value={this.state.Topic} onChange={that.onTextboxChangeTopic} />
-                                                </Col>
-                                              </FormGroup>
-  
-  
-                                              <FormGroup row>
-                                                <Col md="3">
-                                                  <Label htmlFor="text-input">Project Name</Label>
-                                                </Col>
-                                                <Col xs="5" md="5">
-                                                  <Input type="text" id="ProjectName" name="ProjectName" placeholder="Project Name" value={this.state.ProjectName} onChange={that.onTextboxChangeProjectName} />
-                                                  
-                                                </Col>
-                                              </FormGroup>
-  
-                                              <FormGroup row>
-                                                <Col md="3">
-                                                  <Label htmlFor="date-input">Start </Label>
-                                                </Col>
-                                                <Col xs="3" md="3">
-                                                
-                                                <DatePicker                                                
+                <ModalHeader toggle={that.toggleCreatePj}>Project</ModalHeader>
+                <ModalBody>
+                  <div class="card  bg-primary mb-3">
+                    <div class="card-body">
+                      <Form className="form-horizontal">
 
-                                                      selected={that.state.startDate}
-                                                      timeInputLabel="Time:"
-                                                      onChange={that.onChangeStartDate}
-                                                      dateFormat="dd/MM/yyyy h:mm aa"
-                                                      showTimeInput
-                                                  />
-                                                </Col>
-                                               
-                                              </FormGroup>
-  
-                                              <FormGroup row>
-                                                <Col md="3">
-                                                  <Label htmlFor="date-input">End </Label>
-                                                </Col>
-                                                <Col xs="3" md="3">
-                                                <DatePicker
-                                                   
+                        <FormGroup row>
+                          <Col md="3">
+                            <Label htmlFor="text-input">Topic Name</Label>
+                          </Col>
+                          <Col xs="5" md="5">
+                            <Input type="text" id="Topic" name="Topic" placeholder="Topic" value={this.state.Topic} onChange={that.onTextboxChangeTopic} />
+                          </Col>
+                        </FormGroup>
 
-                                                      selected={that.state.endDate}
-                                                      timeInputLabel="Time:"
-                                                      onChange={that.onChangeEndDate}
-                                                      dateFormat="dd/MM/yyyy h:mm aa"
-                                                      showTimeInput
-                                                  />
-                                                </Col>
-                                               
-                                              </FormGroup>
-                                              
-                                              <FormGroup row>
-                                                <Col md="5">
-                                                  <Label htmlFor="date-input">Private </Label>
-                                                </Col>
-                                                <Col xs="5" md="5">
-                                                  <Input type="checkbox" id="Private" name="Private" value={this.state.isPrivate} onChange={that.onTextboxChangePrivate}/>
-                                                </Col>
-                                              </FormGroup>
-                                            </Form>
-                                        </div>
-                                      </div>                         
-                                    </ModalBody>
-                                    <ModalFooter>
-                                    <Button type="submit" color="primary" onClick={that.handleCreatePj}>Submit</Button>
-                                    <Button color="secondary" onClick={that.toggleCreatePj}>Cancel</Button>
-                                    </ModalFooter>
+
+                        <FormGroup row>
+                          <Col md="3">
+                            <Label htmlFor="text-input">Project Name</Label>
+                          </Col>
+                          <Col xs="5" md="5">
+                            <Input type="text" id="ProjectName" name="ProjectName" placeholder="Project Name" value={this.state.ProjectName} onChange={that.onTextboxChangeProjectName} />
+
+                          </Col>
+                        </FormGroup>
+
+                        <FormGroup row>
+                          <Col md="3">
+                            <Label htmlFor="date-input">Start </Label>
+                          </Col>
+                          <Col xs="3" md="3">
+
+                            <DatePicker
+
+                              selected={that.state.startDate}
+                              timeInputLabel="Time:"
+                              onChange={that.onChangeStartDate}
+                              dateFormat="dd/MM/yyyy h:mm aa"
+                              showTimeInput
+                            />
+                          </Col>
+
+                        </FormGroup>
+
+                        <FormGroup row>
+                          <Col md="3">
+                            <Label htmlFor="date-input">End </Label>
+                          </Col>
+                          <Col xs="3" md="3">
+                            <DatePicker
+
+
+                              selected={that.state.endDate}
+                              timeInputLabel="Time:"
+                              onChange={that.onChangeEndDate}
+                              dateFormat="dd/MM/yyyy h:mm aa"
+                              showTimeInput
+                            />
+                          </Col>
+
+                        </FormGroup>
+
+                        <FormGroup row>
+                          <Col md="5">
+                            <Label htmlFor="date-input">Private </Label>
+                          </Col>
+                          <Col xs="5" md="5">
+                            <Input type="checkbox" id="Private" name="Private" value={this.state.isPrivate} onChange={that.onTextboxChangePrivate} />
+                          </Col>
+                        </FormGroup>
+                      </Form>
+                    </div>
+                  </div>
+                </ModalBody>
+                <ModalFooter>
+                  <Button type="submit" color="primary" onClick={that.handleCreatePj}>Submit</Button>
+                  <Button color="secondary" onClick={that.toggleCreatePj}>Cancel</Button>
+                </ModalFooter>
               </Modal>
-              
+
               {/* <IconButton color="inherit">
                 <Badge badgeContent={4} color="secondary">
                   <MailIcon />
@@ -437,46 +437,46 @@ toggleActionStatus = () => {
 
 
               <AppHeaderDropdown direction="down" >
-            <DropdownToggle nav >
-              {
-                (getFromStorage('avatar')=="" || getFromStorage('avatar')==null)?
-                <img src={avatardefault} className="img-avatar" alt="" width="25px" height="25px"/>:
-                <img src={getFromStorage('avatar')} className="img-avatar" alt="" />
+                <DropdownToggle nav >
+                  {
+                    (getFromStorage('avatar') == "" || getFromStorage('avatar') == null) ?
+                      <img src={avatardefault} className="img-avatar" alt="" width="25px" height="25px" /> :
+                      <img src={getFromStorage('avatar')} className="img-avatar" alt="" />
 
-              }
-            </DropdownToggle>
-            <DropdownMenu right style={{ right: 'auto' }}>
-
-
-              <DropdownItem header tag="div" className="text-center"><strong>
-                {this.props.email}
-              </strong></DropdownItem>
+                  }
+                </DropdownToggle>
+                <DropdownMenu right style={{ right: 'auto' }}>
 
 
+                  <DropdownItem header tag="div" className="text-center"><strong>
+                    {this.props.email}
+                  </strong></DropdownItem>
 
 
 
-              <DropdownItem><i className="fa fa-envelope-o"></i> Messages</DropdownItem>
-              <Link to="/Member/Task/MyTask">
-                <DropdownItem><i className="fa fa-tasks"></i> Notify</DropdownItem>
-              </Link>
-              <Link to="/Profile/Detail">
-                <DropdownItem><i className="fa fa-user"></i>
-                  Profile
+
+
+                  <DropdownItem><i className="fa fa-envelope-o"></i> Messages</DropdownItem>
+                  <Link to="/Member/Task/MyTask">
+                    <DropdownItem><i className="fa fa-tasks"></i> Notify</DropdownItem>
+                  </Link>
+                  <Link to="/Profile/Detail">
+                    <DropdownItem><i className="fa fa-user"></i>
+                      Profile
               </DropdownItem>
-              </Link>
+                  </Link>
 
-              {/* <DropdownItem><i className="fa fa-wrench"></i> Settings</DropdownItem> */}
-              <Link to="/Home/Payment">
-                <DropdownItem><i className="fa fa-usd"></i> Upgrade</DropdownItem>
-              </Link>
-              {/* <Link to="/myproject">
+                  {/* <DropdownItem><i className="fa fa-wrench"></i> Settings</DropdownItem> */}
+                  <Link to="/Home/Payment">
+                    <DropdownItem><i className="fa fa-usd"></i> Upgrade</DropdownItem>
+                  </Link>
+                  {/* <Link to="/myproject">
               <DropdownItem><i className="fa fa-file"></i> Myrojects</DropdownItem>
               </Link> */}
-              <DropdownItem divider />
-              <DropdownItem onClick={e => this.onLogout()}><i className="fa fa-lock"></i> Logout</DropdownItem>
-            </DropdownMenu>
-          </AppHeaderDropdown>
+                  <DropdownItem divider />
+                  <DropdownItem onClick={e => this.onLogout()}><i className="fa fa-lock"></i> Logout</DropdownItem>
+                </DropdownMenu>
+              </AppHeaderDropdown>
             </div>
             <div className={classes.sectionMobile}>
               <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
@@ -500,9 +500,9 @@ PrimarySearchAppBar.propTypes = {
 function mapStateToProps(state) {
   console.log("mapStateToProps homeNav")
   const { updateProjectLoaded } = state
-  const {project,needUpdate}=updateProjectLoaded
+  const { project, needUpdate } = updateProjectLoaded
   return {
-    project,needUpdate
+    project, needUpdate
   }
 }
 export default connect(mapStateToProps)(withStyles(styles)(PrimarySearchAppBar));
