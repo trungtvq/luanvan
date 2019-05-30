@@ -413,24 +413,6 @@ class HomeTopNav extends React.Component {
                 </ModalFooter>
               </Modal>
 
-              {/* <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <MailIcon />
-                </Badge>
-              </IconButton>
-              <IconButton color="inherit">
-                <Badge badgeContent={17} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton> */}
-              {/* <IconButton
-                aria-owns={isMenuOpen ? 'material-appbar' : undefined}
-                aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton> */}
 
 
               <AppHeaderDropdown direction="down" >
@@ -463,13 +445,9 @@ class HomeTopNav extends React.Component {
               </DropdownItem>
                   </Link>
 
-                  {/* <DropdownItem><i className="fa fa-wrench"></i> Settings</DropdownItem> */}
-                  <Link to="/Home/Payment">
+                  <Link to="/donate">
                     <DropdownItem><i className="fa fa-usd"></i> Upgrade</DropdownItem>
                   </Link>
-                  {/* <Link to="/myproject">
-              <DropdownItem><i className="fa fa-file"></i> Myrojects</DropdownItem>
-              </Link> */}
                   <DropdownItem divider />
                   <DropdownItem onClick={e => this.onLogout()}><i className="fa fa-lock"></i> Logout</DropdownItem>
                 </DropdownMenu>

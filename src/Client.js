@@ -65,8 +65,8 @@ const ResetFirst = Loadable({
 
 //Home
 
-const HomePayment = Loadable({
-    loader: () => import('./views/General/Home/Payment'),
+const Donate = Loadable({
+    loader: () => import('./views/Pages/Donate'),
     loading
 });
 
@@ -231,7 +231,6 @@ class Client extends Component {
         GetAllTeamReq.setProjectid(getFromStorage("currentProject"));
         GetAllTeamReq.setAccesstoken(getFromStorage("accessToken"));
         let response = teamService.getAllTeam(GetAllTeamReq, metadata)
-        console.log("currenProject" + getFromStorage("currentProject"))
         let that = this
         let lastTeam = ''
         let lastName = ''
@@ -250,7 +249,7 @@ class Client extends Component {
             }
         })
         response.on('status', function (status) {
-            console.log("status" + status.code)
+            if (status.code !=0) console.log(status.code)
             if (validTeam == false) {
                 if (lastTeam != '') {
                     setInStorage('teamId', lastTeam)
@@ -271,9 +270,6 @@ class Client extends Component {
     }
 
     render() {
-        console.log("isLogin:" + this.props.isLogin)
-        console.log('hasProject' + this.props.hasProject)
-        console.log('hasTeam' + this.props.hasTeam)
         return (
             <authContext.Provider>
                 <BrowserRouter>
@@ -285,7 +281,7 @@ class Client extends Component {
                                         <Switch>
                                             <Route exact path="/homeNav" name="HomeNav" component={Demo} />
 
-                                            <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
+                                            <Route exact path="/donate" name="donate" component={Donate} />
 
                                             <Route exact path="/myproject" name="myproject" component={MyProject} />
 
@@ -311,7 +307,7 @@ class Client extends Component {
 
                                             <Route exact path="/homeNav" name="HomeNav" component={Demo} />
 
-                                            <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
+                                            <Route exact path="/donate" name="donate" component={Donate} />
 
                                             <Route exact path="/myproject" name="myproject" component={MyProject} />
 
@@ -338,7 +334,7 @@ class Client extends Component {
                                         <Switch>
                                             <Route exact path="/homeNav" name="HomeNav" component={Demo} />
 
-                                            <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
+                                            <Route exact path="/donate" name="donate" component={Donate} />
 
                                             <Route exact path="/myproject" name="myproject" component={MyProject} />
 
@@ -362,7 +358,7 @@ class Client extends Component {
                                         <Switch>
                                             <Route exact path="/homeNav" name="HomeNav" component={Demo} />
 
-                                            <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
+                                            <Route exact path="/donate" name="donate" component={Donate} />
 
                                             <Route exact path="/myproject" name="myproject" component={MyProject} />
 
@@ -392,6 +388,7 @@ class Client extends Component {
                                     <Route exact path="/ResetFirst" name="ResetSecond Page" component={ResetFirst} />
                                     <Route exact path="/ResetSecond" name="ResetSecond Page" component={ResetSecond} />
                                     <Route exact path="/login" name="Login Page" component={Login} />
+                                    <Route exact path="/donate" name="donate" component={Donate} />
 
                                     <Route path="/" name="home" component={Login} />
 

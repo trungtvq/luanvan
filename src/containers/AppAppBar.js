@@ -1,13 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
-import Link from '@material-ui/core/Link';
-import AppBar from '../components/AppBar';
-import Toolbar, { styles as toolbarStyles } from '../components/Toolbar';
+import {Link} from 'react-router-dom';
 
 
-function AppAppBar(props) {
+function AppAppBar() {
 
   const navStyle = {
     color: 'red',
@@ -91,6 +86,7 @@ function AppAppBar(props) {
   }
   
   return (
+    <div>
         <nav  class="navbar navbar-expand-lg  ftco_navbar  ftco-navbar-light" style={navStyle} >
 	    
       <div class="container" style={menuStyle}>
@@ -112,18 +108,18 @@ function AppAppBar(props) {
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 	          <li  class="nav-item active"><a style={homeStyle}  href="https://overlead.co/home" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a style={liStyle} href="https://overlead.co/about" class="nav-link">About</a></li>
-	          <li class="nav-item"><a style={liStyle} href="https://overlead.co/privacy" class="nav-link">Privacy</a></li>
-	          <li class="nav-item"><a style={liStyle} href="https://overlead.co/donate" class="nav-link">Donate</a></li>
-	          <li class="nav-item"><a style={liStyle} href="https://overlead.co/contact" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta mr-md-1" ><a style={loginStyle} href="https://overlead.co/login" class="nav-link">Sign In</a></li>
-	          <li  class="nav-item cta cta-colored" ><a style={signupStyle} href="https://overlead.co/register" class="nav-link">Sign Up</a></li>
+	          <li class="nav-item"><Link style={liStyle} to="/about" class="nav-link">About</Link></li>
+	          <li class="nav-item"><Link style={liStyle} to="/privacy" class="nav-link">Privacy</Link></li>
+	          <li class="nav-item"><Link style={liStyle} to="/donate" class="nav-link">Donate</Link></li>
+	          <li class="nav-item"><Link style={liStyle} to="/contact" class="nav-link">Contact</Link></li>
+	          <li class="nav-item cta mr-md-1" ><Link style={loginStyle} to="/login" class="nav-link">Sign In</Link></li>
+	          <li  class="nav-item cta cta-colored" ><Link style={signupStyle} to="/register" class="nav-link">Sign Up</Link></li>
 
 	        </ul>
 	      </div>
 	    </div>
       </nav>
-
+      </div>
   
 	 
   );

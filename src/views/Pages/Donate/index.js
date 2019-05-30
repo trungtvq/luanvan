@@ -1,38 +1,20 @@
-import { AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler } from '@coreui/react';
 import React, { Component } from 'react';
 import { Badge, 
   Button, 
   Col, 
   Container, 
   Input, 
-  InputGroup, 
-  InputGroupAddon, 
-  InputGroupText, 
   Row, 
-  Table, 
-  Pagination, 
-  PaginationItem, 
-  PaginationLink, 
-  DropdownItem, 
-  DropdownMenu, 
-  DropdownToggle, 
-  Nav, 
-  NavItem,
-  NavLink,
   Card,
   CardHeader,
   CardBody,
-  Progress,
   Form,
   FormGroup,
   Label,
-  CardFooter,
-  Breadcrumb,
   Collapse
 } from 'reactstrap';
-import { Link } from 'react-router-dom';
-import AppAppBar from './modules/views/AppAppBar';
-import AppFooter from './modules/views/AppFooter';
+import AppAppBar from "../../../containers/AppAppBar"
+import AppFooter from "../../../containers/AppFooter"
 import PaypalExpressBtn from 'react-paypal-express-checkout';
 class Payment extends Component {
   constructor(props) {
@@ -87,7 +69,7 @@ class Payment extends Component {
     return (
       <div>  
       <AppAppBar/>
-      <div><br></br></div>
+      <div><br /></div>
       <div className="app flex-row align-items-center">
       <Container>
       <Row>
@@ -235,44 +217,7 @@ class Payment extends Component {
                     </center>
                     </CardBody>
                       
-                    {/* <CardBody>
-                    
-                      <Form  className="form-horizontal">   
-                          <center><h5><b><font color="green">PAYPAL</font></b></h5></center>  
-                          <center><h6>Already Have A PayPal Account?</h6></center> 
-                          <center><h5><b>Login</b></h5></center>           
-                            <FormGroup row>
-                            <Col md="3">
-                                <Label htmlFor="text-input">Email</Label>
-                              </Col>
-                              <Col xs="12" md="6">
-                                <Input type="text-input" id="text-input" name="text-input" placeholder=" name@email.com" />           
-                              </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                            <Col md="3">
-                                <Label htmlFor="text-input">Password</Label>
-                              </Col>
-                              <Col xs="12" md="6">
-                                <Input type="password" id="Password" name="Password" placeholder="Password" />           
-                              </Col>
-                            </FormGroup>
-                           
-                            <FormGroup row>
-                            
-                              <Col md="3">
-                                <input type="checkbox"></input>
-                              </Col>
-                              <Col xs="12" md="3">
-                              <h6><font color="green">Remember me?</font></h6>
-                              </Col>
-                              
-                            </FormGroup> 
-                        
-                              <center><button type="button" class="btn btn-success btn-lg">Login</button></center>
-                           
-                          </Form>       
-                      </CardBody>*/}
+                 
                     </Collapse> 
                   </Card>
                   <Card className="mb-0" className="card-accent-primary">
