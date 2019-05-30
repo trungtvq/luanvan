@@ -1,57 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import compose from 'recompose/compose';
-import pure from 'recompose/pure';
-import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
-import LayoutBody from '../components/LayoutBody';
-import Typography from '../components/Typography';
-import TextField from '../components/TextField';
-
-const styles = theme => ({
-  root: {
-    display: 'flex',
-    backgroundColor: theme.palette.secondary.light,
-  },
-  layoutBody: {
-    marginTop: theme.spacing.unit * 8,
-    marginBottom: theme.spacing.unit * 8,
-    display: 'flex',
-  },
-  iconsWrapper: {
-    height: 120,
-  },
-  icons: {
-    display: 'flex',
-  },
-  icon: {
-    width: 48,
-    height: 48,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    //backgroundColor: "#f7f7f7",//zzz
-    marginRight: theme.spacing.unit,
-    '&:hover': {
-      backgroundColor: "#d8d4d6",
-    },
-  },
-  list: {
-    margin: 0,
-    listStyle: 'none',
-    paddingLeft: 0,
-  },
-  listItem: {
-    paddingTop: theme.spacing.unit / 2,
-    paddingBottom: theme.spacing.unit / 2,
-  },
-  
-});
-
 
 function AppFooter(props) {
-  const { classes } = props;
   const footerStyle={
     fontSize: `16px`,
     background: `#000000`,
@@ -116,7 +66,4 @@ AppFooter.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default compose(
-  pure,
-  withStyles(styles),
-)(AppFooter);
+export default (AppFooter);
