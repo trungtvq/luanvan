@@ -32,7 +32,7 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { Link } from 'react-router-dom';
-import Demo from '../../../../homeNav'
+import Demo from '../../../../containers/HomeNav'
 import {
   getFromStorage,
   setInStorage

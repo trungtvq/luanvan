@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
 import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 
-import Logout from './../../../components/Logout'
-import cookie from 'react-cookies';
 import {saveLogin} from '../../../actions'
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 
-import AppFooter from './modules/views/AppFooter';
-import AppAppBar from './modules/views/AppAppBar';
 import {
   getFromStorage,
   setInStorage
 } from '../../../service/storage'
+import AppAppBar from "../../../containers/AppAppBar"
+import AppFooter from "../../../containers/AppFooter"
 const proto = {};
 proto.auth = require('./../../../gRPC/auth/auth_grpc_web_pb');
 

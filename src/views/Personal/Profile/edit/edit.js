@@ -31,7 +31,7 @@ PaginationLink,
 Container
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import Demo from '../../../../homeNav'
+import Demo from '../../../../containers/HomeNav'
 class edit extends Component {
   render() {
     return (

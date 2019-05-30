@@ -34,7 +34,7 @@ import {
   setInStorage
 } from '../../../../service/storage'
 import { Link } from 'react-router-dom';
-import Demo from '../../../../homeNav'
+import Demo from '../../../../containers/HomeNav'
 
 import cookie from 'react-cookies';
 const proto = {};

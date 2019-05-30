@@ -2,30 +2,12 @@ import React from 'react';
 import DefaultLayout from './containers/DefaultLayout';
 
 
-const Colors = React.lazy(() => import('./components/Colors'));
-
 const Register = React.lazy(() => import('./views/Pages/Register'));
 
 const DailySchedule = React.lazy(() => import('./views/Workspace/DailySchedule'));
 const Chat = React.lazy(() => import('./views/Personal/Chat'));
 const AllTean = React.lazy(() => import('./views/Workspace/Team/AllTeam'));
 const CreateTeam = React.lazy(() => import('./views/Workspace/Team/CreateTeam'));
-// const ProfileDetail = React.lazy(() => import('./views/Personal/Profile/detail'));
-// const ProfileEdit = React.lazy(() => import('./views/Personal/Profile/edit'));
-
-//Home
-// const HomeMain = React.lazy(() => import('./views/Home/Main'));
-// const HomeContact = React.lazy(() => import('./views/Home/Contact'));
-// const HomeService = React.lazy(() => import('./views/Home/Service'));
-// const HomeSolve = React.lazy(() => import('./views/Home/Solve'));
-
-
-
-//Project
-// const myproject = React.lazy(() => import('./views/Personal/Project/myproject'));
-// const ProjectDone = React.lazy(() => import('./views/Personal/Project/ProjectDone'));
-// const ProjectTodo = React.lazy(() => import('./views/Personal/Project/ProjectTodo'));
-// const CreateProject = React.lazy(() => import('./views/Personal/Project/CreateProject'));
 
 
 const DashBoard = React.lazy(() => import('./views/Workspace/DashBoard'));
@@ -44,7 +26,6 @@ const Evaluate_Po = React.lazy(() => import('./views/Workspace/Po/Evaluate'));
 
 
 
-const TestApollo = React.lazy(() => import('./views/Pages/TestApollo'));
 
 
 //Member
@@ -61,27 +42,11 @@ const AllSprint = React.lazy(() => import('./views/Workspace/Member/Sprint/AllSp
 const routes = [
   { path: '/', exact: true, name: 'Home', component: DefaultLayout },
  
-  { path: '/theme/colors',exact: true,  name: 'Colors', component: Colors },
   { path: '/DailySchedule', exact: true, name: 'DailySchedule', component: DailySchedule },
   { path: '/Chat', exact: true, name: 'Chat', component: Chat },
   { path: '/AllTeam', exact: true, name: 'AllTeam', component: AllTean },
   { path: '/CreateTeam', exact: true, name: 'CreateTeam', component: CreateTeam },
   { path: '/DashBoard', exact: true, name: 'DashBoard', component: DashBoard },
-  // { path: '/Profile/Detail', exact: true, name: 'ProfileDetail', component: ProfileDetail },
-  // { path: '/Profile/Edit', exact: true, name: 'ProfileEdit', component: ProfileEdit },
-
-  //home HomeMain
-  // { path: '/Home/Main', exact: true, name: 'HomeMain', component: HomeMain },
-  // { path: '/Home/Contact', exact: true, name: 'HomeContact', component: HomeContact },
-  // { path: '/Home/Service', exact: true, name: 'HomeService', component: HomeService },
-  // { path: '/Home/Solve', exact: true, name: 'HomeSolve', component: HomeSolve},
-
-  //project
-  // { path: '/myproject', exact: true, name: 'myproject', component: myproject },
-  // { path: '/ProjectDone', exact: true, name: 'ProjectDone', component: ProjectDone },
-  // { path: '/ProjectTodo', exact: true, name: 'ProjectTodo', component: ProjectTodo },
-  // { path: '/CreateProject', exact: true, name: 'CreateProject', component: CreateProject },
-
 
   
   //PO
@@ -90,7 +55,6 @@ const routes = [
   { path: '/Cover',exact: true,  name: 'Cover', component: Cover},
   { path: '/Evaluate',exact: true,  name: 'Evaluate', component: Evaluate_Po },
 
-  { path: '/testapollo', name: 'Typography', component: TestApollo },
 
   
   //Member

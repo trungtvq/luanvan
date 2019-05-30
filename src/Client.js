@@ -51,10 +51,6 @@ const PagePay = Loadable({
     loading
 });
 
-const AsyncApp = Loadable({
-    loader: () => import('./components/AsyncApp'),
-    loading
-})
 
 const ResetSecond = Loadable({
     loader: () => import('./views/Pages/ResetSecond'),
@@ -73,17 +69,10 @@ const HomePayment = Loadable({
     loader: () => import('./views/General/Home/Payment'),
     loading
 });
-const HomeFinal = Loadable({
-    loader: () => import('./views/General/Home/Final'),
-    loading
-});
-const Admin = Loadable({
-    loader: () => import('./views/Pages/Admin'),
-    loading
-});
+
 //
 const Demo = Loadable({
-    loader: () => import('./homeNav'),
+    loader: () => import('./containers/HomeNav'),
     loading
 });
 
@@ -297,7 +286,6 @@ class Client extends Component {
                                             <Route exact path="/homeNav" name="HomeNav" component={Demo} />
 
                                             <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
-                                            <Route exact path="/Home/Final" name="HomeFinal" component={HomeFinal} />
 
                                             <Route exact path="/myproject" name="myproject" component={MyProject} />
 
@@ -311,7 +299,6 @@ class Client extends Component {
                                             <Route exact path="/404" name="Page 404" component={Page404} />
                                             <Route exact path="/500" name="Page 500" component={Page500} />
                                             <Route exact path="/pay" name="Page Pay" component={PagePay} />
-                                            <Route exact path="/async" name="page test" component={AsyncApp} />
                                             <Route exact path="/dashboard" name="dashboard" component={DefaultLayout} />
 
 
@@ -321,12 +308,10 @@ class Client extends Component {
                                         </Switch>
                                         :
                                         <Switch>
-                                            <Route exact path="/pages/Admin" name="Admin" component={Admin} />
 
                                             <Route exact path="/homeNav" name="HomeNav" component={Demo} />
 
                                             <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
-                                            <Route exact path="/Home/Final" name="HomeFinal" component={HomeFinal} />
 
                                             <Route exact path="/myproject" name="myproject" component={MyProject} />
 
@@ -340,7 +325,6 @@ class Client extends Component {
                                             <Route exact path="/404" name="Page 404" component={Page404} />
                                             <Route exact path="/500" name="Page 500" component={Page500} />
                                             <Route exact path="/pay" name="Page Pay" component={PagePay} />
-                                            <Route exact path="/async" name="page test" component={AsyncApp} />
                                             <Route exact path="/dashboard" name="dashboard" component={DefaultLayout} />
 
 
@@ -355,7 +339,6 @@ class Client extends Component {
                                             <Route exact path="/homeNav" name="HomeNav" component={Demo} />
 
                                             <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
-                                            <Route exact path="/Home/Final" name="HomeFinal" component={HomeFinal} />
 
                                             <Route exact path="/myproject" name="myproject" component={MyProject} />
 
@@ -369,7 +352,6 @@ class Client extends Component {
                                             <Route exact path="/404" name="Page 404" component={Page404} />
                                             <Route exact path="/500" name="Page 500" component={Page500} />
                                             <Route exact path="/pay" name="Page Pay" component={PagePay} />
-                                            <Route exact path="/async" name="page test" component={AsyncApp} />
 
 
                                             <Route path="/" name="Home" component={MyProject} />
@@ -381,7 +363,6 @@ class Client extends Component {
                                             <Route exact path="/homeNav" name="HomeNav" component={Demo} />
 
                                             <Route exact path="/Home/Payment" name="HomePayment" component={HomePayment} />
-                                            <Route exact path="/Home/Final" name="HomeFinal" component={HomeFinal} />
 
                                             <Route exact path="/myproject" name="myproject" component={MyProject} />
 
@@ -407,14 +388,12 @@ class Client extends Component {
 
                             : <div>
                                 <Switch>
-                                    <Route exact path="/Home/Final" name="HomeFinal" component={HomeFinal} />
                                     <Route exact path="/register" name="Register Page" component={Register} />
                                     <Route exact path="/ResetFirst" name="ResetSecond Page" component={ResetFirst} />
                                     <Route exact path="/ResetSecond" name="ResetSecond Page" component={ResetSecond} />
                                     <Route exact path="/login" name="Login Page" component={Login} />
-                                    <Route exact path="/async" name="page test" component={AsyncApp} />
 
-                                    <Route path="/" name="Home" component={HomeFinal} />
+                                    <Route path="/" name="home" component={Login} />
 
                                 </Switch>
 

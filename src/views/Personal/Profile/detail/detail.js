@@ -40,7 +40,7 @@ import {
   getFromStorage,
   setInStorage
 } from '../../../../service/storage'
-import Demo from '../../../../homeNav'
+import Demo from '../../../../containers/HomeNav'
 import ImageUploader from 'react-images-upload';
 import cookie from 'react-cookies';
 const proto = {};

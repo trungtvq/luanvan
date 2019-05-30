@@ -4,10 +4,9 @@ import cookie from 'react-cookies';
 import {saveLogin} from '../../../actions'
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
-import Logout from './../../../components/Logout'
 
-import AppFooter from './modules/views/AppFooter';
-import AppAppBar from './modules/views/AppAppBar';
+import AppAppBar from "../../../containers/AppAppBar"
+import AppFooter from "../../../containers/AppFooter"
 import {
   getFromStorage,
   setInStorage

@@ -3,8 +3,8 @@ import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputG
 import cookie from 'react-cookies';
 
 import { Link } from 'react-router-dom';
-import AppFooter from './modules/views/AppFooter';
-import AppAppBar from './modules/views/AppAppBar';
+import AppAppBar from "../../../containers/AppAppBar"
+import AppFooter from "../../../containers/AppFooter"
 import {
   getFromStorage,
   setInStorage

@@ -5,9 +5,6 @@ import { Link } from 'react-router-dom';
 import { CardFooter,Label,FormGroup,Button, Card, CardBody, CardGroup, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 import authContext from "../../../contexts/authContext";
 
-import AppFooter from './modules/views/AppFooter';
-import AppAppBar from './modules/views/AppAppBar';
-import { GoogleLogout } from 'react-google-login';
 import { GoogleLogin } from 'react-google-login';
 import cookie from 'react-cookies';
 import ReactList from 'react-list';
@@ -16,8 +13,9 @@ import {
   getFromStorage,
   setInStorage
 } from '../../../service/storage'
+import AppAppBar from "../../../containers/AppAppBar"
+import AppFooter from "../../../containers/AppFooter"
 const image2base64 = require('image-to-base64')
-
 const proto = {};
 proto.auth = require('./../../../gRPC/auth/auth_grpc_web_pb');
 proto.myproject = require('./../../../gRPC/myproject/myproject_grpc_web_pb');
@@ -242,10 +240,20 @@ loadAllTeam = () => {
     let renderProps={}
     renderProps.disabled=false;
        
-
+    const liStyle={
+      fontSize: "16px",
+      paddingTop: ".9rem",
+      paddingBottom: ".9rem",
+      paddingLeft: "20px",
+      paddingRight: "20px",
+      color: "#fff",
+      fontWeight: "400",
+      opacity: "22222222 !important",
+    }
 
     return (
-      <div>
+      <div style={{backgroundColor: "#FFFFFF"}}>
+
          <AppAppBar />
          <div><br></br></div>
       <div className="app flex-row align-items-center">
