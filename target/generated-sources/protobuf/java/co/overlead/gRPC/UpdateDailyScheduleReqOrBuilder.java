@@ -48,42 +48,32 @@ public interface UpdateDailyScheduleReqOrBuilder extends
       getTitleBytes();
 
   /**
-   * <code>string task = 5;</code>
+   * <code>string description = 5;</code>
    */
-  java.lang.String getTask();
+  java.lang.String getDescription();
   /**
-   * <code>string task = 5;</code>
+   * <code>string description = 5;</code>
    */
   com.google.protobuf.ByteString
-      getTaskBytes();
+      getDescriptionBytes();
 
   /**
-   * <code>string time = 6;</code>
+   * <code>string dataAdd = 6;</code>
    */
-  java.lang.String getTime();
+  java.lang.String getDataAdd();
   /**
-   * <code>string time = 6;</code>
+   * <code>string dataAdd = 6;</code>
    */
   com.google.protobuf.ByteString
-      getTimeBytes();
+      getDataAddBytes();
 
   /**
-   * <code>string scheduleStatus = 7;</code>
+   * <code>string accessToken = 8;</code>
    */
-  java.lang.String getScheduleStatus();
+  java.lang.String getAccessToken();
   /**
-   * <code>string scheduleStatus = 7;</code>
+   * <code>string accessToken = 8;</code>
    */
   com.google.protobuf.ByteString
-      getScheduleStatusBytes();
-
-  /**
-   * <code>string cookie = 8;</code>
-   */
-  java.lang.String getCookie();
-  /**
-   * <code>string cookie = 8;</code>
-   */
-  com.google.protobuf.ByteString
-      getCookieBytes();
+      getAccessTokenBytes();
 }

@@ -142,4 +142,14 @@ public interface GetAllTeamTaskResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getTeamIdBytes();
+
+  /**
+   * <code>string sprintBacklogId = 14;</code>
+   */
+  java.lang.String getSprintBacklogId();
+  /**
+   * <code>string sprintBacklogId = 14;</code>
+   */
+  com.google.protobuf.ByteString
+      getSprintBacklogIdBytes();
 }

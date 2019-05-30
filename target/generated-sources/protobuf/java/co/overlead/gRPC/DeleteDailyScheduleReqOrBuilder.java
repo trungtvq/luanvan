@@ -38,12 +38,12 @@ public interface DeleteDailyScheduleReqOrBuilder extends
       getScheduleIdBytes();
 
   /**
-   * <code>string cookie = 4;</code>
+   * <code>string teamId = 4;</code>
    */
-  java.lang.String getCookie();
+  java.lang.String getTeamId();
   /**
-   * <code>string cookie = 4;</code>
+   * <code>string teamId = 4;</code>
    */
   com.google.protobuf.ByteString
-      getCookieBytes();
+      getTeamIdBytes();
 }

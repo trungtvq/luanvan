@@ -28,12 +28,32 @@ public interface GetAllDailyScheduleReqOrBuilder extends
       getProjectIdBytes();
 
   /**
-   * <code>string cookie = 3;</code>
+   * <code>string accessToken = 3;</code>
    */
-  java.lang.String getCookie();
+  java.lang.String getAccessToken();
   /**
-   * <code>string cookie = 3;</code>
+   * <code>string accessToken = 3;</code>
    */
   com.google.protobuf.ByteString
-      getCookieBytes();
+      getAccessTokenBytes();
+
+  /**
+   * <code>string dateAdd = 4;</code>
+   */
+  java.lang.String getDateAdd();
+  /**
+   * <code>string dateAdd = 4;</code>
+   */
+  com.google.protobuf.ByteString
+      getDateAddBytes();
+
+  /**
+   * <code>string teamId = 5;</code>
+   */
+  java.lang.String getTeamId();
+  /**
+   * <code>string teamId = 5;</code>
+   */
+  com.google.protobuf.ByteString
+      getTeamIdBytes();
 }

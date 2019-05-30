@@ -170,4 +170,14 @@ public interface AddNewTeamTaskReqOrBuilder extends
    */
   com.google.protobuf.ByteString
       getTeamIdBytes();
+
+  /**
+   * <code>string sprintBacklogId = 15;</code>
+   */
+  java.lang.String getSprintBacklogId();
+  /**
+   * <code>string sprintBacklogId = 15;</code>
+   */
+  com.google.protobuf.ByteString
+      getSprintBacklogIdBytes();
 }

@@ -30,6 +30,7 @@ private static final long serialVersionUID = 0L;
     accessToken_ = "";
     sprintId_ = "";
     teamId_ = "";
+    sprintBacklogId_ = "";
   }
 
   @java.lang.Override
@@ -138,6 +139,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             sprintId_ = s;
+            break;
+          }
+          case 122: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            sprintBacklogId_ = s;
             break;
           }
           default: {
@@ -672,6 +679,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int SPRINTBACKLOGID_FIELD_NUMBER = 15;
+  private volatile java.lang.Object sprintBacklogId_;
+  /**
+   * <code>string sprintBacklogId = 15;</code>
+   */
+  public java.lang.String getSprintBacklogId() {
+    java.lang.Object ref = sprintBacklogId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      sprintBacklogId_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string sprintBacklogId = 15;</code>
+   */
+  public com.google.protobuf.ByteString
+      getSprintBacklogIdBytes() {
+    java.lang.Object ref = sprintBacklogId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      sprintBacklogId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -728,6 +769,9 @@ private static final long serialVersionUID = 0L;
     if (!getSprintIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 14, sprintId_);
     }
+    if (!getSprintBacklogIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 15, sprintBacklogId_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -779,6 +823,9 @@ private static final long serialVersionUID = 0L;
     if (!getSprintIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(14, sprintId_);
     }
+    if (!getSprintBacklogIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(15, sprintBacklogId_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -822,6 +869,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getSprintId())) return false;
     if (!getTeamId()
         .equals(other.getTeamId())) return false;
+    if (!getSprintBacklogId()
+        .equals(other.getSprintBacklogId())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -861,6 +910,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getSprintId().hashCode();
     hash = (37 * hash) + TEAMID_FIELD_NUMBER;
     hash = (53 * hash) + getTeamId().hashCode();
+    hash = (37 * hash) + SPRINTBACKLOGID_FIELD_NUMBER;
+    hash = (53 * hash) + getSprintBacklogId().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -1022,6 +1073,8 @@ private static final long serialVersionUID = 0L;
 
       teamId_ = "";
 
+      sprintBacklogId_ = "";
+
       return this;
     }
 
@@ -1062,6 +1115,7 @@ private static final long serialVersionUID = 0L;
       result.accessToken_ = accessToken_;
       result.sprintId_ = sprintId_;
       result.teamId_ = teamId_;
+      result.sprintBacklogId_ = sprintBacklogId_;
       onBuilt();
       return result;
     }
@@ -1164,6 +1218,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getTeamId().isEmpty()) {
         teamId_ = other.teamId_;
+        onChanged();
+      }
+      if (!other.getSprintBacklogId().isEmpty()) {
+        sprintBacklogId_ = other.sprintBacklogId_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -2217,6 +2275,75 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       teamId_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object sprintBacklogId_ = "";
+    /**
+     * <code>string sprintBacklogId = 15;</code>
+     */
+    public java.lang.String getSprintBacklogId() {
+      java.lang.Object ref = sprintBacklogId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sprintBacklogId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string sprintBacklogId = 15;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSprintBacklogIdBytes() {
+      java.lang.Object ref = sprintBacklogId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sprintBacklogId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string sprintBacklogId = 15;</code>
+     */
+    public Builder setSprintBacklogId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      sprintBacklogId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string sprintBacklogId = 15;</code>
+     */
+    public Builder clearSprintBacklogId() {
+      
+      sprintBacklogId_ = getDefaultInstance().getSprintBacklogId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string sprintBacklogId = 15;</code>
+     */
+    public Builder setSprintBacklogIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      sprintBacklogId_ = value;
       onChanged();
       return this;
     }

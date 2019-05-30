@@ -8,16 +8,6 @@ public interface DailyScheduleResOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string error = 1;</code>
-   */
-  java.lang.String getError();
-  /**
-   * <code>string error = 1;</code>
-   */
-  com.google.protobuf.ByteString
-      getErrorBytes();
-
-  /**
    * <code>string status = 2;</code>
    */
   java.lang.String getStatus();
@@ -48,50 +38,22 @@ public interface DailyScheduleResOrBuilder extends
       getTitleBytes();
 
   /**
-   * <code>string task = 5;</code>
+   * <code>string description = 5;</code>
    */
-  java.lang.String getTask();
+  java.lang.String getDescription();
   /**
-   * <code>string task = 5;</code>
+   * <code>string description = 5;</code>
    */
   com.google.protobuf.ByteString
-      getTaskBytes();
+      getDescriptionBytes();
 
   /**
-   * <code>string time = 7;</code>
+   * <code>string dataAdd = 7;</code>
    */
-  java.lang.String getTime();
+  java.lang.String getDataAdd();
   /**
-   * <code>string time = 7;</code>
+   * <code>string dataAdd = 7;</code>
    */
   com.google.protobuf.ByteString
-      getTimeBytes();
-
-  /**
-   * <pre>
-   *advance
-   * </pre>
-   *
-   * <code>string note = 8;</code>
-   */
-  java.lang.String getNote();
-  /**
-   * <pre>
-   *advance
-   * </pre>
-   *
-   * <code>string note = 8;</code>
-   */
-  com.google.protobuf.ByteString
-      getNoteBytes();
-
-  /**
-   * <code>string scheduleStatus = 9;</code>
-   */
-  java.lang.String getScheduleStatus();
-  /**
-   * <code>string scheduleStatus = 9;</code>
-   */
-  com.google.protobuf.ByteString
-      getScheduleStatusBytes();
+      getDataAddBytes();
 }

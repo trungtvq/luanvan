@@ -1,0 +1,12 @@
+
+protoc myproject.proto --js_out=import_style=commonjs,binary:build --grpc-web_out=import_style=commonjs,mode=grpcwebtext:build
+protoc userstory.proto --js_out=import_style=commonjs,binary:build --grpc-web_out=import_style=commonjs,mode=grpcwebtext:build
+protoc velocity.proto --js_out=import_style=commonjs,binary:build --grpc-web_out=import_style=commonjs,mode=grpcwebtext:build
+protoc mytask.proto --js_out=import_style=commonjs,binary:build --grpc-web_out=import_style=commonjs,mode=grpcwebtext:build
+protoc productbacklog.proto --js_out=import_style=commonjs,binary:build --grpc-web_out=import_style=commonjs,mode=grpcwebtext:build
+protoc sprintbacklog.proto --js_out=import_style=commonjs,binary:build --grpc-web_out=import_style=commonjs,mode=grpcwebtext:build
+protoc dailyschedule.proto --js_out=import_style=commonjs,binary:build --grpc-web_out=import_style=commonjs,mode=grpcwebtext:build
+protoc auth.proto --js_out=import_style=commonjs,binary:build --grpc-web_out=import_style=commonjs,mode=grpcwebtext:build
+protoc myprofile.proto --js_out=import_style=commonjs,binary:build --grpc-web_out=import_style=commonjs,mode=grpcwebtext:build
+protoc chat.proto --js_out=import_style=commonjs,binary:build --grpc-web_out=import_style=commonjs,mode=grpcwebtext:build
+protoc team.proto --js_out=import_style=commonjs,binary:build --grpc-web_out=import_style=commonjs,mode=grpcwebtext:build

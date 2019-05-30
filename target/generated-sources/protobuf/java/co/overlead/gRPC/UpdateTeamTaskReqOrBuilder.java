@@ -250,4 +250,14 @@ public interface UpdateTeamTaskReqOrBuilder extends
    */
   com.google.protobuf.ByteString
       getSprintIdBytes();
+
+  /**
+   * <code>string sprintBacklogId = 16;</code>
+   */
+  java.lang.String getSprintBacklogId();
+  /**
+   * <code>string sprintBacklogId = 16;</code>
+   */
+  com.google.protobuf.ByteString
+      getSprintBacklogIdBytes();
 }

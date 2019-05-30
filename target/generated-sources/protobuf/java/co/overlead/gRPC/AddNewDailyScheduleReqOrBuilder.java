@@ -28,6 +28,26 @@ public interface AddNewDailyScheduleReqOrBuilder extends
       getProjectIdBytes();
 
   /**
+   * <code>string description = 7;</code>
+   */
+  java.lang.String getDescription();
+  /**
+   * <code>string description = 7;</code>
+   */
+  com.google.protobuf.ByteString
+      getDescriptionBytes();
+
+  /**
+   * <code>string accessToken = 9;</code>
+   */
+  java.lang.String getAccessToken();
+  /**
+   * <code>string accessToken = 9;</code>
+   */
+  com.google.protobuf.ByteString
+      getAccessTokenBytes();
+
+  /**
    * <pre>
    *uni
    * </pre>
@@ -46,42 +66,32 @@ public interface AddNewDailyScheduleReqOrBuilder extends
       getTitleBytes();
 
   /**
-   * <code>string task = 4;</code>
+   * <code>string teamId = 8;</code>
    */
-  java.lang.String getTask();
+  java.lang.String getTeamId();
   /**
-   * <code>string task = 4;</code>
+   * <code>string teamId = 8;</code>
    */
   com.google.protobuf.ByteString
-      getTaskBytes();
+      getTeamIdBytes();
 
   /**
-   * <code>string time = 5;</code>
+   * <code>string sprintId = 4;</code>
    */
-  java.lang.String getTime();
+  java.lang.String getSprintId();
   /**
-   * <code>string time = 5;</code>
+   * <code>string sprintId = 4;</code>
    */
   com.google.protobuf.ByteString
-      getTimeBytes();
+      getSprintIdBytes();
 
   /**
-   * <code>string scheduleStatus = 6;</code>
+   * <code>string dateAdd = 5;</code>
    */
-  java.lang.String getScheduleStatus();
+  java.lang.String getDateAdd();
   /**
-   * <code>string scheduleStatus = 6;</code>
+   * <code>string dateAdd = 5;</code>
    */
   com.google.protobuf.ByteString
-      getScheduleStatusBytes();
-
-  /**
-   * <code>string cookie = 8;</code>
-   */
-  java.lang.String getCookie();
-  /**
-   * <code>string cookie = 8;</code>
-   */
-  com.google.protobuf.ByteString
-      getCookieBytes();
+      getDateAddBytes();
 }

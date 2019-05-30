@@ -18,7 +18,9 @@ private static final long serialVersionUID = 0L;
   private GetAllDailyScheduleReq() {
     requesterId_ = "";
     projectId_ = "";
-    cookie_ = "";
+    accessToken_ = "";
+    dateAdd_ = "";
+    teamId_ = "";
   }
 
   @java.lang.Override
@@ -60,7 +62,19 @@ private static final long serialVersionUID = 0L;
           case 26: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            cookie_ = s;
+            accessToken_ = s;
+            break;
+          }
+          case 34: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            dateAdd_ = s;
+            break;
+          }
+          case 42: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            teamId_ = s;
             break;
           }
           default: {
@@ -163,34 +177,102 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int COOKIE_FIELD_NUMBER = 3;
-  private volatile java.lang.Object cookie_;
+  public static final int ACCESSTOKEN_FIELD_NUMBER = 3;
+  private volatile java.lang.Object accessToken_;
   /**
-   * <code>string cookie = 3;</code>
+   * <code>string accessToken = 3;</code>
    */
-  public java.lang.String getCookie() {
-    java.lang.Object ref = cookie_;
+  public java.lang.String getAccessToken() {
+    java.lang.Object ref = accessToken_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      cookie_ = s;
+      accessToken_ = s;
       return s;
     }
   }
   /**
-   * <code>string cookie = 3;</code>
+   * <code>string accessToken = 3;</code>
    */
   public com.google.protobuf.ByteString
-      getCookieBytes() {
-    java.lang.Object ref = cookie_;
+      getAccessTokenBytes() {
+    java.lang.Object ref = accessToken_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      cookie_ = b;
+      accessToken_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int DATEADD_FIELD_NUMBER = 4;
+  private volatile java.lang.Object dateAdd_;
+  /**
+   * <code>string dateAdd = 4;</code>
+   */
+  public java.lang.String getDateAdd() {
+    java.lang.Object ref = dateAdd_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      dateAdd_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string dateAdd = 4;</code>
+   */
+  public com.google.protobuf.ByteString
+      getDateAddBytes() {
+    java.lang.Object ref = dateAdd_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      dateAdd_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int TEAMID_FIELD_NUMBER = 5;
+  private volatile java.lang.Object teamId_;
+  /**
+   * <code>string teamId = 5;</code>
+   */
+  public java.lang.String getTeamId() {
+    java.lang.Object ref = teamId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      teamId_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string teamId = 5;</code>
+   */
+  public com.google.protobuf.ByteString
+      getTeamIdBytes() {
+    java.lang.Object ref = teamId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      teamId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -217,8 +299,14 @@ private static final long serialVersionUID = 0L;
     if (!getProjectIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, projectId_);
     }
-    if (!getCookieBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, cookie_);
+    if (!getAccessTokenBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, accessToken_);
+    }
+    if (!getDateAddBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, dateAdd_);
+    }
+    if (!getTeamIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, teamId_);
     }
     unknownFields.writeTo(output);
   }
@@ -235,8 +323,14 @@ private static final long serialVersionUID = 0L;
     if (!getProjectIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, projectId_);
     }
-    if (!getCookieBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, cookie_);
+    if (!getAccessTokenBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, accessToken_);
+    }
+    if (!getDateAddBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, dateAdd_);
+    }
+    if (!getTeamIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, teamId_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -257,8 +351,12 @@ private static final long serialVersionUID = 0L;
         .equals(other.getRequesterId())) return false;
     if (!getProjectId()
         .equals(other.getProjectId())) return false;
-    if (!getCookie()
-        .equals(other.getCookie())) return false;
+    if (!getAccessToken()
+        .equals(other.getAccessToken())) return false;
+    if (!getDateAdd()
+        .equals(other.getDateAdd())) return false;
+    if (!getTeamId()
+        .equals(other.getTeamId())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -274,8 +372,12 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getRequesterId().hashCode();
     hash = (37 * hash) + PROJECTID_FIELD_NUMBER;
     hash = (53 * hash) + getProjectId().hashCode();
-    hash = (37 * hash) + COOKIE_FIELD_NUMBER;
-    hash = (53 * hash) + getCookie().hashCode();
+    hash = (37 * hash) + ACCESSTOKEN_FIELD_NUMBER;
+    hash = (53 * hash) + getAccessToken().hashCode();
+    hash = (37 * hash) + DATEADD_FIELD_NUMBER;
+    hash = (53 * hash) + getDateAdd().hashCode();
+    hash = (37 * hash) + TEAMID_FIELD_NUMBER;
+    hash = (53 * hash) + getTeamId().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -413,7 +515,11 @@ private static final long serialVersionUID = 0L;
 
       projectId_ = "";
 
-      cookie_ = "";
+      accessToken_ = "";
+
+      dateAdd_ = "";
+
+      teamId_ = "";
 
       return this;
     }
@@ -443,7 +549,9 @@ private static final long serialVersionUID = 0L;
       co.overlead.gRPC.GetAllDailyScheduleReq result = new co.overlead.gRPC.GetAllDailyScheduleReq(this);
       result.requesterId_ = requesterId_;
       result.projectId_ = projectId_;
-      result.cookie_ = cookie_;
+      result.accessToken_ = accessToken_;
+      result.dateAdd_ = dateAdd_;
+      result.teamId_ = teamId_;
       onBuilt();
       return result;
     }
@@ -500,8 +608,16 @@ private static final long serialVersionUID = 0L;
         projectId_ = other.projectId_;
         onChanged();
       }
-      if (!other.getCookie().isEmpty()) {
-        cookie_ = other.cookie_;
+      if (!other.getAccessToken().isEmpty()) {
+        accessToken_ = other.accessToken_;
+        onChanged();
+      }
+      if (!other.getDateAdd().isEmpty()) {
+        dateAdd_ = other.dateAdd_;
+        onChanged();
+      }
+      if (!other.getTeamId().isEmpty()) {
+        teamId_ = other.teamId_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -671,71 +787,209 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object cookie_ = "";
+    private java.lang.Object accessToken_ = "";
     /**
-     * <code>string cookie = 3;</code>
+     * <code>string accessToken = 3;</code>
      */
-    public java.lang.String getCookie() {
-      java.lang.Object ref = cookie_;
+    public java.lang.String getAccessToken() {
+      java.lang.Object ref = accessToken_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        cookie_ = s;
+        accessToken_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string cookie = 3;</code>
+     * <code>string accessToken = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getCookieBytes() {
-      java.lang.Object ref = cookie_;
+        getAccessTokenBytes() {
+      java.lang.Object ref = accessToken_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        cookie_ = b;
+        accessToken_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string cookie = 3;</code>
+     * <code>string accessToken = 3;</code>
      */
-    public Builder setCookie(
+    public Builder setAccessToken(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      cookie_ = value;
+      accessToken_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string cookie = 3;</code>
+     * <code>string accessToken = 3;</code>
      */
-    public Builder clearCookie() {
+    public Builder clearAccessToken() {
       
-      cookie_ = getDefaultInstance().getCookie();
+      accessToken_ = getDefaultInstance().getAccessToken();
       onChanged();
       return this;
     }
     /**
-     * <code>string cookie = 3;</code>
+     * <code>string accessToken = 3;</code>
      */
-    public Builder setCookieBytes(
+    public Builder setAccessTokenBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      cookie_ = value;
+      accessToken_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object dateAdd_ = "";
+    /**
+     * <code>string dateAdd = 4;</code>
+     */
+    public java.lang.String getDateAdd() {
+      java.lang.Object ref = dateAdd_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        dateAdd_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string dateAdd = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDateAddBytes() {
+      java.lang.Object ref = dateAdd_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        dateAdd_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string dateAdd = 4;</code>
+     */
+    public Builder setDateAdd(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      dateAdd_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string dateAdd = 4;</code>
+     */
+    public Builder clearDateAdd() {
+      
+      dateAdd_ = getDefaultInstance().getDateAdd();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string dateAdd = 4;</code>
+     */
+    public Builder setDateAddBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      dateAdd_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object teamId_ = "";
+    /**
+     * <code>string teamId = 5;</code>
+     */
+    public java.lang.String getTeamId() {
+      java.lang.Object ref = teamId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        teamId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string teamId = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTeamIdBytes() {
+      java.lang.Object ref = teamId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        teamId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string teamId = 5;</code>
+     */
+    public Builder setTeamId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      teamId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string teamId = 5;</code>
+     */
+    public Builder clearTeamId() {
+      
+      teamId_ = getDefaultInstance().getTeamId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string teamId = 5;</code>
+     */
+    public Builder setTeamIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      teamId_ = value;
       onChanged();
       return this;
     }

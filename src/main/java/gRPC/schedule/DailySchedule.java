@@ -15,25 +15,23 @@ import java.util.List;
 public class DailySchedule {
     public static class DailyScheduleImpl extends DailyscheduleGrpc.DailyscheduleImplBase{
         public void makeResponseForUpdateSuccess(StreamObserver res,String id){
-            res.onNext(DailyScheduleRes.newBuilder().setStatus("SUCCESS").setError("FALSE").setScheduleId (id).build());
+            res.onNext(DailyScheduleRes.newBuilder().setStatus("SUCCESS").setScheduleId (id).build());
             res.onCompleted();
         }
 
         public void makeResponseForFailed(StreamObserver res, String status, String error){
-            res.onNext(DailyScheduleRes.newBuilder().setStatus(status).setError(error).build());
+            res.onNext(DailyScheduleRes.newBuilder().setStatus(status).build());
             res.onCompleted();
         }
         @Override
         public void addNewDailySchedule(AddNewDailyScheduleReq request, StreamObserver<DailyScheduleRes> responseObserver) {
             System.out.println(request.getTitle());
         // if (true){
-            if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getCookie())){//VALID AUTH
+            if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getAccessToken())){//VALID AUTH
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("schedule"); //get connect
                 Document newDoc=new Document()
                         .append("title",request.getTitle())
-                        .append("task",request.getTask())
-                        .append("time",request.getTime())
-                        .append("scheduleStatus",request.getScheduleStatus());
+                        ;
                 coll.insertOne(newDoc);
 
                 List<Document> re= coll.find(newDoc).into(new ArrayList<>());
@@ -67,7 +65,7 @@ public class DailySchedule {
 
         @Override
         public void updateDailySchedule(UpdateDailyScheduleReq request, StreamObserver<DailyScheduleRes> responseObserver) {
-            if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getCookie())){
+            if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getAccessToken())){
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("schedule"); //get connect
 
                 Document needUpdate=new Document()
@@ -75,9 +73,6 @@ public class DailySchedule {
                         .append("_id",request.getScheduleId());
                 Document listUpdate=new Document();
                 if (request.getTitle()!="") listUpdate.append("title",request.getTitle());
-                if (request.getTask()!="") listUpdate.append("task",request.getTask());
-                if (request.getTime()!="") listUpdate.append("time",request.getTime());
-                if (request.getScheduleStatus()!="") listUpdate.append("scheduleStatus",request.getScheduleStatus());
                 coll.findOneAndUpdate(needUpdate,listUpdate);
 
                 makeResponseForUpdateSuccess(responseObserver,request.getScheduleId());
@@ -89,37 +84,34 @@ public class DailySchedule {
 
         @Override
         public void deleteDailySchedule(DeleteDailyScheduleReq request, StreamObserver<DailyScheduleRes> responseObserver) {
-            if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getCookie())){
-                MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("schedule"); //get connect
-                MongoCollection<Document> collProject = Mongod.getOverleadConnection().getCollection("project");
-
-                coll.findOneAndDelete(new Document("_id",new ObjectId(request.getScheduleId())));
-
-                Document deleteQuery = new Document("$pull", new Document("dailySchedule",request.getScheduleId()));
-                collProject.findOneAndUpdate(new Document("_id",new ObjectId(request.getProjectId()) ),deleteQuery);
-
-                makeResponseForUpdateSuccess(responseObserver,request.getScheduleId());
-
-            } else {
-                makeResponseForFailed(responseObserver,"SESSION_INVALID","TRUE");
-            }
+//            if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.get())){
+//                MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("schedule"); //get connect
+//                MongoCollection<Document> collProject = Mongod.getOverleadConnection().getCollection("project");
+//
+//                coll.findOneAndDelete(new Document("_id",new ObjectId(request.getScheduleId())));
+//
+//                Document deleteQuery = new Document("$pull", new Document("dailySchedule",request.getScheduleId()));
+//                collProject.findOneAndUpdate(new Document("_id",new ObjectId(request.getProjectId()) ),deleteQuery);
+//
+//                makeResponseForUpdateSuccess(responseObserver,request.getScheduleId());
+//
+//            } else {
+//                makeResponseForFailed(responseObserver,"SESSION_INVALID","TRUE");
+//            }
         }
 
         @Override
         public void getAllDailySchedule(GetAllDailyScheduleReq request, StreamObserver<DailyScheduleRes> responseObserver) {
-            if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getCookie())){
+            if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getAccessToken())){
                 MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("schedule"); //get connect
                 MongoCollection<Document> collProject= Mongod.getOverleadConnection().getCollection("project");
                 List<Document> schedule= collProject.find(new Document("_id",new ObjectId(request.getProjectId()) )).into(new ArrayList<>());
                 List<String> re= (List) schedule.get(0).get("dailySchedule");
                 re.forEach(i->{
                     Document ele=coll.find(new Document("_id",new ObjectId(i))).into(new ArrayList<>()).get(0);
-                    responseObserver.onNext(DailyScheduleRes.newBuilder().setStatus("SUCCESS").setError("FALSE")
+                    responseObserver.onNext(DailyScheduleRes.newBuilder().setStatus("SUCCESS")
                             .setScheduleId(i)
-                            .setTask(ele.get("task").toString())
-                            .setTime(ele.get("time").toString())
                             .setTitle(ele.get("title").toString())
-                            .setScheduleStatus(ele.get("scheduleStatus").toString())
                             .build());
                 });
                 responseObserver.onCompleted();

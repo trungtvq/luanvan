@@ -29,6 +29,7 @@ message AddNewTeamTaskReq{
 	string accessToken = 12;
 	string sprintId=14;
 	string teamId=13;
+	string sprintBacklogId=15;
 }
 
 message TeamTaskRes{
@@ -52,6 +53,7 @@ message UpdateTeamTaskReq{
 	string accessToken = 13;//
 	string teamId=14;//
 	string sprintId=15;//
+	string sprintBacklogId=16;
 }
 
 message RegisterTeamTaskReq{
@@ -95,5 +97,5 @@ message GetAllTeamTaskRes{
 	string status = 9;	
 	string review = 10;
 	string teamId=13;
-
+	string sprintBacklogId=14;
 }

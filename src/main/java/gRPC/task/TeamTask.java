@@ -34,6 +34,8 @@ public class TeamTask {
             //add new TASK
             //add task id to TEAM
             System.out.println("addNewTeamTask");
+            System.out.println(request.getSprintBacklogId());
+            System.out.println("sprintbacklog");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID");
             } else {
@@ -52,7 +54,9 @@ public class TeamTask {
                             .append("review", request.getReview())
                             .append("teamId", request.getTeamId())
                             .append("sprintId",request.getSprintId())
-                            .append("comments", new BsonArray(Arrays.asList()));
+                            .append("comments", new BsonArray(Arrays.asList()))
+                            .append("sprintbacklogid",request.getSprintBacklogId())
+                            ;
 
                     Mongod.collTask.insertOne(document);
                     Document getBack = Mongod.collTask.find(document).into(new ArrayList<>()).get(0);
@@ -89,7 +93,8 @@ public class TeamTask {
                             .append("assigneeArray", new BsonArray(Arrays.asList(new BsonString(request.getAssigneeArray()))))
                             .append("comment", request.getComment())
                             .append("status", request.getStatus())
-                            .append("review", request.getReview());
+                            .append("review", request.getReview())
+                            .append("sprintbacklogid",request.getSprintBacklogId());
                     Mongod.collTask.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamTaskId())),
                             new Document("$set",document));
                     makeResponseForUpdateSuccess(responseObserver, request.getTeamTaskId());
@@ -179,6 +184,7 @@ public class TeamTask {
                                 .setReview(re.get("review").toString())
                                 .setStatus("SUCCESS")
                                 .setTeamTaskId(re.get("_id").toString())
+                                .setSprintBacklogId(re.get("sprintbacklogid").toString())
                                 .build());
                     });
 

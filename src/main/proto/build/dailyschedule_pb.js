@@ -62,11 +62,12 @@ proto.dailyschedule.AddNewDailyScheduleReq.toObject = function(includeInstance, 
   var f, obj = {
     requesterid: msg.getRequesterid(),
     projectid: msg.getProjectid(),
+    description: msg.getDescription(),
+    accesstoken: msg.getAccesstoken(),
     title: msg.getTitle(),
-    task: msg.getTask(),
-    time: msg.getTime(),
-    schedulestatus: msg.getSchedulestatus(),
-    cookie: msg.getCookie()
+    teamid: msg.getTeamid(),
+    sprintid: msg.getSprintid(),
+    dateadd: msg.getDateadd()
   };
 
   if (includeInstance) {
@@ -111,25 +112,29 @@ proto.dailyschedule.AddNewDailyScheduleReq.deserializeBinaryFromReader = functio
       var value = /** @type {string} */ (reader.readString());
       msg.setProjectid(value);
       break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAccesstoken(value);
+      break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
       msg.setTitle(value);
       break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTeamid(value);
+      break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setTask(value);
+      msg.setSprintid(value);
       break;
     case 5:
       var value = /** @type {string} */ (reader.readString());
-      msg.setTime(value);
-      break;
-    case 6:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSchedulestatus(value);
-      break;
-    case 8:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setCookie(value);
+      msg.setDateadd(value);
       break;
     default:
       reader.skipField();
@@ -183,6 +188,20 @@ proto.dailyschedule.AddNewDailyScheduleReq.prototype.serializeBinaryToWriter = f
       f
     );
   }
+  f = this.getDescription();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
+  f = this.getAccesstoken();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
+      f
+    );
+  }
   f = this.getTitle();
   if (f.length > 0) {
     writer.writeString(
@@ -190,31 +209,24 @@ proto.dailyschedule.AddNewDailyScheduleReq.prototype.serializeBinaryToWriter = f
       f
     );
   }
-  f = this.getTask();
+  f = this.getTeamid();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
+      f
+    );
+  }
+  f = this.getSprintid();
   if (f.length > 0) {
     writer.writeString(
       4,
       f
     );
   }
-  f = this.getTime();
+  f = this.getDateadd();
   if (f.length > 0) {
     writer.writeString(
       5,
-      f
-    );
-  }
-  f = this.getSchedulestatus();
-  if (f.length > 0) {
-    writer.writeString(
-      6,
-      f
-    );
-  }
-  f = this.getCookie();
-  if (f.length > 0) {
-    writer.writeString(
-      8,
       f
     );
   }
@@ -261,6 +273,36 @@ proto.dailyschedule.AddNewDailyScheduleReq.prototype.setProjectid = function(val
 
 
 /**
+ * optional string description = 7;
+ * @return {string}
+ */
+proto.dailyschedule.AddNewDailyScheduleReq.prototype.getDescription = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 7, ""));
+};
+
+
+/** @param {string} value  */
+proto.dailyschedule.AddNewDailyScheduleReq.prototype.setDescription = function(value) {
+  jspb.Message.setField(this, 7, value);
+};
+
+
+/**
+ * optional string accessToken = 9;
+ * @return {string}
+ */
+proto.dailyschedule.AddNewDailyScheduleReq.prototype.getAccesstoken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 9, ""));
+};
+
+
+/** @param {string} value  */
+proto.dailyschedule.AddNewDailyScheduleReq.prototype.setAccesstoken = function(value) {
+  jspb.Message.setField(this, 9, value);
+};
+
+
+/**
  * optional string title = 3;
  * @return {string}
  */
@@ -276,62 +318,47 @@ proto.dailyschedule.AddNewDailyScheduleReq.prototype.setTitle = function(value) 
 
 
 /**
- * optional string task = 4;
+ * optional string teamId = 8;
  * @return {string}
  */
-proto.dailyschedule.AddNewDailyScheduleReq.prototype.getTask = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
-};
-
-
-/** @param {string} value  */
-proto.dailyschedule.AddNewDailyScheduleReq.prototype.setTask = function(value) {
-  jspb.Message.setField(this, 4, value);
-};
-
-
-/**
- * optional string time = 5;
- * @return {string}
- */
-proto.dailyschedule.AddNewDailyScheduleReq.prototype.getTime = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
-};
-
-
-/** @param {string} value  */
-proto.dailyschedule.AddNewDailyScheduleReq.prototype.setTime = function(value) {
-  jspb.Message.setField(this, 5, value);
-};
-
-
-/**
- * optional string scheduleStatus = 6;
- * @return {string}
- */
-proto.dailyschedule.AddNewDailyScheduleReq.prototype.getSchedulestatus = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 6, ""));
-};
-
-
-/** @param {string} value  */
-proto.dailyschedule.AddNewDailyScheduleReq.prototype.setSchedulestatus = function(value) {
-  jspb.Message.setField(this, 6, value);
-};
-
-
-/**
- * optional string cookie = 8;
- * @return {string}
- */
-proto.dailyschedule.AddNewDailyScheduleReq.prototype.getCookie = function() {
+proto.dailyschedule.AddNewDailyScheduleReq.prototype.getTeamid = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 8, ""));
 };
 
 
 /** @param {string} value  */
-proto.dailyschedule.AddNewDailyScheduleReq.prototype.setCookie = function(value) {
+proto.dailyschedule.AddNewDailyScheduleReq.prototype.setTeamid = function(value) {
   jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * optional string sprintId = 4;
+ * @return {string}
+ */
+proto.dailyschedule.AddNewDailyScheduleReq.prototype.getSprintid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
+};
+
+
+/** @param {string} value  */
+proto.dailyschedule.AddNewDailyScheduleReq.prototype.setSprintid = function(value) {
+  jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional string dateAdd = 5;
+ * @return {string}
+ */
+proto.dailyschedule.AddNewDailyScheduleReq.prototype.getDateadd = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
+};
+
+
+/** @param {string} value  */
+proto.dailyschedule.AddNewDailyScheduleReq.prototype.setDateadd = function(value) {
+  jspb.Message.setField(this, 5, value);
 };
 
 
@@ -385,10 +412,9 @@ proto.dailyschedule.UpdateDailyScheduleReq.toObject = function(includeInstance, 
     projectid: msg.getProjectid(),
     scheduleid: msg.getScheduleid(),
     title: msg.getTitle(),
-    task: msg.getTask(),
-    time: msg.getTime(),
-    schedulestatus: msg.getSchedulestatus(),
-    cookie: msg.getCookie()
+    description: msg.getDescription(),
+    dataadd: msg.getDataadd(),
+    accesstoken: msg.getAccesstoken()
   };
 
   if (includeInstance) {
@@ -443,19 +469,15 @@ proto.dailyschedule.UpdateDailyScheduleReq.deserializeBinaryFromReader = functio
       break;
     case 5:
       var value = /** @type {string} */ (reader.readString());
-      msg.setTask(value);
+      msg.setDescription(value);
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
-      msg.setTime(value);
-      break;
-    case 7:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSchedulestatus(value);
+      msg.setDataadd(value);
       break;
     case 8:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCookie(value);
+      msg.setAccesstoken(value);
       break;
     default:
       reader.skipField();
@@ -523,28 +545,21 @@ proto.dailyschedule.UpdateDailyScheduleReq.prototype.serializeBinaryToWriter = f
       f
     );
   }
-  f = this.getTask();
+  f = this.getDescription();
   if (f.length > 0) {
     writer.writeString(
       5,
       f
     );
   }
-  f = this.getTime();
+  f = this.getDataadd();
   if (f.length > 0) {
     writer.writeString(
       6,
       f
     );
   }
-  f = this.getSchedulestatus();
-  if (f.length > 0) {
-    writer.writeString(
-      7,
-      f
-    );
-  }
-  f = this.getCookie();
+  f = this.getAccesstoken();
   if (f.length > 0) {
     writer.writeString(
       8,
@@ -624,61 +639,46 @@ proto.dailyschedule.UpdateDailyScheduleReq.prototype.setTitle = function(value) 
 
 
 /**
- * optional string task = 5;
+ * optional string description = 5;
  * @return {string}
  */
-proto.dailyschedule.UpdateDailyScheduleReq.prototype.getTask = function() {
+proto.dailyschedule.UpdateDailyScheduleReq.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
 };
 
 
 /** @param {string} value  */
-proto.dailyschedule.UpdateDailyScheduleReq.prototype.setTask = function(value) {
+proto.dailyschedule.UpdateDailyScheduleReq.prototype.setDescription = function(value) {
   jspb.Message.setField(this, 5, value);
 };
 
 
 /**
- * optional string time = 6;
+ * optional string dataAdd = 6;
  * @return {string}
  */
-proto.dailyschedule.UpdateDailyScheduleReq.prototype.getTime = function() {
+proto.dailyschedule.UpdateDailyScheduleReq.prototype.getDataadd = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 6, ""));
 };
 
 
 /** @param {string} value  */
-proto.dailyschedule.UpdateDailyScheduleReq.prototype.setTime = function(value) {
+proto.dailyschedule.UpdateDailyScheduleReq.prototype.setDataadd = function(value) {
   jspb.Message.setField(this, 6, value);
 };
 
 
 /**
- * optional string scheduleStatus = 7;
+ * optional string accessToken = 8;
  * @return {string}
  */
-proto.dailyschedule.UpdateDailyScheduleReq.prototype.getSchedulestatus = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 7, ""));
-};
-
-
-/** @param {string} value  */
-proto.dailyschedule.UpdateDailyScheduleReq.prototype.setSchedulestatus = function(value) {
-  jspb.Message.setField(this, 7, value);
-};
-
-
-/**
- * optional string cookie = 8;
- * @return {string}
- */
-proto.dailyschedule.UpdateDailyScheduleReq.prototype.getCookie = function() {
+proto.dailyschedule.UpdateDailyScheduleReq.prototype.getAccesstoken = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 8, ""));
 };
 
 
 /** @param {string} value  */
-proto.dailyschedule.UpdateDailyScheduleReq.prototype.setCookie = function(value) {
+proto.dailyschedule.UpdateDailyScheduleReq.prototype.setAccesstoken = function(value) {
   jspb.Message.setField(this, 8, value);
 };
 
@@ -732,7 +732,7 @@ proto.dailyschedule.DeleteDailyScheduleReq.toObject = function(includeInstance, 
     requesterid: msg.getRequesterid(),
     projectid: msg.getProjectid(),
     scheduleid: msg.getScheduleid(),
-    cookie: msg.getCookie()
+    teamid: msg.getTeamid()
   };
 
   if (includeInstance) {
@@ -783,7 +783,7 @@ proto.dailyschedule.DeleteDailyScheduleReq.deserializeBinaryFromReader = functio
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCookie(value);
+      msg.setTeamid(value);
       break;
     default:
       reader.skipField();
@@ -844,7 +844,7 @@ proto.dailyschedule.DeleteDailyScheduleReq.prototype.serializeBinaryToWriter = f
       f
     );
   }
-  f = this.getCookie();
+  f = this.getTeamid();
   if (f.length > 0) {
     writer.writeString(
       4,
@@ -909,16 +909,16 @@ proto.dailyschedule.DeleteDailyScheduleReq.prototype.setScheduleid = function(va
 
 
 /**
- * optional string cookie = 4;
+ * optional string teamId = 4;
  * @return {string}
  */
-proto.dailyschedule.DeleteDailyScheduleReq.prototype.getCookie = function() {
+proto.dailyschedule.DeleteDailyScheduleReq.prototype.getTeamid = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
 };
 
 
 /** @param {string} value  */
-proto.dailyschedule.DeleteDailyScheduleReq.prototype.setCookie = function(value) {
+proto.dailyschedule.DeleteDailyScheduleReq.prototype.setTeamid = function(value) {
   jspb.Message.setField(this, 4, value);
 };
 
@@ -971,7 +971,9 @@ proto.dailyschedule.GetAllDailyScheduleReq.toObject = function(includeInstance, 
   var f, obj = {
     requesterid: msg.getRequesterid(),
     projectid: msg.getProjectid(),
-    cookie: msg.getCookie()
+    accesstoken: msg.getAccesstoken(),
+    dateadd: msg.getDateadd(),
+    teamid: msg.getTeamid()
   };
 
   if (includeInstance) {
@@ -1018,7 +1020,15 @@ proto.dailyschedule.GetAllDailyScheduleReq.deserializeBinaryFromReader = functio
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCookie(value);
+      msg.setAccesstoken(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDateadd(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTeamid(value);
       break;
     default:
       reader.skipField();
@@ -1072,10 +1082,24 @@ proto.dailyschedule.GetAllDailyScheduleReq.prototype.serializeBinaryToWriter = f
       f
     );
   }
-  f = this.getCookie();
+  f = this.getAccesstoken();
   if (f.length > 0) {
     writer.writeString(
       3,
+      f
+    );
+  }
+  f = this.getDateadd();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = this.getTeamid();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -1122,17 +1146,47 @@ proto.dailyschedule.GetAllDailyScheduleReq.prototype.setProjectid = function(val
 
 
 /**
- * optional string cookie = 3;
+ * optional string accessToken = 3;
  * @return {string}
  */
-proto.dailyschedule.GetAllDailyScheduleReq.prototype.getCookie = function() {
+proto.dailyschedule.GetAllDailyScheduleReq.prototype.getAccesstoken = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 3, ""));
 };
 
 
 /** @param {string} value  */
-proto.dailyschedule.GetAllDailyScheduleReq.prototype.setCookie = function(value) {
+proto.dailyschedule.GetAllDailyScheduleReq.prototype.setAccesstoken = function(value) {
   jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * optional string dateAdd = 4;
+ * @return {string}
+ */
+proto.dailyschedule.GetAllDailyScheduleReq.prototype.getDateadd = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 4, ""));
+};
+
+
+/** @param {string} value  */
+proto.dailyschedule.GetAllDailyScheduleReq.prototype.setDateadd = function(value) {
+  jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * optional string teamId = 5;
+ * @return {string}
+ */
+proto.dailyschedule.GetAllDailyScheduleReq.prototype.getTeamid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
+};
+
+
+/** @param {string} value  */
+proto.dailyschedule.GetAllDailyScheduleReq.prototype.setTeamid = function(value) {
+  jspb.Message.setField(this, 5, value);
 };
 
 
@@ -1182,14 +1236,11 @@ proto.dailyschedule.DailyScheduleRes.prototype.toObject = function(opt_includeIn
  */
 proto.dailyschedule.DailyScheduleRes.toObject = function(includeInstance, msg) {
   var f, obj = {
-    error: msg.getError(),
     status: msg.getStatus(),
     scheduleid: msg.getScheduleid(),
     title: msg.getTitle(),
-    task: msg.getTask(),
-    time: msg.getTime(),
-    note: msg.getNote(),
-    schedulestatus: msg.getSchedulestatus()
+    description: msg.getDescription(),
+    dataadd: msg.getDataadd()
   };
 
   if (includeInstance) {
@@ -1226,10 +1277,6 @@ proto.dailyschedule.DailyScheduleRes.deserializeBinaryFromReader = function(msg,
     }
     var field = reader.getFieldNumber();
     switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setError(value);
-      break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setStatus(value);
@@ -1244,19 +1291,11 @@ proto.dailyschedule.DailyScheduleRes.deserializeBinaryFromReader = function(msg,
       break;
     case 5:
       var value = /** @type {string} */ (reader.readString());
-      msg.setTask(value);
+      msg.setDescription(value);
       break;
     case 7:
       var value = /** @type {string} */ (reader.readString());
-      msg.setTime(value);
-      break;
-    case 8:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setNote(value);
-      break;
-    case 9:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSchedulestatus(value);
+      msg.setDataadd(value);
       break;
     default:
       reader.skipField();
@@ -1296,13 +1335,6 @@ proto.dailyschedule.DailyScheduleRes.prototype.serializeBinary = function() {
  */
 proto.dailyschedule.DailyScheduleRes.prototype.serializeBinaryToWriter = function (writer) {
   var f = undefined;
-  f = this.getError();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
   f = this.getStatus();
   if (f.length > 0) {
     writer.writeString(
@@ -1324,31 +1356,17 @@ proto.dailyschedule.DailyScheduleRes.prototype.serializeBinaryToWriter = functio
       f
     );
   }
-  f = this.getTask();
+  f = this.getDescription();
   if (f.length > 0) {
     writer.writeString(
       5,
       f
     );
   }
-  f = this.getTime();
+  f = this.getDataadd();
   if (f.length > 0) {
     writer.writeString(
       7,
-      f
-    );
-  }
-  f = this.getNote();
-  if (f.length > 0) {
-    writer.writeString(
-      8,
-      f
-    );
-  }
-  f = this.getSchedulestatus();
-  if (f.length > 0) {
-    writer.writeString(
-      9,
       f
     );
   }
@@ -1361,21 +1379,6 @@ proto.dailyschedule.DailyScheduleRes.prototype.serializeBinaryToWriter = functio
  */
 proto.dailyschedule.DailyScheduleRes.prototype.cloneMessage = function() {
   return /** @type {!proto.dailyschedule.DailyScheduleRes} */ (jspb.Message.cloneMessage(this));
-};
-
-
-/**
- * optional string error = 1;
- * @return {string}
- */
-proto.dailyschedule.DailyScheduleRes.prototype.getError = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 1, ""));
-};
-
-
-/** @param {string} value  */
-proto.dailyschedule.DailyScheduleRes.prototype.setError = function(value) {
-  jspb.Message.setField(this, 1, value);
 };
 
 
@@ -1425,62 +1428,32 @@ proto.dailyschedule.DailyScheduleRes.prototype.setTitle = function(value) {
 
 
 /**
- * optional string task = 5;
+ * optional string description = 5;
  * @return {string}
  */
-proto.dailyschedule.DailyScheduleRes.prototype.getTask = function() {
+proto.dailyschedule.DailyScheduleRes.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 5, ""));
 };
 
 
 /** @param {string} value  */
-proto.dailyschedule.DailyScheduleRes.prototype.setTask = function(value) {
+proto.dailyschedule.DailyScheduleRes.prototype.setDescription = function(value) {
   jspb.Message.setField(this, 5, value);
 };
 
 
 /**
- * optional string time = 7;
+ * optional string dataAdd = 7;
  * @return {string}
  */
-proto.dailyschedule.DailyScheduleRes.prototype.getTime = function() {
+proto.dailyschedule.DailyScheduleRes.prototype.getDataadd = function() {
   return /** @type {string} */ (jspb.Message.getFieldProto3(this, 7, ""));
 };
 
 
 /** @param {string} value  */
-proto.dailyschedule.DailyScheduleRes.prototype.setTime = function(value) {
+proto.dailyschedule.DailyScheduleRes.prototype.setDataadd = function(value) {
   jspb.Message.setField(this, 7, value);
-};
-
-
-/**
- * optional string note = 8;
- * @return {string}
- */
-proto.dailyschedule.DailyScheduleRes.prototype.getNote = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 8, ""));
-};
-
-
-/** @param {string} value  */
-proto.dailyschedule.DailyScheduleRes.prototype.setNote = function(value) {
-  jspb.Message.setField(this, 8, value);
-};
-
-
-/**
- * optional string scheduleStatus = 9;
- * @return {string}
- */
-proto.dailyschedule.DailyScheduleRes.prototype.getSchedulestatus = function() {
-  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 9, ""));
-};
-
-
-/** @param {string} value  */
-proto.dailyschedule.DailyScheduleRes.prototype.setSchedulestatus = function(value) {
-  jspb.Message.setField(this, 9, value);
 };
 
 

@@ -89,6 +89,7 @@ public class SprintBacklog {
                                         .setTitle(r.get("title")==null?"":r.get("title").toString())
                                         .setStart(r.get("start")==null?"":r.get("start").toString())
                                         .setDeadline(r.get("deadline")==null?"":r.get("deadline").toString())
+
                                         .build());
                             }
 
