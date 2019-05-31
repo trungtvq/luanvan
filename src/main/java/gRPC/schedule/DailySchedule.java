@@ -1,7 +1,6 @@
 package gRPC.schedule;
 
 import co.overlead.gRPC.*;
-import com.mongodb.client.MongoCollection;
 import database.Mongod;
 import gRPC.auth.AuthAccount;
 import io.grpc.stub.StreamObserver;
@@ -9,116 +8,120 @@ import org.bson.*;
 import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import static helper.auth.RequestAuth.isValidAuth;
 
 public class DailySchedule {
     public static class DailyScheduleImpl extends DailyscheduleGrpc.DailyscheduleImplBase{
         public void makeResponseForUpdateSuccess(StreamObserver res,String id){
-            res.onNext(DailyScheduleRes.newBuilder().setStatus("SUCCESS").setScheduleId (id).build());
+            res.onNext(DailyScheduleRes.newBuilder().setStatus("SUCCESS").setScheduleId(id).build());
             res.onCompleted();
         }
 
-        public void makeResponseForFailed(StreamObserver res, String status, String error){
+        public void makeResponseForFailed(StreamObserver res, String status){
             res.onNext(DailyScheduleRes.newBuilder().setStatus(status).build());
             res.onCompleted();
         }
         @Override
         public void addNewDailySchedule(AddNewDailyScheduleReq request, StreamObserver<DailyScheduleRes> responseObserver) {
-            System.out.println(request.getTitle());
-        // if (true){
-            if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getAccessToken())){//VALID AUTH
-                MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("schedule"); //get connect
+            System.out.println("addNewDailySchedule");
+            System.out.println(request);
+            if (isValidAuth(request.getRequesterId(),request.getAccessToken())){//VALID AUTH
                 Document newDoc=new Document()
                         .append("title",request.getTitle())
+                        .append("description",request.getDescription())
+                        .append("start",request.getDateAdd())
+                        .append("status","Todos")
                         ;
-                coll.insertOne(newDoc);
+                Mongod.collSchedule.insertOne(newDoc);
 
-                List<Document> re= coll.find(newDoc).into(new ArrayList<>());
-                if (re.size()==1){
-                    MongoCollection<Document> collProject = Mongod.getOverleadConnection().getCollection("project");
+                List<Document> re= Mongod.collSchedule.find(newDoc).into(new ArrayList<>());
+                if (re.size()>0){
 
-                    Document project=collProject.find(new Document("_id",new ObjectId(request.getProjectId()))).into(new ArrayList<>()).get(0);
-                    if (project.get("dailySchedule")==null){
-                        //EMPTY dailySchedule
-                        System.out.println("EMPTY");
-                        System.out.println(re.get(0).get("_id").toString());
+                    Mongod.collTeam.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamId())),
+                                new Document("$push",
+                                        new Document("dailySchedule",re.get(0).get("_id").toString())));
 
-                        Document listItem=new Document("dailySchedule", new BsonArray(Arrays.asList(new BsonString(re.get(0).get("_id").toString()))));
-
-                        Document updateQuery = new Document("$set", listItem);
-                        System.out.println(collProject.find(new Document("_id",new ObjectId(request.getProjectId()))).into(new ArrayList<>()));
-                        collProject.findOneAndUpdate(new Document("_id",new ObjectId(request.getProjectId())),updateQuery);
-                    } else{
-                        System.out.println("NOT EMPTY=>INSERT");
-                        Document updateQuery = new Document("$push", new Document("dailySchedule",re.get(0).get("_id").toString()));
-                        collProject.findOneAndUpdate(new Document("_id",new ObjectId(request.getProjectId())),updateQuery);
-                    }
                     makeResponseForUpdateSuccess(responseObserver,re.get(0).get("_id").toString());
                 }else {
-                    makeResponseForFailed(responseObserver,"WRONG_SIZE","TRUE");
+                    makeResponseForFailed(responseObserver,"WRONG_SIZE");
                 }
             } else {
-                makeResponseForFailed(responseObserver,"SESSION_INVALID","TRUE");
+                System.out.println("AUTH INVALID");
+                makeResponseForFailed(responseObserver,"AUTH_INVALID");
             }
         }
 
         @Override
         public void updateDailySchedule(UpdateDailyScheduleReq request, StreamObserver<DailyScheduleRes> responseObserver) {
-            if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getAccessToken())){
-                MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("schedule"); //get connect
+            System.out.println("updateDailySchedule");
+            System.out.println(request.getScheduleId());
+            if (isValidAuth(request.getRequesterId(),request.getAccessToken())){//VALID AUTH
 
-                Document needUpdate=new Document()
-                        .append("projectId",request.getProjectId())
-                        .append("_id",request.getScheduleId());
-                Document listUpdate=new Document();
-                if (request.getTitle()!="") listUpdate.append("title",request.getTitle());
-                coll.findOneAndUpdate(needUpdate,listUpdate);
-
-                makeResponseForUpdateSuccess(responseObserver,request.getScheduleId());
+                System.out.println(Mongod.collSchedule.find(new Document("_id",new ObjectId(request.getScheduleId()))));
+                    Mongod.collSchedule.findOneAndUpdate(new Document("_id", new ObjectId(request.getScheduleId())),
+                            new Document("$set",
+                                    new Document("status",request.getStatus())));
+                    makeResponseForUpdateSuccess(responseObserver,request.getScheduleId());
 
             } else {
-                makeResponseForFailed(responseObserver,"SESSION_INVALID","TRUE");
+                makeResponseForFailed(responseObserver,"AUTH_INVALID");
             }
+            System.out.println("end update");
+
         }
 
         @Override
         public void deleteDailySchedule(DeleteDailyScheduleReq request, StreamObserver<DailyScheduleRes> responseObserver) {
-//            if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.get())){
-//                MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("schedule"); //get connect
-//                MongoCollection<Document> collProject = Mongod.getOverleadConnection().getCollection("project");
-//
-//                coll.findOneAndDelete(new Document("_id",new ObjectId(request.getScheduleId())));
-//
-//                Document deleteQuery = new Document("$pull", new Document("dailySchedule",request.getScheduleId()));
-//                collProject.findOneAndUpdate(new Document("_id",new ObjectId(request.getProjectId()) ),deleteQuery);
-//
-//                makeResponseForUpdateSuccess(responseObserver,request.getScheduleId());
-//
-//            } else {
-//                makeResponseForFailed(responseObserver,"SESSION_INVALID","TRUE");
-//            }
+            System.out.println("addNewDailySchedule");
+            if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getAccessToken())){//VALID AUTH
+
+                List<Document> re= Mongod.collSchedule.find(new Document("_id",new ObjectId(request.getScheduleId()))).into(new ArrayList<>());
+                if (re.size()==1){
+
+                    Mongod.collTeam.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamId())),
+                            new Document("$pull",
+                                    new Document("dailySchedule",re.get(0).get("_id").toString())));
+                    Mongod.collSchedule.deleteOne(new Document("_id",new ObjectId(request.getScheduleId())));
+                    makeResponseForUpdateSuccess(responseObserver,request.getScheduleId());
+                }else {
+                    makeResponseForFailed(responseObserver,"WRONG_SIZE");
+                }
+            } else {
+                makeResponseForFailed(responseObserver,"AUTH_INVALID");
+            }
         }
 
         @Override
         public void getAllDailySchedule(GetAllDailyScheduleReq request, StreamObserver<DailyScheduleRes> responseObserver) {
-            if (AuthAccount.AuthImpl.getSession(request.getRequesterId(),request.getAccessToken())){
-                MongoCollection<Document> coll = Mongod.getOverleadConnection().getCollection("schedule"); //get connect
-                MongoCollection<Document> collProject= Mongod.getOverleadConnection().getCollection("project");
-                List<Document> schedule= collProject.find(new Document("_id",new ObjectId(request.getProjectId()) )).into(new ArrayList<>());
-                List<String> re= (List) schedule.get(0).get("dailySchedule");
-                re.forEach(i->{
-                    Document ele=coll.find(new Document("_id",new ObjectId(i))).into(new ArrayList<>()).get(0);
-                    responseObserver.onNext(DailyScheduleRes.newBuilder().setStatus("SUCCESS")
-                            .setScheduleId(i)
-                            .setTitle(ele.get("title").toString())
-                            .build());
-                });
-                responseObserver.onCompleted();
+            if (isValidAuth(request.getRequesterId(),request.getAccessToken())){
+                List<Document> teams= Mongod.collTeam.find(new Document("_id",new ObjectId(request.getTeamId()))).into(new ArrayList<>());
+                List<String> schedules= (List) teams.get(0).get("dailySchedule");
+                System.out.println(schedules);
+                if (schedules!=null){
+                    schedules.forEach(i->{
+                        Document ele=Mongod.collSchedule.find(new Document("_id",new ObjectId(i))).into(new ArrayList<>()).get(0);
+                        System.out.println(ele);
+                        responseObserver.onNext(DailyScheduleRes.newBuilder().setStatus("SUCCESS")
+                                .setScheduleId(i)
+                                .setTitle(ele.get("title").toString())
+                                .setStatusSchedule(ele.get("status").toString())
+                                .setDescription(ele.get("description").toString())
+                                .setDataAdd(ele.get("status").toString())
+                                .build());
+                    });
+                    responseObserver.onCompleted();
+                }else
+                {
+                    makeResponseForFailed(responseObserver,"EMPTY");
+                }
+
 
             } else {
-                makeResponseForFailed(responseObserver,"SESSION_INVALID","TRUE");
+                makeResponseForFailed(responseObserver,"AUTH_INVALID");
             }
+            System.out.println("end");
         }
     }
 }

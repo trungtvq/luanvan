@@ -56,4 +56,14 @@ public interface DailyScheduleResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getDataAddBytes();
+
+  /**
+   * <code>string statusSchedule = 1;</code>
+   */
+  java.lang.String getStatusSchedule();
+  /**
+   * <code>string statusSchedule = 1;</code>
+   */
+  com.google.protobuf.ByteString
+      getStatusScheduleBytes();
 }

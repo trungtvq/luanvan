@@ -18,6 +18,7 @@ private static final long serialVersionUID = 0L;
   private DeleteDailyScheduleReq() {
     requesterId_ = "";
     projectId_ = "";
+    accessToken_ = "";
     scheduleId_ = "";
     teamId_ = "";
   }
@@ -68,6 +69,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             teamId_ = s;
+            break;
+          }
+          case 66: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            accessToken_ = s;
             break;
           }
           default: {
@@ -170,6 +177,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int ACCESSTOKEN_FIELD_NUMBER = 8;
+  private volatile java.lang.Object accessToken_;
+  /**
+   * <code>string accessToken = 8;</code>
+   */
+  public java.lang.String getAccessToken() {
+    java.lang.Object ref = accessToken_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      accessToken_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string accessToken = 8;</code>
+   */
+  public com.google.protobuf.ByteString
+      getAccessTokenBytes() {
+    java.lang.Object ref = accessToken_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      accessToken_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   public static final int SCHEDULEID_FIELD_NUMBER = 3;
   private volatile java.lang.Object scheduleId_;
   /**
@@ -264,6 +305,9 @@ private static final long serialVersionUID = 0L;
     if (!getTeamIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, teamId_);
     }
+    if (!getAccessTokenBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, accessToken_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -285,6 +329,9 @@ private static final long serialVersionUID = 0L;
     if (!getTeamIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, teamId_);
     }
+    if (!getAccessTokenBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, accessToken_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -304,6 +351,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getRequesterId())) return false;
     if (!getProjectId()
         .equals(other.getProjectId())) return false;
+    if (!getAccessToken()
+        .equals(other.getAccessToken())) return false;
     if (!getScheduleId()
         .equals(other.getScheduleId())) return false;
     if (!getTeamId()
@@ -323,6 +372,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getRequesterId().hashCode();
     hash = (37 * hash) + PROJECTID_FIELD_NUMBER;
     hash = (53 * hash) + getProjectId().hashCode();
+    hash = (37 * hash) + ACCESSTOKEN_FIELD_NUMBER;
+    hash = (53 * hash) + getAccessToken().hashCode();
     hash = (37 * hash) + SCHEDULEID_FIELD_NUMBER;
     hash = (53 * hash) + getScheduleId().hashCode();
     hash = (37 * hash) + TEAMID_FIELD_NUMBER;
@@ -464,6 +515,8 @@ private static final long serialVersionUID = 0L;
 
       projectId_ = "";
 
+      accessToken_ = "";
+
       scheduleId_ = "";
 
       teamId_ = "";
@@ -496,6 +549,7 @@ private static final long serialVersionUID = 0L;
       co.overlead.gRPC.DeleteDailyScheduleReq result = new co.overlead.gRPC.DeleteDailyScheduleReq(this);
       result.requesterId_ = requesterId_;
       result.projectId_ = projectId_;
+      result.accessToken_ = accessToken_;
       result.scheduleId_ = scheduleId_;
       result.teamId_ = teamId_;
       onBuilt();
@@ -552,6 +606,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getProjectId().isEmpty()) {
         projectId_ = other.projectId_;
+        onChanged();
+      }
+      if (!other.getAccessToken().isEmpty()) {
+        accessToken_ = other.accessToken_;
         onChanged();
       }
       if (!other.getScheduleId().isEmpty()) {
@@ -725,6 +783,75 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       projectId_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object accessToken_ = "";
+    /**
+     * <code>string accessToken = 8;</code>
+     */
+    public java.lang.String getAccessToken() {
+      java.lang.Object ref = accessToken_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        accessToken_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string accessToken = 8;</code>
+     */
+    public com.google.protobuf.ByteString
+        getAccessTokenBytes() {
+      java.lang.Object ref = accessToken_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        accessToken_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string accessToken = 8;</code>
+     */
+    public Builder setAccessToken(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      accessToken_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string accessToken = 8;</code>
+     */
+    public Builder clearAccessToken() {
+      
+      accessToken_ = getDefaultInstance().getAccessToken();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string accessToken = 8;</code>
+     */
+    public Builder setAccessTokenBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      accessToken_ = value;
       onChanged();
       return this;
     }

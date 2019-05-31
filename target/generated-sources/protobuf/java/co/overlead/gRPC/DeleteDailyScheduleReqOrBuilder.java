@@ -28,6 +28,16 @@ public interface DeleteDailyScheduleReqOrBuilder extends
       getProjectIdBytes();
 
   /**
+   * <code>string accessToken = 8;</code>
+   */
+  java.lang.String getAccessToken();
+  /**
+   * <code>string accessToken = 8;</code>
+   */
+  com.google.protobuf.ByteString
+      getAccessTokenBytes();
+
+  /**
    * <code>string scheduleId = 3;</code>
    */
   java.lang.String getScheduleId();

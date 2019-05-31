@@ -53,8 +53,8 @@ public class CoTeam {
                             .append("tasks", new BsonArray(Arrays.asList()))
                             .append("conversations", new BsonArray(Arrays.asList()))
                             .append("members", new BsonArray(Arrays.asList(new BsonString(request.getRequesterId()))))
+                            .append("dailySchedule",new BsonArray(Arrays.asList()))
                             .append("sprintbacklogs", new BsonArray(Arrays.asList()));
-
                     Mongod.collTeam.insertOne(document);
 
                     foundDocument = Mongod.collTeam.find(document).into(new ArrayList<>());

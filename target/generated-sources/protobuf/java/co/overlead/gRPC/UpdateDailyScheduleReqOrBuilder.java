@@ -76,4 +76,24 @@ public interface UpdateDailyScheduleReqOrBuilder extends
    */
   com.google.protobuf.ByteString
       getAccessTokenBytes();
+
+  /**
+   * <code>string teamId = 9;</code>
+   */
+  java.lang.String getTeamId();
+  /**
+   * <code>string teamId = 9;</code>
+   */
+  com.google.protobuf.ByteString
+      getTeamIdBytes();
+
+  /**
+   * <code>string status = 10;</code>
+   */
+  java.lang.String getStatus();
+  /**
+   * <code>string status = 10;</code>
+   */
+  com.google.protobuf.ByteString
+      getStatusBytes();
 }

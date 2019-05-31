@@ -21,6 +21,7 @@ private static final long serialVersionUID = 0L;
     title_ = "";
     description_ = "";
     dataAdd_ = "";
+    statusSchedule_ = "";
   }
 
   @java.lang.Override
@@ -47,6 +48,12 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            statusSchedule_ = s;
+            break;
+          }
           case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
@@ -279,6 +286,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int STATUSSCHEDULE_FIELD_NUMBER = 1;
+  private volatile java.lang.Object statusSchedule_;
+  /**
+   * <code>string statusSchedule = 1;</code>
+   */
+  public java.lang.String getStatusSchedule() {
+    java.lang.Object ref = statusSchedule_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      statusSchedule_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string statusSchedule = 1;</code>
+   */
+  public com.google.protobuf.ByteString
+      getStatusScheduleBytes() {
+    java.lang.Object ref = statusSchedule_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      statusSchedule_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -293,6 +334,9 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (!getStatusScheduleBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, statusSchedule_);
+    }
     if (!getStatusBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, status_);
     }
@@ -317,6 +361,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (!getStatusScheduleBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, statusSchedule_);
+    }
     if (!getStatusBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, status_);
     }
@@ -357,6 +404,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getDescription())) return false;
     if (!getDataAdd()
         .equals(other.getDataAdd())) return false;
+    if (!getStatusSchedule()
+        .equals(other.getStatusSchedule())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -378,6 +427,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getDescription().hashCode();
     hash = (37 * hash) + DATAADD_FIELD_NUMBER;
     hash = (53 * hash) + getDataAdd().hashCode();
+    hash = (37 * hash) + STATUSSCHEDULE_FIELD_NUMBER;
+    hash = (53 * hash) + getStatusSchedule().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -521,6 +572,8 @@ private static final long serialVersionUID = 0L;
 
       dataAdd_ = "";
 
+      statusSchedule_ = "";
+
       return this;
     }
 
@@ -552,6 +605,7 @@ private static final long serialVersionUID = 0L;
       result.title_ = title_;
       result.description_ = description_;
       result.dataAdd_ = dataAdd_;
+      result.statusSchedule_ = statusSchedule_;
       onBuilt();
       return result;
     }
@@ -618,6 +672,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getDataAdd().isEmpty()) {
         dataAdd_ = other.dataAdd_;
+        onChanged();
+      }
+      if (!other.getStatusSchedule().isEmpty()) {
+        statusSchedule_ = other.statusSchedule_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -990,6 +1048,75 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       dataAdd_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object statusSchedule_ = "";
+    /**
+     * <code>string statusSchedule = 1;</code>
+     */
+    public java.lang.String getStatusSchedule() {
+      java.lang.Object ref = statusSchedule_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        statusSchedule_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string statusSchedule = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getStatusScheduleBytes() {
+      java.lang.Object ref = statusSchedule_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        statusSchedule_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string statusSchedule = 1;</code>
+     */
+    public Builder setStatusSchedule(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      statusSchedule_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string statusSchedule = 1;</code>
+     */
+    public Builder clearStatusSchedule() {
+      
+      statusSchedule_ = getDefaultInstance().getStatusSchedule();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string statusSchedule = 1;</code>
+     */
+    public Builder setStatusScheduleBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      statusSchedule_ = value;
       onChanged();
       return this;
     }

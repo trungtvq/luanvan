@@ -40,24 +40,19 @@ public class Chat {
             } else {
                 System.out.println(projectSub.containsKey(request.getChannelId()));
                 if (projectSub.containsKey(request.getChannelId()) == false) {
-                    System.out.println("Not contain project channel");
                     UserMessageQueue queue = new UserMessageQueue(request.getRequesterId(), request.getChannelId(), responseObserver);
                     Subscriber subscriber = new Subscriber(request.getChannelId(), request.getRequesterId(), queue);
                     projectSub.put(request.getChannelId(), subscriber);
-                    System.out.println("cc:"+request.getChannelId());
                     Event.operation.subscribe(request.getChannelId(), subscriber);
 
 
                 } else {//contain project channel
-                    System.out.println("contain project channel");
                     if (!projectSub.get(request.getChannelId()).userQueue.containsKey(request.getRequesterId())) {
-                        System.out.println("but not UserId in channel");
                         UserMessageQueue queue = new UserMessageQueue(request.getRequesterId(), request.getChannelId(), responseObserver);
 
                         projectSub.get(request.getChannelId()).addUserSubToProject(request.getRequesterId(), queue);
 
                     } else {//reset time
-                        System.out.println("have userId in channel");
                         projectSub.get(request.getChannelId()).getUserQueue().get(request.getRequesterId()).updateResponse(responseObserver);
                     }
                 }

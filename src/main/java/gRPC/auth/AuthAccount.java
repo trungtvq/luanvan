@@ -145,7 +145,7 @@ public class AuthAccount {
         }
         @Override
         public void resetPassword(ResetReq request, StreamObserver<ResetRes> responseObserver) {
-
+                System.out.println("resetPassword");
                 long random = Math.round (Math.random() * ( 99999 - 10000 )) + 10000;
 
                 try {
