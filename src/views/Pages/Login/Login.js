@@ -146,7 +146,6 @@ class Login extends Component {
     response.on('data', function (response) {
         if (response.getStatus() == "SUCCESS") {
             dispatch(addProject(response.getProjectid(), response.getTopic(), response.getProjectname(), response.getStart(), response.getEnd(), response.getPrivate(), response.getProgress()))
-            console.log("receipt")
         }
     });
     response.on('status', function (status) {
@@ -175,7 +174,6 @@ class Login extends Component {
 
     });
     response.on('end', function (end) {
-        console.log("edddddddddddddd")
         console.log(end)
 
     });
@@ -234,8 +232,6 @@ loadAllTeam = () => {
   render() {
     const responseGoogle = (response) => {
       this.onSignInGoogle(response.profileObj);
-      console.log("responseGoogle")
-      console.log(response)
     }
     let renderProps={}
     renderProps.disabled=false;
@@ -344,7 +340,6 @@ loadAllTeam = () => {
 
 
 
-//////////////////scoll
 const renderItem = (index, key) =>
   <div key={key} className={'item' + (index % 2 ? '' : ' even')}>
     {index}

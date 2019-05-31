@@ -55,7 +55,7 @@ class ResetFirst extends Component {
       isLoading: true,
     });
     //create service to request
-    const authService = new proto.auth.AuthClient('https://trungcs.com');
+    const authService = new proto.auth.AuthClient('https://www.overlead.co');
     //metadab will be config later
     var metadata = {};
     

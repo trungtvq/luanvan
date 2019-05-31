@@ -130,6 +130,7 @@ class Cover extends Component {
 
     }));
   }
+
   loadUserstory = () => {
     const userstoryService = new proto.userstory.UserStoryClient('https://www.overlead.co');
     var metadata = {};
@@ -164,8 +165,8 @@ class Cover extends Component {
       console.log(end)
     });
   }
+
   loadProductbacklog = () => {
-    //load productbacklog
     const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
     var GetAllProductBacklogReq = new proto.productbacklog.GetAllProductBacklogReq();
     GetAllProductBacklogReq.setRequesterid(getFromStorage("userId"));
@@ -202,6 +203,7 @@ class Cover extends Component {
       console.log(end)
     });
   }
+
   componentDidMount() {
     this.loadUserstory();
     this.loadProductbacklog();
@@ -214,11 +216,7 @@ class Cover extends Component {
 
 
   handleStoryToBacklog = (item) => {
-
-    //query 
-
-
-    console.log("handleUpdate")
+    console.log("toBacklog")
     const userstoryService = new proto.userstory.UserStoryClient('https://www.overlead.co');
     var metadata = {};
 
@@ -263,14 +261,9 @@ class Cover extends Component {
 
   }
   handleBacklogToStory = (item) => {
-
-
-
-    //query
-
+    console.log("to US")
     const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
     var metadata = {};
-    console.log("so" + this.state.so)
     var SendToSprintBacklogReq = new proto.productbacklog.SendToSprintBacklogReq();
     SendToSprintBacklogReq.setRequesterid(getFromStorage("userId"));
     SendToSprintBacklogReq.setAccesstoken(getFromStorage("accessToken"));
@@ -312,10 +305,6 @@ class Cover extends Component {
       }
     });
   };
-
-
-
-
   render() {
     let that = this;
     return (

@@ -10,10 +10,8 @@ import {
     getFromStorage,
     setInStorage
 } from './service/storage'
-import { toast } from 'react-toastify';
 
 import { setIn } from 'immutable';
-toast.configure()
 
 const proto = {};
 proto.auth = require('./gRPC/auth/auth_grpc_web_pb');
@@ -81,6 +79,10 @@ const MyProject = Loadable({
     loader: () => import('./views/Personal/Project/MyProject'),
     loading
 });
+const DailySchedule = Loadable({
+    loader: () => import('./views/Workspace/DailySchedule/DailySchedule'),
+    loading
+});
 
 
 
@@ -109,14 +111,13 @@ class Client extends Component {
         var AuthSessionReq = new proto.auth.AuthSessionReq();
         AuthSessionReq.setSession(getFromStorage("accessToken"));
         AuthSessionReq.setId(getFromStorage("userId"));
-        console.log("authSession")
         let that = this
         let dispatch = this.props.dispatch
         authService.authSession(AuthSessionReq, metadata, (err, response) => {
             if (err) {
-                console.log(err);
+
+
             } else {
-                console.log("SUCCESS")
                 if (response.getStatus() == "SUCCESS") {
 
                     dispatch(saveLogin(getFromStorage("userId"), getFromStorage("accessToken"), getFromStorage("username"), getFromStorage("name"), getFromStorage("avatar")))
@@ -153,7 +154,6 @@ class Client extends Component {
         response.on('data', function (response) {
             if (response.getStatus() == "SUCCESS") {
                 dispatch(addProject(response.getProjectid(), response.getTopic(), response.getProjectname(), response.getStart(), response.getEnd(), response.getPrivate(), response.getProgress()))
-                console.log("receipt")
             }
         });
         response.on('status', function (status) {
@@ -180,8 +180,6 @@ class Client extends Component {
 
         });
         response.on('end', function (end) {
-            console.log("edddddddddddddd")
-            console.log(end)
 
         });
 
@@ -210,15 +208,9 @@ class Client extends Component {
             }
         })
         response.on('status', function (status) {
-            console.log("status")
-            console.log(status.code);
-            console.log(status.details);
-            console.log(status.metadata);
-            console.log(getFromStorage('members'))
+         if (status.code!=0) console.log(status)
         });
         response.on('end', function (end) {
-            console.log("end")
-            console.log(end)
         });
     }
     loadAllTeam = () => {
@@ -286,6 +278,7 @@ class Client extends Component {
                                             <Route exact path="/myproject" name="myproject" component={MyProject} />
 
                                             <Route exact path="/Profile/Detail" name="ProfileDetail" component={ProfileDetail} />
+                                            <Route exact path="/Profile/Edit" name="ProjectTodo" component={ProfileEdit} />
                                             <Route exact path="/Profile/Edit" name="ProjectTodo" component={ProfileEdit} />
 
 

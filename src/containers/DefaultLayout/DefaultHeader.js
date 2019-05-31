@@ -36,7 +36,6 @@ class DefaultHeader extends Component {
   };
 
   onLogout = (e) => {
-    console.log("logout")
     this.props.dispatch(removeLogin())
     setInStorage("userId", "")
     setInStorage("accessToken", "")
@@ -81,7 +80,6 @@ class DefaultHeader extends Component {
 
     });
     response.on('end', function (end) {
-      console.log("end")
       console.log(end)
     });
   }
@@ -97,7 +95,6 @@ class DefaultHeader extends Component {
     GetAllTeamReq.setProjectid(getFromStorage("currentProject"));
     GetAllTeamReq.setAccesstoken(getFromStorage("accessToken"));
     let response = teamService.getAllTeam(GetAllTeamReq, metadata)
-    console.log("currenProject" + getFromStorage("currentProject"))
     let that = this
     let lastTeam = ''
     let lastName = ''
@@ -179,9 +176,6 @@ class DefaultHeader extends Component {
         if (p.id==teamId) return false
         return true
       })
-      console.log(currentProjectId)
-    console.log(allProject)
-    console.log("allproject")
     let teamId = getFromStorage("teamId")
     let teamName = getFromStorage("teamName")
     //this.props.project.

@@ -580,17 +580,7 @@ class TeamTask extends Component {
 
   };
  
-  // componentDidUpdate(){
-  //   let mem=getFromStorage('members')
-  //   let arr=this.state.data
-  //   mem.map(p=>{
-  //     if (arr.indexOf(p.id)!=-1){
-  //       console.log("exist")
-  //       arr[arr.indexOf(p.id)]=p.username
-  //     }
-  //     return p
-  //   })
-  // }
+
   render() {    
     let that = this;
     let sprints=getFromStorage('sprints')

@@ -91,7 +91,7 @@ class ResetSecond extends Component {
       isLoading: true,
     });
     //create service to request
-    const authService = new proto.auth.AuthClient('https://trungcs.com');
+    const authService = new proto.auth.AuthClient('https://www.overlead.co');
     //metadab will be config later
     var metadata = {};
     
@@ -127,15 +127,15 @@ class ResetSecond extends Component {
 
   render() {
     const {
-      token,
-      Username,
       Code,
       NewPassword,
     } = this.state;
     return (
       <div>
-        <AppAppBar />
-        <div><br></br></div>
+        <div>
+        <AppAppBar /></div>
+        <div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div>
+        <div>
         <Container>
             <Row className="justify-content-center">
               <Col md="9" lg="7" xl="6">
@@ -143,16 +143,7 @@ class ResetSecond extends Component {
                   <CardBody className="p-4">
                     <Form>
                       <h1>Reset account</h1>
-{/* 
-                      <InputGroup className="mb-3">
-                        <InputGroupAddon addonType="prepend">
-                          <InputGroupText>
-                            <i className="icon-user"></i>
-                          </InputGroupText>
-                        </InputGroupAddon>
-                        <Input type="text" placeholder="Username" autoComplete="username"  value={Username}
-                onChange={this.onTextboxChangeUsername}/>
-                      </InputGroup> */}
+
                       <InputGroup className="mb-3">
                         <InputGroupAddon addonType="prepend">
                           <InputGroupText>@</InputGroupText>
@@ -179,7 +170,8 @@ class ResetSecond extends Component {
               </Col>
             </Row>
           </Container>
-        
+          </div>
+          <br /><br /><br /><br />  
         <AppFooter />
       </div>   
     );
