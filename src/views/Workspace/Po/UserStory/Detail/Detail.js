@@ -18,7 +18,8 @@ import {
 import cookie from 'react-cookies';
 import { getProject } from '../../../../../actions'
 import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { serializeFetchParameter } from 'apollo-link-http-common';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
@@ -40,6 +41,7 @@ class Detail extends Component {
 
     this.state = {
       data: [],
+      currentData: [],
       requesterId: '',
 
       modalAdd: false,
@@ -52,6 +54,10 @@ class Detail extends Component {
       updateId:'',
       so: '',
 
+      search:'',
+      currentSearch:'',
+      positionUp:'',
+      positionDown:'',
     }
   };
 
@@ -116,7 +122,6 @@ class Detail extends Component {
       so: event.target.value,
     });
   }
-
   onGetUpdate = (userstoryIdUpdate, name, role, want, so) => {
     this.setState({
       rouserstoryIdUpdate: userstoryIdUpdate,
@@ -124,6 +129,11 @@ class Detail extends Component {
       wantUpdate: want,
       soUpdate: so,
       nameUpdate: name
+    });
+  }
+  onTextboxChangeSearch=(event)=>{
+    this.setState({
+      search: event.target.value,
     });
   }
   componentDidMount() {
@@ -147,9 +157,16 @@ class Detail extends Component {
             role: response.getRole(),
             want: response.getWant(),
             so: response.getSo()
-          }]
+          }],
+          currentData: [...prevState.currentData,
+            {
+              id: response.getId(),
+              name: response.getName(),
+              role: response.getRole(),
+              want: response.getWant(),
+              so: response.getSo()
+            }]
         }));
-
       }
     })
     response.on('status', function (status) {
@@ -191,10 +208,28 @@ class Detail extends Component {
         if (response.getStatus() == "SUCCESS") {
           that.success()
 
+          //check add when search
+            if(this.state.name.indexOf(that.state.currentSearch) !== -1)
+            {
+              this.setState(prevState => ({
+                currentData: [...prevState.currentData, { id: response.getId(), 
+                  name: this.state.name, role: this.state.role, want: this.state.want, so: this.state.so }] ,
+                }));
+              if(this.state.positionUp=='name')
+              {
+                this.handleSortTitleUp();
+              }
+              if(this.state.positionDown=='name')
+              {
+                this.handleSortTitleDown();
+              }
+            }
+          //
+
           this.setState(prevState => ({
             modalAdd: !prevState.modalAdd,
             data: [...prevState.data, { id: response.getId(), 
-              name: this.state.name, role: this.state.role, want: this.state.want, so: this.state.so }] ,
+            name: this.state.name, role: this.state.role, want: this.state.want, so: this.state.so }] ,
             name: '',
             as: '',
             want: '',
@@ -208,7 +243,7 @@ class Detail extends Component {
       }
     });
 
-  }
+  };
   handleDelete = (event) => {
     let id = event.currentTarget.dataset.id
 
@@ -231,7 +266,10 @@ class Detail extends Component {
       } else {
         if (response.getStatus() == "SUCCESS") {
           that.success()
-          this.setState(prevState => ({ data: [...prevState.data.filter(function (e) { return e.id !== id; })] }));
+          this.setState(
+            prevState => ({ data: [...prevState.data.filter(function (e){ return e.id !== id; })],
+                     currentData: [...prevState.currentData.filter(function (e){ return e.id !== id; })],     
+            }));
         } else {
           that.failed()
         }
@@ -268,10 +306,18 @@ class Detail extends Component {
               }
               : p
           );
+          const tmpCurrentData = this.state.currentData.map(p =>
+            p.id == this.state.updateId
+              ? {
+                ...p, role: this.state.role,
+                want: this.state.want, so: this.state.so
+              }
+              : p
+          );
           this.setState(prevState => ({
             modalEdit: !prevState.modalEdit,
             data: tmpdata,
-
+            currentData: tmpCurrentData,
           }));
         } else {
           that.failed()
@@ -279,7 +325,39 @@ class Detail extends Component {
       }
     });
   };
-
+  handleSearch=()=>{
+    let that=this;
+    let tmp = that.state.data.filter(function (e)
+    {
+       return e.name.indexOf(that.state.search) !== -1; 
+    });
+    this.setState({
+      currentData: tmp,
+      currentSearch:this.state.search,
+    });
+  };
+  handleSortTitleDown=()=>{
+    let tmp = this.state.currentData.sort((a, b) => a.name.localeCompare(b.name))
+    this.setState({
+      currentData: tmp.reverse(),
+      positionUp:'',
+      positionDown:'name',
+    });
+  };
+  handleSortTitleUp=()=>{
+    this.setState({
+      currentData: this.state.currentData.sort((a, b) => a.name.localeCompare(b.name)),
+      positionUp:'name',
+      positionDown:'',
+    });
+  };
+  handleShowAll=()=>{
+    this.setState({
+      currentData: this.state.data,
+      search: '',
+      finalSearch:'',
+    });
+  }
   render() {
     let that = this;
     return (
@@ -287,11 +365,13 @@ class Detail extends Component {
         <Col>
           <Row>
             <Col xs="2" md="2">
-              <Input type="text" id="text-input" name="text-input" placeholder="Search" />
+              <Input type="text" id="text-input" name="text-input" placeholder="Search" value={that.state.search} onChange={that.onTextboxChangeSearch}/>
             </Col>
-
             <Col xs="0" md="0">
-              <Button type="submit" size="sm" color="success"><i class="fa fa-search"></i></Button>
+              <Button type="submit" size="sm" color="success" onClick={that.handleSearch}><i class="fa fa-search"></i></Button>
+            </Col>
+            <Col xs="3" md="3">
+              <Button color="link" onClick={that.handleShowAll}>show all</Button>
             </Col>
           </Row>
 
@@ -300,8 +380,12 @@ class Detail extends Component {
               <table class="table table-lg">
                 <thead class="thead">
                   <tr class="bg-primary">
-                    <th>Title<i class="fa fa-sort"></i></th>
-                    <th>As a...<i class="fa fa-sort"></i></th>
+                    <th>
+                        Title
+                        <i class="fa fa-arrow-up" onClick={that.handleSortTitleUp}></i>
+                        <i class="fa fa-arrow-down" onClick={that.handleSortTitleDown}></i>
+                    </th>
+                    <th>As a...</th>
                     <th>I want to be able to... </th>
                     <th>So that... </th>
                     <th>
@@ -359,7 +443,7 @@ class Detail extends Component {
                   </tr>
                 </thead>
                 <tbody>{
-                  this.state.data.map(function (i, key) {
+                  this.state.currentData.map(function (i, key) {
                     if (i != null) {
                       let item = i
                       let currentName = item.name

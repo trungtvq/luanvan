@@ -17,6 +17,7 @@ import {
 } from '../../../../../service/storage'
 import DatePicker from "react-datepicker";
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const proto = {};
 proto.sprint = require('./../../../../../gRPC/sprint/sprint_grpc_web_pb');
@@ -142,8 +143,8 @@ class AllSprint extends Component {
       status: status,
     }));
   }
+  toastId = null;
   notify = () => this.toastId = toast("Processing... please wait...", { autoClose: false });
-
   success = () => toast.update(this.toastId, { render: "Success", type: toast.TYPE.SUCCESS, autoClose: 3000 });
   failed = () => toast.update(this.toastId, { render: "Failed", type: toast.TYPE.ERROR, autoClose: 3000 });
 
@@ -214,7 +215,7 @@ class AllSprint extends Component {
     console.log("handleAdd")
     const sprintService = new proto.sprint.SprintClient('https://www.overlead.co');
     //some data of request (get that from frontend)
-
+    this.notify()
     var metadata = {};
     let d = this.state.startDate;
     let start = d.getMinutes() + "-" + d.getHours() + "-" + d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
@@ -239,6 +240,7 @@ class AllSprint extends Component {
       } else { //if success
         //get response
         if (response.getStatus() == "SUCCESS") {
+          that.success()
           let arr = start.split('-');
           if (arr[1] > 12) {
             arr[1] = arr[1] - 12
@@ -256,6 +258,7 @@ class AllSprint extends Component {
           } else {
             end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10) + 1) + "/" + arr[4]
           }
+         
           that.setState(prevState => ({
             modalAdd: !prevState.modalAdd,
             data: [...prevState.data,
@@ -271,15 +274,10 @@ class AllSprint extends Component {
             title: '',
             num: '',
             goal: '',
-            modalActionStatus: true,
-            actionStatus: 'SUCCESS'
           }));
 
         } else {
-          that.setState({
-            modalActionStatus: true,
-            actionStatus: 'FALSE',
-          });
+          that.failed()
         }
       }
     });
@@ -289,7 +287,7 @@ class AllSprint extends Component {
 
     console.log("handleDelete")
 
-    const sprintService = new proto.sprint.sprintClient('https://www.overlead.co');
+    const sprintService = new proto.sprint.SprintClient('https://www.overlead.co');
 
     var metadata = {};
     //make a request to server
@@ -327,7 +325,7 @@ class AllSprint extends Component {
   handleUpdate = (event) => {
     console.log("handleUpdate")
 
-    const sprintService = new proto.sprint.sprintClient('https://www.overlead.co');
+    const sprintService = new proto.sprint.SprintClient('https://www.overlead.co');
     var metadata = {};
     console.log("so" + this.state.so)
     var UpdatesprintReq = new proto.sprint.UpdatesprintReq();

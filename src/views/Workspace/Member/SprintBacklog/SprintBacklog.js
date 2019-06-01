@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card,CardHeader,Badge, Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Table, Pagination, PaginationItem, PaginationLink, } from 'reactstrap';
+import { Form,ModalBody,ModalHeader,Modal,Label,FormGroup,Card,CardHeader,Badge, Button, Col, Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Table, Pagination, PaginationItem, PaginationLink, } from 'reactstrap';
 import cookie from 'react-cookies';
 import {
   getFromStorage,
@@ -13,8 +13,20 @@ class SprintBacklog extends Component {
     super(props);
     this.state = {
       data: [],
+      modalDetail: false,
       }
     };
+  toggleDetail = (event) => {
+      let role = event.currentTarget.dataset.role
+      let want = event.currentTarget.dataset.want
+      let so = event.currentTarget.dataset.so
+      this.setState(prevState => ({
+        modalDetail: !prevState.modalDetail,
+        role: role,
+        want: want,
+        so: so,
+      }));
+  }
 
     componentDidMount() {  
       const sprintbacklogService = new proto.sprintbacklog.SprintBacklogClient('https://www.overlead.co');
@@ -99,31 +111,44 @@ class SprintBacklog extends Component {
                   <thead class="thead">
                   <tr class="bg-primary">
                     <th>Title... <i class="fa fa-sort"></i></th>
-                    <th>As a... <i class="fa fa-sort"></i></th>
+                    {/* <th>As a... <i class="fa fa-sort"></i></th>
                     <th>I want to be able to... <i class="fa fa-sort"></i></th>
-                    <th>So that... <i class="fa fa-sort"></i></th>
+                    <th>So that... <i class="fa fa-sort"></i></th> */}
                     <th>Priority <i class="fa fa-sort"></i></th>
                     <th>Estimation <i class="fa fa-sort"></i></th>
                     <th>Sprint <i class="fa fa-sort"></i></th>
                     <th>Start <i class="fa fa-sort"></i></th>
                     <th>Deadline <i class="fa fa-sort"></i></th>
-                    <th>Status <i class="fa fa-sort"></i></th>
+                    {/* <th>Status <i class="fa fa-sort"></i></th> */}
                     <th></th>
                   </tr>
                   </thead>
                     <tbody>{this.state.data.map(function(item, key) {    
                return (
                   <tr key = {key}>
-                      <td>{item.title}</td>
-                      <td>{item.role}</td>
+                       <td data-id={item.id} data-role={item.role} data-want={item.want} 
+                           data-so={item.so}  
+                           onClick={that.toggleDetail}>
+                          <u><center>{item.title}</center></u>
+                        </td>
+                        <Modal size="lg" isOpen={that.state.modalDetail} toggle={that.toggleDetail} className={that.props.className}>
+                          <ModalHeader toggle={that.toggleDetail}>ProductBacklog</ModalHeader>
+                          <ModalBody>
+                            <Form className="form-horizontal">
+                                <h5>As a {that.state.role} </h5>
+                                <h5>I want to be able to {that.state.want}</h5>
+                                <p>So that {that.state.so}</p>                       
+                            </Form>
+                          </ModalBody>
+                        </Modal>
+                      {/* <td>{item.role}</td>
                       <td>{item.want}</td>
-                      <td>{item.so}</td>
+                      <td>{item.so}</td> */}
                       <td><center>{item.priority}</center></td>
                       <td><center>{item.estimation}</center></td>
                       <td><center>{item.sprint}</center></td>
                       <td><center>{item.start}</center></td>
                       <td><center>{item.deadline}</center></td>
-                      <td></td>
                       <td>                        
                       <Button size="sm" color="danger" onClick={that.handleBackToProductbacklog}><i class="fa fa-trash"></i></Button>
                       <Button size="sm" color="success" onClick={that.handleComplete}><i class="fa fa-check"></i></Button>

@@ -30,7 +30,6 @@ class Detail extends Component {
       data: [],
       modalAdd: false,
       modalEdit: false,
-      modalDetail: false,
       modalSend: false,
       id: '',
       role: "",
@@ -101,30 +100,6 @@ class Detail extends Component {
   toggleAdd = () => {
     this.setState(prevState => ({
       modalAdd: !prevState.modalAdd
-    }));
-  }
- 
-  toggleDetail = (event) => {
-
-    let title = event.currentTarget.dataset.title
-    let role = event.currentTarget.dataset.role
-    let want = event.currentTarget.dataset.want
-    let so = event.currentTarget.dataset.so
-    let priority = event.currentTarget.dataset.priority
-    let estimation = event.currentTarget.dataset.estimation
-    let sprint = event.currentTarget.dataset.sprint
-    let status = event.currentTarget.dataset.status
-
-    this.setState(prevState => ({
-      modalDetail: !prevState.modalDetail,
-      title:title,
-      role: role,
-      want: want,
-      so: so,
-      priority: priority,
-      estimation: estimation,
-      sprint: sprint,
-      status: status,   
     }));
   }
 
@@ -430,7 +405,7 @@ class Detail extends Component {
                     <th>Title <i class="fa fa-sort"></i></th>
                     <th>As a... <i class="fa fa-sort"></i></th>
                     <th>I want to be able to... <i class="fa fa-sort"></i></th>
-                    {/* <th>So that...  <i class="fa fa-sort"></i></th> */}
+                    <th>So that...  <i class="fa fa-sort"></i></th>
                     <th>Priority <i class="fa fa-sort"></i></th>
                     <th>Estimation <i class="fa fa-sort"></i></th>
                     <th>Sprint <i class="fa fa-sort"></i> </th>
@@ -533,79 +508,10 @@ class Detail extends Component {
 
                   return (
                     <tr key={key}>
-                      <td data-id={item.id} data-title={item.title} data-role={item.role} data-want={item.want} 
-                           data-so={item.so} data-priority={item.priority} data-estimation={item.estimation} 
-                           data-sprint={item.sprint} data-status={item.status}
-                           onClick={that.toggleDetail}>
-                      <u>{item.title}</u>
-                      </td>
-                      <Modal size="lg" isOpen={that.state.modalDetail} toggle={that.toggleDetail} className={that.props.className}>
-                          <ModalHeader toggle={that.toggleDetail}>ProductBacklog</ModalHeader>
-                          <ModalBody>
-                            <Form className="form-horizontal">
-                              <FormGroup row>
-                                <Col md="3">
-                                  <Label htmlFor="text-input">As a...</Label>
-                                </Col>
-                                <Col xs="12" md="9">
-                                  <Input type="text" id="text-input" name="text-input" placeholder="As a......" value={that.state.role} />
-
-                                </Col>
-                              </FormGroup>
-                              <FormGroup row>
-                                <Col md="3">
-                                  <Label htmlFor="text-input">I want to be able to...</Label>
-                                </Col>
-                                <Col xs="12" md="9">
-                                  <Input type="text" id="text-input" name="text-input" value={that.state.want} />
-
-                                </Col>
-                              </FormGroup>
-                              <FormGroup row>
-                                <Col md="3">
-                                  <Label htmlFor="textarea-input">So that...</Label>
-                                </Col>
-                                <Col xs="12" md="9">
-                                  <Input type="textarea" name="textarea-input" id="textarea-input" rows="9"
-                                    value={that.state.so}/>
-                                </Col>
-                              </FormGroup>
-                             
-                              <FormGroup row>
-                                <Col md="1">
-                                  <Label htmlFor="text-input">Priority</Label>
-                                </Col>
-                                <Col xs="12" md="1">
-                                  <Input type="text" name="text-input" id="text-input" rows="9" value={that.state.priority} />
-                                </Col>
-
-                                <Col md="2">
-                                </Col>
-
-                                <Col md="1">
-                                  <Label htmlFor="text-input">Estimation</Label>
-                                </Col>
-                                <Col xs="12" md="1">
-                                  <Input type="text" name="text-input" id="text-input" rows="9" value={that.state.estimation}/>
-                                </Col>
-
-                                <Col md="2">
-                                </Col>
-
-                                <Col md="1">
-                                  <Label htmlFor="text-input">Sprint</Label>
-                                </Col>
-                                <Col xs="12" md="1">
-                                  <Input type="text" name="text-input" id="text-input" rows="9" value={that.state.sprint}/>
-                                </Col>
-                              </FormGroup>
-                            </Form>
-                          </ModalBody>
-                          
-                        </Modal>
+                      <td > {item.title}</td>
                       <td>{item.role}</td>
                       <td>{item.want}</td>
-                      {/* <td>{item.so}</td> */}
+                      <td>{item.so}</td>
                       <td>{item.priority}</td>
                       <td>{item.estimation}</td>
                       <td>{item.sprint}</td>
