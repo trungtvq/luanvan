@@ -13,7 +13,11 @@ class SprintBacklog extends Component {
     super(props);
     this.state = {
       data: [],
+      currentData: [],
       modalDetail: false,
+      search:'',
+      currentSearch:'',
+      positionsort:''
       }
     };
   toggleDetail = (event) => {
@@ -76,7 +80,21 @@ class SprintBacklog extends Component {
             status: response.getStatusbacklog(),
             start: start,
             deadline: end
-            }]
+            }],
+            currentData: [...prevState.currentData,
+              {
+                id: response.getBacklogid(),
+              title: response.getTitle(),
+              role: response.getRole(),
+              want: response.getWant(),
+              so: response.getSo(),
+              priority: response.getPriority(),
+              estimation: response.getEstimation(),
+              sprint: response.getSprintid(),
+              status: response.getStatusbacklog(),
+              start: start,
+              deadline: end
+              }]
           }));
   
         }
@@ -95,35 +113,172 @@ class SprintBacklog extends Component {
   
     }
     handleBackToProductbacklog = () => {
-      
     };
     handleComplete = () => {
-      
     };
+//search
+onTextboxChangeSearch=(event)=>{
+  this.setState({
+    search: event.target.value,
+  });
+}
+handleSearch=()=>{
+  let that=this;
+  let tmp = that.state.data.filter(function (e)
+  {
+     return e.title.indexOf(that.state.search) !== -1; 
+  });
+  this.setState({
+    currentData: tmp,
+    currentSearch:this.state.search,
+  });
+};
+//show all
+handleShowAll=()=>{
+  this.setState({
+    currentData: this.state.data,
+    search: '',
+  });
+}
+//sort title
+handleSortTitleDown=()=>{
+  let tmp = this.state.currentData.sort((a, b) => a.title.localeCompare(b.title))
+  this.setState({
+    currentData: tmp.reverse(),
+    positionSort:'titleDown',
+  });
+};
+handleSortTitleUp=()=>{
+  this.setState({
+    currentData: this.state.currentData.sort((a, b) => a.title.localeCompare(b.title)),
+    positionSort:'titleUp',
+  });
+};
+//sort Priority 
+handleSortPriorityDown=()=>{
+let tmp = this.state.currentData.sort((a, b) => a.priority.localeCompare(b.priority))
+this.setState({
+  currentData: tmp.reverse(),
+  positionSort:'priorityDown',
+});
+};
+handleSortPriorityUp=()=>{
+this.setState({
+  currentData: this.state.currentData.sort((a, b) => a.priority.localeCompare(b.priority)),
+  positionSort:'priorityUp',
+});
+};
+//sort estimation
+handleSortEstimationDown=()=>{
+let tmp = this.state.currentData.sort((a, b) => a.estimation.localeCompare(b.estimation))
+this.setState({
+  currentData: tmp.reverse(),
+  positionSort:'estimationDown',
+});
+};
+handleSortEstimationUp=()=>{
+this.setState({
+  currentData: this.state.currentData.sort((a, b) => a.estimation.localeCompare(b.estimation)),
+  positionSort:'estimationUp',
+});
+};
+//sort sprint
+handleSortSprintDown=()=>{
+let tmp = this.state.currentData.sort((a, b) => a.sprint.localeCompare(b.sprint))
+this.setState({
+  currentData: tmp.reverse(),
+  positionSort:'sprintDown',
+});
+};
+handleSortSprintUp=()=>{
+this.setState({
+  currentData: this.state.currentData.sort((a, b) => a.sprint.localeCompare(b.sprint)),
+  positionSort:'sprintUp',
+});
+};
+//sort start
+handleSortStartDown=()=>{
+  let tmp = this.state.currentData.sort((a, b) => a.start.localeCompare(b.start))
+  this.setState({
+    currentData: tmp.reverse(),
+    positionSort:'startDown',
+  });
+  };
+handleSortStartUp=()=>{
+  this.setState({
+    currentData: this.state.currentData.sort((a, b) => a.start.localeCompare(b.start)),
+    positionSort:'startUp',
+  });
+  };
+//sort deadline
+handleSortDeadlineDown=()=>{
+  let tmp = this.state.currentData.sort((a, b) => a.deadline.localeCompare(b.deadline))
+  this.setState({
+    currentData: tmp.reverse(),
+    positionSort:'deadlineDown',
+  });
+  };
+handleSortDeadlineUp=()=>{
+  this.setState({
+    currentData: this.state.currentData.sort((a, b) => a.deadline.localeCompare(b.deadline)),
+    positionSort:'deadlineUp',
+  });
+  };
   render() {
     let that=this;
     return (
       <Row>
           <Col>    
+              <Row>
+                <Col xs="2" md="2">
+                  <Input type="text" id="text-input" name="text-input" placeholder="Search" value={that.state.search} onChange={that.onTextboxChangeSearch}/>
+                </Col>
+                <Col xs="0" md="0">
+                  <Button type="submit" size="sm" color="success" onClick={that.handleSearch}><i class="fa fa-search"></i></Button>
+                </Col>
+                <Col xs="3" md="3">
+                  <Button color="link" onClick={that.handleShowAll}>show all</Button>
+                </Col>
+              </Row>
               <Card>
               <div class="table-responsive"> 
                 <table class="table table-lg">
                   <thead class="thead">
                   <tr class="bg-primary">
-                    <th>Title... <i class="fa fa-sort"></i></th>
+                    <th>
+                      Title
+                      <i class="fa fa-arrow-up" onClick={that.handleSortTitleUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortTitleDown}></i>
+                    </th>
                     {/* <th>As a... <i class="fa fa-sort"></i></th>
                     <th>I want to be able to... <i class="fa fa-sort"></i></th>
                     <th>So that... <i class="fa fa-sort"></i></th> */}
-                    <th>Priority <i class="fa fa-sort"></i></th>
-                    <th>Estimation <i class="fa fa-sort"></i></th>
-                    <th>Sprint <i class="fa fa-sort"></i></th>
-                    <th>Start <i class="fa fa-sort"></i></th>
-                    <th>Deadline <i class="fa fa-sort"></i></th>
+                    <th>
+                      Priority 
+                      <i class="fa fa-arrow-up" onClick={that.handleSortPriorityUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortPriorityDown}></i>
+                    </th>
+                    <th>Estimation
+                      <i class="fa fa-arrow-up" onClick={that.handleSortEstimationUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortEstimationDown}></i>
+                    </th>
+                    <th>Sprint 
+                      <i class="fa fa-arrow-up" onClick={that.handleSortSprintUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortSprintDown}></i>
+                    </th>
+                    <th>Start 
+                      <i class="fa fa-arrow-up" onClick={that.handleSortStartUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortStartDown}></i>
+                    </th>
+                    <th>Deadline 
+                      <i class="fa fa-arrow-up" onClick={that.handleSortDeadlineUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortDeadlineDown}></i>
+                    </th>
                     {/* <th>Status <i class="fa fa-sort"></i></th> */}
                     <th></th>
                   </tr>
                   </thead>
-                    <tbody>{this.state.data.map(function(item, key) {    
+                    <tbody>{this.state.currentData.map(function(item, key) {    
                return (
                   <tr key = {key}>
                        <td data-id={item.id} data-role={item.role} data-want={item.want} 
