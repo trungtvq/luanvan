@@ -56,8 +56,7 @@ class Detail extends Component {
 
       search:'',
       currentSearch:'',
-      positionUp:'',
-      positionDown:'',
+      positionsort:''
     }
   };
 
@@ -215,13 +214,30 @@ class Detail extends Component {
                 currentData: [...prevState.currentData, { id: response.getId(), 
                   name: this.state.name, role: this.state.role, want: this.state.want, so: this.state.so }] ,
                 }));
-              if(this.state.positionUp=='name')
+                
+              if(this.state.positionSort=='nameUp')
               {
                 this.handleSortTitleUp();
               }
-              if(this.state.positionDown=='name')
+              if(this.state.positionSort=='nameDown')
               {
                 this.handleSortTitleDown();
+              }
+              if(this.state.positionSort=='asUp')
+              {
+                this.handleSortAsUp();
+              }
+              if(this.state.positionSort=='asDown')
+              {
+                this.handleSortAsDown();
+              }
+              if(this.state.positionSort=='wantUp')
+              {
+                this.handleSortWantUp();
+              }
+              if(this.state.positionSort=='wantDown')
+              {
+                this.handleSortWantDown();
               }
             }
           //
@@ -244,6 +260,7 @@ class Detail extends Component {
     });
 
   };
+  // them sua xoa
   handleDelete = (event) => {
     let id = event.currentTarget.dataset.id
 
@@ -336,21 +353,50 @@ class Detail extends Component {
       currentSearch:this.state.search,
     });
   };
+
+  //sort title
   handleSortTitleDown=()=>{
     let tmp = this.state.currentData.sort((a, b) => a.name.localeCompare(b.name))
     this.setState({
       currentData: tmp.reverse(),
-      positionUp:'',
-      positionDown:'name',
+      positionSort:'nameDown',
     });
   };
   handleSortTitleUp=()=>{
     this.setState({
       currentData: this.state.currentData.sort((a, b) => a.name.localeCompare(b.name)),
-      positionUp:'name',
-      positionDown:'',
+      positionSort:'nameUp',
     });
   };
+//sort as
+handleSortAsDown=()=>{
+  let tmp = this.state.currentData.sort((a, b) => a.role.localeCompare(b.role))
+  this.setState({
+    currentData: tmp.reverse(),
+    positionSort:'asDown',
+  });
+};
+handleSortAsUp=()=>{
+  this.setState({
+    currentData: this.state.currentData.sort((a, b) => a.role.localeCompare(b.role)),
+    positionSort:'asUp',
+  });
+};
+//sort want
+handleSortWantDown=()=>{
+  let tmp = this.state.currentData.sort((a, b) => a.want.localeCompare(b.want))
+  this.setState({
+    currentData: tmp.reverse(),
+    positionSort:'wantDown',
+  });
+};
+handleSortWantUp=()=>{
+  this.setState({
+    currentData: this.state.currentData.sort((a, b) => a.want.localeCompare(b.want)),
+    positionSort:'wantUp',
+  });
+};
+
   handleShowAll=()=>{
     this.setState({
       currentData: this.state.data,
@@ -385,9 +431,19 @@ class Detail extends Component {
                         <i class="fa fa-arrow-up" onClick={that.handleSortTitleUp}></i>
                         <i class="fa fa-arrow-down" onClick={that.handleSortTitleDown}></i>
                     </th>
-                    <th>As a...</th>
-                    <th>I want to be able to... </th>
-                    <th>So that... </th>
+                    <th>
+                      As a...
+                      <i class="fa fa-arrow-up" onClick={that.handleSortAsUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortAsDown}></i>
+                    </th>
+                    <th>
+                      I want to be able to... 
+                      <i class="fa fa-arrow-up" onClick={that.handleSortWantUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortWantDown}></i>
+                    </th>
+                    <th>
+                      So that...
+                    </th>
                     <th>
                       <div>
                         <Button color="primary" size="sm" className="mt-3" onClick={that.toggleAdd}><i class="fa fa-plus-square"></i>{this.props.buttonLabel}</Button>

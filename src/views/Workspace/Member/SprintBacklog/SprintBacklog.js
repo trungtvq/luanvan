@@ -129,7 +129,7 @@ class SprintBacklog extends Component {
                        <td data-id={item.id} data-role={item.role} data-want={item.want} 
                            data-so={item.so}  
                            onClick={that.toggleDetail}>
-                          <u><center>{item.title}</center></u>
+                          <u>{item.title}</u>
                         </td>
                         <Modal size="lg" isOpen={that.state.modalDetail} toggle={that.toggleDetail} className={that.props.className}>
                           <ModalHeader toggle={that.toggleDetail}>ProductBacklog</ModalHeader>
@@ -144,11 +144,11 @@ class SprintBacklog extends Component {
                       {/* <td>{item.role}</td>
                       <td>{item.want}</td>
                       <td>{item.so}</td> */}
-                      <td><center>{item.priority}</center></td>
-                      <td><center>{item.estimation}</center></td>
-                      <td><center>{item.sprint}</center></td>
-                      <td><center>{item.start}</center></td>
-                      <td><center>{item.deadline}</center></td>
+                      <td>{item.priority}</td>
+                      <td>{item.estimation}</td>
+                      <td>{item.sprint}</td>
+                      <td>{item.start}</td>
+                      <td>{item.deadline}</td>
                       <td>                        
                       <Button size="sm" color="danger" onClick={that.handleBackToProductbacklog}><i class="fa fa-trash"></i></Button>
                       <Button size="sm" color="success" onClick={that.handleComplete}><i class="fa fa-check"></i></Button>
