@@ -156,45 +156,45 @@ handleSortTitleUp=()=>{
 };
 //sort Priority 
 handleSortPriorityDown=()=>{
-let tmp = this.state.currentData.sort((a, b) => a.priority.localeCompare(b.priority))
-this.setState({
-  currentData: tmp.reverse(),
-  positionSort:'priorityDown',
-});
+  let tmp = this.state.currentData.sort(function(a, b){return a.priority - b.priority});
+  this.setState({
+    currentData: tmp.reverse(),
+    positionSort:'priorityDown',
+  });
 };
 handleSortPriorityUp=()=>{
-this.setState({
-  currentData: this.state.currentData.sort((a, b) => a.priority.localeCompare(b.priority)),
-  positionSort:'priorityUp',
-});
+  this.setState({
+    currentData: this.state.currentData.sort(function(a, b){return a.priority - b.priority}),
+    positionSort:'priorityUp',
+  });
 };
 //sort estimation
 handleSortEstimationDown=()=>{
-let tmp = this.state.currentData.sort((a, b) => a.estimation.localeCompare(b.estimation))
-this.setState({
-  currentData: tmp.reverse(),
-  positionSort:'estimationDown',
-});
+  let tmp = this.state.currentData.sort(function(a, b){return a.estimation - b.estimation});
+  this.setState({
+    currentData: tmp.reverse(),
+    positionSort:'estimationDown',
+  });
 };
 handleSortEstimationUp=()=>{
-this.setState({
-  currentData: this.state.currentData.sort((a, b) => a.estimation.localeCompare(b.estimation)),
-  positionSort:'estimationUp',
-});
+  this.setState({
+    currentData: this.state.currentData.sort(function(a, b){return a.estimation - b.estimation}),
+    positionSort:'estimationUp',
+  });
 };
 //sort sprint
 handleSortSprintDown=()=>{
-let tmp = this.state.currentData.sort((a, b) => a.sprint.localeCompare(b.sprint))
-this.setState({
-  currentData: tmp.reverse(),
-  positionSort:'sprintDown',
-});
+  let tmp =  this.state.currentData.sort(function(a, b){return a.sprint - b.sprint});
+  this.setState({
+    currentData: tmp.reverse(),
+    positionSort:'sprintDown',
+  });
 };
 handleSortSprintUp=()=>{
-this.setState({
-  currentData: this.state.currentData.sort((a, b) => a.sprint.localeCompare(b.sprint)),
-  positionSort:'sprintUp',
-});
+  this.setState({
+    currentData:  this.state.currentData.sort(function(a, b){return a.sprint - b.sprint}),
+    positionSort:'sprintUp',
+  });
 };
 //sort start
 handleSortStartDown=()=>{
