@@ -266,11 +266,11 @@ class Detail extends Component {
                 }],
               }));
               
-              if(this.state.positionSort=='nameUp')
+              if(this.state.positionSort=='titleUp')
               {
                 this.handleSortTitleUp();
               }
-              if(this.state.positionSort=='nameDown')
+              if(this.state.positionSort=='titleDown')
               {
                 this.handleSortTitleDown();
               }
@@ -423,11 +423,11 @@ class Detail extends Component {
               : p
           );
           {  
-            if(this.state.positionSort=='nameUp')
+            if(this.state.positionSort=='titleUp')
             {
               this.handleSortTitleUp();
             }
-            if(this.state.positionSort=='nameDown')
+            if(this.state.positionSort=='titleDown')
             {
               this.handleSortTitleDown();
             }

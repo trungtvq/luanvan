@@ -27,6 +27,7 @@ class AllSprint extends Component {
     super(props);
     this.state = {
       data: [],
+      currentData: [],
       modalAdd: false,
       modalEdit: false,
       modalDetail: false,
@@ -42,6 +43,10 @@ class AllSprint extends Component {
       endDate: new Date(),
       currentSprintId: "",
       currentSprintName:"",
+
+      search:'',
+      currentSearch:'',
+      positionsort:''
     }
   };
   componentDidMount() {
@@ -93,7 +98,17 @@ class AllSprint extends Component {
             status: response.getStatussprint(),
             start,
             end,
-          }]
+          }],
+          currentData: [...prevState.currentData,
+            {
+              id: response.getId(),
+              title: response.getTitle(),
+              num: response.getNum(),
+              goal: response.getGoal(),
+              status: response.getStatussprint(),
+              start,
+              end,
+            }]
         }));
       }
     })
@@ -258,7 +273,47 @@ class AllSprint extends Component {
           } else {
             end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10) + 1) + "/" + arr[4]
           }
-         
+           //check add when search
+           if(this.state.title.indexOf(that.state.currentSearch) !== -1)
+           {
+             this.setState(prevState => ({
+                 currentData: [...prevState.currentData,
+                  {
+                    id: response.getId(),
+                    title: that.state.title,
+                    num: that.state.num,
+                    goal: that.state.goal,
+                    start: start,
+                    end: end,
+                  }],
+               }));
+               
+               if(this.state.positionSort=='titleUp')
+               {
+                 this.handleSortTitleUp();
+               }
+               if(this.state.positionSort=='titleDown')
+               {
+                 this.handleSortTitleDown();
+               }
+               if(this.state.positionSort=='startUp')
+               {
+                 this.handleSortStartUp();
+               }
+               if(this.state.positionSort=='startDown')
+               {
+                 this.handleSortStartDown();
+               }
+               if(this.state.positionSort=='endUp')
+               {
+                 this.handleSortEndUp();
+               }
+               if(this.state.positionSort=='endDown')
+               {
+                 this.handleSortEndDown();
+               }
+           }
+         //
           that.setState(prevState => ({
             modalAdd: !prevState.modalAdd,
             data: [...prevState.data,
@@ -308,7 +363,10 @@ class AllSprint extends Component {
             actionStatus: "SUCCESS",
             modalActionStatus: true,
           });
-          this.setState(prevState => ({ data: [...prevState.data.filter(function (e) { return e.id !== id; })] }));
+          this.setState(prevState => ({ 
+            data: [...prevState.data.filter(function (e) { return e.id !== id; })],
+            currentData: [...prevState.data.filter(function (e) { return e.id !== id; })],
+          }));
         } else {
           this.setState({
             actionStatus: "FALSE",
@@ -321,7 +379,6 @@ class AllSprint extends Component {
 
     });
   };
-
   handleUpdate = (event) => {
     console.log("handleUpdate")
 
@@ -361,18 +418,56 @@ class AllSprint extends Component {
               }
               : p
           );
+          const tmpCurrentData = this.state.data.map(p =>
+            p.id == this.state.updateId
+              ? {
+                ...p,
+                role: this.state.role,
+                want: this.state.want,
+                priority: this.state.priority,
+                estimation: this.state.estimation,
+                status: this.state.status,
+                sprint: this.state.sprint,
+                so: this.state.so,
+
+              }
+              : p
+          );
           this.setState(prevState => ({
             modalEdit: !prevState.modalEdit,
             modalActionStatus: !prevState.modalActionStatus,
             actionStatus: "SUCCESS",
             data: tmpdata,
-
+            currentData: tmpCurrentData,
           }));
 
-
-          this.setState({
-          });
-
+          {
+            if(this.state.positionSort=='titleUp')
+            {
+              this.handleSortTitleUp();
+            }
+            if(this.state.positionSort=='titleDown')
+            {
+              this.handleSortTitleDown();
+            }
+            if(this.state.positionSort=='startUp')
+            {
+              this.handleSortStartUp();
+            }
+            if(this.state.positionSort=='startDown')
+            {
+              this.handleSortStartDown();
+            }
+            if(this.state.positionSort=='endUp')
+            {
+              this.handleSortEndUp();
+            }
+            if(this.state.positionSort=='endDown')
+            {
+              this.handleSortEndDown();
+            }
+          }
+        
 
         } else {
           this.setState({
@@ -397,26 +492,88 @@ class AllSprint extends Component {
       endDate: date
     });
   }
-  render() {
+  onTextboxChangeSearch=(event)=>{
+    this.setState({
+      search: event.target.value,
+    });
+  }
+//search
+handleSearch=()=>{
+  let that=this;
+  let tmp = that.state.data.filter(function (e)
+  {
+     return e.title.indexOf(that.state.search) !== -1; 
+  });
+  this.setState({
+    currentData: tmp,
+    currentSearch:this.state.search,
+  });
+};
+//sort title
+handleSortTitleDown=()=>{
+  let tmp = this.state.currentData.sort((a, b) => a.title.localeCompare(b.title))
+  this.setState({
+    currentData: tmp.reverse(),
+    positionSort:'titleDown',
+  });
+};
+handleSortTitleUp=()=>{
+  this.setState({
+    currentData: this.state.currentData.sort((a, b) => a.title.localeCompare(b.title)),
+    positionSort:'titleUp',
+  });
+};
+//sort start
+handleSortStartDown=()=>{
+  let tmp = this.state.currentData.sort((a, b) => a.start.localeCompare(b.start))
+  this.setState({
+    currentData: tmp.reverse(),
+    positionSort:'startDown',
+  });
+  };
+handleSortStartUp=()=>{
+  this.setState({
+    currentData: this.state.currentData.sort((a, b) => a.start.localeCompare(b.start)),
+    positionSort:'startUp',
+  });
+  };
+//sort deadline
+handleSortEndDown=()=>{
+  let tmp = this.state.currentData.sort((a, b) => a.end.localeCompare(b.end))
+  this.setState({
+    currentData: tmp.reverse(),
+    positionSort:'endDown',
+  });
+  };
+handleSortEndUp=()=>{
+  this.setState({
+    currentData: this.state.currentData.sort((a, b) => a.end.localeCompare(b.end)),
+    positionSort:'endUp',
+  });
+  };
+//show all
+handleShowAll=()=>{
+this.setState({
+  currentData: this.state.data,
+  search: '',
+});
+}
+render() {
 
     let that = this;
     return (
       <Row>
-        <Modal size="sm" isOpen={that.state.modalActionStatus} toggle={that.toggleActionStatus} className={that.props.className}>
-          <ModalBody>
-            <center><h4>{that.state.actionStatus}</h4></center>
-          </ModalBody>
-        </Modal>
         <Col>
 
           <Row>
             <Col xs="2" md="2">
-              <Input type="text" id="text-input" name="text-input" placeholder="Search" />
+              <Input type="text" id="text-input" name="text-input" placeholder="Search" value={that.state.search} onChange={that.onTextboxChangeSearch}/>
             </Col>
-
             <Col xs="0" md="0">
-              <Button type="submit" size="sm" color="success">
-                <i class="fa fa-search"></i></Button>
+              <Button type="submit" size="sm" color="success" onClick={that.handleSearch}><i class="fa fa-search"></i></Button>
+            </Col>
+            <Col xs="3" md="3">
+              <Button color="link" onClick={that.handleShowAll}>show all</Button>
             </Col>
           </Row>
           <Card>
@@ -424,13 +581,22 @@ class AllSprint extends Component {
               <table class="table table-lg">
                 <thead class="thead">
                   <tr class="bg-primary">
-                    <th>Sprint ID <i class="fa fa-sort"></i></th>
-                    <th>Title <i class="fa fa-sort"></i></th>
-                    <th>Start at <i class="fa fa-sort"></i></th>
+                    <th>Sprint ID </th>
+                    <th>Title 
+                      <i class="fa fa-arrow-up" onClick={that.handleSortTitleUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortTitleDown}></i>
+                    </th>
+                    <th>Start at 
+                      <i class="fa fa-arrow-up" onClick={that.handleSortStartUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortStartDown}></i>
+                    </th>
                     {/* <th>So that...  <i class="fa fa-sort"></i></th> */}
-                    <th>End at <i class="fa fa-sort"></i></th>
-                    <th>Goal <i class="fa fa-sort"></i></th>
-                    <th>Status <i class="fa fa-sort"></i> </th>
+                    <th>End at 
+                      <i class="fa fa-arrow-up" onClick={that.handleSortEndUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortEndDown}></i>
+                    </th>
+                    <th>Goal </th>
+                    <th>Status </th>
 
                     <th>
                       <div>
@@ -512,7 +678,7 @@ class AllSprint extends Component {
                     </th>
                   </tr>
                 </thead>
-                <tbody>{this.state.data.map(function (item, key) {
+                <tbody>{this.state.currentData.map(function (item, key) {
 
                   return (
                     <tr key={key}>
