@@ -28,6 +28,7 @@ class Detail extends Component {
     super(props);
     this.state = {
       data: [],
+      currentData: [],
       modalAdd: false,
       modalEdit: false,
       modalSend: false,
@@ -42,7 +43,11 @@ class Detail extends Component {
       title: "",
       startDate: new Date(),
       endDate: new Date(),
-      backlogSendId:""
+      backlogSendId:"",
+
+      search:'',
+      currentSearch:'',
+      positionsort:''
     }
   };
   componentDidMount() {
@@ -75,7 +80,19 @@ class Detail extends Component {
             estimation: response.getEstimation(),
             sprint: response.getSprintid(),
             status: response.getStatusbacklog()
-          }]
+          }],
+          currentData: [...prevState.currentData,
+            {
+              id: response.getProductbacklogid(),
+              title: response.getTitle(),
+              role: response.getRole(),
+              want: response.getWant(),
+              so: response.getSo(),
+              priority: response.getPriority(),
+              estimation: response.getEstimation(),
+              sprint: response.getSprintid(),
+              status: response.getStatusbacklog()
+            }]
         }));
 
       }
@@ -130,7 +147,11 @@ class Detail extends Component {
       priority: priority,
       estimation: estimation,
       sprint: sprint,
-      status: status,   
+      status: status,  
+      
+      search:'',
+      currentSearch:'',
+      positionsort:''
     }));
   }
   toggleSend = () => {
@@ -188,6 +209,12 @@ class Detail extends Component {
     });
   }
 
+  onTextboxChangeSearch=(event)=>{
+    this.setState({
+      search: event.target.value,
+    });
+  }
+
   handleAdd = () => {
     console.log("handleAdd")
     const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
@@ -220,6 +247,67 @@ class Detail extends Component {
         if (response.getStatus() == "SUCCESS") {
           this.toggleAdd()
           that.success()
+          //check add when search
+          if(this.state.title.indexOf(that.state.currentSearch) !== -1)
+          {
+            this.setState(prevState => ({
+                currentData: [...prevState.currentData,
+                {
+                  id: response.getProductbacklogid(),
+                  title: this.state.title,
+                  role: this.state.role,
+                  want: this.state.want,
+                  so: this.state.so,
+                  priority: this.state.priority,
+                  estimation: this.state.estimation,
+                  id: response.getProductbacklogid(),
+                  sprint: this.state.sprint,
+                  status: this.state.status
+                }],
+              }));
+              
+              if(this.state.positionSort=='nameUp')
+              {
+                this.handleSortTitleUp();
+              }
+              if(this.state.positionSort=='nameDown')
+              {
+                this.handleSortTitleDown();
+              }
+              if(this.state.positionSort=='asUp')
+              {
+                this.handleSortAsUp();
+              }
+              if(this.state.positionSort=='asDown')
+              {
+                this.handleSortAsDown();
+              }
+              if(this.state.positionSort=='priorityUp')
+              {
+                this.handleSortPriorityUp();
+              }
+              if(this.state.positionSort=='priorityDown')
+              {
+                this.handleSortPriorityDown();
+              }
+              if(this.state.positionSort=='estimationUp')
+              {
+                this.handleSortEstimationUp();
+              }
+              if(this.state.positionSort=='estimationDown')
+              {
+                this.handleSortEstimationDown();
+              }
+              if(this.state.positionSort=='sprintUp')
+              {
+                this.handleSortSprintUp();
+              }
+              if(this.state.positionSort=='sprintDown')
+              {
+                this.handleSortSprintDown();
+              }
+          }
+        //
           this.setState(prevState => ({
             data: [...prevState.data,
             {
@@ -240,6 +328,7 @@ class Detail extends Component {
               so: '',
               priority: '',
               estimation: '',
+              sprint: '',
           }));
         } else {
           that.failed()
@@ -318,8 +407,66 @@ class Detail extends Component {
               }
               : p
           );
+          const tmpCurrentData = this.state.currentData.map(p =>
+            p.id == this.state.updateId
+              ? {
+                ...p,
+                role: this.state.role,
+                want: this.state.want,
+                priority: this.state.priority,
+                estimation: this.state.estimation,
+                status: this.state.status,
+                sprint: this.state.sprint,
+                so: this.state.so,
+                
+              }
+              : p
+          );
+          {  
+            if(this.state.positionSort=='nameUp')
+            {
+              this.handleSortTitleUp();
+            }
+            if(this.state.positionSort=='nameDown')
+            {
+              this.handleSortTitleDown();
+            }
+            if(this.state.positionSort=='asUp')
+            {
+              this.handleSortAsUp();
+            }
+            if(this.state.positionSort=='asDown')
+            {
+              this.handleSortAsDown();
+            }
+            if(this.state.positionSort=='priorityUp')
+            {
+              this.handleSortPriorityUp();
+            }
+            if(this.state.positionSort=='priorityDown')
+            {
+              this.handleSortPriorityDown();
+            }
+            if(this.state.positionSort=='estimationUp')
+            {
+              this.handleSortEstimationUp();
+            }
+            if(this.state.positionSort=='estimationDown')
+            {
+              this.handleSortEstimationDown();
+            }
+            if(this.state.positionSort=='sprintUp')
+            {
+              this.handleSortSprintUp();
+            }
+            if(this.state.positionSort=='sprintDown')
+            {
+              this.handleSortSprintDown();
+            }
+          }
           this.setState(prevState => ({ 
             data: tmpdata,
+            currentData:tmpCurrentData,
             modalEdit:false,
           }));
 
@@ -357,7 +504,10 @@ class Detail extends Component {
       } else {
         if (response.getStatus() == "SUCCESS") {
           that.success()
-          that.setState(prevState => ({ data: [...prevState.data.filter(function (e) { return e.id !== that.state.backlogSendId; })] }));
+          that.setState(prevState => ({ 
+            data: [...prevState.data.filter(function (e) { return e.id !== that.state.backlogSendId; })],
+            currentData: [...prevState.currentData.filter(function (e) { return e.id !== that.state.backlogSendId; })] 
+          }));
         } else {
          that.failed()
         }
@@ -375,26 +525,111 @@ class Detail extends Component {
       endDate: date
     });
   }
+
+//search
+handleSearch=()=>{
+    let that=this;
+    let tmp = that.state.data.filter(function (e)
+    {
+       return e.title.indexOf(that.state.search) !== -1; 
+    });
+    this.setState({
+      currentData: tmp,
+      currentSearch:this.state.search,
+    });
+};
+//sort title
+handleSortTitleDown=()=>{
+    let tmp = this.state.currentData.sort((a, b) => a.title.localeCompare(b.title))
+    this.setState({
+      currentData: tmp.reverse(),
+      positionSort:'titleDown',
+    });
+};
+handleSortTitleUp=()=>{
+    this.setState({
+      currentData: this.state.currentData.sort((a, b) => a.title.localeCompare(b.title)),
+      positionSort:'titleUp',
+    });
+};
+//sort as
+handleSortAsDown=()=>{
+  let tmp = this.state.currentData.sort((a, b) => a.role.localeCompare(b.role))
+  this.setState({
+    currentData: tmp.reverse(),
+    positionSort:'asDown',
+  });
+};
+handleSortAsUp=()=>{
+  this.setState({
+    currentData: this.state.currentData.sort((a, b) => a.role.localeCompare(b.role)),
+    positionSort:'asUp',
+  });
+};
+//sort Priority 
+handleSortPriorityDown=()=>{
+  let tmp = this.state.currentData.sort((a, b) => a.priority.localeCompare(b.priority))
+  this.setState({
+    currentData: tmp.reverse(),
+    positionSort:'priorityDown',
+  });
+};
+handleSortPriorityUp=()=>{
+  this.setState({
+    currentData: this.state.currentData.sort((a, b) => a.priority.localeCompare(b.priority)),
+    positionSort:'priorityUp',
+  });
+};
+//sort estimation
+handleSortEstimationDown=()=>{
+  let tmp = this.state.currentData.sort((a, b) => a.estimation.localeCompare(b.estimation))
+  this.setState({
+    currentData: tmp.reverse(),
+    positionSort:'estimationDown',
+  });
+};
+handleSortEstimationUp=()=>{
+  this.setState({
+    currentData: this.state.currentData.sort((a, b) => a.estimation.localeCompare(b.estimation)),
+    positionSort:'estimationUp',
+  });
+};
+//sort sprint
+handleSortSprintDown=()=>{
+  let tmp = this.state.currentData.sort((a, b) => a.sprint.localeCompare(b.sprint))
+  this.setState({
+    currentData: tmp.reverse(),
+    positionSort:'sprintDown',
+  });
+};
+handleSortSprintUp=()=>{
+  this.setState({
+    currentData: this.state.currentData.sort((a, b) => a.sprint.localeCompare(b.sprint)),
+    positionSort:'sprintUp',
+  });
+};
+//show all
+handleShowAll=()=>{
+  this.setState({
+    currentData: this.state.data,
+    search: '',
+  });
+}
   render() {
 
     let that = this;
     return (
       <Row>
-        <Modal size="sm" isOpen={that.state.modalActionStatus} toggle={that.toggleActionStatus} className={that.props.className}>
-          <ModalBody>
-            <center><h4>{that.state.actionStatus}</h4></center>
-          </ModalBody>
-        </Modal>
         <Col>
-
-          <Row>
+        <Row>
             <Col xs="2" md="2">
-              <Input type="text" id="text-input" name="text-input" placeholder="Search" />
+              <Input type="text" id="text-input" name="text-input" placeholder="Search" value={that.state.search} onChange={that.onTextboxChangeSearch}/>
             </Col>
-
             <Col xs="0" md="0">
-              <Button type="submit" size="sm" color="success">
-                <i class="fa fa-search"></i></Button>
+              <Button type="submit" size="sm" color="success" onClick={that.handleSearch}><i class="fa fa-search"></i></Button>
+            </Col>
+            <Col xs="3" md="3">
+              <Button color="link" onClick={that.handleShowAll}>show all</Button>
             </Col>
           </Row>
           <Card>
@@ -402,13 +637,33 @@ class Detail extends Component {
               <table class="table table-lg">
                 <thead class="thead">
                   <tr class="bg-primary">
-                    <th>Title <i class="fa fa-sort"></i></th>
-                    <th>As a... <i class="fa fa-sort"></i></th>
-                    <th>I want to be able to... <i class="fa fa-sort"></i></th>
-                    <th>So that...  <i class="fa fa-sort"></i></th>
-                    <th>Priority <i class="fa fa-sort"></i></th>
-                    <th>Estimation <i class="fa fa-sort"></i></th>
-                    <th>Sprint <i class="fa fa-sort"></i> </th>
+                    <th>
+                      Title 
+                      <i class="fa fa-arrow-up" onClick={that.handleSortTitleUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortTitleDown}></i>
+                    </th>
+                    <th>
+                      As a...
+                      <i class="fa fa-arrow-up" onClick={that.handleSortAsUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortAsDown}></i>
+                    </th>
+                    <th>I want to be able to...</th>
+                    <th>So that...</th>
+                    <th>
+                      Priority 
+                      <i class="fa fa-arrow-up" onClick={that.handleSortPriorityUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortPriorityDown}></i>
+                    </th>
+                    <th>
+                      Estimation 
+                      <i class="fa fa-arrow-up" onClick={that.handleSortEstimationUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortEstimationDown}></i>
+                    </th>
+                    <th>
+                      Sprint 
+                      <i class="fa fa-arrow-up" onClick={that.handleSortSprintUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortSprintDown}></i>
+                    </th>
                    
                     <th>
                       <div>
@@ -504,7 +759,7 @@ class Detail extends Component {
                     </th>
                   </tr>
                 </thead>
-                <tbody>{this.state.data.map(function (item, key) {
+                <tbody>{this.state.currentData.map(function (item, key) {
 
                   return (
                     <tr key={key}>

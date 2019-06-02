@@ -180,6 +180,7 @@ class Detail extends Component {
 
 
   }
+  // them sua xoa
   handleAdd = () => {
     this.notify()
     console.log("handleAdd")
@@ -260,7 +261,6 @@ class Detail extends Component {
     });
 
   };
-  // them sua xoa
   handleDelete = (event) => {
     let id = event.currentTarget.dataset.id
 
@@ -331,6 +331,32 @@ class Detail extends Component {
               }
               : p
           );
+          {  
+            if(this.state.positionSort=='nameUp')
+            {
+              this.handleSortTitleUp();
+            }
+            if(this.state.positionSort=='nameDown')
+            {
+              this.handleSortTitleDown();
+            }
+            if(this.state.positionSort=='asUp')
+            {
+              this.handleSortAsUp();
+            }
+            if(this.state.positionSort=='asDown')
+            {
+              this.handleSortAsDown();
+            }
+            if(this.state.positionSort=='wantUp')
+            {
+              this.handleSortWantUp();
+            }
+            if(this.state.positionSort=='wantDown')
+            {
+              this.handleSortWantDown();
+            }
+          }
           this.setState(prevState => ({
             modalEdit: !prevState.modalEdit,
             data: tmpdata,
@@ -342,6 +368,7 @@ class Detail extends Component {
       }
     });
   };
+  //search
   handleSearch=()=>{
     let that=this;
     let tmp = that.state.data.filter(function (e)
@@ -353,7 +380,6 @@ class Detail extends Component {
       currentSearch:this.state.search,
     });
   };
-
   //sort title
   handleSortTitleDown=()=>{
     let tmp = this.state.currentData.sort((a, b) => a.name.localeCompare(b.name))
@@ -396,14 +422,14 @@ handleSortWantUp=()=>{
     positionSort:'wantUp',
   });
 };
-
-  handleShowAll=()=>{
+//show all
+handleShowAll=()=>{
     this.setState({
       currentData: this.state.data,
       search: '',
       finalSearch:'',
     });
-  }
+}
   render() {
     let that = this;
     return (
