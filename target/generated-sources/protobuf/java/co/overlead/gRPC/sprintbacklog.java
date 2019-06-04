@@ -15,6 +15,11 @@ public final class sprintbacklog {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_sprintbacklog_UpdateSprintReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_sprintbacklog_UpdateSprintReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_sprintbacklog_DeleteSprintBacklogReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -43,27 +48,33 @@ public final class sprintbacklog {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\023sprintbacklog.proto\022\rsprintbacklog\"x\n\026" +
-      "DeleteSprintBacklogReq\022\023\n\013requesterId\030\001 " +
-      "\001(\t\022\021\n\tprojectId\030\002 \001(\t\022\021\n\tbacklogId\030\003 \001(" +
-      "\t\022\023\n\013accessToken\030\004 \001(\t\022\016\n\006teamId\030\005 \001(\t\"5" +
-      "\n\020SprintBacklogRes\022\016\n\006status\030\001 \001(\t\022\021\n\tba" +
-      "cklogId\030\003 \001(\t\"e\n\026GetAllSprintBacklogReq\022" +
-      "\023\n\013requesterId\030\001 \001(\t\022\021\n\tprojectId\030\002 \001(\t\022" +
-      "\023\n\013accessToken\030\003 \001(\t\022\016\n\006teamId\030\004 \001(\t\"\342\001\n" +
-      "\026GetAllSprintBacklogRes\022\r\n\005title\030\001 \001(\t\022\021" +
-      "\n\tbacklogId\030\002 \001(\t\022\014\n\004role\030\003 \001(\t\022\014\n\004want\030" +
-      "\004 \001(\t\022\n\n\002so\030\005 \001(\t\022\025\n\rstatusBacklog\030\013 \001(\t" +
-      "\022\020\n\010priority\030\006 \001(\t\022\022\n\nestimation\030\007 \001(\t\022\020" +
-      "\n\010sprintId\030\010 \001(\t\022\r\n\005start\030\014 \001(\t\022\020\n\010deadl" +
-      "ine\030\n \001(\t\022\016\n\006status\030\t \001(\t2\331\001\n\rSprintBack" +
-      "log\022_\n\023deleteSprintBacklog\022%.sprintbackl" +
-      "og.DeleteSprintBacklogReq\032\037.sprintbacklo" +
-      "g.SprintBacklogRes\"\000\022g\n\023getAllSprintBack" +
-      "log\022%.sprintbacklog.GetAllSprintBacklogR" +
-      "eq\032%.sprintbacklog.GetAllSprintBacklogRe" +
-      "s\"\0000\001B(\n\020co.overlead.gRPCB\rsprintbacklog" +
-      "P\001\242\002\002sbb\006proto3"
+      "\n\023sprintbacklog.proto\022\rsprintbacklog\"\227\001\n" +
+      "\017UpdateSprintReq\022\023\n\013requesterId\030\001 \001(\t\022\021\n" +
+      "\tprojectId\030\002 \001(\t\022\021\n\tbacklogId\030\003 \001(\t\022\023\n\013a" +
+      "ccessToken\030\004 \001(\t\022\020\n\010sprintId\030\005 \001(\t\022\022\n\nsp" +
+      "rintName\030\006 \001(\t\022\016\n\006teamId\030\007 \001(\t\"x\n\026Delete" +
+      "SprintBacklogReq\022\023\n\013requesterId\030\001 \001(\t\022\021\n" +
+      "\tprojectId\030\002 \001(\t\022\021\n\tbacklogId\030\003 \001(\t\022\023\n\013a" +
+      "ccessToken\030\004 \001(\t\022\016\n\006teamId\030\005 \001(\t\"J\n\020Spri" +
+      "ntBacklogRes\022\016\n\006status\030\001 \001(\t\022\021\n\tbacklogI" +
+      "d\030\003 \001(\t\022\023\n\013backlogName\030\004 \001(\t\"e\n\026GetAllSp" +
+      "rintBacklogReq\022\023\n\013requesterId\030\001 \001(\t\022\021\n\tp" +
+      "rojectId\030\002 \001(\t\022\023\n\013accessToken\030\003 \001(\t\022\016\n\006t" +
+      "eamId\030\004 \001(\t\"\342\001\n\026GetAllSprintBacklogRes\022\r" +
+      "\n\005title\030\001 \001(\t\022\021\n\tbacklogId\030\002 \001(\t\022\014\n\004role" +
+      "\030\003 \001(\t\022\014\n\004want\030\004 \001(\t\022\n\n\002so\030\005 \001(\t\022\025\n\rstat" +
+      "usBacklog\030\013 \001(\t\022\020\n\010priority\030\006 \001(\t\022\022\n\nest" +
+      "imation\030\007 \001(\t\022\020\n\010sprintId\030\010 \001(\t\022\r\n\005start" +
+      "\030\014 \001(\t\022\020\n\010deadline\030\n \001(\t\022\016\n\006status\030\t \001(\t" +
+      "2\254\002\n\rSprintBacklog\022_\n\023deleteSprintBacklo" +
+      "g\022%.sprintbacklog.DeleteSprintBacklogReq" +
+      "\032\037.sprintbacklog.SprintBacklogRes\"\000\022g\n\023g" +
+      "etAllSprintBacklog\022%.sprintbacklog.GetAl" +
+      "lSprintBacklogReq\032%.sprintbacklog.GetAll" +
+      "SprintBacklogRes\"\0000\001\022Q\n\014updateSprint\022\036.s" +
+      "printbacklog.UpdateSprintReq\032\037.sprintbac" +
+      "klog.SprintBacklogRes\"\000B(\n\020co.overlead.g" +
+      "RPCB\rsprintbacklogP\001\242\002\002sbb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -77,26 +88,32 @@ public final class sprintbacklog {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_sprintbacklog_DeleteSprintBacklogReq_descriptor =
+    internal_static_sprintbacklog_UpdateSprintReq_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_sprintbacklog_UpdateSprintReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_sprintbacklog_UpdateSprintReq_descriptor,
+        new java.lang.String[] { "RequesterId", "ProjectId", "BacklogId", "AccessToken", "SprintId", "SprintName", "TeamId", });
+    internal_static_sprintbacklog_DeleteSprintBacklogReq_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_sprintbacklog_DeleteSprintBacklogReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sprintbacklog_DeleteSprintBacklogReq_descriptor,
         new java.lang.String[] { "RequesterId", "ProjectId", "BacklogId", "AccessToken", "TeamId", });
     internal_static_sprintbacklog_SprintBacklogRes_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_sprintbacklog_SprintBacklogRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sprintbacklog_SprintBacklogRes_descriptor,
-        new java.lang.String[] { "Status", "BacklogId", });
+        new java.lang.String[] { "Status", "BacklogId", "BacklogName", });
     internal_static_sprintbacklog_GetAllSprintBacklogReq_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_sprintbacklog_GetAllSprintBacklogReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sprintbacklog_GetAllSprintBacklogReq_descriptor,
         new java.lang.String[] { "RequesterId", "ProjectId", "AccessToken", "TeamId", });
     internal_static_sprintbacklog_GetAllSprintBacklogRes_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_sprintbacklog_GetAllSprintBacklogRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sprintbacklog_GetAllSprintBacklogRes_descriptor,

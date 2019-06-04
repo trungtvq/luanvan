@@ -18,6 +18,7 @@ private static final long serialVersionUID = 0L;
   private SprintBacklogRes() {
     status_ = "";
     backlogId_ = "";
+    backlogName_ = "";
   }
 
   @java.lang.Override
@@ -54,6 +55,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             backlogId_ = s;
+            break;
+          }
+          case 34: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            backlogName_ = s;
             break;
           }
           default: {
@@ -156,6 +163,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int BACKLOGNAME_FIELD_NUMBER = 4;
+  private volatile java.lang.Object backlogName_;
+  /**
+   * <code>string backlogName = 4;</code>
+   */
+  public java.lang.String getBacklogName() {
+    java.lang.Object ref = backlogName_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      backlogName_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string backlogName = 4;</code>
+   */
+  public com.google.protobuf.ByteString
+      getBacklogNameBytes() {
+    java.lang.Object ref = backlogName_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      backlogName_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -176,6 +217,9 @@ private static final long serialVersionUID = 0L;
     if (!getBacklogIdBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, backlogId_);
     }
+    if (!getBacklogNameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, backlogName_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -190,6 +234,9 @@ private static final long serialVersionUID = 0L;
     }
     if (!getBacklogIdBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, backlogId_);
+    }
+    if (!getBacklogNameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, backlogName_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -210,6 +257,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getStatus())) return false;
     if (!getBacklogId()
         .equals(other.getBacklogId())) return false;
+    if (!getBacklogName()
+        .equals(other.getBacklogName())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -225,6 +274,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getStatus().hashCode();
     hash = (37 * hash) + BACKLOGID_FIELD_NUMBER;
     hash = (53 * hash) + getBacklogId().hashCode();
+    hash = (37 * hash) + BACKLOGNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getBacklogName().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -362,6 +413,8 @@ private static final long serialVersionUID = 0L;
 
       backlogId_ = "";
 
+      backlogName_ = "";
+
       return this;
     }
 
@@ -390,6 +443,7 @@ private static final long serialVersionUID = 0L;
       co.overlead.gRPC.SprintBacklogRes result = new co.overlead.gRPC.SprintBacklogRes(this);
       result.status_ = status_;
       result.backlogId_ = backlogId_;
+      result.backlogName_ = backlogName_;
       onBuilt();
       return result;
     }
@@ -444,6 +498,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getBacklogId().isEmpty()) {
         backlogId_ = other.backlogId_;
+        onChanged();
+      }
+      if (!other.getBacklogName().isEmpty()) {
+        backlogName_ = other.backlogName_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -609,6 +667,75 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       backlogId_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object backlogName_ = "";
+    /**
+     * <code>string backlogName = 4;</code>
+     */
+    public java.lang.String getBacklogName() {
+      java.lang.Object ref = backlogName_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        backlogName_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string backlogName = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getBacklogNameBytes() {
+      java.lang.Object ref = backlogName_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        backlogName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string backlogName = 4;</code>
+     */
+    public Builder setBacklogName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      backlogName_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string backlogName = 4;</code>
+     */
+    public Builder clearBacklogName() {
+      
+      backlogName_ = getDefaultInstance().getBacklogName();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string backlogName = 4;</code>
+     */
+    public Builder setBacklogNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      backlogName_ = value;
       onChanged();
       return this;
     }

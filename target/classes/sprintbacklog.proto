@@ -9,6 +9,16 @@ package sprintbacklog;
 service SprintBacklog{
     rpc deleteSprintBacklog(DeleteSprintBacklogReq) returns (SprintBacklogRes) {}
 	rpc getAllSprintBacklog(GetAllSprintBacklogReq) returns (stream GetAllSprintBacklogRes){}
+	rpc updateSprint(UpdateSprintReq) returns (SprintBacklogRes){}
+}
+message UpdateSprintReq{
+	string requesterId = 1;
+	string projectId = 2;
+	string backlogId = 3;
+	string accessToken = 4;
+	string sprintId=5;
+	string sprintName=6;
+	string teamId=7;
 }
 
 message DeleteSprintBacklogReq{
@@ -21,6 +31,7 @@ message DeleteSprintBacklogReq{
 message SprintBacklogRes{
     string status = 1;
 	string backlogId=3;
+	string backlogName=4;
 }
 
 message GetAllSprintBacklogReq{

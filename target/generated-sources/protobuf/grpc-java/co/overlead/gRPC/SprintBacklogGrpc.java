@@ -91,6 +91,38 @@ public final class SprintBacklogGrpc {
      return getGetAllSprintBacklogMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateSprintReq,
+      co.overlead.gRPC.SprintBacklogRes> getUpdateSprintMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "updateSprint",
+      requestType = co.overlead.gRPC.UpdateSprintReq.class,
+      responseType = co.overlead.gRPC.SprintBacklogRes.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateSprintReq,
+      co.overlead.gRPC.SprintBacklogRes> getUpdateSprintMethod() {
+    io.grpc.MethodDescriptor<co.overlead.gRPC.UpdateSprintReq, co.overlead.gRPC.SprintBacklogRes> getUpdateSprintMethod;
+    if ((getUpdateSprintMethod = SprintBacklogGrpc.getUpdateSprintMethod) == null) {
+      synchronized (SprintBacklogGrpc.class) {
+        if ((getUpdateSprintMethod = SprintBacklogGrpc.getUpdateSprintMethod) == null) {
+          SprintBacklogGrpc.getUpdateSprintMethod = getUpdateSprintMethod = 
+              io.grpc.MethodDescriptor.<co.overlead.gRPC.UpdateSprintReq, co.overlead.gRPC.SprintBacklogRes>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "sprintbacklog.SprintBacklog", "updateSprint"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.UpdateSprintReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  co.overlead.gRPC.SprintBacklogRes.getDefaultInstance()))
+                  .setSchemaDescriptor(new SprintBacklogMethodDescriptorSupplier("updateSprint"))
+                  .build();
+          }
+        }
+     }
+     return getUpdateSprintMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -132,6 +164,13 @@ public final class SprintBacklogGrpc {
       asyncUnimplementedUnaryCall(getGetAllSprintBacklogMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void updateSprint(co.overlead.gRPC.UpdateSprintReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.SprintBacklogRes> responseObserver) {
+      asyncUnimplementedUnaryCall(getUpdateSprintMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -148,6 +187,13 @@ public final class SprintBacklogGrpc {
                 co.overlead.gRPC.GetAllSprintBacklogReq,
                 co.overlead.gRPC.GetAllSprintBacklogRes>(
                   this, METHODID_GET_ALL_SPRINT_BACKLOG)))
+          .addMethod(
+            getUpdateSprintMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                co.overlead.gRPC.UpdateSprintReq,
+                co.overlead.gRPC.SprintBacklogRes>(
+                  this, METHODID_UPDATE_SPRINT)))
           .build();
     }
   }
@@ -185,6 +231,14 @@ public final class SprintBacklogGrpc {
       asyncServerStreamingCall(
           getChannel().newCall(getGetAllSprintBacklogMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void updateSprint(co.overlead.gRPC.UpdateSprintReq request,
+        io.grpc.stub.StreamObserver<co.overlead.gRPC.SprintBacklogRes> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getUpdateSprintMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -219,6 +273,13 @@ public final class SprintBacklogGrpc {
       return blockingServerStreamingCall(
           getChannel(), getGetAllSprintBacklogMethod(), getCallOptions(), request);
     }
+
+    /**
+     */
+    public co.overlead.gRPC.SprintBacklogRes updateSprint(co.overlead.gRPC.UpdateSprintReq request) {
+      return blockingUnaryCall(
+          getChannel(), getUpdateSprintMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -246,10 +307,19 @@ public final class SprintBacklogGrpc {
       return futureUnaryCall(
           getChannel().newCall(getDeleteSprintBacklogMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<co.overlead.gRPC.SprintBacklogRes> updateSprint(
+        co.overlead.gRPC.UpdateSprintReq request) {
+      return futureUnaryCall(
+          getChannel().newCall(getUpdateSprintMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_DELETE_SPRINT_BACKLOG = 0;
   private static final int METHODID_GET_ALL_SPRINT_BACKLOG = 1;
+  private static final int METHODID_UPDATE_SPRINT = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -275,6 +345,10 @@ public final class SprintBacklogGrpc {
         case METHODID_GET_ALL_SPRINT_BACKLOG:
           serviceImpl.getAllSprintBacklog((co.overlead.gRPC.GetAllSprintBacklogReq) request,
               (io.grpc.stub.StreamObserver<co.overlead.gRPC.GetAllSprintBacklogRes>) responseObserver);
+          break;
+        case METHODID_UPDATE_SPRINT:
+          serviceImpl.updateSprint((co.overlead.gRPC.UpdateSprintReq) request,
+              (io.grpc.stub.StreamObserver<co.overlead.gRPC.SprintBacklogRes>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -339,6 +413,7 @@ public final class SprintBacklogGrpc {
               .setSchemaDescriptor(new SprintBacklogFileDescriptorSupplier())
               .addMethod(getDeleteSprintBacklogMethod())
               .addMethod(getGetAllSprintBacklogMethod())
+              .addMethod(getUpdateSprintMethod())
               .build();
         }
       }

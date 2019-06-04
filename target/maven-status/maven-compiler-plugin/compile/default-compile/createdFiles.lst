@@ -92,6 +92,7 @@ co\overlead\gRPC\AuthSessionReq.class
 examples\gRPC\GetBalanceReply$Builder.class
 co\overlead\gRPC\SendMsgRes$1.class
 co\overlead\gRPC\GetVelocityReqOrBuilder.class
+co\overlead\gRPC\UpdateSprintReq$1.class
 gRPC\sprintbacklog\SprintBacklog$SprintBacklogImpl.class
 gRPC\task\TeamTask$TeamTaskImpl.class
 co\overlead\gRPC\ProfileGrpc$MethodHandlers.class
@@ -210,6 +211,7 @@ examples\gRPC\CounterServiceGrpc$CounterServiceMethodDescriptorSupplier.class
 co\overlead\gRPC\UpdateProductBacklogReq$1.class
 examples\gRPC\GreeterGrpc$GreeterBlockingStub.class
 co\overlead\gRPC\GetAllMemberReq$Builder.class
+co\overlead\gRPC\UpdateSprintReq$Builder.class
 co\overlead\gRPC\SendMsgResOrBuilder.class
 co\overlead\gRPC\GetProfileReq$Builder.class
 helper\caching\chat\ChatCache.class
@@ -346,6 +348,7 @@ co\overlead\gRPC\UpdateTeamReq$Builder.class
 co\overlead\gRPC\VelocityGrpc.class
 com\example\grpc\Counterservice$BalanceRes.class
 co\overlead\gRPC\SignInGoogleReq$Builder.class
+co\overlead\gRPC\UpdateSprintReqOrBuilder.class
 gRPC\auth\AuthAccount$AuthImpl.class
 co\overlead\gRPC\AddNewTeamReq$1.class
 co\overlead\gRPC\TeamTaskGrpc$TeamTaskFileDescriptorSupplier.class
@@ -466,6 +469,7 @@ examples\gRPC\BalanceReply$Builder.class
 co\overlead\gRPC\GetAllSprintResOrBuilder.class
 co\overlead\gRPC\VelocityGrpc$1.class
 examples\gRPC\UserReqOrBuilder.class
+co\overlead\gRPC\UpdateSprintReq.class
 co\overlead\gRPC\SignUpReqOrBuilder.class
 co\overlead\gRPC\ResetReq.class
 co\overlead\gRPC\ChatGrpc$ChatMethodDescriptorSupplier.class

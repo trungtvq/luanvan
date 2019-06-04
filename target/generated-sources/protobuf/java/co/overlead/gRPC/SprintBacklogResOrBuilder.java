@@ -26,4 +26,14 @@ public interface SprintBacklogResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getBacklogIdBytes();
+
+  /**
+   * <code>string backlogName = 4;</code>
+   */
+  java.lang.String getBacklogName();
+  /**
+   * <code>string backlogName = 4;</code>
+   */
+  com.google.protobuf.ByteString
+      getBacklogNameBytes();
 }

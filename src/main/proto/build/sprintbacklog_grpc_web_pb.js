@@ -191,5 +191,60 @@ proto.sprintbacklog.SprintBacklogPromiseClient.prototype.getAllSprintBacklog =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.sprintbacklog.UpdateSprintReq,
+ *   !proto.sprintbacklog.SprintBacklogRes>}
+ */
+const methodInfo_SprintBacklog_updateSprint = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.sprintbacklog.SprintBacklogRes,
+  /** @param {!proto.sprintbacklog.UpdateSprintReq} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.sprintbacklog.SprintBacklogRes.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.sprintbacklog.UpdateSprintReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.sprintbacklog.SprintBacklogRes)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.sprintbacklog.SprintBacklogRes>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.sprintbacklog.SprintBacklogClient.prototype.updateSprint =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/sprintbacklog.SprintBacklog/updateSprint',
+      request,
+      metadata || {},
+      methodInfo_SprintBacklog_updateSprint,
+      callback);
+};
+
+
+/**
+ * @param {!proto.sprintbacklog.UpdateSprintReq} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.sprintbacklog.SprintBacklogRes>}
+ *     A native promise that resolves to the response
+ */
+proto.sprintbacklog.SprintBacklogPromiseClient.prototype.updateSprint =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/sprintbacklog.SprintBacklog/updateSprint',
+      request,
+      metadata || {},
+      methodInfo_SprintBacklog_updateSprint);
+};
+
+
 module.exports = proto.sprintbacklog;
 
