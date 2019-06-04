@@ -29,11 +29,11 @@ export default {
       url: '/ProductBacklog/Detail',
       icon: 'icon-pencil',
     },
-    {
-      name: 'Board planning',
-      url: '/Member/Velocity',
-      icon: 'icon-rocket',
-    },
+    // {
+    //   name: 'Board planning',
+    //   url: '/Member/Velocity',
+    //   icon: 'icon-rocket',
+    // },
      {
       title: true,
       name: 'Team member',

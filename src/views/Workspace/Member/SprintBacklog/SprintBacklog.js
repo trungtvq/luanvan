@@ -275,7 +275,7 @@ handleSortDeadlineUp=()=>{
                       <i class="fa fa-arrow-down" onClick={that.handleSortDeadlineDown}></i> */}
                     </th>
                     {/* <th>Status <i class="fa fa-sort"></i></th> */}
-                    <th></th>
+                    {/* <th></th> */}
                   </tr>
                   </thead>
                     <tbody>{this.state.currentData.map(function(item, key) {    
@@ -304,10 +304,10 @@ handleSortDeadlineUp=()=>{
                       {/* <td>{item.sprint}</td> */}
                       <td>{item.start}</td>
                       <td>{item.deadline}</td>
-                      <td>                        
+                      {/* <td>                        
                       <Button size="sm" color="danger" onClick={that.handleBackToProductbacklog}><i class="fa fa-trash"></i></Button>
                       <Button size="sm" color="success" onClick={that.handleComplete}><i class="fa fa-check"></i></Button>
-                      </td>
+                      </td> */}
                   </tr>
                 )
              
