@@ -2,29 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f9a08dc-0c6d-4d3c-a6b5-dcc619cb45e0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/auth_grpc_web_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/auth_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/chat_grpc_web_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/chat_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/dailyschedule_grpc_web_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/dailyschedule_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/myprofile_grpc_web_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/myprofile_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/myproject_grpc_web_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/myproject_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/mytask_grpc_web_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/mytask_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/productbacklog_grpc_web_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/productbacklog_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/sprintbacklog_grpc_web_pb.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/build/sprintbacklog_grpc_web_pb.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/sprintbacklog_pb.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/build/sprintbacklog_pb.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/team_grpc_web_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/team_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/userstory_grpc_web_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/userstory_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/velocity_grpc_web_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/build/velocity_pb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/sprintbacklog.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/sprintbacklog.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,28 +18,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/schedule/DailySchedule.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="98" column="97" selection-start-line="98" selection-start-column="97" selection-end-line="98" selection-end-column="97" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#deleteDailySchedule#0;class#DailyScheduleImpl#0;class#DailySchedule#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/task/MyTask.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -129,20 +86,50 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/proto/sprintbacklog.proto">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+            <state relative-caret-position="262">
+              <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="431">
+              <caret line="124" column="5" lean-forward="true" selection-start-line="124" selection-start-column="5" selection-end-line="124" selection-end-column="5" />
+              <folding>
+                <element signature="method#getAllSprintBacklog#0;class#SprintBacklogImpl#0;class#SprintBacklog#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="91" selection-start-line="91" selection-end-line="91" />
+            <state relative-caret-position="166">
+              <caret line="70" column="47" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/sprint/Sprint.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="145" column="5" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#deleteSprint#0;class#SprintImpl#0;class#Sprint#0" />
+                <element signature="method#addNewSprint#0;class#SprintImpl#0;class#Sprint#0" />
+                <element signature="method#getSprintIdInProject#0;class#SprintImpl#0;class#Sprint#0" />
+                <element signature="method#addNewSprint#1;class#SprintImpl#0;class#Sprint#0" />
+                <element signature="method#getSprintById#0;class#SprintImpl#0;class#Sprint#0" />
+                <element signature="method#getSprint#0;class#SprintImpl#0;class#Sprint#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -185,6 +172,7 @@
       <find>GetAllDailyScheduleReq</find>
       <find>c</find>
       <find>cc</find>
+      <find>&quot;sprintId&quot;</find>
     </findStrings>
     <replaceStrings>
       <replace>accessToken</replace>
@@ -206,7 +194,6 @@
         <option value="$PROJECT_DIR$/src/main/proto/velocity.proto" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/task/Velocity.java" />
         <option value="$PROJECT_DIR$/src/main/proto/productbacklog.proto" />
-        <option value="$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java" />
         <option value="$PROJECT_DIR$/src/main/proto/team.proto" />
         <option value="$PROJECT_DIR$/src/main/proto/mytask.proto" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/task/MyTask.java" />
@@ -217,7 +204,6 @@
         <option value="$PROJECT_DIR$/src/main/java/gRPC/project/MyProject.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/sprint/Sprint.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/profile/MyProfile.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java" />
         <option value="$PROJECT_DIR$/src/main/proto/teamtask.proto" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/task/TeamTask.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/project/MyProjectClient.java" />
@@ -228,6 +214,8 @@
         <option value="$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java" />
         <option value="$PROJECT_DIR$/src/main/java/gRPC/schedule/DailySchedule.java" />
         <option value="$PROJECT_DIR$/src/main/proto/sprintbacklog.proto" />
+        <option value="$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java" />
+        <option value="$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java" />
       </list>
     </option>
   </component>
@@ -245,7 +233,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -303,6 +290,24 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="gRPC" type="462c0819:PsiDirectoryNode" />
+              <item name="productbacklog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="luanvan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gRPC" type="462c0819:PsiDirectoryNode" />
+              <item name="sprint" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="luanvan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="gRPC" type="462c0819:PsiDirectoryNode" />
               <item name="sprintbacklog" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -316,6 +321,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -414,16 +420,18 @@
       <workItem from="1559183972451" duration="597000" />
       <workItem from="1559294032408" duration="4259000" />
       <workItem from="1559298846791" duration="167000" />
+      <workItem from="1559670373854" duration="1048000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109334000" />
+    <option name="totallyTimeSpent" value="110382000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14818764" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14978679" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" weight="0.32978722" />
@@ -438,7 +446,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32681563" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32583067" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32900432" />
@@ -626,19 +634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="208" column="76" selection-start-line="208" selection-start-column="68" selection-end-line="208" selection-end-column="76" />
-          <folding>
-            <element signature="method#addNewProductBacklog#0;class#ProductBacklogImpl#0;class#ProductBacklog#0" />
-            <element signature="method#sendToUserStory#0;class#ProductBacklogImpl#0;class#ProductBacklog#0" />
-            <element signature="method#updateProductBacklog#0;class#ProductBacklogImpl#0;class#ProductBacklog#0" />
-            <element signature="method#deleteProductBacklog#0;class#ProductBacklogImpl#0;class#ProductBacklog#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../client/src/views/Pages/Login/Login.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2958">
@@ -692,22 +687,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/sprint/Sprint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
-          <caret line="145" column="5" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#deleteSprint#0;class#SprintImpl#0;class#Sprint#0" />
-            <element signature="method#addNewSprint#0;class#SprintImpl#0;class#Sprint#0" />
-            <element signature="method#getSprintIdInProject#0;class#SprintImpl#0;class#Sprint#0" />
-            <element signature="method#addNewSprint#1;class#SprintImpl#0;class#Sprint#0" />
-            <element signature="method#getSprintById#0;class#SprintImpl#0;class#Sprint#0" />
-            <element signature="method#getSprint#0;class#SprintImpl#0;class#Sprint#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -780,6 +759,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/proto/counter.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/schedule/DailySchedule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="98" column="97" selection-start-line="98" selection-start-column="97" selection-end-line="98" selection-end-column="97" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#deleteDailySchedule#0;class#DailyScheduleImpl#0;class#DailySchedule#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/task/MyTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
@@ -829,38 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/proto/counter.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/chat/Chat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/schedule/DailySchedule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="98" column="97" selection-start-line="98" selection-start-column="97" selection-end-line="98" selection-end-column="97" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#deleteDailySchedule#0;class#DailyScheduleImpl#0;class#DailySchedule#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="91" selection-start-line="91" selection-end-line="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/database/Mongod.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -870,8 +842,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/proto/sprintbacklog.proto">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+        <state relative-caret-position="262">
+          <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/productbacklog/ProductBacklog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="70" column="47" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/sprint/Sprint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="145" column="5" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#deleteSprint#0;class#SprintImpl#0;class#Sprint#0" />
+            <element signature="method#addNewSprint#0;class#SprintImpl#0;class#Sprint#0" />
+            <element signature="method#getSprintIdInProject#0;class#SprintImpl#0;class#Sprint#0" />
+            <element signature="method#addNewSprint#1;class#SprintImpl#0;class#Sprint#0" />
+            <element signature="method#getSprintById#0;class#SprintImpl#0;class#Sprint#0" />
+            <element signature="method#getSprint#0;class#SprintImpl#0;class#Sprint#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gRPC/sprintbacklog/SprintBacklog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="124" column="5" lean-forward="true" selection-start-line="124" selection-start-column="5" selection-end-line="124" selection-end-column="5" />
+          <folding>
+            <element signature="method#getAllSprintBacklog#0;class#SprintBacklogImpl#0;class#SprintBacklog#0" />
+          </folding>
         </state>
       </provider>
     </entry>

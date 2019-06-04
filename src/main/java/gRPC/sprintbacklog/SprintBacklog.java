@@ -21,7 +21,7 @@ public class SprintBacklog {
             res.onCompleted();
         }
 
-        public void makeResponseForFailed(StreamObserver res, String status, String error) {
+        public void makeResponseForFailed(StreamObserver res, String status) {
             res.onNext(SprintBacklogRes.newBuilder().setStatus(status).build());
             res.onCompleted();
         }
@@ -33,15 +33,38 @@ public class SprintBacklog {
             //remove from team
             System.out.println("deleteSprintBacklog");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
-                makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
+                makeResponseForFailed(responseObserver, "AUTH_INVALID");
             } else {
                 List<Document> backlog= Mongod.collBacklog.find(new Document("_id", new ObjectId(request.getBacklogId()))).into(new ArrayList<>());
                 if (backlog.size() == 0) {
-                    makeResponseForFailed(responseObserver, "NOT_EXIST_BACKLOG", "FALSE");
+                    makeResponseForFailed(responseObserver, "NOT_EXIST_BACKLOG");
                 } else {
                     Mongod.collBacklog.findOneAndUpdate(new Document("_id", new ObjectId(request.getBacklogId())),
                             new Document("$set",
                                     new Document("isSprintBacklog", "false")));
+
+                    Mongod.collTeam.findOneAndUpdate(new Document("_id",new ObjectId(request.getTeamId())),
+                            new Document("$pull",
+                                    new Document("sprintbacklogs",request.getBacklogId())));
+
+                    makeResponseForUpdateSuccess(responseObserver, request.getBacklogId());
+                }
+            }
+        }
+
+        @Override
+        public void updateSprint(UpdateSprintReq request, StreamObserver<SprintBacklogRes> responseObserver) {
+            System.out.println("updateSprint");
+            if (!isValidAuth(request.getRequesterId(),request.getAccessToken()))
+                makeResponseForFailed(responseObserver,"AUTH_INVALID");
+            else{
+                List<Document> backlog= Mongod.collBacklog.find(new Document("_id", new ObjectId(request.getBacklogId()))).into(new ArrayList<>());
+                if (backlog.size() == 0) {
+                    makeResponseForFailed(responseObserver, "NOT_EXIST_BACKLOG");
+                } else {
+                    Mongod.collBacklog.findOneAndUpdate(new Document("_id", new ObjectId(request.getBacklogId())),
+                            new Document("$set",
+                                    new Document("sprintId", request.getSprintId()).append("sprintName",request.getSprintName())));
 
                     Mongod.collTeam.findOneAndUpdate(new Document("_id",new ObjectId(request.getTeamId())),
                             new Document("$pull",
@@ -60,15 +83,15 @@ public class SprintBacklog {
             //get BACKLOG from id of list in previous step
             System.out.println("getAllSprintBacklog");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
-                makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
+                makeResponseForFailed(responseObserver, "AUTH_INVALID");
             } else {
                 List<Document> team = Mongod.collTeam.find(new Document("_id", new ObjectId(request.getTeamId()))).into(new ArrayList<>());
                 if (team.size()==0) {
-                    makeResponseForFailed(responseObserver, "TEAM_NOT_FOUND", "FALSE");
+                    makeResponseForFailed(responseObserver, "TEAM_NOT_FOUND");
                 } else {
                     List<String> backlogList = (List<String>) team.get(0).get("sprintbacklogs");
                     if (backlogList== null) {
-                        makeResponseForFailed(responseObserver, "EMPTY", "FALSE");
+                        makeResponseForFailed(responseObserver, "EMPTY");
                     } else {
                         backlogList.forEach(i -> {
                            List<Document>  result = Mongod.collBacklog.find(

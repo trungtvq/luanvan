@@ -26,8 +26,8 @@ public class ProductBacklog {
             res.onCompleted();
         }
 
-        public void makeResponseForFailed(StreamObserver res, String status, String error) {
-            res.onNext(ProductBacklogRes.newBuilder().setStatus(status).setError(error).build());
+        public void makeResponseForFailed(StreamObserver res, String status) {
+            res.onNext(ProductBacklogRes.newBuilder().setStatus(status).build());
             res.onCompleted();
         }
 
@@ -48,7 +48,7 @@ public class ProductBacklog {
         public void addNewProductBacklog(AddNewProductBacklogReq request, StreamObserver<ProductBacklogRes> responseObserver) {
             System.out.println("addNewProductBacklog");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
-                makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
+                makeResponseForFailed(responseObserver, "AUTH_INVALID");
             } else {
 
                 List<Document> project = Mongod.collProject.find(
@@ -56,7 +56,7 @@ public class ProductBacklog {
                                 .into(new ArrayList<>());
 
                 if (project.size() == 0) {
-                    makeResponseForFailed(responseObserver, "NOT_EXIST_PROJECT", "FALSE");
+                    makeResponseForFailed(responseObserver, "NOT_EXIST_PROJECT");
                 } else {
                     //exist Project
                     Date createTime = new Date();
@@ -79,7 +79,7 @@ public class ProductBacklog {
                     Document newBacklog = Mongod.collBacklog.find(newDoc).into(new ArrayList<>()).get(0);
                     //create query
                     if (newBacklog == null) {
-                        makeResponseForFailed(responseObserver, "DB_ERROR", "FALSE");
+                        makeResponseForFailed(responseObserver, "DB_ERROR");
                     } else {
                             Mongod.collProject.findOneAndUpdate(new Document("_id",new ObjectId(request.getProjectId())),
                                     new Document("$push",
@@ -95,7 +95,7 @@ public class ProductBacklog {
         public void sendToUserStory(SendToSprintBacklogReq request, StreamObserver<ProductBacklogRes> responseObserver) {
             System.out.println("updateProductBacklog");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
-                makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
+                makeResponseForFailed(responseObserver, "AUTH_INVALID");
             } else {
                 List<Document> found=Mongod.collBacklog.find(new Document()
                         .append("_id",new ObjectId(request.getProductBacklogId()))
@@ -104,7 +104,7 @@ public class ProductBacklog {
                         .append("isSprintBacklog","false")).into(new ArrayList<>());
                 //create query
                 if (found.size()==0) {
-                    makeResponseForFailed(responseObserver, "NOT_FOUND_DATA", "FALSE");
+                    makeResponseForFailed(responseObserver, "NOT_FOUND_DATA");
                 } else {
 
 
@@ -124,7 +124,7 @@ public class ProductBacklog {
         public void updateProductBacklog(UpdateProductBacklogReq request, StreamObserver<ProductBacklogRes> responseObserver) {
             System.out.println("updateProductBacklog");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
-                makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
+                makeResponseForFailed(responseObserver, "AUTH_INVALID");
             } else {
                 List<Document> found=Mongod.collBacklog.find(new Document()
                         .append("_id",new ObjectId(request.getProductBacklogId()))
@@ -133,7 +133,7 @@ public class ProductBacklog {
                         .append("isSprintBacklog","false")).into(new ArrayList<>());
                 //create query
                 if (found.size()==0) {
-                    makeResponseForFailed(responseObserver, "NOT_FOUND_DATA", "FALSE");
+                    makeResponseForFailed(responseObserver, "NOT_FOUND_DATA");
                 } else {
                     System.out.println("SUCCESS");
                     System.out.println(request.getRole());
@@ -168,7 +168,7 @@ public class ProductBacklog {
         public void deleteProductBacklog(DeleteProductBacklogReq request, StreamObserver<ProductBacklogRes> responseObserver) {
             System.out.println("deleteProductBacklog");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
-                makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
+                makeResponseForFailed(responseObserver, "AUTH_INVALID");
             } else {
 
                 DeleteResult result= Mongod.collBacklog.deleteOne(new Document("_id",new ObjectId(request.getProductBacklogId())).append("isUS","false").append("isSprintBacklog","false"));
@@ -180,7 +180,7 @@ public class ProductBacklog {
                     makeResponseForUpdateSuccess(responseObserver,request.getProductBacklogId());
 
                 }else{
-                    makeResponseForFailed(responseObserver, "NOT_FOUND_DELETE", "FALSE");
+                    makeResponseForFailed(responseObserver, "NOT_FOUND_DELETE");
                     System.out.println("NOT_FOUND_DELETE");
 
                 }
@@ -196,11 +196,11 @@ public class ProductBacklog {
             //add id of backlog to backlog list of TEAM
             System.out.println("sendToSprintBacklog");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
-                makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
+                makeResponseForFailed(responseObserver, "AUTH_INVALID");
             } else {
                 List<Document> get=Mongod.collTeam.find(new Document("_id",new ObjectId(request.getTeamId()))).into(new ArrayList<>());
                 if (get.size()==0){
-                    makeResponseForFailed(responseObserver,"NOT_EXIST_PROJECT","FALSE");
+                    makeResponseForFailed(responseObserver,"NOT_EXIST_TEAM");
                 }else{
 
                     Mongod.collBacklog.findOneAndUpdate(new Document("_id",new ObjectId(request.getProductBacklogId())),
@@ -221,16 +221,16 @@ public class ProductBacklog {
         @Override
         public void getAllProductBacklog(GetAllProductBacklogReq request, StreamObserver<GetAllProductBacklogRes> responseObserver) {
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
-                makeResponseForFailed(responseObserver, "AUTH_INVALID", "TRUE");
+                makeResponseForFailed(responseObserver, "AUTH_INVALID");
             } else {
 
                 List<Document> listId= Mongod.collProject.find(new Document("_id",new ObjectId(request.getProjectId()))).into(new ArrayList<>());
                 if (listId.size()==0){
-                    makeResponseForFailed(responseObserver,"NOT_FOUND_PROJECT","FALSE");
+                    makeResponseForFailed(responseObserver,"NOT_FOUND_PROJECT");
                 }else{
                     List<String> re=(List<String>)listId.get(0).get("backlogs");
                     if (re.size()==0){
-                        makeResponseForFailed(responseObserver,"EMPTY","FALSE");
+                        makeResponseForFailed(responseObserver,"EMPTY");
                     }else{
                         System.out.println(re);
                         re.forEach(i->{
