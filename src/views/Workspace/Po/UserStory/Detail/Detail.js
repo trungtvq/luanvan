@@ -479,10 +479,10 @@ handleShowAll=()=>{
                             <Form className="form-horizontal">
                               <FormGroup row>
                                 <Col md="3">
-                                  <Label htmlFor="text-input">Name</Label>
+                                  <Label htmlFor="text-input">Title</Label>
                                 </Col>
                                 <Col xs="12" md="9">
-                                  <Input type="text" id="name" name="name" placeholder="name" value={that.state.name} onChange={that.onTextboxChangename} />
+                                  <Input type="text" id="name" name="name" placeholder="title" value={that.state.name} onChange={that.onTextboxChangename} />
 
                                 </Col>
                               </FormGroup>

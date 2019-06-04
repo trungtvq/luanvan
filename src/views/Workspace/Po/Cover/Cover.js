@@ -26,7 +26,8 @@ import {
   PaginationLink,
 } from 'reactstrap';
 import DatePicker from "react-datepicker";
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import cookie from 'react-cookies';
 const proto = {};
@@ -219,7 +220,8 @@ class Cover extends Component {
     console.log("toBacklog")
     const userstoryService = new proto.userstory.UserStoryClient('https://www.overlead.co');
     var metadata = {};
-
+    this.notify();
+    let that = this
     var SendToProductBacklogReq = new proto.userstory.SendToProductBacklogReq();
     SendToProductBacklogReq.setRequesterid(getFromStorage("userId"));
     SendToProductBacklogReq.setProjectid(getFromStorage("currentProject"));
@@ -235,33 +237,30 @@ class Cover extends Component {
         console.log(err);
       } else {
         if (response.getStatus() == "SUCCESS") {
-
+          that.success();
           this.setState(prevState => ({
             dataUserStory: [...prevState.dataUserStory.filter(function (e) { return e.id != item.id; })],
             dataProductBacklog: [...prevState.dataProductBacklog, { id: item.id, title: item.title, as: item.as, want: item.want, so: item.so, priority: item.priority, estimation: item.estimation, sprint: item.sprint }]
           }));
           this.setState({
-            modalActionStatus: true,
-            actionStatus: 'SUCCESS',
             priorityUserstory: '',
             estimationUserstory: '',
             sprintUserstory: '',
           });
         
         } else {
-          this.setState({
-            modalActionStatus: true,
-            actionStatus: 'FAIL',
-          });
+          that.failed();
 
         }
       }
     });
-
+  
 
   }
   handleBacklogToStory = (item) => {
     console.log("to US")
+    this.notify();
+    let that=this;
     const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
     var metadata = {};
     var SendToSprintBacklogReq = new proto.productbacklog.SendToSprintBacklogReq();
@@ -274,7 +273,7 @@ class Cover extends Component {
         console.log(err);
       } else {
         if (response.getStatus() == "SUCCESS") {
-
+          this.success();
           this.setState(prevState => ({
             dataProductBacklog:
               [...prevState.dataProductBacklog.filter(function (e) { return e.id != item.id; })],
@@ -290,21 +289,19 @@ class Cover extends Component {
                 estimation: '', sprint: ''
               }]
           })); 
-          this.setState({
-            modalActionStatus: true,
-            actionStatus: 'SUCCESS',
-          });
+         
         
         } else {
-          this.setState({
-            modalActionStatus: true,
-            actionStatus: 'FAIL',
-          });
+         that.failed();
 
         }
       }
     });
   };
+  toastId = null;
+  notify = () => this.toastId = toast("Processing... please wait...", { autoClose: false });
+  success = () => toast.update(this.toastId, { render: "Success", type: toast.TYPE.SUCCESS, autoClose: 3000 });
+  failed = () => toast.update(this.toastId, { render: "Failed", type: toast.TYPE.ERROR, autoClose: 3000 });
   render() {
     let that = this;
     return (
@@ -333,7 +330,7 @@ class Cover extends Component {
                             <div class="col col-lg-2 col-md-2 col-sm-2">
                               <Label htmlFor="text-input">Priority</Label>
                             </div>
-                            <div class="col col-lg-2 col-md-2 col-sm-2">
+                            <div class="col col-lg-4 col-md-4 col-sm-4">
                               <Input type="text" name="text-input" id="text-input" rows="9" value={item.priority} onChange={e => { that.onTextboxChangePriorityUserstory(e, item.title) }} />
                             </div>
 
@@ -342,18 +339,18 @@ class Cover extends Component {
                             <div class="col col-lg-2 col-md-2 col-sm-2">
                               <Label htmlFor="text-input">Estimation</Label>
                             </div>
-                            <div class="col col-lg-2 col-md-2 col-sm-2">
-                              <Input type="text" name="text-input" id="text-input" rows="9" value={item.estimation} onChange={e => { that.onTextboxChangeEstimationUserstory(e, item.title) }} />
+                            <div class="col col-lg-4 col-md-4 col-sm-4">
+                              <Input type="text" name="text-input" id="text-input" placeholder="hour" rows="9" value={item.estimation} onChange={e => { that.onTextboxChangeEstimationUserstory(e, item.title) }} />
                             </div>
 
 
 
-                            <div class="col col-lg-1 col-md-1 col-sm-1">
+                            {/* <div class="col col-lg-1 col-md-1 col-sm-1">
                               <Label htmlFor="text-input">Sprint</Label>
                             </div>
                             <div class="col col-lg-2 col-md-2 col-sm-2">
                               <Input type="text" name="text-input" id="text-input" rows="9" value={item.sprint} onChange={e => { that.onTextboxChangeSprintUserstory(e, item.title) }} />
-                            </div>
+                            </div> */}
                           </div>
                           <Button size="sm" color="success" align="center" onClick={() => { that.handleStoryToBacklog(item) }}><i class="fa fa-arrow-right"></i></Button>
                         </CardBody>
@@ -386,7 +383,7 @@ class Cover extends Component {
                             <div class="col col-lg-2 col-md-2 col-sm-2">
                               <Label htmlFor="text-input">Priority</Label>
                             </div>
-                            <div class="col col-lg-2 col-md-2 col-sm-2">
+                            <div class="col col-lg-4 col-md-4 col-sm-4">
                               <Input type="text" name="text-input" id="text-input" rows="9" value={item.priority} onChange={e => { that.onTextboxChangePriorityProductBacklog(e, item.title) }} />
                             </div>
 
@@ -394,18 +391,12 @@ class Cover extends Component {
                             <div class="col col-lg-2 col-md-2 col-sm-2">
                               <Label htmlFor="text-input">Estimation</Label>
                             </div>
-                            <div class="col col-lg-2 col-md-2 col-sm-2">
+                            <div class="col col-lg-4 col-md-4 col-sm-4">
                               <Input type="text" name="text-input" id="text-input" rows="9" value={item.estimation} onChange={e => { that.onTextboxChangeEstimationProductBacklog(e, item.title) }} />
                             </div>
 
 
-                            <div class="col col-lg-1 col-md-1 col-sm-1">
-                              <Label htmlFor="text-input">Sprint</Label>
-                            </div>
-                            <div class="col col-lg-2 col-md-2 col-sm-2">
-                              <Input type="text" name="text-input" id="text-input" rows="9" value={item.sprint} onChange={e => { that.onTextboxChangeSprintProductBacklog(e, item.title) }} />
-                            </div>
-
+                           
                           </div>
                           <Button size="sm" color="success" align="center" onClick={() => { that.handleBacklogToStory(item) }}><i class="fa fa-arrow-left"></i></Button>
                         </CardBody>

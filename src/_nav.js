@@ -29,6 +29,11 @@ export default {
       url: '/ProductBacklog/Detail',
       icon: 'icon-pencil',
     },
+    {
+      name: 'Board planning',
+      url: '/Member/Velocity',
+      icon: 'icon-rocket',
+    },
      {
       title: true,
       name: 'Team member',
@@ -39,11 +44,7 @@ export default {
       class: ''             // optional class names space delimited list for title item ex: "text-center"
     },
     
-     {
-      name: 'Board planning',
-      url: '/Member/Velocity',
-      icon: 'icon-rocket',
-    },
+    
      {
       name: 'SprintBacklog',
       url: '/Member/SprintBacklog',

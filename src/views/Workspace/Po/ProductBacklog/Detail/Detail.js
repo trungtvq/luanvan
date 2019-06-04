@@ -659,11 +659,11 @@ handleShowAll=()=>{
                       <i class="fa fa-arrow-up" onClick={that.handleSortEstimationUp}></i>
                       <i class="fa fa-arrow-down" onClick={that.handleSortEstimationDown}></i>
                     </th>
-                    <th>
+                    {/* <th>
                       Sprint 
                       <i class="fa fa-arrow-up" onClick={that.handleSortSprintUp}></i>
                       <i class="fa fa-arrow-down" onClick={that.handleSortSprintDown}></i>
-                    </th>
+                    </th> */}
                    
                     <th>
                       <div>
@@ -769,7 +769,7 @@ handleShowAll=()=>{
                       <td>{item.so}</td>
                       <td>{item.priority}</td>
                       <td>{item.estimation}</td>
-                      <td>{item.sprint}</td>
+                      {/* <td>{item.sprint}</td> */}
                       {/* <td>{item.status}</td> */}
                       <td>
                         <div data-id={item.id}  onClick={that.toggleSendOpen}>

@@ -267,12 +267,12 @@ handleSortDeadlineUp=()=>{
                       <i class="fa fa-arrow-down" onClick={that.handleSortSprintDown}></i>
                     </th>
                     <th>Start 
-                      <i class="fa fa-arrow-up" onClick={that.handleSortStartUp}></i>
-                      <i class="fa fa-arrow-down" onClick={that.handleSortStartDown}></i>
+                      {/* <i class="fa fa-arrow-up" onClick={that.handleSortStartUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortStartDown}></i> */}
                     </th>
                     <th>Deadline 
-                      <i class="fa fa-arrow-up" onClick={that.handleSortDeadlineUp}></i>
-                      <i class="fa fa-arrow-down" onClick={that.handleSortDeadlineDown}></i>
+                      {/* <i class="fa fa-arrow-up" onClick={that.handleSortDeadlineUp}></i>
+                      <i class="fa fa-arrow-down" onClick={that.handleSortDeadlineDown}></i> */}
                     </th>
                     {/* <th>Status <i class="fa fa-sort"></i></th> */}
                     <th></th>

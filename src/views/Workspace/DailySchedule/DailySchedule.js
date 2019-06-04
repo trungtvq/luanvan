@@ -284,7 +284,7 @@ class DailySchedule extends Component {
                   <Col md="3">
                     <Label htmlFor="textarea-input">Description</Label>
                   </Col>
-                  <Col xs="12" md="9">
+                  <Col xs="3" md="3">
                     <Input type="textarea" name="description" id="description" rows="3"
                       placeholder="Description..." value={this.state.task} onChange={that.onTextboxChangeDescription} />
                   </Col>
