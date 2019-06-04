@@ -13,7 +13,6 @@ const proto = {};
 proto.chat = require('./../gRPC/chat/chat_grpc_web_pb');
 class Chat extends Component {
   componentDidMount() {
-    addResponseMessage("Welcome to this awesome chat!");
 
     this.fetchChat()
   }
@@ -25,7 +24,7 @@ class Chat extends Component {
     var SendMsgReq = new proto.chat.SendMsgReq();
     SendMsgReq.setRequesterid(getFromStorage("userId"));
     SendMsgReq.setAccesstoken(getFromStorage("accessToken"));
-    SendMsgReq.setChannelid(getFromStorage("currentProject"));
+    SendMsgReq.setChannelid(getFromStorage("teamId"));
     //SendMsgReq.setChannelid(getFromStorage("currentProject"));
     SendMsgReq.setName(getFromStorage("name"))
     let that = this
@@ -77,9 +76,9 @@ class Chat extends Component {
       <div className="App">
         <Widget
           handleNewUserMessage={this.handleNewUserMessage}
-          profileAvatar={logo}
-          title={getFromStorage("currentProject")}
-          subtitle="And my cool subtitle"
+          profileAvatar={getFromStorage("avatar")}
+          title={'Conversation team "'+ getFromStorage("teamName")+'"'}
+          subtitle="Let's help your team"
         />
       </div>
     );

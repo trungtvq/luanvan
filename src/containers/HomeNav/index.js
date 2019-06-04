@@ -301,6 +301,7 @@ class HomeTopNav extends React.Component {
 
     return (
       <div className={classes.root}>
+
         <Modal size="sm" isOpen={that.state.modalActionStatus} toggle={that.toggleActionStatus} className={that.props.className}>
           <ModalBody>
             <center><h4>{that.state.actionStatus}</h4></center>

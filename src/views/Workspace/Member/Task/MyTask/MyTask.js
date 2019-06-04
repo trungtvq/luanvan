@@ -1,35 +1,18 @@
 import React, { Component } from 'react';
 import 'react-dual-listbox/lib/react-dual-listbox.css';
-import DualListBox from 'react-dual-listbox';
 import { 
-Form,
-FormGroup,
-Label,
 Card,
-CardBody, 
-CardFooter,
-CardHeader,
-Collapse,
-Progress, 
-Badge, 
 Button, 
 Col, 
-Container, 
 Input, 
-InputGroup, 
-InputGroupAddon, 
-InputGroupText, 
 Row, 
-Table, 
-Pagination, 
-PaginationItem,
-ListGroup,
-ListGroupItem,
-PaginationLink, } from 'reactstrap';
+ } from 'reactstrap';
 import {
   getFromStorage,
   setInStorage
 } from '../../../../../service/storage'
+import Chat from '../../../../../service/chat'
+
 const proto = {};
 proto.mytask = require('../../../../../gRPC/mytask/mytask_grpc_web_pb');
 
@@ -124,7 +107,9 @@ response.on('end', function (end) {
   render() {
 
         return (
-           <Row>
+          <div>
+            <Chat />
+             <Row>
           <Col>         
          
             
@@ -173,6 +158,7 @@ response.on('end', function (end) {
            </Card>
             </Col>
             </Row>
+            </div>
         );
     }
 }

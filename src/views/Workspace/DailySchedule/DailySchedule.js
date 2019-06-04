@@ -20,6 +20,7 @@ import {
   setInStorage
 } from '../../../service/storage'
 import { toast } from 'react-toastify';
+import Chat from '../../../service/chat'
 
 const proto = {};
 proto.dailyschedule = require('./../../../gRPC/dailyschedule/dailyschedule_grpc_web_pb');
@@ -168,7 +169,7 @@ class DailySchedule extends Component {
               id: response.getScheduleid(),
               title: this.state.title,
               description: this.state.description,
-              status: "Todos"
+              status: "Todo"
             }]
           }));
 
@@ -263,6 +264,8 @@ class DailySchedule extends Component {
 
 
     return (
+      <div>
+        <Chat />
       <Row>
        
         <Col>
@@ -333,7 +336,7 @@ class DailySchedule extends Component {
 
                         <Input type="select" name="select" id={item.id} onChange={that.onTextboxChangeStatus}>
                           <option value={item.status}>{item.status}</option>
-                          <option value="Todos">Todos</option>
+                          <option value="Todo">Todo</option>
                           <option value="Processing">Processing</option>
                           <option value="Done">Done</option>
                         </Input>
@@ -353,6 +356,7 @@ class DailySchedule extends Component {
         </Col>
     
       </Row>
+      </div>
 
     );
   }

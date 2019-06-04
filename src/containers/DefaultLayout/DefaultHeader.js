@@ -34,7 +34,9 @@ class DefaultHeader extends Component {
 
     }
   };
-
+  componentDidMount(){
+    console.log("didmount")
+  }
   onLogout = (e) => {
     this.props.dispatch(removeLogin())
     setInStorage("userId", "")
@@ -195,18 +197,10 @@ class DefaultHeader extends Component {
 
         <AppSidebarToggler className="d-md-down-none" display="lg" />
 
-        <Nav className="d-md-down-none" navbar>
-          <NavItem className="px-3">
-            <Link to="/users">Users</Link>
-          </NavItem>
-          <NavItem className="px-3">
-            <NavLink href="#">Settings</NavLink>
-          </NavItem>
-          <NavItem className="px-3">
-            <Link to="/myproject">Myprojects</Link>
-          </NavItem>
+        <Nav className="d-md-down-none" navbar>        
+         
 
-
+          <NavItem>Current Project:</NavItem>
           <NavItem className="px-3">
             <Input type="select" name="select" id="select" onChange={that.changeProject}>
               <option value={currentProjectId} >{currentProjectName}</option>
@@ -218,6 +212,7 @@ class DefaultHeader extends Component {
               })}
             </Input>
           </NavItem>
+          <NavItem>Current Team: </NavItem>
           <NavItem className="px-3">
             {
              
@@ -243,6 +238,9 @@ class DefaultHeader extends Component {
 
             }
             
+          </NavItem>
+          <NavItem className="px-3">
+            <Link to="/myproject">All Projects</Link>
           </NavItem>
         </Nav>
         <Nav className="ml-auto" navbar>

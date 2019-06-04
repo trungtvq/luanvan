@@ -15,7 +15,6 @@ import {
   getFromStorage,
   setInStorage
 } from '../../../../../service/storage'
-import DatePicker from "react-datepicker";
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -47,7 +46,7 @@ class Detail extends Component {
 
       search:'',
       currentSearch:'',
-      positionsort:''
+      positionsort:'',
     }
   };
   componentDidMount() {
@@ -159,13 +158,7 @@ class Detail extends Component {
       modalSend: !prevState.modalSend
     }));
   }
-  toggleSendOpen = (event) => {
-    let id=event.currentTarget.dataset.id
-    this.setState(prevState => ({
-      modalSend: !prevState.modalSend,
-      backlogSendId: id
-    }));
-  }
+
   onTextboxChangeRole = (event) => {
     this.setState({
       role: event.target.value,
@@ -264,6 +257,19 @@ class Detail extends Component {
                   sprint: this.state.sprint,
                   status: this.state.status
                 }],
+                data: [...prevState.currentData,
+                  {
+                    id: response.getProductbacklogid(),
+                    title: this.state.title,
+                    role: this.state.role,
+                    want: this.state.want,
+                    so: this.state.so,
+                    priority: this.state.priority,
+                    estimation: this.state.estimation,
+                    id: response.getProductbacklogid(),
+                    sprint: this.state.sprint,
+                    status: this.state.status
+                  }],
               }));
               
               if(this.state.positionSort=='titleUp')
@@ -336,15 +342,10 @@ class Detail extends Component {
       }
     });
   };
-  handleDelete = (event) => {
-    let id = event.currentTarget.dataset.id
+  handleDelete = (id) => {
     this.notify()
-    console.log("handleDelete")
-
     const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
-
     var metadata = {};
-    //make a request to server
 
     var DeleteProductBacklogReq = new proto.productbacklog.DeleteProductBacklogReq();
     DeleteProductBacklogReq.setRequesterid(getFromStorage("userId"));
@@ -358,7 +359,12 @@ class Detail extends Component {
       } else {
         if (response.getStatus() == "SUCCESS") {
           that.success()
-          this.setState(prevState => ({ data: [...prevState.data.filter(function (e) { return e.id !== id; })] }));
+          this.setState(prevState => ({ 
+            data: [...prevState.data.filter(function (e) { return e.id !== id; })],
+            currentData:  [...prevState.currentData.filter(function (e) { return e.id !== id; })]
+           })
+            
+            );
         } else {
           that.failed()
         }
@@ -407,21 +413,7 @@ class Detail extends Component {
               }
               : p
           );
-          const tmpCurrentData = this.state.currentData.map(p =>
-            p.id == this.state.updateId
-              ? {
-                ...p,
-                role: this.state.role,
-                want: this.state.want,
-                priority: this.state.priority,
-                estimation: this.state.estimation,
-                status: this.state.status,
-                sprint: this.state.sprint,
-                so: this.state.so,
-                
-              }
-              : p
-          );
+          
           {  
             if(this.state.positionSort=='titleUp')
             {
@@ -466,7 +458,7 @@ class Detail extends Component {
           }
           this.setState(prevState => ({ 
             data: tmpdata,
-            currentData:tmpCurrentData,
+            currentData:tmpdata,
             modalEdit:false,
           }));
 
@@ -476,8 +468,8 @@ class Detail extends Component {
       }
     });
   };
-  handleSend = () => {
-    console.log(this.state.backlogSendId)
+  handleSend = (id) => {
+    console.log(id)
     const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
     this.notify()
     var metadata = {};
@@ -492,7 +484,7 @@ class Detail extends Component {
     var SendToSprintBacklogReq = new proto.productbacklog.SendToSprintBacklogReq();
     SendToSprintBacklogReq.setRequesterid(getFromStorage("userId"));
     SendToSprintBacklogReq.setProjectid(getFromStorage("currentProject"));
-    SendToSprintBacklogReq.setProductbacklogid(this.state.backlogSendId);
+    SendToSprintBacklogReq.setProductbacklogid(id);
     SendToSprintBacklogReq.setStart(start);
     SendToSprintBacklogReq.setDeadline(end);
     SendToSprintBacklogReq.setTeamid(getFromStorage('teamId'));
@@ -505,8 +497,8 @@ class Detail extends Component {
         if (response.getStatus() == "SUCCESS") {
           that.success()
           that.setState(prevState => ({ 
-            data: [...prevState.data.filter(function (e) { return e.id !== that.state.backlogSendId; })],
-            currentData: [...prevState.currentData.filter(function (e) { return e.id !== that.state.backlogSendId; })] 
+            data: [...prevState.data.filter(function (e) { return e.id !== id; })],
+            currentData: [...prevState.currentData.filter(function (e) { return e.id !== id; })],
           }));
         } else {
          that.failed()
@@ -514,7 +506,12 @@ class Detail extends Component {
       }
 
     });
+
   };
+  componentDidUpdate(){
+    console.log("didupdate")
+    console.log(this.state.data)
+  }
   onChangeStartDate = (date) => {
     this.setState({
       startDate: date
@@ -616,7 +613,8 @@ handleShowAll=()=>{
   });
 }
   render() {
-
+    console.log(this.state.data)
+    console.log(this.state.data)
     let that = this;
     return (
       <Row>
@@ -772,11 +770,11 @@ handleShowAll=()=>{
                       {/* <td>{item.sprint}</td> */}
                       {/* <td>{item.status}</td> */}
                       <td>
-                        <div data-id={item.id}  onClick={that.toggleSendOpen}>
-                        <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"></i></Button>
+                        <div data-id={item.id}  onClick={()=>that.handleSend(item.id)}>
+                        <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"> Move to Sprint Backlog</i></Button>
                         </div>
-                        <Modal size="lg" isOpen={that.state.modalSend} toggle={that.toggleSend} className={that.props.className}>
-                          <ModalHeader toggle={that.toggleSend}>ProductBacklog</ModalHeader>
+                        {/* <Modal size="lg" isOpen={that.state.modalSend} toggle={that.toggleSend} className={that.props.className}>
+                          <ModalHeader toggle={that.toggleSend}>Product Backlog</ModalHeader>
                           <ModalBody>
                             <div class="card  bg-primary mb-3">
                               <div class="card-body">
@@ -829,7 +827,7 @@ handleShowAll=()=>{
                             <Button color="primary" onClick={that.handleSend}>Submit</Button>{' '}
                             <Button color="secondary" onClick={that.toggleSend}>Cancel</Button>
                           </ModalFooter>
-                        </Modal>
+                        </Modal> */}
 
                         {/* update */}
                         <div data-id={item.id} data-title={item.title} data-role={item.role} data-want={item.want} 
@@ -920,7 +918,7 @@ handleShowAll=()=>{
                         
 
                         {/* delete */}
-                        <div data-id={item.id} onClick={that.handleDelete}><Button size="sm" color="danger" ><i class="fa fa-trash"></i></Button></div>
+                        <div data-id={item.id} onClick={()=>that.handleDelete(item.id)}><Button size="sm" color="danger" ><i class="fa fa-trash"></i></Button></div>
                       </td>
                     </tr>
                   )

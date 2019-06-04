@@ -33,7 +33,6 @@ class DefaultLayout extends Component {
   }
 
   render() {
-    console.log("loginlayout")
     return (
       <div className="app">
         <AppHeader fixed>

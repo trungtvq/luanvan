@@ -27,7 +27,6 @@ import {
 
   ModalFooter
 } from 'reactstrap';
-import Chat from '../../../../service/chat'
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -345,7 +344,6 @@ class MyProject extends Component {
           </ModalBody>
         </Modal>
         <Demo />
-        <Chat />
         <div><br /></div>
         <Container>
           <Row>

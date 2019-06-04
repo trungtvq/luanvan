@@ -14,6 +14,7 @@ import {
   ModalFooter,
 } from 'reactstrap';
 import cookie from 'react-cookies';
+import Chat from '../../../../service/chat'
 
 import DatePicker from "react-datepicker";
 import {
@@ -219,7 +220,7 @@ class TeamTask extends Component {
     })
     response.on('status', function (status) {
       if (status.code!=0) console.log(status)
-      setInStorage("sprints",sprints)
+      setInStorage("sprintbacklog",sprints)
 
     });
     response.on('end', function (end) {
@@ -322,10 +323,10 @@ class TeamTask extends Component {
   handleAdd = () => {
     console.log("handle add")
     let sprint=this.state.sprintBacklog
-    console.log(getFromStorage("sprints").length>0)
+    console.log(getFromStorage("sprintbacklog").length>0)
     console.log(sprint=="")
     console.log(getFromStorage('sprints')[0])
-    if (sprint=="" && getFromStorage("sprints").length>0){
+    if (sprint=="" && getFromStorage("sprintbacklog").length>0){
       sprint=getFromStorage('sprints')[0].title
     }
     this.notify()
@@ -347,7 +348,7 @@ class TeamTask extends Component {
     AddNewTeamTaskReq.setDeadline(end);
     AddNewTeamTaskReq.setAssigneearray(this.state.assignee)
     AddNewTeamTaskReq.setComment("");
-    AddNewTeamTaskReq.setStatus("todos");
+    AddNewTeamTaskReq.setStatus("Todo");
     AddNewTeamTaskReq.setReview("");
     AddNewTeamTaskReq.setTitle(this.state.title);
     AddNewTeamTaskReq.setDescription(this.state.description);
@@ -390,7 +391,7 @@ class TeamTask extends Component {
             priority: that.state.priority,
             review: "",
             comment: "",
-            status: "todos",
+            status: "Todo",
             start: start,
             deadline: end,
             sprintBacklog:sprint,
@@ -587,6 +588,8 @@ class TeamTask extends Component {
     console.log("sprints")
     console.log(sprints)
     return (
+      <div>
+        <Chat />
       <Row>
         <Col>
           <Row>
@@ -882,7 +885,7 @@ class TeamTask extends Component {
                                       <option value={that.state.status}>{that.state.status}</option>
                                       <option value="done">done</option>
                                       <option value="inprogress">inprogress</option>
-                                      <option value="todos">to do</option>
+                                      <option value="Todo">to do</option>
                                     </Input>
                                   </Col>
                                 </FormGroup>
@@ -911,6 +914,8 @@ class TeamTask extends Component {
           </Card>
         </Col>
       </Row>
+      
+      </div>
     );
   }
 }

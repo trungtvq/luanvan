@@ -26,6 +26,7 @@ ListGroupItem,
 PaginationLink, } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Board from 'react-trello';
+import Chat from '../../../../service/chat'
 
 
 class Velocity extends Component {
