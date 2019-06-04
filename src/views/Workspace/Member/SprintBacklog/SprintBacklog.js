@@ -262,10 +262,10 @@ handleSortDeadlineUp=()=>{
                       <i class="fa fa-arrow-up" onClick={that.handleSortEstimationUp}></i>
                       <i class="fa fa-arrow-down" onClick={that.handleSortEstimationDown}></i>
                     </th>
-                    <th>Sprint 
+                    {/* <th>Sprint 
                       <i class="fa fa-arrow-up" onClick={that.handleSortSprintUp}></i>
                       <i class="fa fa-arrow-down" onClick={that.handleSortSprintDown}></i>
-                    </th>
+                    </th> */}
                     <th>Start 
                       {/* <i class="fa fa-arrow-up" onClick={that.handleSortStartUp}></i>
                       <i class="fa fa-arrow-down" onClick={that.handleSortStartDown}></i> */}
@@ -301,7 +301,7 @@ handleSortDeadlineUp=()=>{
                       <td>{item.so}</td> */}
                       <td>{item.priority}</td>
                       <td>{item.estimation}</td>
-                      <td>{item.sprint}</td>
+                      {/* <td>{item.sprint}</td> */}
                       <td>{item.start}</td>
                       <td>{item.deadline}</td>
                       <td>                        
