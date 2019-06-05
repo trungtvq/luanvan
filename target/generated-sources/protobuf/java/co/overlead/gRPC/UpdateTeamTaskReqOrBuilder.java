@@ -9,6 +9,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
 
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string requesterId = 1;</code>
@@ -16,6 +17,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
   java.lang.String getRequesterId();
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string requesterId = 1;</code>
@@ -25,6 +27,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
 
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string projectId = 2;</code>
@@ -32,6 +35,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
   java.lang.String getProjectId();
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string projectId = 2;</code>
@@ -41,6 +45,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
 
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string teamTaskId = 3;</code>
@@ -48,6 +53,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
   java.lang.String getTeamTaskId();
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string teamTaskId = 3;</code>
@@ -57,6 +63,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
 
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string title = 4;</code>
@@ -64,6 +71,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
   java.lang.String getTitle();
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string title = 4;</code>
@@ -73,6 +81,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
 
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string description = 5;</code>
@@ -80,6 +89,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
   java.lang.String getDescription();
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string description = 5;</code>
@@ -89,6 +99,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
 
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string priority = 6;</code>
@@ -96,6 +107,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
   java.lang.String getPriority();
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string priority = 6;</code>
@@ -141,6 +153,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
 
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string assigneeArray = 9;</code>
@@ -148,6 +161,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
   java.lang.String getAssigneeArray();
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string assigneeArray = 9;</code>
@@ -157,6 +171,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
 
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string comment = 10;</code>
@@ -164,6 +179,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
   java.lang.String getComment();
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string comment = 10;</code>
@@ -173,6 +189,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
 
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string status = 11;</code>
@@ -180,6 +197,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
   java.lang.String getStatus();
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string status = 11;</code>
@@ -189,6 +207,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
 
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string review = 12;</code>
@@ -196,6 +215,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
   java.lang.String getReview();
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string review = 12;</code>
@@ -205,6 +225,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
 
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string accessToken = 13;</code>
@@ -212,6 +233,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
   java.lang.String getAccessToken();
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string accessToken = 13;</code>
@@ -221,6 +243,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
 
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string teamId = 14;</code>
@@ -228,6 +251,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
   java.lang.String getTeamId();
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string teamId = 14;</code>
@@ -237,6 +261,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
 
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string sprintId = 15;</code>
@@ -244,6 +269,7 @@ public interface UpdateTeamTaskReqOrBuilder extends
   java.lang.String getSprintId();
   /**
    * <pre>
+   *
    * </pre>
    *
    * <code>string sprintId = 15;</code>

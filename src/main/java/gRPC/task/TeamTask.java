@@ -8,7 +8,9 @@ import org.bson.BsonArray;
 import org.bson.BsonString;
 import org.bson.Document;
 import org.bson.types.ObjectId;
+import service.email.EmailService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +20,6 @@ import static helper.auth.RequestAuth.isValidAuth;
 public class TeamTask {
     public static class TeamTaskImpl extends TeamTaskGrpc.TeamTaskImplBase {
         public void makeResponseForUpdateSuccess(StreamObserver res, String id) {
-
             res.onNext(TeamTaskRes.newBuilder().setStatus("SUCCESS").setTeamTaskId(id).build());
             res.onCompleted();
         }
@@ -95,8 +96,24 @@ public class TeamTask {
                             .append("status", request.getStatus())
                             .append("review", request.getReview())
                             .append("sprintbacklogid",request.getSprintBacklogId());
+
                     Mongod.collTask.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamTaskId())),
                             new Document("$set",document));
+                    Document task= Mongod.collTask.find(new Document("_id",new ObjectId(request.getTeamTaskId()))).into(new ArrayList<>()).get(0);
+                    String title=task.get("title").toString();
+                    List<String> assignee= (List<String>) task.get("assigneeArray");
+                    String projectName=Mongod.collProject.find(new Document("_id",new ObjectId(request.getProjectId()))).into(new ArrayList<>()).get(0).get("name").toString();
+
+                    assignee.forEach(i->{
+                        String name=Mongod.collAuth.find(new Document("_id",new ObjectId(request.getRequesterId()))).into(new ArrayList<>()).get(0).get("name").toString();
+
+                        try {
+                            EmailService.sendText("task_notify@overlead.co",i,"PROJECT "+projectName+" HAS UPDATE","For some reason, user "+name+" updated your task '"+title);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
+
                     makeResponseForUpdateSuccess(responseObserver, request.getTeamTaskId());
                 }else{
                     makeResponseForFailed(responseObserver,"EMPTY");
@@ -121,6 +138,17 @@ public class TeamTask {
                         Mongod.collTask.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamTaskId())),
                                 new Document("$push",
                                         new Document("assigneeArray", request.getAssigner())));
+                        String name=Mongod.collAuth.find(new Document("_id",new ObjectId(request.getRequesterId()))).into(new ArrayList<>()).get(0).get("name").toString();
+                        String title=list.get(0).get("title").toString();
+
+                        try {
+                            EmailService.sendText("task_notify@overlead.co",request.getAssigner(),"Assign Task","You have assigned task '"+title+"' by "+name);
+                            System.out.println("success");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+
                         makeResponseForUpdateSuccess(responseObserver, request.getTeamTaskId());
                     } else makeResponseForFailed(responseObserver,"You already assigned this task");
 
@@ -151,7 +179,25 @@ public class TeamTask {
                 Mongod.collTeam.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamId())),
                         new Document("$pull", new Document("tasks", request.getTeamTaskId())));
 
+                Document task= Mongod.collTask.find(new Document("_id",new ObjectId(request.getTeamTaskId()))).into(new ArrayList<>()).get(0);
+                String title=task.get("title").toString();
+                List<String> assignee= (List<String>) task.get("assigneeArray");
+
                 Mongod.collTask.deleteOne(new Document("_id",new ObjectId(request.getTeamTaskId())));
+
+                assignee.forEach(i->{
+                    String name=Mongod.collAuth.find(new Document("_id",new ObjectId(request.getRequesterId()))).into(new ArrayList<>()).get(0).get("name").toString();
+
+                    try {
+                        EmailService.sendText("task_notify@overlead.co",i,"Your task had been deleted","For some reason, your manager deleted your task '"+title+"' by "+name);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+
+
+
+
                 makeResponseForUpdateSuccess(responseObserver, request.getTeamTaskId());
             }
         }
