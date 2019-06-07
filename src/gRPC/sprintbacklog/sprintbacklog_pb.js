@@ -1113,7 +1113,8 @@ proto.sprintbacklog.GetAllSprintBacklogRes.toObject = function(includeInstance, 
     sprintid: msg.getSprintid(),
     start: msg.getStart(),
     deadline: msg.getDeadline(),
-    status: msg.getStatus()
+    status: msg.getStatus(),
+    sprintname: msg.getSprintname()
   };
 
   if (includeInstance) {
@@ -1197,6 +1198,10 @@ proto.sprintbacklog.GetAllSprintBacklogRes.deserializeBinaryFromReader = functio
     case 9:
       var value = /** @type {string} */ (reader.readString());
       msg.setStatus(value);
+      break;
+    case 13:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSprintname(value);
       break;
     default:
       reader.skipField();
@@ -1317,6 +1322,13 @@ proto.sprintbacklog.GetAllSprintBacklogRes.prototype.serializeBinaryToWriter = f
   if (f.length > 0) {
     writer.writeString(
       9,
+      f
+    );
+  }
+  f = this.getSprintname();
+  if (f.length > 0) {
+    writer.writeString(
+      13,
       f
     );
   }
@@ -1509,6 +1521,21 @@ proto.sprintbacklog.GetAllSprintBacklogRes.prototype.getStatus = function() {
 /** @param {string} value  */
 proto.sprintbacklog.GetAllSprintBacklogRes.prototype.setStatus = function(value) {
   jspb.Message.setField(this, 9, value);
+};
+
+
+/**
+ * optional string sprintName = 13;
+ * @return {string}
+ */
+proto.sprintbacklog.GetAllSprintBacklogRes.prototype.getSprintname = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 13, ""));
+};
+
+
+/** @param {string} value  */
+proto.sprintbacklog.GetAllSprintBacklogRes.prototype.setSprintname = function(value) {
+  jspb.Message.setField(this, 13, value);
 };
 
 

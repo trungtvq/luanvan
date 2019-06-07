@@ -57,6 +57,7 @@ class AllSprint extends Component {
     })
     this.loadAllSprint()
   }
+  
   loadAllSprint = () => {
     console.log("loadAllSprint")
     const sprintService = new proto.sprint.SprintClient('https://www.overlead.co');
@@ -114,13 +115,17 @@ class AllSprint extends Component {
     })
     response.on('status', function (status) {
       if (status.code!=0) console.log(status)
-
+      else{
+        setInStorage('sprints',that.state.data)
+      }
     });
     response.on('end', function (end) {
       console.log("end")
       console.log(end)
     });
   }
+
+
   toggleActionStatus = () => {
     this.setState(prevState => ({
       modalActionStatus: !prevState.modalActionStatus

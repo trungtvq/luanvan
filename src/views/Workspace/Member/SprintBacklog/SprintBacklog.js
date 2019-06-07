@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 
 const proto = {};
 proto.sprintbacklog = require('./../../../../gRPC/sprintbacklog/sprintbacklog_grpc_web_pb');
+proto.sprint = require('./../../../../gRPC/sprint/sprint_grpc_web_pb');
 
 class SprintBacklog extends Component {
   constructor(props) {
@@ -49,10 +50,79 @@ class SprintBacklog extends Component {
       updateId: id,
       sprint: sprintId
     }));
-    console.log("toggleChangeSprintOpen")
   }
+  toggleChangeSprint = () => {
+    this.setState(prevState => ({
+      modalChangeSprint: !prevState.modalChangeSprint,
+    }));
+  }
+  loadAllSprint = () => {
+    console.log("loadAllSprint")
+    const sprintService = new proto.sprint.SprintClient('https://www.overlead.co');
+    var metadata = {};
+    var GetAllSprintReq = new proto.sprint.GetAllSprintReq();
+    GetAllSprintReq.setRequesterid(getFromStorage("userId"));
+    GetAllSprintReq.setAccesstoken(getFromStorage("accessToken"));
+    GetAllSprintReq.setProjectid(getFromStorage("currentProject"));
+    let data=[]
+    var response = sprintService.getAllSprint(GetAllSprintReq, metadata)
+    let that = this
+  
+    response.on('data', function (response) {
+      if (response.getStatus() == "SUCCESS") {
+        let arr = response.getStart().split('-');
+        let start = ""
+        let end = ""
+        if (arr[1] > 12) {
+          arr[1] = arr[1] - 12
+          start = (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "PM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
+        } else {
+          start = (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
+        }
+        arr = response.getEnd().split('-')
+        if (arr[1] > 12) {
+          arr[1] = arr[1] - 12
+          end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "PM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
+        } else {
+          end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
+        }
 
+
+        
+          data.push(
+          {
+            id: response.getId(),
+            title: response.getTitle(),
+            num: response.getNum(),
+            goal: response.getGoal(),
+            status: response.getStatussprint(),
+            start,
+            end,
+          })
+         
+      }})
+      
+    
+    response.on('status', function (status) {
+      if (status.code!=0) console.log(status)
+      else{
+        setInStorage('sprints',data)
+      }
+    });
+
+    response.on('end', function (end) {
+      console.log("end")
+      console.log(end)
+    });
+  }
   componentDidMount() {
+    this.loadAllSprint()
+
+    this.loadAllBacklog()
+
+  }
+  loadAllBacklog=()=>{
+    
     const sprintbacklogService = new proto.sprintbacklog.SprintBacklogClient('https://www.overlead.co');
     var metadata = {};
     var GetAllSprintBacklogReq = new proto.sprintbacklog.GetAllSprintBacklogReq();
@@ -63,8 +133,10 @@ class SprintBacklog extends Component {
 
     var response = sprintbacklogService.getAllSprintBacklog(GetAllSprintBacklogReq, metadata)
     let that = this
+    let count=1;
     response.on('data', function (response) {
       if (response.getStatus() == "SUCCESS") {
+        count++
         let arr = response.getStart().split('-');
         let start = ""
         let end = ""
@@ -94,6 +166,7 @@ class SprintBacklog extends Component {
             role: response.getRole(),
             want: response.getWant(),
             so: response.getSo(),
+            sprintName: response.getSprintname(),
             priority: response.getPriority(),
             estimation: response.getEstimation(),
             sprint: response.getSprintid(),
@@ -108,6 +181,8 @@ class SprintBacklog extends Component {
             role: response.getRole(),
             want: response.getWant(),
             so: response.getSo(),
+            sprintName: response.getSprintname(),
+
             priority: response.getPriority(),
             estimation: response.getEstimation(),
             sprint: response.getSprintid(),
@@ -120,9 +195,11 @@ class SprintBacklog extends Component {
       }
     })
     response.on('status', function (status) {
+      console.log(count)
       if (status.code != 0) console.log(status)
+      else {
       setInStorage("sprintbacklog", that.state.data)
-
+      }
     });
     response.on('end', function (end) {
       console.log("end")
@@ -130,9 +207,7 @@ class SprintBacklog extends Component {
     });
 
 
-
   }
-
 
 
   handleComplete = () => {
@@ -247,6 +322,8 @@ class SprintBacklog extends Component {
 
   handleUpdateSprint = () => {
     this.notify()
+    console.log(this.state.updateId)
+    console.log(this.state.sprint)
     const sprintbacklogService = new proto.sprintbacklog.SprintBacklogClient('https://www.overlead.co');
     var metadata = {};
     var UpdateSprintReq = new proto.sprintbacklog.UpdateSprintReq();
@@ -254,8 +331,15 @@ class SprintBacklog extends Component {
     UpdateSprintReq.setAccesstoken(getFromStorage("accessToken"));
     UpdateSprintReq.setBacklogid(this.state.updateId);
     UpdateSprintReq.setSprintid(this.state.sprint);
+    UpdateSprintReq.setTeamid(getFromStorage("teamId"))
+    let sp=getFromStorage("sprints")
     let that = this
-
+    let name=""
+    sp.map(p=>{
+      if (p.id==that.state.sprint)
+        name=p.title
+    })
+    UpdateSprintReq.setSprintname(name)
     sprintbacklogService.updateSprint(UpdateSprintReq, metadata, (err, response) => {
       if (err) { //if error
         console.log(err);
@@ -265,9 +349,9 @@ class SprintBacklog extends Component {
         //get response
         if (response.getStatus() == "SUCCESS") {
           that.success()
-          this.toggleChangeSprintOpen()
+          this.toggleChangeSprint()
           let tmpData = this.state.data.map(p => {
-            if (p.id == that.state.updateId) return { ...p, sprintName: response.getBacklogname(), sprint: that.state.id }
+            if (p.id == that.state.updateId) return { ...p, sprintName: name, sprint: that.state.id }
             return p
           })
           that.setState({
@@ -290,7 +374,6 @@ class SprintBacklog extends Component {
   render() {
     let that = this;
     let sprints = getFromStorage("sprints")
-    console.log(this.state.sprint)
     return (
       <Row>
         <Col>
@@ -367,7 +450,8 @@ class SprintBacklog extends Component {
                       {/* <td>{item.sprint}</td> */}
                       <td>{item.start}</td>
                       {/* <td>{item.deadline}</td> */}
-                      <td data-id={item.id} data-sprint={item.sprint} onClick={that.toggleChangeSprintOpen}>{item.sprintName}
+                      <td data-id={item.id} data-sprint={item.sprint} 
+                          onClick={that.toggleChangeSprintOpen}>{item.sprintName}
 
 
                       </td>
@@ -386,7 +470,7 @@ class SprintBacklog extends Component {
                                      {
                                    that.state.sprint != undefined ?
                                     <option value={that.state.sprint}>{that.state.sprint}</option>:
-                                    null
+                                    <option value=""></option>
                                     
                                    }
 
@@ -394,7 +478,7 @@ class SprintBacklog extends Component {
                                       (sprints != null) ?
                                         sprints.map(p => {
                                           return (
-                                            <option value={p.sprintId}>{p.title}</option>
+                                            <option value={p.id}>{p.title}</option>
                                           )
                                         }) :null
 
@@ -410,7 +494,7 @@ class SprintBacklog extends Component {
                         </ModalBody>
                         <ModalFooter>
                           <div onClick={that.handleUpdateSprint}><Button color="primary">Submit</Button></div>{' '}
-                          <Button color="secondary" onClick={that.toggleChangeSprintOpen}>Cancel</Button>
+                          <Button color="secondary" onClick={that.toggleChangeSprint}>Cancel</Button>
                         </ModalFooter>
                       </Modal>
                       <td>
