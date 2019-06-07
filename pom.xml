@@ -8,6 +8,12 @@
     <artifactId>server</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.8.0</version>
+        </dependency>
 <!--        for image from url-->
         <dependency>
             <groupId>commons-io</groupId>

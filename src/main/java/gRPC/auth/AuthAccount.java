@@ -1,6 +1,13 @@
 package gRPC.auth;
 
 import co.overlead.gRPC.*;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.exceptions.SignatureVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.mongodb.client.MongoCollection;
 import database.Mongod;
 import database.Redis;
@@ -16,12 +23,59 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AuthAccount {
 
     public  static class AuthImpl extends AuthGrpc.AuthImplBase{
         public static final MongoCollection<Document> coll=Mongod.getOverleadConnection().getCollection("auth");
+
+        private String issuer = "auth0";
+        private String passphrase = "secret";
+        private String passwordHash="xxx";
+        private static int expireTime = 10 * 60 * 1000; //10 minute
+
+        public String generateToken(String username) {
+
+            Date exp = new Date(System.currentTimeMillis() + expireTime);
+            String token = null;
+            try {
+                Algorithm algorithmHS = Algorithm.HMAC256(passphrase);
+                token = JWT.create()
+                        .withIssuer(issuer)
+                        .withExpiresAt(exp)
+                        .withClaim("username", username)
+                        .withClaim("password", passwordHash)
+                        .sign(algorithmHS);
+            } catch (IllegalArgumentException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            return token;
+        }
+
+        public DecodedJWT decodeToken(String token) {
+            DecodedJWT jwt = null;
+            try {
+                Algorithm algorithm = Algorithm.HMAC256(passphrase);
+                JWTVerifier verifier = JWT.require(algorithm)
+                        .withIssuer(issuer)
+                        .build();
+                jwt = verifier.verify(token);
+            } catch (TokenExpiredException e) {
+                System.out.println("The Token has expired");
+            } catch (SignatureVerificationException e) {
+                System.out.println("The Token's Signature resulted invalid when verified using the Algorithm: HmacSHA256");
+            } catch (JWTVerificationException e){
+                //Invalid signature/claims
+                e.printStackTrace();
+            }
+
+            return jwt;
+        }
+
         public Document getUserFromDB(String username){
             List<Document> foundDocument = coll.find(new Document("username",username)).into(new ArrayList<>());
             if (foundDocument.size()!=0)
@@ -31,13 +85,15 @@ public class AuthAccount {
             else return null;
         }
         public void makeResponseForSignInSuccess(StreamObserver res,String id,String username,String name,String avatar){
-            String newSession="newSession";
-            setSession(id,newSession);
-            res.onNext(SignInRes.newBuilder().setStatus("SUCCESS").setError("FALSE").setAvatar(avatar).setName(name).setSession(newSession).setId(id).setType("normal").build());
+
+
+            res.onNext(SignInRes.newBuilder().setStatus("SUCCESS").setError("FALSE").setAvatar(avatar).setName(name).setSession(setSession(id)).setId(id).setType("normal").build());
             res.onCompleted();
         }
-        public  void setSession(String id,String session){
+        public String setSession(String id){
+            String session=generateToken(id);
             Redis.LIST_SESSION_SYNC_COMMAND.lpush(id,session);
+            return session;
         }
         public static boolean getSession(String id,String session){
 
@@ -47,6 +103,7 @@ public class AuthAccount {
             for (int i=0;i<list.size();i++){
                 if (list.get(i).equals(session)) return true;
             }
+
             return false;
         }
 

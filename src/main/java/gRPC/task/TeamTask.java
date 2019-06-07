@@ -189,7 +189,7 @@ public class TeamTask {
                     String name=Mongod.collAuth.find(new Document("_id",new ObjectId(request.getRequesterId()))).into(new ArrayList<>()).get(0).get("name").toString();
 
                     try {
-                        EmailService.sendText("task_notify@overlead.co",i,"Your task had been deleted","For some reason, your manager deleted your task '"+title+"' by "+name);
+                        EmailService.sendText("task_notify@overlead.co",i,"Your task had been deleted","For some reason, "+name+" deleted your task '"+title);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
