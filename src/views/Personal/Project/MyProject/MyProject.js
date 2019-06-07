@@ -471,7 +471,7 @@ class MyProject extends Component {
                               </div>
                             </CardHeader>
                             <CardBody>
-                              <h6>Owner: {item.ownerName}</h6>
+                              {/* <h6>Owner: {item.ownerName}</h6> */}
                               <h6>Private: {item.private}</h6>
                               <h6>Start:  {start}</h6>
                               <h6>  End:  {end}</h6>
