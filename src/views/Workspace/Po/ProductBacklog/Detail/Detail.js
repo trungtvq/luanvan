@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {setSprintBacklogs} from '../../../../../actions'
+
 import {
   Card, CardHeader, Badge, Button, Col,
   Container, Input, InputGroup, InputGroupAddon, InputGroupText, Row, Table, Pagination, PaginationItem, PaginationLink,
@@ -496,10 +499,31 @@ class Detail extends Component {
       } else {
         if (response.getStatus() == "SUCCESS") {
           that.success()
+          let arr = start.split('-');
+          if (arr[1] > 12) {
+            arr[1] = arr[1] - 12
+            start = (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "PM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10)+1) + "/" + arr[4]
+          } else {
+            start = (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10)+1) + "/" + arr[4]
+          }
+          let a={}
           that.setState(prevState => ({ 
-            data: [...prevState.data.filter(function (e) { return e.id !== id; })],
+            data: [...prevState.data.filter(function (e) { if (e.id !== id){
+              return false
+            } else{
+              a=Object.assign({},e,{
+                start
+              })
+              return true
+            }})],
             currentData: [...prevState.currentData.filter(function (e) { return e.id !== id; })],
           }));
+          let newSprintBacklog=that.props.sprintbacklogs
+          if (newSprintBacklog==undefined) newSprintBacklog=[]
+          newSprintBacklog.push(
+            a
+          )
+          that.props.dispatch(setSprintBacklogs(newSprintBacklog))
         } else {
          that.failed()
         }
@@ -934,4 +958,13 @@ handleShowAll=()=>{
   }
 }
 
-export default Detail;
+function mapStateToProps(state) {
+  console.log("mapStateToProps")
+  const { changeStatusProject } = state
+  const currentProject  = changeStatusProject.projectId
+  const {sprintbacklogs,sprints}= changeStatusProject
+  return {
+    currentProject,sprintbacklogs,sprints
+  }
+}
+export default connect(mapStateToProps)(Detail);

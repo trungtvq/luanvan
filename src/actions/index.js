@@ -16,6 +16,12 @@ export const REMOVE_PROJECT_COME = 'REMOVE_PROJECT_COMEs'
 export const SET_TEAM = 'SET_TEAM'
 export const LOAD_TEAM = 'LOAD_TEAM'
 
+//sprint
+export const SET_SPRINTS = 'SET_SPRINTS'
+export const SET_MEMBERS='SET_MEMBERS'
+export const SET_SPRINTBACKLOGS='SET_SPRINTBACKLOGS'
+
+
 export function selectSubreddit(subreddit) {
   return {
     type: SELECT_SUBREDDIT,
@@ -29,7 +35,6 @@ export function invalidateSubreddit(subreddit) {
     subreddit
   }
 }
-
 function requestPosts(subreddit) {
   return {
     type: REQUEST_POSTS,
@@ -82,6 +87,7 @@ export function subcriptChannel(channelId){
 }
 
 export function saveLogin(id,token,email,name,avatar) {
+
   return {
     type: DO_LOGIN,
     id,
@@ -90,6 +96,7 @@ export function saveLogin(id,token,email,name,avatar) {
     name,
     avatar
   }
+
 }
 export function removeLogin() {
   return {
@@ -116,6 +123,26 @@ export function setTeam(id,name){
     name
   }
 }
+
+export function setSprint(sprints){
+  return {
+    type: SET_SPRINTS,
+    sprints
+  }
+}
+export function setSprintBacklogs(sprintbacklogs){
+  return {
+    type: SET_SPRINTBACKLOGS,
+    sprintbacklogs
+  }
+}
+export function setMembers(sprint){
+  return {
+    type: SET_MEMBERS,
+    sprint
+  }
+}
+
 export function loadTeam(id,name){
   return {
     type: SET_TEAM,

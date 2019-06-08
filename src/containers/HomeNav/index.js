@@ -179,6 +179,7 @@ class HomeTopNav extends React.Component {
 
     var AddNewProjectReq = new proto.myproject.AddNewProjectReq();
     AddNewProjectReq.setTopic(this.state.Topic);
+    console.log(this.state.Topic)
     AddNewProjectReq.setRequesterid(getFromStorage("userId"));
     AddNewProjectReq.setProjectname(this.state.ProjectName);
 

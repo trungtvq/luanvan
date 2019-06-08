@@ -18,7 +18,8 @@ import {
 import DatePicker from "react-datepicker";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { connect } from 'react-redux'
+import {setSprint} from '../../../../../actions'
 const proto = {};
 proto.sprint = require('./../../../../../gRPC/sprint/sprint_grpc_web_pb');
 
@@ -53,78 +54,13 @@ class AllSprint extends Component {
     let end = this.state.endDate;
     end.setDate(end.getDate() + 15);
     this.setState({
-      endDate: end
+      endDate: end,
+      data:this.props.sprints,
+      currentData:this.props.sprints
     })
-    this.loadAllSprint()
+
   }
   
-  loadAllSprint = () => {
-    console.log("loadAllSprint")
-    const sprintService = new proto.sprint.SprintClient('https://www.overlead.co');
-    var metadata = {};
-    var GetAllSprintReq = new proto.sprint.GetAllSprintReq();
-    GetAllSprintReq.setRequesterid(getFromStorage("userId"));
-    GetAllSprintReq.setAccesstoken(getFromStorage("accessToken"));
-    GetAllSprintReq.setProjectid(getFromStorage("currentProject"));
-
-    var response = sprintService.getAllSprint(GetAllSprintReq, metadata)
-    let that = this
-    response.on('data', function (response) {
-      if (response.getStatus() == "SUCCESS") {
-        let arr = response.getStart().split('-');
-        let start = ""
-        let end = ""
-        if (arr[1] > 12) {
-          arr[1] = arr[1] - 12
-          start = (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "PM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
-        } else {
-          start = (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
-        }
-        arr = response.getEnd().split('-')
-        if (arr[1] > 12) {
-          arr[1] = arr[1] - 12
-          end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "PM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
-        } else {
-          end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + arr[3] + "/" + arr[4]
-        }
-
-
-        that.setState(prevState => ({
-          data: [...prevState.data,
-          {
-            id: response.getId(),
-            title: response.getTitle(),
-            num: response.getNum(),
-            goal: response.getGoal(),
-            status: response.getStatussprint(),
-            start,
-            end,
-          }],
-          currentData: [...prevState.currentData,
-            {
-              id: response.getId(),
-              title: response.getTitle(),
-              num: response.getNum(),
-              goal: response.getGoal(),
-              status: response.getStatussprint(),
-              start,
-              end,
-            }]
-        }));
-      }
-    })
-    response.on('status', function (status) {
-      if (status.code!=0) console.log(status)
-      else{
-        setInStorage('sprints',that.state.data)
-      }
-    });
-    response.on('end', function (end) {
-      console.log("end")
-      console.log(end)
-    });
-  }
-
 
   toggleActionStatus = () => {
     this.setState(prevState => ({
@@ -232,7 +168,6 @@ class AllSprint extends Component {
     })
   }
   handleAdd = () => {
-    console.log("handleAdd")
     const sprintService = new proto.sprint.SprintClient('https://www.overlead.co');
     //some data of request (get that from frontend)
     this.notify()
@@ -260,6 +195,7 @@ class AllSprint extends Component {
       } else { //if success
         //get response
         if (response.getStatus() == "SUCCESS") {
+         
           that.success()
           let arr = start.split('-');
           if (arr[1] > 12) {
@@ -289,10 +225,23 @@ class AllSprint extends Component {
                     num: that.state.num,
                     goal: that.state.goal,
                     start: start,
+                    status: "Todo",
                     end: end,
                   }],
+                  data:[...prevState.data,
+                  {
+                    id: response.getId(),
+                    title: that.state.title,
+                    num: that.state.num,
+                    goal: that.state.goal,
+                    start: start,
+                    status: "Todo",
+                    end: end,
+                  }
+                  ]
                }));
-               
+               that.props.dispatch(setSprint(that.state.data))
+
                if(this.state.positionSort=='titleUp')
                {
                  this.handleSortTitleUp();
@@ -342,9 +291,10 @@ class AllSprint extends Component {
       }
     });
   };
+  
   handleDelete = (event) => {
     let id = event.currentTarget.dataset.id
-
+    let that=this
     console.log("handleDelete")
 
     const sprintService = new proto.sprint.SprintClient('https://www.overlead.co');
@@ -372,6 +322,8 @@ class AllSprint extends Component {
             data: [...prevState.data.filter(function (e) { return e.id !== id; })],
             currentData: [...prevState.data.filter(function (e) { return e.id !== id; })],
           }));
+          that.props.dispatch(setSprint(that.state.data))
+
         } else {
           this.setState({
             actionStatus: "FALSE",
@@ -683,7 +635,9 @@ render() {
                     </th>
                   </tr>
                 </thead>
-                <tbody>{this.state.currentData.map(function (item, key) {
+                <tbody>{
+                  this.state.currentData!=undefined?
+                  this.state.currentData.map(function (item, key) {
 
                   return (
                     <tr key={key}>
@@ -793,7 +747,10 @@ render() {
                     </tr>
                   )
 
-                })}</tbody>
+                }):<div>Empty</div>
+                
+              }
+                </tbody>
               </table>
             </div>
           </Card>
@@ -804,4 +761,13 @@ render() {
   }
 }
 
-export default AllSprint;
+  function mapStateToProps(state) {
+    const { changeStatusLogin, updateProjectLoaded, changeStatusProject } = state
+    const { isLogin, } = changeStatusLogin
+    const currentProject = updateProjectLoaded.project
+    const { hasProject, hasTeam, sprints } = changeStatusProject
+    return {
+        isLogin, currentProject, hasProject, hasTeam, sprints
+    }
+}
+export default connect(mapStateToProps)(AllSprint);

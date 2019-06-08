@@ -11,12 +11,12 @@ import {
     setInStorage
 } from './service/storage'
 
+import getAllProject from './service/gRPC/loadAllProject'
 import { setIn } from 'immutable';
+import loadAllProject from './service/gRPC/loadAllProject';
 
 const proto = {};
 proto.auth = require('./gRPC/auth/auth_grpc_web_pb');
-proto.myproject = require('./gRPC/myproject/myproject_grpc_web_pb');
-proto.team = require('./gRPC/team/team_grpc_web_pb');
 // Containers layout
 
 const loading = () => <div className="animated fadeIn pt-3 text-center">Loading...</div>;
@@ -121,8 +121,7 @@ class Client extends Component {
                 if (response.getStatus() == "SUCCESS") {
 
                     dispatch(saveLogin(getFromStorage("userId"), getFromStorage("accessToken"), getFromStorage("username"), getFromStorage("name"), getFromStorage("avatar")))
-
-                    that.getAllProject();
+                    loadAllProject()
 
 
                 }
@@ -140,126 +139,8 @@ class Client extends Component {
         this.auth();
     }
 
-    //getAllProject
-    getAllProject = () => {
-        let dispatch = this.props.dispatch
-        const myprojectService = new proto.myproject.MyprojectClient('https://www.overlead.co');
-        var metadata = {};
-        var GetAllProjectReq = new proto.myproject.GetAllProjectReq();
-        GetAllProjectReq.setRequesterid(getFromStorage("userId"));
-        GetAllProjectReq.setCookie(getFromStorage("accessToken"));
-        let that = this
-        var response = myprojectService.getAllProject(GetAllProjectReq, metadata)
-
-        response.on('data', function (response) {
-            if (response.getStatus() == "SUCCESS") {
-                dispatch(addProject(response.getProjectid(), response.getTopic(), response.getProjectname(), response.getStart(), response.getEnd(), response.getPrivate(), response.getProgress()))
-            }
-        });
-        response.on('status', function (status) {
-            let flat = false
-            let cp = getFromStorage("currentProject")
-            let lastCreated = ''
-            let lastName = ''
-            that.props.currentProject.map(p => {
-                if (p.id == cp) flat = true
-                lastCreated = p.id
-                lastName = p.projectName
-                return p
-            })
-
-            if (flat == false){
-                setInStorage('currentProject', lastCreated)
-                setInStorage('currentProjectName',lastName)
-            }
-            if (getFromStorage('currentProject') != null && getFromStorage('currentProject') != '') {
-                that.loadAllTeam()                
-                that.props.dispatch(setProject(lastCreated, lastName))
-            }
-
-
-        });
-        response.on('end', function (end) {
-
-        });
-
-
-
-    }
-    loadAllMember = (id) => {
-        console.log("loadAllMember")
-        const teamService = new proto.team.TeamClient('https://www.overlead.co');
-        var metadata = {};
-
-        var GetAllMemberReq = new proto.team.GetAllMemberReq();
-        GetAllMemberReq.setRequesterid(getFromStorage("userId"));
-        GetAllMemberReq.setTeamid(id);
-        GetAllMemberReq.setAccesstoken(getFromStorage("accessToken"));
-
-        let that = this
-        setInStorage('members', [])
-        let response = teamService.getAllMember(GetAllMemberReq, metadata)
-
-        response.on('data', function (response) {
-            if (response.getStatus() == "SUCCESS") {
-                let mem = getFromStorage('members')
-                mem.push({ id: response.getId(), name: response.getName(),username:response.getUsername() })
-                setInStorage('members', mem)
-            }
-        })
-        response.on('status', function (status) {
-         if (status.code!=0) console.log(status)
-        });
-        response.on('end', function (end) {
-        });
-    }
-    loadAllTeam = () => {
-        console.log("getAllTeam")
-        const teamService = new proto.team.TeamClient('https://www.overlead.co');
-        var metadata = {};
-
-        var GetAllTeamReq = new proto.team.GetAllTeamReq();
-        GetAllTeamReq.setRequesterid(getFromStorage("userId"));
-        GetAllTeamReq.setProjectid(getFromStorage("currentProject"));
-        GetAllTeamReq.setAccesstoken(getFromStorage("accessToken"));
-        let response = teamService.getAllTeam(GetAllTeamReq, metadata)
-        let that = this
-        let lastTeam = ''
-        let lastName = ''
-        let validTeam = false
-        response.on('data', function (response) {
-            if (response.getStatus() == "SUCCESS") {
-                console.log("hasTeam" + response.getTeamid())
-
-                if (getFromStorage('teamId') == response.getTeamid())
-                    validTeam = true
-                else {
-                    lastTeam = response.getTeamid()
-                    lastName = response.getName()
-                }
-
-            }
-        })
-        response.on('status', function (status) {
-            if (status.code !=0) console.log(status.code)
-            if (validTeam == false) {
-                if (lastTeam != '') {
-                    setInStorage('teamId', lastTeam)
-                    that.props.dispatch(setTeam(lastTeam, lastName))
-                    that.loadAllMember(lastTeam)
-                }
-            }
-            else {
-                that.props.dispatch(setTeam(getFromStorage('teamId'), getFromStorage('teamName')))
-                that.loadAllMember(getFromStorage('teamId'))
-
-            }
-        });
-        response.on('end', function (end) {
-
-        });
-
-    }
+   
+   
 
     render() {
         return (

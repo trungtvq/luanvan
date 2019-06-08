@@ -13,6 +13,8 @@ import {
   ModalBody,
   ModalFooter,
 } from 'reactstrap';
+import { connect } from 'react-redux';
+
 import cookie from 'react-cookies';
 import Chat from '../../../../service/chat'
 
@@ -52,7 +54,8 @@ class TeamTask extends Component {
       updateId:"",
       status:"",
       mem:getFromStorage('members'),
-      sprintBacklog:""
+      sprintBacklog:"",
+      sprint:"",
 
     };
   }
@@ -146,6 +149,13 @@ class TeamTask extends Component {
       sprintBacklog: event.target.value,
     });
 
+  }
+  onTextboxChangeSprint = (event) => {
+    this.setState({
+      sprint: event.target.value,   
+    });
+    console.log(event.target.value)
+    console.log(this.props.sprintbacklogs)
   }
 
  
@@ -352,8 +362,8 @@ class TeamTask extends Component {
     AddNewTeamTaskReq.setReview("");
     AddNewTeamTaskReq.setTitle(this.state.title);
     AddNewTeamTaskReq.setDescription(this.state.description);
-    AddNewTeamTaskReq.setSprintid(getFromStorage('currentSprintId'));
-    AddNewTeamTaskReq.setSprintbacklogid(sprint);
+    AddNewTeamTaskReq.setSprintid(this.state.sprint);
+    AddNewTeamTaskReq.setSprintbacklogid(this.state.sprintbacklog);
 
     
     var response = teamtaskService.addNewTeamTask(AddNewTeamTaskReq, metadata)
@@ -580,7 +590,11 @@ class TeamTask extends Component {
     });
 
   };
- 
+ componentDidUpdate(){
+   console.log("didupdate")
+   console.log(this.state.sprintbacklog)
+   console.log(this.state.sprint)
+ }
 
   render() {    
     let that = this;
@@ -609,6 +623,7 @@ class TeamTask extends Component {
                     <th>Title <i class="fa fa-sort"></i></th>
                     <th>Description <i class="fa fa-sort"></i></th>
                     <th>Sprint <i class="fa fa-sort"></i></th>
+                    <th>Sprint Backlog <i class="fa fa-sort"></i></th>
 
                     <th>Priority <i class="fa fa-sort"></i></th>
                     <th>Start day <i class="fa fa-sort"></i></th>
@@ -646,17 +661,37 @@ class TeamTask extends Component {
 
                               <FormGroup row>
                                 <Col md="3">
-                                  <Label htmlFor="text-input">Sprint backlog</Label>
+                                  <Label htmlFor="text-input">Sprint</Label>
                                 </Col>
                                 <Col xs="12" md="3">
-                                  <Input type="select" name="select" id="select"  onChange={that.onTextboxChangeSprintBacklog}>                                    
+                                  <Input type="select" name="select" id="select"  onChange={that.onTextboxChangeSprint}>                                    
                                     { 
                                       (sprints!=undefined)?
                                       sprints.map(p=>{
                                         return(
-                                          <option value={p.title}>{p.title}</option>
+                                          <option value={p.id}>{p.num}</option>
                                         )
                                       }):
+                                      
+                                        <option disable={true} value="">not have any sprint</option>
+                                      
+                                    }
+                                  </Input>
+                                </Col>
+                              </FormGroup>
+                              <FormGroup row>
+                                <Col md="3">
+                                  <Label htmlFor="text-input">Sprint Backlog</Label>
+                                </Col>
+                                <Col xs="12" md="3">
+                                  <Input type="select" name="select" id="select"  onChange={that.onTextboxChangeSprintBacklog}>                                    
+                                    { 
+                                      (that.props.sprintbacklogs!=undefined)?
+                                      that.props.sprintbacklogs.map(p=>
+                                        p.sprint==that.state.sprint? 
+                                          <option value={p.title}>{p.title}</option>
+                                        :null
+                                    ):
                                       
                                         <option disable={true} value="">not have any sprint backlog</option>
                                       
@@ -794,18 +829,39 @@ class TeamTask extends Component {
 
                                 <FormGroup row>
                                 <Col md="3">
-                                  <Label htmlFor="text-input">Sprint backlog</Label>
+                                  <Label htmlFor="text-input">Sprint</Label>
                                 </Col>
                                 <Col xs="12" md="3">
-                                  <Input type="select" name="select" id="select" onChange={that.onTextboxChangeSprintBacklog}>
+                                  <Input type="select" name="select" id="select" onChange={that.onTextboxChangeSprint}>
                                   <option value={that.state.sprintBacklog}>{that.state.sprintBacklog}</option>
              
                                     { (sprints!=undefined)?
                                       sprints.map(p=>{
                                         return(
-                                          <option value={p.title}>{p.title}</option>
+                                          <option value={p.id}>{p.num}</option>
                                         )
                                       }):
+                                      
+                                        <option disable={true} value="">not have any sprint</option>
+                                      
+                                    }
+                                  </Input>
+                                </Col>
+                              </FormGroup>
+
+                              <FormGroup row>
+                                <Col md="3">
+                                  <Label htmlFor="text-input">Sprint Backlog</Label>
+                                </Col>
+                                <Col xs="12" md="3">
+                                  <Input type="select" name="select" id="select"  onChange={that.onTextboxChangeSprintBacklog}>                                    
+                                    { 
+                                      (that.props.sprintbacklogs!=undefined)?
+                                      that.props.sprintbacklogs.map(p=>
+                                        p.sprint==that.state.sprint? 
+                                          <option value={p.title}>{p.title}</option>
+                                        :null
+                                    ):
                                       
                                         <option disable={true} value="">not have any sprint backlog</option>
                                       
@@ -813,7 +869,6 @@ class TeamTask extends Component {
                                   </Input>
                                 </Col>
                               </FormGroup>
-
                                 <FormGroup row>
                                   <Col md="3">
                                     <Label>Priority</Label>
@@ -919,5 +974,13 @@ class TeamTask extends Component {
     );
   }
 }
-
-export default TeamTask;
+function mapStateToProps(state) {
+  console.log("mapStateToProps")
+  const { changeStatusProject } = state
+  const currentProject  = changeStatusProject.projectId
+  const {sprintbacklogs,sprints}= changeStatusProject
+  return {
+    currentProject,sprintbacklogs,sprints
+  }
+}
+export default connect(mapStateToProps)(TeamTask);

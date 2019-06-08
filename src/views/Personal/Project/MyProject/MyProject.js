@@ -83,34 +83,12 @@ class MyProject extends Component {
   };
  
   componentDidMount() {
-    console.log("getAllProjectPagePj")
     let end = this.state.endDate;
     end.setDate(end.getDate() + 15);
     this.setState({
       endDate: end
     })
 
-    // let dispatch = this.props.dispatch
-    // const myprojectService = new proto.myproject.MyprojectClient('https://www.overlead.co');
-    // var metadata = {};
-    // var GetAllProjectReq = new proto.myproject.GetAllProjectReq();
-    // GetAllProjectReq.setRequesterid(getFromStorage("userId"));
-    // GetAllProjectReq.setCookie(getFromStorage("accessToken"));
-    // var response = myprojectService.getAllProject(GetAllProjectReq, metadata)
-
-    // response.on('data', function (response) {
-    //   if (response.getStatus() == "SUCCESS") {
-    //     dispatch(addProject(response.getProjectid(), response.getTopic(), response.getProjectname(), response.getStart(), response.getEnd(), response.getPrivate(), response.getProgress()))
-
-    //   }
-    // });
-    // response.on('status', function (status) {
-    //   console.log("status code myproject:"+status.code);
-    // });
-    // response.on('end', function (end) {
-    //   console.log("end")
-    //   console.log(end)
-    // });
   }
 
 
@@ -333,7 +311,7 @@ class MyProject extends Component {
 
 
     console.log("render")
-
+    console.log(this.props.project)
 
     return (
      
@@ -380,10 +358,17 @@ class MyProject extends Component {
                             <CardHeader>
                               <Link to="/DashBoard">
                                 <i className=""></i><strong data-id={item.id} data-name={item.projectName} onClick={that.setCurrentProject}>{item.projectName}</strong>
+       
                               </Link>
                               <div className="card-header-actions">
-                                <div className="card-header-action btn btn-setting" data-id={item.id} onClick={that.handleDelete}><i className="icon-trash"></i>{that.props.buttonLabel}</div>
-                                <div data-projectname={item.projectName} data-id={item.id} data-topic={item.topic}  onClick={that.setProjectUpdateId}><div className="card-header-action btn btn-setting" onClick={that.toggleEdit}><i className="icon-settings"></i>{that.props.buttonLabel}</div></div>
+                                <div className="card-header-action btn btn-setting" data-id={item.id} onClick={that.handleDelete}>
+                                  <i className="icon-trash"></i>{that.props.buttonLabel}</div>
+
+                                <div data-projectname={item.projectName} data-id={item.id} data-topic={item.topic}  onClick={that.setProjectUpdateId}>
+
+                                  <div className="card-header-action btn btn-setting" onClick={that.toggleEdit}>
+
+                                    <i className="icon-settings"></i>{that.props.buttonLabel}</div></div>
                                 
                                 <Modal size="lg" isOpen={that.state.modalEdit} toggle={that.toggleEdit} className={that.props.className}>
                                   <ModalHeader toggle={that.toggleEdit}>Project</ModalHeader>

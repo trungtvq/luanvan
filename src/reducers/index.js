@@ -12,16 +12,19 @@ import {
   DELETE_PROJECT,
   ADD_PROJECT,
   SET_TEAM,
-  LOAD_TEAM
+  LOAD_TEAM,
+  SET_MEMBERS,
+  SET_SPRINTS,
+  SET_SPRINTBACKLOGS
 } from '../actions'
 import {
   getFromStorage,
   setInStorage
 } from '../service/storage'
-import cookie from 'react-cookies';
-
-const proto = {};
-proto.myproject = require('../gRPC/myproject/myproject_grpc_web_pb');
+import loadAllMember from '../service/gRPC/loadAllMember'
+import loadAllBacklog from '../service/gRPC/loadAllBacklog';
+import loadAllSprint from '../service/gRPC/loadAllSprint';
+import loadAllTeam from '../service/gRPC/loadAllTeam';
 
 function selectedSubreddit(state = 'reactjs', action) {
   switch (action.type) {
@@ -109,31 +112,53 @@ function changeStatusProject(state={projectId:"noid"},action){
   console.log("changeStatusProject")
   switch (action.type) {    
     case SET_PROJECT:
+      setInStorage('currentProject', action.id)
+      setInStorage('currentProjectName', action.name)      
       return Object.assign({},state,{
         projectId:action.id,
         projectName:action.name,
-        hasProject:true,
-        random:Math.random()
+        hasProject:action.id==""?false:true,
       })
     case GET_CURENT_PROJECT:    
     case SET_TEAM:
         setInStorage('teamId',action.id)
-        setInStorage('teamName',action.name)
+        setInStorage('teamName',action.name)  
+        
         return Object.assign({},state,{
           teamId:action.id,
           teamName:action.name,
-          hasTeam:true,
-          random:Math.random()
+          hasTeam:true,     
+        })
+  
+
+    case SET_SPRINTS:
+        return Object.assign({},state,{
+          sprints:action.sprints
+        })
+
+    case SET_SPRINTBACKLOGS:
+      console.log("setSprintbacklog")
+      return Object.assign({},state,
+       { sprintbacklogs:action.sprintbacklogs
+      }
+        )
+   
+    case SET_MEMBERS:
+        return Object.assign({},state,{
+          members:action.members
         })
     case LOAD_TEAM:
     default:
       return state
   }
 }
-
-//load all project to cache
+function changeStatusTeam(state={},action){
+  switch (action.type){
+    
+    
+  }
+}
 function updateProjectLoaded(state={project:[],needUpdate:false},action){
-  console.log("updateProjectLoaded")
   let newProject
   switch (action.type) {    
     case ADD_PROJECT:
@@ -176,6 +201,9 @@ function updateProjectLoaded(state={project:[],needUpdate:false},action){
       return state
   }
 }
+
+
+
 const rootReducer = combineReducers({
   postsBySubreddit,
   selectedSubreddit,
