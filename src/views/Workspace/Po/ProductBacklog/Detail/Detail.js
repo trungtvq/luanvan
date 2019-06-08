@@ -212,7 +212,6 @@ class Detail extends Component {
   }
 
   handleAdd = () => {
-    console.log("handleAdd")
     const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
     //some data of request (get that from frontend)
     this.notify()
@@ -260,7 +259,7 @@ class Detail extends Component {
                   sprint: this.state.sprint,
                   status: this.state.status
                 }],
-                data: [...prevState.currentData,
+                data: [...prevState.data,
                   {
                     id: response.getProductbacklogid(),
                     title: this.state.title,
@@ -273,8 +272,15 @@ class Detail extends Component {
                     sprint: this.state.sprint,
                     status: this.state.status
                   }],
+                  title: '',
+                  role: '',
+                  want: '',
+                  so: '',
+                  priority: '',
+                  estimation: '',
+                  sprint: '',
               }));
-              
+            
               if(this.state.positionSort=='titleUp')
               {
                 this.handleSortTitleUp();
@@ -317,28 +323,7 @@ class Detail extends Component {
               }
           }
         //
-          this.setState(prevState => ({
-            data: [...prevState.data,
-            {
-              id: response.getProductbacklogid(),
-              title: this.state.title,
-              role: this.state.role,
-              want: this.state.want,
-              so: this.state.so,
-              priority: this.state.priority,
-              estimation: this.state.estimation,
-              id: response.getProductbacklogid(),
-              sprint: this.state.sprint,
-              status: this.state.status
-            }],
-              title: '',
-              role: '',
-              want: '',
-              so: '',
-              priority: '',
-              estimation: '',
-              sprint: '',
-          }));
+   
         } else {
           that.failed()
         }
@@ -459,6 +444,7 @@ class Detail extends Component {
               this.handleSortSprintDown();
             }
           }
+          
           this.setState(prevState => ({ 
             data: tmpdata,
             currentData:tmpdata,
@@ -472,7 +458,6 @@ class Detail extends Component {
     });
   };
   handleSend = (id) => {
-    console.log(id)
     const productbacklogService = new proto.productbacklog.ProductBacklogClient('https://www.overlead.co');
     this.notify()
     var metadata = {};
@@ -507,19 +492,23 @@ class Detail extends Component {
             start = (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10)+1) + "/" + arr[4]
           }
           let a={}
+          console.log(id)
           that.setState(prevState => ({ 
-            data: [...prevState.data.filter(function (e) { if (e.id !== id){
-              return false
-            } else{
+            data: [...prevState.data.filter(function (e) { if (e.id == id){
               a=Object.assign({},e,{
                 start
               })
+              return false
+
+            } else{
+             
               return true
             }})],
             currentData: [...prevState.currentData.filter(function (e) { return e.id !== id; })],
           }));
           let newSprintBacklog=that.props.sprintbacklogs
           if (newSprintBacklog==undefined) newSprintBacklog=[]
+          if (a!={})
           newSprintBacklog.push(
             a
           )
