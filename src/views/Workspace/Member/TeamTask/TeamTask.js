@@ -598,7 +598,7 @@ class TeamTask extends Component {
 
   render() {    
     let that = this;
-    let sprints=getFromStorage('sprints')
+    let sprints=this.props.sprints
     console.log("sprints")
     console.log(sprints)
     return (

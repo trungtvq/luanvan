@@ -34,7 +34,6 @@ const SprintBacklog_Member = React.lazy(() => import('./views/Workspace/Member/S
 const Evaluate_Member = React.lazy(() => import('./views/Workspace/Member/Evaluate'));
 const TeamTask_Member = React.lazy(() => import('./views/Workspace/Member/TeamTask'));
 const Velocity_Member = React.lazy(() => import('./views/Workspace/Member/Velocity'));
-const CreateSprint = React.lazy(() => import('./views/Workspace/Member/Sprint/CreateSprint'));
 const AllSprint = React.lazy(() => import('./views/Workspace/Member/Sprint/AllSprint'));
 
 
@@ -63,7 +62,6 @@ const routes = [
   { path: '/Member/Evaluate',exact: true,  name: 'Evaluate', component: Evaluate_Member },
   { path: '/Member/TeamTask',exact: true,  name: 'TeamTask', component: TeamTask_Member },
   { path: '/Member/Velocity',exact: true,  name: 'Velocity_Member', component: Velocity_Member },
-  { path: '/Member/CreateSprint',exact: true,  name: 'CreateSprint', component: CreateSprint },
   { path: '/Member/AllSprint',exact: true,  name: 'AllSprint', component: AllSprint },
 
 

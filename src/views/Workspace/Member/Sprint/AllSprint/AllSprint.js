@@ -215,8 +215,8 @@ class AllSprint extends Component {
             end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10) + 1) + "/" + arr[4]
           }
            //check add when search
-           if(this.state.title.indexOf(that.state.currentSearch) !== -1)
-           {
+           
+             if (this.state.currentData!=undefined)
              this.setState(prevState => ({
                  currentData: [...prevState.currentData,
                   {
@@ -240,45 +240,32 @@ class AllSprint extends Component {
                   }
                   ]
                }));
+               else{
+                 this.setState({
+                   currentData:[{id: response.getId(),
+                    title: that.state.title,
+                    num: that.state.num,
+                    goal: that.state.goal,
+                    start: start,
+                    status: "Todo",
+                    end: end,}],
+                    data:[{id: response.getId(),
+                      title: that.state.title,
+                      num: that.state.num,
+                      goal: that.state.goal,
+                      start: start,
+                      status: "Todo",
+                      end: end,}],
+                 })
+               }
                that.props.dispatch(setSprint(that.state.data))
 
-               if(this.state.positionSort=='titleUp')
-               {
-                 this.handleSortTitleUp();
-               }
-               if(this.state.positionSort=='titleDown')
-               {
-                 this.handleSortTitleDown();
-               }
-               if(this.state.positionSort=='startUp')
-               {
-                 this.handleSortStartUp();
-               }
-               if(this.state.positionSort=='startDown')
-               {
-                 this.handleSortStartDown();
-               }
-               if(this.state.positionSort=='endUp')
-               {
-                 this.handleSortEndUp();
-               }
-               if(this.state.positionSort=='endDown')
-               {
-                 this.handleSortEndDown();
-               }
-           }
+             
+           
          //
           that.setState(prevState => ({
             modalAdd: !prevState.modalAdd,
-            data: [...prevState.data,
-            {
-              id: response.getId(),
-              title: that.state.title,
-              num: that.state.num,
-              goal: that.state.goal,
-              start: start,
-              end: end,
-            }],
+          
 
             title: '',
             num: '',

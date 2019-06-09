@@ -188,10 +188,10 @@ class SprintBacklog extends Component {
     UpdateSprintReq.setBacklogid(this.state.updateId);
     UpdateSprintReq.setSprintid(this.state.sprint);
     UpdateSprintReq.setTeamid(getFromStorage("teamId"))
-    let sp=getFromStorage("sprints")
+    
     let that = this
     let name=""
-    sp.map(p=>{
+    this.props.sprints.map(p=>{
       if (p.id==that.state.sprint)
         name=p.num
     })
@@ -207,7 +207,9 @@ class SprintBacklog extends Component {
           that.success()
           this.toggleChangeSprint()
           let tmpData = this.props.sprintbacklogs.map(p => {
-            if (p.id == that.state.updateId) return { ...p, sprintName: name, sprint: that.state.id }
+            if (p.id == that.state.updateId) return { ...p, 
+              sprintName: name,
+              sprint: that.state.sprint }
             return p
           })
           that.setState({
