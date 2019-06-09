@@ -337,12 +337,12 @@ class SprintBacklog extends Component {
                                 
                                    <Input type="select" name="select" id="select" onChange={that.onChangeSprint}>
                                      
-                                     {
+                                     {/* {
                                    that.state.sprint != undefined ?
                                     <option value={that.state.sprint}>{that.state.sprint}</option>:
                                     <option value=""></option>
                                     
-                                   }
+                                   } */}
 
                                     {
                                       (sprints != null) ?
