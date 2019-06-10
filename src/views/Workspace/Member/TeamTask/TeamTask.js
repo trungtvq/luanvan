@@ -622,16 +622,16 @@ class TeamTask extends Component {
                   <tr class="bg-primary">
                     <th>Title <i class="fa fa-sort"></i></th>
                     <th>Description <i class="fa fa-sort"></i></th>
-                    <th>Sprint <i class="fa fa-sort"></i></th>
+                    {/* <th>Sprint <i class="fa fa-sort"></i></th> */}
                     <th>Sprint Backlog <i class="fa fa-sort"></i></th>
 
                     <th>Priority <i class="fa fa-sort"></i></th>
                     <th>Start day <i class="fa fa-sort"></i></th>
                     <th>Deadline <i class="fa fa-sort"></i></th>
                     <th>Assignee</th>
-                    <th>Comment</th>
+                    {/* <th>Comment</th> */}
                     <th>Status</th>
-                    <th>Review</th>
+                    {/* <th>Review</th> */}
                     <th>
                       <div>
                         <Button color="primary" size="sm" className="mt-3" onClick={that.toggleAddOpen}><i class="fa fa-plus-square"></i>{this.props.buttonLabel}</Button>
@@ -792,9 +792,9 @@ class TeamTask extends Component {
                       <td>{item.start}</td>
                       <td>{item.deadline}</td>
                       <td>{item.assignee}</td>
-                      <td>{item.comment}</td>
+                      {/* <td>{item.comment}</td> */}
                       <td>{item.status}</td>
-                      <td>{item.review}</td>
+                      {/* <td>{item.review}</td> */}
                       <td>
                         <div>
                           <div data-id={item.id} 

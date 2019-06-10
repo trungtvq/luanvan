@@ -287,7 +287,7 @@ class SprintBacklog extends Component {
                       <i class="fa fa-arrow-down" onClick={that.handleSortStartDown}></i> */}
                     </th>
                     <th>
-                      Sprint Name
+                      Sprint ID
                     </th>
                     <th></th>
                   </tr>
@@ -322,7 +322,7 @@ class SprintBacklog extends Component {
                       {/* <td>{item.deadline}</td> */}
                       <td data-id={item.id} data-sprint={item.sprint} 
                           onClick={that.toggleChangeSprintOpen}>{item.sprintName}
-
+{console.log("aa___"+item.sprintName)}
 
                       </td>
                       <Modal size="lg" isOpen={that.state.modalChangeSprint} toggle={that.toggleChangeSprintOpen}>
@@ -372,8 +372,8 @@ class SprintBacklog extends Component {
                         <div data-id={item.id} onClick={that.toggleChangeSprintOpen}>
                           <Button type="submit" size="sm" color="success"><i class="fa fa-share-square"> Move to Sprint</i></Button>
                         </div>
-                        <Button size="sm" color="warning" onClick={that.handleComplete}><i class="fa fa-check"></i></Button>
-                        <Button size="sm" color="danger" onClick={that.handleBackToProductbacklog}><i class="fa fa-trash"></i></Button>
+                        {/* <Button size="sm" color="warning" onClick={that.handleComplete}><i class="fa fa-check"></i></Button>
+                        <Button size="sm" color="danger" onClick={that.handleBackToProductbacklog}><i class="fa fa-trash"></i></Button> */}
                       </td>
                     </tr>
                   )
