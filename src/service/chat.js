@@ -48,8 +48,7 @@ class Chat extends Component {
       }
     });
   }
-  componentWillUnmount(){
-  }
+
   handleNewUserMessage = (newMessage) => {
     const chatService = new proto.chat.ChatClient('https://www.overlead.co');
     var metadata = {};
@@ -57,7 +56,7 @@ class Chat extends Component {
     var SendMsgReq = new proto.chat.SendMsgReq();
     SendMsgReq.setRequesterid(getFromStorage("userId"));
     SendMsgReq.setAccesstoken(getFromStorage("accessToken"));
-    SendMsgReq.setChannelid(getFromStorage("currentProject"));
+    SendMsgReq.setChannelid(getFromStorage("teamId"));
     SendMsgReq.setName(getFromStorage("name"))
     SendMsgReq.setMsg(newMessage)
 
