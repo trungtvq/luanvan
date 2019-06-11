@@ -66,10 +66,6 @@ public class SprintBacklog {
                             new Document("$set",
                                     new Document("sprintId", request.getSprintId()).append("sprintName",request.getSprintName())));
 
-                    Mongod.collTeam.findOneAndUpdate(new Document("_id",new ObjectId(request.getTeamId())),
-                            new Document("$pull",
-                                    new Document("sprintbacklogs",request.getBacklogId())));
-
                     makeResponseForUpdateSuccess(responseObserver, request.getBacklogId());
                 }
             }
@@ -81,7 +77,6 @@ public class SprintBacklog {
             //check if team is exist
             //get list of sprintbacklogs in TEAM
             //get BACKLOG from id of list in previous step
-            System.out.println("getAllSprintBacklog");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID");
             } else {
@@ -97,6 +92,7 @@ public class SprintBacklog {
                            List<Document>  result = Mongod.collBacklog.find(
                                    new Document("_id", new ObjectId(i)).append("isSprintBacklog", "true"))
                                             .into(new ArrayList<>());
+
                             if (result.size()>0){
                                 Document r=result.get(0);
                                 responseObserver.onNext(GetAllSprintBacklogRes.newBuilder()
@@ -109,6 +105,7 @@ public class SprintBacklog {
                                         .setEstimation(r.get("estimation")==null?"":r.get("estimation").toString())
                                         .setSprintId(r.get("sprintId")==null?"":r.get("sprintId").toString())
                                         .setStatus("SUCCESS")
+                                        .setSprintName(r.get("sprintName")==null?"":r.get("sprintName").toString())
                                         .setTitle(r.get("title")==null?"":r.get("title").toString())
                                         .setStart(r.get("start")==null?"":r.get("start").toString())
                                         .setDeadline(r.get("deadline")==null?"":r.get("deadline").toString())

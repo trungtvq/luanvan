@@ -28,6 +28,7 @@ private static final long serialVersionUID = 0L;
     start_ = "";
     deadline_ = "";
     status_ = "";
+    sprintName_ = "";
   }
 
   @java.lang.Override
@@ -124,6 +125,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             start_ = s;
+            break;
+          }
+          case 106: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            sprintName_ = s;
             break;
           }
           default: {
@@ -582,6 +589,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int SPRINTNAME_FIELD_NUMBER = 13;
+  private volatile java.lang.Object sprintName_;
+  /**
+   * <code>string sprintName = 13;</code>
+   */
+  public java.lang.String getSprintName() {
+    java.lang.Object ref = sprintName_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      sprintName_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string sprintName = 13;</code>
+   */
+  public com.google.protobuf.ByteString
+      getSprintNameBytes() {
+    java.lang.Object ref = sprintName_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      sprintName_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -632,6 +673,9 @@ private static final long serialVersionUID = 0L;
     if (!getStartBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 12, start_);
     }
+    if (!getSprintNameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 13, sprintName_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -677,6 +721,9 @@ private static final long serialVersionUID = 0L;
     if (!getStartBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, start_);
     }
+    if (!getSprintNameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, sprintName_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -716,6 +763,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getDeadline())) return false;
     if (!getStatus()
         .equals(other.getStatus())) return false;
+    if (!getSprintName()
+        .equals(other.getSprintName())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -751,6 +800,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getDeadline().hashCode();
     hash = (37 * hash) + STATUS_FIELD_NUMBER;
     hash = (53 * hash) + getStatus().hashCode();
+    hash = (37 * hash) + SPRINTNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getSprintName().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -908,6 +959,8 @@ private static final long serialVersionUID = 0L;
 
       status_ = "";
 
+      sprintName_ = "";
+
       return this;
     }
 
@@ -946,6 +999,7 @@ private static final long serialVersionUID = 0L;
       result.start_ = start_;
       result.deadline_ = deadline_;
       result.status_ = status_;
+      result.sprintName_ = sprintName_;
       onBuilt();
       return result;
     }
@@ -1040,6 +1094,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getStatus().isEmpty()) {
         status_ = other.status_;
+        onChanged();
+      }
+      if (!other.getSprintName().isEmpty()) {
+        sprintName_ = other.sprintName_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -1935,6 +1993,75 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       status_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object sprintName_ = "";
+    /**
+     * <code>string sprintName = 13;</code>
+     */
+    public java.lang.String getSprintName() {
+      java.lang.Object ref = sprintName_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sprintName_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string sprintName = 13;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSprintNameBytes() {
+      java.lang.Object ref = sprintName_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sprintName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string sprintName = 13;</code>
+     */
+    public Builder setSprintName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      sprintName_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string sprintName = 13;</code>
+     */
+    public Builder clearSprintName() {
+      
+      sprintName_ = getDefaultInstance().getSprintName();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string sprintName = 13;</code>
+     */
+    public Builder setSprintNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      sprintName_ = value;
       onChanged();
       return this;
     }

@@ -53,4 +53,5 @@ message GetAllSprintBacklogRes{
 	string start = 12;		 //return in form mm/hh/dd/mm/yyyy       phut/gio/ngay/thang/nam
 	string deadline = 10;			//return in form mm/hh/dd/mm/yyyy
 	string status = 9;
+	string sprintName=13;
 }

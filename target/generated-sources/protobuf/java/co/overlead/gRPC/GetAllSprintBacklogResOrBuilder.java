@@ -142,4 +142,14 @@ public interface GetAllSprintBacklogResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getStatusBytes();
+
+  /**
+   * <code>string sprintName = 13;</code>
+   */
+  java.lang.String getSprintName();
+  /**
+   * <code>string sprintName = 13;</code>
+   */
+  com.google.protobuf.ByteString
+      getSprintNameBytes();
 }

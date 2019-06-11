@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "co.overlead.gRPC";
+option java_outer_classname = "sprint";
+option objc_class_prefix = "s";
+package sprint;
+
+service Sprint{
+    rpc deleteSprint(DeleteSprintReq) returns (SprintRes) {}
+    rpc addNewSprint(AddNewSprintReq) returns (SprintRes){}
+    rpc getAllSprint(GetAllSprintReq) returns (stream GetAllSprintRes){}
+    rpc setCurrentSprint(DeleteSprintReq) returns (SprintRes){}
+    rpc getSprint(DeleteSprintReq) returns (GetAllSprintRes){}
+}
+
+message DeleteSprintReq{
+    string requesterId = 1;
+    string projectId = 2;
+    string sprintId = 3;
+    string accessToken = 4;
+}
+message AddNewSprintReq{
+    string requesterId = 1;
+    string projectId = 2;
+    string accessToken = 4;
+    string title=5;
+    string num=6;
+    string goal=7;
+    string start=8;
+    string end=9;
+}
+message SprintRes{
+    string status = 1;
+    string id=3;
+}
+
+message GetAllSprintReq{
+    string requesterId = 1;
+    string projectId = 2;
+    string accessToken = 3;
+}
+message GetAllSprintRes{
+    string id = 2;
+    string statusSprint=4;
+    string title=5;
+    string num=6;
+    string goal=7;
+    string start=8;
+    string end=9;
+    string status=1;
+}

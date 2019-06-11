@@ -72,7 +72,7 @@ public class Sprint {
                     List<String> sprintIds = getSprintIdInProject(request.getProjectId());
                     if (sprintIds != null) {
                         for (int i = 0; i < sprintIds.size(); i++) {
-                            if (Mongod.collSprint.find(new Document("_id", new ObjectId(sprintIds.get(0))).append("num", request.getNum())).into(new ArrayList<>()).size() > 0) {
+                            if (Mongod.collSprint.find(new Document("_id", new ObjectId(sprintIds.get(i))).append("num", request.getNum())).into(new ArrayList<>()).size() > 0) {
                                 makeResponseForFailed(responseObserver, "Sprint ID is existed");
                                 return;
                             }
@@ -93,13 +93,12 @@ public class Sprint {
         }
         @Override
         public void getAllSprint(GetAllSprintReq request, StreamObserver<GetAllSprintRes> responseObserver) {
-            System.out.println("getAllSprint");
-
+            //auth
+            //get check list sprint in project
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID");
             } else {
                 List<String> sprintIds=getSprintIdInProject(request.getProjectId());
-                System.out.println(sprintIds);
                 if (sprintIds!=null){
                     sprintIds.forEach(i->{
                         Document s=getSprintById(i);
