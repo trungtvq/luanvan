@@ -61,11 +61,6 @@ class SprintBacklog extends Component {
     }));
   }
 
-
-  
-
-
-
   handleComplete = () => {
   };
   //search
@@ -322,7 +317,7 @@ class SprintBacklog extends Component {
                       {/* <td>{item.deadline}</td> */}
                       <td data-id={item.id} data-sprint={item.sprint} 
                           onClick={that.toggleChangeSprintOpen}>{item.sprintName}
-{console.log("aa___"+item.sprintName)}
+                          {console.log("aa___"+item.sprintName)}
 
                       </td>
                       <Modal size="lg" isOpen={that.state.modalChangeSprint} toggle={that.toggleChangeSprintOpen}>
@@ -343,7 +338,7 @@ class SprintBacklog extends Component {
                                     <option value=""></option>
                                     
                                    } */}
-
+                                     <option value="">select sprint</option>
                                     {
                                       (sprints != null) ?
                                         sprints.map(p => {

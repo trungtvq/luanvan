@@ -5,7 +5,6 @@
  */
 // GENERATED CODE -- DO NOT EDIT!
 /* eslint-disable */
-
 var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
@@ -2190,7 +2189,8 @@ proto.teamtask.GetAllTeamTaskRes.toObject = function(includeInstance, msg) {
     status: msg.getStatus(),
     review: msg.getReview(),
     teamid: msg.getTeamid(),
-    sprintbacklogid: msg.getSprintbacklogid()
+    sprintbacklogid: msg.getSprintbacklogid(),
+    sprintid: msg.getSprintid()
   };
 
   if (includeInstance) {
@@ -2278,6 +2278,10 @@ proto.teamtask.GetAllTeamTaskRes.deserializeBinaryFromReader = function(msg, rea
     case 14:
       var value = /** @type {string} */ (reader.readString());
       msg.setSprintbacklogid(value);
+      break;
+    case 15:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSprintid(value);
       break;
     default:
       reader.skipField();
@@ -2405,6 +2409,13 @@ proto.teamtask.GetAllTeamTaskRes.prototype.serializeBinaryToWriter = function (w
   if (f.length > 0) {
     writer.writeString(
       14,
+      f
+    );
+  }
+  f = this.getSprintid();
+  if (f.length > 0) {
+    writer.writeString(
+      15,
       f
     );
   }
@@ -2612,6 +2623,21 @@ proto.teamtask.GetAllTeamTaskRes.prototype.getSprintbacklogid = function() {
 /** @param {string} value  */
 proto.teamtask.GetAllTeamTaskRes.prototype.setSprintbacklogid = function(value) {
   jspb.Message.setField(this, 14, value);
+};
+
+
+/**
+ * optional string sprintId = 15;
+ * @return {string}
+ */
+proto.teamtask.GetAllTeamTaskRes.prototype.getSprintid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 15, ""));
+};
+
+
+/** @param {string} value  */
+proto.teamtask.GetAllTeamTaskRes.prototype.setSprintid = function(value) {
+  jspb.Message.setField(this, 15, value);
 };
 
 

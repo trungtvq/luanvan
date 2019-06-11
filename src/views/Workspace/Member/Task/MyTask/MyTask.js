@@ -133,7 +133,7 @@ response.on('end', function (end) {
                     <th>Priority <i class="fa fa-sort"></i></th>
                     <th>Start day <i class="fa fa-sort"></i></th>
                     <th>Deadline <i class="fa fa-sort"></i></th>   
-                    <th>Comment</th>
+                    {/* <th>Comment</th> */}
                     <th>Status</th>   
                     
                   </tr>
@@ -147,7 +147,7 @@ response.on('end', function (end) {
                       <td>{item.priority}</td>
                       <td>{item.start}</td>
                       <td>{item.deadline}</td>
-                      <td>{item.comment}</td>
+                      {/* <td>{item.comment}</td> */}
                       <td>{item.status}</td> 
                      
                   </tr>
