@@ -121,7 +121,6 @@ public class DailySchedule {
             } else {
                 makeResponseForFailed(responseObserver,"AUTH_INVALID");
             }
-            System.out.println("end");
         }
     }
 }

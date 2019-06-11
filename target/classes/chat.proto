@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "co.overlead.gRPC";
+option java_outer_classname = "chat";
+option objc_class_prefix = "c";
+package chat;
+
+service Chat{
+    rpc ConnectRenew(SendMsgReq) returns (SendMsgRes){}
+    rpc ConnectChat(SendMsgReq) returns (SendMsgRes){}
+    rpc SendMsg(SendMsgReq) returns (SendMsgRes){}
+}
+
+
+
+message SendMsgReq{
+    string accessToken =1;
+    string requesterId=2;
+    string name=6;
+    string channelId=3;
+    string msg=4;
+    string type=5;
+}
+
+
+message SendMsgRes{
+    string channelId=1;
+    string msg=2;
+    string type=3;
+    string senderName=4;
+    string time=5;
+    string status=6;
+}
+

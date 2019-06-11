@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "co.overlead.gRPC";
+option java_outer_classname = "velocity";
+option objc_class_prefix = "v";
+package velocity;
+
+service Velocity{
+    rpc getVelocity(GetVelocityReq) returns (stream GetVelocityRes) {}
+}
+
+message GetVelocityReq{
+	string cookie = 1;
+    string requesterId = 2;
+	string projectId = 3;
+	string teamId=4;
+	string sprintId=5;
+}
+
+message GetVelocityRes{
+    string status = 2;
+	string task = 3;
+	string type=4;
+	string note=5;
+	string title=6;
+	string statusTask=7;
+}
+

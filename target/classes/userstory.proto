@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "co.overlead.gRPC";
+option java_outer_classname = "userstory";
+option objc_class_prefix = "us";
+package userstory;
+
+service UserStory{
+    rpc addNewUserStory(AddNewUserStoryReq) returns (UserStoryRes) {}
+    rpc updateUserStory(UpdateUserStoryReq) returns (UserStoryRes){}
+    rpc deleteUserStory(DeleteUserStoryReq) returns (UserStoryRes){}
+	rpc sendToProductBacklog(SendToProductBacklogReq) returns (UserStoryRes){}
+
+	rpc getAllUserStory(GetAllUserStoryReq) returns (stream GetAllUserStoryRes){}
+}
+message SendToProductBacklogReq{
+	string requesterId = 1;
+	string projectId = 2;
+	string id=3;
+	string priority=4;
+	string estimation=5;
+	string statusBacklog=6;
+	string accessToken=7;
+	string sprint=8;
+}
+message AddNewUserStoryReq{
+
+    string requesterId = 1;
+	string projectId = 2;
+	string role = 3;
+	string want = 4;
+	string so = 5;
+	string accessToken = 6;
+	string name=7;
+}
+message UserStoryRes{
+    string status = 1;
+	string id = 2;
+}
+
+message UpdateUserStoryReq{
+	string requesterId = 1;
+	string projectId = 2;
+	string userStoryId = 3;
+	string role = 4;
+	string want = 5;
+	string so = 6;
+	string accessToken = 7;
+}
+
+message DeleteUserStoryReq{
+    string requesterId = 1;
+    string projectId = 2;
+	string userStoryId = 3;
+	string accessToken = 4;
+}
+
+message GetAllUserStoryReq{
+    string requesterId = 1;
+	string projectId = 2;
+	string accessToken = 3;
+}
+message GetAllUserStoryRes{
+	string role = 1;
+	string want = 2;
+	string so = 3;
+	string status = 4;
+    string id=5;
+	string name=6;
+}

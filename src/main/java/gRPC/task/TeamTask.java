@@ -228,9 +228,10 @@ public class TeamTask {
                                 .setComment(re.get("comment").toString())
                                 .setStatusTeamTask(re.get("status").toString())
                                 .setReview(re.get("review").toString())
+                                .setSprintId(re.get("sprintId")==null?"":re.get("sprintId").toString())
                                 .setStatus("SUCCESS")
                                 .setTeamTaskId(re.get("_id").toString())
-                                .setSprintBacklogId(re.get("sprintbacklogid").toString())
+                                .setSprintBacklogId(re.get("sprintbacklogid")==null?"":re.get("sprintbacklogid").toString())
                                 .build());
                     });
 

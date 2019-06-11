@@ -84,25 +84,25 @@ public final class teamtask {
       "\023\n\013accessToken\030\004 \001(\t\022\016\n\006teamId\030\r \001(\t\"r\n\021" +
       "GetAllTeamTaskReq\022\023\n\013requesterId\030\001 \001(\t\022\021" +
       "\n\tprojectId\030\002 \001(\t\022\023\n\013accessToken\030\003 \001(\t\022\016" +
-      "\n\006teamId\030\r \001(\t\022\020\n\010sprintId\030\004 \001(\t\"\207\002\n\021Get" +
+      "\n\006teamId\030\r \001(\t\022\020\n\010sprintId\030\004 \001(\t\"\231\002\n\021Get" +
       "AllTeamTaskRes\022\022\n\nteamTaskId\030\001 \001(\t\022\r\n\005ti" +
       "tle\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\022\020\n\010priori" +
       "ty\030\004 \001(\t\022\r\n\005start\030\005 \001(\t\022\020\n\010deadline\030\006 \001(" +
       "\t\022\025\n\rassigneeArray\030\007 \001(\t\022\017\n\007comment\030\010 \001(" +
       "\t\022\026\n\016statusTeamTask\030\014 \001(\t\022\016\n\006status\030\t \001(" +
       "\t\022\016\n\006review\030\n \001(\t\022\016\n\006teamId\030\r \001(\t\022\027\n\017spr" +
-      "intBacklogId\030\016 \001(\t2\376\002\n\010TeamTask\022F\n\016addNe" +
-      "wTeamTask\022\033.teamtask.AddNewTeamTaskReq\032\025" +
-      ".teamtask.TeamTaskRes\"\000\022F\n\016updateTeamTas" +
-      "k\022\033.teamtask.UpdateTeamTaskReq\032\025.teamtas" +
-      "k.TeamTaskRes\"\000\022J\n\020registerTeamTask\022\035.te" +
-      "amtask.RegisterTeamTaskReq\032\025.teamtask.Te" +
-      "amTaskRes\"\000\022F\n\016cancelTeamTask\022\033.teamtask" +
-      ".CancelTeamTaskReq\032\025.teamtask.TeamTaskRe" +
-      "s\"\000\022N\n\016getAllTeamTask\022\033.teamtask.GetAllT" +
-      "eamTaskReq\032\033.teamtask.GetAllTeamTaskRes\"" +
-      "\0000\001B#\n\020co.overlead.gRPCB\010teamtaskP\001\242\002\002tt" +
-      "b\006proto3"
+      "intBacklogId\030\016 \001(\t\022\020\n\010sprintId\030\017 \001(\t2\376\002\n" +
+      "\010TeamTask\022F\n\016addNewTeamTask\022\033.teamtask.A" +
+      "ddNewTeamTaskReq\032\025.teamtask.TeamTaskRes\"" +
+      "\000\022F\n\016updateTeamTask\022\033.teamtask.UpdateTea" +
+      "mTaskReq\032\025.teamtask.TeamTaskRes\"\000\022J\n\020reg" +
+      "isterTeamTask\022\035.teamtask.RegisterTeamTas" +
+      "kReq\032\025.teamtask.TeamTaskRes\"\000\022F\n\016cancelT" +
+      "eamTask\022\033.teamtask.CancelTeamTaskReq\032\025.t" +
+      "eamtask.TeamTaskRes\"\000\022N\n\016getAllTeamTask\022" +
+      "\033.teamtask.GetAllTeamTaskReq\032\033.teamtask." +
+      "GetAllTeamTaskRes\"\0000\001B#\n\020co.overlead.gRP" +
+      "CB\010teamtaskP\001\242\002\002ttb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -157,7 +157,7 @@ public final class teamtask {
     internal_static_teamtask_GetAllTeamTaskRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_teamtask_GetAllTeamTaskRes_descriptor,
-        new java.lang.String[] { "TeamTaskId", "Title", "Description", "Priority", "Start", "Deadline", "AssigneeArray", "Comment", "StatusTeamTask", "Status", "Review", "TeamId", "SprintBacklogId", });
+        new java.lang.String[] { "TeamTaskId", "Title", "Description", "Priority", "Start", "Deadline", "AssigneeArray", "Comment", "StatusTeamTask", "Status", "Review", "TeamId", "SprintBacklogId", "SprintId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
