@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 syntax = "proto3";
 
 option java_multiple_files = true;
@@ -61,3 +62,68 @@ message DailyScheduleRes{
 	string dataAdd=7;
 	string statusSchedule=1;
 }
+=======
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "co.overlead.gRPC";
+option java_outer_classname = "dailyschedule";
+option objc_class_prefix = "ds";
+package dailyschedule;
+
+service Dailyschedule{
+    rpc addNewDailySchedule(AddNewDailyScheduleReq) returns (DailyScheduleRes) {}
+    rpc updateDailySchedule(UpdateDailyScheduleReq) returns (DailyScheduleRes){}
+    rpc deleteDailySchedule(DeleteDailyScheduleReq) returns (DailyScheduleRes){}
+	rpc getAllDailySchedule(GetAllDailyScheduleReq) returns (stream DailyScheduleRes){}
+}
+
+message AddNewDailyScheduleReq{
+
+    string requesterId = 1;
+	string projectId = 2;
+	string description=7;
+	string accessToken=9;
+	string title=3; //uni
+	string teamId=8;
+	string sprintId=4;
+	string dateAdd=5;
+}
+
+message UpdateDailyScheduleReq{
+	string requesterId = 1;
+	string projectId = 2;
+	string scheduleId = 3;
+	string title=4;
+	string description=5;
+	string dataAdd=6;
+	string accessToken = 8;
+	string teamId=9;
+	string status=10;
+}
+
+message DeleteDailyScheduleReq{
+    string requesterId = 1;
+	string projectId=2;
+	string accessToken = 8;
+
+	string scheduleId = 3;
+	string teamId = 4;
+}
+message GetAllDailyScheduleReq{
+    string requesterId = 1;
+	string projectId = 2;
+	string accessToken = 3;
+	string dateAdd=4;
+	string teamId=5;
+}
+
+message DailyScheduleRes{
+	string status = 2;
+	string scheduleId = 3;
+	string title=4;
+	string description=5;
+	string dataAdd=7;
+	string statusSchedule=1;
+}
+>>>>>>> e6fbd4f92478e396b833173637a91b71184bac1e

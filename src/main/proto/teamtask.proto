@@ -84,6 +84,7 @@ message GetAllTeamTaskReq{
 	string teamId=13;
 	string sprintId=4;
 }
+
 message GetAllTeamTaskRes{
 	string teamTaskId = 1;
 	string title = 2;		
@@ -98,4 +99,5 @@ message GetAllTeamTaskRes{
 	string review = 10;
 	string teamId=13;
 	string sprintBacklogId=14;
+	string sprintId=15;
 }
