@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setTeam,setProject } from '../../../../actions'
 import { addProject, deleteProject, updateProject } from '../../../../actions'
-
+import loadAllTeam from '../../../../service/gRPC/loadAllTeam'
 import {
   Badge,
   Button,
@@ -248,7 +248,7 @@ class MyProject extends Component {
     setInStorage('currentProjectName', pn)
 
     this.props.dispatch(setProject(idp,event.currentTarget.dataset.name))
-    this.loadAllTeam()
+    loadAllTeam(idp)
   }
   onChangeStartDate = (date) => {
     this.setState({
@@ -260,52 +260,7 @@ class MyProject extends Component {
       endDate: date
     });
   }
-  loadAllTeam = () => {
-    console.log("getAllTeam")
-    const teamService = new proto.team.TeamClient('https://www.overlead.co');
-    var metadata = {};
 
-    var GetAllTeamReq = new proto.team.GetAllTeamReq();
-    GetAllTeamReq.setRequesterid(getFromStorage("userId"));
-    GetAllTeamReq.setProjectid(getFromStorage("currentProject"));
-    GetAllTeamReq.setAccesstoken(getFromStorage("accessToken"));
-    let response = teamService.getAllTeam(GetAllTeamReq, metadata)
-    console.log("currenProject"+getFromStorage("currentProject"))
-    let that = this
-    let lastTeam = ''
-    let lastName=''
-    let validTeam = false
-    response.on('data', function (response) {
-        if (response.getStatus() == "SUCCESS") {
-            console.log("hasTeam"+response.getTeamid())
-
-            if (getFromStorage('teamId') == response.getTeamid())
-                validTeam = true
-            else {
-                lastTeam = response.getTeamid()
-                lastName= response.getName()
-            }
-
-        }
-    })
-    response.on('status', function (status) {
-      if (status.code!=0) console.log(status)
-      if (validTeam == false) {
-            if (lastTeam != '') {
-                setInStorage('teamId', lastTeam)
-                setInStorage('teamName', lastName)
-                that.props.dispatch(setTeam(lastTeam,lastName))
-            }    
-        }
-        else {
-            that.props.dispatch(setTeam(getFromStorage('teamId'),getFromStorage('teamName')))
-        }
-    });
-    response.on('end', function (end) {
-
-    });
-    
-}
   render() {
     let that = this;
 

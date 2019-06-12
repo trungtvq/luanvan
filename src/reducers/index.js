@@ -21,10 +21,6 @@ import {
   getFromStorage,
   setInStorage
 } from '../service/storage'
-import loadAllMember from '../service/gRPC/loadAllMember'
-import loadAllBacklog from '../service/gRPC/loadAllBacklog';
-import loadAllSprint from '../service/gRPC/loadAllSprint';
-import loadAllTeam from '../service/gRPC/loadAllTeam';
 
 function selectedSubreddit(state = 'reactjs', action) {
   switch (action.type) {
@@ -80,8 +76,7 @@ function postsBySubreddit(state = {}, action) {
 
 //update state login
 function changeStatusLogin(state = {isLogin:false}, action) {
-  console.log("changeStatusLogin"+action.type)
-  console.log(action)
+  
   switch (action.type) {
     case DO_LOGIN:    
       if (action.avatar!=undefined && action.avatar!="")
@@ -109,7 +104,6 @@ function changeStatusLogin(state = {isLogin:false}, action) {
 
 //state of current project
 function changeStatusProject(state={projectId:"noid"},action){
-  console.log("changeStatusProject")
   switch (action.type) {    
     case SET_PROJECT:
       setInStorage('currentProject', action.id)
@@ -137,7 +131,6 @@ function changeStatusProject(state={projectId:"noid"},action){
         })
 
     case SET_SPRINTBACKLOGS:
-      console.log("setSprintbacklog")
       return Object.assign({},state,
        { sprintbacklogs:action.sprintbacklogs
       }

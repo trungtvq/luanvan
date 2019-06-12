@@ -7,16 +7,17 @@ import {store} from '../../App'
 import { setTeam } from '../../actions'
 import loadAllMember from'./loadAllMember'
 import loadAllBacklog from './loadAllBacklog';
+import loadAllTask from './loadAllTask';
 const proto = {};
 proto.team = require('../../gRPC/team/team_grpc_web_pb');
 
   
  function loadAllTeam (id) {
-     console.log("LOADALLTEAM"+id)
     const teamService = new proto.team.TeamClient('https://www.overlead.co');
     var metadata = {};
 
     let teams = []
+    setInStorage("allTask",[])
 
     var GetAllTeamReq = new proto.team.GetAllTeamReq();
     GetAllTeamReq.setRequesterid(getFromStorage("userId"));
@@ -29,8 +30,10 @@ proto.team = require('../../gRPC/team/team_grpc_web_pb');
     let validTeam = false
     let teamName=''
     let teamId=getFromStorage("teamId")
+
     response.on('data', function (response) {
       if (response.getStatus() == "SUCCESS") {
+
         teams.push({
           id: response.getTeamid(),
           name: response.getName()
@@ -43,7 +46,7 @@ proto.team = require('../../gRPC/team/team_grpc_web_pb');
           lastTeam = response.getTeamid()
           lastName = response.getName()
         }
-
+        loadAllTask(response.getTeamid(),response.getName())
       }
     })
     response.on('status', function (status) {

@@ -1,28 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+
 import { 
-Badge, 
 Button, 
 Col, 
-Container,
 Input,
-InputGroup,
-InputGroupAddon,
-InputGroupText,
 Row,
 Table, 
-Pagination, 
-PaginationItem, 
-PaginationLink, 
 Card,
 CardBody,
-CardColumns,
 CardHeader,
-Collapse,
-Progress,
-Label,
-Modal, ModalHeader, ModalBody, ModalFooter,
-Form,
-FormGroup
 } from 'reactstrap';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import  { PureComponent } from 'react';
@@ -30,6 +17,7 @@ import {
   ComposedChart, Line, Area, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   Legend,ResponsiveContainer
 } from 'recharts';
+import { getFromStorage } from '../../../service/storage';
 
 const dataChart = [
  
@@ -94,18 +82,7 @@ class DashBoard extends Component {
     this.toggleAccordion = this.toggleAccordion.bind(this);
    
     this.state = {
-      dataTaskDone:[{
-        "teamName":"",
-        "title ":"",
-        "description":"",
-        "sprint ":"",
-        "sprintBacklog":"",
-        "priority":"",
-        "start":"",
-        "deadline":"",
-        "real":"",
-        "assignee":"",
-      }],
+      
       dataTaskInprogress:[{
         "teamName":"",
         "title ":"",
@@ -137,8 +114,32 @@ class DashBoard extends Component {
       accordion: state,
     });
   }
+  getSprintName=(id)=>{
+    let name=""
+    this.props.sprints.forEach(i=>{
+      if (i.id==id) name=i.title
+    })
+    return name
+
+  }
+  getBacklogName=(id)=>{
+    let name=""
+    this.props.sprintbacklogs.forEach(i=>{
+      if (i.id==id) name=i.title
+    })
+    return name
+  }
   render() {
+    let allTask=getFromStorage("allTask")
+    let dataTaskDone=[]
+    let dataTaskInprogress =[]
     let that = this;
+
+    allTask.forEach(i => {
+      if (i.status=="done") dataTaskDone.push(Object.assign({},i,{sprint:that.getSprintName(i.sprint),sprintBacklog:that.getBacklogName(i.sprintBacklog)}))
+      if (i.status=="inprogress") dataTaskInprogress.push((Object.assign({},i,{sprint:that.getSprintName(i.sprint),sprintBacklog:that.getBacklogName(i.sprintBacklog)}))
+    );})
+    
     return (
       <Row>
           <Col> 
@@ -181,8 +182,8 @@ class DashBoard extends Component {
                       </tr>
                       </thead>
                       <tbody>
-                      { (that.state.dataTaskDone!=undefined)?
-                          that.state.dataTaskDone.map(function (item, key) {
+                      { (dataTaskDone!=undefined)?
+                          dataTaskDone.map(function (item, key) {
                             return(
                               <tr key={key}>
                               <td >{item.teamName}</td>
@@ -233,8 +234,8 @@ class DashBoard extends Component {
                   </tr>
                   </thead>
                   <tbody>
-                      { (that.state.dataTaskInprogress!=undefined)?
-                          that.state.dataTaskInprogress.map(function (item, key) {
+                      { (dataTaskInprogress!=undefined)?
+                          dataTaskInprogress.map(function (item, key) {
                             return(
                               <tr key={key}>
                               <td >{item.teamName}</td>
@@ -259,5 +260,13 @@ class DashBoard extends Component {
     );
   }
 }
-
-export default DashBoard;
+function mapStateToProps(state) {
+  console.log("mapStateToProps")
+  const { changeStatusProject } = state
+  const currentProject  = changeStatusProject.projectId
+  const {sprintbacklogs,sprints}= changeStatusProject
+  return {
+    currentProject,sprintbacklogs,sprints
+  }
+}
+export default connect(mapStateToProps)(DashBoard);
