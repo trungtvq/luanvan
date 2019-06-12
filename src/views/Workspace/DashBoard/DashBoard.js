@@ -202,7 +202,7 @@ class DashBoard extends Component {
                       </tr>
                       </thead>
                       <tbody>
-                      <tr>
+                      {/* <tr>
                        <td>Login</td>
                         <td>Server connect fail</td>  
                         <td>20/3/2019</td>                
@@ -347,7 +347,7 @@ class DashBoard extends Component {
                           </Modal>
                          <Button type="submit" size="sm" color="success"><i class="fa fa-check"></i></Button>
                         </td>
-                      </tr>
+                      </tr> */}
                       </tbody>
                     </Table>
                     </div>
@@ -394,7 +394,7 @@ class DashBoard extends Component {
                       </tr>
                       </thead>
                       <tbody>
-                      <tr>
+                      {/* <tr>
                         <td>Login bằng Fb</td>
                         <td>2</td>
                         <td>6</td>
@@ -409,7 +409,7 @@ class DashBoard extends Component {
                           <div className="text-center">100%</div>
                         </td>                                  
                        
-                      </tr>
+                      </tr> */}
                        
                       </tbody>
                     </Table>      
@@ -448,7 +448,7 @@ class DashBoard extends Component {
                   </thead>
                   <tbody>
                   
-                   <tr>
+                   {/* <tr>
                     <td>Login bằng email</td>
                      <td>2</td>
                       <td>7</td>
@@ -480,7 +480,7 @@ class DashBoard extends Component {
                     </td>                                  
                   
                   </tr>
-                  
+                   */}
                   </tbody>
                 </Table>
               </div>
@@ -517,7 +517,7 @@ class DashBoard extends Component {
                       </tr>
                       </thead>
                       <tbody>
-                      <tr>
+                      {/* <tr>
                         <td>Đổi mật khẩu</td>
                          <td>2</td>
                           <td>7</td>
@@ -564,7 +564,7 @@ class DashBoard extends Component {
                           <div className="text-center">0%</div>
                         </td>                                  
                         
-                      </tr>
+                      </tr> */}
                
                       </tbody>
                    </Table>

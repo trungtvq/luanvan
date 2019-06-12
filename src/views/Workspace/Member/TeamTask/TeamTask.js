@@ -293,7 +293,7 @@ class TeamTask extends Component {
         //processing assign array
           let str=response.getAssigneearray()
           str=str.slice(1,-1)
-          arr=str.split(', ')
+          arr=str.split(',   ')
 
       
 
@@ -809,7 +809,7 @@ class TeamTask extends Component {
                           if(p.id==item.sprint){
                             return <td>{p.num}</td>
                           }
-                        }): <td>""</td>
+                        }): <td></td>
                       }
                       {/* <td>{item.sprint}</td> */}
                       {(sprintbacklogs!=undefined)?          
@@ -817,7 +817,7 @@ class TeamTask extends Component {
                           if(p.id==item.sprintBacklog){
                             return <td>{p.title}</td>
                           }
-                        }): <td>""</td>
+                        }): <td></td>
                       }
                       {/* <td>{item.sprintBacklog}</td> */}
                       <td>{item.priority}</td>
