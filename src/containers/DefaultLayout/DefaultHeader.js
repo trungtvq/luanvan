@@ -76,7 +76,7 @@ class DefaultHeader extends Component {
       if (id == p.id){
         that.props.dispatch(setTeam(id, p.name))
         loadAllMember(id)
-        loadAllBacklog()
+        loadAllBacklog(id)
       }
       return p
     })    

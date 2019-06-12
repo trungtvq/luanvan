@@ -23,13 +23,14 @@ proto.team = require('../../gRPC/team/team_grpc_web_pb');
     GetAllTeamReq.setRequesterid(getFromStorage("userId"));
     GetAllTeamReq.setProjectid(id);
     GetAllTeamReq.setAccesstoken(getFromStorage("accessToken"));
-    let response = teamService.getAllTeam(GetAllTeamReq, metadata)
     let that = this
     let lastTeam = ''
     let lastName = ''
     let validTeam = false
     let teamName=''
     let teamId=getFromStorage("teamId")
+    let response = teamService.getAllTeam(GetAllTeamReq, metadata)
+  
 
     response.on('data', function (response) {
       if (response.getStatus() == "SUCCESS") {
@@ -58,12 +59,16 @@ proto.team = require('../../gRPC/team/team_grpc_web_pb');
             if (validTeam == false) {
               if (lastTeam != '') {
                 store.dispatch(setTeam(lastTeam, lastName))
-                that.loadAllMember(lastTeam)
+                loadAllMember(lastTeam)
+                loadAllBacklog(lastTeam)
+
               }
             }
             else {
               store.dispatch(setTeam(teamId, teamName))
               loadAllMember(teamId)
+              loadAllBacklog(teamId)
+
               loadAllBacklog()
             }
         }

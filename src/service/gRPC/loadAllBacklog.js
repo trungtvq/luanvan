@@ -9,7 +9,7 @@ const proto = {};
 proto.team = require('../../gRPC/team/team_grpc_web_pb');
 proto.sprintbacklog = require('../../gRPC/sprintbacklog/sprintbacklog_grpc_web_pb');
 
-export default function loadAllBacklog() {
+export default function loadAllBacklog(id) {
   console.log("loadAllSprintBacklog")
     const sprintbacklogService = new proto.sprintbacklog.SprintBacklogClient('https://www.overlead.co');
     var metadata = {};
@@ -17,7 +17,7 @@ export default function loadAllBacklog() {
     GetAllSprintBacklogReq.setRequesterid(getFromStorage("userId"));
     GetAllSprintBacklogReq.setAccesstoken(getFromStorage("accessToken"));
     GetAllSprintBacklogReq.setProjectid(getFromStorage("currentProject"));
-    GetAllSprintBacklogReq.setTeamid(getFromStorage("teamId"));
+    GetAllSprintBacklogReq.setTeamid(id);
 
     var response = sprintbacklogService.getAllSprintBacklog(GetAllSprintBacklogReq, metadata)
     let that = this

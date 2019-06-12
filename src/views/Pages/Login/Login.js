@@ -15,6 +15,7 @@ import {
 } from '../../../service/storage'
 import AppAppBar from "../../../containers/AppAppBar"
 import AppFooter from "../../../containers/AppFooter"
+import getAllProject from "../../../service/gRPC/loadAllProject"
 const image2base64 = require('image-to-base64')
 const proto = {};
 proto.auth = require('./../../../gRPC/auth/auth_grpc_web_pb');
@@ -93,7 +94,7 @@ class Login extends Component {
             setInStorage('name',response.getName())
             setInStorage('avatar',response.getAvatar())
             this.props.dispatch(saveLogin(response.getId(),response.getSession(),signInEmail,response.getName(),response.getAvatar()))
-            that.getAllProject();
+            getAllProject();
           }
         }
       });
@@ -122,7 +123,7 @@ class Login extends Component {
            
             setInStorage('avatar',response.getAvatar())
             this.props.dispatch(saveLogin(response.getId(),response.getSession(),profileObj.email,response.getName(),response.getAvatar()))
-            that.getAllProject();
+            getAllProject();
           }
         }
       });
@@ -133,102 +134,104 @@ class Login extends Component {
     })
   }
  
-  getAllProject = () => {
-    let dispatch = this.props.dispatch
-    const myprojectService = new proto.myproject.MyprojectClient('https://www.overlead.co');
-    var metadata = {};
-    var GetAllProjectReq = new proto.myproject.GetAllProjectReq();
-    GetAllProjectReq.setRequesterid(getFromStorage("userId"));
-    GetAllProjectReq.setCookie(getFromStorage("accessToken"));
-    let that = this
-    var response = myprojectService.getAllProject(GetAllProjectReq, metadata)
+//   getAllProject = () => {
+//     let dispatch = this.props.dispatch
+//     const myprojectService = new proto.myproject.MyprojectClient('https://www.overlead.co');
+//     var metadata = {};
+//     var GetAllProjectReq = new proto.myproject.GetAllProjectReq();
+//     GetAllProjectReq.setRequesterid(getFromStorage("userId"));
+//     GetAllProjectReq.setCookie(getFromStorage("accessToken"));
+//     let that = this
+//     var response = myprojectService.getAllProject(GetAllProjectReq, metadata)
 
-    response.on('data', function (response) {
-        if (response.getStatus() == "SUCCESS") {
-            dispatch(addProject(response.getProjectid(), response.getTopic(), response.getProjectname(), response.getStart(), response.getEnd(), response.getPrivate(), response.getProgress()))
-        }
-    });
-    response.on('status', function (status) {
-        let flat = false
-        if (status.code!=0) console.log(status)
+//     response.on('data', function (response) {
+//         if (response.getStatus() == "SUCCESS") {
+//             dispatch(addProject(response.getProjectid(), response.getTopic(), response.getProjectname(), response.getStart(), response.getEnd(), response.getPrivate(), response.getProgress()))
+//         }
+//     });
+//     response.on('status', function (status) {
+//         let flat = false
+//         if (status.code!=0) console.log(status)
 
-        let cp = getFromStorage("currentProject")
-        let lastCreated = ''
-        let lastName=''
-        that.props.currentProject.map(p => {
-            if (p.id == cp) flat = true
-            lastCreated = p.id
-            lastName=p.projectName
-            return p
-        })
+//         let cp = getFromStorage("currentProject")
+//         let lastCreated = ''
+//         let lastName=''
+//         that.props.currentProject.map(p => {
+//             if (p.id == cp) flat = true
+//             lastCreated = p.id
+//             lastName=p.projectName
+//             return p
+//         })
 
-        if (flat == false)
-            setInStorage('currentProject', lastCreated)
-            setInStorage('currentProjectName',lastName)
+//         if (flat == false)
+//             setInStorage('currentProject', lastCreated)
+//             setInStorage('currentProjectName',lastName)
 
-        if (getFromStorage('currentProject') != null && getFromStorage('currentProject') != '') {
-            that.loadAllTeam()
-            that.props.dispatch(setProject(lastCreated,lastName))
-        }
-
-
-    });
-    response.on('end', function (end) {
-        console.log(end)
-
-    });
+//         if (getFromStorage('currentProject') != null && getFromStorage('currentProject') != '') {
+//             that.loadAllTeam()
+//             that.props.dispatch(setProject(lastCreated,lastName))
+//         }
 
 
+//     });
+//     response.on('end', function (end) {
+//         console.log(end)
 
-}
+//     });
 
-loadAllTeam = () => {
-    console.log("getAllTeam")
-    const teamService = new proto.team.TeamClient('https://www.overlead.co');
-    var metadata = {};
 
-    var GetAllTeamReq = new proto.team.GetAllTeamReq();
-    GetAllTeamReq.setRequesterid(getFromStorage("userId"));
-    GetAllTeamReq.setProjectid(getFromStorage("currentProject"));
-    GetAllTeamReq.setAccesstoken(getFromStorage("accessToken"));
-    let response = teamService.getAllTeam(GetAllTeamReq, metadata)
-    console.log("currenProject"+getFromStorage("currentProject"))
-    let that = this
-    let lastTeam = ''
-    let lastName=''
-    let validTeam = false
-    response.on('data', function (response) {
-        if (response.getStatus() == "SUCCESS") {
-            console.log("hasTeam"+response.getTeamid())
 
-            if (getFromStorage('teamId') == response.getTeamid())
-                validTeam = true
-            else {
-                lastTeam = response.getTeamid()
-                lastName= response.getName()
-            }
+// }
 
-        }
-    })
-    response.on('status', function (status) {
-      if (status.code!=0) console.log(status)
+// loadAllTeam = () => {
+//     console.log("getAllTeam")
+//     const teamService = new proto.team.TeamClient('https://www.overlead.co');
+//     var metadata = {};
 
-        if (validTeam == false) {
-            if (lastTeam != '') {
-                setInStorage('teamId', lastTeam)
-                setInStorage('teamName',lastName)
-                that.props.dispatch(setTeam(lastTeam,lastName))
-            }    
-        }
-        else {
-            that.props.dispatch(setTeam(getFromStorage('teamId'),getFromStorage('teamName')))
-        }
-    });
-    response.on('end', function (end) {
+//     var GetAllTeamReq = new proto.team.GetAllTeamReq();
+//     GetAllTeamReq.setRequesterid(getFromStorage("userId"));
+//     GetAllTeamReq.setProjectid(getFromStorage("currentProject"));
+//     GetAllTeamReq.setAccesstoken(getFromStorage("accessToken"));
+//     let response = teamService.getAllTeam(GetAllTeamReq, metadata)
+//     console.log("currenProject"+getFromStorage("currentProject"))
+//     let that = this
+//     let lastTeam = ''
+//     let lastName=''
+//     let validTeam = false
+//     response.on('data', function (response) {
+//         if (response.getStatus() == "SUCCESS") {
+//             console.log("hasTeam"+response.getTeamid())
 
-    });
+//             if (getFromStorage('teamId') == response.getTeamid())
+//                 validTeam = true
+//             else {
+//                 lastTeam = response.getTeamid()
+//                 lastName= response.getName()
+//             }
+
+//         }
+//     })
+//     response.on('status', function (status) {
+//       if (status.code!=0) console.log(status)
+
+//         if (validTeam == false) {
+//             if (lastTeam != '') {
+//                 setInStorage('teamId', lastTeam)
+//                 setInStorage('teamName',lastName)
+//                 that.props.dispatch(setTeam(lastTeam,lastName))
+//             }    
+//         }
+//         else {
+//             that.props.dispatch(setTeam(getFromStorage('teamId'),getFromStorage('teamName')))
+//         }
+//     });
+//     response.on('end', function (end) {
+
+//     });
     
-}
+// }
+
+
   render() {
     const responseGoogle = (response) => {
       this.onSignInGoogle(response.profileObj);

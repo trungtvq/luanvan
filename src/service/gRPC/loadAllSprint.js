@@ -6,9 +6,10 @@ import {
   import { setSprint } from '../../actions'
 
 import { store } from '../../App';
+import loadAllBacklog from "./loadAllBacklog"
+
 const proto = {};
 proto.sprint = require('../../gRPC/sprint/sprint_grpc_web_pb');
-
 
 export default function loadAllSprint(id){
     console.log("loadAllSprint")
