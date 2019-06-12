@@ -147,9 +147,9 @@ class Client extends Component {
             <authContext.Provider>
                 <BrowserRouter>
                     {
-                        this.props.isLogin ?
+                        !this.props.isLogin ?
                             (
-                                this.props.hasProject ?
+                                !this.props.hasProject ?
                                     (this.props.hasTeam ?
                                         <Switch>
                                             <Route exact path="/homeNav" name="HomeNav" component={Demo} />
