@@ -102,7 +102,7 @@ public class TeamTask {
                     Document task= Mongod.collTask.find(new Document("_id",new ObjectId(request.getTeamTaskId()))).into(new ArrayList<>()).get(0);
                     String title=task.get("title").toString();
                     List<String> assignee= (List<String>) task.get("assigneeArray");
-                    String projectName=Mongod.collProject.find(new Document("_id",new ObjectId(request.getProjectId()))).into(new ArrayList<>()).get(0).get("name").toString();
+                    String projectName=Mongod.collProject.find(new Document("_id",new ObjectId(request.getProjectId()))).into(new ArrayList<>()).get(0).get("projectName").toString();
 
                     assignee.forEach(i->{
                         String name=Mongod.collAuth.find(new Document("_id",new ObjectId(request.getRequesterId()))).into(new ArrayList<>()).get(0).get("name").toString();

@@ -73,7 +73,6 @@ public class SprintBacklog {
 
         @Override
         public void getAllSprintBacklog(GetAllSprintBacklogReq request, StreamObserver<GetAllSprintBacklogRes> responseObserver) {
-
             //check if team is exist
             //get list of sprintbacklogs in TEAM
             //get BACKLOG from id of list in previous step
