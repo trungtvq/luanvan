@@ -859,55 +859,7 @@ class TeamTask extends Component {
                                   </Col>
                                 </FormGroup>
 
-                                {/* <FormGroup row>
-                                <Col md="3">
-                                  <Label htmlFor="text-input">Sprint</Label>
-                                </Col>
-                                <Col xs="12" md="3">
-                                  <Input type="select" name="select" id="select" onChange={that.onTextboxChangeSprint}>
-                                  {(sprints!=undefined)?          
-                                    sprints.map(p=>{
-                                        if(p.id==that.state.sprintBacklog){
-                                          return <option value={p.id}>{p.num}</option>
-                                        }
-                                      }): <option value="">""</option>
-                                  }
-                                  
-                                  
-                                    { (sprints!=undefined)?
-                                      sprints.map(p=>{
-                                        return(
-                                          <option value={p.id}>{p.num}</option>
-                                        )
-                                      }):
-                                      
-                                        <option disable={true} value="">not have any sprint</option>
-                                      
-                                    }
-                                  </Input>
-                                </Col>
-                              </FormGroup>
-
-                              <FormGroup row>
-                                <Col md="3">
-                                  <Label htmlFor="text-input">Sprint Backlog</Label>
-                                </Col>
-                                <Col xs="12" md="3">
-                                  <Input type="select" name="select" id="select"  onChange={that.onTextboxChangeSprintBacklog}>                                    
-                                    { 
-                                      (that.props.sprintbacklogs!=undefined)?
-                                      that.props.sprintbacklogs.map(p=>
-                                        p.sprint==that.state.sprint? 
-                                          <option value={p.title}>{p.title}</option>
-                                        :null
-                                    ):
-                                      
-                                        <option disable={true} value="">not have any sprint backlog</option>
-                                      
-                                    }
-                                  </Input>
-                                </Col>
-                              </FormGroup> */}
+                   
                                 <FormGroup row>
                                   <Col md="3">
                                     <Label>Priority</Label>
@@ -921,7 +873,7 @@ class TeamTask extends Component {
                                     </Input>
                                   </Col>
                                 </FormGroup>
-                                <FormGroup row>
+                                {/* <FormGroup row>
                                   <Col md="3">
                                     <Label htmlFor="date-input">Start time</Label>
                                   </Col>
@@ -935,7 +887,7 @@ class TeamTask extends Component {
                                       dateFormat="dd/MM/yyyy h:mm aa"
                                       showTimeInput
                                     /></Col>
-                                </FormGroup>
+                                </FormGroup> */}
                                 <FormGroup row>
                                   <Col md="3">
                                     <Label htmlFor="date-input">Deadline </Label>

@@ -138,6 +138,7 @@ class Client extends Component {
     componentWillMount() {
         this.auth();
         setInStorage("allTask",[])
+        setInStorage("tasks",[])
 
     }
 

@@ -80,7 +80,7 @@ class Chart1 extends PureComponent {
   };
 
   render() {
-    let allTask=getFromStorage("allTask")
+    let allTask=getFromStorage("tasks")
     let taskDone=0;
     let taskInprogress =0;
     let tong = allTask.length;
@@ -113,6 +113,7 @@ class Chart1 extends PureComponent {
       </ResponsiveContainer>
     );
   }
+
 }
 //
 //chart2: trình bày tất cả các sprint mỗi sprint chứa số lượng task đúng hẹn và số lượng task trễ
@@ -139,6 +140,8 @@ const data = [
     nameSprint: 'sprint7', onTime: 3490, Late: 4300, Early: 2100,
   },
 ];
+
+
 const getPercent = (value, total) => {
   const ratio = total > 0 ? value / total : 0;
 

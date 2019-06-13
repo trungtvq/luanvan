@@ -61,7 +61,6 @@ proto.team = require('../../gRPC/team/team_grpc_web_pb');
                 store.dispatch(setTeam(lastTeam, lastName))
                 loadAllMember(lastTeam)
                 loadAllBacklog(lastTeam)
-
               }
             }
             else {

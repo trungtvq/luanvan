@@ -5,6 +5,7 @@
  */
 // GENERATED CODE -- DO NOT EDIT!
 /* eslint-disable */
+
 var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
@@ -2190,7 +2191,8 @@ proto.teamtask.GetAllTeamTaskRes.toObject = function(includeInstance, msg) {
     review: msg.getReview(),
     teamid: msg.getTeamid(),
     sprintbacklogid: msg.getSprintbacklogid(),
-    sprintid: msg.getSprintid()
+    sprintid: msg.getSprintid(),
+    timedone: msg.getTimedone()
   };
 
   if (includeInstance) {
@@ -2282,6 +2284,10 @@ proto.teamtask.GetAllTeamTaskRes.deserializeBinaryFromReader = function(msg, rea
     case 15:
       var value = /** @type {string} */ (reader.readString());
       msg.setSprintid(value);
+      break;
+    case 16:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTimedone(value);
       break;
     default:
       reader.skipField();
@@ -2416,6 +2422,13 @@ proto.teamtask.GetAllTeamTaskRes.prototype.serializeBinaryToWriter = function (w
   if (f.length > 0) {
     writer.writeString(
       15,
+      f
+    );
+  }
+  f = this.getTimedone();
+  if (f.length > 0) {
+    writer.writeString(
+      16,
       f
     );
   }
@@ -2638,6 +2651,21 @@ proto.teamtask.GetAllTeamTaskRes.prototype.getSprintid = function() {
 /** @param {string} value  */
 proto.teamtask.GetAllTeamTaskRes.prototype.setSprintid = function(value) {
   jspb.Message.setField(this, 15, value);
+};
+
+
+/**
+ * optional string timeDone = 16;
+ * @return {string}
+ */
+proto.teamtask.GetAllTeamTaskRes.prototype.getTimedone = function() {
+  return /** @type {string} */ (jspb.Message.getFieldProto3(this, 16, ""));
+};
+
+
+/** @param {string} value  */
+proto.teamtask.GetAllTeamTaskRes.prototype.setTimedone = function(value) {
+  jspb.Message.setField(this, 16, value);
 };
 
 

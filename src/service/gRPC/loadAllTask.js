@@ -45,40 +45,73 @@ export default function loadAllTask(id,name){
         } else {
           end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10)+1) + "/" + arr[4]
         }
-
+        arr=response.getTimedone().split('-')
         //processing assign array
           let str=response.getAssigneearray()
           str=str.slice(1,-1)
           arr=str.split(',   ')
 
-          data.push(
-          {
-            id: response.getTeamtaskid(),
-            title: response.getTitle(),
-            description: response.getDescription(),
-            assignee: arr,
-            priority: response.getPriority(),
-            review: response.getReview(),
-            comment: response.getComment(),
-            status: response.getStatusteamtask(),
-            start: start,
-            deadline: end,
-            sprintBacklog: response.getSprintbacklogid(),
-            sprint: response.getSprintid(),
-            teamId:id,
-            teamName:name
+          if (response.getStatus()=="done"){
+            let timeDone = response.getDeadline().split('-')
+         
+            let endT=arr[0]+60*(arr[1]+24*(arr[2]+30*(arr[3]+12*arr[4])));
+            timeDone=timeDone[0]+60*(timeDone[1]+24*(timeDone[2]+30*(timeDone[3]+12*timeDone[4])));
+            timeDone=endT-timeDone
+            data.push(
+              {
+                id: response.getTeamtaskid(),
+                title: response.getTitle(),
+                description: response.getDescription(),
+                assignee: arr,
+                priority: response.getPriority(),
+                review: response.getReview(),
+                comment: response.getComment(),
+                status: response.getStatusteamtask(),
+                start: start,
+                deadline: end,
+                sprintBacklog: response.getSprintbacklogid(),
+                sprint: response.getSprintid(),
+                teamId:id,
+                teamName:name,
+                late:timeDone
+              }
+              
+            );
+          }else{
+            data.push(
+              {
+                id: response.getTeamtaskid(),
+                title: response.getTitle(),
+                description: response.getDescription(),
+                assignee: arr,
+                priority: response.getPriority(),
+                review: response.getReview(),
+                comment: response.getComment(),
+                status: response.getStatusteamtask(),
+                start: start,
+                deadline: end,
+                sprintBacklog: response.getSprintbacklogid(),
+                sprint: response.getSprintid(),
+                teamId:id,
+                teamName:name,
+              }
+              
+            );
           }
           
-        );
 
       }
     })
     response.on('status', function (status) {
         console.log("-=--------------")
       if (status.code!=0) console.log(status)
-      console.log(getFromStorage("allTask"))
-      console.log(data)
-        setInStorage("allTask",getFromStorage("allTask").concat(data))
+      let task=data.filter(i=>{
+        if (i.sprint==getFromStorage("currentSprintId")) return true
+        return false
+      })
+      setInStorage("tasks",getFromStorage("tasks").concat(task))
+      setInStorage("allTask",getFromStorage("allTask").concat(data))
+
     });
     response.on('end', function (end) {
       console.log(end)
