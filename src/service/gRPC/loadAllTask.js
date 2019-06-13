@@ -45,18 +45,25 @@ export default function loadAllTask(id,name){
         } else {
           end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10)+1) + "/" + arr[4]
         }
+        
         arr=response.getTimedone().split('-')
         //processing assign array
           let str=response.getAssigneearray()
           str=str.slice(1,-1)
           arr=str.split(',   ')
+          if (response.getStatusteamtask()=="done"){
+            let en= response.getDeadline().split('-')
 
-          if (response.getStatus()=="done"){
             let timeDone = response.getDeadline().split('-')
          
-            let endT=arr[0]+60*(arr[1]+24*(arr[2]+30*(arr[3]+12*arr[4])));
+            let endT=en[0]+60*(en[1]+24*(en[2]+30*(en[3]+12*en[4])));
             timeDone=timeDone[0]+60*(timeDone[1]+24*(timeDone[2]+30*(timeDone[3]+12*timeDone[4])));
+            console.log(endT)
+            console.log(timeDone)
+
             timeDone=endT-timeDone
+            console.log("loadAllTask")
+            console.log(timeDone)
             data.push(
               {
                 id: response.getTeamtaskid(),

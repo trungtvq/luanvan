@@ -85,6 +85,7 @@ class Chart1 extends PureComponent {
     let taskInprogress =0;
     let tong = allTask.length;
     let that = this;
+  
     allTask.forEach(i => {
       if (i.status=="done") taskDone++
       if (i.status=="inprogress") taskInprogress++;
@@ -113,34 +114,9 @@ class Chart1 extends PureComponent {
       </ResponsiveContainer>
     );
   }
-
 }
 //
 //chart2: trình bày tất cả các sprint mỗi sprint chứa số lượng task đúng hẹn và số lượng task trễ
-const data = [
-  {
-    nameSprint: 'sprint1', onTime: 4000, Late: 2400, Early: 2400,
-  },
-  {
-    nameSprint: 'sprint2', onTime: 3000, Late: 1398, Early: 2210,
-  },
-  {
-    nameSprint: 'sprint3', onTime: 2000, Late: 9800, Early: 2290,
-  },
-  {
-    nameSprint: 'sprint4', onTime: 2780, Late: 3908, Early: 2000,
-  },
-  {
-    nameSprint: 'sprint5', onTime: 1890, Late: 4800, Early: 2181,
-  },
-  {
-    nameSprint: 'sprint6', onTime: 2390, Late: 3800, Early: 2500,
-  },
-  {
-    nameSprint: 'sprint7', onTime: 3490, Late: 4300, Early: 2100,
-  },
-];
-
 
 const getPercent = (value, total) => {
   const ratio = total > 0 ? value / total : 0;
@@ -152,7 +128,6 @@ const toPercent = (decimal, fixed = 0) => `${(decimal * 100).toFixed(fixed)}%`;
 const renderTooltipContent = (o) => {
   const { payload, label } = o;
   const total = payload.reduce((result, entry) => (result + entry.value), 0);
-
   return (
     <div className="customized-tooltip-content">
       <p className="total">{`${label} (Total: ${total})`}</p>
@@ -170,8 +145,32 @@ const renderTooltipContent = (o) => {
 };
 
 class Chart2 extends PureComponent {
-
   render() {
+    let allTask=getFromStorage("allTask")
+    allTask.forEach(i=>{console.log("a+++"+i.late)})
+    const data = [
+      {
+        nameSprint: 'sprint1', onTime: 4000, Late: 2400, Early: 2400,
+      },
+      {
+        nameSprint: 'sprint2', onTime: 3000, Late: 1398, Early: 2210,
+      },
+      {
+        nameSprint: 'sprint3', onTime: 2000, Late: 9800, Early: 2290,
+      },
+      {
+        nameSprint: 'sprint4', onTime: 2780, Late: 3908, Early: 2000,
+      },
+      {
+        nameSprint: 'sprint5', onTime: 1890, Late: 4800, Early: 2181,
+      },
+      {
+        nameSprint: 'sprint6', onTime: 2390, Late: 3800, Early: 2500,
+      },
+      {
+        nameSprint: 'sprint7', onTime: 3490, Late: 4300, Early: 2100,
+      },
+    ];
     return (
       <ResponsiveContainer width="100%" height={400}>
       <AreaChart
@@ -302,11 +301,13 @@ class DashBoard extends Component {
     return name
   }
   render() {
-    let allTask=getFromStorage("allTask")
+    let allTask=getFromStorage("tasks")
     let dataTaskDone=[]
     let dataTaskInprogress =[]
     let that = this;
-
+   
+   
+    
     allTask.forEach(i => {
       if (i.status=="done") dataTaskDone.push(Object.assign({},i,{sprint:that.getSprintName(i.sprint),sprintBacklog:that.getBacklogName(i.sprintBacklog)}))
       if (i.status=="inprogress") dataTaskInprogress.push((Object.assign({},i,{sprint:that.getSprintName(i.sprint),sprintBacklog:that.getBacklogName(i.sprintBacklog)}))
@@ -316,7 +317,7 @@ class DashBoard extends Component {
           <Col> 
                 <Card>
                 <CardHeader>
-                  Task in active sprint            
+                  Task in active             
                   </CardHeader>
                   <CardBody>
                   <Chart1 />
