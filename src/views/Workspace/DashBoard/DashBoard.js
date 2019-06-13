@@ -145,9 +145,22 @@ const renderTooltipContent = (o) => {
 };
 
 class Chart2 extends PureComponent {
+  getSprintName=(id)=>{
+    let name=""
+    this.props.sprints.forEach(i=>{
+      if (i.id==id) name=i.title
+    })
+    return name
+
+  }
   render() {
+    let that =this
     let allTask=getFromStorage("allTask")
-    allTask.forEach(i=>{console.log("a+++"+i.late)})
+    // let data=[];
+    allTask.forEach(i=>{console.log("a++"+i.late)});
+  //   allTask.forEach(i=>{
+  //   data.push(Object.assign({},i,{sprint:that.getSprintName(i.sprint),sprintBacklog:that.getBacklogName(i.sprintBacklog)}))
+  // })
     const data = [
       {
         nameSprint: 'sprint1', onTime: 4000, Late: 2400, Early: 2400,
