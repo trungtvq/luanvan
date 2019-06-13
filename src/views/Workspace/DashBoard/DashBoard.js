@@ -80,6 +80,7 @@ class Chart1 extends PureComponent {
   };
 
   render() {
+    console.log("render chart1")
     let allTask=getFromStorage("tasks")
     let taskDone=0;
     let taskInprogress =0;
@@ -87,8 +88,14 @@ class Chart1 extends PureComponent {
     let that = this;
   
     allTask.forEach(i => {
-      if (i.status=="done") taskDone++
+      console.log(i)
+      if (i.status=="done") {
+        taskDone++
+        console.log("late")
+        console.log(i.late)
+      }
       if (i.status=="inprogress") taskInprogress++;
+      taskInprogress++
     })
     const dataChart1 = [
       { name: 'Done', value: taskDone/tong },
@@ -146,8 +153,16 @@ const renderTooltipContent = (o) => {
 
 class Chart2 extends PureComponent {
   render() {
+    console.log("render chart2")
     let allTask=getFromStorage("allTask")
-    allTask.forEach(i=>{console.log("a+++"+i.late)})
+    let datad=[]
+    allTask.forEach(i=>{
+      if (i.status=="done"){
+        console.log("a+++"+i.late)
+      }
+
+    })
+
     const data = [
       {
         nameSprint: 'sprint1', onTime: 4000, Late: 2400, Early: 2400,
@@ -300,7 +315,9 @@ class DashBoard extends Component {
     })
     return name
   }
+
   render() {
+    console.log("render dashboard")
     let allTask=getFromStorage("tasks")
     let dataTaskDone=[]
     let dataTaskInprogress =[]

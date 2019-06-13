@@ -54,7 +54,7 @@ export default function loadAllTask(id,name){
           if (response.getStatusteamtask()=="done"){
             let en= response.getDeadline().split('-')
 
-            let timeDone = response.getDeadline().split('-')
+            let timeDone = response.getTimedone().split('-')
          
             let endT=en[0]+60*(en[1]+24*(en[2]+30*(en[3]+12*en[4])));
             timeDone=timeDone[0]+60*(timeDone[1]+24*(timeDone[2]+30*(timeDone[3]+12*timeDone[4])));
