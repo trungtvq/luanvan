@@ -602,20 +602,13 @@ class TeamTask extends Component {
 
   };
 
- componentDidUpdate(){
-   console.log("didupdate")
-   console.log(this.state.sprintbacklog)
-   console.log(this.state.sprint)
 
- }
 
   render() {    
     let that = this;
     let sprints=this.props.sprints
     let sprintbacklogs=this.props.sprintbacklogs
 
-    console.log("sprints")
-    console.log(sprints)
     return (
       <div>
         <Chat />

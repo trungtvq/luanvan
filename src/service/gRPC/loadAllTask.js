@@ -61,16 +61,20 @@ export default function loadAllTask(id,name){
           str=str.slice(1,-1)
           arr=str.split(',   ')
           if (response.getStatusteamtask()=="done"){
-            let en= response.getDeadline().split('-')
+            let en= response.getDeadline().split('-').map(function(item) {
+              return parseInt(item, 10);
+          });
 
-            let timeDone = response.getTimedone().split('-')
+            let timeDone = response.getTimedone().split('-').map(function(item) {
+              return parseInt(item, 10);
+          });
          
             let endT=en[0]+60*(en[1]+24*(en[2]+30*(en[3]+12*en[4])));
             timeDone=timeDone[0]+60*(timeDone[1]+24*(timeDone[2]+30*(timeDone[3]+12*timeDone[4])));
             console.log(endT)
             console.log(timeDone)
 
-            timeDone=endT-timeDone
+            timeDone=timeDone-endT
             console.log("loadAllTask")
             console.log(timeDone)
             data.push(
