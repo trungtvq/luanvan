@@ -35,7 +35,7 @@ const getAllProject= ()=>{
                 progress:response.getProgress()
             })
             store.dispatch(addProject(response.getProjectid(), response.getTopic(), response.getProjectname(), response.getStart(), response.getEnd(), response.getPrivate(), response.getProgress()))
-            
+            setInStorage("currentSprintId",response.getCurrentsprintid())
         }
         
     });
