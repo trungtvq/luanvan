@@ -45,23 +45,36 @@ export default function loadAllTask(id,name){
         } else {
           end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10)+1) + "/" + arr[4]
         }
-        
+        arr = response.getTimedone().split('-')
+
+        let td=''
+
+        if (arr[1] > 12) {
+          arr[1] = arr[1] - 12
+          td = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "PM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10)+1) + "/" + arr[4]
+        } else {
+          td = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10)+1) + "/" + arr[4]
+        }
         arr=response.getTimedone().split('-')
         //processing assign array
           let str=response.getAssigneearray()
           str=str.slice(1,-1)
           arr=str.split(',   ')
           if (response.getStatusteamtask()=="done"){
-            let en= response.getDeadline().split('-')
+            let en= response.getDeadline().split('-').map(function(item) {
+              return parseInt(item, 10);
+          });
 
-            let timeDone = response.getDeadline().split('-')
+            let timeDone = response.getTimedone().split('-').map(function(item) {
+              return parseInt(item, 10);
+          });
          
             let endT=en[0]+60*(en[1]+24*(en[2]+30*(en[3]+12*en[4])));
             timeDone=timeDone[0]+60*(timeDone[1]+24*(timeDone[2]+30*(timeDone[3]+12*timeDone[4])));
             console.log(endT)
             console.log(timeDone)
 
-            timeDone=endT-timeDone
+            timeDone=timeDone-endT
             console.log("loadAllTask")
             console.log(timeDone)
             data.push(
@@ -80,7 +93,8 @@ export default function loadAllTask(id,name){
                 sprint: response.getSprintid(),
                 teamId:id,
                 teamName:name,
-                late:timeDone
+                late:timeDone,
+                timeDone:td
               }
               
             );

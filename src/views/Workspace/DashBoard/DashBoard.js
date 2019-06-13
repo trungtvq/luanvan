@@ -18,195 +18,9 @@ import {
   Legend,ResponsiveContainer,BarChart,Cell,PieChart,Pie,Sector,AreaChart,
 } from 'recharts';
 import { getFromStorage } from '../../../service/storage';
-
+import Chart2 from './Chart2'
+import Chart1 from './Chart1'
 //chart1 tỷ lệ task done inprogress  todo của sprint đang active
-const renderActiveShape = (props) => {
-  const RADIAN = Math.PI / 180;
-  const {
-    cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle,
-    fill, payload, percent, value,
-  } = props;
-  const sin = Math.sin(-RADIAN * midAngle);
-  const cos = Math.cos(-RADIAN * midAngle);
-  const sx = cx + (outerRadius + 10) * cos;
-  const sy = cy + (outerRadius + 10) * sin;
-  const mx = cx + (outerRadius + 30) * cos;
-  const my = cy + (outerRadius + 30) * sin;
-  const ex = mx + (cos >= 0 ? 1 : -1) * 22;
-  const ey = my;
-  const textAnchor = cos >= 0 ? 'start' : 'end';
-
-  return (
-    <g>
-      <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{payload.name}</text>
-      <Sector
-        cx={cx}
-        cy={cy}
-        innerRadius={innerRadius}
-        outerRadius={outerRadius}
-        startAngle={startAngle}
-        endAngle={endAngle}
-        fill={fill}
-      />
-      <Sector
-        cx={cx}
-        cy={cy}
-        startAngle={startAngle}
-        endAngle={endAngle}
-        innerRadius={outerRadius + 6}
-        outerRadius={outerRadius + 10}
-        fill={fill}
-      />
-      <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" />
-      <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#333">{`PV ${value}`}</text>
-      <text x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#999">
-        {`(Rate ${(percent * 100).toFixed(2)}%)`}
-      </text>
-    </g>
-  );
-};
-
-class Chart1 extends PureComponent {
-
-  state = {
-    activeIndex: 0,
-  };
-
-  onPieEnter = (dataChart1, index) => {
-    this.setState({
-      activeIndex: index,
-    });
-  };
-
-  render() {
-    let allTask=getFromStorage("tasks")
-    let taskDone=0;
-    let taskInprogress =0;
-    let tong = allTask.length;
-    let that = this;
-  
-    allTask.forEach(i => {
-      if (i.status=="done") taskDone++
-      if (i.status=="inprogress") taskInprogress++;
-    })
-    const dataChart1 = [
-      { name: 'Done', value: taskDone/tong },
-      { name: 'Inprogress', value: taskInprogress/tong },
-      { name: 'To do', value: (tong-taskDone-taskInprogress)/tong },
-    ];
-    return (
-      <ResponsiveContainer width="100%" height={400}>
-      <PieChart width={400} height={400}>
-        <Pie
-          activeIndex={this.state.activeIndex}
-          activeShape={renderActiveShape}
-          data={dataChart1}
-          cx={200}
-          cy={200}
-          innerRadius={60}
-          outerRadius={80}
-          fill="#8884d8"
-          dataKey="value"
-          onMouseEnter={this.onPieEnter}
-        />
-      </PieChart>
-      </ResponsiveContainer>
-    );
-  }
-}
-//
-//chart2: trình bày tất cả các sprint mỗi sprint chứa số lượng task đúng hẹn và số lượng task trễ
-
-const getPercent = (value, total) => {
-  const ratio = total > 0 ? value / total : 0;
-
-  return toPercent(ratio, 2);
-};
-
-const toPercent = (decimal, fixed = 0) => `${(decimal * 100).toFixed(fixed)}%`;
-const renderTooltipContent = (o) => {
-  const { payload, label } = o;
-  const total = payload.reduce((result, entry) => (result + entry.value), 0);
-  return (
-    <div className="customized-tooltip-content">
-      <p className="total">{`${label} (Total: ${total})`}</p>
-      <ul className="list">
-        {
-        	payload.map((entry, index) => (
-          	<li key={`item-${index}`} style={{ color: entry.color }}>
-            	{`${entry.name}: ${entry.value}(${getPercent(entry.value, total)})`}
-           </li>
-        	))
-        }
-      </ul>
-    </div>
-  );
-};
-
-class Chart2 extends PureComponent {
-  getSprintName=(id)=>{
-    let name=""
-    this.props.sprints.forEach(i=>{
-      if (i.id==id) name=i.title
-    })
-    return name
-
-  }
-  render() {
-    let that =this
-    let allTask=getFromStorage("allTask")
-    // let data=[];
-    allTask.forEach(i=>{console.log("a++"+i.late)});
-  //   allTask.forEach(i=>{
-  //   data.push(Object.assign({},i,{sprint:that.getSprintName(i.sprint),sprintBacklog:that.getBacklogName(i.sprintBacklog)}))
-  // })
-    const data = [
-      {
-        nameSprint: 'sprint1', onTime: 4000, Late: 2400, Early: 2400,
-      },
-      {
-        nameSprint: 'sprint2', onTime: 3000, Late: 1398, Early: 2210,
-      },
-      {
-        nameSprint: 'sprint3', onTime: 2000, Late: 9800, Early: 2290,
-      },
-      {
-        nameSprint: 'sprint4', onTime: 2780, Late: 3908, Early: 2000,
-      },
-      {
-        nameSprint: 'sprint5', onTime: 1890, Late: 4800, Early: 2181,
-      },
-      {
-        nameSprint: 'sprint6', onTime: 2390, Late: 3800, Early: 2500,
-      },
-      {
-        nameSprint: 'sprint7', onTime: 3490, Late: 4300, Early: 2100,
-      },
-    ];
-    return (
-      <ResponsiveContainer width="100%" height={400}>
-      <AreaChart
-        width={500}
-        height={400}
-        data={data}
-        stackOffset="expand"
-        margin={{
-          top: 10, right: 30, left: 0, bottom: 0,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="nameSprint" />
-        <YAxis tickFormatter={toPercent} />
-        <Tooltip content={renderTooltipContent} />
-        <Area type="monotone" dataKey="onTime" stackId="1" stroke="green" fill="green" />
-        <Area type="monotone" dataKey="Late" stackId="1" stroke="red" fill="red" />
-        <Area type="monotone" dataKey="Early" stackId="1" stroke="blue" fill="blue" />
-      </AreaChart>
-      </ResponsiveContainer>
-    );
-  }
-}
 
 //
 //chart3 là số lượng sprint backlog done của mỗi team
@@ -304,7 +118,6 @@ class DashBoard extends Component {
       if (i.id==id) name=i.title
     })
     return name
-
   }
   getBacklogName=(id)=>{
     let name=""
@@ -313,7 +126,9 @@ class DashBoard extends Component {
     })
     return name
   }
+
   render() {
+    console.log("render dashboard")
     let allTask=getFromStorage("tasks")
     let dataTaskDone=[]
     let dataTaskInprogress =[]
