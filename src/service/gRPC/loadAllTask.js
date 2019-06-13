@@ -45,7 +45,16 @@ export default function loadAllTask(id,name){
         } else {
           end = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10)+1) + "/" + arr[4]
         }
-        
+        arr = response.getTimedone().split('-')
+
+        let td=''
+
+        if (arr[1] > 12) {
+          arr[1] = arr[1] - 12
+          td = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "PM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10)+1) + "/" + arr[4]
+        } else {
+          td = "\xa0" + (arr[1].length == 1 ? "0" + arr[1] : arr[1]) + ":" + (arr[0].length == 1 ? "0" + arr[0] : arr[0]) + "AM" + `\xa0\xa0` + arr[2] + "/" + (parseInt(arr[3], 10)+1) + "/" + arr[4]
+        }
         arr=response.getTimedone().split('-')
         //processing assign array
           let str=response.getAssigneearray()
@@ -80,7 +89,8 @@ export default function loadAllTask(id,name){
                 sprint: response.getSprintid(),
                 teamId:id,
                 teamName:name,
-                late:timeDone
+                late:timeDone,
+                timeDone:td
               }
               
             );

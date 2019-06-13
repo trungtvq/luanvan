@@ -160,7 +160,7 @@ class Chart2 extends PureComponent {
       if (i.status=="done"){
         console.log("a+++"+i.late)
       }
-
+      
     })
 
     const data = [
