@@ -57,6 +57,7 @@ public class TeamTask {
                             .append("sprintId",request.getSprintId())
                             .append("comments", new BsonArray(Arrays.asList()))
                             .append("sprintbacklogid",request.getSprintBacklogId())
+                            .append("timeDone",request.getDeadline());
                             ;
 
                     Mongod.collTask.insertOne(document);
@@ -86,17 +87,18 @@ public class TeamTask {
                 if (teams.size() > 0) {
                     Document document = new Document()
                             .append("title", request.getTitle())
-                            .append("start", request.getStart())
                             .append("projectId", request.getProjectId())
                             .append("description", request.getDescription())
                             .append("priority", request.getPriority())
-                            .append("deadline", request.getDeadline())
+                         //   .append("deadline", request.getDeadline())
                             .append("assigneeArray", new BsonArray(Arrays.asList(new BsonString(request.getAssigneeArray()))))
                             .append("comment", request.getComment())
                             .append("status", request.getStatus())
                             .append("review", request.getReview())
                             .append("sprintbacklogid",request.getSprintBacklogId());
-
+                    if (request.getStatus().equals("done")){
+                        document.append("timeDone",request.getStart());
+                    }
                     Mongod.collTask.findOneAndUpdate(new Document("_id", new ObjectId(request.getTeamTaskId())),
                             new Document("$set",document));
                     Document task= Mongod.collTask.find(new Document("_id",new ObjectId(request.getTeamTaskId()))).into(new ArrayList<>()).get(0);
@@ -207,7 +209,6 @@ public class TeamTask {
             //check if team is exist
             //send task
 
-            System.out.println("addNewTeamTask");
             if (!isValidAuth(request.getRequesterId(), request.getAccessToken())) {
                 makeResponseForFailed(responseObserver, "AUTH_INVALID");
             } else {
@@ -232,6 +233,7 @@ public class TeamTask {
                                 .setStatus("SUCCESS")
                                 .setTeamTaskId(re.get("_id").toString())
                                 .setSprintBacklogId(re.get("sprintbacklogid")==null?"":re.get("sprintbacklogid").toString())
+                                .setTimeDone(re.get("timeDone")==null?"":re.get("timeDone").toString())
                                 .build());
                     });
 

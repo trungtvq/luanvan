@@ -129,9 +129,6 @@ public class Sprint {
             } else {
                 List<String> sprintIds=getSprintIdInProject(request.getProjectId());
                 if (sprintIds.size()>0){
-                    System.out.println("SUCCESS");
-                    System.out.println(request.getSprintId());
-                    System.out.println(sprintIds);
                     if (sprintIds.indexOf(request.getSprintId())!=-1){
                         Mongod.collProject.findOneAndUpdate(new Document("_id",new ObjectId(request.getProjectId())),
                                 new Document("$set",

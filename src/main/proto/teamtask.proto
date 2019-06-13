@@ -100,4 +100,5 @@ message GetAllTeamTaskRes{
 	string teamId=13;
 	string sprintBacklogId=14;
 	string sprintId=15;
+	string timeDone=16;
 }

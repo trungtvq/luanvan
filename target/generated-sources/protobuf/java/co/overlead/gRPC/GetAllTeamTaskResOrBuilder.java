@@ -162,4 +162,14 @@ public interface GetAllTeamTaskResOrBuilder extends
    */
   com.google.protobuf.ByteString
       getSprintIdBytes();
+
+  /**
+   * <code>string timeDone = 16;</code>
+   */
+  java.lang.String getTimeDone();
+  /**
+   * <code>string timeDone = 16;</code>
+   */
+  com.google.protobuf.ByteString
+      getTimeDoneBytes();
 }
